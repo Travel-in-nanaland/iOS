@@ -1,5 +1,5 @@
 //
-//  HomeMainView.swift
+//  StoryMainView.swift
 //  NanaLand
 //
 //  Created by 정현우 on 4/13/24.
@@ -7,16 +7,16 @@
 
 import SwiftUI
 
-struct HomeMainView: View {
+struct StoryMainView: View {
     var body: some View {
 		VStack {
 			Spacer()
-			Text("홈")
+			Text("제주 이야기")
 			Spacer()
 		}
     }
 }
 
 #Preview {
-    HomeMainView()
+    StoryMainView()
 }

@@ -11,7 +11,7 @@ import SwiftUI
 struct NanaLandApp: App {
     var body: some Scene {
         WindowGroup {
-			HomeMainView()
+			NanaLandTabView()
         }
     }
 }
