@@ -1,0 +1,679 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2C3C75842BCA3ADA00312F26 /* NanaLandApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C75832BCA3ADA00312F26 /* NanaLandApp.swift */; };
+		2C3C75862BCA3ADA00312F26 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C75852BCA3ADA00312F26 /* ContentView.swift */; };
+		2C3C75882BCA3ADC00312F26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C3C75872BCA3ADC00312F26 /* Assets.xcassets */; };
+		2C3C758B2BCA3ADC00312F26 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C3C758A2BCA3ADC00312F26 /* Preview Assets.xcassets */; };
+		2C3C75952BCA3ADD00312F26 /* NanaLandTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C75942BCA3ADD00312F26 /* NanaLandTests.swift */; };
+		2C3C759F2BCA3ADD00312F26 /* NanaLandUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C759E2BCA3ADD00312F26 /* NanaLandUITests.swift */; };
+		2C3C75A12BCA3ADD00312F26 /* NanaLandUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C75A02BCA3ADD00312F26 /* NanaLandUITestsLaunchTests.swift */; };
+		2C3C75AF2BCA3C5000312F26 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2C3C75AE2BCA3C5000312F26 /* Alamofire */; };
+		2C3C75B22BCA3C6B00312F26 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 2C3C75B12BCA3C6B00312F26 /* Kingfisher */; };
+		2C3C75B52BCA3F5A00312F26 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 2C3C75B42BCA3F5A00312F26 /* Lottie */; };
+		2C3C75B82BCA41EE00312F26 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 2C3C75B72BCA41EE00312F26 /* Realm */; };
+		2C3C75BA2BCA41EE00312F26 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2C3C75B92BCA41EE00312F26 /* RealmSwift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2C3C75912BCA3ADD00312F26 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C3C75782BCA3ADA00312F26 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2C3C757F2BCA3ADA00312F26;
+			remoteInfo = NanaLand;
+		};
+		2C3C759B2BCA3ADD00312F26 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C3C75782BCA3ADA00312F26 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2C3C757F2BCA3ADA00312F26;
+			remoteInfo = NanaLand;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2C3C75802BCA3ADA00312F26 /* NanaLand.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NanaLand.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C3C75832BCA3ADA00312F26 /* NanaLandApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NanaLandApp.swift; sourceTree = "<group>"; };
+		2C3C75852BCA3ADA00312F26 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		2C3C75872BCA3ADC00312F26 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2C3C758A2BCA3ADC00312F26 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		2C3C75902BCA3ADD00312F26 /* NanaLandTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NanaLandTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C3C75942BCA3ADD00312F26 /* NanaLandTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NanaLandTests.swift; sourceTree = "<group>"; };
+		2C3C759A2BCA3ADD00312F26 /* NanaLandUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NanaLandUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C3C759E2BCA3ADD00312F26 /* NanaLandUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NanaLandUITests.swift; sourceTree = "<group>"; };
+		2C3C75A02BCA3ADD00312F26 /* NanaLandUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NanaLandUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2C3C757D2BCA3ADA00312F26 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C3C75B22BCA3C6B00312F26 /* Kingfisher in Frameworks */,
+				2C3C75AF2BCA3C5000312F26 /* Alamofire in Frameworks */,
+				2C3C75B82BCA41EE00312F26 /* Realm in Frameworks */,
+				2C3C75BA2BCA41EE00312F26 /* RealmSwift in Frameworks */,
+				2C3C75B52BCA3F5A00312F26 /* Lottie in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C3C758D2BCA3ADD00312F26 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C3C75972BCA3ADD00312F26 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2C3C75772BCA3ADA00312F26 = {
+			isa = PBXGroup;
+			children = (
+				2C3C75822BCA3ADA00312F26 /* NanaLand */,
+				2C3C75932BCA3ADD00312F26 /* NanaLandTests */,
+				2C3C759D2BCA3ADD00312F26 /* NanaLandUITests */,
+				2C3C75812BCA3ADA00312F26 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2C3C75812BCA3ADA00312F26 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2C3C75802BCA3ADA00312F26 /* NanaLand.app */,
+				2C3C75902BCA3ADD00312F26 /* NanaLandTests.xctest */,
+				2C3C759A2BCA3ADD00312F26 /* NanaLandUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2C3C75822BCA3ADA00312F26 /* NanaLand */ = {
+			isa = PBXGroup;
+			children = (
+				2C3C75832BCA3ADA00312F26 /* NanaLandApp.swift */,
+				2C3C75852BCA3ADA00312F26 /* ContentView.swift */,
+				2C3C75872BCA3ADC00312F26 /* Assets.xcassets */,
+				2C3C75892BCA3ADC00312F26 /* Preview Content */,
+			);
+			path = NanaLand;
+			sourceTree = "<group>";
+		};
+		2C3C75892BCA3ADC00312F26 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				2C3C758A2BCA3ADC00312F26 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		2C3C75932BCA3ADD00312F26 /* NanaLandTests */ = {
+			isa = PBXGroup;
+			children = (
+				2C3C75942BCA3ADD00312F26 /* NanaLandTests.swift */,
+			);
+			path = NanaLandTests;
+			sourceTree = "<group>";
+		};
+		2C3C759D2BCA3ADD00312F26 /* NanaLandUITests */ = {
+			isa = PBXGroup;
+			children = (
+				2C3C759E2BCA3ADD00312F26 /* NanaLandUITests.swift */,
+				2C3C75A02BCA3ADD00312F26 /* NanaLandUITestsLaunchTests.swift */,
+			);
+			path = NanaLandUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2C3C757F2BCA3ADA00312F26 /* NanaLand */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C3C75A42BCA3ADD00312F26 /* Build configuration list for PBXNativeTarget "NanaLand" */;
+			buildPhases = (
+				2C3C757C2BCA3ADA00312F26 /* Sources */,
+				2C3C757D2BCA3ADA00312F26 /* Frameworks */,
+				2C3C757E2BCA3ADA00312F26 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NanaLand;
+			packageProductDependencies = (
+				2C3C75AE2BCA3C5000312F26 /* Alamofire */,
+				2C3C75B12BCA3C6B00312F26 /* Kingfisher */,
+				2C3C75B42BCA3F5A00312F26 /* Lottie */,
+				2C3C75B72BCA41EE00312F26 /* Realm */,
+				2C3C75B92BCA41EE00312F26 /* RealmSwift */,
+			);
+			productName = NanaLand;
+			productReference = 2C3C75802BCA3ADA00312F26 /* NanaLand.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2C3C758F2BCA3ADD00312F26 /* NanaLandTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C3C75A72BCA3ADD00312F26 /* Build configuration list for PBXNativeTarget "NanaLandTests" */;
+			buildPhases = (
+				2C3C758C2BCA3ADD00312F26 /* Sources */,
+				2C3C758D2BCA3ADD00312F26 /* Frameworks */,
+				2C3C758E2BCA3ADD00312F26 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2C3C75922BCA3ADD00312F26 /* PBXTargetDependency */,
+			);
+			name = NanaLandTests;
+			productName = NanaLandTests;
+			productReference = 2C3C75902BCA3ADD00312F26 /* NanaLandTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2C3C75992BCA3ADD00312F26 /* NanaLandUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C3C75AA2BCA3ADD00312F26 /* Build configuration list for PBXNativeTarget "NanaLandUITests" */;
+			buildPhases = (
+				2C3C75962BCA3ADD00312F26 /* Sources */,
+				2C3C75972BCA3ADD00312F26 /* Frameworks */,
+				2C3C75982BCA3ADD00312F26 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2C3C759C2BCA3ADD00312F26 /* PBXTargetDependency */,
+			);
+			name = NanaLandUITests;
+			productName = NanaLandUITests;
+			productReference = 2C3C759A2BCA3ADD00312F26 /* NanaLandUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2C3C75782BCA3ADA00312F26 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1530;
+				LastUpgradeCheck = 1530;
+				TargetAttributes = {
+					2C3C757F2BCA3ADA00312F26 = {
+						CreatedOnToolsVersion = 15.3;
+					};
+					2C3C758F2BCA3ADD00312F26 = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = 2C3C757F2BCA3ADA00312F26;
+					};
+					2C3C75992BCA3ADD00312F26 = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = 2C3C757F2BCA3ADA00312F26;
+					};
+				};
+			};
+			buildConfigurationList = 2C3C757B2BCA3ADA00312F26 /* Build configuration list for PBXProject "NanaLand" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2C3C75772BCA3ADA00312F26;
+			packageReferences = (
+				2C3C75AD2BCA3C5000312F26 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				2C3C75B02BCA3C6B00312F26 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				2C3C75B32BCA3F5A00312F26 /* XCRemoteSwiftPackageReference "lottie-spm" */,
+				2C3C75B62BCA41EE00312F26 /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
+			productRefGroup = 2C3C75812BCA3ADA00312F26 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2C3C757F2BCA3ADA00312F26 /* NanaLand */,
+				2C3C758F2BCA3ADD00312F26 /* NanaLandTests */,
+				2C3C75992BCA3ADD00312F26 /* NanaLandUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2C3C757E2BCA3ADA00312F26 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C3C758B2BCA3ADC00312F26 /* Preview Assets.xcassets in Resources */,
+				2C3C75882BCA3ADC00312F26 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C3C758E2BCA3ADD00312F26 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C3C75982BCA3ADD00312F26 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2C3C757C2BCA3ADA00312F26 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C3C75862BCA3ADA00312F26 /* ContentView.swift in Sources */,
+				2C3C75842BCA3ADA00312F26 /* NanaLandApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C3C758C2BCA3ADD00312F26 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C3C75952BCA3ADD00312F26 /* NanaLandTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C3C75962BCA3ADD00312F26 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C3C75A12BCA3ADD00312F26 /* NanaLandUITestsLaunchTests.swift in Sources */,
+				2C3C759F2BCA3ADD00312F26 /* NanaLandUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2C3C75922BCA3ADD00312F26 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2C3C757F2BCA3ADA00312F26 /* NanaLand */;
+			targetProxy = 2C3C75912BCA3ADD00312F26 /* PBXContainerItemProxy */;
+		};
+		2C3C759C2BCA3ADD00312F26 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2C3C757F2BCA3ADA00312F26 /* NanaLand */;
+			targetProxy = 2C3C759B2BCA3ADD00312F26 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		2C3C75A22BCA3ADD00312F26 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		2C3C75A32BCA3ADD00312F26 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2C3C75A52BCA3ADD00312F26 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"NanaLand/Preview Content\"";
+				DEVELOPMENT_TEAM = FKL5LCYWBF;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.iHyunWoo.NanaLand;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2C3C75A62BCA3ADD00312F26 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"NanaLand/Preview Content\"";
+				DEVELOPMENT_TEAM = FKL5LCYWBF;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.iHyunWoo.NanaLand;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		2C3C75A82BCA3ADD00312F26 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FKL5LCYWBF;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.iHyunWoo.NanaLandTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NanaLand.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NanaLand";
+			};
+			name = Debug;
+		};
+		2C3C75A92BCA3ADD00312F26 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FKL5LCYWBF;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.iHyunWoo.NanaLandTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NanaLand.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NanaLand";
+			};
+			name = Release;
+		};
+		2C3C75AB2BCA3ADD00312F26 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FKL5LCYWBF;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.iHyunWoo.NanaLandUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = NanaLand;
+			};
+			name = Debug;
+		};
+		2C3C75AC2BCA3ADD00312F26 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FKL5LCYWBF;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.iHyunWoo.NanaLandUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = NanaLand;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2C3C757B2BCA3ADA00312F26 /* Build configuration list for PBXProject "NanaLand" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C3C75A22BCA3ADD00312F26 /* Debug */,
+				2C3C75A32BCA3ADD00312F26 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2C3C75A42BCA3ADD00312F26 /* Build configuration list for PBXNativeTarget "NanaLand" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C3C75A52BCA3ADD00312F26 /* Debug */,
+				2C3C75A62BCA3ADD00312F26 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2C3C75A72BCA3ADD00312F26 /* Build configuration list for PBXNativeTarget "NanaLandTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C3C75A82BCA3ADD00312F26 /* Debug */,
+				2C3C75A92BCA3ADD00312F26 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2C3C75AA2BCA3ADD00312F26 /* Build configuration list for PBXNativeTarget "NanaLandUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C3C75AB2BCA3ADD00312F26 /* Debug */,
+				2C3C75AC2BCA3ADD00312F26 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2C3C75AD2BCA3C5000312F26 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.1;
+			};
+		};
+		2C3C75B02BCA3C6B00312F26 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.11.0;
+			};
+		};
+		2C3C75B32BCA3F5A00312F26 /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.4.2;
+			};
+		};
+		2C3C75B62BCA41EE00312F26 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2C3C75AE2BCA3C5000312F26 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C3C75AD2BCA3C5000312F26 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		2C3C75B12BCA3C6B00312F26 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C3C75B02BCA3C6B00312F26 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		2C3C75B42BCA3F5A00312F26 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C3C75B32BCA3F5A00312F26 /* XCRemoteSwiftPackageReference "lottie-spm" */;
+			productName = Lottie;
+		};
+		2C3C75B72BCA41EE00312F26 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C3C75B62BCA41EE00312F26 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		2C3C75B92BCA41EE00312F26 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C3C75B62BCA41EE00312F26 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 2C3C75782BCA3ADA00312F26 /* Project object */;
+}
