@@ -12,7 +12,9 @@ enum Tab {
 }
 
 struct NanaLandTabView: View {
+    
     var body: some View {
+
 		TabView {
 			HomeMainView()
 				.tabItem {
