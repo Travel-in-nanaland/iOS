@@ -1,0 +1,105 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%@" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
+    },
+    "%lld." : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
+    },
+    "inputSearchTerm" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "검색어를 입력해 주세요"
+          }
+        }
+      }
+    },
+    "recentSearchTerm" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "최근 검색어"
+          }
+        }
+      }
+    },
+    "removeAll" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "모두 지우기"
+          }
+        }
+      }
+    },
+    "searchVolumeUpJejuPlace" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "검색량 UP ! JEJU Place 🍊"
+          }
+        }
+      }
+    },
+    "가장 많이 " : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
+    },
+    "검색으로 이동" : {
+
+    },
+    "검색하고 있어요!" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
+    },
+    "나의 나나" : {
+
+    },
+    "제주 이야기" : {
+
+    },
+    "찜" : {
+
+    },
+    "홈" : {
+
+    }
+  },
+  "version" : "1.0"
+}

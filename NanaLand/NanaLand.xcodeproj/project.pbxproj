@@ -11,6 +11,11 @@
 		2C1F31C42BCD01390066819F /* AppleSDGothicNeoM.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C1F31C12BCD01390066819F /* AppleSDGothicNeoM.ttf */; };
 		2C1F31C52BCD01390066819F /* AppleSDGothicNeoH.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C1F31C22BCD01390066819F /* AppleSDGothicNeoH.ttf */; };
 		2C1F31C62BCD01390066819F /* AppleSDGothicNeoB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C1F31C32BCD01390066819F /* AppleSDGothicNeoB.ttf */; };
+		2C1F31CE2BCD049C0066819F /* SearchMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F31CD2BCD049C0066819F /* SearchMainView.swift */; };
+		2C1F31D02BCD04AA0066819F /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F31CF2BCD04AA0066819F /* SearchViewModel.swift */; };
+		2C1F31D32BCD14240066819F /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 2C1F31D22BCD14240066819F /* Localizable.xcstrings */; };
+		2C1F31D52BCD2A870066819F /* NanaSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F31D42BCD2A870066819F /* NanaSearchBar.swift */; };
+		2C1F31D72BCD73C00066819F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F31D62BCD73C00066819F /* Constants.swift */; };
 		2C3C75842BCA3ADA00312F26 /* NanaLandApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C75832BCA3ADA00312F26 /* NanaLandApp.swift */; };
 		2C3C75882BCA3ADC00312F26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C3C75872BCA3ADC00312F26 /* Assets.xcassets */; };
 		2C3C758B2BCA3ADC00312F26 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C3C758A2BCA3ADC00312F26 /* Preview Assets.xcassets */; };
@@ -24,7 +29,6 @@
 		2C3C75BA2BCA41EE00312F26 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2C3C75B92BCA41EE00312F26 /* RealmSwift */; };
 		2C3C75BF2BCA53EE00312F26 /* HomeMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C75BE2BCA53EE00312F26 /* HomeMainView.swift */; };
 		2C3C75C52BCA54EF00312F26 /* NetworkSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C75C42BCA54EF00312F26 /* NetworkSample.swift */; };
-		2C3C75C72BCA54F700312F26 /* ComponentSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C75C62BCA54F700312F26 /* ComponentSample.swift */; };
 		2C3C75C92BCA550200312F26 /* UtilSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C75C82BCA550200312F26 /* UtilSample.swift */; };
 		2C3C75CC2BCAA93D00312F26 /* NanaLandTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C75CB2BCAA93D00312F26 /* NanaLandTabView.swift */; };
 		2C3C75D12BCAAFF300312F26 /* FavoriteMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C75D02BCAAFF300312F26 /* FavoriteMainView.swift */; };
@@ -64,6 +68,11 @@
 		2C1F31C12BCD01390066819F /* AppleSDGothicNeoM.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoM.ttf; sourceTree = "<group>"; };
 		2C1F31C22BCD01390066819F /* AppleSDGothicNeoH.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoH.ttf; sourceTree = "<group>"; };
 		2C1F31C32BCD01390066819F /* AppleSDGothicNeoB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoB.ttf; sourceTree = "<group>"; };
+		2C1F31CD2BCD049C0066819F /* SearchMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMainView.swift; sourceTree = "<group>"; };
+		2C1F31CF2BCD04AA0066819F /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		2C1F31D22BCD14240066819F /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		2C1F31D42BCD2A870066819F /* NanaSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NanaSearchBar.swift; sourceTree = "<group>"; };
+		2C1F31D62BCD73C00066819F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2C3C75802BCA3ADA00312F26 /* NanaLand.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NanaLand.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C3C75832BCA3ADA00312F26 /* NanaLandApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NanaLandApp.swift; sourceTree = "<group>"; };
 		2C3C75872BCA3ADC00312F26 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -75,7 +84,6 @@
 		2C3C75A02BCA3ADD00312F26 /* NanaLandUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NanaLandUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		2C3C75BE2BCA53EE00312F26 /* HomeMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMainView.swift; sourceTree = "<group>"; };
 		2C3C75C42BCA54EF00312F26 /* NetworkSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSample.swift; sourceTree = "<group>"; };
-		2C3C75C62BCA54F700312F26 /* ComponentSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentSample.swift; sourceTree = "<group>"; };
 		2C3C75C82BCA550200312F26 /* UtilSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilSample.swift; sourceTree = "<group>"; };
 		2C3C75CB2BCAA93D00312F26 /* NanaLandTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NanaLandTabView.swift; sourceTree = "<group>"; };
 		2C3C75D02BCAAFF300312F26 /* FavoriteMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMainView.swift; sourceTree = "<group>"; };
@@ -118,6 +126,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C1F31CC2BCD04430066819F /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				2C1F31CD2BCD049C0066819F /* SearchMainView.swift */,
+				2C1F31CF2BCD04AA0066819F /* SearchViewModel.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		2C1F31D12BCD14020066819F /* Localizing */ = {
+			isa = PBXGroup;
+			children = (
+				2C1F31D22BCD14240066819F /* Localizable.xcstrings */,
+			);
+			path = Localizing;
+			sourceTree = "<group>";
+		};
 		2C3C75772BCA3ADA00312F26 = {
 			isa = PBXGroup;
 			children = (
@@ -184,6 +209,7 @@
 		2C3C75BD2BCA53D500312F26 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				2C1F31CC2BCD04430066819F /* Search */,
 				2C3C75BE2BCA53EE00312F26 /* HomeMainView.swift */,
 			);
 			path = Home;
@@ -200,6 +226,7 @@
 		2C3C75C12BCA544500312F26 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				2C1F31D12BCD14020066819F /* Localizing */,
 				2C3C75C32BCA54AB00312F26 /* Component */,
 				2C3C75C22BCA54A200312F26 /* Util */,
 			);
@@ -210,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				2C3C75C82BCA550200312F26 /* UtilSample.swift */,
+				2C1F31D62BCD73C00066819F /* Constants.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -217,7 +245,7 @@
 		2C3C75C32BCA54AB00312F26 /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				2C3C75C62BCA54F700312F26 /* ComponentSample.swift */,
+				2C1F31D42BCD2A870066819F /* NanaSearchBar.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -371,6 +399,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ko,
 			);
 			mainGroup = 2C3C75772BCA3ADA00312F26;
 			packageReferences = (
@@ -401,6 +430,7 @@
 				9C6A9C632BCC22CE000413AD /* AppleSDGothicNeoL.ttf in Resources */,
 				2C3C75882BCA3ADC00312F26 /* Assets.xcassets in Resources */,
 				2C1F31C02BCD01240066819F /* AppleSDGothicNeoEB.ttf in Resources */,
+				2C1F31D32BCD14240066819F /* Localizable.xcstrings in Resources */,
 				2C1F31C62BCD01390066819F /* AppleSDGothicNeoB.ttf in Resources */,
 				2C1F31C52BCD01390066819F /* AppleSDGothicNeoH.ttf in Resources */,
 				2C1F31C42BCD01390066819F /* AppleSDGothicNeoM.ttf in Resources */,
@@ -437,8 +467,11 @@
 				2C3C75D52BCAB01500312F26 /* ProfileMainView.swift in Sources */,
 				2C3C75C92BCA550200312F26 /* UtilSample.swift in Sources */,
 				2C3C75BF2BCA53EE00312F26 /* HomeMainView.swift in Sources */,
+				2C1F31D52BCD2A870066819F /* NanaSearchBar.swift in Sources */,
+				2C1F31CE2BCD049C0066819F /* SearchMainView.swift in Sources */,
 				2C3C75D12BCAAFF300312F26 /* FavoriteMainView.swift in Sources */,
-				2C3C75C72BCA54F700312F26 /* ComponentSample.swift in Sources */,
+				2C1F31D02BCD04AA0066819F /* SearchViewModel.swift in Sources */,
+				2C1F31D72BCD73C00066819F /* Constants.swift in Sources */,
 				2C3C75CC2BCAA93D00312F26 /* NanaLandTabView.swift in Sources */,
 				9C6A9C3E2BCC1BAE000413AD /* Fonts+.swift in Sources */,
 				2C3C75C52BCA54EF00312F26 /* NetworkSample.swift in Sources */,

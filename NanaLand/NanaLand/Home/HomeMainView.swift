@@ -9,10 +9,15 @@ import SwiftUI
 
 struct HomeMainView: View {
     var body: some View {
-		VStack {
-			Spacer()
-			Text("홈")
-			Spacer()
+		NavigationStack {
+			VStack {
+				Spacer()
+				NavigationLink(
+					"검색으로 이동",
+					destination: SearchMainView(searchVM: SearchViewModel()))
+				Text("홈")
+				Spacer()
+			}
 		}
     }
 }
