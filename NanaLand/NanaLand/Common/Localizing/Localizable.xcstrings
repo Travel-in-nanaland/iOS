@@ -21,6 +21,42 @@
         }
       }
     },
+    "%lld건" : {
+
+    },
+    "all" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "전체"
+          }
+        }
+      }
+    },
+    "experience" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이색 체험"
+          }
+        }
+      }
+    },
+    "festival" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "축제"
+          }
+        }
+      }
+    },
     "inputSearchTerm" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -28,6 +64,50 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "검색어를 입력해 주세요"
+          }
+        }
+      }
+    },
+    "market" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "전통시장"
+          }
+        }
+      }
+    },
+    "nanaPick" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "나나 Pick"
+          }
+        }
+      }
+    },
+    "nature" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "7대 자연"
+          }
+        }
+      }
+    },
+    "noResult" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "검색 결과가 없습니다."
           }
         }
       }

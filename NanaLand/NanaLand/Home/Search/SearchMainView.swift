@@ -9,13 +9,16 @@ import SwiftUI
 
 struct SearchMainView: View {
 	@Environment(\.dismiss) var dismiss
-	@StateObject var searchVM: SearchViewModel
+	@EnvironmentObject var searchVM: SearchViewModel
+	
+	@State var searchTerm = ""
+	@State var showResultView: Bool = false
 	
     var body: some View {
 		VStack(spacing: 0) {
 			navigationBar
 			
-			ScrollView(.vertical) {
+			ScrollView(.vertical, showsIndicators: false) {
 				recentlySearch
 				popularSearch
 				recommendContents
@@ -25,6 +28,9 @@ struct SearchMainView: View {
 			}
 		}
 		.toolbar(.hidden, for: .navigationBar)
+		.navigationDestination(isPresented: $showResultView) {
+			SearchResultView(searchTerm: searchTerm)
+		}
     }
 	
 	private var navigationBar: some View {
@@ -38,15 +44,9 @@ struct SearchMainView: View {
 			})
 			
 			NanaSearchBar(
-				searchTerm: Binding(
-					get: { () -> String in
-						return searchVM.state.searchTerm
-					}, set: { newValue in
-						searchVM.action(.onChangeSearchTerm(newValue))
-					}
-				),
+				searchTerm: $searchTerm,
 				searchAction: {
-					
+					search(term: searchTerm)
 				}
 			)
 		}
@@ -92,6 +92,9 @@ struct SearchMainView: View {
 							.padding(.horizontal, 16)
 							.padding(.vertical, 8)
 						}
+						.onTapGesture {
+							search(term: term)
+						}
 					}
 				}
 			}
@@ -123,6 +126,9 @@ struct SearchMainView: View {
 						}
 						.font(.gothicNeo(index == 0 || index == 1 ? .semibold : .medium, size: 14))
 						.foregroundStyle(index == 0 || index == 1 ? Color.main : Color.gray1)
+						.onTapGesture {
+							search(term: searchVM.state.popularSearchTerms[index])
+						}
 					}
 				}
 				.frame(width: (Constants.screenWidth-32)/2)
@@ -137,6 +143,9 @@ struct SearchMainView: View {
 						}
 						.font(.gothicNeo(.medium, size: 14))
 						.foregroundStyle(Color.gray1)
+						.onTapGesture {
+							search(term: searchVM.state.popularSearchTerms[index])
+						}
 					}
 				}
 				.frame(width: (Constants.screenWidth-32)/2)
@@ -179,8 +188,14 @@ struct SearchMainView: View {
 		
 		return formatter.string(from: Date())
 	}
+	
+	private func search(term: String) {
+		searchTerm = term
+		showResultView = true
+	}
 }
 
 #Preview {
-	SearchMainView(searchVM: SearchViewModel())
+	SearchMainView()
+		.environmentObject(SearchViewModel())
 }

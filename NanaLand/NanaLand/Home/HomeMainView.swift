@@ -14,11 +14,13 @@ struct HomeMainView: View {
 				Spacer()
 				NavigationLink(
 					"검색으로 이동",
-					destination: SearchMainView(searchVM: SearchViewModel()))
+					destination: SearchMainView()
+				)
 				Text("홈")
 				Spacer()
 			}
 		}
+		.environmentObject(SearchViewModel())
     }
 }
 
