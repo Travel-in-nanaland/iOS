@@ -25,7 +25,7 @@ struct HomeMainView: View {
                         
                         Spacer()
                         
-                        NavigationLink(destination: StoryMainView()) {
+                        NavigationLink(destination: SearchMainView()) {
                            Text("제주도는 지금 유채꽃 축제🏵️")
                                 .frame(width: 240, alignment: .leading)
                                 .font(.gothicNeo(size: 14, font: "mid"))
@@ -175,6 +175,7 @@ struct HomeMainView: View {
             }
             .padding(.top)
         }
+		.environmentObject(SearchViewModel())
         .onAppear {
             viewModel.recommendFetchData()
             viewModel.bannerFetchData()

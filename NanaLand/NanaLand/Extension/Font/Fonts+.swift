@@ -34,4 +34,39 @@ extension Font {
         }
         return Font.custom(fontName, size: fontSize)
     }
+	
+	enum GothicNeo {
+		case light
+		case regular
+		case medium
+		case semibold
+		case bold
+		case extrabold
+		case heavy
+		
+		var name: String {
+			switch self {
+			case .light:
+				return "AppleSDGothicNeoL00"
+			case .regular:
+				return "AppleSDGothicNeoR00"
+			case .medium:
+				return "AppleSDGothicNeoM00"
+			case .semibold:
+				return "AppleSDGothicNeoSB00"
+			case .bold:
+				return "AppleSDGothicNeoB00"
+			case .extrabold:
+				return "AppleSDGothicNeoEB00"
+			case .heavy:
+				return "AppleSDGothicNeoH00"
+			}
+		}
+	}
+	
+	/// custom Font.
+	// .font(.gothicNeo(.bold, size: 12))
+	static func gothicNeo(_ weight: GothicNeo = .medium, size: CGFloat) -> Font {
+		return .custom(weight.name, size: size)
+	}
 }
