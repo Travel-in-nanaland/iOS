@@ -105,6 +105,9 @@ struct SearchResultView: View {
 		.onAppear {
 			UIScrollView.appearance().isScrollEnabled = false
 		}
+		.onDisappear {
+			UIScrollView.appearance().isScrollEnabled = true
+		}
 	}
 }
 
