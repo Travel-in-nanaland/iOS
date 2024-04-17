@@ -15,7 +15,7 @@ class NetworkManager {
 		let request = makeDataRequest(endPoint)
 		let result = await request.serializingData().result
 		
-		var data = Data()
+		var data = Foundation.Data()
 		do {
 			data = try result.get()
 		} catch {

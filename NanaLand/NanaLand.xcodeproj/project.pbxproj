@@ -56,6 +56,14 @@
 		9C6A9C692BCC22CE000413AD /* AppleSDGothicNeoSB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C6A9C5C2BCC22CE000413AD /* AppleSDGothicNeoSB.ttf */; };
 		9C6A9C6A2BCC22CE000413AD /* AppleSDGothicNeoSB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C6A9C5C2BCC22CE000413AD /* AppleSDGothicNeoSB.ttf */; };
 		9C6A9C6B2BCC22CE000413AD /* AppleSDGothicNeoSB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C6A9C5C2BCC22CE000413AD /* AppleSDGothicNeoSB.ttf */; };
+		BF9834152BCE6FF000A5C289 /* NatureMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9834142BCE6FF000A5C289 /* NatureMainView.swift */; };
+		BF9834182BCE700B00A5C289 /* FestivalMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9834172BCE700B00A5C289 /* FestivalMainView.swift */; };
+		BF98341B2BCE71DB00A5C289 /* ShopMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF98341A2BCE71DB00A5C289 /* ShopMainView.swift */; };
+		BF98341E2BCE71F000A5C289 /* ExperienceMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF98341D2BCE71F000A5C289 /* ExperienceMainView.swift */; };
+		BF9834212BCE720B00A5C289 /* NanapickMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9834202BCE720B00A5C289 /* NanapickMainView.swift */; };
+		BF9834232BCE83E300A5C289 /* RecommendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9834222BCE83E300A5C289 /* RecommendModel.swift */; };
+		BF9834252BCE847300A5C289 /* HomeMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9834242BCE847300A5C289 /* HomeMainViewModel.swift */; };
+		BF9842F12BCE897C00D6A60C /* BannerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9842F02BCE897C00D6A60C /* BannerModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +126,14 @@
 		9C6A9C5A2BCC22CE000413AD /* AppleSDGothicNeoL.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoL.ttf; sourceTree = "<group>"; };
 		9C6A9C5B2BCC22CE000413AD /* AppleSDGothicNeoR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoR.ttf; sourceTree = "<group>"; };
 		9C6A9C5C2BCC22CE000413AD /* AppleSDGothicNeoSB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoSB.ttf; sourceTree = "<group>"; };
+		BF9834142BCE6FF000A5C289 /* NatureMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NatureMainView.swift; sourceTree = "<group>"; };
+		BF9834172BCE700B00A5C289 /* FestivalMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FestivalMainView.swift; sourceTree = "<group>"; };
+		BF98341A2BCE71DB00A5C289 /* ShopMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopMainView.swift; sourceTree = "<group>"; };
+		BF98341D2BCE71F000A5C289 /* ExperienceMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceMainView.swift; sourceTree = "<group>"; };
+		BF9834202BCE720B00A5C289 /* NanapickMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NanapickMainView.swift; sourceTree = "<group>"; };
+		BF9834222BCE83E300A5C289 /* RecommendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendModel.swift; sourceTree = "<group>"; };
+		BF9834242BCE847300A5C289 /* HomeMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMainViewModel.swift; sourceTree = "<group>"; };
+		BF9842F02BCE897C00D6A60C /* BannerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +209,11 @@
 		2C3C75822BCA3ADA00312F26 /* NanaLand */ = {
 			isa = PBXGroup;
 			children = (
+				BF98341F2BCE71F400A5C289 /* NaNaPick */,
+				BF98341C2BCE71E100A5C289 /* Experience */,
+				BF9834192BCE71D000A5C289 /* Shop */,
+				BF9834162BCE6FFF00A5C289 /* Festival */,
+				BF9834132BCE6FCF00A5C289 /* Nature */,
 				9C6A9C532BCC206D000413AD /* Info.plist */,
 				9C6A9C3B2BCC1ABA000413AD /* Extension */,
 				2C3C75CA2BCAA8AD00312F26 /* App */,
@@ -238,6 +259,9 @@
 			children = (
 				2C1F31CC2BCD04430066819F /* Search */,
 				2C3C75BE2BCA53EE00312F26 /* HomeMainView.swift */,
+				BF9834222BCE83E300A5C289 /* RecommendModel.swift */,
+				BF9842F02BCE897C00D6A60C /* BannerModel.swift */,
+				BF9834242BCE847300A5C289 /* HomeMainViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -364,6 +388,46 @@
 				9C6A9C3D2BCC1BAE000413AD /* Fonts+.swift */,
 			);
 			path = Font;
+			sourceTree = "<group>";
+		};
+		BF9834132BCE6FCF00A5C289 /* Nature */ = {
+			isa = PBXGroup;
+			children = (
+				BF9834142BCE6FF000A5C289 /* NatureMainView.swift */,
+			);
+			path = Nature;
+			sourceTree = "<group>";
+		};
+		BF9834162BCE6FFF00A5C289 /* Festival */ = {
+			isa = PBXGroup;
+			children = (
+				BF9834172BCE700B00A5C289 /* FestivalMainView.swift */,
+			);
+			path = Festival;
+			sourceTree = "<group>";
+		};
+		BF9834192BCE71D000A5C289 /* Shop */ = {
+			isa = PBXGroup;
+			children = (
+				BF98341A2BCE71DB00A5C289 /* ShopMainView.swift */,
+			);
+			path = Shop;
+			sourceTree = "<group>";
+		};
+		BF98341C2BCE71E100A5C289 /* Experience */ = {
+			isa = PBXGroup;
+			children = (
+				BF98341D2BCE71F000A5C289 /* ExperienceMainView.swift */,
+			);
+			path = Experience;
+			sourceTree = "<group>";
+		};
+		BF98341F2BCE71F400A5C289 /* NaNaPick */ = {
+			isa = PBXGroup;
+			children = (
+				BF9834202BCE720B00A5C289 /* NanapickMainView.swift */,
+			);
+			path = NaNaPick;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -529,6 +593,9 @@
 				2C80ECA82BCF5CF2002F38A7 /* SearchAllCategoryResultView.swift in Sources */,
 				2C80ECBA2BCFCCB7002F38A7 /* NetworkManager.swift in Sources */,
 				2C80ECBC2BCFCCDA002F38A7 /* EndPoint.swift in Sources */,
+				BF9834252BCE847300A5C289 /* HomeMainViewModel.swift in Sources */,
+				BF98341B2BCE71DB00A5C289 /* ShopMainView.swift in Sources */,
+				BF9842F12BCE897C00D6A60C /* BannerModel.swift in Sources */,
 				2C3C75C92BCA550200312F26 /* UtilSample.swift in Sources */,
 				2C80ECC32BCFCD69002F38A7 /* Interceptor.swift in Sources */,
 				2C80ECC12BCFCD1A002F38A7 /* SearchEndPoint.swift in Sources */,
@@ -539,6 +606,8 @@
 				2C80ECBF2BCFCCFE002F38A7 /* APITask.swift in Sources */,
 				2C80ECAF2BCF66D8002F38A7 /* secret.swift in Sources */,
 				2C1F31CE2BCD049C0066819F /* SearchMainView.swift in Sources */,
+				BF9834212BCE720B00A5C289 /* NanapickMainView.swift in Sources */,
+				BF9834182BCE700B00A5C289 /* FestivalMainView.swift in Sources */,
 				2C3C75D12BCAAFF300312F26 /* FavoriteMainView.swift in Sources */,
 				2C80ECAD2BCF6201002F38A7 /* SearchService.swift in Sources */,
 				2C1F31D02BCD04AA0066819F /* SearchViewModel.swift in Sources */,
@@ -546,9 +615,12 @@
 				2C1F31D72BCD73C00066819F /* Constants.swift in Sources */,
 				2C3C75CC2BCAA93D00312F26 /* NanaLandTabView.swift in Sources */,
 				9C6A9C3E2BCC1BAE000413AD /* Fonts+.swift in Sources */,
+				BF9834232BCE83E300A5C289 /* RecommendModel.swift in Sources */,
 				2C3C75842BCA3ADA00312F26 /* NanaLandApp.swift in Sources */,
+				BF98341E2BCE71F000A5C289 /* ExperienceMainView.swift in Sources */,
 				2C3C75D32BCAB00C00312F26 /* StoryMainView.swift in Sources */,
 				2C80ECA02BCE55E0002F38A7 /* ArticleItem.swift in Sources */,
+				BF9834152BCE6FF000A5C289 /* NatureMainView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

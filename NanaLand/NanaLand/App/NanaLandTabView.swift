@@ -34,7 +34,7 @@ struct NanaLandTabView: View {
 				}
 				.tag(Tab.favorite)
 			
-			HomeMainView()
+			StoryMainView()
 				.tabItem {
 					Label(
 						title: { Text("제주 이야기") },
@@ -43,7 +43,7 @@ struct NanaLandTabView: View {
 				}
 				.tag(Tab.story)
 			
-			HomeMainView()
+			ProfileMainView()
 				.tabItem {
 					Label(
 						title: { Text("나의 나나") },
