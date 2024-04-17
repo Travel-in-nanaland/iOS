@@ -6,3 +6,11 @@
 //
 
 import Foundation
+import Alamofire
+
+struct SearchService {
+	static func searchAllCategory(term: String) async -> BaseResponse<SearchAllCategoryResponse>? {
+		
+		return await NetworkManager.shared.request(SearchEndPoint.getSearchAllCategory(term: term))
+	}
+}

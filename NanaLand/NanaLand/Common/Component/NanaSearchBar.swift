@@ -11,13 +11,13 @@ struct NanaSearchBar: View {
 	@Binding var searchTerm: String
 	
 	let placeHolder: String
-	let searchAction: () -> Void
+	let searchAction: () async -> Void
 	let clearButtonAction: () -> Void
 	
 	init(
 		searchTerm: Binding<String>,
 		placeHolder: String = String(localized: "inputSearchTerm"),
-		searchAction: @escaping () -> Void = {},
+		searchAction: @escaping () async -> Void = {},
 		clearButtonAction: @escaping () -> Void = {}
 	) {
 		self._searchTerm = searchTerm
@@ -35,7 +35,9 @@ struct NanaSearchBar: View {
 			})
 			.submitLabel(.search)
 			.onSubmit {
-				searchAction()
+				Task {
+					await searchAction()
+				}
 			}
 			.padding(.horizontal, 12)
 			.padding(.vertical, 11)

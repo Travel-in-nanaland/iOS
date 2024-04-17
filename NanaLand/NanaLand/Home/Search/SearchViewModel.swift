@@ -16,7 +16,7 @@ final class SearchViewModel: ObservableObject {
 		var recentSearchTerms: [String] = ["제주시", "제주 드라이브", "서귀포 놀거리", "나나랜드"]
 		var popularSearchTerms: [String] = ["애월 드라이브코스", "제주공항 맛집", "애월 카페거리", "서귀포 전시회", "유채꽃", "서귀포 맛집", "함덕 해수욕장", "흑돼지 맛집"]
 		var placeString: String = "제주 감귤밭"
-		var searchAllResponse = SearchAllCategoryResponse(
+		var searchAllCategoryResponse = SearchAllCategoryResponse(
 			festival: ArticlesWithCount(
 				count: 3,
 				data: [
@@ -43,8 +43,8 @@ final class SearchViewModel: ObservableObject {
 	}
 	
 	enum Action {
-		case searchTerm(String)
-		case searchDetailByCategory(Category, String)
+		case searchTerm(term: String)
+		case searchDetailByCategory(category: Category, term: String)
 	}
 	
 	@Published var state: State
@@ -57,8 +57,20 @@ final class SearchViewModel: ObservableObject {
 		self.state = state
 	}
 	
-	func action(_ action: Action) {
-		
+	func action(_ action: Action) async {
+		switch action {
+		case let .searchTerm(term):
+			let data = await SearchService.searchAllCategory(term: term)
+			if data != nil {
+				await MainActor.run {
+					state.searchAllCategoryResponse = data!.data
+				}
+			} else {
+				print("searchAllCategory Error")
+			}
+		case let .searchDetailByCategory(category, term):
+			print("")
+		}
 	}
 	
 }

@@ -39,6 +39,13 @@
 		2C80ECA82BCF5CF2002F38A7 /* SearchAllCategoryResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80ECA72BCF5CF2002F38A7 /* SearchAllCategoryResultView.swift */; };
 		2C80ECAA2BCF5DB8002F38A7 /* SearchDetailCategoryResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80ECA92BCF5DB8002F38A7 /* SearchDetailCategoryResultView.swift */; };
 		2C80ECAD2BCF6201002F38A7 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80ECAC2BCF6201002F38A7 /* SearchService.swift */; };
+		2C80ECAF2BCF66D8002F38A7 /* secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80ECAE2BCF66D8002F38A7 /* secret.swift */; };
+		2C80ECB72BCFA055002F38A7 /* Data+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80ECB62BCFA055002F38A7 /* Data+.swift */; };
+		2C80ECBA2BCFCCB7002F38A7 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80ECB92BCFCCB7002F38A7 /* NetworkManager.swift */; };
+		2C80ECBC2BCFCCDA002F38A7 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80ECBB2BCFCCDA002F38A7 /* EndPoint.swift */; };
+		2C80ECBF2BCFCCFE002F38A7 /* APITask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80ECBE2BCFCCFE002F38A7 /* APITask.swift */; };
+		2C80ECC12BCFCD1A002F38A7 /* SearchEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80ECC02BCFCD1A002F38A7 /* SearchEndPoint.swift */; };
+		2C80ECC32BCFCD69002F38A7 /* Interceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80ECC22BCFCD69002F38A7 /* Interceptor.swift */; };
 		9C6A9C3E2BCC1BAE000413AD /* Fonts+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6A9C3D2BCC1BAE000413AD /* Fonts+.swift */; };
 		9C6A9C632BCC22CE000413AD /* AppleSDGothicNeoL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C6A9C5A2BCC22CE000413AD /* AppleSDGothicNeoL.ttf */; };
 		9C6A9C642BCC22CE000413AD /* AppleSDGothicNeoL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C6A9C5A2BCC22CE000413AD /* AppleSDGothicNeoL.ttf */; };
@@ -99,6 +106,13 @@
 		2C80ECA72BCF5CF2002F38A7 /* SearchAllCategoryResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAllCategoryResultView.swift; sourceTree = "<group>"; };
 		2C80ECA92BCF5DB8002F38A7 /* SearchDetailCategoryResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetailCategoryResultView.swift; sourceTree = "<group>"; };
 		2C80ECAC2BCF6201002F38A7 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
+		2C80ECAE2BCF66D8002F38A7 /* secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = secret.swift; sourceTree = "<group>"; };
+		2C80ECB62BCFA055002F38A7 /* Data+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+.swift"; sourceTree = "<group>"; };
+		2C80ECB92BCFCCB7002F38A7 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		2C80ECBB2BCFCCDA002F38A7 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		2C80ECBE2BCFCCFE002F38A7 /* APITask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITask.swift; sourceTree = "<group>"; };
+		2C80ECC02BCFCD1A002F38A7 /* SearchEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEndPoint.swift; sourceTree = "<group>"; };
+		2C80ECC22BCFCD69002F38A7 /* Interceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interceptor.swift; sourceTree = "<group>"; };
 		9C6A9C3D2BCC1BAE000413AD /* Fonts+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fonts+.swift"; sourceTree = "<group>"; };
 		9C6A9C532BCC206D000413AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		9C6A9C5A2BCC22CE000413AD /* AppleSDGothicNeoL.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoL.ttf; sourceTree = "<group>"; };
@@ -231,7 +245,8 @@
 		2C3C75C02BCA540200312F26 /* Networks */ = {
 			isa = PBXGroup;
 			children = (
-				2C80ECAB2BCF61ED002F38A7 /* Search */,
+				2C80ECBD2BCFCCEC002F38A7 /* Search */,
+				2C80ECB82BCFCC9F002F38A7 /* Base */,
 			);
 			path = Networks;
 			sourceTree = "<group>";
@@ -251,6 +266,7 @@
 			children = (
 				2C3C75C82BCA550200312F26 /* UtilSample.swift */,
 				2C1F31D62BCD73C00066819F /* Constants.swift */,
+				2C80ECAE2BCF66D8002F38A7 /* secret.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -306,10 +322,22 @@
 			path = SearchResult;
 			sourceTree = "<group>";
 		};
-		2C80ECAB2BCF61ED002F38A7 /* Search */ = {
+		2C80ECB82BCFCC9F002F38A7 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				2C80ECB92BCFCCB7002F38A7 /* NetworkManager.swift */,
+				2C80ECC22BCFCD69002F38A7 /* Interceptor.swift */,
+				2C80ECBB2BCFCCDA002F38A7 /* EndPoint.swift */,
+				2C80ECBE2BCFCCFE002F38A7 /* APITask.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		2C80ECBD2BCFCCEC002F38A7 /* Search */ = {
 			isa = PBXGroup;
 			children = (
 				2C80ECAC2BCF6201002F38A7 /* SearchService.swift */,
+				2C80ECC02BCFCD1A002F38A7 /* SearchEndPoint.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -318,6 +346,7 @@
 			isa = PBXGroup;
 			children = (
 				9C6A9C3C2BCC1AC1000413AD /* Font */,
+				2C80ECB62BCFA055002F38A7 /* Data+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -498,10 +527,17 @@
 				2C3C75D52BCAB01500312F26 /* ProfileMainView.swift in Sources */,
 				2C1F31D92BCD7DC90066819F /* SearchResultView.swift in Sources */,
 				2C80ECA82BCF5CF2002F38A7 /* SearchAllCategoryResultView.swift in Sources */,
+				2C80ECBA2BCFCCB7002F38A7 /* NetworkManager.swift in Sources */,
+				2C80ECBC2BCFCCDA002F38A7 /* EndPoint.swift in Sources */,
 				2C3C75C92BCA550200312F26 /* UtilSample.swift in Sources */,
+				2C80ECC32BCFCD69002F38A7 /* Interceptor.swift in Sources */,
+				2C80ECC12BCFCD1A002F38A7 /* SearchEndPoint.swift in Sources */,
 				2C80EC9E2BCE53E1002F38A7 /* Article.swift in Sources */,
 				2C3C75BF2BCA53EE00312F26 /* HomeMainView.swift in Sources */,
 				2C1F31D52BCD2A870066819F /* NanaSearchBar.swift in Sources */,
+				2C80ECB72BCFA055002F38A7 /* Data+.swift in Sources */,
+				2C80ECBF2BCFCCFE002F38A7 /* APITask.swift in Sources */,
+				2C80ECAF2BCF66D8002F38A7 /* secret.swift in Sources */,
 				2C1F31CE2BCD049C0066819F /* SearchMainView.swift in Sources */,
 				2C3C75D12BCAAFF300312F26 /* FavoriteMainView.swift in Sources */,
 				2C80ECAD2BCF6201002F38A7 /* SearchService.swift in Sources */,

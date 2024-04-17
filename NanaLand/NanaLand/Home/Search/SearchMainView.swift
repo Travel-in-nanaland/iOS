@@ -46,7 +46,7 @@ struct SearchMainView: View {
 			NanaSearchBar(
 				searchTerm: $searchTerm,
 				searchAction: {
-					search(term: searchTerm)
+					await search(term: searchTerm)
 				}
 			)
 		}
@@ -93,7 +93,9 @@ struct SearchMainView: View {
 							.padding(.vertical, 8)
 						}
 						.onTapGesture {
-							search(term: term)
+							Task {
+								await search(term: term)
+							}
 						}
 					}
 				}
@@ -127,7 +129,9 @@ struct SearchMainView: View {
 						.font(.gothicNeo(index == 0 || index == 1 ? .semibold : .medium, size: 14))
 						.foregroundStyle(index == 0 || index == 1 ? Color.main : Color.gray1)
 						.onTapGesture {
-							search(term: searchVM.state.popularSearchTerms[index])
+							Task {
+								await search(term: searchVM.state.popularSearchTerms[index])
+							}
 						}
 					}
 				}
@@ -144,7 +148,9 @@ struct SearchMainView: View {
 						.font(.gothicNeo(.medium, size: 14))
 						.foregroundStyle(Color.gray1)
 						.onTapGesture {
-							search(term: searchVM.state.popularSearchTerms[index])
+							Task {
+								await search(term: searchVM.state.popularSearchTerms[index])
+							}
 						}
 					}
 				}
@@ -189,8 +195,9 @@ struct SearchMainView: View {
 		return formatter.string(from: Date())
 	}
 	
-	private func search(term: String) {
+	private func search(term: String) async {
 		searchTerm = term
+		await searchVM.action(.searchTerm(term: term))
 		showResultView = true
 	}
 }

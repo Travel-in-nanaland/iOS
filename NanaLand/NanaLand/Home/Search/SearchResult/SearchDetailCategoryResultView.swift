@@ -15,14 +15,14 @@ struct SearchDetailCategoryResultView: View {
     var body: some View {
 		ScrollView(.vertical, showsIndicators: false) {
 			VStack(alignment: .leading, spacing: 17) {
-				Text("\(searchVM.state.searchAllResponse.festival.count)건")
+				Text("\(searchVM.state.searchAllCategoryResponse.festival.count)건")
 					.font(.gothicNeo(.medium, size: 14))
 					.foregroundStyle(Color.gray1)
 				
 				LazyVGrid(
 					columns: [GridItem(.flexible()), GridItem(.flexible())]
 				) {
-					ForEach(searchVM.state.searchAllResponse.festival.data, id: \.id) { article in
+					ForEach(searchVM.state.searchAllCategoryResponse.festival.data, id: \.id) { article in
 						ArticleItem(article: article)
 					}
 				}
