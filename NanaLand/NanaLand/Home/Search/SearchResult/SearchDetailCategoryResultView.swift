@@ -61,7 +61,7 @@ struct SearchDetailCategoryResultView: View {
 						ArticleItem(article: article)
 					}
 					
-					if !isLastPage() {
+					if !searchVM.isLastPage(tab: tab) {
 						ProgressView()
 							.task {
 								await searchVM.action(.searchTerm(category: tab, term: searchTerm))
@@ -82,22 +82,7 @@ struct SearchDetailCategoryResultView: View {
 		}
     }
 	
-	private func isLastPage() -> Bool {
-		switch tab {
-		case .all:
-			return false
-		case .nature:
-			return searchVM.state.natureCategorySearchResult.count == searchVM.state.natureCategorySearchResult.data.count
-		case .festival:
-			return searchVM.state.festivalCategorySearchResult.count == searchVM.state.festivalCategorySearchResult.data.count
-		case .market:
-			return searchVM.state.marketCategorySearchResult.count == searchVM.state.marketCategorySearchResult.data.count
-		case .experience:
-			return searchVM.state.experienceCategorySearchResult.count == searchVM.state.experienceCategorySearchResult.data.count
-		case .nanaPick:
-			return false
-		}
-	}
+	
 }
 
 #Preview {

@@ -188,4 +188,28 @@ final class SearchViewModel: ObservableObject {
 		state.experiencePage = 0
 	}
 	
+	func getCurrentTime() -> String {
+		let formatter = DateFormatter()
+		formatter.dateFormat = "yyyy. MM. dd | a hh:mm"
+		formatter.locale = Locale(identifier: "en_US_POSIX")
+		
+		return formatter.string(from: Date())
+	}
+	
+	func isLastPage(tab: Category) -> Bool {
+		switch tab {
+		case .all:
+			return false
+		case .nature:
+			return state.natureCategorySearchResult.count == state.natureCategorySearchResult.data.count
+		case .festival:
+			return state.festivalCategorySearchResult.count == state.festivalCategorySearchResult.data.count
+		case .market:
+			return state.marketCategorySearchResult.count == state.marketCategorySearchResult.data.count
+		case .experience:
+			return state.experienceCategorySearchResult.count == state.experienceCategorySearchResult.data.count
+		case .nanaPick:
+			return false
+		}
+	}
 }

@@ -111,7 +111,7 @@ struct SearchMainView: View {
 			Text("가장 많이 ").font(.gothicNeo(.bold, size: 18)).foregroundColor(Color.main) +
 			Text("검색하고 있어요!").font(.gothicNeo(.bold, size: 18)).foregroundColor(Color.baseBlack)
 			
-			Text(getCurrentTime())
+			Text(searchVM.getCurrentTime())
 				.font(.gothicNeo(.medium, size: 12))
 				.foregroundStyle(Color.gray1)
 				.padding(.top, 4)
@@ -185,14 +185,6 @@ struct SearchMainView: View {
 			}
 		}
 		.padding(.horizontal, 16)
-	}
-	
-	private func getCurrentTime() -> String {
-		let formatter = DateFormatter()
-		formatter.dateFormat = "yyyy. MM. dd | a hh:mm"
-		formatter.locale = Locale(identifier: "en_US_POSIX")
-		
-		return formatter.string(from: Date())
 	}
 	
 	private func search(term: String) async {
