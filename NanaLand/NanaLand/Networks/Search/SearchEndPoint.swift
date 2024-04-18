@@ -9,11 +9,17 @@ import Foundation
 import Alamofire
 
 enum SearchEndPoint {
+	// 전체 검색
 	case getSearchAllCategory(term: String)
+	
+	// 각 카테고리 별 검색
 	case getSearchNatureCategory(term: String, page: Int)
 	case getSearchMarketCategory(term: String, page: Int)
 	case getSearchFestivalCategory(term: String, page: Int)
 	case getSearchExperienceCategory(term: String, page: Int)
+	
+	// 인기 검색어 조회
+	case getPopularKeyword
 }
 
 extension SearchEndPoint: EndPoint {
@@ -33,6 +39,8 @@ extension SearchEndPoint: EndPoint {
 			return "/festival"
 		case .getSearchExperienceCategory:
 			return "/experience"
+		case .getPopularKeyword:
+			return "/popular"
 		}
 	}
 	
@@ -47,6 +55,8 @@ extension SearchEndPoint: EndPoint {
 		case .getSearchFestivalCategory:
 			return .get
 		case .getSearchExperienceCategory:
+			return .get
+		case .getPopularKeyword:
 			return .get
 		}
 	}
@@ -80,6 +90,8 @@ extension SearchEndPoint: EndPoint {
 				"page": page
 			]
 			return .requestParameters(parameters: param)
+		case .getPopularKeyword:
+			return .requestPlain
 		}
 	}
 	

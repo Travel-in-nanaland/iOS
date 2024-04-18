@@ -28,4 +28,8 @@ struct SearchService {
 	static func searchExperienceCategory(term: String, page: Int) async -> BaseResponse<SearchDetailCategoryResponse>? {
 		return await NetworkManager.shared.request(SearchEndPoint.getSearchExperienceCategory(term: term, page: page))
 	}
+	
+	static func getPopularKeyword() async -> BaseResponse<[String]>? {
+		return await NetworkManager.shared.request(SearchEndPoint.getPopularKeyword)
+	}
 }
