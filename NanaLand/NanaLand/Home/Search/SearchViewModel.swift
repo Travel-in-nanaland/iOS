@@ -14,7 +14,7 @@ final class SearchViewModel: ObservableObject {
 	struct State {		
 		var currentSearchTab: Category = .all
 		// dummy
-		var recentSearchTerms: [String] = ["제주시", "제주 드라이브", "서귀포 놀거리", "나나랜드"]
+		var recentSearchTerms: [String] = UserDefaults.standard.stringArray(forKey: "recentSearch") ?? []
 		var popularSearchTerms: [String] = ["애월 드라이브코스", "제주공항 맛집", "애월 카페거리", "서귀포 전시회", "유채꽃", "서귀포 맛집", "함덕 해수욕장", "흑돼지 맛집"]
 		var placeString: String = "제주 감귤밭"
 		
@@ -65,10 +65,23 @@ final class SearchViewModel: ObservableObject {
 		state.experiencePage = 0
 	}
 	
+	private func setRecentSearch(term: String) {
+		if state.recentSearchTerms.contains(term) {
+			state.recentSearchTerms.removeAll(where: {$0 == term})
+		}
+		state.recentSearchTerms.insert(term, at: 0)
+		UserDefaults.standard.setValue(state.recentSearchTerms, forKey: "recentSearch")
+	}
+	
 	private func search(category: Category, term: String) async {
 		switch category {
 		case .all:
 			resetData()
+			// navigation이 push 된 다음에 state 반영으로 자연스럽게
+			DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+				self?.setRecentSearch(term: term)
+			}
+			
 			state.isLoading = true
 			
 			if let data = await SearchService.searchAllCategory(term: term) {
