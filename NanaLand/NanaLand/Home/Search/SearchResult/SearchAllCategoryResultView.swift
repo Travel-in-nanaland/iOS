@@ -14,26 +14,26 @@ struct SearchAllCategoryResultView: View {
 		ScrollView(.vertical, showsIndicators: false) {
 			SearchAllCategoryItem(
 				category: .nature,
-				count: searchVM.state.searchAllCategoryResponse.nature.count,
-				articles: searchVM.state.searchAllCategoryResponse.nature.data
+				count: searchVM.state.allCategorySearchResult.nature.count,
+				articles: searchVM.state.allCategorySearchResult.nature.data
 			)
 			
 			SearchAllCategoryItem(
 				category: .festival,
-				count: searchVM.state.searchAllCategoryResponse.festival.count,
-				articles: searchVM.state.searchAllCategoryResponse.festival.data
+				count: searchVM.state.allCategorySearchResult.festival.count,
+				articles: searchVM.state.allCategorySearchResult.festival.data
 			)
 			
 			SearchAllCategoryItem(
 				category: .market,
-				count: searchVM.state.searchAllCategoryResponse.market.count,
-				articles: searchVM.state.searchAllCategoryResponse.market.data
+				count: searchVM.state.allCategorySearchResult.market.count,
+				articles: searchVM.state.allCategorySearchResult.market.data
 			)
 			
 			SearchAllCategoryItem(
 				category: .experience,
-				count: searchVM.state.searchAllCategoryResponse.experience.count,
-				articles: searchVM.state.searchAllCategoryResponse.experience.data
+				count: searchVM.state.allCategorySearchResult.experience.count,
+				articles: searchVM.state.allCategorySearchResult.experience.data
 			)
 			
 			

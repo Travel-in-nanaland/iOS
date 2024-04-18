@@ -89,16 +89,16 @@ struct SearchResultView: View {
 			SearchAllCategoryResultView()
 				.tag(Category.all)
 			
-			SearchDetailCategoryResultView(tab: .nature)
+			SearchDetailCategoryResultView(tab: .nature, searchTerm: searchTerm)
 				.tag(Category.nature)
 			
-			SearchDetailCategoryResultView(tab: .festival)
+			SearchDetailCategoryResultView(tab: .festival, searchTerm: searchTerm)
 				.tag(Category.festival)
 			
-			SearchDetailCategoryResultView(tab: .market)
+			SearchDetailCategoryResultView(tab: .market, searchTerm: searchTerm)
 				.tag(Category.market)
 			
-			SearchDetailCategoryResultView(tab: .experience)
+			SearchDetailCategoryResultView(tab: .experience, searchTerm: searchTerm)
 				.tag(Category.experience)
 		}
 		.tabViewStyle(.page(indexDisplayMode: .never))

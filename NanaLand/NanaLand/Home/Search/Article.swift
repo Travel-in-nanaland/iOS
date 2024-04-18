@@ -13,20 +13,31 @@ struct Article: Codable {
 	let title: String
 }
 
-struct ArticlesWithCount: Codable {
+struct SearchDetailCategoryResponse: Codable {
 	let count: Int
-	let data: [Article]
-}
-
-struct BaseResponse<T: Codable>: Codable {
-	let status: Int
-	let message: String
-	let data: T
+	var data: [Article]
+	
+	init(count: Int = 0, data: [Article] = []) {
+		self.count = count
+		self.data = data
+	}
 }
 
 struct SearchAllCategoryResponse: Codable {
-	let festival: ArticlesWithCount
-	let nature: ArticlesWithCount
-	let experience: ArticlesWithCount
-	let market: ArticlesWithCount
+	let festival: SearchDetailCategoryResponse
+	let nature: SearchDetailCategoryResponse
+	let experience: SearchDetailCategoryResponse
+	let market: SearchDetailCategoryResponse
+	
+	init(
+		festival: SearchDetailCategoryResponse = SearchDetailCategoryResponse(),
+		nature: SearchDetailCategoryResponse = SearchDetailCategoryResponse(),
+		experience: SearchDetailCategoryResponse = SearchDetailCategoryResponse(),
+		market: SearchDetailCategoryResponse = SearchDetailCategoryResponse()
+	) {
+		self.festival = festival
+		self.nature = nature
+		self.experience = experience
+		self.market = market
+	}
 }

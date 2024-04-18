@@ -197,7 +197,7 @@ struct SearchMainView: View {
 	
 	private func search(term: String) async {
 		searchTerm = term
-		await searchVM.action(.searchTerm(term: term))
+		await searchVM.action(.searchTerm(category: .all, term: term))
 		showResultView = true
 	}
 }
