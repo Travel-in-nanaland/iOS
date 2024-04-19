@@ -48,6 +48,7 @@
 		2C80ECC32BCFCD69002F38A7 /* Interceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80ECC22BCFCD69002F38A7 /* Interceptor.swift */; };
 		2C80ECC52BD0A086002F38A7 /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80ECC42BD0A086002F38A7 /* BaseResponse.swift */; };
 		2C80ECCA2BD0EE0F002F38A7 /* SearchDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80ECC92BD0EE0F002F38A7 /* SearchDTO.swift */; };
+		2C80ECCD2BD2C27D002F38A7 /* SwiftUIIntrospect in Frameworks */ = {isa = PBXBuildFile; productRef = 2C80ECCC2BD2C27D002F38A7 /* SwiftUIIntrospect */; };
 		9C6A9C3E2BCC1BAE000413AD /* Fonts+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6A9C3D2BCC1BAE000413AD /* Fonts+.swift */; };
 		9C6A9C632BCC22CE000413AD /* AppleSDGothicNeoL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C6A9C5A2BCC22CE000413AD /* AppleSDGothicNeoL.ttf */; };
 		9C6A9C642BCC22CE000413AD /* AppleSDGothicNeoL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C6A9C5A2BCC22CE000413AD /* AppleSDGothicNeoL.ttf */; };
@@ -148,6 +149,7 @@
 				2C3C75B22BCA3C6B00312F26 /* Kingfisher in Frameworks */,
 				2C3C75AF2BCA3C5000312F26 /* Alamofire in Frameworks */,
 				2C3C75B82BCA41EE00312F26 /* Realm in Frameworks */,
+				2C80ECCD2BD2C27D002F38A7 /* SwiftUIIntrospect in Frameworks */,
 				2C3C75BA2BCA41EE00312F26 /* RealmSwift in Frameworks */,
 				2C3C75B52BCA3F5A00312F26 /* Lottie in Frameworks */,
 			);
@@ -482,6 +484,7 @@
 				2C3C75B42BCA3F5A00312F26 /* Lottie */,
 				2C3C75B72BCA41EE00312F26 /* Realm */,
 				2C3C75B92BCA41EE00312F26 /* RealmSwift */,
+				2C80ECCC2BD2C27D002F38A7 /* SwiftUIIntrospect */,
 			);
 			productName = NanaLand;
 			productReference = 2C3C75802BCA3ADA00312F26 /* NanaLand.app */;
@@ -561,6 +564,7 @@
 				2C3C75B02BCA3C6B00312F26 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				2C3C75B32BCA3F5A00312F26 /* XCRemoteSwiftPackageReference "lottie-spm" */,
 				2C3C75B62BCA41EE00312F26 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				2C80ECCB2BD2C27D002F38A7 /* XCRemoteSwiftPackageReference "swiftui-introspect" */,
 			);
 			productRefGroup = 2C3C75812BCA3ADA00312F26 /* Products */;
 			projectDirPath = "";
@@ -1018,6 +1022,14 @@
 				kind = branch;
 			};
 		};
+		2C80ECCB2BD2C27D002F38A7 /* XCRemoteSwiftPackageReference "swiftui-introspect" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/siteline/swiftui-introspect";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.3;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1045,6 +1057,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2C3C75B62BCA41EE00312F26 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		2C80ECCC2BD2C27D002F38A7 /* SwiftUIIntrospect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C80ECCB2BD2C27D002F38A7 /* XCRemoteSwiftPackageReference "swiftui-introspect" */;
+			productName = SwiftUIIntrospect;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

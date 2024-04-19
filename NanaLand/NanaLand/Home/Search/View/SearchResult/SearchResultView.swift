@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftUIIntrospect
 
 enum Category: String, CaseIterable {
 	case all // 전체
@@ -102,11 +103,8 @@ struct SearchResultView: View {
 				.tag(Category.experience)
 		}
 		.tabViewStyle(.page(indexDisplayMode: .never))
-		.onAppear {
-			UIScrollView.appearance().isScrollEnabled = false
-		}
-		.onDisappear {
-			UIScrollView.appearance().isScrollEnabled = true
+		.introspect(.scrollView, on: .iOS(.v16, .v17)) { scrollView in
+			scrollView.isScrollEnabled = false
 		}
 	}
 }
