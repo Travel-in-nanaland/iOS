@@ -28,7 +28,6 @@ struct SearchResultView: View {
 	@State var searchTerm: String
 	
 	let tabs: [Category] = Category.allCases
-//	@State var currentTab: Category = .all
 	
     var body: some View {
 		VStack(spacing: 0) {

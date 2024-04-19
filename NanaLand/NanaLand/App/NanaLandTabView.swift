@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftUIIntrospect
 
 enum Tab {
 	case home, favorite, story, profile
@@ -53,5 +54,34 @@ struct NanaLandTabView: View {
 				.tag(Tab.profile)
 		}
 		.tint(.baseBlack)
+		.introspect(.tabView, on: .iOS(.v16, .v17)) { tabView in
+			let appearance = UITabBarAppearance()
+			appearance.configureWithTransparentBackground()
+			tabView.tabBar.standardAppearance = appearance
+			tabView.tabBar.backgroundColor = UIColor.white
+			
+			tabView.tabBar.layer.masksToBounds = true
+			tabView.tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+			tabView.tabBar.layer.cornerRadius = 16
+			
+			if let shadowView = tabView.view.subviews.first(where: { $0.accessibilityIdentifier == "TabBarShadow" }) {
+				shadowView.frame = tabView.tabBar.frame
+			} else {
+				let shadowView = UIView(frame: .zero)
+				shadowView.frame = tabView.tabBar.frame
+				shadowView.accessibilityIdentifier = "TabBarShadow"
+				shadowView.backgroundColor = UIColor.white
+				shadowView.layer.cornerRadius = tabView.tabBar.layer.cornerRadius
+				shadowView.layer.maskedCorners = tabView.tabBar.layer.maskedCorners
+				shadowView.layer.masksToBounds = false
+				shadowView.layer.shadowColor = Color.black.cgColor
+				shadowView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+				shadowView.layer.shadowOpacity = 0.1
+				shadowView.layer.shadowRadius = 10
+				tabView.view.addSubview(shadowView)
+				tabView.view.bringSubviewToFront(tabView.tabBar)
+			}
+			
+		}
     }
 }

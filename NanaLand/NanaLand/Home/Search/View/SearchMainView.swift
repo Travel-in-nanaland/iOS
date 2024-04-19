@@ -188,7 +188,7 @@ struct SearchMainView: View {
 			LazyVGrid(
 				columns: [GridItem(.flexible()), GridItem(.flexible())]
 			) {
-				ForEach(0..<8) { _ in
+				ForEach(0..<16) { _ in
 					VStack(alignment: .leading, spacing: 8) {
 						Rectangle()
 							.fill(Color.main)
