@@ -12,6 +12,7 @@ struct NanaLandApp: App {
     var body: some Scene {
         WindowGroup {
 			NanaLandTabView()
+				.environmentObject(AppState())
         }
     }
 }

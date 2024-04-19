@@ -12,15 +12,15 @@ enum Tab {
 }
 
 struct NanaLandTabView: View {
+	@EnvironmentObject var appState: AppState
     
     var body: some View {
-
-		TabView {
+		TabView(selection: $appState.currentTab) {
 			HomeMainView()
 				.tabItem {
 					Label(
-						title: { Text("홈") },
-						icon: { Image(.icHome) }
+						title: { Text("홈").font(.gothicNeo(.semibold, size: 10)) },
+						icon: { appState.currentTab == .home ? Image(.icHomeFill) : Image(.icHome) }
 					)
 				}
 				.tag(Tab.home)
@@ -28,8 +28,8 @@ struct NanaLandTabView: View {
 			FavoriteMainView()
 				.tabItem {
 					Label(
-						title: { Text("찜") },
-						icon: { Image(.icHeart) }
+						title: { Text("찜").font(.gothicNeo(.semibold, size: 10)) },
+						icon: { appState.currentTab == .favorite ? Image(.icHeartFill) : Image(.icHeart) }
 					)
 				}
 				.tag(Tab.favorite)
@@ -37,8 +37,8 @@ struct NanaLandTabView: View {
 			StoryMainView()
 				.tabItem {
 					Label(
-						title: { Text("제주 이야기") },
-						icon: { Image(.icStory) }
+						title: { Text("제주 이야기").font(.gothicNeo(.semibold, size: 10)) },
+						icon: { appState.currentTab == .story ? Image(.icStoryFill) : Image(.icStory) }
 					)
 				}
 				.tag(Tab.story)
@@ -46,8 +46,8 @@ struct NanaLandTabView: View {
 			ProfileMainView()
 				.tabItem {
 					Label(
-						title: { Text("나의 나나") },
-						icon: { Image(.icMyPage) }
+						title: { Text("나의 나나").font(.gothicNeo(.semibold, size: 10)) },
+						icon: { appState.currentTab == .profile ? Image(.icMyPageFill) : Image(.icMyPage) }
 					)
 				}
 				.tag(Tab.profile)
