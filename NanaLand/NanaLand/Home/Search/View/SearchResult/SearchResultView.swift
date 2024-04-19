@@ -51,7 +51,7 @@ struct SearchResultView: View {
 			NanaSearchBar(
 				searchTerm: $searchTerm,
 				searchAction: {
-					
+					await searchVM.action(.searchTerm(category: .all, term: searchTerm))
 				}
 			)
 		}
