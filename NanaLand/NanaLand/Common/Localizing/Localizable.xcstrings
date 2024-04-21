@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
     "%@" : {
       "localizations" : {
         "ko" : {
@@ -91,7 +94,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "나나 Pick"
+            "value" : "나나's Pick"
           }
         }
       }
@@ -109,6 +112,17 @@
     },
     "Nature Main View" : {
 
+    },
+    "noRecentSearchTerm" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "최근 검색어가 없습니다."
+          }
+        }
+      }
     },
     "noResult" : {
       "extractionState" : "manual",

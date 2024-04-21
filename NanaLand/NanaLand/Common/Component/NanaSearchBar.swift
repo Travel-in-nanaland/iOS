@@ -36,7 +36,9 @@ struct NanaSearchBar: View {
 			.submitLabel(.search)
 			.onSubmit {
 				Task {
-					await searchAction()
+					if searchTerm != "" {
+						await searchAction()
+					}
 				}
 			}
 			.padding(.horizontal, 12)

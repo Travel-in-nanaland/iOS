@@ -56,7 +56,7 @@ struct SearchMainView: View {
 	}
 	
 	private var recentlySearch: some View {
-		VStack(spacing: 8) {
+		VStack(spacing: 0) {
 			HStack {
 				Text(String(localized: "recentSearchTerm"))
 					.font(.gothicNeo(.bold, size: 18))
@@ -64,44 +64,62 @@ struct SearchMainView: View {
 				
 				Spacer()
 				
-				Text(String(localized: "removeAll"))
-					.font(.gothicNeo(.medium, size: 12))
-					.foregroundStyle(Color.gray1)
+				Button(action: {
+					searchVM.state.recentSearchTerms.removeAll()
+					UserDefaults.standard.removeObject(forKey: "recentSearch")
+				}, label: {
+					Text(String(localized: "removeAll"))
+						.font(.gothicNeo(.medium, size: 12))
+						.foregroundStyle(Color.gray1)
+				})
 			}
-			.padding(.horizontal, 16)
 			
-			ScrollView(.horizontal, showsIndicators: false) {
-				HStack(spacing: 8) {
-					ForEach(searchVM.state.recentSearchTerms, id: \.self) { term in
-						ZStack {
-							Capsule()
-								.fill(Color.main10P)
-							
-							HStack(spacing: 8) {
-								Text(term)
-									.font(.gothicNeo(.medium, size: 14))
-									.foregroundStyle(Color.main)
+			if !searchVM.state.recentSearchTerms.isEmpty {
+				ScrollView(.horizontal, showsIndicators: false) {
+					HStack(spacing: 8) {
+						ForEach(searchVM.state.recentSearchTerms, id: \.self) { term in
+							ZStack {
+								Capsule()
+									.fill(Color.main10P)
 								
-								Image(.icX)
-									.resizable()
-									.renderingMode(.template)
-									.foregroundStyle(Color.main)
-									.frame(width: 16, height: 16)
-								
+								HStack(spacing: 8) {
+									Text(term)
+										.font(.gothicNeo(.medium, size: 14))
+										.foregroundStyle(Color.main)
+									
+									Button(action: {
+										searchVM.state.recentSearchTerms.removeAll(where: {$0 == term})
+									}, label: {
+										Image(.icX)
+											.resizable()
+											.renderingMode(.template)
+											.foregroundStyle(Color.main)
+											.frame(width: 16, height: 16)
+									})
+								}
+								.padding(.horizontal, 16)
+								.padding(.vertical, 8)
 							}
-							.padding(.horizontal, 16)
-							.padding(.vertical, 8)
-						}
-						.onTapGesture {
-							Task {
-								await search(term: term)
+							.onTapGesture {
+								Task {
+									await search(term: term)
+								}
 							}
 						}
 					}
 				}
+				.padding(.top, 8)
+			} else {
+				HStack {
+					Text(String(localized: "noRecentSearchTerm"))
+						.font(.gothicNeo(.medium, size: 14))
+						.foregroundStyle(Color.gray1)
+					Spacer()
+				}
+				.padding(.top, 16)
 			}
-			.padding(.leading, 16)
 		}
+		.padding(.horizontal, 16)
 		.padding(.bottom, 32)
 	}
 	
@@ -111,7 +129,7 @@ struct SearchMainView: View {
 			Text("가장 많이 ").font(.gothicNeo(.bold, size: 18)).foregroundColor(Color.main) +
 			Text("검색하고 있어요!").font(.gothicNeo(.bold, size: 18)).foregroundColor(Color.baseBlack)
 			
-			Text(getCurrentTime())
+			Text(searchVM.getCurrentTime())
 				.font(.gothicNeo(.medium, size: 12))
 				.foregroundStyle(Color.gray1)
 				.padding(.top, 4)
@@ -170,7 +188,7 @@ struct SearchMainView: View {
 			LazyVGrid(
 				columns: [GridItem(.flexible()), GridItem(.flexible())]
 			) {
-				ForEach(0..<8) { _ in
+				ForEach(0..<16) { _ in
 					VStack(alignment: .leading, spacing: 8) {
 						Rectangle()
 							.fill(Color.main)
@@ -187,17 +205,9 @@ struct SearchMainView: View {
 		.padding(.horizontal, 16)
 	}
 	
-	private func getCurrentTime() -> String {
-		let formatter = DateFormatter()
-		formatter.dateFormat = "yyyy. MM. dd | a hh:mm"
-		formatter.locale = Locale(identifier: "en_US_POSIX")
-		
-		return formatter.string(from: Date())
-	}
-	
 	private func search(term: String) async {
 		searchTerm = term
-		await searchVM.action(.searchTerm(term: term))
+		await searchVM.action(.searchTerm(category: .all, term: term))
 		showResultView = true
 	}
 }
