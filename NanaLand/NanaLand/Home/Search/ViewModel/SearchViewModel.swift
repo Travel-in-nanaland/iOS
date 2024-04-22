@@ -6,8 +6,6 @@
 //
 
 import Foundation
-import SwiftUI
-import Alamofire
 
 @MainActor
 final class SearchViewModel: ObservableObject {

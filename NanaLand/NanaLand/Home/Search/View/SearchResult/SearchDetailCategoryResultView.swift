@@ -87,4 +87,5 @@ struct SearchDetailCategoryResultView: View {
 
 #Preview {
 	SearchDetailCategoryResultView(tab: .experience, searchTerm: "제주시")
+		.environmentObject(SearchViewModel())
 }

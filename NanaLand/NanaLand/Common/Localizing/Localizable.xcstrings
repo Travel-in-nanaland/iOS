@@ -41,6 +41,17 @@
         }
       }
     },
+    "community" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "제주 이야기"
+          }
+        }
+      }
+    },
     "experience" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -48,6 +59,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "이색 체험"
+          }
+        }
+      }
+    },
+    "favorite" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "찜"
           }
         }
       }
@@ -65,6 +87,17 @@
     },
     "Hello, World!" : {
 
+    },
+    "home" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "홈"
+          }
+        }
+      }
     },
     "inputSearchTerm" : {
       "extractionState" : "manual",
@@ -84,6 +117,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "전통시장"
+          }
+        }
+      }
+    },
+    "myNana" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "나의 나나"
           }
         }
       }
@@ -209,13 +253,7 @@
     "제주도는 지금 유채꽃 축제🏵️" : {
 
     },
-    "찜" : {
-
-    },
     "축제" : {
-
-    },
-    "홈" : {
 
     }
   },

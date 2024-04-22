@@ -109,4 +109,5 @@ struct SearchAllCategoryItem: View {
 
 #Preview {
     SearchAllCategoryResultView()
+		.environmentObject(SearchViewModel())
 }
