@@ -194,13 +194,13 @@ final class SearchViewModel: ObservableObject {
 		case .all:
 			return false
 		case .nature:
-			return state.natureCategorySearchResult.count == state.natureCategorySearchResult.data.count
+			return state.natureCategorySearchResult.totalElements == state.natureCategorySearchResult.data.count
 		case .festival:
-			return state.festivalCategorySearchResult.count == state.festivalCategorySearchResult.data.count
+			return state.festivalCategorySearchResult.totalElements == state.festivalCategorySearchResult.data.count
 		case .market:
-			return state.marketCategorySearchResult.count == state.marketCategorySearchResult.data.count
+			return state.marketCategorySearchResult.totalElements == state.marketCategorySearchResult.data.count
 		case .experience:
-			return state.experienceCategorySearchResult.count == state.experienceCategorySearchResult.data.count
+			return state.experienceCategorySearchResult.totalElements == state.experienceCategorySearchResult.data.count
 		case .nanaPick:
 			return false
 		}

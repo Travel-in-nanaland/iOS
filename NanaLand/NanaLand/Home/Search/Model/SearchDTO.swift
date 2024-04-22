@@ -8,11 +8,11 @@
 import Foundation
 
 struct SearchDetailCategoryResponse: Codable {
-	let count: Int
+	let totalElements: Int
 	var data: [Article]
 	
-	init(count: Int = 0, data: [Article] = []) {
-		self.count = count
+	init(totalElements: Int = 0, data: [Article] = []) {
+		self.totalElements = totalElements
 		self.data = data
 	}
 }

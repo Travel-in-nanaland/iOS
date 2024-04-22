@@ -23,13 +23,13 @@ struct SearchDetailCategoryResultView: View {
 					case .all:
 						return ""
 					case .nature:
-						return "\(searchVM.state.natureCategorySearchResult.count)건"
+						return "\(searchVM.state.natureCategorySearchResult.totalElements)건"
 					case .festival:
-						return "\(searchVM.state.festivalCategorySearchResult.count)건"
+						return "\(searchVM.state.festivalCategorySearchResult.totalElements)건"
 					case .market:
-						return "\(searchVM.state.marketCategorySearchResult.count)건"
+						return "\(searchVM.state.marketCategorySearchResult.totalElements)건"
 					case .experience:
-						return "\(searchVM.state.experienceCategorySearchResult.count)건"
+						return "\(searchVM.state.experienceCategorySearchResult.totalElements)건"
 					case .nanaPick:
 						return ""
 					}

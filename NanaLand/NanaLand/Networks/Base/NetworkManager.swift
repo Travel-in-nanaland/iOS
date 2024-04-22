@@ -19,6 +19,7 @@ class NetworkManager {
 		do {
 			data = try result.get()
 		} catch {
+			print("data fetch error")
 			return nil
 		}
 		
@@ -26,6 +27,7 @@ class NetworkManager {
 			let decodedData = try data.decode(type: BaseResponse<T>.self, decoder: JSONDecoder())
 			return decodedData
 		} catch {
+			print("data decode error - origin data: \(String(data: data, encoding: .utf8) ?? "")")
 			return nil
 		}
 		
