@@ -39,7 +39,6 @@
 		2C80ECA82BCF5CF2002F38A7 /* SearchAllCategoryResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80ECA72BCF5CF2002F38A7 /* SearchAllCategoryResultView.swift */; };
 		2C80ECAA2BCF5DB8002F38A7 /* SearchDetailCategoryResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80ECA92BCF5DB8002F38A7 /* SearchDetailCategoryResultView.swift */; };
 		2C80ECAD2BCF6201002F38A7 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80ECAC2BCF6201002F38A7 /* SearchService.swift */; };
-		2C80ECAF2BCF66D8002F38A7 /* secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80ECAE2BCF66D8002F38A7 /* secret.swift */; };
 		2C80ECB72BCFA055002F38A7 /* Data+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80ECB62BCFA055002F38A7 /* Data+.swift */; };
 		2C80ECBA2BCFCCB7002F38A7 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80ECB92BCFCCB7002F38A7 /* NetworkManager.swift */; };
 		2C80ECBC2BCFCCDA002F38A7 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80ECBB2BCFCCDA002F38A7 /* EndPoint.swift */; };
@@ -56,6 +55,16 @@
 		9C6A9C692BCC22CE000413AD /* AppleSDGothicNeoSB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C6A9C5C2BCC22CE000413AD /* AppleSDGothicNeoSB.ttf */; };
 		9C6A9C6A2BCC22CE000413AD /* AppleSDGothicNeoSB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C6A9C5C2BCC22CE000413AD /* AppleSDGothicNeoSB.ttf */; };
 		9C6A9C6B2BCC22CE000413AD /* AppleSDGothicNeoSB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C6A9C5C2BCC22CE000413AD /* AppleSDGothicNeoSB.ttf */; };
+		BF0997982BD1FFF900563E9A /* NaNaPickDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0997972BD1FFF900563E9A /* NaNaPickDetailView.swift */; };
+		BF0997B62BD4E38500563E9A /* NaNaPickDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0997B52BD4E38500563E9A /* NaNaPickDetailModel.swift */; };
+		BF1493712BD1095D00FC626B /* NaNaPickModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1493702BD1095D00FC626B /* NaNaPickModel.swift */; };
+		BF1493732BD1097100FC626B /* NaNaPickService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1493722BD1097100FC626B /* NaNaPickService.swift */; };
+		BF1493752BD10A4100FC626B /* NaNaPickEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1493742BD10A4100FC626B /* NaNaPickEndPoint.swift */; };
+		BF1493772BD10E1200FC626B /* NaNaPickMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1493762BD10E1200FC626B /* NaNaPickMainViewModel.swift */; };
+		BF4F6C682BD54CA4009F070F /* NaNaPickDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4F6C672BD54CA4009F070F /* NaNaPickDetailService.swift */; };
+		BF4F6C6A2BD54CB0009F070F /* NaNaPickDetailEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4F6C692BD54CB0009F070F /* NaNaPickDetailEndPoint.swift */; };
+		BF4F6C6C2BD5560A009F070F /* NaNaPickDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4F6C6B2BD5560A009F070F /* NaNaPickDetailViewModel.swift */; };
+		BF7C0EC02BD0B725008ACB75 /* secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7C0EBF2BD0B725008ACB75 /* secret.swift */; };
 		BF9834152BCE6FF000A5C289 /* NatureMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9834142BCE6FF000A5C289 /* NatureMainView.swift */; };
 		BF9834182BCE700B00A5C289 /* FestivalMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9834172BCE700B00A5C289 /* FestivalMainView.swift */; };
 		BF98341B2BCE71DB00A5C289 /* ShopMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF98341A2BCE71DB00A5C289 /* ShopMainView.swift */; };
@@ -64,6 +73,9 @@
 		BF9834232BCE83E300A5C289 /* RecommendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9834222BCE83E300A5C289 /* RecommendModel.swift */; };
 		BF9834252BCE847300A5C289 /* HomeMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9834242BCE847300A5C289 /* HomeMainViewModel.swift */; };
 		BF9842F12BCE897C00D6A60C /* BannerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9842F02BCE897C00D6A60C /* BannerModel.swift */; };
+		BFF26C442BD0DB4E00C561A3 /* NanapickMainViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF26C432BD0DB4E00C561A3 /* NanapickMainViewModelTest.swift */; };
+		BFF26C462BD0DF7D00C561A3 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF26C452BD0DF7D00C561A3 /* TestModel.swift */; };
+		BFF26C482BD0E22C00C561A3 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF26C472BD0E22C00C561A3 /* DataService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,7 +126,6 @@
 		2C80ECA72BCF5CF2002F38A7 /* SearchAllCategoryResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAllCategoryResultView.swift; sourceTree = "<group>"; };
 		2C80ECA92BCF5DB8002F38A7 /* SearchDetailCategoryResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetailCategoryResultView.swift; sourceTree = "<group>"; };
 		2C80ECAC2BCF6201002F38A7 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
-		2C80ECAE2BCF66D8002F38A7 /* secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = secret.swift; sourceTree = "<group>"; };
 		2C80ECB62BCFA055002F38A7 /* Data+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+.swift"; sourceTree = "<group>"; };
 		2C80ECB92BCFCCB7002F38A7 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		2C80ECBB2BCFCCDA002F38A7 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
@@ -126,6 +137,16 @@
 		9C6A9C5A2BCC22CE000413AD /* AppleSDGothicNeoL.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoL.ttf; sourceTree = "<group>"; };
 		9C6A9C5B2BCC22CE000413AD /* AppleSDGothicNeoR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoR.ttf; sourceTree = "<group>"; };
 		9C6A9C5C2BCC22CE000413AD /* AppleSDGothicNeoSB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoSB.ttf; sourceTree = "<group>"; };
+		BF0997972BD1FFF900563E9A /* NaNaPickDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaNaPickDetailView.swift; sourceTree = "<group>"; };
+		BF0997B52BD4E38500563E9A /* NaNaPickDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaNaPickDetailModel.swift; sourceTree = "<group>"; };
+		BF1493702BD1095D00FC626B /* NaNaPickModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaNaPickModel.swift; sourceTree = "<group>"; };
+		BF1493722BD1097100FC626B /* NaNaPickService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaNaPickService.swift; sourceTree = "<group>"; };
+		BF1493742BD10A4100FC626B /* NaNaPickEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaNaPickEndPoint.swift; sourceTree = "<group>"; };
+		BF1493762BD10E1200FC626B /* NaNaPickMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaNaPickMainViewModel.swift; sourceTree = "<group>"; };
+		BF4F6C672BD54CA4009F070F /* NaNaPickDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaNaPickDetailService.swift; sourceTree = "<group>"; };
+		BF4F6C692BD54CB0009F070F /* NaNaPickDetailEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaNaPickDetailEndPoint.swift; sourceTree = "<group>"; };
+		BF4F6C6B2BD5560A009F070F /* NaNaPickDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaNaPickDetailViewModel.swift; sourceTree = "<group>"; };
+		BF7C0EBF2BD0B725008ACB75 /* secret.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = secret.swift; sourceTree = "<group>"; };
 		BF9834142BCE6FF000A5C289 /* NatureMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NatureMainView.swift; sourceTree = "<group>"; };
 		BF9834172BCE700B00A5C289 /* FestivalMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FestivalMainView.swift; sourceTree = "<group>"; };
 		BF98341A2BCE71DB00A5C289 /* ShopMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopMainView.swift; sourceTree = "<group>"; };
@@ -134,6 +155,9 @@
 		BF9834222BCE83E300A5C289 /* RecommendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendModel.swift; sourceTree = "<group>"; };
 		BF9834242BCE847300A5C289 /* HomeMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMainViewModel.swift; sourceTree = "<group>"; };
 		BF9842F02BCE897C00D6A60C /* BannerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerModel.swift; sourceTree = "<group>"; };
+		BFF26C432BD0DB4E00C561A3 /* NanapickMainViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NanapickMainViewModelTest.swift; sourceTree = "<group>"; };
+		BFF26C452BD0DF7D00C561A3 /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
+		BFF26C472BD0E22C00C561A3 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -269,6 +293,7 @@
 		2C3C75C02BCA540200312F26 /* Networks */ = {
 			isa = PBXGroup;
 			children = (
+				BF14936F2BD108C000FC626B /* NanaPick */,
 				2C80ECBD2BCFCCEC002F38A7 /* Search */,
 				2C80ECB82BCFCC9F002F38A7 /* Base */,
 			);
@@ -290,7 +315,7 @@
 			children = (
 				2C3C75C82BCA550200312F26 /* UtilSample.swift */,
 				2C1F31D62BCD73C00066819F /* Constants.swift */,
-				2C80ECAE2BCF66D8002F38A7 /* secret.swift */,
+				BF7C0EBF2BD0B725008ACB75 /* secret.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -390,6 +415,17 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
+		BF14936F2BD108C000FC626B /* NanaPick */ = {
+			isa = PBXGroup;
+			children = (
+				BF1493722BD1097100FC626B /* NaNaPickService.swift */,
+				BF1493742BD10A4100FC626B /* NaNaPickEndPoint.swift */,
+				BF4F6C672BD54CA4009F070F /* NaNaPickDetailService.swift */,
+				BF4F6C692BD54CB0009F070F /* NaNaPickDetailEndPoint.swift */,
+			);
+			path = NanaPick;
+			sourceTree = "<group>";
+		};
 		BF9834132BCE6FCF00A5C289 /* Nature */ = {
 			isa = PBXGroup;
 			children = (
@@ -426,6 +462,14 @@
 			isa = PBXGroup;
 			children = (
 				BF9834202BCE720B00A5C289 /* NanapickMainView.swift */,
+				BF1493762BD10E1200FC626B /* NaNaPickMainViewModel.swift */,
+				BF1493702BD1095D00FC626B /* NaNaPickModel.swift */,
+				BFF26C432BD0DB4E00C561A3 /* NanapickMainViewModelTest.swift */,
+				BFF26C452BD0DF7D00C561A3 /* TestModel.swift */,
+				BFF26C472BD0E22C00C561A3 /* DataService.swift */,
+				BF0997972BD1FFF900563E9A /* NaNaPickDetailView.swift */,
+				BF4F6C6B2BD5560A009F070F /* NaNaPickDetailViewModel.swift */,
+				BF0997B52BD4E38500563E9A /* NaNaPickDetailModel.swift */,
 			);
 			path = NaNaPick;
 			sourceTree = "<group>";
@@ -592,6 +636,7 @@
 				2C1F31D92BCD7DC90066819F /* SearchResultView.swift in Sources */,
 				2C80ECA82BCF5CF2002F38A7 /* SearchAllCategoryResultView.swift in Sources */,
 				2C80ECBA2BCFCCB7002F38A7 /* NetworkManager.swift in Sources */,
+				BF4F6C682BD54CA4009F070F /* NaNaPickDetailService.swift in Sources */,
 				2C80ECBC2BCFCCDA002F38A7 /* EndPoint.swift in Sources */,
 				BF9834252BCE847300A5C289 /* HomeMainViewModel.swift in Sources */,
 				BF98341B2BCE71DB00A5C289 /* ShopMainView.swift in Sources */,
@@ -602,22 +647,33 @@
 				2C80EC9E2BCE53E1002F38A7 /* Article.swift in Sources */,
 				2C3C75BF2BCA53EE00312F26 /* HomeMainView.swift in Sources */,
 				2C1F31D52BCD2A870066819F /* NanaSearchBar.swift in Sources */,
+				BF7C0EC02BD0B725008ACB75 /* secret.swift in Sources */,
+				BF0997B62BD4E38500563E9A /* NaNaPickDetailModel.swift in Sources */,
 				2C80ECB72BCFA055002F38A7 /* Data+.swift in Sources */,
+				BF1493712BD1095D00FC626B /* NaNaPickModel.swift in Sources */,
 				2C80ECBF2BCFCCFE002F38A7 /* APITask.swift in Sources */,
-				2C80ECAF2BCF66D8002F38A7 /* secret.swift in Sources */,
 				2C1F31CE2BCD049C0066819F /* SearchMainView.swift in Sources */,
 				BF9834212BCE720B00A5C289 /* NanapickMainView.swift in Sources */,
 				BF9834182BCE700B00A5C289 /* FestivalMainView.swift in Sources */,
 				2C3C75D12BCAAFF300312F26 /* FavoriteMainView.swift in Sources */,
+				BF4F6C6C2BD5560A009F070F /* NaNaPickDetailViewModel.swift in Sources */,
 				2C80ECAD2BCF6201002F38A7 /* SearchService.swift in Sources */,
 				2C1F31D02BCD04AA0066819F /* SearchViewModel.swift in Sources */,
 				2C80ECAA2BCF5DB8002F38A7 /* SearchDetailCategoryResultView.swift in Sources */,
 				2C1F31D72BCD73C00066819F /* Constants.swift in Sources */,
 				2C3C75CC2BCAA93D00312F26 /* NanaLandTabView.swift in Sources */,
+				BFF26C442BD0DB4E00C561A3 /* NanapickMainViewModelTest.swift in Sources */,
+				BFF26C482BD0E22C00C561A3 /* DataService.swift in Sources */,
 				9C6A9C3E2BCC1BAE000413AD /* Fonts+.swift in Sources */,
+				BF4F6C6A2BD54CB0009F070F /* NaNaPickDetailEndPoint.swift in Sources */,
+				BF0997982BD1FFF900563E9A /* NaNaPickDetailView.swift in Sources */,
 				BF9834232BCE83E300A5C289 /* RecommendModel.swift in Sources */,
 				2C3C75842BCA3ADA00312F26 /* NanaLandApp.swift in Sources */,
+				BF1493732BD1097100FC626B /* NaNaPickService.swift in Sources */,
+				BF1493752BD10A4100FC626B /* NaNaPickEndPoint.swift in Sources */,
+				BFF26C462BD0DF7D00C561A3 /* TestModel.swift in Sources */,
 				BF98341E2BCE71F000A5C289 /* ExperienceMainView.swift in Sources */,
+				BF1493772BD10E1200FC626B /* NaNaPickMainViewModel.swift in Sources */,
 				2C3C75D32BCAB00C00312F26 /* StoryMainView.swift in Sources */,
 				2C80ECA02BCE55E0002F38A7 /* ArticleItem.swift in Sources */,
 				BF9834152BCE6FF000A5C289 /* NatureMainView.swift in Sources */,
@@ -784,7 +840,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"NanaLand/Preview Content\"";
-				DEVELOPMENT_TEAM = FKL5LCYWBF;
+				DEVELOPMENT_TEAM = 8NJPCU8Y7S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NanaLand/Info.plist;
@@ -814,7 +870,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"NanaLand/Preview Content\"";
-				DEVELOPMENT_TEAM = FKL5LCYWBF;
+				DEVELOPMENT_TEAM = 8NJPCU8Y7S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NanaLand/Info.plist;

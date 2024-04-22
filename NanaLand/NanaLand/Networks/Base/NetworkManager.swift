@@ -14,10 +14,11 @@ class NetworkManager {
 	func request<T: Decodable>(_ endPoint: EndPoint) async -> BaseResponse<T>? {
 		let request = makeDataRequest(endPoint)
 		let result = await request.serializingData().result
-		
 		var data = Foundation.Data()
 		do {
 			data = try result.get()
+            print(request)
+            print(data)
 		} catch {
 			return nil
 		}
@@ -26,7 +27,7 @@ class NetworkManager {
 			let decodedData = try data.decode(type: BaseResponse<T>.self, decoder: JSONDecoder())
 			return decodedData
 		} catch {
-			return nil
+            return nil
 		}
 		
 	}

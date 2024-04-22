@@ -9,4 +9,10 @@ import Foundation
 
 struct BannerModel: Codable {
     var message: String
+    var data: [ImageData]
+}
+
+struct ImageData: Codable {
+    var id: Int64
+    var thumbnailUrl: String
 }

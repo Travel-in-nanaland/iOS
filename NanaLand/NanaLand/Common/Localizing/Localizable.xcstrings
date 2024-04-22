@@ -60,6 +60,9 @@
         }
       }
     },
+    "hello" : {
+
+    },
     "Hello, World!" : {
 
     },
@@ -88,10 +91,16 @@
     "nanaPick" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "nana's pick"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "나나 Pick"
+            "value" : "나나's pick"
           }
         }
       }
@@ -176,9 +185,6 @@
           }
         }
       }
-    },
-    "나나 Pick" : {
-
     },
     "나의 나나" : {
 

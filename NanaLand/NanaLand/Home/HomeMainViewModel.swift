@@ -15,7 +15,7 @@ class HomeMainViewModel: ObservableObject {
     
     let headers: HTTPHeaders = [
         "Accept": "application/json",
-        "Authorization": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwiZXhwIjoxNzQ0Nzk4Njc1fQ.oZV2HoRzitq1jhwcxkmaAT4j1MK9lnEWS06ekiWygdxgVVVCxZY858NVwtZTK_reOCfmnneuoBmbaUahEpXWTg"
+        "Authorization": "Bearer \(Secrets.tempAccessToken)"
     ]
     
     // 추천 data 받아오는 함수
