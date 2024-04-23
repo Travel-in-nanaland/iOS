@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftUIIntrospect
 
 enum Category: String, CaseIterable {
 	case all // 전체
@@ -27,7 +28,6 @@ struct SearchResultView: View {
 	@State var searchTerm: String
 	
 	let tabs: [Category] = Category.allCases
-//	@State var currentTab: Category = .all
 	
     var body: some View {
 		VStack(spacing: 0) {
@@ -51,7 +51,7 @@ struct SearchResultView: View {
 			NanaSearchBar(
 				searchTerm: $searchTerm,
 				searchAction: {
-					
+					await searchVM.action(.searchTerm(category: .all, term: searchTerm))
 				}
 			)
 		}
@@ -89,24 +89,21 @@ struct SearchResultView: View {
 			SearchAllCategoryResultView()
 				.tag(Category.all)
 			
-			SearchDetailCategoryResultView(tab: .nature)
+			SearchDetailCategoryResultView(tab: .nature, searchTerm: searchTerm)
 				.tag(Category.nature)
 			
-			SearchDetailCategoryResultView(tab: .festival)
+			SearchDetailCategoryResultView(tab: .festival, searchTerm: searchTerm)
 				.tag(Category.festival)
 			
-			SearchDetailCategoryResultView(tab: .market)
+			SearchDetailCategoryResultView(tab: .market, searchTerm: searchTerm)
 				.tag(Category.market)
 			
-			SearchDetailCategoryResultView(tab: .experience)
+			SearchDetailCategoryResultView(tab: .experience, searchTerm: searchTerm)
 				.tag(Category.experience)
 		}
 		.tabViewStyle(.page(indexDisplayMode: .never))
-		.onAppear {
-			UIScrollView.appearance().isScrollEnabled = false
-		}
-		.onDisappear {
-			UIScrollView.appearance().isScrollEnabled = true
+		.introspect(.scrollView, on: .iOS(.v16, .v17)) { scrollView in
+			scrollView.isScrollEnabled = false
 		}
 	}
 }

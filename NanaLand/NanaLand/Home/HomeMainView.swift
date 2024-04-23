@@ -10,6 +10,7 @@ import Kingfisher
 
 struct HomeMainView: View {
     @ObservedObject var viewModel = HomeMainViewModel()
+	@ObservedObject var searchVM = SearchViewModel()
     
     var body: some View {
         NavigationStack {
@@ -180,7 +181,7 @@ struct HomeMainView: View {
                 }
             }
         }
-		.environmentObject(SearchViewModel())
+		.environmentObject(searchVM)
         .onAppear {
              viewModel.recommendFetchData()
         }
