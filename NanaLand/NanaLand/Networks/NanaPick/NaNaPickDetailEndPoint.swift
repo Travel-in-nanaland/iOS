@@ -13,14 +13,15 @@ enum NaNaPickDetailEndPoint {
 }
 
 extension NaNaPickDetailEndPoint: EndPoint {
+    
     var baseURL: String {
-        return "\(Secrets.baseUrl)/nana/1"
+        return "\(Secrets.baseUrl)/nana"
     }
     
     var path: String {
         switch self {
-        case .getNaNaPickDetail:
-            return ""
+        case .getNaNaPickDetail(let id):
+            return "/\(id)"
         }
     }
     

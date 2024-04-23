@@ -73,9 +73,6 @@
 		BF9834232BCE83E300A5C289 /* RecommendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9834222BCE83E300A5C289 /* RecommendModel.swift */; };
 		BF9834252BCE847300A5C289 /* HomeMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9834242BCE847300A5C289 /* HomeMainViewModel.swift */; };
 		BF9842F12BCE897C00D6A60C /* BannerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9842F02BCE897C00D6A60C /* BannerModel.swift */; };
-		BFF26C442BD0DB4E00C561A3 /* NanapickMainViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF26C432BD0DB4E00C561A3 /* NanapickMainViewModelTest.swift */; };
-		BFF26C462BD0DF7D00C561A3 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF26C452BD0DF7D00C561A3 /* TestModel.swift */; };
-		BFF26C482BD0E22C00C561A3 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF26C472BD0E22C00C561A3 /* DataService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -155,9 +152,6 @@
 		BF9834222BCE83E300A5C289 /* RecommendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendModel.swift; sourceTree = "<group>"; };
 		BF9834242BCE847300A5C289 /* HomeMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMainViewModel.swift; sourceTree = "<group>"; };
 		BF9842F02BCE897C00D6A60C /* BannerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerModel.swift; sourceTree = "<group>"; };
-		BFF26C432BD0DB4E00C561A3 /* NanapickMainViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NanapickMainViewModelTest.swift; sourceTree = "<group>"; };
-		BFF26C452BD0DF7D00C561A3 /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
-		BFF26C472BD0E22C00C561A3 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -464,9 +458,6 @@
 				BF9834202BCE720B00A5C289 /* NanapickMainView.swift */,
 				BF1493762BD10E1200FC626B /* NaNaPickMainViewModel.swift */,
 				BF1493702BD1095D00FC626B /* NaNaPickModel.swift */,
-				BFF26C432BD0DB4E00C561A3 /* NanapickMainViewModelTest.swift */,
-				BFF26C452BD0DF7D00C561A3 /* TestModel.swift */,
-				BFF26C472BD0E22C00C561A3 /* DataService.swift */,
 				BF0997972BD1FFF900563E9A /* NaNaPickDetailView.swift */,
 				BF4F6C6B2BD5560A009F070F /* NaNaPickDetailViewModel.swift */,
 				BF0997B52BD4E38500563E9A /* NaNaPickDetailModel.swift */,
@@ -662,8 +653,6 @@
 				2C80ECAA2BCF5DB8002F38A7 /* SearchDetailCategoryResultView.swift in Sources */,
 				2C1F31D72BCD73C00066819F /* Constants.swift in Sources */,
 				2C3C75CC2BCAA93D00312F26 /* NanaLandTabView.swift in Sources */,
-				BFF26C442BD0DB4E00C561A3 /* NanapickMainViewModelTest.swift in Sources */,
-				BFF26C482BD0E22C00C561A3 /* DataService.swift in Sources */,
 				9C6A9C3E2BCC1BAE000413AD /* Fonts+.swift in Sources */,
 				BF4F6C6A2BD54CB0009F070F /* NaNaPickDetailEndPoint.swift in Sources */,
 				BF0997982BD1FFF900563E9A /* NaNaPickDetailView.swift in Sources */,
@@ -671,7 +660,6 @@
 				2C3C75842BCA3ADA00312F26 /* NanaLandApp.swift in Sources */,
 				BF1493732BD1097100FC626B /* NaNaPickService.swift in Sources */,
 				BF1493752BD10A4100FC626B /* NaNaPickEndPoint.swift in Sources */,
-				BFF26C462BD0DF7D00C561A3 /* TestModel.swift in Sources */,
 				BF98341E2BCE71F000A5C289 /* ExperienceMainView.swift in Sources */,
 				BF1493772BD10E1200FC626B /* NaNaPickMainViewModel.swift in Sources */,
 				2C3C75D32BCAB00C00312F26 /* StoryMainView.swift in Sources */,
