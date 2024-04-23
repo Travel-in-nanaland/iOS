@@ -32,7 +32,6 @@ class NaNaPickDetailViewModel: ObservableObject {
             if data != nil {
                 await MainActor.run {
                     state.getNaNaPickDetailResponse = data!.data
-                    print(state.getNaNaPickDetailResponse)
                 }
             } else {
                 print("Error")
