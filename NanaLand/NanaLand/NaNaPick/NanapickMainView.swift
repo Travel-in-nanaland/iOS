@@ -10,7 +10,6 @@ import Kingfisher
 
 struct NanapickMainView: View {
     @ObservedObject var viewModel = NaNaPickMainViewModel()
-    @ObservedObject var detailViewModel = NaNaPickDetailViewModel()
     @State var isAPICalled = false
     @State private var page: Int = 0
     @State private var size: Int = 4
@@ -54,7 +53,7 @@ struct NanapickMainView: View {
                         //id 값을 넘겨줘서 어떤 id 값을 가진 디테일뷰를 불러올 지 결정
                         KFImage(URL(string:index.thumbnailUrl))
                             .resizable()
-                            .aspectRatio(contentMode: .fill)
+                            .aspectRatio(contentMode: .fit)
                     })
                 }
                 if page < 5{

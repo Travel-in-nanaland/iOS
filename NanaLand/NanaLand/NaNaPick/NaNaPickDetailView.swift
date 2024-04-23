@@ -9,7 +9,7 @@ import SwiftUI
 import Kingfisher
 
 struct NaNaPickDetailView: View {
-    @ObservedObject var viewModel = NaNaPickDetailViewModel()
+    @StateObject var viewModel = NaNaPickDetailViewModel()
     @State private var isAPICalled = false
     var id: Int64
     init(id: Int64) {
@@ -33,13 +33,6 @@ struct NaNaPickDetailView: View {
         }
     }
     var body: some View {
-        
-        Button("상세 정보 보기") {
-            Task {
-                await getNaNaDetail(id: id)
-            }
-        }
-        
         ScrollView {
             VStack(spacing: 0) {
                 if isAPICalled {
@@ -106,10 +99,9 @@ struct NaNaPickDetailView: View {
         .navigationBarItems(leading: backButton)
         .onAppear {
             Task {
-                print(id)
                 await getNaNaDetail(id: id)
                 isAPICalled = true
-                print("\(viewModel.state.getNaNaPickDetailResponse.originUrl)")
+                
             }
         }
     }
@@ -117,8 +109,8 @@ struct NaNaPickDetailView: View {
     func getNaNaDetail(id: Int64) async {
         await viewModel.action(.getNaNaPickDetail(id: id))
     }
+    
 }
-
 //#Preview {
 //    NaNaPickDetailView()
 //}
