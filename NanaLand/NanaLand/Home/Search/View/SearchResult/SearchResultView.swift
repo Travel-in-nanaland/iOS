@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftUIIntrospect
 
-enum Category: String, CaseIterable {
+enum Category: String, CaseIterable, Codable {
 	case all // 전체
 	case nature  // 7대 자연
 	case festival  // 축제

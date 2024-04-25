@@ -58,7 +58,7 @@ struct SearchDetailCategoryResultView: View {
 					}(),
 						id: \.id
 					) { article in
-						ArticleItem(article: article)
+						ArticleItem(category: tab, article: article)
 					}
 					
 					if !searchVM.isLastPage(tab: tab) {

@@ -1,16 +1,16 @@
 //
-//  ArticleItem.swift
+//  FavoriteArticleItem.swift
 //  NanaLand
 //
-//  Created by 정현우 on 4/16/24.
+//  Created by 정현우 on 4/24/24.
 //
 
 import SwiftUI
 import Kingfisher
 
-struct ArticleItem: View {
+struct FavoriteArticleItem: View {
 	let category: Category
-	let article: Article
+	let article: FavoriteArticle
 	
 	let itemWidth = (Constants.screenWidth-40)/2
 	
@@ -32,7 +32,7 @@ struct ArticleItem: View {
 			Button(action: {
 				
 			}, label: {
-				Image(article.favorite ? .icHeartFillMain : .icHeartDefault)
+				Image(.icHeartFillMain)
 					.padding(.top, 4)
 					.padding(.trailing, 4)
 			})
@@ -41,5 +41,5 @@ struct ArticleItem: View {
 }
 
 #Preview {
-	ArticleItem(category: .experience, article: Article(id: 0, thumbnailUrl: "http://tong.visitkorea.or.kr/cms/resource/85/3076985_image3_1.jpg", title: "근하신뇽! 새해도 9.81파크와 함께해용", favorite: true))
+	FavoriteArticleItem(category: .experience, article: FavoriteArticle(id: 0, title: "근하신뇽! 새해도 9.81파크와 함께해용", thumbnailUrl: "http://tong.visitkorea.or.kr/cms/resource/85/3076985_image3_1.jpg", category: "MARKET"))
 }

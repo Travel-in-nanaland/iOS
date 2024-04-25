@@ -13,6 +13,7 @@ struct NanaLandApp: App {
         WindowGroup {
 			NanaLandTabView()
 				.environmentObject(AppState())
+				.environmentObject(FavoriteViewModel())
         }
     }
 }

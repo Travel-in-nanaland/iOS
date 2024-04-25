@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftUIIntrospect
 
 struct FavoriteMainView: View {
 	@ObservedObject var favoriteVM = FavoriteViewModel()
@@ -18,7 +19,7 @@ struct FavoriteMainView: View {
 			VStack {
 				navigationBar
 				tabBar
-				favoriteList
+				contentTab
 			}
 		}
     }
@@ -53,19 +54,26 @@ struct FavoriteMainView: View {
 		.padding(.bottom, 16)
 	}
 	
-	private var favoriteList: some View {
-		ScrollView(.vertical) {
-			VStack {
-				LazyVGrid(
-					columns: [GridItem(.flexible()), GridItem(.flexible())]
-				) {
-					ForEach(
-						favoriteVM.state.articles, id: \.self
-					) { article in
-						ArticleItem(article: article)
-					}
-				}
-			}
+	private var contentTab: some View {
+		TabView(selection: $currentTab) {
+			FavoriteListView(category: .all)
+				.tag(Category.all)
+			
+			FavoriteListView(category: .nature)
+				.tag(Category.nature)
+			
+			FavoriteListView(category: .festival)
+				.tag(Category.festival)
+			
+			FavoriteListView(category: .market)
+				.tag(Category.market)
+			
+			FavoriteListView(category: .experience)
+				.tag(Category.experience)
+		}
+		.tabViewStyle(.page(indexDisplayMode: .never))
+		.introspect(.scrollView, on: .iOS(.v16, .v17)) { scrollView in
+			scrollView.isScrollEnabled = false
 		}
 	}
 

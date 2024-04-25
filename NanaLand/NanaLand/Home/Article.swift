@@ -11,5 +11,5 @@ struct Article: Codable, Hashable {
 	let id: Int
 	let thumbnailUrl: String
 	let title: String
-	let favorite: Bool
+	var favorite: Bool
 }
