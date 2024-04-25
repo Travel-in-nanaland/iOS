@@ -31,6 +31,8 @@ class FavoriteViewModel: ObservableObject {
 	enum Action {
 		case getFavoriteList(category: Category)
 		case didTapHeart(category: Category, article: Article)
+		case deleteItemInFavoriteList(index: Int, category: Category)
+		case refreshData(category: Category)
 	}
 	
 	@Published var state: State
@@ -45,8 +47,15 @@ class FavoriteViewModel: ObservableObject {
 		switch action {
 		case let .getFavoriteList(category: category):
 			await fetchFavoriteList(category: category)
+			
 		case let .didTapHeart(category: category, article: article):
 			state.currentFavoriteResult = await toggleFavorite(category: category, article: article)
+			
+		case let .deleteItemInFavoriteList(index: index, category: category):
+			await deleteFavoriteArticle(index: index, category: category)
+			
+		case let .refreshData(category: category):
+			await refreshData(category: category)
 		}
 	}
 	
@@ -192,6 +201,58 @@ class FavoriteViewModel: ObservableObject {
 		default:
 			print("error toggleFavorite")
 			return false
+		}
+	}
+	
+	private func deleteFavoriteArticle(index: Int, category: Category) async {
+		switch category {
+		case .all:
+			state.allFavoriteArticles.data.remove(at: index)
+			state.allFavoriteArticles.totalElements -= 1
+		case .nature:
+			state.natureFavoriteArticles.data.remove(at: index)
+			state.natureFavoriteArticles.totalElements -= 1
+		case .festival:
+			state.festivalFavoriteArticles.data.remove(at: index)
+			state.festivalFavoriteArticles.totalElements -= 1
+		case .market:
+			state.marketFavoriteArticles.data.remove(at: index)
+			state.marketFavoriteArticles.totalElements -= 1
+		case .experience:
+			state.experienceFavoriteArticles.data.remove(at: index)
+			state.experienceFavoriteArticles.totalElements -= 1
+		case .nanaPick:
+			state.allFavoriteArticles.data.remove(at: index)
+			state.allFavoriteArticles.totalElements -= 1
+		}
+	}
+	
+	private func refreshData(category: Category) async {
+		resetData(category: category)
+		
+		await fetchFavoriteList(category: category)
+	}
+	
+	private func resetData(category: Category) {
+		switch category {
+		case .all:
+			state.allFavoriteArticlePage = 0
+			state.allFavoriteArticles = .init()
+		case .nature:
+			state.natureFavoriteArticlePage = 0
+			state.natureFavoriteArticles = .init()
+		case .festival:
+			state.festivalFavoriteArticlePage = 0
+			state.festivalFavoriteArticles = .init()
+		case .market:
+			state.marketFavoriteArticlePage = 0
+			state.marketFavoriteArticles = .init()
+		case .experience:
+			state.experienceFavoriteArticlePage = 0
+			state.experienceFavoriteArticles = .init()
+		case .nanaPick:
+			state.allFavoriteArticlePage = 0
+			state.allFavoriteArticles = .init()
 		}
 	}
 	

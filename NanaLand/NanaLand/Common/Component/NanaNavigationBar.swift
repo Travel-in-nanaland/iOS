@@ -19,17 +19,26 @@ struct NanaNavigationBar: View {
 	}
 	
     var body: some View {
-		HStack {
-			Spacer()
-			Text(title)
-				.font(.gothicNeo(.bold, size: 20))
-			Spacer()
+		ZStack(alignment: .bottom) {
+			Rectangle()
+				.fill(Color.clear)
+				.frame(height:20)
+				.background(
+					Color.white
+						.shadow(color: Color.baseBlack.opacity(0.05), radius: 8, y: 5)
+				)
+			
+			
+			HStack {
+				Spacer()
+				Text(title)
+					.font(.gothicNeo(.bold, size: 20))
+				Spacer()
+			}
+			.frame(height: 56)
+			.background(Color.white)
 		}
 		.frame(height: 56)
-		.background(
-			Color.white
-				.shadow(color: Color.baseBlack.opacity(0.1), radius: 4, y: 9)
-		)
 		.overlay(alignment: .leading) {
 			if showBackButton {
 				Button(action: {

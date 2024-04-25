@@ -9,7 +9,9 @@ import SwiftUI
 import Kingfisher
 
 struct FavoriteArticleItem: View {
-	let category: Category
+	@EnvironmentObject var favoriteVM: FavoriteViewModel
+	let index: Int
+	let tab: Category
 	let article: FavoriteArticle
 	
 	let itemWidth = (Constants.screenWidth-40)/2
@@ -30,7 +32,9 @@ struct FavoriteArticleItem: View {
 		}
 		.overlay(alignment: .topTrailing) {
 			Button(action: {
-				
+				Task {
+					await favoriteVM.action(.deleteItemInFavoriteList(index: index, category: tab))
+				}
 			}, label: {
 				Image(.icHeartFillMain)
 					.padding(.top, 4)
@@ -38,8 +42,9 @@ struct FavoriteArticleItem: View {
 			})
 		}
 	}
+	
 }
 
 #Preview {
-	FavoriteArticleItem(category: .experience, article: FavoriteArticle(id: 0, title: "근하신뇽! 새해도 9.81파크와 함께해용", thumbnailUrl: "http://tong.visitkorea.or.kr/cms/resource/85/3076985_image3_1.jpg", category: "MARKET"))
+	FavoriteArticleItem(index: 0, tab: .all, article: FavoriteArticle(id: 0, title: "근하신뇽! 새해도 9.81파크와 함께해용", thumbnailUrl: "http://tong.visitkorea.or.kr/cms/resource/85/3076985_image3_1.jpg", category: "MARKET"))
 }
