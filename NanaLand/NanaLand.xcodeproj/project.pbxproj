@@ -48,6 +48,12 @@
 		2C80ECCA2BD0EE0F002F38A7 /* SearchDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80ECC92BD0EE0F002F38A7 /* SearchDTO.swift */; };
 		2C80ECCD2BD2C27D002F38A7 /* SwiftUIIntrospect in Frameworks */ = {isa = PBXBuildFile; productRef = 2C80ECCC2BD2C27D002F38A7 /* SwiftUIIntrospect */; };
 		2C80ECCF2BD2C777002F38A7 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80ECCE2BD2C777002F38A7 /* AppState.swift */; };
+		2C80ECE72BDAA52A002F38A7 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 2C80ECE62BDAA52A002F38A7 /* Localizable.xcstrings */; };
+		2C80ECEA2BDAA551002F38A7 /* SwiftUICalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 2C80ECE92BDAA551002F38A7 /* SwiftUICalendar */; };
+		2C80ECEC2BDAA58C002F38A7 /* CalendarFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80ECEB2BDAA58C002F38A7 /* CalendarFilterView.swift */; };
+		2C80ECEE2BDBE0CE002F38A7 /* CalendarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80ECED2BDBE0CE002F38A7 /* CalendarItem.swift */; };
+		2C80ECF02BDBE44C002F38A7 /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80ECEF2BDBE44C002F38A7 /* RoundedCorners.swift */; };
+		2C80ECF22BDBE545002F38A7 /* YearMonthDay+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80ECF12BDBE545002F38A7 /* YearMonthDay+.swift */; };
 		9C6A9C3E2BCC1BAE000413AD /* Fonts+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6A9C3D2BCC1BAE000413AD /* Fonts+.swift */; };
 		9C6A9C632BCC22CE000413AD /* AppleSDGothicNeoL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C6A9C5A2BCC22CE000413AD /* AppleSDGothicNeoL.ttf */; };
 		9C6A9C642BCC22CE000413AD /* AppleSDGothicNeoL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C6A9C5A2BCC22CE000413AD /* AppleSDGothicNeoL.ttf */; };
@@ -134,6 +140,11 @@
 		2C80ECC42BD0A086002F38A7 /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
 		2C80ECC92BD0EE0F002F38A7 /* SearchDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDTO.swift; sourceTree = "<group>"; };
 		2C80ECCE2BD2C777002F38A7 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		2C80ECE62BDAA52A002F38A7 /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		2C80ECEB2BDAA58C002F38A7 /* CalendarFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarFilterView.swift; sourceTree = "<group>"; };
+		2C80ECED2BDBE0CE002F38A7 /* CalendarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarItem.swift; sourceTree = "<group>"; };
+		2C80ECEF2BDBE44C002F38A7 /* RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorners.swift; sourceTree = "<group>"; };
+		2C80ECF12BDBE545002F38A7 /* YearMonthDay+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "YearMonthDay+.swift"; sourceTree = "<group>"; };
 		9C6A9C3D2BCC1BAE000413AD /* Fonts+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fonts+.swift"; sourceTree = "<group>"; };
 		9C6A9C532BCC206D000413AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		9C6A9C5A2BCC22CE000413AD /* AppleSDGothicNeoL.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoL.ttf; sourceTree = "<group>"; };
@@ -165,6 +176,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C3C75B22BCA3C6B00312F26 /* Kingfisher in Frameworks */,
+				2C80ECEA2BDAA551002F38A7 /* SwiftUICalendar in Frameworks */,
 				2C3C75AF2BCA3C5000312F26 /* Alamofire in Frameworks */,
 				2C3C75B82BCA41EE00312F26 /* Realm in Frameworks */,
 				2C80ECCD2BD2C27D002F38A7 /* SwiftUIIntrospect in Frameworks */,
@@ -203,6 +215,7 @@
 		2C1F31D12BCD14020066819F /* Localizing */ = {
 			isa = PBXGroup;
 			children = (
+				2C80ECE62BDAA52A002F38A7 /* Localizable.xcstrings */,
 			);
 			path = Localizing;
 			sourceTree = "<group>";
@@ -323,6 +336,9 @@
 			children = (
 				2C1F31D42BCD2A870066819F /* NanaSearchBar.swift */,
 				2C80EC9F2BCE55E0002F38A7 /* ArticleItem.swift */,
+				2C80ECEB2BDAA58C002F38A7 /* CalendarFilterView.swift */,
+				2C80ECED2BDBE0CE002F38A7 /* CalendarItem.swift */,
+				2C80ECEF2BDBE44C002F38A7 /* RoundedCorners.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -422,6 +438,7 @@
 			children = (
 				9C6A9C3C2BCC1AC1000413AD /* Font */,
 				2C80ECB62BCFA055002F38A7 /* Data+.swift */,
+				2C80ECF12BDBE545002F38A7 /* YearMonthDay+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -520,6 +537,7 @@
 				2C3C75B72BCA41EE00312F26 /* Realm */,
 				2C3C75B92BCA41EE00312F26 /* RealmSwift */,
 				2C80ECCC2BD2C27D002F38A7 /* SwiftUIIntrospect */,
+				2C80ECE92BDAA551002F38A7 /* SwiftUICalendar */,
 			);
 			productName = NanaLand;
 			productReference = 2C3C75802BCA3ADA00312F26 /* NanaLand.app */;
@@ -600,6 +618,7 @@
 				2C3C75B32BCA3F5A00312F26 /* XCRemoteSwiftPackageReference "lottie-spm" */,
 				2C3C75B62BCA41EE00312F26 /* XCRemoteSwiftPackageReference "realm-swift" */,
 				2C80ECCB2BD2C27D002F38A7 /* XCRemoteSwiftPackageReference "swiftui-introspect" */,
+				2C80ECE82BDAA551002F38A7 /* XCRemoteSwiftPackageReference "SwiftUICalendar" */,
 			);
 			productRefGroup = 2C3C75812BCA3ADA00312F26 /* Products */;
 			projectDirPath = "";
@@ -623,6 +642,7 @@
 				9C6A9C632BCC22CE000413AD /* AppleSDGothicNeoL.ttf in Resources */,
 				2C3C75882BCA3ADC00312F26 /* Assets.xcassets in Resources */,
 				2C1F31C02BCD01240066819F /* AppleSDGothicNeoEB.ttf in Resources */,
+				2C80ECE72BDAA52A002F38A7 /* Localizable.xcstrings in Resources */,
 				2C1F31C62BCD01390066819F /* AppleSDGothicNeoB.ttf in Resources */,
 				2C1F31C52BCD01390066819F /* AppleSDGothicNeoH.ttf in Resources */,
 				2C1F31C42BCD01390066819F /* AppleSDGothicNeoM.ttf in Resources */,
@@ -669,6 +689,7 @@
 				BF9842F12BCE897C00D6A60C /* BannerModel.swift in Sources */,
 				2C3C75C92BCA550200312F26 /* UtilSample.swift in Sources */,
 				2C80ECC32BCFCD69002F38A7 /* Interceptor.swift in Sources */,
+				2C80ECF22BDBE545002F38A7 /* YearMonthDay+.swift in Sources */,
 				2C80ECC12BCFCD1A002F38A7 /* SearchEndPoint.swift in Sources */,
 				2C80EC9E2BCE53E1002F38A7 /* Article.swift in Sources */,
 				2C3C75BF2BCA53EE00312F26 /* HomeMainView.swift in Sources */,
@@ -684,6 +705,7 @@
 				2C3C75D12BCAAFF300312F26 /* FavoriteMainView.swift in Sources */,
 				BF4F6C6C2BD5560A009F070F /* NaNaPickDetailViewModel.swift in Sources */,
 				2C80ECAD2BCF6201002F38A7 /* SearchService.swift in Sources */,
+				2C80ECF02BDBE44C002F38A7 /* RoundedCorners.swift in Sources */,
 				2C1F31D02BCD04AA0066819F /* SearchViewModel.swift in Sources */,
 				2C80ECAA2BCF5DB8002F38A7 /* SearchDetailCategoryResultView.swift in Sources */,
 				2C1F31D72BCD73C00066819F /* Constants.swift in Sources */,
@@ -694,12 +716,14 @@
 				BF0997982BD1FFF900563E9A /* NaNaPickDetailView.swift in Sources */,
 				BF9834232BCE83E300A5C289 /* RecommendModel.swift in Sources */,
 				2C3C75842BCA3ADA00312F26 /* NanaLandApp.swift in Sources */,
+				2C80ECEE2BDBE0CE002F38A7 /* CalendarItem.swift in Sources */,
 				BF1493732BD1097100FC626B /* NaNaPickService.swift in Sources */,
 				BF1493752BD10A4100FC626B /* NaNaPickEndPoint.swift in Sources */,
 				BF98341E2BCE71F000A5C289 /* ExperienceMainView.swift in Sources */,
 				BF1493772BD10E1200FC626B /* NaNaPickMainViewModel.swift in Sources */,
 				2C3C75D32BCAB00C00312F26 /* StoryMainView.swift in Sources */,
 				2C80ECA02BCE55E0002F38A7 /* ArticleItem.swift in Sources */,
+				2C80ECEC2BDAA58C002F38A7 /* CalendarFilterView.swift in Sources */,
 				BF9834152BCE6FF000A5C289 /* NatureMainView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1074,6 +1098,14 @@
 				minimumVersion = 1.1.3;
 			};
 		};
+		2C80ECE82BDAA551002F38A7 /* XCRemoteSwiftPackageReference "SwiftUICalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/GGJJack/SwiftUICalendar";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.14;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1106,6 +1138,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2C80ECCB2BD2C27D002F38A7 /* XCRemoteSwiftPackageReference "swiftui-introspect" */;
 			productName = SwiftUIIntrospect;
+		};
+		2C80ECE92BDAA551002F38A7 /* SwiftUICalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C80ECE82BDAA551002F38A7 /* XCRemoteSwiftPackageReference "SwiftUICalendar" */;
+			productName = SwiftUICalendar;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
