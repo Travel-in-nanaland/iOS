@@ -20,7 +20,7 @@ struct CalendarFilterView: View {
 	@State var currentEndDate: YearMonthDay?
 	
     var body: some View {
-		ZStack {
+		ZStack(alignment: .bottom) {
 			Color.baseBlack.opacity(0.6)
 				.edgesIgnoringSafeArea(.all)
 			
@@ -30,9 +30,8 @@ struct CalendarFilterView: View {
 				calendar
 				bottomButtons
 			}
-			.frame(width: 360)
 			.background(Color.white)
-			.clipShape(RoundedRectangle(cornerRadius: 4))
+			.clipShape(RoundedCorners(radius: 12, corners: [.topLeft, .topRight]))
 			.shadow(color: .baseBlack.opacity(0.1), radius: 10, x: 0, y: -4)
 		}
 		.onAppear {
@@ -122,7 +121,7 @@ struct CalendarFilterView: View {
 	}
 	
 	private var bottomButtons: some View {
-		HStack(spacing: 0) {
+		HStack(spacing: 46) {
 			Button(action: {
 				startDate = nil
 				endDate = nil
@@ -139,15 +138,14 @@ struct CalendarFilterView: View {
 			})
 			.tint(.baseBlack)
 			
-			Spacer()
-			
 			Button(action: {
 				startDate = currentStartDate
 				endDate = currentEndDate
 				dismiss()
 			}, label: {
 				Text(String(localized: "apply"))
-					.frame(width: 209, height: 48)
+					.frame(height: 48)
+					.frame(maxWidth: .infinity)
 			})
 			.tint(.baseWhite)
 			.background(Color.main)
