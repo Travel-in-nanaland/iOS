@@ -22,22 +22,22 @@ struct FavoriteListView: View {
 					ForEach({
 						switch category {
 						case .all:
-							return Array(favoriteVM.state.allFavoriteArticles.data.enumerated())
+							return favoriteVM.state.allFavoriteArticles.data
 						case .nature:
-							return Array(favoriteVM.state.natureFavoriteArticles.data.enumerated())
+							return favoriteVM.state.natureFavoriteArticles.data
 						case .festival:
-							return Array(favoriteVM.state.festivalFavoriteArticles.data.enumerated())
+							return favoriteVM.state.festivalFavoriteArticles.data
 						case .market:
-							return Array(favoriteVM.state.marketFavoriteArticles.data.enumerated())
+							return favoriteVM.state.marketFavoriteArticles.data
 						case .experience:
-							return Array(favoriteVM.state.experienceFavoriteArticles.data.enumerated())
+							return favoriteVM.state.experienceFavoriteArticles.data
 						case .nanaPick:
-							return Array(favoriteVM.state.experienceFavoriteArticles.data.enumerated())
+							return favoriteVM.state.experienceFavoriteArticles.data
 						}
 					}(),
-						id: \.element
-					) { (index, article) in
-						FavoriteArticleItem(index: index, tab: category, article: article)
+						id: \.self
+					) { article in
+						FavoriteArticleItem(tab: category, article: article)
 					}
 					
 					if !favoriteVM.isLastPage(tab: category) {

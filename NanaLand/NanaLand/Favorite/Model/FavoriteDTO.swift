@@ -21,6 +21,16 @@ struct FavoriteListResponse: Codable {
 	}
 }
 
+struct FavoriteToggleRequest: Codable {
+	let id: Int
+	let category: String
+	
+	init(id: Int, category: Category) {
+		self.id = id
+		self.category = category.uppercase
+	}
+}
+
 struct FavoriteArticle: Codable, Hashable {
 	let id: Int
 	let title: String

@@ -19,6 +19,23 @@ enum Category: String, CaseIterable, Codable {
 	var name: String {
 		return NSLocalizedString(self.rawValue, comment: "")
 	}
+	
+	var uppercase: String {
+		switch self {
+		case .all:
+			return ""
+		case .nature:
+			return "NATURE"
+		case .festival:
+			return "FESTIVAL"
+		case .market:
+			return "MARKET"
+		case .experience:
+			return "EXPERIENCE"
+		case .nanaPick:
+			return "NANA"
+		}
+	}
 }
 
 struct SearchResultView: View {

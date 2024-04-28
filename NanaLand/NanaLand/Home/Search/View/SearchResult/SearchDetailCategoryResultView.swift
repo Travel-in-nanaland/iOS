@@ -58,7 +58,11 @@ struct SearchDetailCategoryResultView: View {
 					}(),
 						id: \.id
 					) { article in
-						ArticleItem(category: tab, article: article)
+						ArticleItem(category: tab, article: article, onTapHeart: {
+							Task {
+								await searchVM.action(.didTapHeartInSearchDetail(category: tab, article: article))
+							}
+						})
 					}
 					
 					if !searchVM.isLastPage(tab: tab) {

@@ -11,6 +11,7 @@ import Kingfisher
 struct ArticleItem: View {
 	let category: Category
 	let article: Article
+	let onTapHeart: () -> Void
 	
 	let itemWidth = (Constants.screenWidth-40)/2
 	
@@ -30,7 +31,7 @@ struct ArticleItem: View {
 		}
 		.overlay(alignment: .topTrailing) {
 			Button(action: {
-				
+				onTapHeart()
 			}, label: {
 				Image(article.favorite ? .icHeartFillMain : .icHeartDefault)
 					.padding(.top, 4)
@@ -41,5 +42,5 @@ struct ArticleItem: View {
 }
 
 #Preview {
-	ArticleItem(category: .experience, article: Article(id: 0, thumbnailUrl: "http://tong.visitkorea.or.kr/cms/resource/85/3076985_image3_1.jpg", title: "근하신뇽! 새해도 9.81파크와 함께해용", favorite: true))
+	ArticleItem(category: .experience, article: Article(id: 0, thumbnailUrl: "http://tong.visitkorea.or.kr/cms/resource/85/3076985_image3_1.jpg", title: "근하신뇽! 새해도 9.81파크와 함께해용", favorite: true), onTapHeart: {})
 }

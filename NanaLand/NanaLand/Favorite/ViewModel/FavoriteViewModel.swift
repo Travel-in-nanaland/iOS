@@ -23,15 +23,13 @@ class FavoriteViewModel: ObservableObject {
 		var marketFavoriteArticlePage: Int = 0
 		var festivalFavoriteArticlePage: Int = 0
 		var experienceFavoriteArticlePage: Int = 0
-		
-		// 찜 토글 API 호출 결과 임시저장
-		var currentFavoriteResult: Bool = false
 	}
 	
 	enum Action {
 		case getFavoriteList(category: Category)
-		case didTapHeart(category: Category, article: Article)
-		case deleteItemInFavoriteList(index: Int, category: Category)
+//		case didTapHeart(article: Article, category: Category)
+		// 찜 리스트에서 하트 누른 경우 -> 리스트에서 삭제
+		case deleteItemInFavoriteList(tab: Category, article: FavoriteArticle)
 		case refreshData(category: Category)
 	}
 	
@@ -48,11 +46,11 @@ class FavoriteViewModel: ObservableObject {
 		case let .getFavoriteList(category: category):
 			await fetchFavoriteList(category: category)
 			
-		case let .didTapHeart(category: category, article: article):
-			state.currentFavoriteResult = await toggleFavorite(category: category, article: article)
+//		case let .didTapHeart(article, category):
+//			await toggleFavorite(article: article, category: category)
 			
-		case let .deleteItemInFavoriteList(index: index, category: category):
-			await deleteFavoriteArticle(index: index, category: category)
+		case let .deleteItemInFavoriteList(tab, article):
+			await deleteFavoriteArticle(article: article, tab: tab)
 			
 		case let .refreshData(category: category):
 			await refreshData(category: category)
@@ -186,43 +184,34 @@ class FavoriteViewModel: ObservableObject {
 		}
 	}
 	
-	private func toggleFavorite(category: Category, article: Article) async -> Bool {
-		switch category {
-		case .nature:
-			return await FavoriteService.toggleFavoriteNature(id: article.id)?.data.favorite ?? false
-		case .festival:
-			return await FavoriteService.toggleFavoriteFestival(id: article.id)?.data.favorite ?? false
-		case .market:
-			return await FavoriteService.toggleFavoriteMarket(id: article.id)?.data.favorite ?? false
-		case .experience:
-			return await FavoriteService.toggleFavoriteExperience(id: article.id)?.data.favorite ?? false
-		case .nanaPick:
-			return await FavoriteService.toggleFavoriteNana(id: article.id)?.data.favorite ?? false
-		default:
-			print("error toggleFavorite")
-			return false
-		}
+	private func toggleFavorite(article: Article, category: Category) async {
+		await FavoriteService.toggleFavorite(id: article.id, category: category)?.data.favorite
 	}
 	
-	private func deleteFavoriteArticle(index: Int, category: Category) async {
-		switch category {
+	private func deleteFavoriteArticle(article: FavoriteArticle, tab: Category) async {
+		let result = await FavoriteService.toggleFavorite(id: article.id, category: article.category)
+		
+		guard let isFavorite = result?.data.favorite, !isFavorite
+		else {return}
+		
+		switch tab {
 		case .all:
-			state.allFavoriteArticles.data.remove(at: index)
+			state.allFavoriteArticles.data.removeAll(where: {$0 == article})
 			state.allFavoriteArticles.totalElements -= 1
 		case .nature:
-			state.natureFavoriteArticles.data.remove(at: index)
+			state.natureFavoriteArticles.data.removeAll(where: {$0 == article})
 			state.natureFavoriteArticles.totalElements -= 1
 		case .festival:
-			state.festivalFavoriteArticles.data.remove(at: index)
+			state.festivalFavoriteArticles.data.removeAll(where: {$0 == article})
 			state.festivalFavoriteArticles.totalElements -= 1
 		case .market:
-			state.marketFavoriteArticles.data.remove(at: index)
+			state.marketFavoriteArticles.data.removeAll(where: {$0 == article})
 			state.marketFavoriteArticles.totalElements -= 1
 		case .experience:
-			state.experienceFavoriteArticles.data.remove(at: index)
+			state.experienceFavoriteArticles.data.removeAll(where: {$0 == article})
 			state.experienceFavoriteArticles.totalElements -= 1
 		case .nanaPick:
-			state.allFavoriteArticles.data.remove(at: index)
+			state.allFavoriteArticles.data.removeAll(where: {$0 == article})
 			state.allFavoriteArticles.totalElements -= 1
 		}
 	}

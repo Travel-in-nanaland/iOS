@@ -9,11 +9,7 @@ import Foundation
 import Alamofire
 
 enum FavoriteEndPoint {
-	case toggleNature(id: Int)
-	case toggleExperience(id: Int)
-	case toggleMarket(id: Int)
-	case toggleFestival(id: Int)
-	case toggleNana(id: Int)
+	case toggleFavorite(body: FavoriteToggleRequest)
 	case getAllFavoriteList(page: Int)
 	case getNatureFavoriteList(page: Int)
 	case getMarketFavoriteList(page: Int)
@@ -23,37 +19,29 @@ enum FavoriteEndPoint {
 
 extension FavoriteEndPoint: EndPoint {
 	var baseURL: String {
-		return "\(Secrets.baseUrl)"
+		return "\(Secrets.baseUrl)/favorite"
 	}
 	
 	var path: String {
 		switch self {
-		case .toggleNature(let id):
-			return "/nature/like/\(id)"
-		case .toggleExperience(let id):
-			return "/experience/like/\(id)"
-		case .toggleMarket(let id):
-			return "/market/like/\(id)"
-		case .toggleFestival(let id):
-			return "/festival/like/\(id)"
-		case .toggleNana(let id):
-			return "/nana/like/\(id)"
+		case let .toggleFavorite(body):
+			return "/like/\(body.id)"
 		case .getAllFavoriteList:
-			return "/favorite/all/list"
+			return "/all/list"
 		case .getNatureFavoriteList:
-			return "/favorite/nature/list"
+			return "/nature/list"
 		case .getMarketFavoriteList:
-			return "/favorite/market/list"
+			return "/market/list"
 		case .getFestivalFavoriteList:
-			return "/favorite/festival/list"
+			return "/festival/list"
 		case .getExperienceFavoriteList:
-			return "/favorite/experience/list"
+			return "/experience/list"
 		}
 	}
 	
 	var method: HTTPMethod {
 		switch self {
-		case .toggleNature, .toggleExperience, .toggleMarket, .toggleFestival, .toggleNana:
+		case .toggleFavorite:
 			return .post
 		case .getAllFavoriteList, .getNatureFavoriteList, .getMarketFavoriteList, .getFestivalFavoriteList, .getExperienceFavoriteList:
 			return .get
@@ -62,8 +50,8 @@ extension FavoriteEndPoint: EndPoint {
 	
 	var task: APITask {
 		switch self {
-		case .toggleNature, .toggleExperience, .toggleMarket, .toggleFestival, .toggleNana:
-			return .requestPlain
+		case let .toggleFavorite(body: body):
+			return .requestJSONEncodable(body: body)
 		case let .getAllFavoriteList(page: page):
 			let param: [String: Any] = [
 				"page": page

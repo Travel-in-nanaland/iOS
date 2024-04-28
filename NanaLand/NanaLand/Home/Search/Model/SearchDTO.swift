@@ -18,10 +18,10 @@ struct SearchDetailCategoryResponse: Codable {
 }
 
 struct SearchAllCategoryResponse: Codable {
-	let festival: SearchDetailCategoryResponse
-	let nature: SearchDetailCategoryResponse
-	let experience: SearchDetailCategoryResponse
-	let market: SearchDetailCategoryResponse
+	var festival: SearchDetailCategoryResponse
+	var nature: SearchDetailCategoryResponse
+	var experience: SearchDetailCategoryResponse
+	var market: SearchDetailCategoryResponse
 	
 	init(
 		festival: SearchDetailCategoryResponse = SearchDetailCategoryResponse(),

@@ -10,7 +10,6 @@ import Kingfisher
 
 struct FavoriteArticleItem: View {
 	@EnvironmentObject var favoriteVM: FavoriteViewModel
-	let index: Int
 	let tab: Category
 	let article: FavoriteArticle
 	
@@ -33,7 +32,7 @@ struct FavoriteArticleItem: View {
 		.overlay(alignment: .topTrailing) {
 			Button(action: {
 				Task {
-					await favoriteVM.action(.deleteItemInFavoriteList(index: index, category: tab))
+					await favoriteVM.action(.deleteItemInFavoriteList(tab: tab, article: article))
 				}
 			}, label: {
 				Image(.icHeartFillMain)
@@ -46,5 +45,5 @@ struct FavoriteArticleItem: View {
 }
 
 #Preview {
-	FavoriteArticleItem(index: 0, tab: .all, article: FavoriteArticle(id: 0, title: "근하신뇽! 새해도 9.81파크와 함께해용", thumbnailUrl: "http://tong.visitkorea.or.kr/cms/resource/85/3076985_image3_1.jpg", category: "MARKET"))
+	FavoriteArticleItem(tab: .all, article: FavoriteArticle(id: 0, title: "근하신뇽! 새해도 9.81파크와 함께해용", thumbnailUrl: "http://tong.visitkorea.or.kr/cms/resource/85/3076985_image3_1.jpg", category: "MARKET"))
 }

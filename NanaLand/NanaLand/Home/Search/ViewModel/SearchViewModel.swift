@@ -33,6 +33,8 @@ final class SearchViewModel: ObservableObject {
 	
 	enum Action {
 		case searchTerm(category: Category, term: String)
+		case didTapHeartInSearchAll(tab: Category, article: Article)
+		case didTapHeartInSearchDetail(category: Category, article: Article)
 	}
 	
 	@Published var state: State
@@ -47,6 +49,10 @@ final class SearchViewModel: ObservableObject {
 		switch action {
 		case let .searchTerm(category: category, term: term):
 			await search(category: category, term: term)
+		case let .didTapHeartInSearchAll(tab, article):
+			await didTapHeartInSearchAll(tab: tab, article: article)
+		case let .didTapHeartInSearchDetail(category, article):
+			await didTapHeartInSearchDetail(category: category, article: article)
 		}
 	}
 	
@@ -203,6 +209,72 @@ final class SearchViewModel: ObservableObject {
 			return state.experienceCategorySearchResult.totalElements == state.experienceCategorySearchResult.data.count
 		case .nanaPick:
 			return false
+		}
+	}
+	
+	private func didTapHeartInSearchAll(tab: Category, article: Article) async {
+		guard tab != .all,
+			  let result = await FavoriteService.toggleFavorite(id: article.id, category: tab)
+		else {return}
+		
+		switch tab {
+		case .all:
+			print("didTapHeartInSearchAll - all은 허용되지 않음")
+		case .nature:
+			if let index = state.allCategorySearchResult.nature.data.firstIndex(where: {$0 == article}) {
+				state.allCategorySearchResult.nature.data[index].favorite = result.data.favorite
+			}
+			
+		case .festival:
+			if let index = state.allCategorySearchResult.festival.data.firstIndex(where: {$0 == article}) {
+				state.allCategorySearchResult.festival.data[index].favorite = result.data.favorite
+			}
+			
+		case .market:
+			if let index = state.allCategorySearchResult.market.data.firstIndex(where: {$0 == article}) {
+				state.allCategorySearchResult.market.data[index].favorite = result.data.favorite
+			}
+			
+		case .experience:
+			if let index = state.allCategorySearchResult.experience.data.firstIndex(where: {$0 == article}) {
+				state.allCategorySearchResult.experience.data[index].favorite = result.data.favorite
+			}
+			
+		case .nanaPick:
+			print("didTapHeartInSearchAll - nanapick 개발 중")
+		}
+	}
+	
+	private func didTapHeartInSearchDetail(category: Category, article: Article) async {
+		guard category != .all,
+			  let result = await FavoriteService.toggleFavorite(id: article.id, category: category)
+		else {return}
+		
+		switch category {
+		case .all:
+			print("didTapHeartInSearchDetail - all은 허용되지 않음")
+		case .nature:
+			if let index = state.natureCategorySearchResult.data.firstIndex(where: {$0 == article}) {
+				state.natureCategorySearchResult.data[index].favorite = result.data.favorite
+			}
+			
+		case .festival:
+			if let index = state.festivalCategorySearchResult.data.firstIndex(where: {$0 == article}) {
+				state.festivalCategorySearchResult.data[index].favorite = result.data.favorite
+			}
+			
+		case .market:
+			if let index = state.marketCategorySearchResult.data.firstIndex(where: {$0 == article}) {
+				state.marketCategorySearchResult.data[index].favorite = result.data.favorite
+			}
+			
+		case .experience:
+			if let index = state.experienceCategorySearchResult.data.firstIndex(where: {$0 == article}) {
+				state.experienceCategorySearchResult.data[index].favorite = result.data.favorite
+			}
+			
+		case .nanaPick:
+			print("didTapHeartInSearchDetail - nanapick은 허용되지 않음")
 		}
 	}
 }

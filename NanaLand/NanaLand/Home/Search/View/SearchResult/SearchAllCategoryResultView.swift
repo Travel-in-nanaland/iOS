@@ -82,10 +82,18 @@ struct SearchAllCategoryItem: View {
 			
 			if !articles.isEmpty {
 				HStack(spacing: 8) {
-					ArticleItem(category: category, article: articles[0])
+					ArticleItem(category: category, article: articles[0], onTapHeart: {
+						Task {
+							await searchVM.action(.didTapHeartInSearchAll(tab: category, article: articles[0]))
+						}
+					})
 					
 					if articles.count >= 2 {
-						ArticleItem(category: category, article: articles[1])
+						ArticleItem(category: category, article: articles[1], onTapHeart: {
+							Task {
+								await searchVM.action(.didTapHeartInSearchAll(tab: category, article: articles[1]))
+							}
+						})
 						
 					} else {
 						Spacer()

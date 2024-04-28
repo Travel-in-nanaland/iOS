@@ -9,24 +9,8 @@ import Foundation
 import Alamofire
 
 struct FavoriteService {
-	static func toggleFavoriteNature(id: Int) async -> BaseResponse<ToggleFavoriteResponse>? {
-		return await NetworkManager.shared.request(FavoriteEndPoint.toggleNature(id: id))
-	}
-	
-	static func toggleFavoriteExperience(id: Int) async -> BaseResponse<ToggleFavoriteResponse>? {
-		return await NetworkManager.shared.request(FavoriteEndPoint.toggleExperience(id: id))
-	}
-	
-	static func toggleFavoriteMarket(id: Int) async -> BaseResponse<ToggleFavoriteResponse>? {
-		return await NetworkManager.shared.request(FavoriteEndPoint.toggleMarket(id: id))
-	}
-	
-	static func toggleFavoriteFestival(id: Int) async -> BaseResponse<ToggleFavoriteResponse>? {
-		return await NetworkManager.shared.request(FavoriteEndPoint.toggleFestival(id: id))
-	}
-	
-	static func toggleFavoriteNana(id: Int) async -> BaseResponse<ToggleFavoriteResponse>? {
-		return await NetworkManager.shared.request(FavoriteEndPoint.toggleNana(id: id))
+	static func toggleFavorite(id: Int, category: Category) async -> BaseResponse<ToggleFavoriteResponse>? {
+		return await NetworkManager.shared.request(FavoriteEndPoint.toggleFavorite(body: FavoriteToggleRequest(id: id, category: category)))
 	}
 	
 	static func getAllFavoriteList(page: Int) async -> BaseResponse<FavoriteListResponse>? {
