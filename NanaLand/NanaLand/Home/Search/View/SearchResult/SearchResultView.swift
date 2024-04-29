@@ -44,6 +44,11 @@ struct SearchResultView: View {
 	
 	@State var searchTerm: String
 	
+	@State var isNatureSearchIsDone: Bool = false
+	@State var isMarketSearchIsDone: Bool = false
+	@State var isFestivalSearchIsDone: Bool = false
+	@State var isExperienceSearchIsDone: Bool = false
+	
 	let tabs: [Category] = Category.allCases
 	
     var body: some View {
@@ -69,6 +74,10 @@ struct SearchResultView: View {
 				searchTerm: $searchTerm,
 				searchAction: {
 					await searchVM.action(.searchTerm(category: .all, term: searchTerm))
+					isNatureSearchIsDone = false
+					isMarketSearchIsDone = false
+					isFestivalSearchIsDone = false
+					isExperienceSearchIsDone = false
 				}
 			)
 		}
@@ -108,15 +117,48 @@ struct SearchResultView: View {
 			
 			SearchDetailCategoryResultView(tab: .nature, searchTerm: searchTerm)
 				.tag(Category.nature)
+				.onAppear {
+					if !isNatureSearchIsDone {
+						Task {
+							print("search Nature")
+							await searchVM.action(.searchTerm(category: .nature, term: searchTerm))
+						}
+						isNatureSearchIsDone = true
+					}
+				}
 			
 			SearchDetailCategoryResultView(tab: .festival, searchTerm: searchTerm)
 				.tag(Category.festival)
+				.onAppear {
+					if !isFestivalSearchIsDone {
+						Task {
+							await searchVM.action(.searchTerm(category: .festival, term: searchTerm))
+						}
+						isFestivalSearchIsDone = true
+					}
+				}
 			
 			SearchDetailCategoryResultView(tab: .market, searchTerm: searchTerm)
 				.tag(Category.market)
+				.onAppear {
+					if !isMarketSearchIsDone {
+						Task {
+							await searchVM.action(.searchTerm(category: .market, term: searchTerm))
+						}
+						isMarketSearchIsDone = true
+					}
+				}
 			
 			SearchDetailCategoryResultView(tab: .experience, searchTerm: searchTerm)
 				.tag(Category.experience)
+				.onAppear {
+					if !isExperienceSearchIsDone {
+						Task {
+							await searchVM.action(.searchTerm(category: .experience, term: searchTerm))
+						}
+						isExperienceSearchIsDone = true
+					}
+				}
 		}
 		.tabViewStyle(.page(indexDisplayMode: .never))
 		.introspect(.scrollView, on: .iOS(.v16, .v17)) { scrollView in

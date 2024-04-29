@@ -78,12 +78,6 @@ struct SearchDetailCategoryResultView: View {
 		}
 		.padding(.horizontal, 16)
 		.padding(.top, 30)
-		.task {
-			if !isInit {
-				await searchVM.action(.searchTerm(category: tab, term: searchTerm))
-				isInit = true
-			}
-		}
     }
 	
 	
