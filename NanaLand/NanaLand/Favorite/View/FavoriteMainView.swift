@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftUIIntrospect
 
 struct FavoriteMainView: View {
-	@ObservedObject var favoriteVM = FavoriteViewModel()
+	@StateObject var favoriteVM = FavoriteViewModel()
 	
 	@State var currentTab: Category = .all
 	let tabs: [Category] = Category.allCases
@@ -71,6 +71,7 @@ struct FavoriteMainView: View {
 			FavoriteListView(category: .experience)
 				.tag(Category.experience)
 		}
+		.environmentObject(favoriteVM)
 		.tabViewStyle(.page(indexDisplayMode: .never))
 		.introspect(.scrollView, on: .iOS(.v16, .v17)) { scrollView in
 			scrollView.isScrollEnabled = false
