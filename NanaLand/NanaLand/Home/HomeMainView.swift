@@ -10,7 +10,7 @@ import Kingfisher
 
 struct HomeMainView: View {
     @ObservedObject var viewModel = HomeMainViewModel()
-	@ObservedObject var searchVM = SearchViewModel()
+	@StateObject var searchVM = SearchViewModel()
     
     var body: some View {
         NavigationStack {
