@@ -32,4 +32,8 @@ struct SearchService {
 	static func getPopularKeyword() async -> BaseResponse<[String]>? {
 		return await NetworkManager.shared.request(SearchEndPoint.getPopularKeyword)
 	}
+	
+	static func getVolumeUp() async -> BaseResponse<[ArticleWithCategory]>? {
+		return await NetworkManager.shared.request(SearchEndPoint.getVolumeUp)
+	}
 }

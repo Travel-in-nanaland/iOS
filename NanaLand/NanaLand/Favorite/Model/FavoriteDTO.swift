@@ -37,15 +37,11 @@ struct FavoriteArticle: Codable, Hashable {
 	let thumbnailUrl: String
 	let category: Category
 	
-	// 찜 리스트에서 제거를 위한 변수
-	var isFavorite: Bool
-	
 	init(
 		id: Int,
 		title: String,
 		thumbnailUrl: String,
-		category: String,
-		isFavorite: Bool = true
+		category: String
 	) {
 		self.id = id
 		self.title = title
@@ -65,7 +61,6 @@ struct FavoriteArticle: Codable, Hashable {
 				return .nature
 			}
 		}()
-		self.isFavorite = isFavorite
 	}
 	
 	init(from decoder: any Decoder) throws {
@@ -90,8 +85,6 @@ struct FavoriteArticle: Codable, Hashable {
 				return .nature
 			}
 		}()
-		
-		self.isFavorite = true
 	}
 	
 //	var categoryType: Category = {

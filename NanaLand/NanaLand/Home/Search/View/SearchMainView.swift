@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct SearchMainView: View {
 	@Environment(\.dismiss) var dismiss
@@ -13,6 +14,8 @@ struct SearchMainView: View {
 	
 	@State var searchTerm = ""
 	@State var showResultView: Bool = false
+	
+	let itemWidth = (Constants.screenWidth-40)/2
 	
     var body: some View {
 		VStack(spacing: 0) {
@@ -30,6 +33,10 @@ struct SearchMainView: View {
 		.toolbar(.hidden, for: .navigationBar)
 		.navigationDestination(isPresented: $showResultView) {
 			SearchResultView(searchTerm: searchTerm)
+		}
+		.task {
+			await searchVM.action(.getPopularKeyword)
+			await searchVM.action(.getVolumeUp)
 		}
     }
 	
@@ -156,23 +163,25 @@ struct SearchMainView: View {
 				.frame(width: (Constants.screenWidth-32)/2)
 				
 				// 5~8위
-				VStack(spacing: 16) {
-					ForEach(4..<min(searchVM.state.popularSearchTerms.count, 8), id: \.self) { index in
-						HStack(spacing: 8) {
-							Text("\(index+1).")
-							Text("\(searchVM.state.popularSearchTerms[index])")
-							Spacer()
-						}
-						.font(.gothicNeo(.medium, size: 14))
-						.foregroundStyle(Color.gray1)
-						.onTapGesture {
-							Task {
-								await search(term: searchVM.state.popularSearchTerms[index])
+				if searchVM.state.popularSearchTerms.count > 4 {
+					VStack(spacing: 16) {
+						ForEach(4..<min(searchVM.state.popularSearchTerms.count, 8), id: \.self) { index in
+							HStack(spacing: 8) {
+								Text("\(index+1).")
+								Text("\(searchVM.state.popularSearchTerms[index])")
+								Spacer()
+							}
+							.font(.gothicNeo(.medium, size: 14))
+							.foregroundStyle(Color.gray1)
+							.onTapGesture {
+								Task {
+									await search(term: searchVM.state.popularSearchTerms[index])
+								}
 							}
 						}
 					}
+					.frame(width: (Constants.screenWidth-32)/2)
 				}
-				.frame(width: (Constants.screenWidth-32)/2)
 			}
 		}
 		.padding(.horizontal, 16)
@@ -188,16 +197,30 @@ struct SearchMainView: View {
 			LazyVGrid(
 				columns: [GridItem(.flexible()), GridItem(.flexible())]
 			) {
-				ForEach(0..<16) { _ in
+				ForEach(searchVM.state.searchVolumeResult, id: \.self) { article in
 					VStack(alignment: .leading, spacing: 8) {
-						Rectangle()
-							.fill(Color.main)
+						KFImage(URL(string: article.thumbnailUrl))
+							.resizable()
+							.aspectRatio(contentMode: .fill)
+							.frame(width: itemWidth, height: itemWidth*120/175)
+							.clipped()
 							.clipShape(RoundedRectangle(cornerRadius: 12))
-							.frame(width: (Constants.screenWidth-40)/2, height: 148)
 						
-						Text(searchVM.state.placeString)
+						Text(article.title)
 							.font(.gothicNeo(.bold, size: 14))
 							.foregroundStyle(Color.baseBlack)
+							.lineLimit(1)
+					}
+					.overlay(alignment: .topTrailing) {
+						Button(action: {
+							Task {
+								await searchVM.action(.didTapHeartInVolumeUp(article: article))
+							}
+						}, label: {
+							Image(article.favorite ? .icHeartFillMain : .icHeartDefault)
+								.padding(.top, 4)
+								.padding(.trailing, 4)
+						})
 					}
 				}
 			}

@@ -20,6 +20,9 @@ enum SearchEndPoint {
 	
 	// 인기 검색어 조회
 	case getPopularKeyword
+	
+	// 검색량up
+	case getVolumeUp
 }
 
 extension SearchEndPoint: EndPoint {
@@ -41,6 +44,8 @@ extension SearchEndPoint: EndPoint {
 			return "/experience"
 		case .getPopularKeyword:
 			return "/popular"
+		case .getVolumeUp:
+			return "/volume"
 		}
 	}
 	
@@ -57,6 +62,8 @@ extension SearchEndPoint: EndPoint {
 		case .getSearchExperienceCategory:
 			return .get
 		case .getPopularKeyword:
+			return .get
+		case .getVolumeUp:
 			return .get
 		}
 	}
@@ -91,6 +98,8 @@ extension SearchEndPoint: EndPoint {
 			]
 			return .requestParameters(parameters: param)
 		case .getPopularKeyword:
+			return .requestPlain
+		case .getVolumeUp:
 			return .requestPlain
 		}
 	}
