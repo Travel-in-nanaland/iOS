@@ -23,13 +23,13 @@ struct SearchDetailCategoryResultView: View {
 					case .all:
 						return ""
 					case .nature:
-						return "\(searchVM.state.natureCategorySearchResult.count)건"
+						return "\(searchVM.state.natureCategorySearchResult.totalElements)건"
 					case .festival:
-						return "\(searchVM.state.festivalCategorySearchResult.count)건"
+						return "\(searchVM.state.festivalCategorySearchResult.totalElements)건"
 					case .market:
-						return "\(searchVM.state.marketCategorySearchResult.count)건"
+						return "\(searchVM.state.marketCategorySearchResult.totalElements)건"
 					case .experience:
-						return "\(searchVM.state.experienceCategorySearchResult.count)건"
+						return "\(searchVM.state.experienceCategorySearchResult.totalElements)건"
 					case .nanaPick:
 						return ""
 					}
@@ -58,7 +58,11 @@ struct SearchDetailCategoryResultView: View {
 					}(),
 						id: \.id
 					) { article in
-						ArticleItem(article: article)
+						ArticleItem(category: tab, article: article, onTapHeart: {
+							Task {
+								await searchVM.action(.didTapHeartInSearchDetail(category: tab, article: article))
+							}
+						})
 					}
 					
 					if !searchVM.isLastPage(tab: tab) {
@@ -74,12 +78,6 @@ struct SearchDetailCategoryResultView: View {
 		}
 		.padding(.horizontal, 16)
 		.padding(.top, 30)
-		.task {
-			if !isInit {
-				await searchVM.action(.searchTerm(category: tab, term: searchTerm))
-				isInit = true
-			}
-		}
     }
 	
 	
@@ -87,4 +85,5 @@ struct SearchDetailCategoryResultView: View {
 
 #Preview {
 	SearchDetailCategoryResultView(tab: .experience, searchTerm: "제주시")
+		.environmentObject(SearchViewModel())
 }

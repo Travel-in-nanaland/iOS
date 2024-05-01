@@ -20,7 +20,7 @@ struct NanaLandTabView: View {
 			HomeMainView()
 				.tabItem {
 					Label(
-						title: { Text("홈").font(.gothicNeo(.semibold, size: 10)) },
+						title: { Text(String(localized: "home")).font(.gothicNeo(.semibold, size: 10)) },
 						icon: { appState.currentTab == .home ? Image(.icHomeFill) : Image(.icHome) }
 					)
 				}
@@ -29,7 +29,7 @@ struct NanaLandTabView: View {
 			FavoriteMainView()
 				.tabItem {
 					Label(
-						title: { Text("찜").font(.gothicNeo(.semibold, size: 10)) },
+						title: { Text(String(localized: "favorite")).font(.gothicNeo(.semibold, size: 10)) },
 						icon: { appState.currentTab == .favorite ? Image(.icHeartFill) : Image(.icHeart) }
 					)
 				}
@@ -38,7 +38,7 @@ struct NanaLandTabView: View {
 			StoryMainView()
 				.tabItem {
 					Label(
-						title: { Text("제주 이야기").font(.gothicNeo(.semibold, size: 10)) },
+						title: { Text(String(localized: "community")).font(.gothicNeo(.semibold, size: 10)) },
 						icon: { appState.currentTab == .story ? Image(.icStoryFill) : Image(.icStory) }
 					)
 				}
@@ -47,7 +47,7 @@ struct NanaLandTabView: View {
 			ProfileMainView()
 				.tabItem {
 					Label(
-						title: { Text("나의 나나").font(.gothicNeo(.semibold, size: 10)) },
+						title: { Text(String(localized: "myNana")).font(.gothicNeo(.semibold, size: 10)) },
 						icon: { appState.currentTab == .profile ? Image(.icMyPageFill) : Image(.icMyPage) }
 					)
 				}

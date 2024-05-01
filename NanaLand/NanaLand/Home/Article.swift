@@ -7,8 +7,9 @@
 
 import Foundation
 
-struct Article: Codable {
+struct Article: Codable, Hashable {
 	let id: Int
 	let thumbnailUrl: String
 	let title: String
+	var favorite: Bool
 }
