@@ -18,29 +18,29 @@ struct SearchDetailCategoryResultView: View {
     var body: some View {
 		ScrollView(.vertical, showsIndicators: false) {
 			VStack(alignment: .leading, spacing: 17) {
-				Text({
-					switch tab {
-					case .all:
-						return ""
-					case .nature:
-						return "\(searchVM.state.natureCategorySearchResult.count)건"
-					case .festival:
-						return "\(searchVM.state.festivalCategorySearchResult.count)건"
-					case .market:
-						return "\(searchVM.state.marketCategorySearchResult.count)건"
-					case .experience:
-						return "\(searchVM.state.experienceCategorySearchResult.count)건"
-					case .nanaPick:
-						return ""
-					}
-				}())
-					.font(.gothicNeo(.medium, size: 14))
-					.foregroundStyle(Color.gray1)
+//                Text({
+//					switch tab {
+//                    case .all:
+//						return ""
+//					case .nature:
+//						return "\(searchVM.state.natureCategorySearchResult.count)건"
+//					case .festival:
+//						return "\(searchVM.state.festivalCategorySearchResult.count)건"
+//					case .market:
+//						return "\(searchVM.state.marketCategorySearchResult.count)건"
+//					case .experience:
+//						return "\(searchVM.state.experienceCategorySearchResult.count)건"
+//                    case .nanaPick:
+//                        return ""
+//					}
+//				}())
+//					.font(.gothicNeo(.medium, size: 14))
+//					.foregroundStyle(Color.gray1)
 				
 				LazyVGrid(
 					columns: [GridItem(.flexible()), GridItem(.flexible())]
 				) {
-					ForEach({
+                    ForEach({ () -> [Article] in
 						switch tab {
 						case .all:
 							return [] as [Article]

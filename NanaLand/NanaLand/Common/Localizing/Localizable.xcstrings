@@ -1,0 +1,335 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%@" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
+    },
+    "%@: " : {
+
+    },
+    "%d" : {
+
+    },
+    "%lld." : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
+    },
+    "%lld건" : {
+
+    },
+    "2건" : {
+
+    },
+    "3건" : {
+
+    },
+    "7대자연" : {
+
+    },
+    "all" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "전체"
+          }
+        }
+      }
+    },
+    "community" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "제주 이야기"
+          }
+        }
+      }
+    },
+    "experience" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이색 체험"
+          }
+        }
+      }
+    },
+    "favorite" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "찜"
+          }
+        }
+      }
+    },
+    "festival" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "축제"
+          }
+        }
+      }
+    },
+    "hashtag" : {
+
+    },
+    "hashtag %lld" : {
+
+    },
+    "hello" : {
+
+    },
+    "Hello, World!" : {
+
+    },
+    "helo" : {
+
+    },
+    "home" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "홈"
+          }
+        }
+      }
+    },
+    "inputSearchTerm" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "검색어를 입력해 주세요"
+          }
+        }
+      }
+    },
+    "market" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "전통시장"
+          }
+        }
+      }
+    },
+    "myNana" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "나의 나나"
+          }
+        }
+      }
+    },
+    "nanaPick" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "나나's Pick"
+          }
+        }
+      }
+    },
+    "nature" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "7대 자연"
+          }
+        }
+      }
+    },
+    "noRecentSearchTerm" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "최근 검색어가 없습니다."
+          }
+        }
+      }
+    },
+    "noResult" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "검색 결과가 없습니다."
+          }
+        }
+      }
+    },
+    "photo" : {
+
+    },
+    "recentSearchTerm" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "최근 검색어"
+          }
+        }
+      }
+    },
+    "region" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지역"
+          }
+        }
+      }
+    },
+    "removeAll" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "모두 지우기"
+          }
+        }
+      }
+    },
+    "searchVolumeUpJejuPlace" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "검색량 UP ! JEJU Place 🍊"
+          }
+        }
+      }
+    },
+    "Selected Location: %@" : {
+
+    },
+    "title" : {
+
+    },
+    "가장 많이 " : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
+    },
+    "감자마케터 님을 위한 도민 추천 🍊" : {
+
+    },
+    "검색하고 있어요!" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
+    },
+    "나의 나나" : {
+
+    },
+    "날짜" : {
+
+    },
+    "날짜 선택 뷰" : {
+
+    },
+    "더 보기" : {
+
+    },
+    "연락처" : {
+
+    },
+    "이색 체험" : {
+
+    },
+    "이용시간" : {
+
+    },
+    "전통시장" : {
+
+    },
+    "정보 수정 제안" : {
+
+    },
+    "제주 이야기" : {
+
+    },
+    "제주도는 지금 유채꽃 축제🏵️" : {
+
+    },
+    "주소" : {
+
+    },
+    "지역" : {
+
+    },
+    "지역을 선택해주세요" : {
+
+    },
+    "찜" : {
+
+    },
+    "축제" : {
+
+    },
+    "편의시설" : {
+
+    },
+    "홈" : {
+
+    },
+    "홈페이지" : {
+
+    }
+  },
+  "version" : "1.0"
+}

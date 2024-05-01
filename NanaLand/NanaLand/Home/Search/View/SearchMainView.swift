@@ -148,7 +148,7 @@ struct SearchMainView: View {
 						.foregroundStyle(index == 0 || index == 1 ? Color.main : Color.gray1)
 						.onTapGesture {
 							Task {
-							await search(term: searchVM.state.popularSearchTerms[index])
+//							await search(term: searchVM.state.popularSearchTerms[index])
 							}
 						}
 					}
@@ -167,7 +167,7 @@ struct SearchMainView: View {
 						.foregroundStyle(Color.gray1)
 						.onTapGesture {
 							Task {
-								await search(term: searchVM.state.popularSearchTerms[index])
+//								await search(term: searchVM.state.popularSearchTerms[index])
 							}
 						}
 					}
