@@ -1,4 +1,5 @@
 {
+  "originHash" : "08faf1dbd9c4944474490612f67d7f0f3875dc05add20dec16e6845027299080",
   "pins" : [
     {
       "identity" : "alamofire",
@@ -52,6 +53,15 @@
       "state" : {
         "revision" : "0cd2a5a5895306bc21d54a2254302d24a9a571e4",
         "version" : "1.1.3"
+      }
+    },
+    {
+      "identity" : "swiftuicalendar",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/GGJJack/SwiftUICalendar",
+      "state" : {
+        "revision" : "7ecd220909bc25529e35e2addb513a20abbfec82",
+        "version" : "0.1.14"
       }
     }
   ],
