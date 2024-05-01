@@ -70,3 +70,57 @@ extension Font {
 		return .custom(weight.name, size: size)
 	}
 }
+
+extension Font {
+	static var largeTitle01: Font {
+		return .gothicNeo(.bold, size: 28)
+	}
+	
+	static var largeTitle02: Font {
+		return .gothicNeo(.bold, size: 22)
+	}
+	
+	static var title01_bold: Font {
+		return .gothicNeo(.bold, size: 20)
+	}
+	
+	static var title02_bold: Font {
+		return .gothicNeo(.bold, size: 18)
+	}
+	
+	static var body_bold: Font {
+		return .gothicNeo(.bold, size: 16)
+	}
+	
+	static var body01: Font {
+		return .gothicNeo(.medium, size: 16)
+	}
+	
+	static var body02_bold: Font {
+		return .gothicNeo(.bold, size: 14)
+	}
+	
+	static var body02_semibold: Font {
+		return .gothicNeo(.semibold, size: 14)
+	}
+	
+	static var body02: Font {
+		return .gothicNeo(.medium, size: 14)
+	}
+	
+	static var caption01: Font {
+		return .gothicNeo(.medium, size: 12)
+	}
+	
+	static var caption01_semibold: Font {
+		return .gothicNeo(.semibold, size: 12)
+	}
+	
+	static var caption02: Font {
+		return .gothicNeo(.medium, size: 10)
+	}
+	
+	static var caption02_semibold: Font {
+		return .gothicNeo(.semibold, size: 10)
+	}
+}

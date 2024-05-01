@@ -47,6 +47,30 @@
         }
       }
     },
+
+    "apply" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "적용하기"
+          }
+        }
+      }
+    },
+    "chooseDate" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "날짜 선택"
+          }
+        }
+      }
+    },
+
     "community" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -127,6 +151,19 @@
         }
       }
     },
+
+    "month" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "월"
+          }
+        }
+      }
+    },
+
     "myNana" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -207,6 +244,18 @@
         }
       }
     },
+    "reset" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "초기화"
+          }
+        }
+      }
+    },
+
     "searchVolumeUpJejuPlace" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -218,6 +267,19 @@
         }
       }
     },
+
+    "year" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "년"
+          }
+        }
+      }
+    },
+
     "가장 많이 " : {
       "localizations" : {
         "ko" : {
@@ -256,7 +318,16 @@
     "제주도는 지금 유채꽃 축제🏵️" : {
 
     },
+
     "축제" : {
+
+    "찜" : {
+
+    },
+    "축제" : {
+
+    },
+    "홈" : {
 
     }
   },
