@@ -11,13 +11,11 @@ import Foundation
 final class SearchViewModel: ObservableObject {
 	struct State {		
 		var currentSearchTab: Category = .all
-		// dummy
+		
 		var recentSearchTerms: [String] = UserDefaults.standard.stringArray(forKey: "recentSearch") ?? []
 		var popularSearchTerms: [String] = []
-		var placeString: String = "제주 감귤밭"
 		
 		var allCategorySearchResult = SearchAllCategoryResponse()
-		
 		var natureCategorySearchResult = SearchDetailCategoryResponse()
 		var marketCategorySearchResult = SearchDetailCategoryResponse()
 		var festivalCategorySearchResult = SearchDetailCategoryResponse()
