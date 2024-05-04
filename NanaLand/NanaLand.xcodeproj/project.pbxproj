@@ -55,7 +55,6 @@
 		2C80ECDC2BD79AE7002F38A7 /* FavoriteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80ECDB2BD79AE7002F38A7 /* FavoriteService.swift */; };
 		2C80ECDE2BD7E63E002F38A7 /* FavoriteDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80ECDD2BD7E63E002F38A7 /* FavoriteDTO.swift */; };
 		2C80ECE32BD80E9C002F38A7 /* FavoriteListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80ECE22BD80E9C002F38A7 /* FavoriteListView.swift */; };
-		2C80ECE52BD8B422002F38A7 /* FavoriteArticleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80ECE42BD8B422002F38A7 /* FavoriteArticleItem.swift */; };
 		9C6A9C3E2BCC1BAE000413AD /* Fonts+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6A9C3D2BCC1BAE000413AD /* Fonts+.swift */; };
 		9C6A9C632BCC22CE000413AD /* AppleSDGothicNeoL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C6A9C5A2BCC22CE000413AD /* AppleSDGothicNeoL.ttf */; };
 		9C6A9C642BCC22CE000413AD /* AppleSDGothicNeoL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C6A9C5A2BCC22CE000413AD /* AppleSDGothicNeoL.ttf */; };
@@ -149,7 +148,6 @@
 		2C80ECDB2BD79AE7002F38A7 /* FavoriteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteService.swift; sourceTree = "<group>"; };
 		2C80ECDD2BD7E63E002F38A7 /* FavoriteDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDTO.swift; sourceTree = "<group>"; };
 		2C80ECE22BD80E9C002F38A7 /* FavoriteListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListView.swift; sourceTree = "<group>"; };
-		2C80ECE42BD8B422002F38A7 /* FavoriteArticleItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteArticleItem.swift; sourceTree = "<group>"; };
 		9C6A9C3D2BCC1BAE000413AD /* Fonts+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fonts+.swift"; sourceTree = "<group>"; };
 		9C6A9C532BCC206D000413AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		9C6A9C5A2BCC22CE000413AD /* AppleSDGothicNeoL.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoL.ttf; sourceTree = "<group>"; };
@@ -341,7 +339,6 @@
 			children = (
 				2C1F31D42BCD2A870066819F /* NanaSearchBar.swift */,
 				2C80EC9F2BCE55E0002F38A7 /* ArticleItem.swift */,
-				2C80ECE42BD8B422002F38A7 /* FavoriteArticleItem.swift */,
 				2C80ECD02BD4AEDE002F38A7 /* NanaNavigationBar.swift */,
 			);
 			path = Component;
@@ -722,7 +719,6 @@
 				2C80ECD12BD4AEDE002F38A7 /* NanaNavigationBar.swift in Sources */,
 				BF4F6C682BD54CA4009F070F /* NaNaPickDetailService.swift in Sources */,
 				2C80ECBC2BCFCCDA002F38A7 /* EndPoint.swift in Sources */,
-				2C80ECE52BD8B422002F38A7 /* FavoriteArticleItem.swift in Sources */,
 				2C80ECDA2BD63BAA002F38A7 /* FavoriteEndPoint.swift in Sources */,
 				2C80ECDC2BD79AE7002F38A7 /* FavoriteService.swift in Sources */,
 				BF9834252BCE847300A5C289 /* HomeMainViewModel.swift in Sources */,
