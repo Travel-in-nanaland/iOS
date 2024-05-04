@@ -37,37 +37,6 @@ struct FavoriteArticle: Codable, Hashable {
 	let thumbnailUrl: String
 	let category: Category
 	
-	// 찜 리스트에서 제거를 위한 변수
-	var isFavorite: Bool
-	
-	init(
-		id: Int,
-		title: String,
-		thumbnailUrl: String,
-		category: String,
-		isFavorite: Bool = true
-	) {
-		self.id = id
-		self.title = title
-		self.thumbnailUrl = thumbnailUrl
-		self.category = {
-			switch category {
-			case "NATURE":
-				return .nature
-			case "EXPERIENCE":
-				return .experience
-			case "FESTIVAL":
-				return .festival
-			case "MARKET":
-				return .market
-			default:
-				print("error in FavoriteArticle category mapping")
-				return .nature
-			}
-		}()
-		self.isFavorite = isFavorite
-	}
-	
 	init(from decoder: any Decoder) throws {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
 		self.id = try container.decode(Int.self, forKey: .id)
@@ -90,23 +59,5 @@ struct FavoriteArticle: Codable, Hashable {
 				return .nature
 			}
 		}()
-		
-		self.isFavorite = true
 	}
-	
-//	var categoryType: Category = {
-//		switch category {
-//		case "NATURE":
-//			return .nature
-//		case "EXPERIENCE":
-//			return .experience
-//		case "FESTIVAL":
-//			return .festival
-//		case "MARKET":
-//			return .market
-//		default:
-//			print("error in FavoriteArticle category mapping")
-//			return .nature
-//		}
-//	}()
 }

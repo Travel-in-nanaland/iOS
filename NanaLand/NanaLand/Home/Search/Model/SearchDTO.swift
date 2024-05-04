@@ -9,12 +9,19 @@ import Foundation
 
 struct SearchDetailCategoryResponse: Codable {
 	let totalElements: Int
-	var data: [Article]
+	var data: [SearchArticle]
 	
-	init(totalElements: Int = 0, data: [Article] = []) {
+	init(totalElements: Int = 0, data: [SearchArticle] = []) {
 		self.totalElements = totalElements
 		self.data = data
 	}
+}
+
+struct SearchArticle: Codable {
+	let id: Int
+	let thumbnailUrl: String
+	let title: String
+	var favorite: Bool
 }
 
 struct SearchAllCategoryResponse: Codable {

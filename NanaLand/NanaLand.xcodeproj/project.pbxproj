@@ -56,7 +56,6 @@
 		2C80ECDC2BD79AE7002F38A7 /* FavoriteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80ECDB2BD79AE7002F38A7 /* FavoriteService.swift */; };
 		2C80ECDE2BD7E63E002F38A7 /* FavoriteDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80ECDD2BD7E63E002F38A7 /* FavoriteDTO.swift */; };
 		2C80ECE32BD80E9C002F38A7 /* FavoriteListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80ECE22BD80E9C002F38A7 /* FavoriteListView.swift */; };
-		2C80ECE52BD8B422002F38A7 /* FavoriteArticleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80ECE42BD8B422002F38A7 /* FavoriteArticleItem.swift */; };
 
 		2C80ECE72BDAA52A002F38A7 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 2C80ECE62BDAA52A002F38A7 /* Localizable.xcstrings */; };
 		2C80ECEA2BDAA551002F38A7 /* SwiftUICalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 2C80ECE92BDAA551002F38A7 /* SwiftUICalendar */; };
@@ -175,7 +174,6 @@
 		2C80ECDB2BD79AE7002F38A7 /* FavoriteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteService.swift; sourceTree = "<group>"; };
 		2C80ECDD2BD7E63E002F38A7 /* FavoriteDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDTO.swift; sourceTree = "<group>"; };
 		2C80ECE22BD80E9C002F38A7 /* FavoriteListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListView.swift; sourceTree = "<group>"; };
-		2C80ECE42BD8B422002F38A7 /* FavoriteArticleItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteArticleItem.swift; sourceTree = "<group>"; };
 
 		2C80ECE62BDAA52A002F38A7 /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		2C80ECEB2BDAA58C002F38A7 /* CalendarFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarFilterView.swift; sourceTree = "<group>"; };
@@ -400,10 +398,8 @@
 			children = (
 				2C1F31D42BCD2A870066819F /* NanaSearchBar.swift */,
 				2C80EC9F2BCE55E0002F38A7 /* ArticleItem.swift */,
-
 				BF9F02902BD89EB1003E72E6 /* NavigationBar.swift */,
 
-				2C80ECE42BD8B422002F38A7 /* FavoriteArticleItem.swift */,
 				2C80ECD02BD4AEDE002F38A7 /* NanaNavigationBar.swift */,
 
 
@@ -829,7 +825,6 @@
 				BF4F6C682BD54CA4009F070F /* NaNaPickDetailService.swift in Sources */,
 				BF3021F22BDF909900CB3966 /* ShopDetailViewModel.swift in Sources */,
 				2C80ECBC2BCFCCDA002F38A7 /* EndPoint.swift in Sources */,
-				2C80ECE52BD8B422002F38A7 /* FavoriteArticleItem.swift in Sources */,
 				2C80ECDA2BD63BAA002F38A7 /* FavoriteEndPoint.swift in Sources */,
 				2C80ECDC2BD79AE7002F38A7 /* FavoriteService.swift in Sources */,
 				BF9834252BCE847300A5C289 /* HomeMainViewModel.swift in Sources */,

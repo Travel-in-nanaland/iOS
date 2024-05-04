@@ -11,22 +11,22 @@ import Foundation
 final class SearchViewModel: ObservableObject {
 	struct State {		
 		var currentSearchTab: Category = .all
-		// dummy
+		
 		var recentSearchTerms: [String] = UserDefaults.standard.stringArray(forKey: "recentSearch") ?? []
-		var popularSearchTerms: [String] = ["애월 드라이브코스", "제주공항 맛집", "애월 카페거리", "서귀포 전시회", "유채꽃", "서귀포 맛집", "함덕 해수욕장", "흑돼지 맛집"]
-		var placeString: String = "제주 감귤밭"
+		var popularSearchTerms: [String] = []
 		
-		var allCategorySearchResult = SearchAllCategoryResponse()
-		
-		var natureCategorySearchResult = SearchDetailCategoryResponse()
-		var marketCategorySearchResult = SearchDetailCategoryResponse()
-		var festivalCategorySearchResult = SearchDetailCategoryResponse()
-		var experienceCategorySearchResult = SearchDetailCategoryResponse()
+		var allCategorySearchResult = SearchAllArticleResponse()
+		var natureCategorySearchResult = ArticleResponse()
+		var marketCategorySearchResult = ArticleResponse()
+		var festivalCategorySearchResult = ArticleResponse()
+		var experienceCategorySearchResult = ArticleResponse()
 		
 		var naturePage: Int = 0
 		var marketPage: Int = 0
 		var festivalPage: Int = 0
 		var experiencePage: Int = 0
+		
+		var searchVolumeResult: [Article] = []
 		
 		var isLoading: Bool = false
 	}
@@ -35,6 +35,9 @@ final class SearchViewModel: ObservableObject {
 		case searchTerm(category: Category, term: String)
 		case didTapHeartInSearchAll(tab: Category, article: Article)
 		case didTapHeartInSearchDetail(category: Category, article: Article)
+		case didTapHeartInVolumeUp(article: Article)
+		case getPopularKeyword
+		case getVolumeUp
 	}
 	
 	@Published var state: State
@@ -53,6 +56,12 @@ final class SearchViewModel: ObservableObject {
 			await didTapHeartInSearchAll(tab: tab, article: article)
 		case let .didTapHeartInSearchDetail(category, article):
 			await didTapHeartInSearchDetail(category: category, article: article)
+		case let .didTapHeartInVolumeUp(article):
+			await didTapHeartInVolumeUp(article: article)
+		case .getPopularKeyword:
+			await getPopularKeyword()
+		case .getVolumeUp:
+			await getVolumeUp()
 		}
 	}
 	
@@ -75,6 +84,18 @@ final class SearchViewModel: ObservableObject {
 		}
 		state.recentSearchTerms.insert(term, at: 0)
 		UserDefaults.standard.setValue(state.recentSearchTerms, forKey: "recentSearch")
+	}
+	
+	private func getPopularKeyword() async {
+		if let result = await SearchService.getPopularKeyword()?.data {
+			state.popularSearchTerms = result
+		}
+	}
+	
+	private func getVolumeUp() async {
+		if let result = await SearchService.getVolumeUp()?.data {
+			state.searchVolumeResult = result
+		}
 	}
 	
 	private func search(category: Category, term: String) async {
@@ -275,6 +296,14 @@ final class SearchViewModel: ObservableObject {
 			
 		case .nanaPick:
 			print("didTapHeartInSearchDetail - nanapick은 허용되지 않음")
+		}
+	}
+	
+	private func didTapHeartInVolumeUp(article: Article) async {
+		guard let result = await FavoriteService.toggleFavorite(id: article.id, category: article.category) else {return}
+		
+		if let index = state.searchVolumeResult.firstIndex(where: {$0 == article}) {
+			state.searchVolumeResult[index].favorite = result.data.favorite
 		}
 	}
 }
