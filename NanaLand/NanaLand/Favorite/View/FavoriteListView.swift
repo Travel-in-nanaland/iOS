@@ -37,7 +37,11 @@ struct FavoriteListView: View {
 					}(),
 						id: \.self
 					) { article in
-						FavoriteArticleItem(tab: category, article: article)
+						ArticleItem(category: category, article: article, onTapHeart: {
+							Task {
+								await favoriteVM.action(.deleteItemInFavoriteList(tab: category, article: article))
+							}
+						})
 					}
 					
 					if !favoriteVM.isLastPage(tab: category) {
