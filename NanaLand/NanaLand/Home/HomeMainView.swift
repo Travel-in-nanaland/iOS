@@ -10,8 +10,10 @@ import Kingfisher
 import SwiftUIIntrospect
 
 struct HomeMainView: View {
-    @StateObject var viewModel = HomeMainViewModel()
+
+  @StateObject var viewModel = HomeMainViewModel()
 	@ObservedObject var searchVM = SearchViewModel()
+
     
     var body: some View {
         NavigationStack {

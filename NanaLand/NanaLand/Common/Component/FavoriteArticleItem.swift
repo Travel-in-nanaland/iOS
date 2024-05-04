@@ -1,17 +1,17 @@
 //
-//  ArticleItem.swift
+//  FavoriteArticleItem.swift
 //  NanaLand
 //
-//  Created by 정현우 on 4/16/24.
+//  Created by 정현우 on 4/24/24.
 //
 
 import SwiftUI
 import Kingfisher
 
-struct ArticleItem: View {
-	let category: Category
-	let article: Article
-	let onTapHeart: () -> Void
+struct FavoriteArticleItem: View {
+	@EnvironmentObject var favoriteVM: FavoriteViewModel
+	let tab: Category
+	let article: FavoriteArticle
 	
 	let itemWidth = (Constants.screenWidth-40)/2
 	
@@ -31,16 +31,19 @@ struct ArticleItem: View {
 		}
 		.overlay(alignment: .topTrailing) {
 			Button(action: {
-				onTapHeart()
+				Task {
+					await favoriteVM.action(.deleteItemInFavoriteList(tab: tab, article: article))
+				}
 			}, label: {
-				Image(article.favorite ? .icHeartFillMain : .icHeartDefault)
+				Image(.icHeartFillMain)
 					.padding(.top, 4)
 					.padding(.trailing, 4)
 			})
 		}
 	}
+	
 }
 
 #Preview {
-	ArticleItem(category: .experience, article: Article(id: 0, thumbnailUrl: "http://tong.visitkorea.or.kr/cms/resource/85/3076985_image3_1.jpg", title: "근하신뇽! 새해도 9.81파크와 함께해용", favorite: true), onTapHeart: {})
+	FavoriteArticleItem(tab: .all, article: FavoriteArticle(id: 0, title: "근하신뇽! 새해도 9.81파크와 함께해용", thumbnailUrl: "http://tong.visitkorea.or.kr/cms/resource/85/3076985_image3_1.jpg", category: "MARKET"))
 }

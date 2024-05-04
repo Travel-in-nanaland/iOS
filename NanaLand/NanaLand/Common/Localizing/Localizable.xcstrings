@@ -56,6 +56,7 @@
         }
       }
     },
+
     "apply" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -78,6 +79,7 @@
         }
       }
     },
+
     "community" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -304,6 +306,7 @@
         }
       }
     },
+
     "searchVolumeUpJejuPlace" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -316,12 +319,11 @@
       }
     },
 
+
     "Selected Location: %@" : {
 
     },
     "title" : {
-
-
     "year" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -334,6 +336,7 @@
       }
 
     },
+
     "가장 많이 " : {
       "localizations" : {
         "ko" : {
@@ -427,6 +430,9 @@
     "제주도는 지금 유채꽃 축제🏵️" : {
 
     },
+
+    "축제" : {
+
     "찜" : {
 
     },
