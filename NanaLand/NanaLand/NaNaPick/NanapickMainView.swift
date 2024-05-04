@@ -9,12 +9,12 @@ import SwiftUI
 import Kingfisher
 
 struct NanapickMainView: View {
-    @ObservedObject var viewModel = NaNaPickMainViewModel()
+    @StateObject var viewModel = NaNaPickMainViewModel()
     @State var isAPICalled = false
     @State private var page: Int = 0
     @State private var size: Int = 4
     @State private var isLoading = false
-    
+
     init() {
         /// 네비게이션 바 스크롤 시에도 색상 변경 방지
         let appearance = UINavigationBarAppearance()
@@ -39,12 +39,7 @@ struct NanapickMainView: View {
     }
     
     var body: some View {
-//        Button("hello") {
-//            Task {
-//                await getNana(page: 0, size: 4)
-//    
-//            }
-//        }
+        
         ScrollView {
             LazyVStack(spacing: 8) {
                 // 데이터가 size 만큼 잘 도착 했으면 view 그리기
@@ -61,23 +56,19 @@ struct NanapickMainView: View {
                         .onAppear {
                                 Task {
                                     await getNana(page: page, size: size)
+                                    print("getNaNA 호출!!!!!!!!!!!! page: \(page), size: \(size)")
                                     page += 1
                                     size = 1
+                                   
                                 }
                         }
                 }
-            }
-        }
-        .onAppear {
-            Task {
-               await getNana(page: page, size: size)
             }
         }
         .toolbar(.hidden, for: .tabBar)
         .navigationTitle(Text(String(localized: "nanaPick")))
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: backButton)
-        
     }
     
     func getNana(page: Int, size: Int) async {
@@ -86,6 +77,16 @@ struct NanapickMainView: View {
        
     }
     
+}
+
+struct HiddenTabBar: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> UIViewController {
+        let viewController = UIViewController()
+        viewController.tabBarController?.tabBar.isHidden = true
+        return viewController
+    }
+    
+    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
 }
 
 #Preview {

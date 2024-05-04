@@ -1,9 +1,11 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+
     "" : {
 
     },
+
     "%@" : {
       "localizations" : {
         "ko" : {
@@ -33,6 +35,13 @@
     "%lld건" : {
 
     },
+
+    "2건" : {
+
+    },
+    "3건" : {
+
+    },
     "7대자연" : {
 
     },
@@ -47,6 +56,30 @@
         }
       }
     },
+
+    "apply" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "적용하기"
+          }
+        }
+      }
+    },
+    "chooseDate" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "날짜 선택"
+          }
+        }
+      }
+    },
+
     "community" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -91,9 +124,27 @@
         }
       }
     },
+
+    "hashtag" : {
+
+    },
+    "hashtag %lld" : {
+
+    },
+    "hello" : {
+
+    },
     "Hello, World!" : {
 
     },
+    "helo" : {
+
+    },
+
+    "Hello, World!" : {
+
+    },
+
     "home" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -127,6 +178,19 @@
         }
       }
     },
+
+    "month" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "월"
+          }
+        }
+      }
+    },
+
     "myNana" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -160,9 +224,11 @@
         }
       }
     },
+
     "Nature Main View" : {
 
     },
+
     "noRecentSearchTerm" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -185,6 +251,11 @@
         }
       }
     },
+
+    "photo" : {
+
+    },
+
     "recentSearchTerm" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -196,17 +267,46 @@
         }
       }
     },
+
+    "region" : {
+
     "removeAll" : {
+
       "extractionState" : "manual",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
+
+            "value" : "지역"
+          }
+        }
+      }
+    },
+    "removeAll" : {
+
             "value" : "모두 지우기"
           }
         }
       }
     },
+    "reset" : {
+
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+
+            "value" : "모두 지우기"
+
+            "value" : "초기화"
+
+          }
+        }
+      }
+    },
+
     "searchVolumeUpJejuPlace" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -218,6 +318,25 @@
         }
       }
     },
+
+
+    "Selected Location: %@" : {
+
+    },
+    "title" : {
+    "year" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "년"
+          }
+        }
+      }
+
+    },
+
     "가장 많이 " : {
       "localizations" : {
         "ko" : {
@@ -244,6 +363,61 @@
     "나의 나나" : {
 
     },
+
+    "날짜" : {
+
+    },
+    "날짜 선택 뷰" : {
+
+    },
+    "더 보기" : {
+
+    },
+    "연락처" : {
+
+    },
+    "이색 체험" : {
+
+    },
+    "이용시간" : {
+
+    },
+    "전통시장" : {
+
+    },
+    "정보 수정 제안" : {
+
+    },
+    "제주 이야기" : {
+
+    },
+    "제주도는 지금 유채꽃 축제🏵️" : {
+
+    },
+    "주소" : {
+
+    },
+    "지역" : {
+
+    },
+    "지역을 선택해주세요" : {
+
+    },
+    "찜" : {
+
+    },
+    "축제" : {
+
+    },
+    "편의시설" : {
+
+    },
+    "홈" : {
+
+    },
+    "홈페이지" : {
+
+
     "이색 체험" : {
 
     },
@@ -256,7 +430,16 @@
     "제주도는 지금 유채꽃 축제🏵️" : {
 
     },
+
     "축제" : {
+
+    "찜" : {
+
+    },
+    "축제" : {
+
+    },
+    "홈" : {
 
     }
   },

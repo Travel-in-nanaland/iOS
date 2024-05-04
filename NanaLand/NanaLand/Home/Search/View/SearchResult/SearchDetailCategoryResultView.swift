@@ -40,7 +40,7 @@ struct SearchDetailCategoryResultView: View {
 				LazyVGrid(
 					columns: [GridItem(.flexible()), GridItem(.flexible())]
 				) {
-					ForEach({
+                    ForEach({ () -> [Article] in
 						switch tab {
 						case .all:
 							return [] as [Article]
