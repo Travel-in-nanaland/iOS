@@ -7,10 +7,13 @@
 
 import SwiftUI
 import Kingfisher
+import SwiftUIIntrospect
 
 struct HomeMainView: View {
-    @ObservedObject var viewModel = HomeMainViewModel()
-	@StateObject var searchVM = SearchViewModel()
+
+  @StateObject var viewModel = HomeMainViewModel()
+	@ObservedObject var searchVM = SearchViewModel()
+
     
     var body: some View {
         NavigationStack {
@@ -33,9 +36,7 @@ struct HomeMainView: View {
                                 .foregroundStyle(Color("Gray1"))
                                 .overlay(RoundedRectangle(cornerRadius: 30)
                                     .stroke(Color("Main"))
-                                   
                                 )
-                                
                         }
                         Spacer()
                         
@@ -52,7 +53,7 @@ struct HomeMainView: View {
                     
                     /// banner View
                         BannerView()
-                        .frame(width: UIScreen.main.bounds.width, height: 180)
+                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width / 2)
                             .padding(.bottom)
                     
                     /// category View
@@ -128,7 +129,7 @@ struct HomeMainView: View {
                     HStack {
                         AdvertisementView()
                             .background(.yellow)
-                            .frame(height: 80)
+                            .frame(height: (UIScreen.main.bounds.width - 40.0) * (80.0 / 328.0))
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                             .padding(.bottom, 40)
                             .padding(.leading, 16)
@@ -149,10 +150,10 @@ struct HomeMainView: View {
                             let firstItem = responseData.data[0]
                             // 두번째 추천 게시물
                             let secondItem = responseData.data[1]
-                            VStack(spacing: 8) {
+                            VStack(alignment: .leading, spacing: 8) {
                                 KFImage(URL(string: firstItem.thumbnailUrl)!)
                                     .resizable()
-                                    .frame(height: 120)
+                                    .frame(height: (UIScreen.main.bounds.width - 40) / 2 * (118 / 160))
                                     .clipShape(RoundedRectangle(cornerRadius: 12))
                                 Text(firstItem.title)
                                     .font(.gothicNeo(size: 14, font: "bold"))
@@ -161,10 +162,10 @@ struct HomeMainView: View {
                                     .foregroundStyle(Color(.gray1))
                             }
                              
-                            VStack(spacing: 8) {
+                            VStack(alignment: .leading, spacing: 8) {
                                 KFImage(URL(string: secondItem.thumbnailUrl)!)
                                     .resizable()
-                                    .frame(height: 120)
+                                    .frame(height: (UIScreen.main.bounds.width - 40) / 2 * (118 / 160))
                                     .clipShape(RoundedRectangle(cornerRadius: 12))
                                    
                                 Text(secondItem.title)
@@ -185,6 +186,9 @@ struct HomeMainView: View {
         .onAppear {
              viewModel.recommendFetchData()
         }
+        .introspect(.navigationStack, on: .iOS(.v16, .v17), customize: { navigation in
+                    navigation.hidesBottomBarWhenPushed = true
+                })
         
     }
 }
