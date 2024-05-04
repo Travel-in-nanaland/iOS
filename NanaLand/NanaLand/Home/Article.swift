@@ -12,13 +12,6 @@ struct Article: Codable, Hashable {
 	let thumbnailUrl: String
 	let title: String
 	var favorite: Bool
-}
-
-struct ArticleWithCategory: Codable, Hashable {
-	let id: Int
-	let thumbnailUrl: String
-	let title: String
-	var favorite: Bool
 	let category: Category
 	
 	init(
@@ -26,27 +19,29 @@ struct ArticleWithCategory: Codable, Hashable {
 		thumbnailUrl: String,
 		title: String,
 		favorite: Bool,
-		category: String
+		category: Category
 	) {
 		self.id = id
 		self.thumbnailUrl = thumbnailUrl
 		self.title = title
 		self.favorite = favorite
-		self.category = {
-			switch category {
-			case "NATURE":
-				return .nature
-			case "EXPERIENCE":
-				return .experience
-			case "FESTIVAL":
-				return .festival
-			case "MARKET":
-				return .market
-			default:
-				print("error in FavoriteArticle category mapping")
-				return .nature
-			}
-		}()
+		self.category = category
+	}
+	
+	init(from favoriteArticle: FavoriteArticle) {
+		self.id = favoriteArticle.id
+		self.thumbnailUrl = favoriteArticle.thumbnailUrl
+		self.title = favoriteArticle.title
+		self.favorite = true
+		self.category = favoriteArticle.category
+	}
+	
+	init(from searchArticle: SearchArticle, category: Category) {
+		self.id = searchArticle.id
+		self.thumbnailUrl = searchArticle.thumbnailUrl
+		self.title = searchArticle.title
+		self.favorite = searchArticle.favorite
+		self.category = category
 	}
 	
 	init(from decoder: any Decoder) throws {
@@ -68,9 +63,38 @@ struct ArticleWithCategory: Codable, Hashable {
 			case "MARKET":
 				return .market
 			default:
-				print("error in FavoriteArticle category mapping")
+				print("error in Article category mapping")
 				return .nature
 			}
 		}()
+	}
+}
+
+struct ArticleResponse: Codable {
+	var totalElements: Int
+	var data: [Article]
+	
+	init(totalElements: Int = 0, data: [Article] = []) {
+		self.totalElements = totalElements
+		self.data = data
+	}
+}
+
+struct SearchAllArticleResponse: Codable {
+	var festival: ArticleResponse
+	var nature: ArticleResponse
+	var experience: ArticleResponse
+	var market: ArticleResponse
+	
+	init(
+		festival: ArticleResponse = ArticleResponse(),
+		nature: ArticleResponse = ArticleResponse(),
+		experience: ArticleResponse = ArticleResponse(),
+		market: ArticleResponse = ArticleResponse()
+	) {
+		self.festival = festival
+		self.nature = nature
+		self.experience = experience
+		self.market = market
 	}
 }

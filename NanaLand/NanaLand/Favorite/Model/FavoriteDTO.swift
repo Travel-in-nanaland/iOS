@@ -37,32 +37,6 @@ struct FavoriteArticle: Codable, Hashable {
 	let thumbnailUrl: String
 	let category: Category
 	
-	init(
-		id: Int,
-		title: String,
-		thumbnailUrl: String,
-		category: String
-	) {
-		self.id = id
-		self.title = title
-		self.thumbnailUrl = thumbnailUrl
-		self.category = {
-			switch category {
-			case "NATURE":
-				return .nature
-			case "EXPERIENCE":
-				return .experience
-			case "FESTIVAL":
-				return .festival
-			case "MARKET":
-				return .market
-			default:
-				print("error in FavoriteArticle category mapping")
-				return .nature
-			}
-		}()
-	}
-	
 	init(from decoder: any Decoder) throws {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
 		self.id = try container.decode(Int.self, forKey: .id)
@@ -86,20 +60,4 @@ struct FavoriteArticle: Codable, Hashable {
 			}
 		}()
 	}
-	
-//	var categoryType: Category = {
-//		switch category {
-//		case "NATURE":
-//			return .nature
-//		case "EXPERIENCE":
-//			return .experience
-//		case "FESTIVAL":
-//			return .festival
-//		case "MARKET":
-//			return .market
-//		default:
-//			print("error in FavoriteArticle category mapping")
-//			return .nature
-//		}
-//	}()
 }

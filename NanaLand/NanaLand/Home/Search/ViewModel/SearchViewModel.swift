@@ -15,18 +15,18 @@ final class SearchViewModel: ObservableObject {
 		var recentSearchTerms: [String] = UserDefaults.standard.stringArray(forKey: "recentSearch") ?? []
 		var popularSearchTerms: [String] = []
 		
-		var allCategorySearchResult = SearchAllCategoryResponse()
-		var natureCategorySearchResult = SearchDetailCategoryResponse()
-		var marketCategorySearchResult = SearchDetailCategoryResponse()
-		var festivalCategorySearchResult = SearchDetailCategoryResponse()
-		var experienceCategorySearchResult = SearchDetailCategoryResponse()
+		var allCategorySearchResult = SearchAllArticleResponse()
+		var natureCategorySearchResult = ArticleResponse()
+		var marketCategorySearchResult = ArticleResponse()
+		var festivalCategorySearchResult = ArticleResponse()
+		var experienceCategorySearchResult = ArticleResponse()
 		
 		var naturePage: Int = 0
 		var marketPage: Int = 0
 		var festivalPage: Int = 0
 		var experiencePage: Int = 0
 		
-		var searchVolumeResult: [ArticleWithCategory] = []
+		var searchVolumeResult: [Article] = []
 		
 		var isLoading: Bool = false
 	}
@@ -35,7 +35,7 @@ final class SearchViewModel: ObservableObject {
 		case searchTerm(category: Category, term: String)
 		case didTapHeartInSearchAll(tab: Category, article: Article)
 		case didTapHeartInSearchDetail(category: Category, article: Article)
-		case didTapHeartInVolumeUp(article: ArticleWithCategory)
+		case didTapHeartInVolumeUp(article: Article)
 		case getPopularKeyword
 		case getVolumeUp
 	}
@@ -299,7 +299,7 @@ final class SearchViewModel: ObservableObject {
 		}
 	}
 	
-	private func didTapHeartInVolumeUp(article: ArticleWithCategory) async {
+	private func didTapHeartInVolumeUp(article: Article) async {
 		guard let result = await FavoriteService.toggleFavorite(id: article.id, category: article.category) else {return}
 		
 		if let index = state.searchVolumeResult.firstIndex(where: {$0 == article}) {

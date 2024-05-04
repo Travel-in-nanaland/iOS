@@ -12,11 +12,11 @@ class FavoriteViewModel: ObservableObject {
 	struct State {
 		var isLoading: Bool = false
 		
-		var allFavoriteArticles: FavoriteListResponse = .init()
-		var natureFavoriteArticles: FavoriteListResponse = .init()
-		var marketFavoriteArticles: FavoriteListResponse = .init()
-		var festivalFavoriteArticles: FavoriteListResponse = .init()
-		var experienceFavoriteArticles: FavoriteListResponse = .init()
+		var allFavoriteArticles: ArticleResponse = .init()
+		var natureFavoriteArticles: ArticleResponse = .init()
+		var marketFavoriteArticles: ArticleResponse = .init()
+		var festivalFavoriteArticles: ArticleResponse = .init()
+		var experienceFavoriteArticles: ArticleResponse = .init()
 		
 		var allFavoriteArticlePage: Int = 0
 		var natureFavoriteArticlePage: Int = 0
@@ -29,7 +29,7 @@ class FavoriteViewModel: ObservableObject {
 		case getFavoriteList(category: Category)
 //		case didTapHeart(article: Article, category: Category)
 		// 찜 리스트에서 하트 누른 경우 -> 리스트에서 삭제
-		case deleteItemInFavoriteList(tab: Category, article: FavoriteArticle)
+		case deleteItemInFavoriteList(tab: Category, article: Article)
 		case refreshData(category: Category)
 	}
 	
@@ -188,7 +188,7 @@ class FavoriteViewModel: ObservableObject {
 		await FavoriteService.toggleFavorite(id: article.id, category: category)?.data.favorite
 	}
 	
-	private func deleteFavoriteArticle(article: FavoriteArticle, tab: Category) async {
+	private func deleteFavoriteArticle(article: Article, tab: Category) async {
 		let result = await FavoriteService.toggleFavorite(id: article.id, category: article.category)
 		
 		guard let isFavorite = result?.data.favorite, !isFavorite
