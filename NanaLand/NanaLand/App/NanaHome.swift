@@ -12,7 +12,7 @@ struct NanaHome: View {
 	@StateObject var appState = AppState()
 	
 	@State var isSplashCompleted: Bool = false
-	@State var isLogin: Bool = false
+	@AppStorage("isLogin") var isLogin: Bool = true
 	@AppStorage("isLanguageSelected") var isLanguageSelected: Bool = true
 	
 	var body: some View {
