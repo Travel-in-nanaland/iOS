@@ -1,11 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-
     "" : {
 
     },
-
     "%@" : {
       "localizations" : {
         "ko" : {
@@ -19,7 +17,20 @@
     "%@: " : {
 
     },
+    "%@%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@%2$@"
+          }
+        }
+      }
+    },
     "%d" : {
+
+    },
+    "%lld" : {
 
     },
     "%lld." : {
@@ -32,10 +43,19 @@
         }
       }
     },
+    "%lld%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld%2$@"
+          }
+        }
+      }
+    },
     "%lld건" : {
 
     },
-
     "2건" : {
 
     },
@@ -56,30 +76,12 @@
         }
       }
     },
-
     "apply" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "적용하기"
-          }
-        }
-      }
+
     },
     "chooseDate" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "날짜 선택"
-          }
-        }
-      }
-    },
 
+    },
     "community" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -87,6 +89,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "제주 이야기"
+          }
+        }
+      }
+    },
+    "deletePlace" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "장소 삭제"
           }
         }
       }
@@ -124,7 +137,6 @@
         }
       }
     },
-
     "hashtag" : {
 
     },
@@ -140,11 +152,6 @@
     "helo" : {
 
     },
-
-    "Hello, World!" : {
-
-    },
-
     "home" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -157,15 +164,7 @@
       }
     },
     "inputSearchTerm" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "검색어를 입력해 주세요"
-          }
-        }
-      }
+
     },
     "market" : {
       "extractionState" : "manual",
@@ -178,19 +177,20 @@
         }
       }
     },
-
-    "month" : {
+    "modifyInfo" : {
       "extractionState" : "manual",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "월"
+            "value" : "정보 수정 제안"
           }
         }
       }
     },
+    "month" : {
 
+    },
     "myNana" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -224,11 +224,6 @@
         }
       }
     },
-
-    "Nature Main View" : {
-
-    },
-
     "noRecentSearchTerm" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -251,11 +246,64 @@
         }
       }
     },
-
+    "numberAndHompage" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "전화번호 및 홈페이지"
+          }
+        }
+      }
+    },
+    "operatinghour" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "운영 시간"
+          }
+        }
+      }
+    },
     "photo" : {
 
     },
-
+    "placeNameAndLocation" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "장소명 및 위치"
+          }
+        }
+      }
+    },
+    "priceInfo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "가격 정보"
+          }
+        }
+      }
+    },
+    "provideService" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "제공 서비스"
+          }
+        }
+      }
+    },
     "recentSearchTerm" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -267,24 +315,15 @@
         }
       }
     },
-
     "region" : {
 
+    },
     "removeAll" : {
-
       "extractionState" : "manual",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-
-            "value" : "지역"
-          }
-        }
-      }
-    },
-    "removeAll" : {
-
             "value" : "모두 지우기"
           }
         }
@@ -292,21 +331,7 @@
     },
     "reset" : {
 
-      "extractionState" : "manual",
-      "localizations" : {
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-
-            "value" : "모두 지우기"
-
-            "value" : "초기화"
-
-          }
-        }
-      }
     },
-
     "searchVolumeUpJejuPlace" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -318,25 +343,59 @@
         }
       }
     },
-
-
     "Selected Location: %@" : {
 
     },
-    "title" : {
-    "year" : {
+    "share" : {
       "extractionState" : "manual",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "년"
+            "value" : "검색어를 입력해 주세요"
           }
         }
       }
+    },
+    "shareETCInfo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "기타 정보를 공유해 주세요!"
+          }
+        }
+      }
+    },
+    "suggestInfoModificationDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "장소 제안 시 첨부한 사진이 장소 정보 확인에\n도움이 되면 혜택을 받을 수 있어요."
+          }
+        }
+      }
+    },
+    "suggestInfoModificationTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "수정해야 할 정보를 제안해 주세요!"
+          }
+        }
+      }
+    },
+    "title" : {
 
     },
+    "year" : {
 
+    },
     "가장 많이 " : {
       "localizations" : {
         "ko" : {
@@ -363,7 +422,6 @@
     "나의 나나" : {
 
     },
-
     "날짜" : {
 
     },
@@ -373,7 +431,22 @@
     "더 보기" : {
 
     },
+    "보내기" : {
+
+    },
+    "사진 추가하기" : {
+
+    },
+    "수정 요청하신 항목의 상세 내용이나 그 외 기타 사항이 있으시면 의견을 남겨주세요." : {
+
+    },
+    "실제 확인한 정보를 사진과 함께 첨부해주시면,\n좀 더 정확한 정보가 완성되어요" : {
+
+    },
     "연락처" : {
+
+    },
+    "이메일" : {
 
     },
     "이색 체험" : {
@@ -386,6 +459,9 @@
 
     },
     "정보 수정 제안" : {
+
+    },
+    "정보 수정 제안 결과를 받을 이메일을 입력해주세요" : {
 
     },
     "제주 이야기" : {
@@ -403,43 +479,13 @@
     "지역을 선택해주세요" : {
 
     },
-    "찜" : {
-
-    },
     "축제" : {
 
     },
     "편의시설" : {
 
     },
-    "홈" : {
-
-    },
     "홈페이지" : {
-
-
-    "이색 체험" : {
-
-    },
-    "전통시장" : {
-
-    },
-    "제주 이야기" : {
-
-    },
-    "제주도는 지금 유채꽃 축제🏵️" : {
-
-    },
-
-    "축제" : {
-
-    "찜" : {
-
-    },
-    "축제" : {
-
-    },
-    "홈" : {
 
     }
   },
