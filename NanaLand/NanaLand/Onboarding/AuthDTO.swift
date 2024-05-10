@@ -8,15 +8,28 @@
 import Foundation
 
 struct LoginRequest: Codable {
-	let locale: String
 	let email: String
-	let gender: String
-	let birthDate: String
 	let provider: String
 	let providerId: Int64
 }
 
-struct LoginResponse: Codable {
+struct RegisterRequest: Codable {
+	let consentItems: [ConsentItem]
+	let locale: String
+	let email: String
+	let gender: String
+	let birthDate: String
+	let nickname: String
+	let provider: String
+	let providerId: Int64
+}
+
+struct LoginRegisterResponse: Codable {
 	let accessToken: String
 	let refreshToken: String
+}
+
+struct ConsentItem: Codable {
+	let consentType: String
+	let consent: Bool
 }

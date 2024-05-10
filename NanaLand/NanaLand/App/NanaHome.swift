@@ -13,7 +13,7 @@ struct NanaHome: View {
 	
 	@State var isSplashCompleted: Bool = false
 	@AppStorage("isLogin") var isLogin: Bool = true
-	@AppStorage("isLanguageSelected") var isLanguageSelected: Bool = true
+	@AppStorage("locale") var locale: String = ""
 	
 	var body: some View {
 		if !isSplashCompleted {
@@ -30,7 +30,7 @@ struct NanaHome: View {
 						isSplashCompleted = true
 					})
 				}
-		} else if !isLanguageSelected {
+		} else if locale.isEmpty {
 			LanguageSelectView()
 		} else if !isLogin {
 			LoginView()

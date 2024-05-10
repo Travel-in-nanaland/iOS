@@ -11,6 +11,7 @@ import Alamofire
 enum AuthEndPoint {
 	case refreshingToken
 	case login(body: LoginRequest)
+	case register(body: RegisterRequest)
 }
 
 extension AuthEndPoint: EndPoint {
@@ -24,6 +25,8 @@ extension AuthEndPoint: EndPoint {
 			return "/reissue"
 		case .login:
 			return "/login"
+		case .register:
+			return "/join"
 		}
 	}
 	
@@ -33,6 +36,8 @@ extension AuthEndPoint: EndPoint {
 			return .get
 		case .login:
 			return .post
+		case .register:
+			return .post
 		}
 	}
 	
@@ -41,6 +46,8 @@ extension AuthEndPoint: EndPoint {
 		case .refreshingToken:
 			return .requestWithoutInterceptor()
 		case let .login(body):
+			return .requestWithoutInterceptor(body: body)
+		case let .register(body):
 			return .requestWithoutInterceptor(body: body)
 		}
 	}
@@ -54,6 +61,8 @@ extension AuthEndPoint: EndPoint {
 				return nil
 			}
 		case .login:
+			return nil
+		case .register:
 			return nil
 		}
 	}

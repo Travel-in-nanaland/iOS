@@ -13,7 +13,11 @@ struct AuthService {
 		return await NetworkManager.shared.request(AuthEndPoint.refreshingToken)
 	}
 	
-	static func loginServer(body: LoginRequest) async -> BaseResponse<LoginResponse>? {
+	static func loginServer(body: LoginRequest) async -> BaseResponse<LoginRegisterResponse>? {
 		return await NetworkManager.shared.request(AuthEndPoint.login(body: body))
+	}
+	
+	static func registerServer(body: RegisterRequest) async -> BaseResponse<LoginRegisterResponse>? {
+		return await NetworkManager.shared.request(AuthEndPoint.register(body: body))
 	}
 }

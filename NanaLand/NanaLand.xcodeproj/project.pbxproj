@@ -46,6 +46,8 @@
 		2C40DB9A2BE64973007A3768 /* NanaHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40DB992BE64973007A3768 /* NanaHome.swift */; };
 		2C40DB9C2BE66809007A3768 /* AuthDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40DB9B2BE66809007A3768 /* AuthDTO.swift */; };
 		2C40DB9E2BE87C61007A3768 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40DB9D2BE87C61007A3768 /* Color+.swift */; };
+		2C40DBB92BEDFBC3007A3768 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 2C40DBB82BEDFBC3007A3768 /* GoogleSignIn */; };
+		2C40DBBB2BEDFBC3007A3768 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2C40DBBA2BEDFBC3007A3768 /* GoogleSignInSwift */; };
 		2C80EC9E2BCE53E1002F38A7 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80EC9D2BCE53E1002F38A7 /* Article.swift */; };
 		2C80ECA02BCE55E0002F38A7 /* ArticleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80EC9F2BCE55E0002F38A7 /* ArticleItem.swift */; };
 		2C80ECA82BCF5CF2002F38A7 /* SearchAllCategoryResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80ECA72BCF5CF2002F38A7 /* SearchAllCategoryResultView.swift */; };
@@ -245,9 +247,11 @@
 				2C80ECEA2BDAA551002F38A7 /* SwiftUICalendar in Frameworks */,
 				2C3C75AF2BCA3C5000312F26 /* Alamofire in Frameworks */,
 				2C3C75B82BCA41EE00312F26 /* Realm in Frameworks */,
+				2C40DBBB2BEDFBC3007A3768 /* GoogleSignInSwift in Frameworks */,
 				2C80ECCD2BD2C27D002F38A7 /* SwiftUIIntrospect in Frameworks */,
 				2C3C75BA2BCA41EE00312F26 /* RealmSwift in Frameworks */,
 				2C3C75B52BCA3F5A00312F26 /* Lottie in Frameworks */,
+				2C40DBB92BEDFBC3007A3768 /* GoogleSignIn in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -701,6 +705,8 @@
 				2C80ECCC2BD2C27D002F38A7 /* SwiftUIIntrospect */,
 				2C80ECE92BDAA551002F38A7 /* SwiftUICalendar */,
 				2C40DB972BE644BE007A3768 /* KakaoSDK */,
+				2C40DBB82BEDFBC3007A3768 /* GoogleSignIn */,
+				2C40DBBA2BEDFBC3007A3768 /* GoogleSignInSwift */,
 			);
 			productName = NanaLand;
 			productReference = 2C3C75802BCA3ADA00312F26 /* NanaLand.app */;
@@ -783,6 +789,7 @@
 				2C80ECCB2BD2C27D002F38A7 /* XCRemoteSwiftPackageReference "swiftui-introspect" */,
 				2C80ECE82BDAA551002F38A7 /* XCRemoteSwiftPackageReference "SwiftUICalendar" */,
 				2C40DB962BE644BE007A3768 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
+				2C40DBB72BEDFBC3007A3768 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 			);
 			productRefGroup = 2C3C75812BCA3ADA00312F26 /* Products */;
 			projectDirPath = "";
@@ -1294,6 +1301,14 @@
 				minimumVersion = 2.22.1;
 			};
 		};
+		2C40DBB72BEDFBC3007A3768 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.1.0;
+			};
+		};
 		2C80ECCB2BD2C27D002F38A7 /* XCRemoteSwiftPackageReference "swiftui-introspect" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/siteline/swiftui-introspect";
@@ -1342,6 +1357,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2C40DB962BE644BE007A3768 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
 			productName = KakaoSDK;
+		};
+		2C40DBB82BEDFBC3007A3768 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C40DBB72BEDFBC3007A3768 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		2C40DBBA2BEDFBC3007A3768 /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C40DBB72BEDFBC3007A3768 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
 		};
 		2C80ECCC2BD2C27D002F38A7 /* SwiftUIIntrospect */ = {
 			isa = XCSwiftPackageProductDependency;
