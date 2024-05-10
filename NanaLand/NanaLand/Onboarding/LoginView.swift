@@ -6,12 +6,13 @@
 //
 
 import SwiftUI
+import GoogleSignInSwift
 
 struct LoginView: View {
 	let authManager = AuthManager()
 	
     var body: some View {
-		VStack {
+		VStack(spacing: 16) {
 			HStack(spacing: 8) {
 				Image(.kakaoLoginIcon)
 				
@@ -24,10 +25,13 @@ struct LoginView: View {
 					.frame(width: Constants.screenWidth-32, height: 48)
 			}
 			.onTapGesture {
-				Task {
-					await authManager.kakaoLogin()
-				}
+//				Task {
+//					await authManager.kakaoLogin()
+//				}
+				authManager.kakaoLogin()
 			}
+			
+			GoogleSignInButton(action: authManager.googleLogin)
 		}
     }
 }

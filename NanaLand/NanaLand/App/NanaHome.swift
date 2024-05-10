@@ -31,7 +31,8 @@ struct NanaHome: View {
 					})
 				}
 		} else if locale.isEmpty {
-			LanguageSelectView()
+//			LanguageSelectView()
+			LoginView()
 		} else if !isLogin {
 			LoginView()
 		} else {

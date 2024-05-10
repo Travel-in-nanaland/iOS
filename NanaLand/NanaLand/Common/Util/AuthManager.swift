@@ -10,6 +10,7 @@ import SwiftUI
 import KakaoSDKCommon
 import KakaoSDKAuth
 import KakaoSDKUser
+import GoogleSignIn
 
 // 소셜 로그인을 다루는 manager
 final class AuthManager {
@@ -86,6 +87,17 @@ final class AuthManager {
 	}
 	
 	func googleLogin() {
-		
+		guard let rootVC = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first?.rootViewController else {return}
+		GIDSignIn.sharedInstance.signIn(withPresenting: rootVC) { signInResult, error in
+			guard let result = signInResult else {
+				print("구글 로그인 실패")
+				print(error?.localizedDescription ?? "")
+				return
+			}
+			
+			let user = result.user
+			let email = user.profile?.email
+			
+		}
 	}
 }

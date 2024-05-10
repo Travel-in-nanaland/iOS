@@ -8,6 +8,7 @@
 import SwiftUI
 import KakaoSDKCommon
 import KakaoSDKAuth
+import GoogleSignIn
 
 @main
 struct NanaLandApp: App {
@@ -19,11 +20,13 @@ struct NanaLandApp: App {
     var body: some Scene {
         WindowGroup {
 			NanaHome()
-				.onOpenURL(perform: { url in
+				.onOpenURL{ url in
 					if (AuthApi.isKakaoTalkLoginUrl(url)) {
 						AuthController.handleOpenUrl(url: url)
+					} else {
+						GIDSignIn.sharedInstance.handle(url)
 					}
-				})
+				}
 		}
 	}
 }
