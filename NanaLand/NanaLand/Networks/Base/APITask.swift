@@ -12,4 +12,5 @@ enum APITask {
 	case requestPlain
 	case requestParameters(parameters: Parameters)
 	case requestJSONEncodable(body: Encodable)
+	case requestWithoutInterceptor(body: Encodable? = nil)
 }
