@@ -33,6 +33,21 @@
 		2C3C75D12BCAAFF300312F26 /* FavoriteMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C75D02BCAAFF300312F26 /* FavoriteMainView.swift */; };
 		2C3C75D32BCAB00C00312F26 /* StoryMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C75D22BCAB00C00312F26 /* StoryMainView.swift */; };
 		2C3C75D52BCAB01500312F26 /* ProfileMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C75D42BCAB01500312F26 /* ProfileMainView.swift */; };
+
+		2C40DB7D2BE6174F007A3768 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 2C40DB7C2BE6174E007A3768 /* Localizable.xcstrings */; };
+		2C40DB7F2BE61F05007A3768 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40DB7E2BE61F05007A3768 /* SplashView.swift */; };
+		2C40DB832BE62259007A3768 /* LanguageSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40DB822BE62259007A3768 /* LanguageSelectView.swift */; };
+		2C40DB852BE62351007A3768 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40DB842BE62351007A3768 /* RegisterView.swift */; };
+		2C40DB872BE630EC007A3768 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40DB862BE630EC007A3768 /* LoginView.swift */; };
+		2C40DB8E2BE637DE007A3768 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40DB8D2BE637DE007A3768 /* AuthManager.swift */; };
+		2C40DB912BE6383B007A3768 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40DB902BE6383B007A3768 /* AuthService.swift */; };
+		2C40DB932BE63887007A3768 /* AuthEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40DB922BE63887007A3768 /* AuthEndPoint.swift */; };
+		2C40DB952BE63AD2007A3768 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40DB942BE63AD2007A3768 /* KeychainManager.swift */; };
+		2C40DB982BE644BE007A3768 /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 2C40DB972BE644BE007A3768 /* KakaoSDK */; };
+		2C40DB9A2BE64973007A3768 /* NanaHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40DB992BE64973007A3768 /* NanaHome.swift */; };
+		2C40DB9C2BE66809007A3768 /* AuthDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40DB9B2BE66809007A3768 /* AuthDTO.swift */; };
+		2C40DB9E2BE87C61007A3768 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40DB9D2BE87C61007A3768 /* Color+.swift */; };
+
 		2C80EC9E2BCE53E1002F38A7 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80EC9D2BCE53E1002F38A7 /* Article.swift */; };
 		2C80ECA02BCE55E0002F38A7 /* ArticleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80EC9F2BCE55E0002F38A7 /* ArticleItem.swift */; };
 		2C80ECA82BCF5CF2002F38A7 /* SearchAllCategoryResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80ECA72BCF5CF2002F38A7 /* SearchAllCategoryResultView.swift */; };
@@ -158,6 +173,20 @@
 		2C3C75D02BCAAFF300312F26 /* FavoriteMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMainView.swift; sourceTree = "<group>"; };
 		2C3C75D22BCAB00C00312F26 /* StoryMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryMainView.swift; sourceTree = "<group>"; };
 		2C3C75D42BCAB01500312F26 /* ProfileMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMainView.swift; sourceTree = "<group>"; };
+
+		2C40DB7C2BE6174E007A3768 /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		2C40DB7E2BE61F05007A3768 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		2C40DB822BE62259007A3768 /* LanguageSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectView.swift; sourceTree = "<group>"; };
+		2C40DB842BE62351007A3768 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		2C40DB862BE630EC007A3768 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		2C40DB8D2BE637DE007A3768 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		2C40DB902BE6383B007A3768 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		2C40DB922BE63887007A3768 /* AuthEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthEndPoint.swift; sourceTree = "<group>"; };
+		2C40DB942BE63AD2007A3768 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
+		2C40DB992BE64973007A3768 /* NanaHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NanaHome.swift; sourceTree = "<group>"; };
+		2C40DB9B2BE66809007A3768 /* AuthDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDTO.swift; sourceTree = "<group>"; };
+		2C40DB9D2BE87C61007A3768 /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
+
 		2C80EC9D2BCE53E1002F38A7 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		2C80EC9F2BCE55E0002F38A7 /* ArticleItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleItem.swift; sourceTree = "<group>"; };
 		2C80ECA72BCF5CF2002F38A7 /* SearchAllCategoryResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAllCategoryResultView.swift; sourceTree = "<group>"; };
@@ -240,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C3C75B22BCA3C6B00312F26 /* Kingfisher in Frameworks */,
+				2C40DB982BE644BE007A3768 /* KakaoSDK in Frameworks */,
 				2C80ECEA2BDAA551002F38A7 /* SwiftUICalendar in Frameworks */,
 				2C3C75AF2BCA3C5000312F26 /* Alamofire in Frameworks */,
 				2C3C75B82BCA41EE00312F26 /* Realm in Frameworks */,
@@ -279,6 +309,9 @@
 		2C1F31D12BCD14020066819F /* Localizing */ = {
 			isa = PBXGroup;
 			children = (
+
+				2C40DB7C2BE6174E007A3768 /* Localizable.xcstrings */,
+
 			);
 			path = Localizing;
 			sourceTree = "<group>";
@@ -306,16 +339,17 @@
 		2C3C75822BCA3ADA00312F26 /* NanaLand */ = {
 			isa = PBXGroup;
 			children = (
+				9C6A9C532BCC206D000413AD /* Info.plist */,
 				BF98341F2BCE71F400A5C289 /* NaNaPick */,
 				BF98341C2BCE71E100A5C289 /* Experience */,
 				BF9834192BCE71D000A5C289 /* Shop */,
 				BF9834162BCE6FFF00A5C289 /* Festival */,
 				BF9834132BCE6FCF00A5C289 /* Nature */,
-				9C6A9C532BCC206D000413AD /* Info.plist */,
 				9C6A9C3B2BCC1ABA000413AD /* Extension */,
 				2C3C75CA2BCAA8AD00312F26 /* App */,
 				2C3C75C12BCA544500312F26 /* Common */,
 				2C3C75C02BCA540200312F26 /* Networks */,
+				2C40DB812BE6222C007A3768 /* Onboarding */,
 				2C3C75BD2BCA53D500312F26 /* Home */,
 				2C3C75CD2BCAAFCE00312F26 /* Favorite */,
 				2C3C75CE2BCAAFD700312F26 /* Story */,
@@ -367,7 +401,11 @@
 		2C3C75C02BCA540200312F26 /* Networks */ = {
 			isa = PBXGroup;
 			children = (
+
 				BF7F7F5A2BE6130D0000F08A /* Nature */,
+
+				2C40DB8F2BE63816007A3768 /* Auth */,
+
 				BF0C70852BE0D17C00677428 /* Festival */,
 				BF1611472BDB7862000340F2 /* Shop */,
 				2C80ECD82BD63B8B002F38A7 /* Favorite */,
@@ -391,6 +429,8 @@
 		2C3C75C22BCA54A200312F26 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				2C40DB8D2BE637DE007A3768 /* AuthManager.swift */,
+				2C40DB942BE63AD2007A3768 /* KeychainManager.swift */,
 				2C3C75C82BCA550200312F26 /* UtilSample.swift */,
 				2C1F31D62BCD73C00066819F /* Constants.swift */,
 				BF7C0EBF2BD0B725008ACB75 /* secret.swift */,
@@ -416,6 +456,8 @@
 			isa = PBXGroup;
 			children = (
 				2C3C75832BCA3ADA00312F26 /* NanaLandApp.swift */,
+				2C40DB992BE64973007A3768 /* NanaHome.swift */,
+				2C40DB7E2BE61F05007A3768 /* SplashView.swift */,
 				2C3C75CB2BCAA93D00312F26 /* NanaLandTabView.swift */,
 				2C80ECCE2BD2C777002F38A7 /* AppState.swift */,
 			);
@@ -446,6 +488,26 @@
 				2C3C75D42BCAB01500312F26 /* ProfileMainView.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		2C40DB812BE6222C007A3768 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				2C40DB822BE62259007A3768 /* LanguageSelectView.swift */,
+				2C40DB862BE630EC007A3768 /* LoginView.swift */,
+				2C40DB842BE62351007A3768 /* RegisterView.swift */,
+				2C40DB9B2BE66809007A3768 /* AuthDTO.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		2C40DB8F2BE63816007A3768 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				2C40DB902BE6383B007A3768 /* AuthService.swift */,
+				2C40DB922BE63887007A3768 /* AuthEndPoint.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		2C80ECA62BCF5CB6002F38A7 /* SearchResult */ = {
@@ -544,6 +606,7 @@
 				9C6A9C3C2BCC1AC1000413AD /* Font */,
 				2C80ECB62BCFA055002F38A7 /* Data+.swift */,
 				2C80ECF12BDBE545002F38A7 /* YearMonthDay+.swift */,
+				2C40DB9D2BE87C61007A3768 /* Color+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -690,6 +753,7 @@
 				2C3C75B92BCA41EE00312F26 /* RealmSwift */,
 				2C80ECCC2BD2C27D002F38A7 /* SwiftUIIntrospect */,
 				2C80ECE92BDAA551002F38A7 /* SwiftUICalendar */,
+				2C40DB972BE644BE007A3768 /* KakaoSDK */,
 			);
 			productName = NanaLand;
 			productReference = 2C3C75802BCA3ADA00312F26 /* NanaLand.app */;
@@ -771,6 +835,7 @@
 				2C3C75B62BCA41EE00312F26 /* XCRemoteSwiftPackageReference "realm-swift" */,
 				2C80ECCB2BD2C27D002F38A7 /* XCRemoteSwiftPackageReference "swiftui-introspect" */,
 				2C80ECE82BDAA551002F38A7 /* XCRemoteSwiftPackageReference "SwiftUICalendar" */,
+				2C40DB962BE644BE007A3768 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
 			);
 			productRefGroup = 2C3C75812BCA3ADA00312F26 /* Products */;
 			projectDirPath = "";
@@ -794,6 +859,9 @@
 				9C6A9C632BCC22CE000413AD /* AppleSDGothicNeoL.ttf in Resources */,
 				2C3C75882BCA3ADC00312F26 /* Assets.xcassets in Resources */,
 				2C1F31C02BCD01240066819F /* AppleSDGothicNeoEB.ttf in Resources */,
+
+				2C40DB7D2BE6174F007A3768 /* Localizable.xcstrings in Resources */,
+
 				2C1F31C62BCD01390066819F /* AppleSDGothicNeoB.ttf in Resources */,
 				2C1F31C52BCD01390066819F /* AppleSDGothicNeoH.ttf in Resources */,
 				2C1F31C42BCD01390066819F /* AppleSDGothicNeoM.ttf in Resources */,
@@ -827,6 +895,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C40DB852BE62351007A3768 /* RegisterView.swift in Sources */,
 				2C80ECCA2BD0EE0F002F38A7 /* SearchDTO.swift in Sources */,
 				BF3021EE2BDF8E9300CB3966 /* ShopDetailService.swift in Sources */,
 				BF1611442BDB7559000340F2 /* ShopMainViewModel.swift in Sources */,
@@ -840,10 +909,12 @@
 				2C80ECD12BD4AEDE002F38A7 /* NanaNavigationBar.swift in Sources */,
 				BF4F6C682BD54CA4009F070F /* NaNaPickDetailService.swift in Sources */,
 				BF3021F22BDF909900CB3966 /* ShopDetailViewModel.swift in Sources */,
+				2C40DB952BE63AD2007A3768 /* KeychainManager.swift in Sources */,
 				2C80ECBC2BCFCCDA002F38A7 /* EndPoint.swift in Sources */,
 				BF7F7F572BE612240000F08A /* NatureMainView.swift in Sources */,
 				2C80ECDA2BD63BAA002F38A7 /* FavoriteEndPoint.swift in Sources */,
 				2C80ECDC2BD79AE7002F38A7 /* FavoriteService.swift in Sources */,
+				2C40DB9C2BE66809007A3768 /* AuthDTO.swift in Sources */,
 				BF9834252BCE847300A5C289 /* HomeMainViewModel.swift in Sources */,
 				BF98341B2BCE71DB00A5C289 /* ShopMainView.swift in Sources */,
 				BF9842F12BCE897C00D6A60C /* BannerModel.swift in Sources */,
@@ -856,6 +927,7 @@
 				2C80EC9E2BCE53E1002F38A7 /* Article.swift in Sources */,
 				BF9F02952BD8A6AD003E72E6 /* FestivalDetailView.swift in Sources */,
 				2C3C75BF2BCA53EE00312F26 /* HomeMainView.swift in Sources */,
+				2C40DB832BE62259007A3768 /* LanguageSelectView.swift in Sources */,
 				2C1F31D52BCD2A870066819F /* NanaSearchBar.swift in Sources */,
 				BF7F7F552BE612240000F08A /* NatureDetailViewModel.swift in Sources */,
 				BF7C0EC02BD0B725008ACB75 /* secret.swift in Sources */,
@@ -871,6 +943,7 @@
 				BF7F7F5F2BE613400000F08A /* NatureEndPoint.swift in Sources */,
 				BF7F7F612BE613400000F08A /* NatureDetailService.swift in Sources */,
 				2C80ECBF2BCFCCFE002F38A7 /* APITask.swift in Sources */,
+				2C40DB9A2BE64973007A3768 /* NanaHome.swift in Sources */,
 				2C1F31CE2BCD049C0066819F /* SearchMainView.swift in Sources */,
 				BF9834212BCE720B00A5C289 /* NanapickMainView.swift in Sources */,
 				BFABD3512BE7634100C3F3A6 /* FestivalModel.swift in Sources */,
@@ -882,10 +955,17 @@
 				BFABD34F2BE75F4600C3F3A6 /* FestivalEndPoint.swift in Sources */,
 				2C1F31D02BCD04AA0066819F /* SearchViewModel.swift in Sources */,
 				BF9F02912BD89EB1003E72E6 /* NavigationBar.swift in Sources */,
+
 				BF7F7F582BE612240000F08A /* NatureDetailView.swift in Sources */,
+
+				2C40DB932BE63887007A3768 /* AuthEndPoint.swift in Sources */,
+				2C40DB7F2BE61F05007A3768 /* SplashView.swift in Sources */,
+
 				2C80ECD32BD4B33B002F38A7 /* FavoriteViewModel.swift in Sources */,
 				2C80ECAA2BCF5DB8002F38A7 /* SearchDetailCategoryResultView.swift in Sources */,
+				2C40DB8E2BE637DE007A3768 /* AuthManager.swift in Sources */,
 				2C1F31D72BCD73C00066819F /* Constants.swift in Sources */,
+				2C40DB872BE630EC007A3768 /* LoginView.swift in Sources */,
 				2C80ECC52BD0A086002F38A7 /* BaseResponse.swift in Sources */,
 				2C3C75CC2BCAA93D00312F26 /* NanaLandTabView.swift in Sources */,
 				BF9F02932BD8A514003E72E6 /* ShopDetailView.swift in Sources */,
@@ -894,10 +974,12 @@
 				9C6A9C3E2BCC1BAE000413AD /* Fonts+.swift in Sources */,
 				BF4F6C6A2BD54CB0009F070F /* NaNaPickDetailEndPoint.swift in Sources */,
 				BF0997982BD1FFF900563E9A /* NaNaPickDetailView.swift in Sources */,
+				2C40DB9E2BE87C61007A3768 /* Color+.swift in Sources */,
 				BF9F02992BD8DFC0003E72E6 /* FestivalMainViewModel.swift in Sources */,
 				BF9834232BCE83E300A5C289 /* RecommendModel.swift in Sources */,
 				BFF5DA912BE809D100FD8764 /* LocationModalView.swift in Sources */,
 				2C3C75842BCA3ADA00312F26 /* NanaLandApp.swift in Sources */,
+				2C40DB912BE6383B007A3768 /* AuthService.swift in Sources */,
 				2C80ECEE2BDBE0CE002F38A7 /* CalendarItem.swift in Sources */,
 				BF1493732BD1097100FC626B /* NaNaPickService.swift in Sources */,
 				BF1493752BD10A4100FC626B /* NaNaPickEndPoint.swift in Sources */,
@@ -1086,7 +1168,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.iHyunWoo.NanaLand;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nanaland;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1116,7 +1198,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.iHyunWoo.NanaLand;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nanaland;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1274,6 +1356,14 @@
 				kind = branch;
 			};
 		};
+		2C40DB962BE644BE007A3768 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.22.1;
+			};
+		};
 		2C80ECCB2BD2C27D002F38A7 /* XCRemoteSwiftPackageReference "swiftui-introspect" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/siteline/swiftui-introspect";
@@ -1317,6 +1407,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2C3C75B62BCA41EE00312F26 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		2C40DB972BE644BE007A3768 /* KakaoSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C40DB962BE644BE007A3768 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDK;
 		};
 		2C80ECCC2BD2C27D002F38A7 /* SwiftUIIntrospect */ = {
 			isa = XCSwiftPackageProductDependency;

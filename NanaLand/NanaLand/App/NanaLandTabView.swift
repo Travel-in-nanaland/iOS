@@ -116,6 +116,7 @@ struct NanaLandTabView: View {
                 }
                 
             }
+
 //				.tabItem {
 //					Label(
 //						title: { Text(String(localized: "community")).font(.gothicNeo(.semibold, size: 10)) },
@@ -132,20 +133,7 @@ struct NanaLandTabView: View {
 					)
 				}
 				.tag(Tab.profile)
+
 		}
-		.tint(.baseBlack)
-		.introspect(.tabView, on: .iOS(.v16, .v17)) { tabView in
-			let appearance = UITabBarAppearance()
-			appearance.configureWithTransparentBackground()
-			tabView.tabBar.standardAppearance = appearance
-			tabView.tabBar.backgroundColor = UIColor.white
-			
-			tabView.tabBar.layer.masksToBounds = true
-			tabView.tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-			tabView.tabBar.layer.cornerRadius = 16
-			
-		}
-        
-     
     }
 }
