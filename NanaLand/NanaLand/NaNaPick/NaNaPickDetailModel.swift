@@ -24,6 +24,7 @@ struct DetailInfo: Codable {
 }
 
 struct AdditionalInfo: Codable {
+    let infoEmoji: String
     let infoKey: String
     let infoValue: String
 }

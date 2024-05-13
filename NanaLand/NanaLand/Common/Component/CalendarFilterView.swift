@@ -10,18 +10,18 @@ import SwiftUICalendar
 
 struct CalendarFilterView: View {
 	@Environment(\.dismiss) var dismiss
-	
+    @ObservedObject var viewModel: FestivalMainViewModel
 	@StateObject var calendarController = CalendarController()
 	@Binding var startDate: YearMonthDay?
 	@Binding var endDate: YearMonthDay?
-	
+    @Binding var location: String
 	// 적용하기 누르면 바인딩
 	@State var currentStartDate: YearMonthDay?
 	@State var currentEndDate: YearMonthDay?
 	
     var body: some View {
-		ZStack(alignment: .bottom) {
-			Color.baseBlack.opacity(0.6)
+		
+            Color.baseBlack.opacity(0.1)
 				.edgesIgnoringSafeArea(.all)
 			
 			VStack(spacing: 0) {
@@ -33,7 +33,7 @@ struct CalendarFilterView: View {
 			.background(Color.white)
 			.clipShape(RoundedCorners(radius: 12, corners: [.topLeft, .topRight]))
 			.shadow(color: .baseBlack.opacity(0.1), radius: 10, x: 0, y: -4)
-		}
+		
 		.onAppear {
 			currentStartDate = startDate
 			currentEndDate = endDate
@@ -44,6 +44,10 @@ struct CalendarFilterView: View {
 		}
     }
 	
+    func getDateFestivalMainItem(page: Int32, size: Int32, filterName: String, start: String, end: String) async {
+        await viewModel.action(.getThisMonthFestivalMainItem(page: page, size: size, filterName: filterName, startDate: start, endDate: end))
+    }
+    
 	private var titleAndCloseButton: some View {
 		HStack {
 			Text(String(localized: "chooseDate"))
@@ -117,10 +121,37 @@ struct CalendarFilterView: View {
 		)
 		.padding(.horizontal, 12)
 		.padding(.bottom, 32)
-		.frame(height: 300)
-	}
+        .frame(height: 300)
 	
+	}
+    static let dateFormatter: DateFormatter = {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd"
+            return formatter
+        }()
+        
+        // 현재 날짜를 문자열로 변환하여 반환
+        var todayDateString: String {
+            return CalendarFilterView.dateFormatter.string(from: Date())
+        }
+    func formattedNumber(_ number: Int) -> String {
+            // 숫자를 문자열로 변환하여, 1자리 숫자인 경우에만 앞에 0을 추가
+            return number < 10 ? "0\(number)" : "\(number)"
+        }
+    // date 문자열에서 월만 뽑아내기
+    func extractFifthAndSixthCharacters(from str: String) -> String? {
+        
+        // 5번째 문자의 인덱스 찾기
+        let fifthIndex = str.index(str.startIndex, offsetBy: 5)
+        
+        // 6번째 문자의 인덱스 찾기
+        let sixthIndex = str.index(fifthIndex, offsetBy: 1)
+        
+        // 해당 인덱스의 문자열 반환
+        return String(str[fifthIndex...sixthIndex])
+    }
 	private var bottomButtons: some View {
+        
 		HStack(spacing: 46) {
 			Button(action: {
 				startDate = nil
@@ -141,6 +172,36 @@ struct CalendarFilterView: View {
 			Button(action: {
 				startDate = currentStartDate
 				endDate = currentEndDate
+                // 현재날짜 문자열로
+                let strCurrentDate = todayDateString
+                // 현재날짜 연도
+                let strCurrentYear = Int(strCurrentDate.prefix(4))
+                // 현재날짜 월
+                var strCurrentMonth = ""
+                if let result = extractFifthAndSixthCharacters(from: strCurrentDate) {
+                    strCurrentMonth = result
+                }
+                // 현재날짜 일
+                let strCurrentDay = Int(strCurrentDate.suffix(2))
+                // 시작날짜만 선택했을 경우에는 끝나는 날짜를 시작날짜와 같은 날로
+                if endDate == nil {
+                    endDate = startDate
+                }
+                
+                let strStartDate = String(startDate?.year ?? strCurrentYear!) + formattedNumber(startDate?.month ?? Int(strCurrentMonth)!) + formattedNumber(startDate?.day ?? strCurrentDay!)
+                
+                let strEndDate = String(endDate?.year ?? strCurrentYear!) + formattedNumber(endDate?.month ?? Int(strCurrentMonth)!) + formattedNumber(endDate?.day ?? strCurrentDay!)
+                
+                Task {
+                    if location == "지역" || location == "전 지역" {
+                        location = ""
+                    }
+                    
+                    await getDateFestivalMainItem(page: 0, size: 18, filterName: [location].joined(separator: ","), start: strStartDate, end: strEndDate)
+                    if location == "" {
+                        location = "전 지역"
+                    }
+                }
 				dismiss()
 			}, label: {
 				Text(String(localized: "apply"))
@@ -157,7 +218,7 @@ struct CalendarFilterView: View {
 	}
 }
 
-#Preview {
-	CalendarFilterView(startDate: .constant(nil), endDate: .constant(nil))
-		.background(HomeMainView())
-}
+//#Preview {
+//	CalendarFilterView(startDate: .constant(nil), endDate: .constant(nil))
+//		.background(HomeMainView())
+//}

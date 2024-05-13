@@ -53,11 +53,10 @@ struct HomeMainView: View {
                     
                     /// banner View
                         BannerView()
-                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width / 2)
-                            .padding(.bottom)
+                        .frame(width: UIScreen.main.bounds.width, height: (UIScreen.main.bounds.width) * (18 / 39))
                     
                     /// category View
-                    HStack(spacing: 12) {
+                    HStack(spacing: 0) {
                         // 7대자연 link
                         NavigationLink(destination: NatureMainView()) {
                             VStack(spacing: 0) {
@@ -69,7 +68,7 @@ struct HomeMainView: View {
                                     .tint(.black)
                             }
                         }
-                        
+                        Spacer()
                         // 축제 link
                         NavigationLink(destination: FestivalMainView()) {
                             VStack(spacing: 0) {
@@ -82,7 +81,7 @@ struct HomeMainView: View {
                             }
                         }
                         .frame(height: 65)
-                
+                        Spacer()
                         // 전통시장 link
                         NavigationLink(destination: ShopMainView()) {
                             VStack(spacing: 0) {
@@ -95,7 +94,7 @@ struct HomeMainView: View {
                             }
                         }
                         .frame(height: 65)
-                   
+                        Spacer()
                         // 이색체험 link
                         NavigationLink(destination: ExperienceMainView()) {
                             VStack(spacing: 0) {
@@ -107,7 +106,7 @@ struct HomeMainView: View {
                             }
                         }
                         .frame(height: 65)
-                    
+                        Spacer()
                         // 나나 Pick link
                         NavigationLink(destination: NanapickMainView()) {
                             VStack(spacing: 0) {
@@ -122,8 +121,9 @@ struct HomeMainView: View {
                         .frame(height: 65)
                        
                     }
-                    .frame(width: UIScreen.main.bounds.width)
-                    .padding(.bottom, 5)
+                    .frame(width: Constants.screenWidth - 32)
+                    .padding(.bottom, 21)
+                    
                 
                     /// 광고 뷰
                     HStack {

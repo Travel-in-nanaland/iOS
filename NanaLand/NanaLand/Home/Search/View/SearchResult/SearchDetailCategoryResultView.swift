@@ -33,7 +33,7 @@ struct SearchDetailCategoryResultView: View {
 					case .nanaPick:
 						return ""
 					}
-				}())
+				}() as String)
 					.font(.gothicNeo(.medium, size: 14))
 					.foregroundStyle(Color.gray1)
 				

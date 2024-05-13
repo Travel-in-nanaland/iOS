@@ -33,31 +33,37 @@ struct NaNaPickDetailView: View {
         }
     }
     var body: some View {
+        
         ScrollView {
             VStack(spacing: 0) {
                 if isAPICalled {
+                    
                     KFImage(URL(string: viewModel.state.getNaNaPickDetailResponse.originUrl))
                         .resizable()
-             
+                        .frame(width: Constants.screenWidth, height: Constants.screenWidth * (237 / 360))
+                    
                     ForEach(viewModel.state.getNaNaPickDetailResponse.nanaDetails, id: \.number) { index in
                         
-                        HStack(alignment: .bottom, spacing: 0) {
-                            Text("\(index.number)")
-                                .foregroundStyle(Color.main)
-                                .font(.gothicNeo(.bold, size: 18))
-                                .background(
-                                    Circle()
-                                        .fill(Color.white)
-                                        .frame(width: 28, height: 28)
-                                        .shadow(radius: 4)
-                                )
-                                .padding(.leading, 24)
-                                .padding(.trailing, 16)
-                                
-                            VStack {
+                        HStack(spacing: 0) {
+                            VStack(spacing: 0) {
                                 Text("\(index.subTitle)")
                                     .foregroundStyle(Color.main)
-                                Text("\(index.title)")
+                                HStack {
+                                    Text("\(index.number)")
+                                        .foregroundStyle(Color.main)
+                                        .font(.gothicNeo(.bold, size: 18))
+                                        .background(
+                                            Circle()
+                                                .fill(Color.white)
+                                                .frame(width: 28, height: 28)
+                                                .shadow(radius: 4)
+                                        )
+                                        .padding(.leading, 24)
+                                        .padding(.trailing, 16)
+                                    Text("\(index.title)")
+                                        .font(.title01_bold)
+                                }
+                                
                             }
                             Spacer()
                         }
@@ -65,25 +71,80 @@ struct NaNaPickDetailView: View {
                         
                         KFImage(URL(string: index.imageUrl))
                             .resizable()
+                            .frame(height: (Constants.screenWidth - 32) * ( 176 / 328))
                             .padding(.leading, 16)
                             .padding(.trailing, 16)
                         
                         Text("\(index.content)")
+                   
+                        
                         
                         HStack(spacing: 0) {
-                            Text("\(index.additionalInfoList[0].infoKey): ")
-                            Text("\(index.additionalInfoList[0].infoValue)")
-                        }
-                        HStack(spacing: 0) {
-                            Text("\(index.additionalInfoList[1].infoKey): ")
-                            Text("\(index.additionalInfoList[1].infoValue)")
-                        }
-                        
-                        HStack(spacing: 0) {
-                            ForEach(index.hashtags, id: \.self) { hashtag in
-                                Text("\(hashtag)")
+                            if index.additionalInfoList[0].infoEmoji == "ADDRESS" {
+                                Image("icPin")
+                                    .resizable()
+                                    .frame(width: 20, height: 20)
+                                    .padding(.trailing, 4)
+                                    
+                            } else if index.additionalInfoList[0].infoEmoji == "PARKING" {
+                                Image("icCar")
+                                    .resizable()
+                                    .frame(width: 20, height: 20)
+                                    .padding(.trailing, 4)
                             }
+                           
+                            Text("\(index.additionalInfoList[0].infoKey): ")
+                                .font(.body02)
+                                .foregroundStyle(.gray1)
+                            Text("\(index.additionalInfoList[0].infoValue)")
+                                .font(.body02)
+                                .foregroundStyle(.gray1)
+                            Spacer()
                         }
+                        .padding(.leading, 16)
+                        HStack(spacing: 0) {
+                            if index.additionalInfoList[1].infoEmoji == "ADDRESS" {
+                                Image("icPin")
+                                    .resizable()
+                                    .frame(width: 20, height: 20)
+                                    .padding(.trailing, 4)
+                            } else if index.additionalInfoList[1].infoEmoji == "PARKING" {
+                                Image("icCar")
+                                    .resizable()
+                                    .frame(width: 20, height: 20)
+                                    .padding(.trailing, 4)
+                            }
+                            Text("\(index.additionalInfoList[1].infoKey): ")
+                                .font(.body02)
+                                .foregroundStyle(.gray1)
+                            Text("\(index.additionalInfoList[1].infoValue)")
+                                .font(.body02)
+                                .foregroundStyle(.gray1)
+                            Spacer()
+                        }
+                        .padding(.leading, 16)
+                        .padding(.bottom, 8)
+                        
+                        HStack(spacing: 14) {
+                            ForEach(index.hashtags, id: \.self) { hashtag in
+                                HStack(spacing: 0) {
+                                    Text("\(hashtag)")
+                                        .padding(.leading, 16)
+                                        .padding(.trailing, 16)
+                                        .font(.body02)
+                                        .frame(minWidth: 49, minHeight: 32)
+                                        .background(
+                                            RoundedRectangle(cornerRadius: 30)
+                                                .foregroundStyle(Color.main10P)
+                                            
+                                        )
+                                        .foregroundStyle(Color.main)
+                                }
+                                
+                            }
+                          Spacer()
+                        }
+                        .padding(.leading, 16)
                         .padding(.bottom, 48)
                     }
                 } else {

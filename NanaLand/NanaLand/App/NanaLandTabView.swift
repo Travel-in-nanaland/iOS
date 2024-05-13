@@ -116,14 +116,13 @@ struct NanaLandTabView: View {
                 }
                 
             }
-          
-				.tabItem {
-					Label(
-						title: { Text(String(localized: "community")).font(.gothicNeo(.semibold, size: 10)) },
-						icon: { appState.currentTab == .story ? Image(.icStoryFill) : Image(.icStory) }
-					)
-				}
-				.tag(Tab.story)
+//				.tabItem {
+//					Label(
+//						title: { Text(String(localized: "community")).font(.gothicNeo(.semibold, size: 10)) },
+//						icon: { appState.currentTab == .story ? Image(.icStoryFill) : Image(.icStory) }
+//					)
+//				}
+//				.tag(Tab.story)
 			
 			ProfileMainView()
 				.tabItem {

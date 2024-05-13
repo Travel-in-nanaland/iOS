@@ -106,7 +106,7 @@ struct ShopMainGridView: View {
         }
         .onAppear {
             Task {
-                await getShopMainItem(page: 0, size:12, filterName:"")
+                await getShopMainItem(page: 0, size:18, filterName:"")
                 isAPICalled = true
             }
         }
