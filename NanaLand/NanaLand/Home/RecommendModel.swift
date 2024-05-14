@@ -9,10 +9,10 @@ import Foundation
 
 struct RecommendModel: Codable, Hashable {
     var message: String
-    var data: [Data]
+    var data: [RecommendData]
 }
 
-struct Data: Codable, Hashable {
+struct RecommendData: Codable, Hashable {
     var id: Int
     var category: String
     var thumbnailUrl: String

@@ -116,6 +116,24 @@ struct NanaLandTabView: View {
                 }
                 
             }
+
+//				.tabItem {
+//					Label(
+//						title: { Text(String(localized: "community")).font(.gothicNeo(.semibold, size: 10)) },
+//						icon: { appState.currentTab == .story ? Image(.icStoryFill) : Image(.icStory) }
+//					)
+//				}
+//				.tag(Tab.story)
+			
+			ProfileMainView()
+				.tabItem {
+					Label(
+						title: { Text(String(localized: "myNana")).font(.gothicNeo(.semibold, size: 10)) },
+						icon: { appState.currentTab == .profile ? Image(.icMyPageFill) : Image(.icMyPage) }
+					)
+				}
+				.tag(Tab.profile)
+
 		}
 
 		NavigationStack {

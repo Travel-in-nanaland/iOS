@@ -15,4 +15,7 @@ struct NaNaPickModel: Codable {
 struct ImageInfo: Codable, Hashable, Identifiable{
     let id: Int64
     let thumbnailUrl: String
+    let version: String
+    let subHeading: String
+    let heading: String 
 }
