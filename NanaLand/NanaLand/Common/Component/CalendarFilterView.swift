@@ -80,7 +80,7 @@ struct CalendarFilterView: View {
 					Button(action: {
 						calendarController.scrollTo(calendarController.yearMonth.addMonth(value: -1))
 					}, label: {
-						Image(.icLeft)
+						Image(.icRight)
 							.resizable()
 							.frame(width: 24, height: 24)
 					})
