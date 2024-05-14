@@ -83,6 +83,7 @@
 
     },
     "community" : {
+
       "extractionState" : "manual",
       "localizations" : {
         "ko" : {
@@ -94,6 +95,7 @@
       }
     },
     "deletePlace" : {
+
       "extractionState" : "manual",
       "localizations" : {
         "ko" : {
@@ -177,6 +179,7 @@
         }
       }
     },
+
     "modifyInfo" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -188,6 +191,7 @@
         }
       }
     },
+
     "month" : {
 
     },
@@ -246,6 +250,7 @@
         }
       }
     },
+
     "numberAndHompage" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -272,6 +277,12 @@
 
     },
     "placeNameAndLocation" : {
+
+    "photo" : {
+
+    },
+    "recentSearchTerm" : {
+
       "extractionState" : "manual",
       "localizations" : {
         "ko" : {
@@ -282,12 +293,20 @@
         }
       }
     },
+
     "priceInfo" : {
+
+    "region" : {
+
+    },
+    "removeAll" : {
+
       "extractionState" : "manual",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
+
             "value" : "가격 정보"
           }
         }
@@ -332,6 +351,16 @@
     "reset" : {
 
     },
+
+            "value" : "모두 지우기"
+          }
+        }
+      }
+    },
+    "reset" : {
+
+    },
+
     "searchVolumeUpJejuPlace" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -389,6 +418,9 @@
           }
         }
       }
+
+    "Splash Screen" : {
+
     },
     "title" : {
 
@@ -485,6 +517,17 @@
     "편의시설" : {
 
     },
+
+    "축제" : {
+
+    },
+    "카카오 로그인" : {
+
+    },
+    "편의시설" : {
+
+    },
+
     "홈페이지" : {
 
     }

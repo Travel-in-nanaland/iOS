@@ -48,14 +48,8 @@ struct ShopMainView: View {
             
             Spacer()
         }
-        .onAppear {
-            appState.isTabViewHidden = true
-        }
         .toolbar(.hidden)
-        .toolbar(.hidden, for: .tabBar)
-        .onDisappear {
-            appState.isTabViewHidden = false
-        }
+
     }
 
 }
