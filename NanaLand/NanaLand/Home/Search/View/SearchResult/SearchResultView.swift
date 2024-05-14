@@ -40,7 +40,7 @@ enum Category: String, CaseIterable, Codable {
 
 struct SearchResultView: View {
 	@Environment(\.dismiss) var dismiss
-	@EnvironmentObject var searchVM: SearchViewModel
+	@ObservedObject var searchVM: SearchViewModel
 	
 	@State var searchTerm: String
 	
@@ -112,10 +112,10 @@ struct SearchResultView: View {
 	
 	private var contentTab: some View {
 		TabView(selection: $searchVM.state.currentSearchTab) {
-			SearchAllCategoryResultView()
+			SearchAllCategoryResultView(searchVM: searchVM)
 				.tag(Category.all)
 			
-			SearchDetailCategoryResultView(tab: .nature, searchTerm: searchTerm)
+			SearchDetailCategoryResultView(searchVM: searchVM, tab: .nature, searchTerm: searchTerm)
 				.tag(Category.nature)
 				.onAppear {
 					if !isNatureSearchIsDone {
@@ -127,7 +127,7 @@ struct SearchResultView: View {
 					}
 				}
 			
-			SearchDetailCategoryResultView(tab: .festival, searchTerm: searchTerm)
+			SearchDetailCategoryResultView(searchVM: searchVM, tab: .festival, searchTerm: searchTerm)
 				.tag(Category.festival)
 				.onAppear {
 					if !isFestivalSearchIsDone {
@@ -138,7 +138,7 @@ struct SearchResultView: View {
 					}
 				}
 			
-			SearchDetailCategoryResultView(tab: .market, searchTerm: searchTerm)
+			SearchDetailCategoryResultView(searchVM: searchVM, tab: .market, searchTerm: searchTerm)
 				.tag(Category.market)
 				.onAppear {
 					if !isMarketSearchIsDone {
@@ -149,7 +149,7 @@ struct SearchResultView: View {
 					}
 				}
 			
-			SearchDetailCategoryResultView(tab: .experience, searchTerm: searchTerm)
+			SearchDetailCategoryResultView(searchVM: searchVM, tab: .experience, searchTerm: searchTerm)
 				.tag(Category.experience)
 				.onAppear {
 					if !isExperienceSearchIsDone {
@@ -168,6 +168,5 @@ struct SearchResultView: View {
 }
 
 #Preview {
-	SearchResultView(searchTerm: "")
-		.environmentObject(SearchViewModel())
+	SearchResultView(searchVM: SearchViewModel(), searchTerm: "")
 }
