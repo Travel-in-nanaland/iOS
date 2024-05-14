@@ -10,7 +10,7 @@ import Kingfisher
 
 struct SearchMainView: View {
 	@Environment(\.dismiss) var dismiss
-	@EnvironmentObject var searchVM: SearchViewModel
+	@StateObject var searchVM: SearchViewModel = SearchViewModel()
 	
 	@State var searchTerm = ""
 	@State var showResultView: Bool = false
@@ -29,14 +29,15 @@ struct SearchMainView: View {
 				Spacer()
 					.frame(height: 100)
 			}
+			
 		}
 		.toolbar(.hidden, for: .navigationBar)
-		.navigationDestination(isPresented: $showResultView) {
-			SearchResultView(searchTerm: searchTerm)
-		}
 		.task {
 			await searchVM.action(.getPopularKeyword)
 			await searchVM.action(.getVolumeUp)
+		}
+		.navigationDestination(isPresented: $showResultView) {
+			SearchResultView(searchVM: searchVM, searchTerm: searchTerm)
 		}
     }
 	
