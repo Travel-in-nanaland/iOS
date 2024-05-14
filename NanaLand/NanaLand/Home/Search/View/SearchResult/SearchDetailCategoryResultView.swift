@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SearchDetailCategoryResultView: View {
-	@EnvironmentObject var searchVM: SearchViewModel
+	@ObservedObject var searchVM: SearchViewModel
 	
 	let tab: Category
 	let searchTerm: String
@@ -84,6 +84,5 @@ struct SearchDetailCategoryResultView: View {
 }
 
 #Preview {
-	SearchDetailCategoryResultView(tab: .experience, searchTerm: "제주시")
-		.environmentObject(SearchViewModel())
+	SearchDetailCategoryResultView(searchVM: SearchViewModel(), tab: .experience, searchTerm: "제주시")
 }
