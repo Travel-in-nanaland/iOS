@@ -62,6 +62,22 @@ class NetworkManager {
 			  headers: endPoint.headers,
 			  interceptor: Interceptor()
 			)
+		case let .requestWithoutInterceptor(body):
+			if body == nil {
+				return AF.request(
+					"\(endPoint.baseURL)\(endPoint.path)",
+					method: endPoint.method,
+					headers: endPoint.headers
+				)
+			} else {
+				return AF.request(
+				  "\(endPoint.baseURL)\(endPoint.path)",
+				  method: endPoint.method,
+				  parameters: body!,
+				  encoder: JSONParameterEncoder.default,
+				  headers: endPoint.headers
+				)
+			}
 		}
 	}
 }

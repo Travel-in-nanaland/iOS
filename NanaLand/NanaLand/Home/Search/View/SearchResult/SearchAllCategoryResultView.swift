@@ -8,29 +8,33 @@
 import SwiftUI
 
 struct SearchAllCategoryResultView: View {
-	@EnvironmentObject var searchVM: SearchViewModel
+	@ObservedObject var searchVM: SearchViewModel
 	
 	var body: some View {
 		ScrollView(.vertical, showsIndicators: false) {
 			SearchAllCategoryItem(
+				searchVM: searchVM,
 				category: .nature,
 				count: searchVM.state.allCategorySearchResult.nature.totalElements,
 				articles: searchVM.state.allCategorySearchResult.nature.data
 			)
 			
 			SearchAllCategoryItem(
+				searchVM: searchVM,
 				category: .festival,
 				count: searchVM.state.allCategorySearchResult.festival.totalElements,
 				articles: searchVM.state.allCategorySearchResult.festival.data
 			)
 			
 			SearchAllCategoryItem(
+				searchVM: searchVM,
 				category: .market,
 				count: searchVM.state.allCategorySearchResult.market.totalElements,
 				articles: searchVM.state.allCategorySearchResult.market.data
 			)
 			
 			SearchAllCategoryItem(
+				searchVM: searchVM,
 				category: .experience,
 				count: searchVM.state.allCategorySearchResult.experience.totalElements,
 				articles: searchVM.state.allCategorySearchResult.experience.data
@@ -44,7 +48,7 @@ struct SearchAllCategoryResultView: View {
 }
 
 struct SearchAllCategoryItem: View {
-	@EnvironmentObject var searchVM: SearchViewModel
+	@ObservedObject var searchVM: SearchViewModel
 	
 	let category: Category
 	let count: Int
@@ -116,6 +120,5 @@ struct SearchAllCategoryItem: View {
 }
 
 #Preview {
-    SearchAllCategoryResultView()
-		.environmentObject(SearchViewModel())
+	SearchAllCategoryResultView(searchVM: SearchViewModel())
 }
