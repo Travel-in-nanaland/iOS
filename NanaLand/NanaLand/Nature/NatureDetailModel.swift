@@ -19,6 +19,6 @@ struct NatureDetailModel: Codable {
     let fee: String
     let details: String
     let amenity: String
-    let favorite: Bool
+    var favorite: Bool
     let intro: String
 }

@@ -14,6 +14,8 @@ class NatureDetailViewModel: ObservableObject {
     
     enum Action {
         case getNatureDetailItem(id: Int64)
+        
+        case toggleFavorite(body: FavoriteToggleRequest)
     }
     
     @Published var state: State
@@ -35,6 +37,13 @@ class NatureDetailViewModel: ObservableObject {
                 }
             } else {
                 print("Error")
+            }
+        case .toggleFavorite(body: let body):
+            let response = await FavoriteService.toggleFavorite(id: body.id, category: .nature)
+            if response != nil {
+                await MainActor.run {
+                    state.getNatureDetailResponse.favorite = response!.data.favorite
+                }
             }
         }
     }

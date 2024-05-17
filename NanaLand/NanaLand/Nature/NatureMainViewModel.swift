@@ -13,6 +13,7 @@ class NatureMainViewModel: ObservableObject {
     
     enum Action {
         case getNatureMainItem(page: Int64, size: Int64, filterName: String)
+        case toggleFavorite(body: FavoriteToggleRequest, index: Int)
     }
     
     @Published var state: State
@@ -31,10 +32,17 @@ class NatureMainViewModel: ObservableObject {
             
             if response != nil {
                 await MainActor.run {
-                    state.getNatureMainResponse.data.append(contentsOf: response!.data.data)
+                    state.getNatureMainResponse.data = response!.data.data
                 }
             } else {
                 print("Erorr")
+            }
+        case .toggleFavorite(body: let body, index: let index):
+            let response = await FavoriteService.toggleFavorite(id: body.id, category: .nature)
+            if response != nil {
+                await MainActor.run {
+                    state.getNatureMainResponse.data[index].favorite = response!.data.favorite
+                }
             }
         }
     }
