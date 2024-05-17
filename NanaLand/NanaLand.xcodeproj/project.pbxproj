@@ -28,7 +28,6 @@
 		2C3C75B82BCA41EE00312F26 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 2C3C75B72BCA41EE00312F26 /* Realm */; };
 		2C3C75BA2BCA41EE00312F26 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2C3C75B92BCA41EE00312F26 /* RealmSwift */; };
 		2C3C75BF2BCA53EE00312F26 /* HomeMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C75BE2BCA53EE00312F26 /* HomeMainView.swift */; };
-		2C3C75C92BCA550200312F26 /* UtilSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C75C82BCA550200312F26 /* UtilSample.swift */; };
 		2C3C75CC2BCAA93D00312F26 /* NanaLandTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C75CB2BCAA93D00312F26 /* NanaLandTabView.swift */; };
 		2C3C75D12BCAAFF300312F26 /* FavoriteMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C75D02BCAAFF300312F26 /* FavoriteMainView.swift */; };
 		2C3C75D32BCAB00C00312F26 /* StoryMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C75D22BCAB00C00312F26 /* StoryMainView.swift */; };
@@ -36,7 +35,7 @@
 		2C40DB7D2BE6174F007A3768 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 2C40DB7C2BE6174E007A3768 /* Localizable.xcstrings */; };
 		2C40DB7F2BE61F05007A3768 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40DB7E2BE61F05007A3768 /* SplashView.swift */; };
 		2C40DB832BE62259007A3768 /* LanguageSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40DB822BE62259007A3768 /* LanguageSelectView.swift */; };
-		2C40DB852BE62351007A3768 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40DB842BE62351007A3768 /* RegisterView.swift */; };
+		2C40DB852BE62351007A3768 /* RegisterNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40DB842BE62351007A3768 /* RegisterNavigationView.swift */; };
 		2C40DB872BE630EC007A3768 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40DB862BE630EC007A3768 /* LoginView.swift */; };
 		2C40DB8E2BE637DE007A3768 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40DB8D2BE637DE007A3768 /* AuthManager.swift */; };
 		2C40DB912BE6383B007A3768 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40DB902BE6383B007A3768 /* AuthService.swift */; };
@@ -48,6 +47,16 @@
 		2C40DB9E2BE87C61007A3768 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40DB9D2BE87C61007A3768 /* Color+.swift */; };
 		2C40DBB42BECE671007A3768 /* UINavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40DBB32BECE671007A3768 /* UINavigationController+.swift */; };
 		2C40DBB62BECEE2A007A3768 /* UITabBarController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40DBB52BECEE2A007A3768 /* UITabBarController+.swift */; };
+		2C40DBB92BEDFBC3007A3768 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 2C40DBB82BEDFBC3007A3768 /* GoogleSignIn */; };
+		2C40DBBB2BEDFBC3007A3768 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2C40DBBA2BEDFBC3007A3768 /* GoogleSignInSwift */; };
+		2C40DBBE2BF1AC3C007A3768 /* AuthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40DBBD2BF1AC3C007A3768 /* AuthError.swift */; };
+		2C40DBC02BF1ED8A007A3768 /* RegisterTermsAgreementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40DBBF2BF1ED8A007A3768 /* RegisterTermsAgreementView.swift */; };
+		2C40DBC22BF1F24D007A3768 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40DBC12BF1F24D007A3768 /* RegisterViewModel.swift */; };
+		2C5424F02BF4D7BD00B16439 /* RegisterNicknameAndProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5424EF2BF4D7BD00B16439 /* RegisterNicknameAndProfileView.swift */; };
+		2C5424F32BF5CEC700B16439 /* TypeTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5424F22BF5CEC700B16439 /* TypeTestView.swift */; };
+		2C5424FE2BF7131600B16439 /* TypeTestResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5424FD2BF7131600B16439 /* TypeTestResultView.swift */; };
+		2C5425002BF72C3500B16439 /* TripType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5424FF2BF72C3500B16439 /* TripType.swift */; };
+		2C5425042BF73FA500B16439 /* NatureMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5425032BF73FA500B16439 /* NatureMainView.swift */; };
 		2C80EC9E2BCE53E1002F38A7 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80EC9D2BCE53E1002F38A7 /* Article.swift */; };
 		2C80ECA02BCE55E0002F38A7 /* ArticleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80EC9F2BCE55E0002F38A7 /* ArticleItem.swift */; };
 		2C80ECA82BCF5CF2002F38A7 /* SearchAllCategoryResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80ECA72BCF5CF2002F38A7 /* SearchAllCategoryResultView.swift */; };
@@ -103,7 +112,6 @@
 		BF607F192BF5A2A900770CE7 /* FestivalDetailEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF607F182BF5A2A900770CE7 /* FestivalDetailEndPoint.swift */; };
 		BF7C0EC02BD0B725008ACB75 /* secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7C0EBF2BD0B725008ACB75 /* secret.swift */; };
 		BF7F7F562BE612240000F08A /* NatureMainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7F7F502BE612240000F08A /* NatureMainModel.swift */; };
-		BF7F7F572BE612240000F08A /* NatureMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7F7F512BE612240000F08A /* NatureMainView.swift */; };
 		BF7F7F592BE612240000F08A /* NatureDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7F7F532BE612240000F08A /* NatureDetailModel.swift */; };
 		BF7F7F5F2BE613400000F08A /* NatureEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7F7F5B2BE613400000F08A /* NatureEndPoint.swift */; };
 		BF7F7F602BE613400000F08A /* NatureDetailEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7F7F5C2BE613400000F08A /* NatureDetailEndPoint.swift */; };
@@ -172,7 +180,6 @@
 		2C3C759E2BCA3ADD00312F26 /* NanaLandUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NanaLandUITests.swift; sourceTree = "<group>"; };
 		2C3C75A02BCA3ADD00312F26 /* NanaLandUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NanaLandUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		2C3C75BE2BCA53EE00312F26 /* HomeMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMainView.swift; sourceTree = "<group>"; };
-		2C3C75C82BCA550200312F26 /* UtilSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilSample.swift; sourceTree = "<group>"; };
 		2C3C75CB2BCAA93D00312F26 /* NanaLandTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NanaLandTabView.swift; sourceTree = "<group>"; };
 		2C3C75D02BCAAFF300312F26 /* FavoriteMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMainView.swift; sourceTree = "<group>"; };
 		2C3C75D22BCAB00C00312F26 /* StoryMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryMainView.swift; sourceTree = "<group>"; };
@@ -180,7 +187,7 @@
 		2C40DB7C2BE6174E007A3768 /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		2C40DB7E2BE61F05007A3768 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		2C40DB822BE62259007A3768 /* LanguageSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectView.swift; sourceTree = "<group>"; };
-		2C40DB842BE62351007A3768 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		2C40DB842BE62351007A3768 /* RegisterNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNavigationView.swift; sourceTree = "<group>"; };
 		2C40DB862BE630EC007A3768 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		2C40DB8D2BE637DE007A3768 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		2C40DB902BE6383B007A3768 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
@@ -191,6 +198,15 @@
 		2C40DB9D2BE87C61007A3768 /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 		2C40DBB32BECE671007A3768 /* UINavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+.swift"; sourceTree = "<group>"; };
 		2C40DBB52BECEE2A007A3768 /* UITabBarController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarController+.swift"; sourceTree = "<group>"; };
+		2C40DBBD2BF1AC3C007A3768 /* AuthError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthError.swift; sourceTree = "<group>"; };
+		2C40DBBF2BF1ED8A007A3768 /* RegisterTermsAgreementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterTermsAgreementView.swift; sourceTree = "<group>"; };
+		2C40DBC12BF1F24D007A3768 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		2C5424EF2BF4D7BD00B16439 /* RegisterNicknameAndProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNicknameAndProfileView.swift; sourceTree = "<group>"; };
+		2C5424F22BF5CEC700B16439 /* TypeTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeTestView.swift; sourceTree = "<group>"; };
+		2C5424FD2BF7131600B16439 /* TypeTestResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeTestResultView.swift; sourceTree = "<group>"; };
+		2C5424FF2BF72C3500B16439 /* TripType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripType.swift; sourceTree = "<group>"; };
+		2C5425032BF73FA500B16439 /* NatureMainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NatureMainView.swift; path = ../../../../../../Downloads/NatureMainView.swift; sourceTree = "<group>"; };
+		2C5425052BF73FBE00B16439 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C80EC9D2BCE53E1002F38A7 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		2C80EC9F2BCE55E0002F38A7 /* ArticleItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleItem.swift; sourceTree = "<group>"; };
 		2C80ECA72BCF5CF2002F38A7 /* SearchAllCategoryResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAllCategoryResultView.swift; sourceTree = "<group>"; };
@@ -216,7 +232,6 @@
 		2C80ECEF2BDBE44C002F38A7 /* RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorners.swift; sourceTree = "<group>"; };
 		2C80ECF12BDBE545002F38A7 /* YearMonthDay+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "YearMonthDay+.swift"; sourceTree = "<group>"; };
 		9C6A9C3D2BCC1BAE000413AD /* Fonts+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fonts+.swift"; sourceTree = "<group>"; };
-		9C6A9C532BCC206D000413AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		9C6A9C5A2BCC22CE000413AD /* AppleSDGothicNeoL.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoL.ttf; sourceTree = "<group>"; };
 		9C6A9C5B2BCC22CE000413AD /* AppleSDGothicNeoR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoR.ttf; sourceTree = "<group>"; };
 		9C6A9C5C2BCC22CE000413AD /* AppleSDGothicNeoSB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoSB.ttf; sourceTree = "<group>"; };
@@ -239,7 +254,6 @@
 		BF607F182BF5A2A900770CE7 /* FestivalDetailEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FestivalDetailEndPoint.swift; sourceTree = "<group>"; };
 		BF7C0EBF2BD0B725008ACB75 /* secret.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = secret.swift; sourceTree = "<group>"; };
 		BF7F7F502BE612240000F08A /* NatureMainModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NatureMainModel.swift; sourceTree = "<group>"; };
-		BF7F7F512BE612240000F08A /* NatureMainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NatureMainView.swift; path = ../../../../../../../NatureMainView.swift; sourceTree = "<group>"; };
 		BF7F7F532BE612240000F08A /* NatureDetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NatureDetailModel.swift; sourceTree = "<group>"; };
 		BF7F7F5B2BE613400000F08A /* NatureEndPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NatureEndPoint.swift; sourceTree = "<group>"; };
 		BF7F7F5C2BE613400000F08A /* NatureDetailEndPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NatureDetailEndPoint.swift; sourceTree = "<group>"; };
@@ -281,9 +295,11 @@
 				2C80ECEA2BDAA551002F38A7 /* SwiftUICalendar in Frameworks */,
 				2C3C75AF2BCA3C5000312F26 /* Alamofire in Frameworks */,
 				2C3C75B82BCA41EE00312F26 /* Realm in Frameworks */,
+				2C40DBBB2BEDFBC3007A3768 /* GoogleSignInSwift in Frameworks */,
 				2C80ECCD2BD2C27D002F38A7 /* SwiftUIIntrospect in Frameworks */,
 				2C3C75BA2BCA41EE00312F26 /* RealmSwift in Frameworks */,
 				2C3C75B52BCA3F5A00312F26 /* Lottie in Frameworks */,
+				2C40DBB92BEDFBC3007A3768 /* GoogleSignIn in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,7 +361,7 @@
 		2C3C75822BCA3ADA00312F26 /* NanaLand */ = {
 			isa = PBXGroup;
 			children = (
-				9C6A9C532BCC206D000413AD /* Info.plist */,
+				2C5425052BF73FBE00B16439 /* Info.plist */,
 				BF98341F2BCE71F400A5C289 /* NaNaPick */,
 				BF98341C2BCE71E100A5C289 /* Experience */,
 				BF9834192BCE71D000A5C289 /* Shop */,
@@ -422,6 +438,7 @@
 		2C3C75C12BCA544500312F26 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				2C40DBBC2BF1AC01007A3768 /* Errors */,
 				2C1F31D12BCD14020066819F /* Localizing */,
 				2C3C75C32BCA54AB00312F26 /* Component */,
 				2C3C75C22BCA54A200312F26 /* Util */,
@@ -434,7 +451,6 @@
 			children = (
 				2C40DB8D2BE637DE007A3768 /* AuthManager.swift */,
 				2C40DB942BE63AD2007A3768 /* KeychainManager.swift */,
-				2C3C75C82BCA550200312F26 /* UtilSample.swift */,
 				2C1F31D62BCD73C00066819F /* Constants.swift */,
 				BF7C0EBF2BD0B725008ACB75 /* secret.swift */,
 			);
@@ -496,10 +512,9 @@
 		2C40DB812BE6222C007A3768 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				2C40DB822BE62259007A3768 /* LanguageSelectView.swift */,
-				2C40DB862BE630EC007A3768 /* LoginView.swift */,
-				2C40DB842BE62351007A3768 /* RegisterView.swift */,
-				2C40DB9B2BE66809007A3768 /* AuthDTO.swift */,
+				2C5424EE2BF4CEE500B16439 /* ViewModel */,
+				2C5424ED2BF4CEDF00B16439 /* Model */,
+				2C5424EB2BF4CEC000B16439 /* View */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -511,6 +526,61 @@
 				2C40DB922BE63887007A3768 /* AuthEndPoint.swift */,
 			);
 			path = Auth;
+			sourceTree = "<group>";
+		};
+		2C40DBBC2BF1AC01007A3768 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				2C40DBBD2BF1AC3C007A3768 /* AuthError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
+		2C5424EB2BF4CEC000B16439 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2C40DB822BE62259007A3768 /* LanguageSelectView.swift */,
+				2C40DB862BE630EC007A3768 /* LoginView.swift */,
+				2C5424EC2BF4CED100B16439 /* Register */,
+				2C5424FC2BF70FE700B16439 /* TypeTest */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2C5424EC2BF4CED100B16439 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				2C40DB842BE62351007A3768 /* RegisterNavigationView.swift */,
+				2C40DBBF2BF1ED8A007A3768 /* RegisterTermsAgreementView.swift */,
+				2C5424EF2BF4D7BD00B16439 /* RegisterNicknameAndProfileView.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		2C5424ED2BF4CEDF00B16439 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2C40DB9B2BE66809007A3768 /* AuthDTO.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2C5424EE2BF4CEE500B16439 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2C40DBC12BF1F24D007A3768 /* RegisterViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2C5424FC2BF70FE700B16439 /* TypeTest */ = {
+			isa = PBXGroup;
+			children = (
+				2C5424F22BF5CEC700B16439 /* TypeTestView.swift */,
+				2C5424FD2BF7131600B16439 /* TypeTestResultView.swift */,
+				2C5424FF2BF72C3500B16439 /* TripType.swift */,
+			);
+			path = TypeTest;
 			sourceTree = "<group>";
 		};
 		2C80ECA62BCF5CB6002F38A7 /* SearchResult */ = {
@@ -682,7 +752,7 @@
 				BF7F7F532BE612240000F08A /* NatureDetailModel.swift */,
 				BFC671E92BF7191500D1A2FD /* NatureDetailViewModel.swift */,
 				BF7F7F502BE612240000F08A /* NatureMainModel.swift */,
-				BF7F7F512BE612240000F08A /* NatureMainView.swift */,
+				2C5425032BF73FA500B16439 /* NatureMainView.swift */,
 				BFC671E72BF718F200D1A2FD /* NatureMainViewModel.swift */,
 			);
 			path = Nature;
@@ -763,6 +833,8 @@
 				2C80ECCC2BD2C27D002F38A7 /* SwiftUIIntrospect */,
 				2C80ECE92BDAA551002F38A7 /* SwiftUICalendar */,
 				2C40DB972BE644BE007A3768 /* KakaoSDK */,
+				2C40DBB82BEDFBC3007A3768 /* GoogleSignIn */,
+				2C40DBBA2BEDFBC3007A3768 /* GoogleSignInSwift */,
 			);
 			productName = NanaLand;
 			productReference = 2C3C75802BCA3ADA00312F26 /* NanaLand.app */;
@@ -845,6 +917,7 @@
 				2C80ECCB2BD2C27D002F38A7 /* XCRemoteSwiftPackageReference "swiftui-introspect" */,
 				2C80ECE82BDAA551002F38A7 /* XCRemoteSwiftPackageReference "SwiftUICalendar" */,
 				2C40DB962BE644BE007A3768 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
+				2C40DBB72BEDFBC3007A3768 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 			);
 			productRefGroup = 2C3C75812BCA3ADA00312F26 /* Products */;
 			projectDirPath = "";
@@ -902,13 +975,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C40DB852BE62351007A3768 /* RegisterView.swift in Sources */,
+				2C40DB852BE62351007A3768 /* RegisterNavigationView.swift in Sources */,
+				2C80ECCA2BD0EE0F002F38A7 /* SearchDTO.swift in Sources */,
+				2C5424F02BF4D7BD00B16439 /* RegisterNicknameAndProfileView.swift in Sources */,
+				2C40DB852BE62351007A3768 /* RegisterNavigationView.swift in Sources */,
 				BFC671EC2BF7193200D1A2FD /* NatureDetailView.swift in Sources */,
 				2C80ECCA2BD0EE0F002F38A7 /* SearchDTO.swift in Sources */,
 				BFC671F32BF7198800D1A2FD /* ShopMainView.swift in Sources */,
 				BF3021EE2BDF8E9300CB3966 /* ShopDetailService.swift in Sources */,
 				2C3C75D52BCAB01500312F26 /* ProfileMainView.swift in Sources */,
 				BF16114B2BDB7881000340F2 /* ShopEndPoint.swift in Sources */,
+				2C5425042BF73FA500B16439 /* NatureMainView.swift in Sources */,
 				2C1F31D92BCD7DC90066819F /* SearchResultView.swift in Sources */,
 				2C80ECCF2BD2C777002F38A7 /* AppState.swift in Sources */,
 				2C80ECA82BCF5CF2002F38A7 /* SearchAllCategoryResultView.swift in Sources */,
@@ -920,15 +997,14 @@
 				2C40DB952BE63AD2007A3768 /* KeychainManager.swift in Sources */,
 				BFC671F42BF7198800D1A2FD /* ShopDetailModel.swift in Sources */,
 				2C80ECBC2BCFCCDA002F38A7 /* EndPoint.swift in Sources */,
-				BF7F7F572BE612240000F08A /* NatureMainView.swift in Sources */,
 				2C80ECDA2BD63BAA002F38A7 /* FavoriteEndPoint.swift in Sources */,
+				2C5424FE2BF7131600B16439 /* TypeTestResultView.swift in Sources */,
 				BF607F172BF5A29E00770CE7 /* FestivalDetailService.swift in Sources */,
 				2C80ECDC2BD79AE7002F38A7 /* FavoriteService.swift in Sources */,
 				2C40DB9C2BE66809007A3768 /* AuthDTO.swift in Sources */,
 				BF9834252BCE847300A5C289 /* HomeMainViewModel.swift in Sources */,
 				2C40DBB62BECEE2A007A3768 /* UITabBarController+.swift in Sources */,
 				BF9842F12BCE897C00D6A60C /* BannerModel.swift in Sources */,
-				2C3C75C92BCA550200312F26 /* UtilSample.swift in Sources */,
 				BF7F7F592BE612240000F08A /* NatureDetailModel.swift in Sources */,
 				2C80ECC32BCFCD69002F38A7 /* Interceptor.swift in Sources */,
 				2C80ECF22BDBE545002F38A7 /* YearMonthDay+.swift in Sources */,
@@ -959,6 +1035,7 @@
 				BF607F132BF5A01D00770CE7 /* FestivalDetailViewModel.swift in Sources */,
 				BFABD3512BE7634100C3F3A6 /* FestivalModel.swift in Sources */,
 				BF9834182BCE700B00A5C289 /* FestivalMainView.swift in Sources */,
+				2C5425002BF72C3500B16439 /* TripType.swift in Sources */,
 				2C3C75D12BCAAFF300312F26 /* FavoriteMainView.swift in Sources */,
 				BF4F6C6C2BD5560A009F070F /* NaNaPickDetailViewModel.swift in Sources */,
 				2C80ECAD2BCF6201002F38A7 /* SearchService.swift in Sources */,
@@ -973,7 +1050,9 @@
 				2C80ECAA2BCF5DB8002F38A7 /* SearchDetailCategoryResultView.swift in Sources */,
 				2C40DB8E2BE637DE007A3768 /* AuthManager.swift in Sources */,
 				2C1F31D72BCD73C00066819F /* Constants.swift in Sources */,
+				2C40DBC02BF1ED8A007A3768 /* RegisterTermsAgreementView.swift in Sources */,
 				2C40DB872BE630EC007A3768 /* LoginView.swift in Sources */,
+				2C40DBBE2BF1AC3C007A3768 /* AuthError.swift in Sources */,
 				2C80ECC52BD0A086002F38A7 /* BaseResponse.swift in Sources */,
 				2C3C75CC2BCAA93D00312F26 /* NanaLandTabView.swift in Sources */,
 				2C80ECDE2BD7E63E002F38A7 /* FavoriteDTO.swift in Sources */,
@@ -998,6 +1077,8 @@
 				2C80ECE32BD80E9C002F38A7 /* FavoriteListView.swift in Sources */,
 				BF1493772BD10E1200FC626B /* NaNaPickMainViewModel.swift in Sources */,
 				2C3C75D32BCAB00C00312F26 /* StoryMainView.swift in Sources */,
+				2C5424F32BF5CEC700B16439 /* TypeTestView.swift in Sources */,
+				2C40DBC22BF1F24D007A3768 /* RegisterViewModel.swift in Sources */,
 				2C80ECA02BCE55E0002F38A7 /* ArticleItem.swift in Sources */,
 				2C80ECEC2BDAA58C002F38A7 /* CalendarFilterView.swift in Sources */,
 				BF1611492BDB7870000340F2 /* ShopService.swift in Sources */,
@@ -1161,10 +1242,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"NanaLand/Preview Content\"";
-				DEVELOPMENT_TEAM = UM6P9H795G;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = UM6P9H795G;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NanaLand/Info.plist;
@@ -1178,8 +1262,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.nanaland;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jeju.nanaland;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "AppStore-com.jeju.nanaland";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1191,10 +1277,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"NanaLand/Preview Content\"";
-				DEVELOPMENT_TEAM = UM6P9H795G;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = UM6P9H795G;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NanaLand/Info.plist;
@@ -1208,8 +1297,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.nanaland;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jeju.nanaland;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "AppStore-com.jeju.nanaland";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1374,6 +1465,14 @@
 				minimumVersion = 2.22.1;
 			};
 		};
+		2C40DBB72BEDFBC3007A3768 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.1.0;
+			};
+		};
 		2C80ECCB2BD2C27D002F38A7 /* XCRemoteSwiftPackageReference "swiftui-introspect" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/siteline/swiftui-introspect";
@@ -1422,6 +1521,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2C40DB962BE644BE007A3768 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
 			productName = KakaoSDK;
+		};
+		2C40DBB82BEDFBC3007A3768 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C40DBB72BEDFBC3007A3768 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		2C40DBBA2BEDFBC3007A3768 /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C40DBB72BEDFBC3007A3768 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
 		};
 		2C80ECCC2BD2C27D002F38A7 /* SwiftUIIntrospect */ = {
 			isa = XCSwiftPackageProductDependency;

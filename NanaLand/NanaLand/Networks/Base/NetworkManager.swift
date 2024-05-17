@@ -75,6 +75,21 @@ class NetworkManager {
 				  headers: endPoint.headers
 				)
 			}
+			
+		case let .requestJSONWithImage(multipartFile, body, withInterceptor):
+			return AF.upload(multipartFormData: { multipartFormData in
+				for image in multipartFile {
+					if let image = image {
+						multipartFormData.append(image, withName: "multipartFile", fileName: "\(image).jpeg", mimeType: "image/jpeg")
+					}
+				}
+				for (key, value) in body {
+					if let data = String(describing: value).data(using: .utf8) {
+						multipartFormData.append(data, withName: key)
+					}
+				}
+			}, to: URL(string: "\(endPoint.baseURL)\(endPoint.path)")!, method: endPoint.method, headers: endPoint.headers, interceptor: withInterceptor ? Interceptor() : nil)
+			
 		}
 	}
 }

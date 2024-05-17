@@ -11,6 +11,8 @@ import Alamofire
 enum AuthEndPoint {
 	case refreshingToken
 	case login(body: LoginRequest)
+	case register(body: RegisterRequest, image: [Foundation.Data?])
+	case patchUserType(body: PatchUserTypeRequest)
 }
 
 extension AuthEndPoint: EndPoint {
@@ -24,6 +26,10 @@ extension AuthEndPoint: EndPoint {
 			return "/reissue"
 		case .login:
 			return "/login"
+		case .register:
+			return "/join"
+		case .patchUserType:
+			return "/type"
 		}
 	}
 	
@@ -33,6 +39,10 @@ extension AuthEndPoint: EndPoint {
 			return .get
 		case .login:
 			return .post
+		case .register:
+			return .post
+		case .patchUserType:
+			return .patch
 		}
 	}
 	
@@ -42,6 +52,10 @@ extension AuthEndPoint: EndPoint {
 			return .requestWithoutInterceptor()
 		case let .login(body):
 			return .requestWithoutInterceptor(body: body)
+		case let .register(body, image):
+			return .requestJSONWithImage(multipartFile: image, body: body.toDictionary(), withInterceptor: false)
+		case let .patchUserType(body):
+			return .requestJSONEncodable(body: body)
 		}
 	}
 	
@@ -54,6 +68,10 @@ extension AuthEndPoint: EndPoint {
 				return nil
 			}
 		case .login:
+			return nil
+		case .register:
+			return nil
+		case .patchUserType:
 			return nil
 		}
 	}
