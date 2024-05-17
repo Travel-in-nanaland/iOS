@@ -33,7 +33,7 @@ extension NatureDetailEndPoint: EndPoint {
     
     var task: APITask {
         switch self {
-        case let .getNatureDetailItem(id):
+        case .getNatureDetailItem(_):
             return .requestPlain
         }
     }

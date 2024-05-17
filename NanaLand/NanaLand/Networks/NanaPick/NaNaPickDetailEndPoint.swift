@@ -34,7 +34,7 @@ extension NaNaPickDetailEndPoint: EndPoint {
     
     var task: APITask {
         switch self {
-        case let .getNaNaPickDetail(id):
+        case .getNaNaPickDetail(_):
             // 파라미터 필요 x
             return .requestPlain
         }

@@ -24,8 +24,8 @@ extension FavoriteEndPoint: EndPoint {
 	
 	var path: String {
 		switch self {
-		case let .toggleFavorite(body):
-			return "/like/\(body.id)"
+		case .toggleFavorite:
+			return "/like"
 		case .getAllFavoriteList:
 			return "/all/list"
 		case .getNatureFavoriteList:
@@ -52,6 +52,7 @@ extension FavoriteEndPoint: EndPoint {
 		switch self {
 		case let .toggleFavorite(body: body):
 			return .requestJSONEncodable(body: body)
+            
 		case let .getAllFavoriteList(page: page):
 			let param: [String: Any] = [
 				"page": page

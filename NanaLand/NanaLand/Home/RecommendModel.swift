@@ -17,5 +17,5 @@ struct RecommendData: Codable, Hashable {
     var category: String
     var thumbnailUrl: String
     var title: String
-    var intro: String
+    var introduction: String
 }

@@ -115,7 +115,7 @@ struct SeasonFilterButtonView: View {
 }
 
 struct SeasonFilterView: View {
-    @ObservedObject var viewModel: FestivalMainViewModel
+    @StateObject var viewModel: FestivalMainViewModel
     @State private var seasonModal = false // 장소 선택 뷰 모달 여부
     @State private var season = "봄"
     var count: Int // item 갯수
@@ -153,7 +153,7 @@ struct SeasonFilterView: View {
     }
 }
 struct FilterView: View {
-    @ObservedObject var viewModel: FestivalMainViewModel
+    @StateObject var viewModel: FestivalMainViewModel
     var count: Int // item 갯수
     @State private var locationModal = false
     @State private var dateModal = false
@@ -340,6 +340,8 @@ struct FestivalMainGridView: View {
     @StateObject var viewModel = FestivalMainViewModel()
     @State private var isHidden = true
     @State private var isAPICalled = false
+    @State var buttonsToggled = Array(repeating: false, count: 0)
+    @State var isFirstAPICalled = true // 첫 appear에서만 API 호출
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
     var title: String = ""
     var locationTitle = ""
@@ -371,14 +373,37 @@ struct FestivalMainGridView: View {
                         // 보여줄 데이터가 있을 때
                         
                         ForEach((0...viewModel.state.getFestivalMainResponse.data.count - 1), id: \.self) { index in
-                            NavigationLink(destination: FestivalDetailView()) {
+                            NavigationLink(destination: FestivalDetailView(id: viewModel.state.getFestivalMainResponse.data[index].id)) {
                                 VStack(alignment: .leading, spacing: 0) {
-                                    KFImage(URL(string: viewModel.state.getFestivalMainResponse.data[index].thumbnailUrl))
-                                        
-                                        .resizable()
-                                        .frame(width: (Constants.screenWidth - 40) / 2, height: ((Constants.screenWidth - 40) / 2) * (12 / 16))
-                                        .clipShape(RoundedRectangle(cornerRadius: 12))
-                                        .padding(.bottom, 8)
+                                    ZStack {
+                                        KFImage(URL(string: viewModel.state.getFestivalMainResponse.data[index].thumbnailUrl))
+                                            
+                                            .resizable()
+                                            .frame(width: (Constants.screenWidth - 40) / 2, height: ((Constants.screenWidth - 40) / 2) * (12 / 16))
+                                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                                            .padding(.bottom, 8)
+                                        VStack {
+                                            HStack {
+                                                Spacer()
+                                                
+                                                Button {
+                                                   
+                                                    Task {
+                                                        await toggleFavorite(body: FavoriteToggleRequest(id: Int(viewModel.state.getFestivalMainResponse.data[index].id), category: .festival), index: index)
+                                                       
+                                                    }
+                                                  
+                                                } label: {
+                                                
+                                                    viewModel.state.getFestivalMainResponse.data[index].favorite ? Image("icHeartFillMain").animation(nil) : Image("icHeart").animation(nil)
+                                                    
+                                                }
+                                            }
+                                            .padding(.top, 8)
+                                            Spacer()
+                                        }
+                                        .padding(.trailing, 8)
+                                    }
                                     
                                     Text(viewModel.state.getFestivalMainResponse.data[index].title)
                                         .font(.body02_bold)
@@ -421,6 +446,7 @@ struct FestivalMainGridView: View {
                     await getPastFestivalMainITem(page: 0, size: 18, filterName: [""].joined(separator: ","))
                     isAPICalled = true
                 }
+                buttonsToggled = Array(repeating: false, count: viewModel.state.getFestivalMainResponse.data.count)
                 
             }
             
@@ -437,6 +463,12 @@ struct FestivalMainGridView: View {
     
     func getPastFestivalMainITem(page: Int32, size: Int32, filterName: String) async {
         await viewModel.action(.getPastFestivalMainItem(page: page, size: size, filterName: filterName))
+    }
+    func toggleButton(_ index: Int) {
+        buttonsToggled[index].toggle()
+    }
+    func toggleFavorite(body: FavoriteToggleRequest, index: Int) async {
+        await viewModel.action(.toggleFavorite(body: body, index: index))
     }
 }
 

@@ -11,184 +11,8 @@ import SwiftUIIntrospect
 
 struct HomeMainView: View {
 
-	@StateObject var viewModel = HomeMainViewModel()
+	@ObservedObject var viewModel = HomeMainViewModel()
     
-    var body: some View {
-        NavigationStack {
-            ScrollView {
-                VStack(spacing: 0) {
-                    HStack(spacing: 0) {
-                        Button(action: {
-                            print("button1")
-                        }) {
-                            Image("icLogo")
-                                
-                        }
-                        .padding(.leading, 16)
-                        Spacer()
-                        NavigationLink(destination: SearchMainView()) {
-                           Text("제주도는 지금 유채꽃 축제🏵️")
-                                .padding()
-                                .frame(width: 278, alignment: .leading)
-                                .font(.gothicNeo(size: 14, font: "mid"))
-                                .foregroundStyle(Color("Gray1"))
-                                .overlay(RoundedRectangle(cornerRadius: 30)
-                                    .stroke(Color("Main"))
-                                )
-                        }
-                        Spacer()
-                        
-                        Button(action: {
-                            print("alarm")
-                        }) {
-                            Image("icBell")
-                        }
-                        .padding(.trailing, 16)
-                        
-                    }
-                    .padding(.bottom, 16)
-                        
-                    
-                    /// banner View
-                        BannerView()
-                        .frame(width: UIScreen.main.bounds.width, height: (UIScreen.main.bounds.width) * (18 / 39))
-                    
-                    /// category View
-                    HStack(spacing: 0) {
-                        // 7대자연 link
-                        NavigationLink(destination: NatureMainView()) {
-                            VStack(spacing: 0) {
-                                Image("icNature")
-                                    .frame(width: 62, height: 48)
-                                   
-                                Text("7대자연")
-                                    .font(.gothicNeo(size: 12, font: "semibold"))
-                                    .tint(.black)
-                            }
-                        }
-                        Spacer()
-                        // 축제 link
-                        NavigationLink(destination: FestivalMainView()) {
-                            VStack(spacing: 0) {
-                                Image("icFestival")
-                                    .frame(width: 62, height: 48)
-                                    
-                                Text("축제")
-                                    .font(.gothicNeo(size: 12, font: "semibold"))
-                                    .tint(.black)
-                            }
-                        }
-                        .frame(height: 65)
-                        Spacer()
-                        // 전통시장 link
-                        NavigationLink(destination: ShopMainView()) {
-                            VStack(spacing: 0) {
-                                Image("icShop")
-                                    .frame(width: 62, height: 48)
-                       
-                                Text("전통시장")
-                                    .font(.gothicNeo(size: 12, font: "semibold"))
-                                    .tint(.black)
-                            }
-                        }
-                        .frame(height: 65)
-                        Spacer()
-                        // 이색체험 link
-                        NavigationLink(destination: ExperienceMainView()) {
-                            VStack(spacing: 0) {
-                                Image("icExp")
-                                    .frame(width: 62, height: 48)
-                                Text("이색 체험")
-                                    .font(.gothicNeo(size: 12, font: "semibold"))
-                                    .tint(.black)
-                            }
-                        }
-                        .frame(height: 65)
-                        Spacer()
-                        // 나나 Pick link
-                        NavigationLink(destination: NanapickMainView()) {
-                            VStack(spacing: 0) {
-                                Image("icNana")
-                                    .frame(width: 62, height: 48)
-                                 
-                                Text(String(localized: "nanaPick"))
-                                    .font(.gothicNeo(size: 12, font: "semibold"))
-                                    .tint(.black)
-                            }
-                        }
-                        .frame(height: 65)
-                       
-                    }
-                    .frame(width: Constants.screenWidth - 32)
-                    .padding(.bottom, 21)
-                    
-                
-                    /// 광고 뷰
-                    HStack {
-                        AdvertisementView()
-                            .background(.yellow)
-                            .frame(height: (UIScreen.main.bounds.width - 40.0) * (80.0 / 328.0))
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                            .padding(.bottom, 40)
-                            .padding(.leading, 16)
-                            .padding(.trailing, 16)
-                    }
-                    
-                    HStack {
-                        Text("감자마케터 님을 위한 도민 추천 🍊")
-                            .font(.gothicNeo(size: 18, font: "bold"))
-                        Spacer()
-                    }
-                    .padding(.leading, 16)
-                    .padding(.bottom, 8)
-
-                    HStack(spacing: 8) {
-                        if let responseData = viewModel.recommendResponseData {
-                            // 첫번째 추천 게시물
-                            let firstItem = responseData.data[0]
-                            // 두번째 추천 게시물
-                            let secondItem = responseData.data[1]
-                            VStack(alignment: .leading, spacing: 8) {
-                                KFImage(URL(string: firstItem.thumbnailUrl)!)
-                                    .resizable()
-                                    .frame(height: (UIScreen.main.bounds.width - 40) / 2 * (118 / 160))
-                                    .clipShape(RoundedRectangle(cornerRadius: 12))
-                                Text(firstItem.title)
-                                    .font(.gothicNeo(size: 14, font: "bold"))
-                                Text(firstItem.intro)
-                                    .font(.gothicNeo(.medium, size: 12))
-                                    .foregroundStyle(Color(.gray1))
-                            }
-                             
-                            VStack(alignment: .leading, spacing: 8) {
-                                KFImage(URL(string: secondItem.thumbnailUrl)!)
-                                    .resizable()
-                                    .frame(height: (UIScreen.main.bounds.width - 40) / 2 * (118 / 160))
-                                    .clipShape(RoundedRectangle(cornerRadius: 12))
-                                   
-                                Text(secondItem.title)
-                                    .font(.gothicNeo(size: 14, font: "bold"))
-                                Text(secondItem.intro)
-                                    .font(.gothicNeo(.medium, size: 12))
-                                    .foregroundStyle(Color(.gray1))
-                                   
-                            }
-                        }
-                    }
-                    .padding(.leading, 16)
-                    .padding(.trailing, 16)
-                }
-            }
-        }
-		.environmentObject(searchVM)
-        .onAppear {
-             viewModel.recommendFetchData()
-        }
-        .introspect(.navigationStack, on: .iOS(.v16, .v17), customize: { navigation in
-                    navigation.hidesBottomBarWhenPushed = true
-                })
-        
-    }
 	var body: some View {
 		ScrollView {
 			VStack(spacing: 0) {
@@ -226,7 +50,7 @@ struct HomeMainView: View {
 				.padding(.bottom, 16)
 				
 				
-				/// banner View
+				// banner View
 				BannerView()
 					.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width / 2)
 					.padding(.bottom)
@@ -325,31 +149,34 @@ struct HomeMainView: View {
 						let firstItem = responseData.data[0]
 						// 두번째 추천 게시물
 						let secondItem = responseData.data[1]
-						VStack(alignment: .leading, spacing: 8) {
-							KFImage(URL(string: firstItem.thumbnailUrl)!)
-								.resizable()
-								.frame(height: (UIScreen.main.bounds.width - 40) / 2 * (118 / 160))
-								.clipShape(RoundedRectangle(cornerRadius: 12))
-							Text(firstItem.title)
-								.font(.gothicNeo(size: 14, font: "bold"))
-							Text(firstItem.intro)
-								.font(.gothicNeo(.medium, size: 12))
-								.foregroundStyle(Color(.gray1))
-						}
+                        HStack(alignment:.top, spacing: 8) {
+                            VStack(alignment: .leading, spacing: 8) {
+                                KFImage(URL(string: firstItem.thumbnailUrl)!)
+                                    .resizable()
+                                    .frame(height: (UIScreen.main.bounds.width - 40) / 2 * (118 / 160))
+                                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                                Text(firstItem.title)
+                                    .font(.gothicNeo(size: 14, font: "bold"))
+                                Text(firstItem.introduction)
+                                    .font(.gothicNeo(.medium, size: 12))
+                                    .foregroundStyle(Color(.gray1))
+                            }
+                            
+                            VStack(alignment: .leading, spacing: 8) {
+                                KFImage(URL(string: secondItem.thumbnailUrl)!)
+                                    .resizable()
+                                    .frame(height: (UIScreen.main.bounds.width - 40) / 2 * (118 / 160))
+                                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                                
+                                Text(secondItem.title)
+                                    .font(.gothicNeo(size: 14, font: "bold"))
+                                Text(secondItem.introduction)
+                                    .font(.gothicNeo(.medium, size: 12))
+                                    .foregroundStyle(Color(.gray1))
+                                
+                            }
+                        }
 						
-						VStack(alignment: .leading, spacing: 8) {
-							KFImage(URL(string: secondItem.thumbnailUrl)!)
-								.resizable()
-								.frame(height: (UIScreen.main.bounds.width - 40) / 2 * (118 / 160))
-								.clipShape(RoundedRectangle(cornerRadius: 12))
-							
-							Text(secondItem.title)
-								.font(.gothicNeo(size: 14, font: "bold"))
-							Text(secondItem.intro)
-								.font(.gothicNeo(.medium, size: 12))
-								.foregroundStyle(Color(.gray1))
-							
-						}
 					}
 				}
 				.padding(.leading, 16)

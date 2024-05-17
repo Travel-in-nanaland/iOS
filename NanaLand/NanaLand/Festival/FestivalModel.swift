@@ -18,5 +18,5 @@ struct FestivalData: Codable {
     let thumbnailUrl: String
     let addressTag: String
     let period: String
-    let favorite: Bool
+    var favorite: Bool
 }
