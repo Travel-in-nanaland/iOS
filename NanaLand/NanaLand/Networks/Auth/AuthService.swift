@@ -17,7 +17,11 @@ struct AuthService {
 		return await NetworkManager.shared.request(AuthEndPoint.login(body: body))
 	}
 	
-	static func registerServer(body: RegisterRequest) async -> BaseResponse<LoginRegisterResponse>? {
-		return await NetworkManager.shared.request(AuthEndPoint.register(body: body))
+	static func registerServer(body: RegisterRequest, image: [Foundation.Data?]) async -> BaseResponse<LoginRegisterResponse>? {
+		return await NetworkManager.shared.request(AuthEndPoint.register(body: body, image: image))
+	}
+	
+	static func patchUserType(body: PatchUserTypeRequest) async -> BaseResponse<String>? {
+		return await NetworkManager.shared.request(AuthEndPoint.patchUserType(body: body))
 	}
 }

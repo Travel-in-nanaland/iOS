@@ -15,7 +15,14 @@ import GoogleSignIn
 // 소셜 로그인을 다루는 manager
 final class AuthManager {
 	@AppStorage("locale") var locale: String = ""
+	@AppStorage("isLogin") var isLogin: Bool = false
 	
+	@ObservedObject var registerVM: RegisterViewModel
+	
+	init(registerVM: RegisterViewModel) {
+		self.registerVM = registerVM
+	}
+
 	/// 카카오 로그인
 	func kakaoLogin() {
 		if (UserApi.isKakaoTalkLoginAvailable()) {
@@ -31,7 +38,7 @@ final class AuthManager {
 				
 				print("카카오톡 앱으로 로그인 성공")
 				
-				//				self.getKakaoUserInfoAndLoginToServer()
+				self.getKakaoUserInfoAndTryLogin()
 			}
 		} else {
 			// 카카오 계정으로 로그인
@@ -45,16 +52,16 @@ final class AuthManager {
 				}
 				
 				print("카카오 계정으로 로그인 성공")
-				//				self.getKakaoUserInfoAndLoginToServer()
+				self.getKakaoUserInfoAndTryLogin()
 			}
 		}
 	}
 	
 	/// 카카오 로그인 후 서버에 로그인 시도
-	/// 서버에 로그인 실패(404)시 회원가입 필요(데이터 임시저장)
-	/// 서버에 로그인 성공 시 다음 화면
-	func getUserInfoAndTryLogin() {
-		UserApi.shared.me() { (user, error) in
+	func getKakaoUserInfoAndTryLogin() {
+		UserApi.shared.me() {[weak self] (user, error) in
+			guard let self = self else {return}
+				
 			guard error == nil else {
 				print("유저 정보 가져오기 에러 - ")
 				print(error!.localizedDescription)
@@ -68,18 +75,25 @@ final class AuthManager {
 				return
 			}
 			
-			let loginRequest = LoginRequest(email: email, provider: "KAKAO", providerId: id)
+			let loginRequest = LoginRequest(locale: self.locale, email: email, provider: "KAKAO", providerId: id)
 			
 			Task {
-				let result = await AuthService.loginServer(body: loginRequest)
-				
-				if let tokens = result?.data {
-					// 로그인 성공 토큰 저장하고 홈 화면으로
-					
-				} else if result?.status == 404 {
-					// 계정 정보 없음 회원 가입 필요
-					// 데아터 임시 저장 후 다음 회원가입으로 넘어가기
+				var gender: String = ""
+				if let userGender = user?.kakaoAccount?.gender {
+					gender = userGender == .Male ? "MALE" : "FEMALE"
 				}
+				
+				var birthDate: String = ""
+				if let birthYear = user?.kakaoAccount?.birthyear,
+				   let birthDay = user?.kakaoAccount?.birthday {
+					birthDate = "\(birthYear)-\(birthDay.prefix(2))-\(birthDay.suffix(2))"
+				}
+				
+				await self.loginToServer(
+					request: loginRequest,
+					gender: gender,
+					birthDate: birthDate
+				)
 			}
 			
 			
@@ -98,6 +112,33 @@ final class AuthManager {
 			let user = result.user
 			let email = user.profile?.email
 			
+		}
+	}
+	
+	/// 서버에 로그인 실패(404)시 회원가입 필요(데이터 임시저장)
+	/// 서버에 로그인 성공 시 다음 화면
+	func loginToServer(request: LoginRequest, gender: String = "", birthDate: String) async {
+		let result = await AuthService.loginServer(body: request)
+		
+		if let tokens = result?.data {
+			// 로그인 성공 토큰 저장하고 홈 화면으로
+			KeyChainManager.addItem(key: "accessToken", value: tokens.accessToken)
+			KeyChainManager.addItem(key: "refreshToken", value: tokens.refreshToken)
+			self.isLogin = true
+			
+		} else if result?.status == 404 {
+			// 로그인 실패(404)인 경우 회원가입 필요
+			// 현재 상태 저장하고 약관 동의 화면으로
+			registerVM.state.registerRequest = RegisterRequest(
+				locale: locale,
+				email: request.email,
+				gender: gender,
+				birthDate: birthDate,
+				provider: request.provider,
+				providerId: request.providerId
+			)
+			
+			registerVM.state.isRegisterNeeded = true
 		}
 	}
 }
