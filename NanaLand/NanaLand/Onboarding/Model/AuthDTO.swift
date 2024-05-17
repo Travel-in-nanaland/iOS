@@ -9,7 +9,6 @@ import Foundation
 
 struct LoginRequest: Codable {
 	let locale: String
-	let email: String
 	let provider: String
 	let providerId: Int64
 }

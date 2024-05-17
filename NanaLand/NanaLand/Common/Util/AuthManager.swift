@@ -75,7 +75,7 @@ final class AuthManager {
 				return
 			}
 			
-			let loginRequest = LoginRequest(locale: self.locale, email: email, provider: "KAKAO", providerId: id)
+			let loginRequest = LoginRequest(locale: self.locale, provider: "KAKAO", providerId: id)
 			
 			Task {
 				var gender: String = ""
@@ -91,6 +91,7 @@ final class AuthManager {
 				
 				await self.loginToServer(
 					request: loginRequest,
+					email: email,
 					gender: gender,
 					birthDate: birthDate
 				)
@@ -100,9 +101,12 @@ final class AuthManager {
 		}
 	}
 	
+	/// 구글 로그인
 	func googleLogin() {
 		guard let rootVC = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first?.rootViewController else {return}
-		GIDSignIn.sharedInstance.signIn(withPresenting: rootVC) { signInResult, error in
+		GIDSignIn.sharedInstance.signIn(withPresenting: rootVC) {[weak self] signInResult, error in
+			guard let self = self else {return}
+			
 			guard let result = signInResult else {
 				print("구글 로그인 실패")
 				print(error?.localizedDescription ?? "")
@@ -110,14 +114,30 @@ final class AuthManager {
 			}
 			
 			let user = result.user
-			let email = user.profile?.email
+			
+			guard let email = user.profile?.email,
+				  let userId = user.userID,
+				  let id = Int64(userId)
+			else {
+				print("email과 id는 nil일 수 없습니다.")
+				return
+			}
+			
+			let loginRequest = LoginRequest(locale: self.locale, provider: "GOOGLE", providerId: id)
+			
+			Task {
+				await self.loginToServer(
+					request: loginRequest,
+					email: email
+				)
+			}
 			
 		}
 	}
 	
 	/// 서버에 로그인 실패(404)시 회원가입 필요(데이터 임시저장)
 	/// 서버에 로그인 성공 시 다음 화면
-	func loginToServer(request: LoginRequest, gender: String = "", birthDate: String) async {
+	func loginToServer(request: LoginRequest, email: String, gender: String = "", birthDate: String = "") async {
 		let result = await AuthService.loginServer(body: request)
 		
 		if let tokens = result?.data {
@@ -131,7 +151,7 @@ final class AuthManager {
 			// 현재 상태 저장하고 약관 동의 화면으로
 			registerVM.state.registerRequest = RegisterRequest(
 				locale: locale,
-				email: request.email,
+				email: email,
 				gender: gender,
 				birthDate: birthDate,
 				provider: request.provider,
