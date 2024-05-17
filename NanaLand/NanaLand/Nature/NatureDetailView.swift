@@ -36,9 +36,11 @@ struct NatureDetailView: View {
                                     HStack(spacing: 0) {
                                         Spacer()
                                         Button {
-                                            
+                                            Task {
+                                                await toggleFavorite(body: FavoriteToggleRequest(id: Int(viewModel.state.getNatureDetailResponse.id), category: .nature))
+                                            }
                                         } label: {
-                                            Image("icHeart")
+                                            viewModel.state.getNatureDetailResponse.favorite ? Image("icHeartFillMain") : Image("icHeart")
                                         }
                                         Button {
                                             
@@ -112,9 +114,11 @@ struct NatureDetailView: View {
                                     HStack(spacing: 0) {
                                         Spacer()
                                         Button {
-                                            
+                                            Task {
+                                                await toggleFavorite(body: FavoriteToggleRequest(id: Int(viewModel.state.getNatureDetailResponse.id), category: .nature))
+                                            }
                                         } label: {
-                                            Image("icHeart")
+                                            viewModel.state.getNatureDetailResponse.favorite ? Image("icHeartFillMain") : Image("icHeart")
                                         }
                                         Button {
                                             
@@ -375,6 +379,10 @@ struct NatureDetailView: View {
     
     func getSafeArea() ->UIEdgeInsets  {
         return UIApplication.shared.windows.first?.safeAreaInsets ?? UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    
+    func toggleFavorite(body: FavoriteToggleRequest) async {
+        await viewModel.action(.toggleFavorite(body: body))
     }
 }
 

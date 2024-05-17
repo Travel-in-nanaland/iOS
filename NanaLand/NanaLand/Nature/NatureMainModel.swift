@@ -17,5 +17,5 @@ struct NatureModelInfo: Codable {
     let title: String
     let thumbnailUrl: String
     let addressTag: String
-    let favorite: Bool
+    var favorite: Bool
 }

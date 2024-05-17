@@ -146,7 +146,7 @@ struct SeasonFilterView: View {
             .padding(.trailing, 16)
             .sheet(isPresented: $seasonModal) {
                 SeasonModalView(viewModel: viewModel, season: $season, isModalShown: $seasonModal)
-                    .frame(width: 100, height: 200)
+                    .presentationDetents([.height(300)])
             }
         }
         .padding(.bottom, 16)
