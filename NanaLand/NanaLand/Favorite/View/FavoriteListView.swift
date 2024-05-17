@@ -19,30 +19,30 @@ struct FavoriteListView: View {
 				LazyVGrid(
 					columns: [GridItem(.flexible()), GridItem(.flexible())]
 				) {
-					ForEach({
-						switch category {
-						case .all:
-							return favoriteVM.state.allFavoriteArticles.data
-						case .nature:
-							return favoriteVM.state.natureFavoriteArticles.data
-						case .festival:
-							return favoriteVM.state.festivalFavoriteArticles.data
-						case .market:
-							return favoriteVM.state.marketFavoriteArticles.data
-						case .experience:
-							return favoriteVM.state.experienceFavoriteArticles.data
-						case .nanaPick:
-							return favoriteVM.state.experienceFavoriteArticles.data
-						}
-					}(),
-						id: \.self
-					) { article in
-						ArticleItem(category: category, article: article, onTapHeart: {
-							Task {
-								await favoriteVM.action(.deleteItemInFavoriteList(tab: category, article: article))
-							}
-						})
-					}
+//					ForEach({
+//						switch category {
+//						case .all:
+//							return favoriteVM.state.allFavoriteArticles.data
+//						case .nature:
+//							return favoriteVM.state.natureFavoriteArticles.data
+//						case .festival:
+//							return favoriteVM.state.festivalFavoriteArticles.data
+//						case .market:
+//							return favoriteVM.state.marketFavoriteArticles.data
+//						case .experience:
+//							return favoriteVM.state.experienceFavoriteArticles.data
+//						case .nanaPick:
+//							return favoriteVM.state.experienceFavoriteArticles.data
+//						}
+//					}(),
+//						id: \.self
+//					) { article in
+//						ArticleItem(category: category, article: article, onTapHeart: {
+//							Task {
+//								await favoriteVM.action(.deleteItemInFavoriteList(tab: category, article: article))
+//							}
+//						})
+//					}
 					
 					if !favoriteVM.isLastPage(tab: category) {
 						ProgressView()

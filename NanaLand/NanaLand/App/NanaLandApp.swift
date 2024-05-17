@@ -14,7 +14,7 @@ import GoogleSignIn
 struct NanaLandApp: App {
 
 	init() {
-		KakaoSDK.initSDK(appKey: Secrets.kakaoLoginNativeAppKey)
+		//KakaoSDK.initSDK(appKey: Secrets.kakaoLoginNativeAppKey)
 	}
 	
     var body: some Scene {

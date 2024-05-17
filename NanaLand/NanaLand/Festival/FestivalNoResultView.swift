@@ -9,7 +9,12 @@ import SwiftUI
 
 struct FestivalNoResultView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(spacing: 4) {
+            Image("icNoResult")
+            Text("해당 검색 결과가 없습니다.")
+                .font(.body02)
+                .foregroundStyle(Color.gray1)
+        }
     }
 }
 

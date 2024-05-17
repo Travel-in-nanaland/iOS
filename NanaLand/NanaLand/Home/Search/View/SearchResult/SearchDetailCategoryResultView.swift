@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SearchDetailCategoryResultView: View {
-	@EnvironmentObject var searchVM: SearchViewModel
+	@ObservedObject var searchVM: SearchViewModel
 	
 	let tab: Category
 	let searchTerm: String
@@ -33,7 +33,7 @@ struct SearchDetailCategoryResultView: View {
 					case .nanaPick:
 						return ""
 					}
-				}())
+				}() as String)
 					.font(.gothicNeo(.medium, size: 14))
 					.foregroundStyle(Color.gray1)
 				
@@ -84,6 +84,5 @@ struct SearchDetailCategoryResultView: View {
 }
 
 #Preview {
-	SearchDetailCategoryResultView(tab: .experience, searchTerm: "제주시")
-		.environmentObject(SearchViewModel())
+	SearchDetailCategoryResultView(searchVM: SearchViewModel(), tab: .experience, searchTerm: "제주시")
 }

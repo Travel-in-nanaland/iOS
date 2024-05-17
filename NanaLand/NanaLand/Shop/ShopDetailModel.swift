@@ -19,6 +19,6 @@ struct ShopDetailModel: Codable {
     let homepage: String
     let time: String
     let amenity: String
-    let favorite: Bool
+    var favorite: Bool
 }
 

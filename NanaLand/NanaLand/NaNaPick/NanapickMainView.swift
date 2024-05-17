@@ -46,9 +46,24 @@ struct NanapickMainView: View {
                 ForEach(viewModel.state.getNaNaPickResponse.data, id: \.id) { index in
                     NavigationLink(destination: NaNaPickDetailView(id: index.id), label: {
                         //id 값을 넘겨줘서 어떤 id 값을 가진 디테일뷰를 불러올 지 결정
-                        KFImage(URL(string:index.thumbnailUrl))
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
+                        ZStack {
+                            KFImage(URL(string:index.thumbnailUrl))
+                                .resizable()
+                                .frame(width: Constants.screenWidth, height: Constants.screenWidth * (190 / 390))
+                            VStack(spacing: 0) {
+                                HStack(spacing: 0) {
+                                    Spacer()
+                                    Text("\(index.version)")
+                                        .foregroundStyle(.white)
+                                        .padding(.trailing, 16)
+                                }
+                                .padding(.top, 8)
+                                Spacer()
+                            }
+                            
+                            
+                        }
+                       
                     })
                 }
                 if page < 5{
@@ -57,8 +72,8 @@ struct NanapickMainView: View {
                                 Task {
                                     await getNana(page: page, size: size)
                                     print("getNaNA 호출!!!!!!!!!!!! page: \(page), size: \(size)")
-                                    page += 1
-                                    size = 1
+                                    
+                                    
                                    
                                 }
                         }

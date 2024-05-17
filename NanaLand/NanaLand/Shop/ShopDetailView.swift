@@ -36,9 +36,11 @@ struct ShopDetailView: View {
                                 HStack(spacing: 0) {
                                     Spacer()
                                     Button {
-                                        
+                                        Task {
+                                            await toggleFavorite(body: FavoriteToggleRequest(id: Int(viewModel.state.getShopDetailResponse.id), category: .market))
+                                        }
                                     } label: {
-                                        Image("icHeart")
+                                        viewModel.state.getShopDetailResponse.favorite ? Image("icHeartFillMain") : Image("icHeart")
                                     }
                                     Button {
                                         
@@ -111,9 +113,11 @@ struct ShopDetailView: View {
                                 HStack(spacing: 0) {
                                     Spacer()
                                     Button {
-                                        
+                                        Task {
+                                            await toggleFavorite(body: FavoriteToggleRequest(id: Int(viewModel.state.getShopDetailResponse.id), category: .market))
+                                        }
                                     } label: {
-                                        Image("icHeart")
+                                        viewModel.state.getShopDetailResponse.favorite ? Image("icHeartFillMain") : Image("icHeart")
                                     }
                                     Button {
                                         
@@ -313,6 +317,10 @@ struct ShopDetailView: View {
     
     func getShopDetail(id: Int64) async {
         await viewModel.action(.getShopDetailItem(id: id))
+    }
+    
+    func toggleFavorite(body: FavoriteToggleRequest) async {
+        await viewModel.action(.toggleFavorite(body: body))
     }
     
 }
