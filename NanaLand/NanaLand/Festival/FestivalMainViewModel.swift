@@ -11,6 +11,7 @@ class FestivalMainViewModel: ObservableObject {
     struct State {
         var getFestivalMainResponse = FestivalModel(totalElements: 0, data: [])
         var title = ""
+        
     }
     
     enum Action {
@@ -19,6 +20,8 @@ class FestivalMainViewModel: ObservableObject {
         case getSeasonFestivalMainItem(page: Int32, size: Int32, season: String)
         
         case getPastFestivalMainItem(page: Int32, size: Int32, filterName: String)
+        // 좋아요 토글
+        case toggleFavorite(body: FavoriteToggleRequest, index: Int)
     }
     
     @Published var state: State
@@ -31,13 +34,21 @@ class FestivalMainViewModel: ObservableObject {
     
     func action(_ action: Action) async {
         switch action {
+            
+        case .toggleFavorite(body: let body, index: let index):
+            let response = await FavoriteService.toggleFavorite(id: body.id, category: .festival)
+            if response != nil {
+                await MainActor.run {
+                    state.getFestivalMainResponse.data[index].favorite = response!.data.favorite
+                }
+            }
         case let .getThisMonthFestivalMainItem(page, size, filterName, startDate, endDate):
             let response = await FestivalService.getThisMonthFestivalMainItem(page: page, size: size, filterName: filterName, startDate: startDate, endDate: endDate)
             if response != nil {
                 await MainActor.run {
                     state.getFestivalMainResponse.data = response!.data.data
                     state.title = "이번달"
-                    print(state.getFestivalMainResponse.data)
+                    
                 }
             }
         case .getSeasonFestivalMainItem(page: let page, size: let size, season: let season):

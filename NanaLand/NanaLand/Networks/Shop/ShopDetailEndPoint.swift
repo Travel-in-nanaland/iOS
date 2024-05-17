@@ -33,7 +33,7 @@ extension ShopDetailEndPoint: EndPoint {
     
     var task: APITask {
         switch self {
-        case let .getShopDetailItem(id):
+        case .getShopDetailItem(_):
             
             return .requestPlain
         }
