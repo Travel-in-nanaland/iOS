@@ -10,7 +10,7 @@ import Foundation
 struct LoginRequest: Codable {
 	let locale: String
 	let provider: String
-	let providerId: Int64
+	let providerId: String
 }
 
 struct RegisterRequest: Codable {
@@ -21,7 +21,7 @@ struct RegisterRequest: Codable {
 	var birthDate: String
 	var nickname: String
 	var provider: String
-	var providerId: Int64
+	var providerId: String
 	
 	init(
 		consentItems: [ConsentItem] = [],
@@ -31,7 +31,7 @@ struct RegisterRequest: Codable {
 		birthDate: String = "",
 		nickname: String = "",
 		provider: String = "",
-		providerId: Int64 = 0
+		providerId: String = ""
 	) {
 		self.consentItems = consentItems
 		self.locale = locale
