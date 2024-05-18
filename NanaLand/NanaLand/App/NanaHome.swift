@@ -37,7 +37,6 @@ struct NanaHome: View {
 					// 테스트 용
 //					locale = ""
 //					isLogin = false
-//					registerVM.state.isRegisterNeeded = true
 				}
 		} else if locale.isEmpty {
 			LanguageSelectView()

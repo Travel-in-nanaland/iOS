@@ -12,7 +12,6 @@ struct RegisterNicknameAndProfileView: View {
 	@EnvironmentObject var registerVM: RegisterViewModel
 	
 	@State var pickedItem: PhotosPickerItem?
-	@State var showNicknameError: Bool = false
 
     var body: some View {
 		VStack(spacing: 0) {
@@ -93,7 +92,7 @@ struct RegisterNicknameAndProfileView: View {
 				
 				Text("\(registerVM.state.nickname.count) / 8 자")
 					.font(.caption01_semibold)
-					.foregroundStyle(showNicknameError ? Color.warning : Color.gray1)
+					.foregroundStyle(registerVM.state.showNicknameError ? Color.warning : Color.gray1)
 			}
 			
 			TextField(text: $registerVM.state.nickname, label: {
@@ -105,11 +104,11 @@ struct RegisterNicknameAndProfileView: View {
 			.padding(.horizontal, 16)
 			.background(
 				RoundedRectangle(cornerRadius: 12)
-					.stroke(showNicknameError ? Color.warning : Color.gray2, lineWidth: 1)
+					.stroke(registerVM.state.showNicknameError ? Color.warning : Color.gray2, lineWidth: 1)
 					.frame(width: Constants.screenWidth-32, height: 48)
 			)
 			
-			if showNicknameError {
+			if registerVM.state.showNicknameError {
 				HStack(spacing: 4) {
 					Image(.icWarningCircle)
 						.resizable()
@@ -129,13 +128,8 @@ struct RegisterNicknameAndProfileView: View {
 	
 	private var okButton: some View {
 		Button(action: {
-			if registerVM.nicknameIsValid() {
-				showNicknameError = false
-				Task {
-					await registerVM.action(.onTapOkButtonInNicknameAndProfile)
-				}
-			} else {
-				showNicknameError = true
+			Task {
+				await registerVM.action(.onTapOkButtonInNicknameAndProfile)
 			}
 		}, label: {
 			RoundedRectangle(cornerRadius: 30)

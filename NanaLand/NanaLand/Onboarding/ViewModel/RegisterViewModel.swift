@@ -41,6 +41,8 @@ final class RegisterViewModel: ObservableObject {
 		// 닉네임&사진
 		var pickedImage: Foundation.Data?
 		var nickname: String = ""
+		var showNicknameError: Bool = false
+		var nicknameErrorMessage: String = ""
 		
 		// 유형테스트
 		// true면 활발한 관광 장소
@@ -146,6 +148,15 @@ final class RegisterViewModel: ObservableObject {
 	
 	func nicknameAndProfileOkButtonTapped() async {
 		state.registerRequest.nickname = state.nickname
+		state.showNicknameError = false
+		state.nicknameErrorMessage = ""
+		
+		guard nicknameIsValid() else {
+			// 형식에 맞지 않은 닉네임
+			state.showNicknameError = true
+			state.nicknameErrorMessage = "해당 닉네임은 사용할 수 없습니다."
+			return
+		}
 		
 		let result = await AuthService.registerServer(body: state.registerRequest, image: [state.pickedImage])
 		
@@ -154,11 +165,13 @@ final class RegisterViewModel: ObservableObject {
 			KeyChainManager.addItem(key: "refreshToken", value: tokens.refreshToken)
 			UserDefaults.standard.setValue(true, forKey: "isLogin")
 			state.registerPath.append(.userTypeTest1)
+		} else if result?.status == 409 {
+			// 닉네임 중복
+			state.showNicknameError = true
+			state.nicknameErrorMessage = "해당 닉네임은 다른 사용자가 사용 중입니다."
 		} else {
-			// TODO: ErrorHandler 예외처리 필요
-			print("회원가입 에러")
-			print(result?.status)
-			print(result?.message)
+			// TODO: 에러 처리 필요
+			print("회원가입 - 알 수 없는 에러")
 		}
 	}
 	
