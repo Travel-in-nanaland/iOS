@@ -115,7 +115,7 @@ struct RegisterNicknameAndProfileView: View {
 						.frame(width: 20, height: 20)
 						.foregroundStyle(Color.warning)
 					
-					Text("해당 닉네임은 사용할 수 없습니다.")
+					Text(registerVM.state.nicknameErrorMessage)
 						.font(.gothicNeo(.medium, size: 12))
 						.foregroundStyle(Color.warning)
 					

@@ -153,8 +153,8 @@ final class RegisterViewModel: ObservableObject {
 		
 		guard nicknameIsValid() else {
 			// 형식에 맞지 않은 닉네임
-			state.showNicknameError = true
 			state.nicknameErrorMessage = "해당 닉네임은 사용할 수 없습니다."
+			state.showNicknameError = true
 			return
 		}
 		
@@ -167,8 +167,8 @@ final class RegisterViewModel: ObservableObject {
 			state.registerPath.append(.userTypeTest1)
 		} else if result?.status == 409 {
 			// 닉네임 중복
-			state.showNicknameError = true
 			state.nicknameErrorMessage = "해당 닉네임은 다른 사용자가 사용 중입니다."
+			state.showNicknameError = true
 		} else {
 			// TODO: 에러 처리 필요
 			print("회원가입 - 알 수 없는 에러")

@@ -117,14 +117,13 @@ final class AuthManager: NSObject {
 			let user = result.user
 			
 			guard let email = user.profile?.email,
-				  let userId = user.userID,
-				  let id = Int64(userId)
+				  let userId = user.userID
 			else {
 				print("email과 id는 nil일 수 없습니다.")
 				return
 			}
 			
-			let loginRequest = LoginRequest(locale: self.locale, provider: "GOOGLE", providerId: "\(id)")
+			let loginRequest = LoginRequest(locale: self.locale, provider: "GOOGLE", providerId: "\(userId)")
 			
 			Task {
 				await self.loginToServer(
