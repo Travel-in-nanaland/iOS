@@ -8,7 +8,7 @@
 import Foundation
 
 struct FestivalDetailService {
-    static func getFestivalDetailItem(id: Int64, isSearch: Bool) async -> BaseResponse<FestivalDetailModel>? {
+    static func getFestivalDetailItem(id: Int64, isSearch: Bool) async -> OldBaseResponse<FestivalDetailModel>? {
         return await NetworkManager.shared.request(FestivalDetailEndPoint.getFestivalDetailItem(id: id, isSearch: isSearch))
     }
     

@@ -23,8 +23,9 @@ struct NanaHome: View {
 				.onAppear {
 					// 토큰 refresh 성공하면 isLogin true로
 					Task {
-						if let result = await AuthService.refreshingToken() {
-							KeyChainManager.addItem(key: "accessToken", value: result.data)
+						if let data = await AuthService.refreshingToken()?.data {
+							KeyChainManager.addItem(key: "accessToken", value: data.accessToken)
+							KeyChainManager.addItem(key: "refreshToken", value: data.refreshToken)
 							isLogin = true
 						}
 					}
@@ -40,10 +41,10 @@ struct NanaHome: View {
 				}
 		} else if locale.isEmpty {
 			LanguageSelectView()
-		} else if !isLogin {
-			LoginView(registerVM: registerVM)
 		} else if registerVM.state.isRegisterNeeded {
 			RegisterNavigationView(registerVM: registerVM)
+		} else if !isLogin {
+			LoginView(registerVM: registerVM)
 		} else {
 			NanaLandTabView()
 				.environmentObject(appState)

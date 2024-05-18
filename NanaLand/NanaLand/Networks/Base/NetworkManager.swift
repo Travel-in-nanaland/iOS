@@ -11,6 +11,27 @@ import Alamofire
 class NetworkManager {
 	static let shared = NetworkManager()
 	
+	func request<T: Decodable>(_ endPoint: EndPoint) async -> OldBaseResponse<T>? {
+		let request = makeDataRequest(endPoint)
+		let result = await request.serializingData().result
+		var data = Foundation.Data()
+		do {
+			data = try result.get()
+		} catch {
+			print("data fetch error")
+			return nil
+		}
+		
+		do {
+			let decodedData = try data.decode(type: OldBaseResponse<T>.self, decoder: JSONDecoder())
+			return decodedData
+		} catch {
+			print("data decode error - origin data: \(String(data: data, encoding: .utf8) ?? "")")
+			return nil
+		}
+		
+	}
+	
 	func request<T: Decodable>(_ endPoint: EndPoint) async -> BaseResponse<T>? {
 		let request = makeDataRequest(endPoint)
 		let result = await request.serializingData().result
@@ -83,10 +104,8 @@ class NetworkManager {
 						multipartFormData.append(image, withName: "multipartFile", fileName: "\(image).jpeg", mimeType: "image/jpeg")
 					}
 				}
-				for (key, value) in body {
-					if let data = String(describing: value).data(using: .utf8) {
-						multipartFormData.append(data, withName: key)
-					}
+				if let jsonData = try? JSONEncoder().encode(body) {
+					multipartFormData.append(jsonData, withName: "reqDto", mimeType: "application/json")
 				}
 			}, to: URL(string: "\(endPoint.baseURL)\(endPoint.path)")!, method: endPoint.method, headers: endPoint.headers, interceptor: withInterceptor ? Interceptor() : nil)
 			

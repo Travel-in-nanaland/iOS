@@ -152,11 +152,13 @@ final class RegisterViewModel: ObservableObject {
 		if let tokens = result?.data {
 			KeyChainManager.addItem(key: "accessToken", value: tokens.accessToken)
 			KeyChainManager.addItem(key: "refreshToken", value: tokens.refreshToken)
-			
+			UserDefaults.standard.setValue(true, forKey: "isLogin")
 			state.registerPath.append(.userTypeTest1)
 		} else {
 			// TODO: ErrorHandler 예외처리 필요
-			print("회원가입")
+			print("회원가입 에러")
+			print(result?.status)
+			print(result?.message)
 		}
 	}
 	

@@ -8,7 +8,7 @@
 import Foundation
 
 struct ShopDetailService {
-    static func getShopDetailItem(id: Int64) async -> BaseResponse<ShopDetailModel>? {
+    static func getShopDetailItem(id: Int64) async -> OldBaseResponse<ShopDetailModel>? {
         return await NetworkManager.shared.request(ShopDetailEndPoint.getShopDetailItem(id: id))
     }
 }

@@ -42,18 +42,6 @@ struct RegisterRequest: Codable {
 		self.provider = provider
 		self.providerId = providerId
 	}
-	
-	func toDictionary() -> [String: Any] {
-		guard let data = try? JSONEncoder().encode(self),
-			  let json = try? JSONSerialization.jsonObject(with: data, options: []),
-			  let dictionary = json as? [String: Any] else {
-			return [:]
-		}
-		
-		print(dictionary)
-		return dictionary
-	}
-	
 }
 
 struct LoginRegisterResponse: Codable {

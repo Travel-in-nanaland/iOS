@@ -45,6 +45,7 @@ struct RegisterNicknameAndProfileView: View {
 			   let uiImage = UIImage(data: imageData) {
 				Image(uiImage: uiImage)
 					.resizable()
+					.frame(width: 100, height: 100)
 					.aspectRatio(contentMode: .fill)
 					.clipShape(Circle())
 					.overlay(alignment: .bottomTrailing) {
@@ -57,7 +58,6 @@ struct RegisterNicknameAndProfileView: View {
 									.frame(width: 24, height: 24)
 									.foregroundStyle(Color.baseWhite)
 							}
-							.offset(x: -20, y: 0)
 					}
 			} else {
 				Circle()
