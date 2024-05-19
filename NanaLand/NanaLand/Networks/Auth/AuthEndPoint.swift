@@ -53,7 +53,7 @@ extension AuthEndPoint: EndPoint {
 		case let .login(body):
 			return .requestWithoutInterceptor(body: body)
 		case let .register(body, image):
-			return .requestJSONWithImage(multipartFile: image, body: body.toDictionary(), withInterceptor: false)
+			return .requestJSONWithImage(multipartFile: image, body: body, withInterceptor: false)
 		case let .patchUserType(body):
 			return .requestJSONEncodable(body: body)
 		}
@@ -68,11 +68,11 @@ extension AuthEndPoint: EndPoint {
 				return nil
 			}
 		case .login:
-			return nil
+			return ["Content-Type": "application/json"]
 		case .register:
-			return nil
+			return ["Content-Type": "multipart/form-data"]
 		case .patchUserType:
-			return nil
+			return ["Content-Type": "application/json"]
 		}
 	}
 	

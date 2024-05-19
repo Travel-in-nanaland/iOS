@@ -12,7 +12,6 @@ struct RegisterNicknameAndProfileView: View {
 	@EnvironmentObject var registerVM: RegisterViewModel
 	
 	@State var pickedItem: PhotosPickerItem?
-	@State var showNicknameError: Bool = false
 
     var body: some View {
 		VStack(spacing: 0) {
@@ -45,6 +44,7 @@ struct RegisterNicknameAndProfileView: View {
 			   let uiImage = UIImage(data: imageData) {
 				Image(uiImage: uiImage)
 					.resizable()
+					.frame(width: 100, height: 100)
 					.aspectRatio(contentMode: .fill)
 					.clipShape(Circle())
 					.overlay(alignment: .bottomTrailing) {
@@ -57,7 +57,6 @@ struct RegisterNicknameAndProfileView: View {
 									.frame(width: 24, height: 24)
 									.foregroundStyle(Color.baseWhite)
 							}
-							.offset(x: -20, y: 0)
 					}
 			} else {
 				Circle()
@@ -93,7 +92,7 @@ struct RegisterNicknameAndProfileView: View {
 				
 				Text("\(registerVM.state.nickname.count) / 8 자")
 					.font(.caption01_semibold)
-					.foregroundStyle(showNicknameError ? Color.warning : Color.gray1)
+					.foregroundStyle(registerVM.state.showNicknameError ? Color.warning : Color.gray1)
 			}
 			
 			TextField(text: $registerVM.state.nickname, label: {
@@ -105,18 +104,18 @@ struct RegisterNicknameAndProfileView: View {
 			.padding(.horizontal, 16)
 			.background(
 				RoundedRectangle(cornerRadius: 12)
-					.stroke(showNicknameError ? Color.warning : Color.gray2, lineWidth: 1)
+					.stroke(registerVM.state.showNicknameError ? Color.warning : Color.gray2, lineWidth: 1)
 					.frame(width: Constants.screenWidth-32, height: 48)
 			)
 			
-			if showNicknameError {
+			if registerVM.state.showNicknameError {
 				HStack(spacing: 4) {
 					Image(.icWarningCircle)
 						.resizable()
 						.frame(width: 20, height: 20)
 						.foregroundStyle(Color.warning)
 					
-					Text("해당 닉네임은 사용할 수 없습니다.")
+					Text(registerVM.state.nicknameErrorMessage)
 						.font(.gothicNeo(.medium, size: 12))
 						.foregroundStyle(Color.warning)
 					
@@ -129,13 +128,8 @@ struct RegisterNicknameAndProfileView: View {
 	
 	private var okButton: some View {
 		Button(action: {
-			if registerVM.nicknameIsValid() {
-				showNicknameError = false
-				Task {
-					await registerVM.action(.onTapOkButtonInNicknameAndProfile)
-				}
-			} else {
-				showNicknameError = true
+			Task {
+				await registerVM.action(.onTapOkButtonInNicknameAndProfile)
 			}
 		}, label: {
 			RoundedRectangle(cornerRadius: 30)

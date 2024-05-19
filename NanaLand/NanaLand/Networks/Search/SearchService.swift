@@ -9,41 +9,41 @@ import Foundation
 import Alamofire
 
 struct SearchService {
-	static func searchAllCategory(term: String) async -> BaseResponse<SearchAllArticleResponse>? {
-		let response: BaseResponse<SearchAllCategoryResponse>? = await NetworkManager.shared.request(SearchEndPoint.getSearchAllCategory(term: term))
+	static func searchAllCategory(term: String) async -> OldBaseResponse<SearchAllArticleResponse>? {
+		let response: OldBaseResponse<SearchAllCategoryResponse>? = await NetworkManager.shared.request(SearchEndPoint.getSearchAllCategory(term: term))
 		
 		return mapSearchAllArticleToArticle(response)
 	}
 	
-	static func searchNatureCategory(term: String, page: Int) async -> BaseResponse<ArticleResponse>? {
-		let response: BaseResponse<SearchDetailCategoryResponse>? = await NetworkManager.shared.request(SearchEndPoint.getSearchNatureCategory(term: term, page: page))
+	static func searchNatureCategory(term: String, page: Int) async -> OldBaseResponse<ArticleResponse>? {
+		let response: OldBaseResponse<SearchDetailCategoryResponse>? = await NetworkManager.shared.request(SearchEndPoint.getSearchNatureCategory(term: term, page: page))
 		
 		return mapSearchDetailArticleToArticle(response, category: .nature)
 	}
 	
-	static func searchMarketCategory(term: String, page: Int) async -> BaseResponse<ArticleResponse>? {
-		let response: BaseResponse<SearchDetailCategoryResponse>? = await NetworkManager.shared.request(SearchEndPoint.getSearchMarketCategory(term: term, page: page))
+	static func searchMarketCategory(term: String, page: Int) async -> OldBaseResponse<ArticleResponse>? {
+		let response: OldBaseResponse<SearchDetailCategoryResponse>? = await NetworkManager.shared.request(SearchEndPoint.getSearchMarketCategory(term: term, page: page))
 		
 		return mapSearchDetailArticleToArticle(response, category: .market)
 	}
 	
-	static func searchFestivalCategory(term: String, page: Int) async -> BaseResponse<ArticleResponse>? {
-		let response: BaseResponse<SearchDetailCategoryResponse>? = await NetworkManager.shared.request(SearchEndPoint.getSearchFestivalCategory(term: term, page: page))
+	static func searchFestivalCategory(term: String, page: Int) async -> OldBaseResponse<ArticleResponse>? {
+		let response: OldBaseResponse<SearchDetailCategoryResponse>? = await NetworkManager.shared.request(SearchEndPoint.getSearchFestivalCategory(term: term, page: page))
 		
 		return mapSearchDetailArticleToArticle(response, category: .festival)
 	}
 	
-	static func searchExperienceCategory(term: String, page: Int) async -> BaseResponse<ArticleResponse>? {
-		let response: BaseResponse<SearchDetailCategoryResponse>? = await NetworkManager.shared.request(SearchEndPoint.getSearchExperienceCategory(term: term, page: page))
+	static func searchExperienceCategory(term: String, page: Int) async -> OldBaseResponse<ArticleResponse>? {
+		let response: OldBaseResponse<SearchDetailCategoryResponse>? = await NetworkManager.shared.request(SearchEndPoint.getSearchExperienceCategory(term: term, page: page))
 		
 		return mapSearchDetailArticleToArticle(response, category: .experience)
 	}
 	
-	static func getPopularKeyword() async -> BaseResponse<[String]>? {
+	static func getPopularKeyword() async -> OldBaseResponse<[String]>? {
 		return await NetworkManager.shared.request(SearchEndPoint.getPopularKeyword)
 	}
 	
-	static func getVolumeUp() async -> BaseResponse<[Article]>? {
+	static func getVolumeUp() async -> OldBaseResponse<[Article]>? {
 		return await NetworkManager.shared.request(SearchEndPoint.getVolumeUp)
 	}
 	
@@ -51,7 +51,7 @@ struct SearchService {
 	// MARK: -  private func
 	
 	// 전체 검색 mapping
-	static private func mapSearchAllArticleToArticle(_ response: BaseResponse<SearchAllCategoryResponse>?) -> BaseResponse<SearchAllArticleResponse>? {
+	static private func mapSearchAllArticleToArticle(_ response: OldBaseResponse<SearchAllCategoryResponse>?) -> OldBaseResponse<SearchAllArticleResponse>? {
 		guard let response = response else {return nil}
 		
 		let festivalArticles = response.data.festival.data.map({
@@ -89,11 +89,11 @@ struct SearchService {
 			)
 		)
 		
-		return BaseResponse(status: response.status, message: response.message, data: articleResponse)
+		return OldBaseResponse(status: response.status, message: response.message, data: articleResponse)
 	}
 	
 	// 카테고리 검색 mapping
-	static private func mapSearchDetailArticleToArticle(_ response: BaseResponse<SearchDetailCategoryResponse>?, category: Category) -> BaseResponse<ArticleResponse>? {
+	static private func mapSearchDetailArticleToArticle(_ response: OldBaseResponse<SearchDetailCategoryResponse>?, category: Category) -> OldBaseResponse<ArticleResponse>? {
 		guard let response = response else {return nil}
 		
 		let articles = response.data.data.map({
@@ -102,6 +102,6 @@ struct SearchService {
 		
 		let articleResponse = ArticleResponse(totalElements: response.data.totalElements, data: articles)
 		
-		return BaseResponse(status: response.status, message: response.message, data: articleResponse)
+		return OldBaseResponse(status: response.status, message: response.message, data: articleResponse)
 	}
 }

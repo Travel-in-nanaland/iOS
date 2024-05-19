@@ -8,7 +8,7 @@
 import Foundation
 
 struct NatureDetailService {
-    static func getNatureDetailItem(id: Int64) async -> BaseResponse<NatureDetailModel>? {
+    static func getNatureDetailItem(id: Int64) async -> OldBaseResponse<NatureDetailModel>? {
         return await NetworkManager.shared.request(NatureDetailEndPoint.getNatureDetailItem(id: id))
     }
     

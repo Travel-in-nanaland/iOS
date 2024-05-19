@@ -9,9 +9,8 @@ import Foundation
 
 struct LoginRequest: Codable {
 	let locale: String
-	let email: String
 	let provider: String
-	let providerId: Int64
+	let providerId: String
 }
 
 struct RegisterRequest: Codable {
@@ -22,7 +21,7 @@ struct RegisterRequest: Codable {
 	var birthDate: String
 	var nickname: String
 	var provider: String
-	var providerId: Int64
+	var providerId: String
 	
 	init(
 		consentItems: [ConsentItem] = [],
@@ -32,7 +31,7 @@ struct RegisterRequest: Codable {
 		birthDate: String = "",
 		nickname: String = "",
 		provider: String = "",
-		providerId: Int64 = 0
+		providerId: String = ""
 	) {
 		self.consentItems = consentItems
 		self.locale = locale
@@ -43,18 +42,6 @@ struct RegisterRequest: Codable {
 		self.provider = provider
 		self.providerId = providerId
 	}
-	
-	func toDictionary() -> [String: Any] {
-		guard let data = try? JSONEncoder().encode(self),
-			  let json = try? JSONSerialization.jsonObject(with: data, options: []),
-			  let dictionary = json as? [String: Any] else {
-			return [:]
-		}
-		
-		print(dictionary)
-		return dictionary
-	}
-	
 }
 
 struct LoginRegisterResponse: Codable {

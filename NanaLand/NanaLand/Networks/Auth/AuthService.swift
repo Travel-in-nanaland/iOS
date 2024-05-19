@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 struct AuthService {
-	static func refreshingToken() async -> BaseResponse<String>? {
+	static func refreshingToken() async -> BaseResponse<LoginRegisterResponse>? {
 		return await NetworkManager.shared.request(AuthEndPoint.refreshingToken)
 	}
 	

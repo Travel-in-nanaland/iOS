@@ -207,6 +207,7 @@
 		2C5424FF2BF72C3500B16439 /* TripType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripType.swift; sourceTree = "<group>"; };
 		2C5425032BF73FA500B16439 /* NatureMainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NatureMainView.swift; path = ../../../../../../Downloads/NatureMainView.swift; sourceTree = "<group>"; };
 		2C5425052BF73FBE00B16439 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C5425092BF76D8200B16439 /* NanaLand.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NanaLand.entitlements; sourceTree = "<group>"; };
 		2C80EC9D2BCE53E1002F38A7 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		2C80EC9F2BCE55E0002F38A7 /* ArticleItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleItem.swift; sourceTree = "<group>"; };
 		2C80ECA72BCF5CF2002F38A7 /* SearchAllCategoryResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAllCategoryResultView.swift; sourceTree = "<group>"; };
@@ -361,6 +362,7 @@
 		2C3C75822BCA3ADA00312F26 /* NanaLand */ = {
 			isa = PBXGroup;
 			children = (
+				2C5425092BF76D8200B16439 /* NanaLand.entitlements */,
 				2C5425052BF73FBE00B16439 /* Info.plist */,
 				BF98341F2BCE71F400A5C289 /* NaNaPick */,
 				BF98341C2BCE71E100A5C289 /* Experience */,
@@ -1242,6 +1244,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = NanaLand/NanaLand.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
@@ -1277,6 +1280,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = NanaLand/NanaLand.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
