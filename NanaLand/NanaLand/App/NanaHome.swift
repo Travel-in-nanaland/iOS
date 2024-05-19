@@ -26,7 +26,7 @@ struct NanaHome: View {
 						if let data = await AuthService.refreshingToken()?.data {
 							KeyChainManager.addItem(key: "accessToken", value: data.accessToken)
 							KeyChainManager.addItem(key: "refreshToken", value: data.refreshToken)
-							isLogin = true
+//							isLogin = true
 						}
 					}
 					
@@ -35,8 +35,8 @@ struct NanaHome: View {
 					})
 					
 					// 테스트 용
-//					locale = ""
-//					isLogin = false
+					locale = ""
+					isLogin = false
 				}
 		} else if locale.isEmpty {
 			LanguageSelectView()
