@@ -17,6 +17,7 @@ class NetworkManager {
 		var data = Foundation.Data()
 		do {
 			data = try result.get()
+            print("request: " + "\(request)")
 		} catch {
 			print("data fetch error")
 			return nil
