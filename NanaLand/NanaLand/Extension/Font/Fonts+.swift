@@ -92,6 +92,10 @@ extension Font {
 		return .gothicNeo(.bold, size: 16)
 	}
 	
+	static var body_semibold: Font {
+		return .gothicNeo(.semibold, size: 16)
+	}
+	
 	static var body01: Font {
 		return .gothicNeo(.medium, size: 16)
 	}

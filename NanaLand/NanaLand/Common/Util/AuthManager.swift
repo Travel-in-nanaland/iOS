@@ -17,6 +17,7 @@ import AuthenticationServices
 final class AuthManager: NSObject {
 	@AppStorage("locale") var locale: String = ""
 	@AppStorage("isLogin") var isLogin: Bool = false
+	@AppStorage("provider") var provider: String = ""
 	
 	@ObservedObject var registerVM: RegisterViewModel
 	
@@ -172,6 +173,7 @@ final class AuthManager: NSObject {
 			KeyChainManager.addItem(key: "accessToken", value: tokens.accessToken)
 			KeyChainManager.addItem(key: "refreshToken", value: tokens.refreshToken)
 			self.isLogin = true
+			self.provider = request.provider
 			
 		} else if result?.status == 404 {
 			// 로그인 실패(404)인 경우 회원가입 필요
@@ -198,6 +200,7 @@ final class AuthManager: NSObject {
 			KeyChainManager.addItem(key: "accessToken", value: tokens.accessToken)
 			KeyChainManager.addItem(key: "refreshToken", value: tokens.refreshToken)
 			self.isLogin = true
+			self.provider = "GUEST"
 			
 		} else if result?.status == 404 {
 			// 로그인 실패(404)인 경우 회원가입 필요
@@ -214,7 +217,8 @@ final class AuthManager: NSObject {
 			if let tokens = registerResult?.data {
 				KeyChainManager.addItem(key: "accessToken", value: tokens.accessToken)
 				KeyChainManager.addItem(key: "refreshToken", value: tokens.refreshToken)
-				UserDefaults.standard.setValue(true, forKey: "isLogin")
+				self.isLogin = true
+				self.provider = "GUEST"
 			} else {
 				// TODO: 비회원 에러처리 필요
 				print("비회원 회원가입 - 알 수 없는 에러")
