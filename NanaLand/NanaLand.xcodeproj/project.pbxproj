@@ -32,6 +32,13 @@
 		2C3C75D12BCAAFF300312F26 /* FavoriteMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C75D02BCAAFF300312F26 /* FavoriteMainView.swift */; };
 		2C3C75D32BCAB00C00312F26 /* StoryMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C75D22BCAB00C00312F26 /* StoryMainView.swift */; };
 		2C3C75D52BCAB01500312F26 /* ProfileMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C75D42BCAB01500312F26 /* ProfileMainView.swift */; };
+
+		2C40DBA12BE92A3F007A3768 /* ModifyInfoMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40DBA02BE92A3F007A3768 /* ModifyInfoMainView.swift */; };
+		2C40DBA32BE92B22007A3768 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 2C40DBA22BE92B22007A3768 /* Localizable.xcstrings */; };
+		2C40DBA52BEA0047007A3768 /* ModifyInfoWritingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40DBA42BEA0047007A3768 /* ModifyInfoWritingView.swift */; };
+		2C40DBA72BEA04C9007A3768 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40DBA62BEA04C9007A3768 /* Color+.swift */; };
+		2C40DBA92BEB3326007A3768 /* ModifyInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40DBA82BEB3326007A3768 /* ModifyInfoViewModel.swift */; };
+
 		2C40DB7D2BE6174F007A3768 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 2C40DB7C2BE6174E007A3768 /* Localizable.xcstrings */; };
 		2C40DB7F2BE61F05007A3768 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40DB7E2BE61F05007A3768 /* SplashView.swift */; };
 		2C40DB832BE62259007A3768 /* LanguageSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40DB822BE62259007A3768 /* LanguageSelectView.swift */; };
@@ -47,6 +54,7 @@
 		2C40DB9E2BE87C61007A3768 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40DB9D2BE87C61007A3768 /* Color+.swift */; };
 		2C40DBB42BECE671007A3768 /* UINavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40DBB32BECE671007A3768 /* UINavigationController+.swift */; };
 		2C40DBB62BECEE2A007A3768 /* UITabBarController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40DBB52BECEE2A007A3768 /* UITabBarController+.swift */; };
+
 		2C40DBB92BEDFBC3007A3768 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 2C40DBB82BEDFBC3007A3768 /* GoogleSignIn */; };
 		2C40DBBB2BEDFBC3007A3768 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2C40DBBA2BEDFBC3007A3768 /* GoogleSignInSwift */; };
 		2C40DBBE2BF1AC3C007A3768 /* AuthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40DBBD2BF1AC3C007A3768 /* AuthError.swift */; };
@@ -184,6 +192,13 @@
 		2C3C75D02BCAAFF300312F26 /* FavoriteMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMainView.swift; sourceTree = "<group>"; };
 		2C3C75D22BCAB00C00312F26 /* StoryMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryMainView.swift; sourceTree = "<group>"; };
 		2C3C75D42BCAB01500312F26 /* ProfileMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMainView.swift; sourceTree = "<group>"; };
+
+		2C40DBA02BE92A3F007A3768 /* ModifyInfoMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyInfoMainView.swift; sourceTree = "<group>"; };
+		2C40DBA22BE92B22007A3768 /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		2C40DBA42BEA0047007A3768 /* ModifyInfoWritingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyInfoWritingView.swift; sourceTree = "<group>"; };
+		2C40DBA62BEA04C9007A3768 /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
+		2C40DBA82BEB3326007A3768 /* ModifyInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyInfoViewModel.swift; sourceTree = "<group>"; };
+
 		2C40DB7C2BE6174E007A3768 /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		2C40DB7E2BE61F05007A3768 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		2C40DB822BE62259007A3768 /* LanguageSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectView.swift; sourceTree = "<group>"; };
@@ -198,6 +213,7 @@
 		2C40DB9D2BE87C61007A3768 /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 		2C40DBB32BECE671007A3768 /* UINavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+.swift"; sourceTree = "<group>"; };
 		2C40DBB52BECEE2A007A3768 /* UITabBarController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarController+.swift"; sourceTree = "<group>"; };
+
 		2C40DBBD2BF1AC3C007A3768 /* AuthError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthError.swift; sourceTree = "<group>"; };
 		2C40DBBF2BF1ED8A007A3768 /* RegisterTermsAgreementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterTermsAgreementView.swift; sourceTree = "<group>"; };
 		2C40DBC12BF1F24D007A3768 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
@@ -334,7 +350,11 @@
 		2C1F31D12BCD14020066819F /* Localizing */ = {
 			isa = PBXGroup;
 			children = (
+
+				2C40DBA22BE92B22007A3768 /* Localizable.xcstrings */,
+
 				2C40DB7C2BE6174E007A3768 /* Localizable.xcstrings */,
+
 			);
 			path = Localizing;
 			sourceTree = "<group>";
@@ -362,6 +382,8 @@
 		2C3C75822BCA3ADA00312F26 /* NanaLand */ = {
 			isa = PBXGroup;
 			children = (
+				2C40DB9F2BE929E1007A3768 /* ModifyInfo */,
+
 				2C5425092BF76D8200B16439 /* NanaLand.entitlements */,
 				2C5425052BF73FBE00B16439 /* Info.plist */,
 				BF98341F2BCE71F400A5C289 /* NaNaPick */,
@@ -425,8 +447,10 @@
 		2C3C75C02BCA540200312F26 /* Networks */ = {
 			isa = PBXGroup;
 			children = (
+
 				BF7F7F5A2BE6130D0000F08A /* Nature */,
 				2C40DB8F2BE63816007A3768 /* Auth */,
+
 				BF0C70852BE0D17C00677428 /* Festival */,
 				BF1611472BDB7862000340F2 /* Shop */,
 				2C80ECD82BD63B8B002F38A7 /* Favorite */,
@@ -511,6 +535,16 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+
+		2C40DB9F2BE929E1007A3768 /* ModifyInfo */ = {
+			isa = PBXGroup;
+			children = (
+				2C40DBA02BE92A3F007A3768 /* ModifyInfoMainView.swift */,
+				2C40DBA42BEA0047007A3768 /* ModifyInfoWritingView.swift */,
+				2C40DBA82BEB3326007A3768 /* ModifyInfoViewModel.swift */,
+			);
+			path = ModifyInfo;
+
 		2C40DB812BE6222C007A3768 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -528,6 +562,7 @@
 				2C40DB922BE63887007A3768 /* AuthEndPoint.swift */,
 			);
 			path = Auth;
+
 			sourceTree = "<group>";
 		};
 		2C40DBBC2BF1AC01007A3768 /* Errors */ = {
@@ -681,9 +716,12 @@
 				9C6A9C3C2BCC1AC1000413AD /* Font */,
 				2C80ECB62BCFA055002F38A7 /* Data+.swift */,
 				2C80ECF12BDBE545002F38A7 /* YearMonthDay+.swift */,
+
+				2C40DBA62BEA04C9007A3768 /* Color+.swift */,
 				2C40DB9D2BE87C61007A3768 /* Color+.swift */,
 				2C40DBB32BECE671007A3768 /* UINavigationController+.swift */,
 				2C40DBB52BECEE2A007A3768 /* UITabBarController+.swift */,
+
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -943,7 +981,11 @@
 				9C6A9C632BCC22CE000413AD /* AppleSDGothicNeoL.ttf in Resources */,
 				2C3C75882BCA3ADC00312F26 /* Assets.xcassets in Resources */,
 				2C1F31C02BCD01240066819F /* AppleSDGothicNeoEB.ttf in Resources */,
+
+				2C40DBA32BE92B22007A3768 /* Localizable.xcstrings in Resources */,
+
 				2C40DB7D2BE6174F007A3768 /* Localizable.xcstrings in Resources */,
+
 				2C1F31C62BCD01390066819F /* AppleSDGothicNeoB.ttf in Resources */,
 				2C1F31C52BCD01390066819F /* AppleSDGothicNeoH.ttf in Resources */,
 				2C1F31C42BCD01390066819F /* AppleSDGothicNeoM.ttf in Resources */,
@@ -1013,6 +1055,9 @@
 				2C80ECC12BCFCD1A002F38A7 /* SearchEndPoint.swift in Sources */,
 				2C80EC9E2BCE53E1002F38A7 /* Article.swift in Sources */,
 				BF9F02952BD8A6AD003E72E6 /* FestivalDetailView.swift in Sources */,
+				2C40DBA52BEA0047007A3768 /* ModifyInfoWritingView.swift in Sources */,
+				2C40DBA92BEB3326007A3768 /* ModifyInfoViewModel.swift in Sources */,
+				2C40DBA12BE92A3F007A3768 /* ModifyInfoMainView.swift in Sources */,
 				2C3C75BF2BCA53EE00312F26 /* HomeMainView.swift in Sources */,
 				2C40DBB42BECE671007A3768 /* UINavigationController+.swift in Sources */,
 				2C40DB832BE62259007A3768 /* LanguageSelectView.swift in Sources */,
@@ -1045,10 +1090,15 @@
 				BFABD34F2BE75F4600C3F3A6 /* FestivalEndPoint.swift in Sources */,
 				2C1F31D02BCD04AA0066819F /* SearchViewModel.swift in Sources */,
 				BF9F02912BD89EB1003E72E6 /* NavigationBar.swift in Sources */,
+
+				2C80ECD32BD4B33B002F38A7 /* FavoriteViewModel.swift in Sources */,
+				2C40DBA72BEA04C9007A3768 /* Color+.swift in Sources */,
+
 				2C40DB932BE63887007A3768 /* AuthEndPoint.swift in Sources */,
 				2C40DB7F2BE61F05007A3768 /* SplashView.swift in Sources */,
 				BFC671F82BF7198800D1A2FD /* ShopDetailViewModel.swift in Sources */,
 				2C80ECD32BD4B33B002F38A7 /* FavoriteViewModel.swift in Sources */,
+
 				2C80ECAA2BCF5DB8002F38A7 /* SearchDetailCategoryResultView.swift in Sources */,
 				2C40DB8E2BE637DE007A3768 /* AuthManager.swift in Sources */,
 				2C1F31D72BCD73C00066819F /* Constants.swift in Sources */,
@@ -1250,8 +1300,10 @@
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"NanaLand/Preview Content\"";
+
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = UM6P9H795G;
+
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NanaLand/Info.plist;
@@ -1265,7 +1317,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+
 				PRODUCT_BUNDLE_IDENTIFIER = com.jeju.nanaland;
+
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "AppStore-com.jeju.nanaland";
@@ -1286,8 +1340,10 @@
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"NanaLand/Preview Content\"";
+
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = UM6P9H795G;
+
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NanaLand/Info.plist;
@@ -1301,7 +1357,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+
 				PRODUCT_BUNDLE_IDENTIFIER = com.jeju.nanaland;
+
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "AppStore-com.jeju.nanaland";
