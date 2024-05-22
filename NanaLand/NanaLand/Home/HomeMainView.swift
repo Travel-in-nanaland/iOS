@@ -11,7 +11,7 @@ import SwiftUIIntrospect
 
 struct HomeMainView: View {
 
-	@StateObject var viewModel = HomeMainViewModel()
+	@ObservedObject var viewModel = HomeMainViewModel()
     
 	var body: some View {
 		ScrollView {
@@ -50,7 +50,7 @@ struct HomeMainView: View {
 				.padding(.bottom, 16)
 				
 				
-				/// banner View
+				// banner View
 				BannerView()
 					.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width / 2)
 					.padding(.bottom)
@@ -149,31 +149,34 @@ struct HomeMainView: View {
 						let firstItem = responseData.data[0]
 						// 두번째 추천 게시물
 						let secondItem = responseData.data[1]
-						VStack(alignment: .leading, spacing: 8) {
-							KFImage(URL(string: firstItem.thumbnailUrl)!)
-								.resizable()
-								.frame(height: (UIScreen.main.bounds.width - 40) / 2 * (118 / 160))
-								.clipShape(RoundedRectangle(cornerRadius: 12))
-							Text(firstItem.title)
-								.font(.gothicNeo(size: 14, font: "bold"))
-							Text(firstItem.intro)
-								.font(.gothicNeo(.medium, size: 12))
-								.foregroundStyle(Color(.gray1))
-						}
+                        HStack(alignment:.top, spacing: 8) {
+                            VStack(alignment: .leading, spacing: 8) {
+                                KFImage(URL(string: firstItem.thumbnailUrl)!)
+                                    .resizable()
+                                    .frame(height: (UIScreen.main.bounds.width - 40) / 2 * (118 / 160))
+                                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                                Text(firstItem.title)
+                                    .font(.gothicNeo(size: 14, font: "bold"))
+                                Text(firstItem.introduction)
+                                    .font(.gothicNeo(.medium, size: 12))
+                                    .foregroundStyle(Color(.gray1))
+                            }
+                            
+                            VStack(alignment: .leading, spacing: 8) {
+                                KFImage(URL(string: secondItem.thumbnailUrl)!)
+                                    .resizable()
+                                    .frame(height: (UIScreen.main.bounds.width - 40) / 2 * (118 / 160))
+                                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                                
+                                Text(secondItem.title)
+                                    .font(.gothicNeo(size: 14, font: "bold"))
+                                Text(secondItem.introduction)
+                                    .font(.gothicNeo(.medium, size: 12))
+                                    .foregroundStyle(Color(.gray1))
+                                
+                            }
+                        }
 						
-						VStack(alignment: .leading, spacing: 8) {
-							KFImage(URL(string: secondItem.thumbnailUrl)!)
-								.resizable()
-								.frame(height: (UIScreen.main.bounds.width - 40) / 2 * (118 / 160))
-								.clipShape(RoundedRectangle(cornerRadius: 12))
-							
-							Text(secondItem.title)
-								.font(.gothicNeo(size: 14, font: "bold"))
-							Text(secondItem.intro)
-								.font(.gothicNeo(.medium, size: 12))
-								.foregroundStyle(Color(.gray1))
-							
-						}
 					}
 				}
 				.padding(.leading, 16)

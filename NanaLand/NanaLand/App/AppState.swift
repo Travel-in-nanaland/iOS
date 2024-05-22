@@ -9,4 +9,6 @@ import SwiftUI
 
 class AppState: ObservableObject {
 	@Published var currentTab: Tab = .home
+    @Published var isTabViewHidden: Bool = false
+	@Published var isRegisterNeeded = false
 }

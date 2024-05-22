@@ -12,6 +12,7 @@
 
 # Secret
 secret.swift
+Info.plist
 
 # Thumbnails
 ._*

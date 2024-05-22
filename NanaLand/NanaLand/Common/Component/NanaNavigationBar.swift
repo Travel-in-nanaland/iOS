@@ -44,7 +44,7 @@ struct NanaNavigationBar: View {
 				Button(action: {
 					dismiss()
 				}, label: {
-					Image(.icLeft)
+					Image("icLeft")
 						.resizable()
 						.frame(width: 32, height: 32)
 				})

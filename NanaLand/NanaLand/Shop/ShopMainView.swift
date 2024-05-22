@@ -17,32 +17,7 @@ struct ShopMainView: View {
                 .frame(height: 56)
                 .padding(.bottom, 24)
 
-            HStack(spacing: 0) {
-                Text("2건")
-                    .padding(.leading, 16)
-                    .foregroundStyle(Color.gray1)
-                
-                Spacer()
-                
-                Menu {
-                    Text("helo")
-                } label: {
-                    Text(String(localized: "region"))
-                        .font(.gothicNeo(.medium, size: 12))
-                        .padding(.leading, 12)
-                    Spacer()
-                    Image("icDownSmall")
-                        .padding(.trailing, 12)
-                }
-                .foregroundStyle(Color.gray1)
-                .frame(width: 70, height: 40)
-                .background(
-                    RoundedRectangle(cornerRadius: 30)
-                        .strokeBorder(Color.gray1, lineWidth: 1)
-                )
-                .padding(.trailing, 16)
-            }
-            .padding(.bottom, 16)
+            
             
             ShopMainGridView()
             
@@ -59,18 +34,65 @@ struct ShopMainGridView: View {
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
     @State private var isAPICalled = false
     var body: some View {
+        HStack(spacing: 0) {
+            Text("\(viewModel.state.getShopMainResponse.data.count)건")
+                .padding(.leading, 16)
+                .foregroundStyle(Color.gray1)
+            
+            Spacer()
+            
+            Menu {
+                Text("helo")
+            } label: {
+                Text(String(localized: "region"))
+                    .font(.gothicNeo(.medium, size: 12))
+                    .padding(.leading, 12)
+                Spacer()
+                Image("icDownSmall")
+                    .padding(.trailing, 12)
+            }
+            .foregroundStyle(Color.gray1)
+            .frame(width: 70, height: 40)
+            .background(
+                RoundedRectangle(cornerRadius: 30)
+                    .strokeBorder(Color.gray1, lineWidth: 1)
+            )
+            .padding(.trailing, 16)
+        }
+        .padding(.bottom, 16)
         ScrollView {
             LazyVGrid(columns: columns, spacing: 16) {
                 if isAPICalled {
                     ForEach((0...viewModel.state.getShopMainResponse.data.count-1), id: \.self) { index in
                         NavigationLink(destination: ShopDetailView(id: viewModel.state.getShopMainResponse.data[index].id)) {
                             VStack(alignment: .leading) {
+                                ZStack {
+                                    KFImage(URL(string: viewModel.state.getShopMainResponse.data[index].thumbnailUrl))
+                                        .resizable()
+                                        .frame(width: (UIScreen.main.bounds.width - 40) / 2, height: ((UIScreen.main.bounds.width - 40) / 2) * (12 / 16))
+                                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                                    VStack {
+                                        HStack {
+                                            Spacer()
+                                            
+                                            Button {
+                                                Task {
+                                                    await toggleFavorite(body: FavoriteToggleRequest(id: Int(viewModel.state.getShopMainResponse.data[index].id), category: .market), index: index)
+                                                }
+                                              
+                                            } label: {
+                                                viewModel.state.getShopMainResponse.data[index].favorite ? Image("icHeartFillMain") : Image("icHeart")
+                                            }
+                                        }
+                                        .padding(.top, 8)
+                                        Spacer()
+                                    }
+                                    .padding(.trailing, 8)
+                                }
                                 
-                                KFImage(URL(string: viewModel.state.getShopMainResponse.data[index].thumbnailUrl))
-                                    .resizable()
-                                    .frame(width: (UIScreen.main.bounds.width - 40) / 2, height: ((UIScreen.main.bounds.width - 40) / 2) * (12 / 16))
-                                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                                
                                 Spacer()
+                                
                                 Text("\(viewModel.state.getShopMainResponse.data[index].title)")
                                     .font(.gothicNeo(.bold, size: 14))
                                     .foregroundStyle(.black)
@@ -100,7 +122,7 @@ struct ShopMainGridView: View {
         }
         .onAppear {
             Task {
-                await getShopMainItem(page: 0, size:12, filterName:"")
+                await getShopMainItem(page: 0, size:18, filterName:"")
                 isAPICalled = true
             }
         }
@@ -117,6 +139,9 @@ struct ShopMainGridView: View {
         let contentHeight = scrollView.contentSize.height
         let height = scrollView.frame.size.height
         return offsetY > contentHeight - height
+    }
+    func toggleFavorite(body: FavoriteToggleRequest, index: Int) async {
+        await viewModel.action(.toggleFavorite(body: body, index: index))
     }
     
 }

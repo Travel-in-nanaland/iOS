@@ -14,6 +14,7 @@ class ShopMainViewModel: ObservableObject {
     
     enum Action {
         case getShopMainItem(page: Int64, size: Int64, filterName: String)
+        case toggleFavorite(body: FavoriteToggleRequest, index: Int)
     }
     
     @Published var state: State
@@ -32,10 +33,17 @@ class ShopMainViewModel: ObservableObject {
             
             if response != nil {
                 await MainActor.run {
-                    state.getShopMainResponse.data.append(contentsOf: response!.data.data)
+                    state.getShopMainResponse.data = response!.data.data
                 }
             } else {
                 print("Erorr")
+            }
+        case .toggleFavorite(body: let body, index: let index):
+            let response = await FavoriteService.toggleFavorite(id: body.id, category: .market)
+            if response != nil {
+                await MainActor.run {
+                    state.getShopMainResponse.data[index].favorite = response!.data.favorite
+                }
             }
         }
     }

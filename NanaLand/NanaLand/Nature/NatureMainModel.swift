@@ -8,5 +8,14 @@
 import Foundation
 
 struct NatureMainModel: Codable {
-    
+    let totalElements: Int64
+    var data: [NatureModelInfo]
+}
+
+struct NatureModelInfo: Codable {
+    let id: Int64
+    let title: String
+    let thumbnailUrl: String
+    let addressTag: String
+    var favorite: Bool
 }

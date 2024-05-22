@@ -8,7 +8,7 @@
 import Foundation
 
 struct NaNaPickDetailService {
-    static func getNaNaPickDetail(id: Int64) async -> BaseResponse<NaNaPickDetailModel>? {
+    static func getNaNaPickDetail(id: Int64) async -> OldBaseResponse<NaNaPickDetailModel>? {
         return await NetworkManager.shared.request(NaNaPickDetailEndPoint.getNaNaPickDetail(id: id))
     }
 }
