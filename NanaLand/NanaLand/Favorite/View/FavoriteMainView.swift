@@ -9,20 +9,28 @@ import SwiftUI
 import SwiftUIIntrospect
 
 struct FavoriteMainView: View {
+	@EnvironmentObject var appState: AppState
 	@StateObject var favoriteVM = FavoriteViewModel()
 	
 	@State var currentTab: Category = .all
 	let tabs: [Category] = Category.allCases
 	
-    var body: some View {
-		NavigationStack {
-			VStack {
-				navigationBar
-				tabBar
-				contentTab
+	@AppStorage("provider") var provider: String = ""
+	
+	var body: some View {
+		VStack {
+			navigationBar
+			tabBar
+			contentTab
+		}
+		.onAppear {
+			if provider == "GUEST" {
+				withAnimation {
+					appState.showRegisterInduction = true
+				}
 			}
 		}
-    }
+	}
 	
 	private var navigationBar: some View {
 		NanaNavigationBar(title: String(localized: "favorite"))

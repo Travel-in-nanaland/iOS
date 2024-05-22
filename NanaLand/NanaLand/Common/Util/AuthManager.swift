@@ -17,6 +17,7 @@ import AuthenticationServices
 final class AuthManager: NSObject {
 	@AppStorage("locale") var locale: String = ""
 	@AppStorage("isLogin") var isLogin: Bool = false
+	@AppStorage("provider") var provider: String = ""
 	
 	@ObservedObject var registerVM: RegisterViewModel
 	
@@ -147,6 +148,21 @@ final class AuthManager: NSObject {
 		authorizationController.performRequests()
 	}
 	
+	func nonMemeberLogin() {
+		guard let deviceId = UIDevice.current.identifierForVendor?.uuidString else {return}
+		print(deviceId)
+		
+		let loginRequest = LoginRequest(
+			locale: self.locale,
+			provider: "GUEST",
+			providerId: deviceId
+		)
+		
+		Task {
+			await loginToServerFromNonMember(request: loginRequest)
+		}
+	}
+	
 	/// 서버에 로그인 실패(404)시 회원가입 필요(데이터 임시저장)
 	/// 서버에 로그인 성공 시 다음 화면
 	func loginToServer(request: LoginRequest, email: String, gender: String = "", birthDate: String = "") async {
@@ -157,6 +173,7 @@ final class AuthManager: NSObject {
 			KeyChainManager.addItem(key: "accessToken", value: tokens.accessToken)
 			KeyChainManager.addItem(key: "refreshToken", value: tokens.refreshToken)
 			self.isLogin = true
+			self.provider = request.provider
 			
 		} else if result?.status == 404 {
 			// 로그인 실패(404)인 경우 회원가입 필요
@@ -171,6 +188,41 @@ final class AuthManager: NSObject {
 			)
 			
 			registerVM.state.isRegisterNeeded = true
+		}
+	}
+	
+	/// 비회원 로그인/회원가입
+	func loginToServerFromNonMember(request: LoginRequest) async {
+		let result = await AuthService.loginServer(body: request)
+		
+		if let tokens = result?.data {
+			// 로그인 성공 토큰 저장하고 홈 화면으로
+			KeyChainManager.addItem(key: "accessToken", value: tokens.accessToken)
+			KeyChainManager.addItem(key: "refreshToken", value: tokens.refreshToken)
+			self.isLogin = true
+			self.provider = "GUEST"
+			
+		} else if result?.status == 404 {
+			// 로그인 실패(404)인 경우 회원가입 필요
+			let registerRequest = RegisterRequest(
+				locale: request.locale,
+				email: "GUEST@nanaland.com",
+				nickname: "GUEST",
+				provider: request.provider,
+				providerId: request.providerId
+			)
+			
+			let registerResult = await AuthService.registerServer(body: registerRequest, image: [])
+			
+			if let tokens = registerResult?.data {
+				KeyChainManager.addItem(key: "accessToken", value: tokens.accessToken)
+				KeyChainManager.addItem(key: "refreshToken", value: tokens.refreshToken)
+				self.isLogin = true
+				self.provider = "GUEST"
+			} else {
+				// TODO: 비회원 에러처리 필요
+				print("비회원 회원가입 - 알 수 없는 에러")
+			}
 		}
 	}
 }

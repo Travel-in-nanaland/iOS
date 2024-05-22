@@ -30,6 +30,7 @@ struct ShopMainView: View {
 }
 // 정보 담는 grid 뷰
 struct ShopMainGridView: View {
+	@EnvironmentObject var appState: AppState
     @StateObject var viewModel = ShopMainViewModel()
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
     @State private var isAPICalled = false
@@ -141,6 +142,10 @@ struct ShopMainGridView: View {
         return offsetY > contentHeight - height
     }
     func toggleFavorite(body: FavoriteToggleRequest, index: Int) async {
+		if UserDefaults.standard.string(forKey: "provider") == "GUEST" {
+			appState.showRegisterInduction = true
+			return
+		}
         await viewModel.action(.toggleFavorite(body: body, index: index))
     }
     

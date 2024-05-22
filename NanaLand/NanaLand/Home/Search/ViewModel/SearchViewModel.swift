@@ -238,6 +238,8 @@ final class SearchViewModel: ObservableObject {
 			  let result = await FavoriteService.toggleFavorite(id: article.id, category: tab)
 		else {return}
 		
+		
+		
 		switch tab {
 		case .all:
 			print("didTapHeartInSearchAll - all은 허용되지 않음")

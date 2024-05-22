@@ -164,6 +164,7 @@ final class RegisterViewModel: ObservableObject {
 			KeyChainManager.addItem(key: "accessToken", value: tokens.accessToken)
 			KeyChainManager.addItem(key: "refreshToken", value: tokens.refreshToken)
 			UserDefaults.standard.setValue(true, forKey: "isLogin")
+			UserDefaults.standard.setValue(state.registerRequest.provider, forKey: "provider")
 			state.registerPath.append(.userTypeTest1)
 		} else if result?.status == 409 {
 			// 닉네임 중복

@@ -8,6 +8,7 @@
 import SwiftUI
 import Kingfisher
 struct ShopDetailView: View {
+	@EnvironmentObject var appState: AppState
     @StateObject var viewModel = ShopDetailViewModel()
     @State private var isAPICalled = false
     @State private var isOn = false
@@ -320,6 +321,10 @@ struct ShopDetailView: View {
     }
     
     func toggleFavorite(body: FavoriteToggleRequest) async {
+		if UserDefaults.standard.string(forKey: "provider") == "GUEST" {
+			appState.showRegisterInduction = true
+			return
+		}
         await viewModel.action(.toggleFavorite(body: body))
     }
     

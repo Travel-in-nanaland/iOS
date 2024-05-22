@@ -33,7 +33,7 @@ extension SearchEndPoint: EndPoint {
 	var path: String {
 		switch self {
 		case .getSearchAllCategory:
-			return "/category"
+			return "/all"
 		case .getSearchNatureCategory:
 			return "/nature"
 		case .getSearchMarketCategory:

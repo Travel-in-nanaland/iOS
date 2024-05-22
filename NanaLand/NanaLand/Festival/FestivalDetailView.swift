@@ -9,6 +9,7 @@ import SwiftUI
 import Kingfisher
 
 struct FestivalDetailView: View {
+	@EnvironmentObject var appState: AppState
     @StateObject var viewModel = FestivalDetailViewModel()
     @State private var isOn = false // 더보기 버튼 클릭 여부
     @State private var roundedHeight: CGFloat = (Constants.screenWidth - 40) * (224.0 / 358.0)
@@ -359,6 +360,10 @@ struct FestivalDetailView: View {
     }
     
     func toggleFavorite(body: FavoriteToggleRequest) async {
+		if UserDefaults.standard.string(forKey: "provider") == "GUEST" {
+			appState.showRegisterInduction = true
+			return
+		}
         await viewModel.action(.toggleFavorite(body: body))
     }
 }

@@ -83,6 +83,8 @@
 		2C80ECEE2BDBE0CE002F38A7 /* CalendarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80ECED2BDBE0CE002F38A7 /* CalendarItem.swift */; };
 		2C80ECF02BDBE44C002F38A7 /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80ECEF2BDBE44C002F38A7 /* RoundedCorners.swift */; };
 		2C80ECF22BDBE545002F38A7 /* YearMonthDay+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80ECF12BDBE545002F38A7 /* YearMonthDay+.swift */; };
+		2C9CF4CA2BFC404900A346E8 /* RegisterInductionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9CF4C92BFC404900A346E8 /* RegisterInductionView.swift */; };
+		2C9CF4CC2BFC5C1F00A346E8 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9CF4CB2BFC5C1F00A346E8 /* View+.swift */; };
 		9C6A9C3E2BCC1BAE000413AD /* Fonts+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6A9C3D2BCC1BAE000413AD /* Fonts+.swift */; };
 		9C6A9C632BCC22CE000413AD /* AppleSDGothicNeoL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C6A9C5A2BCC22CE000413AD /* AppleSDGothicNeoL.ttf */; };
 		9C6A9C642BCC22CE000413AD /* AppleSDGothicNeoL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C6A9C5A2BCC22CE000413AD /* AppleSDGothicNeoL.ttf */; };
@@ -232,6 +234,8 @@
 		2C80ECED2BDBE0CE002F38A7 /* CalendarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarItem.swift; sourceTree = "<group>"; };
 		2C80ECEF2BDBE44C002F38A7 /* RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorners.swift; sourceTree = "<group>"; };
 		2C80ECF12BDBE545002F38A7 /* YearMonthDay+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "YearMonthDay+.swift"; sourceTree = "<group>"; };
+		2C9CF4C92BFC404900A346E8 /* RegisterInductionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInductionView.swift; sourceTree = "<group>"; };
+		2C9CF4CB2BFC5C1F00A346E8 /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
 		9C6A9C3D2BCC1BAE000413AD /* Fonts+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fonts+.swift"; sourceTree = "<group>"; };
 		9C6A9C5A2BCC22CE000413AD /* AppleSDGothicNeoL.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoL.ttf; sourceTree = "<group>"; };
 		9C6A9C5B2BCC22CE000413AD /* AppleSDGothicNeoR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoR.ttf; sourceTree = "<group>"; };
@@ -543,6 +547,7 @@
 			children = (
 				2C40DB822BE62259007A3768 /* LanguageSelectView.swift */,
 				2C40DB862BE630EC007A3768 /* LoginView.swift */,
+				2C9CF4C92BFC404900A346E8 /* RegisterInductionView.swift */,
 				2C5424EC2BF4CED100B16439 /* Register */,
 				2C5424FC2BF70FE700B16439 /* TypeTest */,
 			);
@@ -684,6 +689,7 @@
 				2C40DB9D2BE87C61007A3768 /* Color+.swift */,
 				2C40DBB32BECE671007A3768 /* UINavigationController+.swift */,
 				2C40DBB52BECEE2A007A3768 /* UITabBarController+.swift */,
+				2C9CF4CB2BFC5C1F00A346E8 /* View+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1008,9 +1014,11 @@
 				2C40DBB62BECEE2A007A3768 /* UITabBarController+.swift in Sources */,
 				BF9842F12BCE897C00D6A60C /* BannerModel.swift in Sources */,
 				BF7F7F592BE612240000F08A /* NatureDetailModel.swift in Sources */,
+				2C9CF4CA2BFC404900A346E8 /* RegisterInductionView.swift in Sources */,
 				2C80ECC32BCFCD69002F38A7 /* Interceptor.swift in Sources */,
 				2C80ECF22BDBE545002F38A7 /* YearMonthDay+.swift in Sources */,
 				2C80ECC12BCFCD1A002F38A7 /* SearchEndPoint.swift in Sources */,
+				2C9CF4CC2BFC5C1F00A346E8 /* View+.swift in Sources */,
 				2C80EC9E2BCE53E1002F38A7 /* Article.swift in Sources */,
 				BF9F02952BD8A6AD003E72E6 /* FestivalDetailView.swift in Sources */,
 				2C3C75BF2BCA53EE00312F26 /* HomeMainView.swift in Sources */,

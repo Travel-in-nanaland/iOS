@@ -102,7 +102,7 @@ struct LoginView: View {
 			.padding(.bottom, 24)
 			
 			Button(action: {
-				
+				authManager.nonMemeberLogin()
 			}, label: {
 				Text("로그인없이 둘러보기")
 					.font(.gothicNeo(.medium, size: 14))

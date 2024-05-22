@@ -54,6 +54,15 @@ struct NanaLandTabView: View {
                     .tag(Tab.profile)
             }
         }
+		.overlay {
+			if appState.showRegisterInduction {
+				RegisterInductionView(
+					closeAction: {
+						appState.showRegisterInduction = false
+						appState.currentTab = appState.previousTab
+				})
+			}
+		}
         .tint(.baseBlack)
         .introspect(.tabView, on: .iOS(.v16, .v17)) { tabView in
             let appearance = UITabBarAppearance()
@@ -86,8 +95,6 @@ struct NanaLandTabView: View {
                     tabView.view.addSubview(shadowView)
                     tabView.view.bringSubviewToFront(tabView.tabBar)
                 }
-                
-            
         }
     }
 }

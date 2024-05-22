@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SearchDetailCategoryResultView: View {
+	@EnvironmentObject var appState: AppState
 	@ObservedObject var searchVM: SearchViewModel
 	
 	let tab: Category
@@ -59,6 +60,10 @@ struct SearchDetailCategoryResultView: View {
 						id: \.id
 					) { article in
 						ArticleItem(category: tab, article: article, onTapHeart: {
+							if UserDefaults.standard.string(forKey: "provider") == "GUEST" {
+								appState.showRegisterInduction = true
+								return
+							}
 							Task {
 								await searchVM.action(.didTapHeartInSearchDetail(category: tab, article: article))
 							}
