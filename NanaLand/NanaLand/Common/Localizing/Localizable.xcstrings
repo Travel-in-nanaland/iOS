@@ -101,25 +101,12 @@
 
     },
     "community" : {
-
       "extractionState" : "manual",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "제주 이야기"
-          }
-        }
-      }
-    },
-    "deletePlace" : {
-
-      "extractionState" : "manual",
-      "localizations" : {
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "장소 삭제"
           }
         }
       }
@@ -184,7 +171,15 @@
 
     },
     "inputSearchTerm" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "검색어를 입력해 주세요"
+          }
+        }
+      }
     },
     "market" : {
       "extractionState" : "manual",
@@ -197,19 +192,6 @@
         }
       }
     },
-
-    "modifyInfo" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "정보 수정 제안"
-          }
-        }
-      }
-    },
-
     "month" : {
 
     },
@@ -274,79 +256,6 @@
         }
       }
     },
-
-    "numberAndHompage" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "전화번호 및 홈페이지"
-          }
-        }
-      }
-    },
-    "operatinghour" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "운영 시간"
-          }
-        }
-      }
-    },
-    "photo" : {
-
-    },
-    "placeNameAndLocation" : {
-
-    "photo" : {
-
-    },
-    "recentSearchTerm" : {
-
-      "extractionState" : "manual",
-      "localizations" : {
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "장소명 및 위치"
-          }
-        }
-      }
-    },
-
-    "priceInfo" : {
-
-    "region" : {
-
-    },
-    "removeAll" : {
-
-      "extractionState" : "manual",
-      "localizations" : {
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-
-            "value" : "가격 정보"
-          }
-        }
-      }
-    },
-    "provideService" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "제공 서비스"
-          }
-        }
-      }
-    },
     "recentSearchTerm" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -375,16 +284,6 @@
     "reset" : {
 
     },
-
-            "value" : "모두 지우기"
-          }
-        }
-      }
-    },
-    "reset" : {
-
-    },
-
     "searchVolumeUpJejuPlace" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -399,50 +298,6 @@
     "Selected Location: %@" : {
 
     },
-    "share" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "검색어를 입력해 주세요"
-          }
-        }
-      }
-    },
-    "shareETCInfo" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "기타 정보를 공유해 주세요!"
-          }
-        }
-      }
-    },
-    "suggestInfoModificationDescription" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "장소 제안 시 첨부한 사진이 장소 정보 확인에\n도움이 되면 혜택을 받을 수 있어요."
-          }
-        }
-      }
-    },
-    "suggestInfoModificationTitle" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "수정해야 할 정보를 제안해 주세요!"
-          }
-        }
-      }
-
     "Splash Screen" : {
 
     },
@@ -492,23 +347,6 @@
     },
     "더 보기" : {
 
-    },
-    "보내기" : {
-
-    },
-    "사진 추가하기" : {
-
-    },
-    "수정 요청하신 항목의 상세 내용이나 그 외 기타 사항이 있으시면 의견을 남겨주세요." : {
-
-    },
-    "실제 확인한 정보를 사진과 함께 첨부해주시면,\n좀 더 정확한 정보가 완성되어요" : {
-
-    },
-    "연락처" : {
-
-    },
-    "이메일" : {
     },
     "로그인없이 둘러보기" : {
 
@@ -570,9 +408,6 @@
     "정보 수정 제안" : {
 
     },
-    "정보 수정 제안 결과를 받을 이메일을 입력해주세요" : {
-
-    },
     "제주 이야기" : {
 
     },
@@ -591,13 +426,6 @@
     "축제" : {
 
     },
-    "편의시설" : {
-
-    },
-
-    "축제" : {
-
-    },
     "카카오 로그인" : {
 
     },
@@ -610,7 +438,6 @@
     "해제" : {
 
     },
-
     "홈페이지" : {
 
     },
