@@ -32,7 +32,7 @@ struct NanaHome: View {
                             if isLogin {
                                 Task {
                                     await getUserInfo()
-                                    appState.userInfo = viewModel.state.getProfileMainResponse
+                                    AppState.shared.userInfo = viewModel.state.getProfileMainResponse
                                     
                                 }
                             }

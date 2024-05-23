@@ -54,7 +54,7 @@ struct ProfileUpdateView: View {
                         .frame(width: 100, height: 100)
                         .clipShape(Circle())
                 } else {
-                    KFImage(URL(string:"\(appState.userInfo.profileImageUrl)"))
+                    KFImage(URL(string:"\(AppState.shared.userInfo.profileImageUrl)"))
                         .resizable()
                         .frame(width: 100, height: 100)
                         .clipShape(Circle())
@@ -175,9 +175,9 @@ struct ProfileUpdateView: View {
         Button(action: {
             Task {
                 await updateUserInfo(body: ProfileDTO(nickname: nickName, description: introduceText), multipartFile: [selectedImage?.jpegData(compressionQuality: 0.8)])
-                appState.userInfo.nickname = viewModel.state.updatedNickName
-                appState.userInfo.description = viewModel.state.updatedDescription
-                appState.userInfo.profileImageUrl = viewModel.state.updatedProfilImage
+                AppState.shared.userInfo.nickname = viewModel.state.updatedNickName
+                AppState.shared.userInfo.description = viewModel.state.updatedDescription
+                AppState.shared.userInfo.profileImageUrl = viewModel.state.updatedProfilImage
               // 닉네임 중복이 아니면
                 if (!viewModel.state.isDuplicate) {
                     dismiss()

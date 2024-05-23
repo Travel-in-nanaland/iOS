@@ -49,6 +49,7 @@ class ProfileUpdateViewModel: ObservableObject {
                         state.updatedNickName = updateUserInfo.data.nickname
                         state.updatedDescription = updateUserInfo.data.description
                         state.updatedProfilImage = updateUserInfo.data.profileImageUrl
+                        print(state.updatedNickName)
                     }
                  
                     
