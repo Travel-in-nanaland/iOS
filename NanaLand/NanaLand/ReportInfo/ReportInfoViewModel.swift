@@ -13,6 +13,9 @@ class ReportInfoViewModel: ObservableObject {
 		var postId: Int64 = 0
 		var category: Category = .experience
 		var fixType: ReportInfoType = .priceInfo
+		
+		var showEmailErrorMessage: Bool = false
+		
 		var isLoading: Bool = false
 	}
 	
@@ -63,6 +66,8 @@ class ReportInfoViewModel: ObservableObject {
 		
 		if result?.status == 200 {
 			AppState.shared.navigationPath.append(ReportInfoViewType.reportResult)
+		} else if result?.status == 400 {
+			state.showEmailErrorMessage = true
 		}
 	}
 	
@@ -71,6 +76,7 @@ class ReportInfoViewModel: ObservableObject {
 	}
 	
 	func reportAgainButtonTapped() {
+		state.showEmailErrorMessage = false
 		AppState.shared.navigationPath.removeLast(2)
 	}
 }

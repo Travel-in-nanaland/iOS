@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 struct ReportInfoService {
-	static func postInfoFixReport(body: ReportInfoRequest, image: [Foundation.Data?]) async -> BaseResponse<String>? {
+	static func postInfoFixReport(body: ReportInfoRequest, image: [Foundation.Data?]) async -> BaseResponse<ReportInfoResponse>? {
 		return await NetworkManager.shared.request(ReportInfoEndPoint.postInfoFixReport(body: body, image: image))
 	}
 }

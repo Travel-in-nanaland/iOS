@@ -15,6 +15,10 @@ struct ReportInfoRequest: Codable {
 	let email: String
 }
 
+struct ReportInfoResponse: Codable {
+	let email: String
+}
+
 enum ReportInfoType: String {
 	case numberAndHompage
 	case placeNameAndLocation

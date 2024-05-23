@@ -131,7 +131,7 @@ struct ReportInfoWritingView: View {
 							.frame(height: 48)
 							.background {
 								RoundedRectangle(cornerRadius: 12)
-									.stroke(Color.gray2, lineWidth: 1)
+									.stroke(reportInfoVM.state.showEmailErrorMessage ? Color.warning : Color.gray2, lineWidth: 1)
 							}
 							.lineLimit(1)
 							.scrollContentBackground(.hidden)
@@ -148,6 +148,23 @@ struct ReportInfoWritingView: View {
 							}
 					}
 					.padding(.horizontal, 16)
+					.padding(.bottom, 8)
+					
+					if reportInfoVM.state.showEmailErrorMessage {
+						HStack(spacing: 4) {
+							Image(.icWarningCircle)
+								.resizable()
+								.frame(width: 20, height: 20)
+								.foregroundStyle(Color.warning)
+							
+							Text("이메일 형식이 잘못 되었습니다. 다시 입력해 주세요!")
+								.font(.gothicNeo(.medium, size: 12))
+								.foregroundStyle(Color.warning)
+							
+							Spacer()
+						}
+						.padding(.horizontal, 16)
+					}
 					
 					Spacer()
 						.frame(height: 100)
