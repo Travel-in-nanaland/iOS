@@ -7,6 +7,10 @@
 
 import Foundation
 
+struct EmptyResponseModel: Codable {
+    
+}
+
 struct OldBaseResponse<T: Codable>: Codable {
 	let status: Int
 	let message: String
