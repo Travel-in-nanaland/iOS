@@ -337,7 +337,6 @@ struct TabBarItem: View {
 }
 
 struct FestivalMainGridView: View {
-	@EnvironmentObject var appState: AppState
     @StateObject var viewModel = FestivalMainViewModel()
     @State private var isHidden = true
     @State private var isAPICalled = false
@@ -470,7 +469,7 @@ struct FestivalMainGridView: View {
     }
     func toggleFavorite(body: FavoriteToggleRequest, index: Int) async {
 		if UserDefaults.standard.string(forKey: "provider") == "GUEST" {
-			appState.showRegisterInduction = true
+			AppState.shared.showRegisterInduction = true
 			return
 		}
         await viewModel.action(.toggleFavorite(body: body, index: index))

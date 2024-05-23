@@ -13,15 +13,15 @@ enum Tab {
 }
 
 struct NanaLandTabView: View {
-    @EnvironmentObject var appState: AppState
+	@StateObject var appState = AppState.shared
     var body: some View {
-        NavigationStack {
-            TabView(selection: $appState.currentTab) {
+		NavigationStack(path: $appState.navigationPath) {
+			TabView(selection: $appState.currentTab) {
                 HomeMainView()
                     .tabItem {
                         Label(
                             title: { Text(String(localized: "home")).font(.gothicNeo(.semibold, size: 10)) },
-                            icon: { appState.currentTab == .home ? Image(.icHomeFill) : Image(.icHome) }
+							icon: { appState.currentTab == .home ? Image(.icHomeFill) : Image(.icHome) }
                         )
                     }
                     .tag(Tab.home)
@@ -53,7 +53,7 @@ struct NanaLandTabView: View {
                     }
                     .tag(Tab.profile)
             }
-        }
+		}
 		.overlay {
 			if appState.showRegisterInduction {
 				RegisterInductionView(

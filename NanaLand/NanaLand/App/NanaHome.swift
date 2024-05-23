@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 
 struct NanaHome: View {
-	@StateObject var appState = AppState()
 	@StateObject var registerVM = RegisterViewModel()
 	
 	@State var isSplashCompleted: Bool = false
@@ -46,7 +45,6 @@ struct NanaHome: View {
 			LoginView(registerVM: registerVM)
 		} else {
 			NanaLandTabView()
-				.environmentObject(appState)
 		}
 	}
 }

@@ -48,7 +48,6 @@ struct SearchAllCategoryResultView: View {
 }
 
 struct SearchAllCategoryItem: View {
-	@EnvironmentObject var appState: AppState
 	@ObservedObject var searchVM: SearchViewModel
 	
 	let category: Category
@@ -89,7 +88,7 @@ struct SearchAllCategoryItem: View {
 				HStack(spacing: 8) {
 					ArticleItem(category: category, article: articles[0], onTapHeart: {
 						if UserDefaults.standard.string(forKey: "provider") == "GUEST" {
-							appState.showRegisterInduction = true
+							AppState.shared.showRegisterInduction = true
 							return
 						}
 						Task {
@@ -100,7 +99,7 @@ struct SearchAllCategoryItem: View {
 					if articles.count >= 2 {
 						ArticleItem(category: category, article: articles[1], onTapHeart: {
 							if UserDefaults.standard.string(forKey: "provider") == "GUEST" {
-								appState.showRegisterInduction = true
+								AppState.shared.showRegisterInduction = true
 								return
 							}
 							Task {

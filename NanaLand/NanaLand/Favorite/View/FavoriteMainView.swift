@@ -9,7 +9,6 @@ import SwiftUI
 import SwiftUIIntrospect
 
 struct FavoriteMainView: View {
-	@EnvironmentObject var appState: AppState
 	@StateObject var favoriteVM = FavoriteViewModel()
 	
 	@State var currentTab: Category = .all
@@ -26,7 +25,7 @@ struct FavoriteMainView: View {
 		.onAppear {
 			if provider == "GUEST" {
 				withAnimation {
-					appState.showRegisterInduction = true
+					AppState.shared.showRegisterInduction = true
 				}
 			}
 		}
