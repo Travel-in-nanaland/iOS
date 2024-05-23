@@ -84,6 +84,16 @@
 		2C80ECF22BDBE545002F38A7 /* YearMonthDay+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80ECF12BDBE545002F38A7 /* YearMonthDay+.swift */; };
 		2C9CF4CA2BFC404900A346E8 /* RegisterInductionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9CF4C92BFC404900A346E8 /* RegisterInductionView.swift */; };
 		2C9CF4CC2BFC5C1F00A346E8 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9CF4CB2BFC5C1F00A346E8 /* View+.swift */; };
+		2C9CF4CF2BFDC4AF00A346E8 /* ReportInfoMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9CF4CE2BFDC4AF00A346E8 /* ReportInfoMainView.swift */; };
+		2C9CF4D12BFDC4D000A346E8 /* ReportInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9CF4D02BFDC4D000A346E8 /* ReportInfoViewModel.swift */; };
+		2C9CF4D32BFDC4EB00A346E8 /* ReportInfoWritingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9CF4D22BFDC4EB00A346E8 /* ReportInfoWritingView.swift */; };
+		2C9CF4D62BFDF32E00A346E8 /* ReportInfoEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9CF4D52BFDF32E00A346E8 /* ReportInfoEndPoint.swift */; };
+		2C9CF4D82BFDF45D00A346E8 /* ReportInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9CF4D72BFDF45D00A346E8 /* ReportInfoDTO.swift */; };
+		2C9CF4DA2BFDF5D300A346E8 /* ReportInfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9CF4D92BFDF5D300A346E8 /* ReportInfoService.swift */; };
+		2C9CF4DC2BFE0EA800A346E8 /* ReportInfoResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9CF4DB2BFE0EA800A346E8 /* ReportInfoResultView.swift */; };
+		2C9CF4E02BFEDB2D00A346E8 /* HomeViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9CF4DF2BFEDB2D00A346E8 /* HomeViewType.swift */; };
+		2C9CF4E22BFEDF7F00A346E8 /* ReportInfoViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9CF4E12BFEDF7F00A346E8 /* ReportInfoViewType.swift */; };
+		2C9CF4E42BFEE59200A346E8 /* ArticleDetailViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9CF4E32BFEE59200A346E8 /* ArticleDetailViewType.swift */; };
 		9C6A9C3E2BCC1BAE000413AD /* Fonts+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6A9C3D2BCC1BAE000413AD /* Fonts+.swift */; };
 		9C6A9C632BCC22CE000413AD /* AppleSDGothicNeoL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C6A9C5A2BCC22CE000413AD /* AppleSDGothicNeoL.ttf */; };
 		9C6A9C642BCC22CE000413AD /* AppleSDGothicNeoL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C6A9C5A2BCC22CE000413AD /* AppleSDGothicNeoL.ttf */; };
@@ -250,6 +260,16 @@
 		2C80ECF12BDBE545002F38A7 /* YearMonthDay+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "YearMonthDay+.swift"; sourceTree = "<group>"; };
 		2C9CF4C92BFC404900A346E8 /* RegisterInductionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInductionView.swift; sourceTree = "<group>"; };
 		2C9CF4CB2BFC5C1F00A346E8 /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
+		2C9CF4CE2BFDC4AF00A346E8 /* ReportInfoMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportInfoMainView.swift; sourceTree = "<group>"; };
+		2C9CF4D02BFDC4D000A346E8 /* ReportInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportInfoViewModel.swift; sourceTree = "<group>"; };
+		2C9CF4D22BFDC4EB00A346E8 /* ReportInfoWritingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportInfoWritingView.swift; sourceTree = "<group>"; };
+		2C9CF4D52BFDF32E00A346E8 /* ReportInfoEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportInfoEndPoint.swift; sourceTree = "<group>"; };
+		2C9CF4D72BFDF45D00A346E8 /* ReportInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportInfoDTO.swift; sourceTree = "<group>"; };
+		2C9CF4D92BFDF5D300A346E8 /* ReportInfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportInfoService.swift; sourceTree = "<group>"; };
+		2C9CF4DB2BFE0EA800A346E8 /* ReportInfoResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportInfoResultView.swift; sourceTree = "<group>"; };
+		2C9CF4DF2BFEDB2D00A346E8 /* HomeViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewType.swift; sourceTree = "<group>"; };
+		2C9CF4E12BFEDF7F00A346E8 /* ReportInfoViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportInfoViewType.swift; sourceTree = "<group>"; };
+		2C9CF4E32BFEE59200A346E8 /* ArticleDetailViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewType.swift; sourceTree = "<group>"; };
 		9C6A9C3D2BCC1BAE000413AD /* Fonts+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fonts+.swift"; sourceTree = "<group>"; };
 		9C6A9C5A2BCC22CE000413AD /* AppleSDGothicNeoL.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoL.ttf; sourceTree = "<group>"; };
 		9C6A9C5B2BCC22CE000413AD /* AppleSDGothicNeoR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoR.ttf; sourceTree = "<group>"; };
@@ -412,6 +432,8 @@
 				2C3C75CD2BCAAFCE00312F26 /* Favorite */,
 				2C3C75CE2BCAAFD700312F26 /* Story */,
 				2C3C75CF2BCAAFE100312F26 /* MyPage */,
+				2C3C75CF2BCAAFE100312F26 /* Profile */,
+				2C9CF4CD2BFDC47900A346E8 /* ReportInfo */,
 				2C3C75872BCA3ADC00312F26 /* Assets.xcassets */,
 				2C3C75892BCA3ADC00312F26 /* Preview Content */,
 			);
@@ -459,6 +481,7 @@
 		2C3C75C02BCA540200312F26 /* Networks */ = {
 			isa = PBXGroup;
 			children = (
+				2C9CF4D42BFDF18300A346E8 /* ReportInfo */,
 				BF794B542BF9AAD90045FAD2 /* User */,
 				BF7F7F5A2BE6130D0000F08A /* Nature */,
 				2C40DB8F2BE63816007A3768 /* Auth */,
@@ -475,6 +498,7 @@
 		2C3C75C12BCA544500312F26 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				2C9CF4DE2BFEDB1E00A346E8 /* ViewType */,
 				2C40DBBC2BF1AC01007A3768 /* Errors */,
 				2C1F31D12BCD14020066819F /* Localizing */,
 				2C3C75C32BCA54AB00312F26 /* Component */,
@@ -719,6 +743,45 @@
 				2C80ECDD2BD7E63E002F38A7 /* FavoriteDTO.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		2C9CF4CD2BFDC47900A346E8 /* ReportInfo */ = {
+			isa = PBXGroup;
+			children = (
+				2C9CF4DD2BFEC3BF00A346E8 /* View */,
+				2C9CF4D02BFDC4D000A346E8 /* ReportInfoViewModel.swift */,
+				2C9CF4D72BFDF45D00A346E8 /* ReportInfoDTO.swift */,
+			);
+			path = ReportInfo;
+			sourceTree = "<group>";
+		};
+		2C9CF4D42BFDF18300A346E8 /* ReportInfo */ = {
+			isa = PBXGroup;
+			children = (
+				2C9CF4D52BFDF32E00A346E8 /* ReportInfoEndPoint.swift */,
+				2C9CF4D92BFDF5D300A346E8 /* ReportInfoService.swift */,
+			);
+			path = ReportInfo;
+			sourceTree = "<group>";
+		};
+		2C9CF4DD2BFEC3BF00A346E8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2C9CF4CE2BFDC4AF00A346E8 /* ReportInfoMainView.swift */,
+				2C9CF4D22BFDC4EB00A346E8 /* ReportInfoWritingView.swift */,
+				2C9CF4DB2BFE0EA800A346E8 /* ReportInfoResultView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2C9CF4DE2BFEDB1E00A346E8 /* ViewType */ = {
+			isa = PBXGroup;
+			children = (
+				2C9CF4DF2BFEDB2D00A346E8 /* HomeViewType.swift */,
+				2C9CF4E12BFEDF7F00A346E8 /* ReportInfoViewType.swift */,
+				2C9CF4E32BFEE59200A346E8 /* ArticleDetailViewType.swift */,
+			);
+			path = ViewType;
 			sourceTree = "<group>";
 		};
 		9C6A9C3B2BCC1ABA000413AD /* Extension */ = {
@@ -1044,6 +1107,7 @@
 				BFC671EC2BF7193200D1A2FD /* NatureDetailView.swift in Sources */,
 				2C80ECCA2BD0EE0F002F38A7 /* SearchDTO.swift in Sources */,
 				BFC671F32BF7198800D1A2FD /* ShopMainView.swift in Sources */,
+				2C9CF4DC2BFE0EA800A346E8 /* ReportInfoResultView.swift in Sources */,
 				BF3021EE2BDF8E9300CB3966 /* ShopDetailService.swift in Sources */,
 				2C3C75D52BCAB01500312F26 /* ProfileMainView.swift in Sources */,
 				BF16114B2BDB7881000340F2 /* ShopEndPoint.swift in Sources */,
@@ -1064,7 +1128,10 @@
 				2C80ECDA2BD63BAA002F38A7 /* FavoriteEndPoint.swift in Sources */,
 				2C5424FE2BF7131600B16439 /* TypeTestResultView.swift in Sources */,
 				BF607F172BF5A29E00770CE7 /* FestivalDetailService.swift in Sources */,
+				2C9CF4D32BFDC4EB00A346E8 /* ReportInfoWritingView.swift in Sources */,
+				2C9CF4E02BFEDB2D00A346E8 /* HomeViewType.swift in Sources */,
 				2C80ECDC2BD79AE7002F38A7 /* FavoriteService.swift in Sources */,
+				2C9CF4D12BFDC4D000A346E8 /* ReportInfoViewModel.swift in Sources */,
 				BF80FDA52BFB446C00C5DA2D /* UserInfoUpdateService.swift in Sources */,
 				2C40DB9C2BE66809007A3768 /* AuthDTO.swift in Sources */,
 				BF9834252BCE847300A5C289 /* HomeMainViewModel.swift in Sources */,
@@ -1072,6 +1139,7 @@
 				BF9842F12BCE897C00D6A60C /* BannerModel.swift in Sources */,
 				BF794B632BF9ADC50045FAD2 /* ProfileMainViewModel.swift in Sources */,
 				BF7F7F592BE612240000F08A /* NatureDetailModel.swift in Sources */,
+				2C9CF4CF2BFDC4AF00A346E8 /* ReportInfoMainView.swift in Sources */,
 				2C9CF4CA2BFC404900A346E8 /* RegisterInductionView.swift in Sources */,
 				2C80ECC32BCFCD69002F38A7 /* Interceptor.swift in Sources */,
 				2C80ECF22BDBE545002F38A7 /* YearMonthDay+.swift in Sources */,
@@ -1093,6 +1161,7 @@
 				BF0997B62BD4E38500563E9A /* NaNaPickDetailModel.swift in Sources */,
 				BF9F029B2BD8F567003E72E6 /* FestivalNoResultView.swift in Sources */,
 				2C80ECB72BCFA055002F38A7 /* Data+.swift in Sources */,
+				2C9CF4D62BFDF32E00A346E8 /* ReportInfoEndPoint.swift in Sources */,
 				BF794B652BF9BB860045FAD2 /* ProfileUpdateView.swift in Sources */,
 				BF7F7F602BE613400000F08A /* NatureDetailEndPoint.swift in Sources */,
 				BF1493712BD1095D00FC626B /* NaNaPickModel.swift in Sources */,
@@ -1112,10 +1181,12 @@
 				2C3C75D12BCAAFF300312F26 /* FavoriteMainView.swift in Sources */,
 				BF4F6C6C2BD5560A009F070F /* NaNaPickDetailViewModel.swift in Sources */,
 				2C80ECAD2BCF6201002F38A7 /* SearchService.swift in Sources */,
+				2C9CF4E42BFEE59200A346E8 /* ArticleDetailViewType.swift in Sources */,
 				2C80ECF02BDBE44C002F38A7 /* RoundedCorners.swift in Sources */,
 				BFABD34F2BE75F4600C3F3A6 /* FestivalEndPoint.swift in Sources */,
 				2C1F31D02BCD04AA0066819F /* SearchViewModel.swift in Sources */,
 				BF9F02912BD89EB1003E72E6 /* NavigationBar.swift in Sources */,
+				2C9CF4E22BFEDF7F00A346E8 /* ReportInfoViewType.swift in Sources */,
 				2C40DB932BE63887007A3768 /* AuthEndPoint.swift in Sources */,
 				BF80FDA72BFB447B00C5DA2D /* UserInfoUpdateEndPoint.swift in Sources */,
 				2C40DB7F2BE61F05007A3768 /* SplashView.swift in Sources */,
@@ -1134,6 +1205,7 @@
 				9C6A9C3E2BCC1BAE000413AD /* Fonts+.swift in Sources */,
 				BF4F6C6A2BD54CB0009F070F /* NaNaPickDetailEndPoint.swift in Sources */,
 				BF0997982BD1FFF900563E9A /* NaNaPickDetailView.swift in Sources */,
+				2C9CF4DA2BFDF5D300A346E8 /* ReportInfoService.swift in Sources */,
 				2C40DB9E2BE87C61007A3768 /* Color+.swift in Sources */,
 				BF9F02992BD8DFC0003E72E6 /* FestivalMainViewModel.swift in Sources */,
 				BF794B612BF9AD9F0045FAD2 /* ProfileMainModel.swift in Sources */,
@@ -1141,6 +1213,7 @@
 				BF9834232BCE83E300A5C289 /* RecommendModel.swift in Sources */,
 				BFF5DA912BE809D100FD8764 /* LocationModalView.swift in Sources */,
 				2C3C75842BCA3ADA00312F26 /* NanaLandApp.swift in Sources */,
+				2C9CF4D82BFDF45D00A346E8 /* ReportInfoDTO.swift in Sources */,
 				BFC671EA2BF7191500D1A2FD /* NatureDetailViewModel.swift in Sources */,
 				2C40DB912BE6383B007A3768 /* AuthService.swift in Sources */,
 				2C80ECEE2BDBE0CE002F38A7 /* CalendarItem.swift in Sources */,

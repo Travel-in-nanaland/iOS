@@ -8,7 +8,6 @@
 import SwiftUI
 import Kingfisher
 struct ShopDetailView: View {
-	@EnvironmentObject var appState: AppState
     @StateObject var viewModel = ShopDetailViewModel()
     @State private var isAPICalled = false
     @State private var isOn = false
@@ -272,21 +271,19 @@ struct ShopDetailView: View {
                         .frame(width: Constants.screenWidth - 40, height: (Constants.screenWidth - 40) * ( 42 / 358))
                         .padding(.bottom, 32)
                         
-                        Button {
-                            
-                        } label: {
-                            Text("정보 수정 제안")
-                                .background(
-                                    RoundedRectangle(cornerRadius: 12.0)
-                                        .foregroundStyle(Color.gray2)
-                                        .frame(width: Constants.screenWidth - 40, height: (Constants.screenWidth - 40) * (53 / 358))
-                                )
-                                .foregroundStyle(Color.white)
-                                .font(.gothicNeo(.bold, size: 16))
-                                .padding(.bottom, 10)
-                            
-                        }
-
+						Button(action: {
+							AppState.shared.navigationPath.append(ArticleViewType.reportInfo(id: viewModel.state.getShopDetailResponse.id, category: .market))
+						}, label: {
+							Text("정보 수정 제안")
+								.background(
+									RoundedRectangle(cornerRadius: 12.0)
+										.foregroundStyle(Color.gray2)
+										.frame(width: Constants.screenWidth - 40, height: (Constants.screenWidth - 40) * (53 / 358))
+								)
+								.foregroundStyle(Color.white)
+								.font(.gothicNeo(.bold, size: 16))
+								.padding(.bottom, 10)
+						})
                             
                     }
                     .padding(.top, 24)
@@ -322,7 +319,7 @@ struct ShopDetailView: View {
     
     func toggleFavorite(body: FavoriteToggleRequest) async {
 		if UserDefaults.standard.string(forKey: "provider") == "GUEST" {
-			appState.showRegisterInduction = true
+			AppState.shared.showRegisterInduction = true
 			return
 		}
         await viewModel.action(.toggleFavorite(body: body))
