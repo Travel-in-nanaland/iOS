@@ -143,25 +143,25 @@ struct SearchMainView: View {
 				.padding(.top, 4)
 				.padding(.bottom, 16)
 			
-			HStack(spacing: 0) {
+			HStack(spacing: 24) {
 				// 1~4위
 				VStack(spacing: 16) {
 					ForEach(0..<min(searchVM.state.popularSearchTerms.count, 4), id: \.self) { index in
 						HStack(spacing: 8) {
 							Text("\(index+1).")
 							Text("\(searchVM.state.popularSearchTerms[index])")
-							Spacer()
+							Spacer(minLength: 0)
 						}
 						.font(.gothicNeo(index == 0 || index == 1 ? .semibold : .medium, size: 14))
 						.foregroundStyle(index == 0 || index == 1 ? Color.main : Color.gray1)
 						.onTapGesture {
 							Task {
-//							await search(term: searchVM.state.popularSearchTerms[index])
+								await search(term: searchVM.state.popularSearchTerms[index])
 							}
 						}
 					}
 				}
-				.frame(width: (Constants.screenWidth-32)/2)
+				.frame(width: (Constants.screenWidth-32-24)/2)
 				
 				// 5~8위
 				if searchVM.state.popularSearchTerms.count > 4 {
@@ -170,18 +170,18 @@ struct SearchMainView: View {
 							HStack(spacing: 8) {
 								Text("\(index+1).")
 								Text("\(searchVM.state.popularSearchTerms[index])")
-								Spacer()
+								Spacer(minLength: 0)
 							}
 							.font(.gothicNeo(.medium, size: 14))
 							.foregroundStyle(Color.gray1)
 							.onTapGesture {
 								Task {
-// 									await search(term: searchVM.state.popularSearchTerms[index])
+									await search(term: searchVM.state.popularSearchTerms[index])
 								}
 							}
 						}
 					}
-					.frame(width: (Constants.screenWidth-32)/2)
+					.frame(width: (Constants.screenWidth-32-24)/2)
 				}
 			}
 		}
