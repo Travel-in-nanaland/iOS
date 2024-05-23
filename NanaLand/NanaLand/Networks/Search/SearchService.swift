@@ -39,6 +39,12 @@ struct SearchService {
 		return mapSearchDetailArticleToArticle(response, category: .experience)
 	}
 	
+	static func searchNanaCategory(term: String, page: Int) async -> OldBaseResponse<ArticleResponse>? {
+		let response: OldBaseResponse<SearchDetailCategoryResponse>? = await NetworkManager.shared.request(SearchEndPoint.getSearchNanaCategory(term: term, page: page))
+		
+		return mapSearchDetailArticleToArticle(response, category: .nanaPick)
+	}
+	
 	static func getPopularKeyword() async -> OldBaseResponse<[String]>? {
 		return await NetworkManager.shared.request(SearchEndPoint.getPopularKeyword)
 	}

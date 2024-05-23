@@ -20,7 +20,7 @@ struct RegisterNicknameAndProfileView: View {
 				.padding(.bottom, 32)
 			
 			profilePic
-				.padding(.bottom, 32)
+				.padding(.bottom, 48)
 			
 			nicknameTextField
 			

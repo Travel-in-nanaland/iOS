@@ -35,7 +35,7 @@ struct ReportInfoMainView: View {
 					Text(String(localized: "suggestInfoModificationDescription"))
 						.lineLimit(2)
 						.font(.body02)
-						.padding(.bottom, 27)
+						.padding(.bottom, 32)
 						.foregroundStyle(Color(hex: 0x717171))
 					
 					ForEach(categories, id: \.self) { category in
