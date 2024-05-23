@@ -287,7 +287,7 @@ struct FestivalDetailView: View {
                             .padding(.bottom, 32)
                             
                             Button {
-                                
+								AppState.shared.navigationPath.append(ArticleViewType.reportInfo(id: viewModel.state.getFestivalDetailResponse.id, category: .festival))
                             } label: {
                                 Text("정보 수정 제안")
                                     .background(

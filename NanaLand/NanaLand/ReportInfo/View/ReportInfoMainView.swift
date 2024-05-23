@@ -17,6 +17,8 @@ struct ReportInfoMainView: View {
 		ReportInfoCategory(imageName: .icMoney, type: .priceInfo),
 		ReportInfoCategory(imageName: .icTrashcan, type: .deletePlace)
 	]
+	let id: Int64
+	let category: Category
 	@StateObject var reportInfoVM = ReportInfoViewModel()
 	
 	var body: some View {
@@ -84,8 +86,6 @@ struct ReportInfoMainView: View {
 		.toolbar(.hidden, for: .navigationBar)
 		.navigationDestination(for: ReportInfoViewType.self) { viewType in
 			switch viewType {
-			case .reportMain:
-				ReportInfoMainView()
 			case .reportWriting:
 				ReportInfoWritingView(reportInfoVM: reportInfoVM)
 			case .reportResult:
@@ -129,6 +129,6 @@ struct ReportInfoItemView: View {
 
 #Preview {
 	NavigationStack {
-		ReportInfoMainView()
+		ReportInfoMainView(id: 0, category: .market)
 	}
 }

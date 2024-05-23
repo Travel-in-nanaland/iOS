@@ -8,7 +8,6 @@
 import Foundation
 
 enum ReportInfoViewType {
-	case reportMain
 	case reportWriting
 	case reportResult
 }

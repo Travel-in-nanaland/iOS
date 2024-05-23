@@ -271,8 +271,8 @@ struct ShopDetailView: View {
                         .frame(width: Constants.screenWidth - 40, height: (Constants.screenWidth - 40) * ( 42 / 358))
                         .padding(.bottom, 32)
                         
-						NavigationLink(destination: {
-							ReportInfoMainView()
+						Button(action: {
+							AppState.shared.navigationPath.append(ArticleViewType.reportInfo(id: viewModel.state.getShopDetailResponse.id, category: .market))
 						}, label: {
 							Text("정보 수정 제안")
 								.background(
@@ -283,24 +283,7 @@ struct ShopDetailView: View {
 								.foregroundStyle(Color.white)
 								.font(.gothicNeo(.bold, size: 16))
 								.padding(.bottom, 10)
-
 						})
-						
-//                        Button {
-//                            
-//                        } label: {
-//                            Text("정보 수정 제안")
-//                                .background(
-//                                    RoundedRectangle(cornerRadius: 12.0)
-//                                        .foregroundStyle(Color.gray2)
-//                                        .frame(width: Constants.screenWidth - 40, height: (Constants.screenWidth - 40) * (53 / 358))
-//                                )
-//                                .foregroundStyle(Color.white)
-//                                .font(.gothicNeo(.bold, size: 16))
-//                                .padding(.bottom, 10)
-//                            
-//                        }
-
                             
                     }
                     .padding(.top, 24)

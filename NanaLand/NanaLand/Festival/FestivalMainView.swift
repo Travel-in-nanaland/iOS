@@ -346,94 +346,102 @@ struct FestivalMainGridView: View {
     var title: String = ""
     var locationTitle = ""
     var body: some View {
-        
-            if title == "이번달" {
-                FilterView(viewModel: viewModel, count: viewModel.state.getFestivalMainResponse.data.count, title: title)
-            } else if title == "종료된" {
-                FilterView(viewModel: viewModel, count: viewModel.state.getFestivalMainResponse.data.count, title: title)
-            }
-            else {
-                SeasonFilterView(viewModel: viewModel, count: viewModel.state.getFestivalMainResponse.data.count)
-            }
-        
-
-        ScrollView {
-            if isAPICalled {
-                // 보여줄 데이터가 없을 때
-                if viewModel.state.getFestivalMainResponse.data.count == 0 {
-                    FestivalNoResultView()
-                        .frame(height: 70)
-                        .padding(.top, (Constants.screenHeight - 208) * (179 / 636))
-                        
-                   
-                }
-                else {
-                    LazyVGrid(columns: columns, spacing: 16) {
-                        
-                        // 보여줄 데이터가 있을 때
-                        
-                        ForEach((0...viewModel.state.getFestivalMainResponse.data.count - 1), id: \.self) { index in
-                            NavigationLink(destination: FestivalDetailView(id: viewModel.state.getFestivalMainResponse.data[index].id)) {
-                                VStack(alignment: .leading, spacing: 0) {
-                                    ZStack {
-                                        KFImage(URL(string: viewModel.state.getFestivalMainResponse.data[index].thumbnailUrl))
-                                            
-                                            .resizable()
-                                            .frame(width: (Constants.screenWidth - 40) / 2, height: ((Constants.screenWidth - 40) / 2) * (12 / 16))
-                                            .clipShape(RoundedRectangle(cornerRadius: 12))
-                                            .padding(.bottom, 8)
-                                        VStack {
-                                            HStack {
-                                                Spacer()
-                                                
-                                                Button {
-                                                   
-                                                    Task {
-                                                        await toggleFavorite(body: FavoriteToggleRequest(id: Int(viewModel.state.getFestivalMainResponse.data[index].id), category: .festival), index: index)
-                                                       
-                                                    }
-                                                  
-                                                } label: {
-                                                
-                                                    viewModel.state.getFestivalMainResponse.data[index].favorite ? Image("icHeartFillMain").animation(nil) : Image("icHeart").animation(nil)
-                                                    
-                                                }
-                                            }
-                                            .padding(.top, 8)
-                                            Spacer()
-                                        }
-                                        .padding(.trailing, 8)
-                                    }
-                                    
-                                    Text(viewModel.state.getFestivalMainResponse.data[index].title)
-                                        .font(.body02_bold)
-                                        .padding(.bottom, 4)
-                                        .lineLimit(1)
-                                    
-                                    Text(viewModel.state.getFestivalMainResponse.data[index].period)
-                                        .font(.caption)
-                                        .padding(.bottom, 8)
-                                    
-                                    Text(viewModel.state.getFestivalMainResponse.data[index].addressTag)
-                                        .frame(width: 64, height: 20)
-                                        .font(.caption)
-                                        .background(
-                                            RoundedRectangle(cornerRadius: 30)
-                                                .foregroundStyle(Color.main10P)
-                                        )
-                                        .foregroundStyle(Color.main)
-                                }
-                                .frame(width: (Constants.screenWidth - 40) / 2)
-                                
-                            }
-                        }
-                        
-                        
-                    }
-                    .padding(.horizontal, 16)
-                }
-            }
-        }
+		VStack(spacing: 0) {
+			if title == "이번달" {
+				FilterView(viewModel: viewModel, count: viewModel.state.getFestivalMainResponse.data.count, title: title)
+			} else if title == "종료된" {
+				FilterView(viewModel: viewModel, count: viewModel.state.getFestivalMainResponse.data.count, title: title)
+			}
+			else {
+				SeasonFilterView(viewModel: viewModel, count: viewModel.state.getFestivalMainResponse.data.count)
+			}
+			
+			
+			ScrollView {
+				if isAPICalled {
+					// 보여줄 데이터가 없을 때
+					if viewModel.state.getFestivalMainResponse.data.count == 0 {
+						FestivalNoResultView()
+							.frame(height: 70)
+							.padding(.top, (Constants.screenHeight - 208) * (179 / 636))
+						
+						
+					}
+					else {
+						LazyVGrid(columns: columns, spacing: 16) {
+							
+							// 보여줄 데이터가 있을 때
+							
+							ForEach((0...viewModel.state.getFestivalMainResponse.data.count - 1), id: \.self) { index in
+								Button(action: {
+									AppState.shared.navigationPath.append(ArticleViewType.detail(id: viewModel.state.getFestivalMainResponse.data[index].id))
+								}, label: {
+									VStack(alignment: .leading, spacing: 0) {
+										ZStack {
+											KFImage(URL(string: viewModel.state.getFestivalMainResponse.data[index].thumbnailUrl))
+											
+												.resizable()
+												.frame(width: (Constants.screenWidth - 40) / 2, height: ((Constants.screenWidth - 40) / 2) * (12 / 16))
+												.clipShape(RoundedRectangle(cornerRadius: 12))
+												.padding(.bottom, 8)
+											VStack {
+												HStack {
+													Spacer()
+													
+													Button {
+														
+														Task {
+															await toggleFavorite(body: FavoriteToggleRequest(id: Int(viewModel.state.getFestivalMainResponse.data[index].id), category: .festival), index: index)
+															
+														}
+														
+													} label: {
+														
+														viewModel.state.getFestivalMainResponse.data[index].favorite ? Image("icHeartFillMain").animation(nil) : Image("icHeart").animation(nil)
+														
+													}
+												}
+												.padding(.top, 8)
+												Spacer()
+											}
+											.padding(.trailing, 8)
+										}
+										
+										Text(viewModel.state.getFestivalMainResponse.data[index].title)
+											.font(.body02_bold)
+											.padding(.bottom, 4)
+											.lineLimit(1)
+										
+										Text(viewModel.state.getFestivalMainResponse.data[index].period)
+											.font(.caption)
+											.padding(.bottom, 8)
+										
+										Text(viewModel.state.getFestivalMainResponse.data[index].addressTag)
+											.frame(width: 64, height: 20)
+											.font(.caption)
+											.background(
+												RoundedRectangle(cornerRadius: 30)
+													.foregroundStyle(Color.main10P)
+											)
+											.foregroundStyle(Color.main)
+									}
+									.frame(width: (Constants.screenWidth - 40) / 2)
+								})
+							}
+						}
+						.padding(.horizontal, 16)
+					}
+				}
+			}
+		}
+		.navigationDestination(for: ArticleViewType.self) { viewType in
+			switch viewType {
+			case let .detail(id):
+				FestivalDetailView(id: id)
+			case let .reportInfo(id, category):
+				ReportInfoMainView(id: id, category: category)
+			}
+		}
         .onAppear {
             Task {
                 if title == "이번달" {
