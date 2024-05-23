@@ -10,6 +10,7 @@ import Kingfisher
 
 struct SearchMainView: View {
 	@Environment(\.dismiss) var dismiss
+	@EnvironmentObject var appState: AppState
 	@StateObject var searchVM: SearchViewModel = SearchViewModel()
 	
 	@State var searchTerm = ""
@@ -214,6 +215,10 @@ struct SearchMainView: View {
 					}
 					.overlay(alignment: .topTrailing) {
 						Button(action: {
+							if UserDefaults.standard.string(forKey: "provider") == "GUEST" {
+								appState.showRegisterInduction = true
+								return
+							}
 							Task {
 								await searchVM.action(.didTapHeartInVolumeUp(article: article))
 							}

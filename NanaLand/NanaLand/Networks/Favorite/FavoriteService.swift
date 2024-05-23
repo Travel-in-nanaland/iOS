@@ -7,6 +7,7 @@
 
 import Foundation
 import Alamofire
+import SwiftUI
 
 struct FavoriteService {
 	static func toggleFavorite(id: Int, category: Category) async -> OldBaseResponse<ToggleFavoriteResponse>? {
