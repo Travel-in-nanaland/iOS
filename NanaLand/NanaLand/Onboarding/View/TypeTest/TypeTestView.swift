@@ -55,6 +55,11 @@ struct TypeTestView: View {
 			Spacer()
 			Spacer()
 			
+			if page == 1 {
+				skipButton
+					.padding(.bottom, 16)
+			}
+			
 			backAndOKButton
 				.padding(.bottom, 24)
 		}
@@ -104,6 +109,16 @@ struct TypeTestView: View {
 				}
 			}
 		}
+	}
+	
+	private var skipButton: some View {
+		Button(action: {
+			registerVM.state.isRegisterNeeded = false
+		}, label: {
+			Text("테스트 건너뛰기")
+				.font(.body02)
+				.foregroundStyle(Color.gray1)
+		})
 	}
 	
 	private var backAndOKButton: some View {

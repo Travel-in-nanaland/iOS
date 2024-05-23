@@ -20,11 +20,13 @@ final class SearchViewModel: ObservableObject {
 		var marketCategorySearchResult = ArticleResponse()
 		var festivalCategorySearchResult = ArticleResponse()
 		var experienceCategorySearchResult = ArticleResponse()
+		var nanaCategorySearchResult = ArticleResponse()
 		
 		var naturePage: Int = 0
 		var marketPage: Int = 0
 		var festivalPage: Int = 0
 		var experiencePage: Int = 0
+		var nanaPage: Int = 0
 		
 		var searchVolumeResult: [Article] = []
 		
@@ -72,10 +74,12 @@ final class SearchViewModel: ObservableObject {
 		state.festivalCategorySearchResult = .init()
 		state.marketCategorySearchResult = .init()
 		state.experienceCategorySearchResult = .init()
+		state.nanaCategorySearchResult = .init()
 		state.naturePage = 0
 		state.marketPage = 0
 		state.festivalPage = 0
 		state.experiencePage = 0
+		state.nanaPage = 0
 	}
 	
 	private func setRecentSearch(term: String) {
@@ -203,7 +207,25 @@ final class SearchViewModel: ObservableObject {
 
 			
 		case .nanaPick:
-			print("nanaPick Search")
+			if state.nanaPage == 0 {
+				state.nanaCategorySearchResult = .init()
+			}
+			
+			state.isLoading = true
+			
+			if let data = await SearchService.searchNanaCategory(term: term, page: state.nanaPage) {
+				if state.nanaPage == 0 {
+					state.nanaCategorySearchResult = data.data
+				} else {
+					state.nanaCategorySearchResult.data.append(contentsOf: data.data.data)
+				}
+				
+				state.nanaPage += 1
+				state.isLoading = false
+			} else {
+				print("searchNanaCategory Error")
+				state.isLoading = false
+			}
 		}
 
 	}
@@ -229,7 +251,7 @@ final class SearchViewModel: ObservableObject {
 		case .experience:
 			return state.experienceCategorySearchResult.totalElements == state.experienceCategorySearchResult.data.count
 		case .nanaPick:
-			return false
+			return state.nanaCategorySearchResult.totalElements == state.nanaCategorySearchResult.data.count
 		}
 	}
 	
@@ -264,7 +286,9 @@ final class SearchViewModel: ObservableObject {
 			}
 			
 		case .nanaPick:
-			print("didTapHeartInSearchAll - nanapick 개발 중")
+			if let index = state.allCategorySearchResult.nana.data.firstIndex(where: {$0 == article}) {
+				state.allCategorySearchResult.nana.data[index].favorite = result.data.favorite
+			}
 		}
 	}
 	
@@ -297,7 +321,9 @@ final class SearchViewModel: ObservableObject {
 			}
 			
 		case .nanaPick:
-			print("didTapHeartInSearchDetail - nanapick은 허용되지 않음")
+			if let index = state.nanaCategorySearchResult.data.firstIndex(where: {$0 == article}) {
+				state.nanaCategorySearchResult.data[index].favorite = result.data.favorite
+			}
 		}
 	}
 	
@@ -306,6 +332,23 @@ final class SearchViewModel: ObservableObject {
 		
 		if let index = state.searchVolumeResult.firstIndex(where: {$0 == article}) {
 			state.searchVolumeResult[index].favorite = result.data.favorite
+		}
+	}
+	
+	func isSeaechresultIsEmpty() -> Bool {
+		switch state.currentSearchTab {
+		case .all:
+			return true
+		case .nature:
+			return state.natureCategorySearchResult.data.isEmpty
+		case .festival:
+			return state.festivalCategorySearchResult.data.isEmpty
+		case .market:
+			return state.marketCategorySearchResult.data.isEmpty
+		case .experience:
+			return state.experienceCategorySearchResult.data.isEmpty
+		case .nanaPick:
+			return state.nanaCategorySearchResult.data.isEmpty
 		}
 	}
 }

@@ -11,7 +11,7 @@ struct LanguageSelectView: View {
 	@AppStorage("locale") var locale: String = ""
 	
     var body: some View {
-		VStack(spacing: 98) {
+		VStack(spacing: 120) {
 			VStack(spacing: 4) {
 				Text("안녕하세요!")
 					.font(.gothicNeo(.regular, size: 22))
