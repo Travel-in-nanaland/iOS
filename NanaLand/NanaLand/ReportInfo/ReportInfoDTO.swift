@@ -8,7 +8,7 @@
 import Foundation
 
 struct ReportInfoRequest: Codable {
-	let postId: Int
+	let postId: Int64
 	let fixType: String
 	let category: String
 	let content: String

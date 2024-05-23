@@ -39,18 +39,6 @@ struct ReportInfoMainView: View {
 						.foregroundStyle(Color(hex: 0x717171))
 					
 					ForEach(categories, id: \.self) { category in
-//						NavigationLink(destination: {
-//							ReportInfoWritingView(reportInfoVM: reportInfoVM)
-//						}, label: {
-//							ReportInfoItemView(category: category)
-//								.padding(.bottom, 16)
-//						})
-//						.simultaneousGesture(TapGesture().onEnded {
-//							Task {
-//								await reportInfoVM.action(.onTapReportItem(type: category.type))
-//							}
-//						})
-						
 						Button(action: {
 							Task {
 								await reportInfoVM.action(.onTapReportItem(type: category.type))
@@ -89,8 +77,12 @@ struct ReportInfoMainView: View {
 			case .reportWriting:
 				ReportInfoWritingView(reportInfoVM: reportInfoVM)
 			case .reportResult:
-				ReportInfoResultView()
+				ReportInfoResultView(reportInfoVM: reportInfoVM)
 			}
+		}
+		.onAppear {
+			reportInfoVM.state.postId = id
+			reportInfoVM.state.category = category
 		}
 	}
 }

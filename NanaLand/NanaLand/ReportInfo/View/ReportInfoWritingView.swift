@@ -11,14 +11,14 @@ import PhotosUI
 struct ReportInfoWritingView: View {
 	@ObservedObject var reportInfoVM: ReportInfoViewModel
 	
-	@State var modifyInfo: String = ""
+	@State var content: String = ""
 	@State var email: String = ""
 	
 	@State var pickedItem: PhotosPickerItem?
 	@State var pickedImage: Foundation.Data?
 	
 	enum FocusField {
-		case modifyInfo
+		case content
 		case email
 	}
 	@FocusState var focusedField: FocusField?
@@ -92,8 +92,8 @@ struct ReportInfoWritingView: View {
 							.font(.title02_bold)
 							.padding(.bottom, 8)
 						
-						TextEditor(text: $modifyInfo)
-							.focused($focusedField, equals: .modifyInfo)
+						TextEditor(text: $content)
+							.focused($focusedField, equals: .content)
 							.padding(.horizontal, 16)
 							.padding(.top, 12)
 							.frame(height: 120)
@@ -104,7 +104,7 @@ struct ReportInfoWritingView: View {
 							.scrollContentBackground(.hidden)
 							.font(.body02)
 							.overlay(alignment: .topLeading) {
-								if modifyInfo.isEmpty {
+								if content.isEmpty {
 									Text("수정 요청하신 항목의 상세 내용이나 그 외 기타 사항이 있으시면 의견을 남겨주세요.")
 										.padding(.top, 16)
 										.padding(.horizontal, 16)
@@ -155,11 +155,13 @@ struct ReportInfoWritingView: View {
 			}
 			
 			Button(action: {
-				
+				Task {
+					await reportInfoVM.action(.onTapSendButton(image: [pickedImage], content: content, email: email))
+				}
 			}, label: {
 				RoundedRectangle(cornerRadius: 12)
 					.fill(Color.main)
-					.opacity((!modifyInfo.isEmpty && !email.isEmpty) ? 1 : 0.1)
+					.opacity((!content.isEmpty && !email.isEmpty) ? 1 : 0.1)
 					.frame(height: 48)
 					.overlay {
 						Text("보내기")
@@ -175,10 +177,15 @@ struct ReportInfoWritingView: View {
 		.onTapGesture {
 			focusedField = nil
 		}
+		.overlay {
+			if reportInfoVM.state.isLoading {
+				ProgressView()
+			}
+		}
 	}
 	
 }
 
 #Preview {
-	ReportInfoWritingView(reportInfoVM: ReportInfoViewModel(state: ReportInfoViewModel.State(postId: 0, category: .experience)))
+	ReportInfoWritingView(reportInfoVM: ReportInfoViewModel())
 }

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ReportInfoResultView: View {
+	@ObservedObject var reportInfoVM: ReportInfoViewModel
 	
 	var body: some View {
 		VStack(spacing: 0) {
@@ -25,7 +26,9 @@ struct ReportInfoResultView: View {
 				.padding(.bottom, 94)
 			
 			Button(action: {
-				
+				Task {
+					await reportInfoVM.action(.onTapGoToContentButton)
+				}
 			}, label: {
 				RoundedRectangle(cornerRadius: 50)
 					.stroke(Color.main, lineWidth: 1)
@@ -39,7 +42,9 @@ struct ReportInfoResultView: View {
 			.padding(.bottom, 16)
 			
 			Button(action: {
-				
+				Task {
+					await reportInfoVM.action(.onTapReportAgainButton)
+				}
 			}, label: {
 				RoundedRectangle(cornerRadius: 50)
 					.fill(Color.main)
@@ -53,9 +58,10 @@ struct ReportInfoResultView: View {
 			.padding(.bottom, 24)
 		}
 		.padding(.horizontal, 16)
+		.toolbar(.hidden, for: .navigationBar)
 	}
 }
 
 #Preview {
-	ReportInfoResultView()
+	ReportInfoResultView(reportInfoVM: ReportInfoViewModel())
 }
