@@ -48,6 +48,7 @@ struct SearchResultView: View {
 	@State var isMarketSearchIsDone: Bool = false
 	@State var isFestivalSearchIsDone: Bool = false
 	@State var isExperienceSearchIsDone: Bool = false
+	@State var isNanaSearchIsDone: Bool = false
 	
 	let tabs: [Category] = Category.allCases
 	
@@ -157,6 +158,17 @@ struct SearchResultView: View {
 							await searchVM.action(.searchTerm(category: .experience, term: searchTerm))
 						}
 						isExperienceSearchIsDone = true
+					}
+				}
+			
+			SearchDetailCategoryResultView(searchVM: searchVM, tab: .nanaPick, searchTerm: searchTerm)
+				.tag(Category.nanaPick)
+				.onAppear {
+					if !isNanaSearchIsDone {
+						Task {
+							await searchVM.action(.searchTerm(category: .nanaPick, term: searchTerm))
+						}
+						isNanaSearchIsDone = true
 					}
 				}
 		}

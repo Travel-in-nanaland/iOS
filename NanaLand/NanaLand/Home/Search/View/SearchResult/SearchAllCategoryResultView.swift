@@ -40,6 +40,12 @@ struct SearchAllCategoryResultView: View {
 				articles: searchVM.state.allCategorySearchResult.experience.data
 			)
 			
+			SearchAllCategoryItem(
+				searchVM: searchVM,
+				category: .nanaPick,
+				count: searchVM.state.allCategorySearchResult.nana.totalElements,
+				articles: searchVM.state.allCategorySearchResult.nana.data
+			)
 			
 			Spacer()
 				.frame(height: 100)
@@ -84,7 +90,21 @@ struct SearchAllCategoryItem: View {
 				.frame(height: 1)
 				.padding(.bottom, 16)
 			
-			if !articles.isEmpty {
+//			if category == .experience || category == .nanaPick {
+			if false {
+				VStack(spacing: 4) {
+					Image(.airplane)
+						.resizable()
+						.frame(width: 48, height: 48)
+					Text("해당 서비스 준비 중입니다.\n다음에 만나요!")
+						.font(.gothicNeo(.medium, size: 14))
+						.foregroundStyle(Color.gray1)
+						.multilineTextAlignment(.center)
+				}
+				.padding(.top, 48)
+				.padding(.bottom, 58)
+				
+			} else if !articles.isEmpty {
 				HStack(spacing: 8) {
 					ArticleItem(category: category, article: articles[0], onTapHeart: {
 						if UserDefaults.standard.string(forKey: "provider") == "GUEST" {
@@ -111,14 +131,19 @@ struct SearchAllCategoryItem: View {
 						Spacer()
 					}
 				}
-				.padding(.bottom, 8)
+				.padding(.bottom, 12)
 
 			} else {
-				Text(String(localized: "noResult"))
-					.font(.gothicNeo(.medium, size: 14))
-					.foregroundStyle(Color.gray1)
-					.padding(.top, 48)
-					.padding(.bottom, 54)
+				VStack(spacing: 9.3) {
+					Image(.orange)
+						.resizable()
+						.frame(width: 37.5, height: 37.5)
+					Text(String(localized: "noResult"))
+						.font(.gothicNeo(.medium, size: 14))
+						.foregroundStyle(Color.gray1)
+				}
+				.padding(.top, 48)
+				.padding(.bottom, 58)
 				
 			}
 		}
