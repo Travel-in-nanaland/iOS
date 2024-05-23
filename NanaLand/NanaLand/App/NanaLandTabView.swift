@@ -13,9 +13,10 @@ enum Tab {
 }
 
 struct NanaLandTabView: View {
-    @EnvironmentObject var appState: AppState
+    @StateObject var appState = AppState.shared
+    
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $appState.navigationPath) {
             TabView(selection: $appState.currentTab) {
                 HomeMainView()
                     .tabItem {

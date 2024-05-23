@@ -102,6 +102,8 @@
 		BF1493772BD10E1200FC626B /* NaNaPickMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1493762BD10E1200FC626B /* NaNaPickMainViewModel.swift */; };
 		BF1611492BDB7870000340F2 /* ShopService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1611482BDB7870000340F2 /* ShopService.swift */; };
 		BF16114B2BDB7881000340F2 /* ShopEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF16114A2BDB7881000340F2 /* ShopEndPoint.swift */; };
+		BF2D93772BFF0EB80057381A /* PolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D93762BFF0EB80057381A /* PolicyView.swift */; };
+		BF2D93792BFF12D30057381A /* PolicyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D93782BFF12D30057381A /* PolicyViewModel.swift */; };
 		BF3021EE2BDF8E9300CB3966 /* ShopDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3021ED2BDF8E9300CB3966 /* ShopDetailService.swift */; };
 		BF3021F02BDF8E9B00CB3966 /* ShopDetailEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3021EF2BDF8E9B00CB3966 /* ShopDetailEndPoint.swift */; };
 		BF4F6C682BD54CA4009F070F /* NaNaPickDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4F6C672BD54CA4009F070F /* NaNaPickDetailService.swift */; };
@@ -146,6 +148,7 @@
 		BFABD34F2BE75F4600C3F3A6 /* FestivalEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFABD34E2BE75F4600C3F3A6 /* FestivalEndPoint.swift */; };
 		BFABD3512BE7634100C3F3A6 /* FestivalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFABD3502BE7634100C3F3A6 /* FestivalModel.swift */; };
 		BFABD3532BE7F9E100C3F3A6 /* SeasonModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFABD3522BE7F9E100C3F3A6 /* SeasonModalView.swift */; };
+		BFB16AF92BFED71600601537 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB16AF82BFED71600601537 /* SettingView.swift */; };
 		BFC671E82BF718F200D1A2FD /* NatureMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC671E72BF718F200D1A2FD /* NatureMainViewModel.swift */; };
 		BFC671EA2BF7191500D1A2FD /* NatureDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC671E92BF7191500D1A2FD /* NatureDetailViewModel.swift */; };
 		BFC671EC2BF7193200D1A2FD /* NatureDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC671EB2BF7193200D1A2FD /* NatureDetailView.swift */; };
@@ -259,6 +262,8 @@
 		BF1493762BD10E1200FC626B /* NaNaPickMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaNaPickMainViewModel.swift; sourceTree = "<group>"; };
 		BF1611482BDB7870000340F2 /* ShopService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopService.swift; sourceTree = "<group>"; };
 		BF16114A2BDB7881000340F2 /* ShopEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopEndPoint.swift; sourceTree = "<group>"; };
+		BF2D93762BFF0EB80057381A /* PolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyView.swift; sourceTree = "<group>"; };
+		BF2D93782BFF12D30057381A /* PolicyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyViewModel.swift; sourceTree = "<group>"; };
 		BF3021ED2BDF8E9300CB3966 /* ShopDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDetailService.swift; sourceTree = "<group>"; };
 		BF3021EF2BDF8E9B00CB3966 /* ShopDetailEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDetailEndPoint.swift; sourceTree = "<group>"; };
 		BF4F6C672BD54CA4009F070F /* NaNaPickDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaNaPickDetailService.swift; sourceTree = "<group>"; };
@@ -302,6 +307,7 @@
 		BFABD34E2BE75F4600C3F3A6 /* FestivalEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FestivalEndPoint.swift; sourceTree = "<group>"; };
 		BFABD3502BE7634100C3F3A6 /* FestivalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FestivalModel.swift; sourceTree = "<group>"; };
 		BFABD3522BE7F9E100C3F3A6 /* SeasonModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonModalView.swift; sourceTree = "<group>"; };
+		BFB16AF82BFED71600601537 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		BFC671E72BF718F200D1A2FD /* NatureMainViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NatureMainViewModel.swift; sourceTree = "<group>"; };
 		BFC671E92BF7191500D1A2FD /* NatureDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NatureDetailViewModel.swift; sourceTree = "<group>"; };
 		BFC671EB2BF7193200D1A2FD /* NatureDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NatureDetailView.swift; sourceTree = "<group>"; };
@@ -405,7 +411,7 @@
 				2C3C75BD2BCA53D500312F26 /* Home */,
 				2C3C75CD2BCAAFCE00312F26 /* Favorite */,
 				2C3C75CE2BCAAFD700312F26 /* Story */,
-				2C3C75CF2BCAAFE100312F26 /* Profile */,
+				2C3C75CF2BCAAFE100312F26 /* MyPage */,
 				2C3C75872BCA3ADC00312F26 /* Assets.xcassets */,
 				2C3C75892BCA3ADC00312F26 /* Preview Content */,
 			);
@@ -532,7 +538,7 @@
 			path = Story;
 			sourceTree = "<group>";
 		};
-		2C3C75CF2BCAAFE100312F26 /* Profile */ = {
+		2C3C75CF2BCAAFE100312F26 /* MyPage */ = {
 			isa = PBXGroup;
 			children = (
 				2C3C75D42BCAB01500312F26 /* ProfileMainView.swift */,
@@ -543,8 +549,11 @@
 				BF794B9A2BFB1E9A0045FAD2 /* ImagePicker.swift */,
 				BF80FDA22BFB2BEF00C5DA2D /* ProfileUpdateModel.swift */,
 				BF78A8B72BFB620400C7303A /* ProfileDTO.swift */,
+				BFB16AF82BFED71600601537 /* SettingView.swift */,
+				BF2D93762BFF0EB80057381A /* PolicyView.swift */,
+				BF2D93782BFF12D30057381A /* PolicyViewModel.swift */,
 			);
-			path = Profile;
+			path = MyPage;
 			sourceTree = "<group>";
 		};
 		2C40DB812BE6222C007A3768 /* Onboarding */ = {
@@ -1050,6 +1059,7 @@
 				BF607F192BF5A2A900770CE7 /* FestivalDetailEndPoint.swift in Sources */,
 				2C40DB952BE63AD2007A3768 /* KeychainManager.swift in Sources */,
 				BFC671F42BF7198800D1A2FD /* ShopDetailModel.swift in Sources */,
+				BF2D93772BFF0EB80057381A /* PolicyView.swift in Sources */,
 				2C80ECBC2BCFCCDA002F38A7 /* EndPoint.swift in Sources */,
 				2C80ECDA2BD63BAA002F38A7 /* FavoriteEndPoint.swift in Sources */,
 				2C5424FE2BF7131600B16439 /* TypeTestResultView.swift in Sources */,
@@ -1072,6 +1082,7 @@
 				2C3C75BF2BCA53EE00312F26 /* HomeMainView.swift in Sources */,
 				BF794B562BF9AAEF0045FAD2 /* UserInfoService.swift in Sources */,
 				2C40DBB42BECE671007A3768 /* UINavigationController+.swift in Sources */,
+				BF2D93792BFF12D30057381A /* PolicyViewModel.swift in Sources */,
 				2C40DB832BE62259007A3768 /* LanguageSelectView.swift in Sources */,
 				2C1F31D52BCD2A870066819F /* NanaSearchBar.swift in Sources */,
 				BF7C0EC02BD0B725008ACB75 /* secret.swift in Sources */,
@@ -1126,6 +1137,7 @@
 				2C40DB9E2BE87C61007A3768 /* Color+.swift in Sources */,
 				BF9F02992BD8DFC0003E72E6 /* FestivalMainViewModel.swift in Sources */,
 				BF794B612BF9AD9F0045FAD2 /* ProfileMainModel.swift in Sources */,
+				BFB16AF92BFED71600601537 /* SettingView.swift in Sources */,
 				BF9834232BCE83E300A5C289 /* RecommendModel.swift in Sources */,
 				BFF5DA912BE809D100FD8764 /* LocationModalView.swift in Sources */,
 				2C3C75842BCA3ADA00312F26 /* NanaLandApp.swift in Sources */,
