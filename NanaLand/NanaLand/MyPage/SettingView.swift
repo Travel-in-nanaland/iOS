@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SettingView: View {
+    @State private var showAlert = false
     var body: some View {
         
         VStack(spacing: 0) {
@@ -27,9 +28,26 @@ struct SettingView: View {
                 SettingItemButtonView(title: "언어 설정")
                 SettingItemButtonView(title: "버전 정보")
                 Divider()
-                SettingItemButtonView(title: "로그아웃")
-                SettingItemButtonView(title: "회원 탈퇴")
+                // 로그아웃 alert창 띄울 버튼
+                Button {
+                    showAlert = true
+                } label: {
+                    HStack(spacing: 0) {
+                        Text("로그아웃")
+                            .font(.body01)
+                            .padding(.leading, 16)
+                        Spacer()
+                    }
+                }
+                .frame(width: Constants.screenWidth, height: 48)
+                .fullScreenCover(isPresented: $showAlert) {
+                    AlertView(showAlert: $showAlert)
+                }
+                .transaction { transaction in
+                    transaction.disablesAnimations = true
+                }
 
+                SettingItemButtonView(title: "회원 탈퇴")
             }
             Spacer()
         }
@@ -40,12 +58,10 @@ struct SettingView: View {
                 PolicyView()
             case .authorize:
                 // 각 viewType에 맞는 뷰로 추후 수정 예정
-                PolicyView()
+                AuthorizeView()
             case .language:
                 PolicyView()
             case .version:
-                PolicyView()
-            case .logout:
                 PolicyView()
             case .withdraw:
                 PolicyView()
@@ -70,8 +86,6 @@ struct SettingItemButtonView: View {
                 AppState.shared.navigationPath.append(SettingViewType.language)
             case "버전 정보":
                 AppState.shared.navigationPath.append(SettingViewType.version)
-            case "로그아웃":
-                AppState.shared.navigationPath.append(SettingViewType.logout)
             case "회원 탈퇴":
                 AppState.shared.navigationPath.append(SettingViewType.withdraw)
             default:
@@ -80,10 +94,24 @@ struct SettingItemButtonView: View {
             
         } label: {
             HStack(spacing: 0) {
-                Text("\(title)")
-                    .font(.body01)
-                    .padding(.leading, 16)
-                Spacer()
+                if title == "버전 정보" {
+                    Text("\(title)")
+                        .font(.body01)
+                        .padding(.leading, 16)
+                    Spacer()
+                    // 현재 버전 가져오기
+                    if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+                        Text(version)
+                            .padding(.trailing, 16)
+                            .font(.body01)
+                    }
+                } else {
+                    Text("\(title)")
+                        .font(.body01)
+                        .padding(.leading, 16)
+                    Spacer()
+                }
+                
             }
            
         }
@@ -97,7 +125,6 @@ enum SettingViewType {
     case authorize
     case language
     case version
-    case logout
     case withdraw
 }
 

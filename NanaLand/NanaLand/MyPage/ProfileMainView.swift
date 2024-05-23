@@ -9,7 +9,6 @@ import SwiftUI
 import Kingfisher
 
 struct ProfileMainView: View {
-    @EnvironmentObject var appState: AppState
     @StateObject var viewModel = ProfileMainViewModel()
     var body: some View {
         
@@ -34,7 +33,7 @@ struct ProfileMainView: View {
             
             VStack(spacing: 0) {
                 ZStack {
-                    KFImage(URL(string: (appState.userInfo.profileImageUrl)))
+                    KFImage(URL(string: (AppState.shared.userInfo.profileImageUrl)))
                         .resizable()
                         .frame(width: 100, height: 100)
                         .clipShape(Circle())
@@ -58,7 +57,7 @@ struct ProfileMainView: View {
                     
                 }
                 
-                Text("\(appState.userInfo.nickname)")
+                Text("\(AppState.shared.userInfo.nickname)")
                     .font(.largeTitle02)
             }
             .padding(.bottom, 56)
@@ -71,7 +70,7 @@ struct ProfileMainView: View {
             .padding(.bottom, 16)
             
             HStack(spacing: 0) {
-                Text("\(appState.userInfo.travelType)")
+                Text("\(AppState.shared.userInfo.travelType)")
                     .font(.title02_bold)
                     .padding(.leading, 16)
                     .foregroundStyle(Color.main)
@@ -81,8 +80,8 @@ struct ProfileMainView: View {
             
             HStack(spacing: 8) {
                 // 해시태그는 항상 3개 고정
-                ForEach(0...2, id: \.self) { index in
-                    Text("#\(appState.userInfo.hashtags[index])")
+                ForEach(AppState.shared.userInfo.hashtags, id: \.self) { hashtag in
+                    Text("#\(hashtag)")
                         .font(.body02)
                         .padding(.leading, 16)
                         .padding(.trailing, 16)
@@ -117,7 +116,7 @@ struct ProfileMainView: View {
                 }
                 .padding(.bottom, 8)
                 HStack(spacing: 0) {
-                    Text("\(appState.userInfo.description)")
+                    Text("\(AppState.shared.userInfo.description)")
                         .font(.body02)
                         .padding()
                     Spacer()
@@ -147,6 +146,11 @@ struct ProfileMainView: View {
                     )
             }
             .padding(.bottom, 24)
+        }
+        .onAppear {
+            viewModel.state.getProfileMainResponse.nickname = AppState.shared.userInfo.nickname
+            viewModel.state.getProfileMainResponse.profileImageUrl = AppState.shared.userInfo.profileImageUrl
+            viewModel.state.getProfileMainResponse.description = AppState.shared.userInfo.description
         }
         .navigationDestination(for: MyPageViewType.self) { viewType in
             
