@@ -8,11 +8,17 @@
 import Foundation
 import Alamofire
 
+struct WithdrawRequest: Codable {
+	let withdrawalType: String
+}
+
 enum AuthEndPoint {
 	case refreshingToken
 	case login(body: LoginRequest)
 	case register(body: RegisterRequest, image: [Foundation.Data?])
 	case patchUserType(body: PatchUserTypeRequest)
+	case logout
+	case withdraw(body: WithdrawRequest)
 }
 
 extension AuthEndPoint: EndPoint {
@@ -30,6 +36,10 @@ extension AuthEndPoint: EndPoint {
 			return "/join"
 		case .patchUserType:
 			return "/type"
+		case .logout:
+			return "/logout"
+		case .withdraw:
+			return "/withdrawal"
 		}
 	}
 	
@@ -43,6 +53,10 @@ extension AuthEndPoint: EndPoint {
 			return .post
 		case .patchUserType:
 			return .patch
+		case .logout:
+			return .post
+		case .withdraw:
+			return .post
 		}
 	}
 	
@@ -55,6 +69,10 @@ extension AuthEndPoint: EndPoint {
 		case let .register(body, image):
 			return .requestJSONWithImage(multipartFile: image, body: body, withInterceptor: false)
 		case let .patchUserType(body):
+			return .requestJSONEncodable(body: body)
+		case .logout:
+			return .requestPlain
+		case let .withdraw(body):
 			return .requestJSONEncodable(body: body)
 		}
 	}
@@ -72,6 +90,10 @@ extension AuthEndPoint: EndPoint {
 		case .register:
 			return ["Content-Type": "multipart/form-data"]
 		case .patchUserType:
+			return ["Content-Type": "application/json"]
+		case .logout:
+			return ["Content-Type": "application/json"]
+		case .withdraw:
 			return ["Content-Type": "application/json"]
 		}
 	}

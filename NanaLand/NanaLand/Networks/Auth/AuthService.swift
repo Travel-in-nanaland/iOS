@@ -21,7 +21,15 @@ struct AuthService {
 		return await NetworkManager.shared.request(AuthEndPoint.register(body: body, image: image))
 	}
 	
-	static func patchUserType(body: PatchUserTypeRequest) async -> BaseResponse<String>? {
+	static func patchUserType(body: PatchUserTypeRequest) async -> BaseResponse<EmptyResponseModel>? {
 		return await NetworkManager.shared.request(AuthEndPoint.patchUserType(body: body))
+	}
+	
+	static func logout() async -> BaseResponse<EmptyResponseModel>? {
+		return await NetworkManager.shared.request(AuthEndPoint.logout)
+	}
+	
+	static func withdraw(body: WithdrawRequest) async -> BaseResponse<EmptyResponseModel>? {
+		return await NetworkManager.shared.request(AuthEndPoint.withdraw(body: body))
 	}
 }
