@@ -12,6 +12,7 @@ struct ProfileMainView: View {
     @EnvironmentObject var appState: AppState
     @StateObject var viewModel = ProfileMainViewModel()
     var body: some View {
+        
         VStack(spacing: 0) {
             ZStack {
                 NanaNavigationBar(title: "나의나나")
@@ -19,7 +20,8 @@ struct ProfileMainView: View {
                 HStack(spacing: 0) {
                     Spacer()
                     Button(action: {
-                        print("hello")
+                        AppState.shared.navigationPath.append(MyPageViewType.setting)
+                        
                     }, label: {
                         Image("icSetting")
                             .padding(.bottom, 16)
@@ -29,7 +31,7 @@ struct ProfileMainView: View {
                 }
                 
             }
-          
+            
             VStack(spacing: 0) {
                 ZStack {
                     KFImage(URL(string: (appState.userInfo.profileImageUrl)))
@@ -55,8 +57,6 @@ struct ProfileMainView: View {
                     .frame(height: 108)
                     
                 }
-               
-                
                 
                 Text("\(appState.userInfo.nickname)")
                     .font(.largeTitle02)
@@ -131,14 +131,9 @@ struct ProfileMainView: View {
                 )
                 .padding(16) // 전체 뷰의 여백
                 
-                
-                
-                
-                
-                
             }
             .padding(.bottom, 59)
-
+            
             Spacer()
             NavigationLink(destination: ProfileUpdateView()) {
                 Text("프로필 수정")
@@ -153,14 +148,26 @@ struct ProfileMainView: View {
             }
             .padding(.bottom, 24)
         }
-
+        .navigationDestination(for: MyPageViewType.self) { viewType in
+            
+            switch viewType {
+            case .setting:
+                SettingView()
+            case .update:
+                ProfileUpdateView()
+            }
+        }
+        
     }
     
     func getUserInfo() async {
         await viewModel.action(.getUserInfo)
     }
 }
-
+enum MyPageViewType {
+    case setting
+    case update
+}
 
 #Preview {
     ProfileMainView()

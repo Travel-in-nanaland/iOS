@@ -24,5 +24,3 @@ class AppState: ObservableObject {
 	@Published var previousTab: Tab = .home
 	@Published var showRegisterInduction: Bool = false
 }
-
-
