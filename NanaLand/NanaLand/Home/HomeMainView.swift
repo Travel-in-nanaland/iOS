@@ -25,9 +25,9 @@ struct HomeMainView: View {
 					}
 					.padding(.leading, 16)
 					Spacer()
-					NavigationLink(
-						destination: SearchMainView()
-					) {
+					Button(action: {
+						AppState.shared.navigationPath.append(HomeViewType.search)
+					}, label: {
 						Text("제주도는 지금 유채꽃 축제🏵️")
 							.padding()
 							.frame(width: 278, alignment: .leading)
@@ -36,7 +36,9 @@ struct HomeMainView: View {
 							.overlay(RoundedRectangle(cornerRadius: 30)
 								.stroke(Color("Main"))
 							)
-					}
+
+					})
+					
 					Spacer()
 					
 					Button(action: {
@@ -58,7 +60,9 @@ struct HomeMainView: View {
 				/// category View
 				HStack(spacing: 12) {
 					// 7대자연 link
-					NavigationLink(destination: NatureMainView()) {
+					Button(action: {
+						AppState.shared.navigationPath.append(HomeViewType.nature)
+					}, label: {
 						VStack(spacing: 0) {
 							Image("icNature")
 								.frame(width: 62, height: 48)
@@ -67,10 +71,13 @@ struct HomeMainView: View {
 								.font(.gothicNeo(size: 12, font: "semibold"))
 								.tint(.black)
 						}
-					}
+					})
+					.frame(height: 65)
 					
 					// 축제 link
-					NavigationLink(destination: FestivalMainView()) {
+					Button(action: {
+						AppState.shared.navigationPath.append(HomeViewType.festival)
+					}, label: {
 						VStack(spacing: 0) {
 							Image("icFestival")
 								.frame(width: 62, height: 48)
@@ -79,11 +86,13 @@ struct HomeMainView: View {
 								.font(.gothicNeo(size: 12, font: "semibold"))
 								.tint(.black)
 						}
-					}
+					})
 					.frame(height: 65)
 					
 					// 전통시장 link
-					NavigationLink(destination: ShopMainView()) {
+					Button(action: {
+						AppState.shared.navigationPath.append(HomeViewType.shop)
+					}, label: {
 						VStack(spacing: 0) {
 							Image("icShop")
 								.frame(width: 62, height: 48)
@@ -92,11 +101,13 @@ struct HomeMainView: View {
 								.font(.gothicNeo(size: 12, font: "semibold"))
 								.tint(.black)
 						}
-					}
+					})
 					.frame(height: 65)
 					
 					// 이색체험 link
-					NavigationLink(destination: ExperienceMainView()) {
+					Button(action: {
+						AppState.shared.navigationPath.append(HomeViewType.experience)
+					}, label: {
 						VStack(spacing: 0) {
 							Image("icExp")
 								.frame(width: 62, height: 48)
@@ -104,11 +115,13 @@ struct HomeMainView: View {
 								.font(.gothicNeo(size: 12, font: "semibold"))
 								.tint(.black)
 						}
-					}
+					})
 					.frame(height: 65)
 					
 					// 나나 Pick link
-					NavigationLink(destination: NanapickMainView()) {
+					Button(action: {
+						AppState.shared.navigationPath.append(HomeViewType.nanapick)
+					}, label: {
 						VStack(spacing: 0) {
 							Image("icNana")
 								.frame(width: 62, height: 48)
@@ -117,9 +130,8 @@ struct HomeMainView: View {
 								.font(.gothicNeo(size: 12, font: "semibold"))
 								.tint(.black)
 						}
-					}
+					})
 					.frame(height: 65)
-					
 				}
 				.frame(width: UIScreen.main.bounds.width)
 				.padding(.bottom, 5)
@@ -185,6 +197,22 @@ struct HomeMainView: View {
 		}
 		.onAppear {
 			viewModel.recommendFetchData()
+		}
+		.navigationDestination(for: HomeViewType.self) { viewType in
+			switch viewType {
+			case .search:
+				SearchMainView()
+			case .nature:
+				NatureMainView()
+			case .festival:
+				FestivalMainView()
+			case .shop:
+				ShopMainView()
+			case .experience:
+				ExperienceMainView()
+			case .nanapick:
+				NanapickMainView()
+			}
 		}
 	}
 }
