@@ -125,7 +125,6 @@ struct LocationModalView: View {
                 if selectedLocation.count == 0 {
                     selectedLocation = [""]
                 }
-                print(selectedLocation)
                
                 Task {
                     if title == "이번달" {

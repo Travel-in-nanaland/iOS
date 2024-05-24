@@ -121,7 +121,6 @@ struct SearchResultView: View {
 				.onAppear {
 					if !isNatureSearchIsDone {
 						Task {
-							print("search Nature")
 							await searchVM.action(.searchTerm(category: .nature, term: searchTerm))
 						}
 						isNatureSearchIsDone = true

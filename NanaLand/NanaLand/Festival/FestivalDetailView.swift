@@ -313,7 +313,6 @@ struct FestivalDetailView: View {
                     .overlay(
                         GeometryReader { proxy -> Color in
                             let offset = proxy.frame(in: .global).minY
-                            print(offset)
                             return Color.clear
                         }
                             .frame(width: 0, height: 0)
@@ -327,7 +326,6 @@ struct FestivalDetailView: View {
                         HStack {
                             Spacer()
                             Button(action: {
-                                print("hello")
                                   // 10. withAnimation 과함께 함수 작성
                                   withAnimation(.default) {
                                       // ScrollViewReader의 proxyReader을 넣어줌
