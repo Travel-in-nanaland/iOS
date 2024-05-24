@@ -14,6 +14,9 @@ class AppState: ObservableObject {
 	@Published var currentTab: Tab = .home
   @Published var isTabViewHidden: Bool = false
 	@Published var isRegisterNeeded = false
+	
+	// type test 띄우기
+	@Published var showTypeTest: Bool = false
   
 	// navigation Path
 	@Published var navigationPath = NavigationPath()

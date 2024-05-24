@@ -10,6 +10,7 @@ import Kingfisher
 
 struct ProfileMainView: View {
     @StateObject var viewModel = ProfileMainViewModel()
+	
 	@AppStorage("provider") var provider: String = ""
 	
     var body: some View {
@@ -102,7 +103,9 @@ struct ProfileMainView: View {
             .padding(.bottom, 16)
             
             HStack(spacing: 0) {
-                Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+				Button(action: {
+					AppState.shared.showTypeTest = true
+				}, label: {
                     Text("테스트 다시하기")
                 })
                 .padding(.leading, 16)

@@ -94,6 +94,9 @@
 		2C9CF4E02BFEDB2D00A346E8 /* HomeViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9CF4DF2BFEDB2D00A346E8 /* HomeViewType.swift */; };
 		2C9CF4E22BFEDF7F00A346E8 /* ReportInfoViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9CF4E12BFEDF7F00A346E8 /* ReportInfoViewType.swift */; };
 		2C9CF4E42BFEE59200A346E8 /* ArticleDetailViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9CF4E32BFEE59200A346E8 /* ArticleDetailViewType.swift */; };
+		2C9CF4E62C00701E00A346E8 /* TypeTestNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9CF4E52C00701E00A346E8 /* TypeTestNavigationView.swift */; };
+		2C9CF4E82C00714900A346E8 /* TypeTestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9CF4E72C00714900A346E8 /* TypeTestViewModel.swift */; };
+		2C9CF4EA2C00716B00A346E8 /* RegisterViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9CF4E92C00716B00A346E8 /* RegisterViewType.swift */; };
 		9C6A9C3E2BCC1BAE000413AD /* Fonts+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6A9C3D2BCC1BAE000413AD /* Fonts+.swift */; };
 		9C6A9C632BCC22CE000413AD /* AppleSDGothicNeoL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C6A9C5A2BCC22CE000413AD /* AppleSDGothicNeoL.ttf */; };
 		9C6A9C642BCC22CE000413AD /* AppleSDGothicNeoL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C6A9C5A2BCC22CE000413AD /* AppleSDGothicNeoL.ttf */; };
@@ -272,6 +275,9 @@
 		2C9CF4DF2BFEDB2D00A346E8 /* HomeViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewType.swift; sourceTree = "<group>"; };
 		2C9CF4E12BFEDF7F00A346E8 /* ReportInfoViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportInfoViewType.swift; sourceTree = "<group>"; };
 		2C9CF4E32BFEE59200A346E8 /* ArticleDetailViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewType.swift; sourceTree = "<group>"; };
+		2C9CF4E52C00701E00A346E8 /* TypeTestNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeTestNavigationView.swift; sourceTree = "<group>"; };
+		2C9CF4E72C00714900A346E8 /* TypeTestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeTestViewModel.swift; sourceTree = "<group>"; };
+		2C9CF4E92C00716B00A346E8 /* RegisterViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewType.swift; sourceTree = "<group>"; };
 		9C6A9C3D2BCC1BAE000413AD /* Fonts+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fonts+.swift"; sourceTree = "<group>"; };
 		9C6A9C5A2BCC22CE000413AD /* AppleSDGothicNeoL.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoL.ttf; sourceTree = "<group>"; };
 		9C6A9C5B2BCC22CE000413AD /* AppleSDGothicNeoR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoR.ttf; sourceTree = "<group>"; };
@@ -653,9 +659,11 @@
 		2C5424FC2BF70FE700B16439 /* TypeTest */ = {
 			isa = PBXGroup;
 			children = (
+				2C9CF4E52C00701E00A346E8 /* TypeTestNavigationView.swift */,
 				2C5424F22BF5CEC700B16439 /* TypeTestView.swift */,
 				2C5424FD2BF7131600B16439 /* TypeTestResultView.swift */,
 				2C5424FF2BF72C3500B16439 /* TripType.swift */,
+				2C9CF4E72C00714900A346E8 /* TypeTestViewModel.swift */,
 			);
 			path = TypeTest;
 			sourceTree = "<group>";
@@ -785,6 +793,7 @@
 				2C9CF4DF2BFEDB2D00A346E8 /* HomeViewType.swift */,
 				2C9CF4E12BFEDF7F00A346E8 /* ReportInfoViewType.swift */,
 				2C9CF4E32BFEE59200A346E8 /* ArticleDetailViewType.swift */,
+				2C9CF4E92C00716B00A346E8 /* RegisterViewType.swift */,
 			);
 			path = ViewType;
 			sourceTree = "<group>";
@@ -1130,9 +1139,11 @@
 				BFC671F42BF7198800D1A2FD /* ShopDetailModel.swift in Sources */,
 				BF2D93772BFF0EB80057381A /* PolicyView.swift in Sources */,
 				2C80ECBC2BCFCCDA002F38A7 /* EndPoint.swift in Sources */,
+				2C9CF4EA2C00716B00A346E8 /* RegisterViewType.swift in Sources */,
 				2C80ECDA2BD63BAA002F38A7 /* FavoriteEndPoint.swift in Sources */,
 				2C5424FE2BF7131600B16439 /* TypeTestResultView.swift in Sources */,
 				BF607F172BF5A29E00770CE7 /* FestivalDetailService.swift in Sources */,
+				2C9CF4E62C00701E00A346E8 /* TypeTestNavigationView.swift in Sources */,
 				2C9CF4D32BFDC4EB00A346E8 /* ReportInfoWritingView.swift in Sources */,
 				2C9CF4E02BFEDB2D00A346E8 /* HomeViewType.swift in Sources */,
 				2C80ECDC2BD79AE7002F38A7 /* FavoriteService.swift in Sources */,
@@ -1180,6 +1191,7 @@
 				2C40DB9A2BE64973007A3768 /* NanaHome.swift in Sources */,
 				2C1F31CE2BCD049C0066819F /* SearchMainView.swift in Sources */,
 				BF9834212BCE720B00A5C289 /* NanapickMainView.swift in Sources */,
+				2C9CF4E82C00714900A346E8 /* TypeTestViewModel.swift in Sources */,
 				BF607F132BF5A01D00770CE7 /* FestivalDetailViewModel.swift in Sources */,
 				BFABD3512BE7634100C3F3A6 /* FestivalModel.swift in Sources */,
 				BF9834182BCE700B00A5C289 /* FestivalMainView.swift in Sources */,

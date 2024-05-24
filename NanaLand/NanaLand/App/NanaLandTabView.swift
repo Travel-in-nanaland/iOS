@@ -64,6 +64,9 @@ struct NanaLandTabView: View {
 			}
 		}
         .tint(.baseBlack)
+		.fullScreenCover(isPresented: $appState.showTypeTest) {
+			TypeTestNavigationView(nickname: appState.userInfo.nickname)
+		}
         .introspect(.tabView, on: .iOS(.v16, .v17)) { tabView in
             let appearance = UITabBarAppearance()
             
