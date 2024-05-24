@@ -71,10 +71,6 @@ struct NanapickMainView: View {
                         .onAppear {
                                 Task {
                                     await getNana(page: page, size: size)
-                                    print("getNaNA 호출!!!!!!!!!!!! page: \(page), size: \(size)")
-                                    
-                                    
-                                   
                                 }
                         }
                 }

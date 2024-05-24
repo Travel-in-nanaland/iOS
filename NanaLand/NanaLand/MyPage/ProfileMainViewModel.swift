@@ -32,7 +32,6 @@ class ProfileMainViewModel: ObservableObject {
             if response != nil {
                 await MainActor.run {
                     state.getProfileMainResponse = response!.data
-                    print(state.getProfileMainResponse)
                 }
             }
         }

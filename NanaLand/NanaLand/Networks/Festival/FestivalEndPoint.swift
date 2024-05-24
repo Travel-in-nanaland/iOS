@@ -42,7 +42,6 @@ extension FestivalEndPoint: EndPoint {
         case let .thisMonthFestival(page, size, filterName, startDate, endDate):
             // addressFilterList는 "ㅁㅁ,ㅁㅁ,ㅁㅁ" 형태로 전달
             let param = ["page": page, "size": size, "addressFilterList": filterName , "startDate": startDate, "endDate": endDate] as [String : Any]
-            print(param)
             return .requestParameters(parameters: param)
             
         case let .seasonFestival(page, size, season):

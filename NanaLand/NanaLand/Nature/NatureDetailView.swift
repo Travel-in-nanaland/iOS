@@ -336,7 +336,6 @@ struct NatureDetailView: View {
                     .overlay(
                         GeometryReader { proxy -> Color in
                             let offset = proxy.frame(in: .global).minY
-                            print(offset)
                             return Color.clear
                         }
                             .frame(width: 0, height: 0)

@@ -24,12 +24,12 @@ class KeyChainManager {
 		let status = SecItemAdd(query as CFDictionary, nil)
 		
 		if status == errSecSuccess {
-			print("add success")
+			print("KeyChainManager - add success")
 			print("\(key): \(valueData)")
 		} else if status == errSecDuplicateItem {   // key가 중복될 경우 업데이트
 			updateItem(key: key, value: value)
 		} else {
-			print("add failed")
+			print("KeyChainManager - add failed")
 		}
 	}
 	
@@ -44,7 +44,7 @@ class KeyChainManager {
 		
 		var item: CFTypeRef?
 		if SecItemCopyMatching(query as CFDictionary, &item) != errSecSuccess {
-			print("read failed")
+			print("KeyChainManager - read failed")
 			return nil
 		}
 		
@@ -71,9 +71,9 @@ class KeyChainManager {
 		let status = SecItemUpdate(previousQuery as CFDictionary, updateQuery as CFDictionary)
 		
 		if status == errSecSuccess {
-			print("update complete")
+			print("KeyChainManager - update complete")
 		} else {
-			print("not finished update")
+			print("KeyChainManager - not finished update")
 		}
 	}
 	
@@ -86,9 +86,9 @@ class KeyChainManager {
 		
 		let status = SecItemDelete(deleteQuery as CFDictionary)
 		if status == errSecSuccess {
-			print("remove key-value data complete")
+			print("KeyChainManager - remove data complete")
 		} else {
-			print("remove key-value data failed")
+			print("KeyChainManager - remove data failed")
 		}
 	}
 	
