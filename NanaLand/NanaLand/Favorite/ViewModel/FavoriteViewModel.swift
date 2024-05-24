@@ -17,17 +17,18 @@ class FavoriteViewModel: ObservableObject {
 		var marketFavoriteArticles: ArticleResponse = .init()
 		var festivalFavoriteArticles: ArticleResponse = .init()
 		var experienceFavoriteArticles: ArticleResponse = .init()
+		var nanaFavoriteArticles: ArticleResponse = .init()
 		
 		var allFavoriteArticlePage: Int = 0
 		var natureFavoriteArticlePage: Int = 0
 		var marketFavoriteArticlePage: Int = 0
 		var festivalFavoriteArticlePage: Int = 0
 		var experienceFavoriteArticlePage: Int = 0
+		var nanaFavoriteArticlePage: Int = 0
 	}
 	
 	enum Action {
 		case getFavoriteList(category: Category)
-//		case didTapHeart(article: Article, category: Category)
 		// 찜 리스트에서 하트 누른 경우 -> 리스트에서 삭제
 		case deleteItemInFavoriteList(tab: Category, article: Article)
 		case refreshData(category: Category)
@@ -45,9 +46,6 @@ class FavoriteViewModel: ObservableObject {
 		switch action {
 		case let .getFavoriteList(category: category):
 			await fetchFavoriteList(category: category)
-			
-//		case let .didTapHeart(article, category):
-//			await toggleFavorite(article: article, category: category)
 			
 		case let .deleteItemInFavoriteList(tab, article):
 			await deleteFavoriteArticle(article: article, tab: tab)
@@ -70,7 +68,7 @@ class FavoriteViewModel: ObservableObject {
 		case .experience:
 			await getExperienceFavoriteList()
 		case .nanaPick:
-			print("nana 아직 구현X")
+			await getNanaFavoriteList()
 		}
 	}
 	
@@ -184,8 +182,26 @@ class FavoriteViewModel: ObservableObject {
 		}
 	}
 	
-	private func toggleFavorite(article: Article, category: Category) async {
-		await FavoriteService.toggleFavorite(id: article.id, category: category)?.data.favorite
+	private func getNanaFavoriteList() async {
+		if state.nanaFavoriteArticlePage == 0 {
+			state.nanaFavoriteArticles.data.removeAll()
+		}
+		
+		state.isLoading = true
+		
+		if let data = await FavoriteService.getNanaFavoriteList(page: state.nanaFavoriteArticlePage) {
+			if state.nanaFavoriteArticlePage == 0 {
+				state.nanaFavoriteArticles = data.data
+			} else {
+				state.nanaFavoriteArticles.data.append(contentsOf: data.data.data)
+			}
+			
+			state.nanaFavoriteArticlePage += 1
+			state.isLoading = false
+		} else {
+			print("getNanaFavoriteList Error")
+			state.isLoading = false
+		}
 	}
 	
 	private func deleteFavoriteArticle(article: Article, tab: Category) async {
