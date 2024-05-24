@@ -9,7 +9,7 @@ import Foundation
 
 class ProfileMainViewModel: ObservableObject {
     struct State {
-        var getProfileMainResponse = ProfileMainModel(email: "", provider: "", profileImageUrl: "", nickname: "", description: "", level: 0, travelType: "", hashtags: [""])
+		var getProfileMainResponse = ProfileMainModel(consentItems: [], email: "", provider: "", profileImageUrl: "", nickname: "", description: "", level: 0, travelType: "", hashtags: [""])
         
     }
     

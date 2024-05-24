@@ -73,7 +73,7 @@ struct ProfileMainView: View {
             .padding(.bottom, 16)
             
             HStack(spacing: 0) {
-                Text("\(AppState.shared.userInfo.travelType)")
+                Text("\(AppState.shared.userInfo.travelType ?? "여행 유형이 없습니다")")
                     .font(.title02_bold)
                     .padding(.leading, 16)
                     .foregroundStyle(Color.main)
