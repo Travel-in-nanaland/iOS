@@ -10,6 +10,8 @@ import Kingfisher
 
 struct ProfileMainView: View {
     @StateObject var viewModel = ProfileMainViewModel()
+	@AppStorage("provider") var provider: String = ""
+	
     var body: some View {
         
         VStack(spacing: 0) {
@@ -148,6 +150,13 @@ struct ProfileMainView: View {
             .padding(.bottom, 24)
         }
         .onAppear {
+			if provider == "GUEST" {
+				withAnimation {
+					AppState.shared.showRegisterInduction = true
+				}
+				return
+			}
+
             viewModel.state.getProfileMainResponse.nickname = AppState.shared.userInfo.nickname
             viewModel.state.getProfileMainResponse.profileImageUrl = AppState.shared.userInfo.profileImageUrl
             viewModel.state.getProfileMainResponse.description = AppState.shared.userInfo.description
