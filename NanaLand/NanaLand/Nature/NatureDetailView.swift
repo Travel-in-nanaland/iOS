@@ -310,7 +310,7 @@ struct NatureDetailView: View {
                             .padding(.bottom, 32)
                             
                             Button {
-                                
+								AppState.shared.navigationPath.append(ArticleViewType.reportInfo(id: viewModel.state.getNatureDetailResponse.id, category: .nature))
                             } label: {
                                 Text("정보 수정 제안")
                                     .background(

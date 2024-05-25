@@ -99,7 +99,7 @@ struct ReportInfoWritingView: View {
 							if content.isEmpty {
 								TextEditor(text: .constant("수정 요청하신 항목의 상세 내용이나 그 외 기타 사항이 있으시면 의견을 남겨주세요."))
 									.padding(.horizontal, 16)
-									.padding(.top, 6)
+									.padding(.top, 10)
 									.foregroundStyle(Color.gray2)
 									.scrollContentBackground(.hidden)
 									.font(.body02)
@@ -108,7 +108,7 @@ struct ReportInfoWritingView: View {
 							TextEditor(text: $content)
 								.focused($focusedField, equals: .content)
 								.padding(.horizontal, 16)
-								.padding(.top, 6)
+								.padding(.top, 10)
 								.scrollContentBackground(.hidden)
 								.font(.body02)
 						}
