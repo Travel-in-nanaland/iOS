@@ -31,7 +31,7 @@ struct ShopDetailView: View {
                             RoundedRectangle(cornerRadius: 30)
                                 .fill(Color.white) // 빈 뷰를 하얀색으로 채웁니다.
                                 .frame(maxWidth: Constants.screenWidth - 40, maxHeight: .infinity) // 뷰의 크기를 지정합니다.
-                                              .shadow(color: Color.black.opacity(0.3), radius: 10, x: 0, y: 5)
+                                              .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
                             VStack(spacing: 0) {
                                 HStack(spacing: 0) {
                                     Spacer()
@@ -108,7 +108,7 @@ struct ShopDetailView: View {
                             RoundedRectangle(cornerRadius: 30)
                                 .fill(Color.white) // 빈 뷰를 하얀색으로 채웁니다.
                                 .frame(width: Constants.screenWidth - 40) // 뷰의 크기를 지정합니다.
-                                              .shadow(color: Color.black.opacity(0.3), radius: 10, x: 0, y: 5)
+                                              .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
                             VStack(spacing: 0) {
                                 HStack(spacing: 0) {
                                     Spacer()

@@ -26,4 +26,5 @@ class AppState: ObservableObject {
   // 비회원이 회원가입 유도 팝업에서 X를 눌렀을때 이전 탭으로 돌아가기 위한 상태
 	@Published var previousTab: Tab = .home
 	@Published var showRegisterInduction: Bool = false
+
 }

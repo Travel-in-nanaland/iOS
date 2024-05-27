@@ -16,9 +16,13 @@ struct PolicyView: View {
             PolicyItemButtonView(title: "마케팅 활용 동의", isSelected: $viewModel.state.marketingAgree)
             PolicyItemButtonView(title: "위치기반 서비스 약관 동의", isSelected: $viewModel.state.gpsAgree)
                 .padding(.bottom, 24)
-            Text("* 비동의시, 받지 못하는 서비스 또는 혜택이 있을 수 있으니 주의하시길 바랍니다.")
-                .font(.caption01)
-                .foregroundStyle(.gray1)
+            HStack(spacing: 0) {
+                Text("* 비동의시, 받지 못하는 서비스 또는 혜택이 있을 수 있으니 주의하시길 바랍니다.")
+                    .font(.caption01)
+                    .foregroundStyle(.gray1)
+                
+            }
+            .frame(width: Constants.screenWidth - 32)
             
             Spacer()
         }

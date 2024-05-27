@@ -10,6 +10,7 @@ import Foundation
 class ShopMainViewModel: ObservableObject {
     struct State {
         var getShopMainResponse = ShopMainModel(totalElements: 0, data: [])
+        var location = ""
     }
     
     enum Action {

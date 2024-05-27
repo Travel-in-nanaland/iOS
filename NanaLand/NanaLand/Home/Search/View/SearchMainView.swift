@@ -246,6 +246,7 @@ struct SearchMainView: View {
 	
 	private func search(term: String) {
 		searchTerm = term
+
 		Task {
 			await searchVM.action(.searchTerm(category: .all, term: term))
 			showResultView = true
