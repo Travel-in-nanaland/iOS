@@ -28,6 +28,8 @@ struct RegisterInductionView: View {
 					.padding(.bottom, 40)
 				
 				Button(action: {
+					AppState.shared.showRegisterInduction = false
+					AppState.shared.currentTab = AppState.shared.previousTab
 					UserDefaults.standard.setValue(false, forKey: "isLogin")
 				}, label: {
 					RoundedRectangle(cornerRadius: 30)

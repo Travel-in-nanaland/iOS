@@ -41,7 +41,7 @@ struct FavoriteMainView: View {
 			HStack(spacing: 0) {
 				ForEach(tabs, id: \.self) { tab in
 					VStack(spacing: 0) {
-						Text(tab.name)
+						Text(tab.localizedName)
 							.font(.gothicNeo(tab == currentTab ? .semibold : .medium, size: 12))
 							.foregroundStyle(Color.baseBlack)
 							.padding(.horizontal, 16)
@@ -77,6 +77,9 @@ struct FavoriteMainView: View {
 			
 			FavoriteListView(category: .experience)
 				.tag(Category.experience)
+			
+			FavoriteListView(category: .nanaPick)
+				.tag(Category.nanaPick)
 		}
 		.environmentObject(favoriteVM)
 		.tabViewStyle(.page(indexDisplayMode: .never))

@@ -187,7 +187,7 @@ final class AuthManager: NSObject {
 				providerId: request.providerId
 			)
 			
-			registerVM.state.isRegisterNeeded = true
+			AppState.shared.isRegisterNeeded = true
 		}
 	}
 	

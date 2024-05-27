@@ -57,7 +57,6 @@ class FestivalMainViewModel: ObservableObject {
                 await MainActor.run {
                     state.getFestivalMainResponse.data = response!.data.data
                     state.title = "계절별"
-                    print(state.getFestivalMainResponse.data)
                 }
             }
         case .getPastFestivalMainItem(page: let page, size: let size, filterName: let filterName):

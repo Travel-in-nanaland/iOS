@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TypeTestView: View {
-	@EnvironmentObject var registerVM: RegisterViewModel
+	@EnvironmentObject var typeTestVM: TypeTestViewModel
 	let page: Int
 	let titleFirstLine: String
 	let titleSecondLine: String
@@ -113,7 +113,7 @@ struct TypeTestView: View {
 	
 	private var skipButton: some View {
 		Button(action: {
-			registerVM.state.isRegisterNeeded = false
+			typeTestVM.action(.onTapSkipButton)
 		}, label: {
 			Text("테스트 건너뛰기")
 				.font(.body02)
@@ -125,7 +125,7 @@ struct TypeTestView: View {
 		HStack(spacing: 16) {
 			if page != 1 {
 				Button(action: {
-					registerVM.state.registerPath.removeLast()
+					typeTestVM.state.navigationPath.removeLast()
 				}, label: {
 					ZStack {
 						Circle()
@@ -141,9 +141,7 @@ struct TypeTestView: View {
 			}
 			
 			Button(action: {
-				Task {
-					await registerVM.action(.onTapNextButtonInTest(page: page, index: selectedIndex!))
-				}
+				typeTestVM.action(.onTapNextButtonInTest(page: page, index: selectedIndex!))
 			}, label: {
 				RoundedRectangle(cornerRadius: 30)
 					.fill(Color.main)

@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct TypeTestResultView: View {
-	@EnvironmentObject var registerVM: RegisterViewModel
+	@EnvironmentObject var typeTestVM: TypeTestViewModel
+	let nickname: String
 	
     var body: some View {
 		VStack(spacing: 0) {
@@ -25,11 +26,11 @@ struct TypeTestResultView: View {
 	
 	private var header: some View {
 		VStack(spacing: 8) {
-			Text("\(registerVM.state.nickname) 님의 여행 유형은")
+			Text("\(nickname) 님의 여행 유형은")
 				.font(.gothicNeo(.bold, size: 16))
 				.foregroundStyle(Color.baseBlack)
 			
-			Text(registerVM.state.userType?.rawValue ?? "")
+			Text(typeTestVM.state.userType?.rawValue ?? "")
 				.font(.gothicNeo(.bold, size: 28))
 				.foregroundStyle(Color.main)
 		}
@@ -38,9 +39,7 @@ struct TypeTestResultView: View {
 	private var bottomButtons: some View {
 		VStack(spacing: 16) {
 			Button(action: {
-				Task {
-					await registerVM.action(.onTapGotoMainViewButton)
-				}
+				typeTestVM.action(.onTapGotoMainViewButton)
 			}, label: {
 				RoundedRectangle(cornerRadius: 30)
 					.fill(Color.main)
@@ -57,5 +56,5 @@ struct TypeTestResultView: View {
 }
 
 #Preview {
-    TypeTestResultView()
+    TypeTestResultView(nickname: "123")
 }

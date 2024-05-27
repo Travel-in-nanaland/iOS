@@ -16,8 +16,21 @@ enum Category: String, CaseIterable, Codable {
 	case experience  // 이색 체험
 	case nanaPick  // 나나 Pick
 	
-	var name: String {
-		return NSLocalizedString(self.rawValue, comment: "")
+	var localizedName: LocalizedKey {
+		switch self {
+		case .all:
+			return .all
+		case .nature:
+			return .nature
+		case .festival:
+			return .festival
+		case .market:
+			return .market
+		case .experience:
+			return .experience
+		case .nanaPick:
+			return .nanaPick
+		}
 	}
 	
 	var uppercase: String {
@@ -92,7 +105,7 @@ struct SearchResultView: View {
 			HStack(spacing: 0) {
 				ForEach(tabs, id: \.self) { tab in
 					VStack(spacing: 0) {
-						Text(tab.name)
+						Text(tab.localizedName)
 							.font(.gothicNeo(tab == searchVM.state.currentSearchTab ? .semibold : .medium, size: 12))
 							.foregroundStyle(Color.baseBlack)
 							.padding(.horizontal, 16)
@@ -121,7 +134,6 @@ struct SearchResultView: View {
 				.onAppear {
 					if !isNatureSearchIsDone {
 						Task {
-							print("search Nature")
 							await searchVM.action(.searchTerm(category: .nature, term: searchTerm))
 						}
 						isNatureSearchIsDone = true
