@@ -54,6 +54,7 @@ struct SearchAllCategoryResultView: View {
 }
 
 struct SearchAllCategoryItem: View {
+	@EnvironmentObject var manager: LocalizationManager
 	@ObservedObject var searchVM: SearchViewModel
 	
 	let category: Category
@@ -63,13 +64,16 @@ struct SearchAllCategoryItem: View {
 	var body: some View {
 		VStack(spacing: 0) {
 			HStack(spacing: 8) {
-				Text(category.name)
+				Text(category.localizedName)
 					.font(.gothicNeo(.bold, size: 18))
 					.foregroundStyle(Color.baseBlack)
 				
-				Text("\(count)건")
-					.font(.gothicNeo(.medium, size: 14))
-					.foregroundStyle(Color.gray1)
+				HStack(spacing: 0) {
+					Text("\(count)")
+					Text(.resultCount)
+				}
+				.font(.gothicNeo(.medium, size: 14))
+				.foregroundStyle(Color.gray1)
 				
 				Spacer()
 					
@@ -90,21 +94,7 @@ struct SearchAllCategoryItem: View {
 				.frame(height: 1)
 				.padding(.bottom, 16)
 			
-//			if category == .experience || category == .nanaPick {
-			if false {
-				VStack(spacing: 4) {
-					Image(.airplane)
-						.resizable()
-						.frame(width: 48, height: 48)
-					Text("해당 서비스 준비 중입니다.\n다음에 만나요!")
-						.font(.gothicNeo(.medium, size: 14))
-						.foregroundStyle(Color.gray1)
-						.multilineTextAlignment(.center)
-				}
-				.padding(.top, 48)
-				.padding(.bottom, 58)
-				
-			} else if !articles.isEmpty {
+			if !articles.isEmpty {
 				HStack(spacing: 8) {
 					ArticleItem(category: category, article: articles[0], onTapHeart: {
 						if UserDefaults.standard.string(forKey: "provider") == "GUEST" {
@@ -138,9 +128,11 @@ struct SearchAllCategoryItem: View {
 					Image(.orange)
 						.resizable()
 						.frame(width: 37.5, height: 37.5)
-					Text(String(localized: "noResult"))
+					
+					Text(.noResult)
 						.font(.gothicNeo(.medium, size: 14))
 						.foregroundStyle(Color.gray1)
+						.multilineTextAlignment(.center)
 				}
 				.padding(.top, 48)
 				.padding(.bottom, 58)
