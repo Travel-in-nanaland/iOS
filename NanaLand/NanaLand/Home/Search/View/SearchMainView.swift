@@ -155,9 +155,7 @@ struct SearchMainView: View {
 						.font(.gothicNeo(index == 0 || index == 1 ? .semibold : .medium, size: 14))
 						.foregroundStyle(index == 0 || index == 1 ? Color.main : Color.gray1)
 						.onTapGesture {
-							Task {
-								await search(term: searchVM.state.popularSearchTerms[index])
-							}
+                            search(term: searchVM.state.popularSearchTerms[index])
 						}
 					}
 				}
@@ -175,10 +173,8 @@ struct SearchMainView: View {
 							.font(.gothicNeo(.medium, size: 14))
 							.foregroundStyle(Color.gray1)
 							.onTapGesture {
-								Task {
-									await search(term: searchVM.state.popularSearchTerms[index])
-								}
-							}
+                                search(term: searchVM.state.popularSearchTerms[index])
+                            }
 						}
 					}
 					.frame(width: (Constants.screenWidth-32-24)/2)
@@ -233,9 +229,11 @@ struct SearchMainView: View {
 		.padding(.horizontal, 16)
 	}
 	
-	private func search(term: String) async {
+	private func search(term: String) {
 		searchTerm = term
-		await searchVM.action(.searchTerm(category: .all, term: term))
+        Task {
+            await searchVM.action(.searchTerm(category: .all, term: term))
+        }
 		showResultView = true
 	}
 }

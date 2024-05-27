@@ -11,8 +11,8 @@ import SwiftUIIntrospect
 
 struct HomeMainView: View {
 
-	@ObservedObject var viewModel = HomeMainViewModel()
-    
+	@StateObject var viewModel = HomeMainViewModel()
+    @State private var isRecommendCalled = false
 	var body: some View {
 		ScrollView {
 			VStack(spacing: 0) {
@@ -49,16 +49,14 @@ struct HomeMainView: View {
 					.padding(.trailing, 16)
 					
 				}
-				.padding(.bottom, 16)
-				
-				
+				.padding(.bottom, 8)
 				// banner View
 				BannerView()
-					.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width / 2)
-					.padding(.bottom)
+					.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width * (220 / 360))
+					.padding(.bottom, 16)
 				
 				/// category View
-				HStack(spacing: 12) {
+				HStack(spacing: 0) {
 					// 7대자연 link
 					Button(action: {
 						AppState.shared.navigationPath.append(HomeViewType.nature)
@@ -73,7 +71,8 @@ struct HomeMainView: View {
 						}
 					})
 					.frame(height: 65)
-					
+             
+					Spacer()
 					// 축제 link
 					Button(action: {
 						AppState.shared.navigationPath.append(HomeViewType.festival)
@@ -88,7 +87,7 @@ struct HomeMainView: View {
 						}
 					})
 					.frame(height: 65)
-					
+					Spacer()
 					// 전통시장 link
 					Button(action: {
 						AppState.shared.navigationPath.append(HomeViewType.shop)
@@ -103,7 +102,7 @@ struct HomeMainView: View {
 						}
 					})
 					.frame(height: 65)
-					
+					Spacer()
 					// 이색체험 link
 					Button(action: {
 						AppState.shared.navigationPath.append(HomeViewType.experience)
@@ -117,7 +116,7 @@ struct HomeMainView: View {
 						}
 					})
 					.frame(height: 65)
-					
+					Spacer()
 					// 나나 Pick link
 					Button(action: {
 						AppState.shared.navigationPath.append(HomeViewType.nanapick)
@@ -133,9 +132,9 @@ struct HomeMainView: View {
 					})
 					.frame(height: 65)
 				}
-				.frame(width: UIScreen.main.bounds.width)
-				.padding(.bottom, 5)
-				
+                .frame(width: UIScreen.main.bounds.width - 32)
+				.padding(.bottom, 32)
+                
 				/// 광고 뷰
 				HStack {
 					AdvertisementView()
@@ -156,11 +155,12 @@ struct HomeMainView: View {
 				.padding(.bottom, 8)
 				
 				HStack(spacing: 8) {
-					if let responseData = viewModel.recommendResponseData {
-						// 첫번째 추천 게시물
-						let firstItem = responseData.data[0]
-						// 두번째 추천 게시물
-						let secondItem = responseData.data[1]
+                
+                    if isRecommendCalled {
+                        // 첫번째 추천 게시물
+                        let firstItem = viewModel.state.getRecommendResponse[0]
+                        // 두번째 추천 게시물
+                    let secondItem = viewModel.state.getRecommendResponse[1]
                         HStack(alignment:.top, spacing: 8) {
                             VStack(alignment: .leading, spacing: 8) {
                                 KFImage(URL(string: firstItem.thumbnailUrl)!)
@@ -169,9 +169,7 @@ struct HomeMainView: View {
                                     .clipShape(RoundedRectangle(cornerRadius: 12))
                                 Text(firstItem.title)
                                     .font(.gothicNeo(size: 14, font: "bold"))
-                                Text(firstItem.introduction)
-                                    .font(.gothicNeo(.medium, size: 12))
-                                    .foregroundStyle(Color(.gray1))
+                               
                             }
                             
                             VStack(alignment: .leading, spacing: 8) {
@@ -182,28 +180,34 @@ struct HomeMainView: View {
                                 
                                 Text(secondItem.title)
                                     .font(.gothicNeo(size: 14, font: "bold"))
-                                Text(secondItem.introduction)
-                                    .font(.gothicNeo(.medium, size: 12))
-                                    .foregroundStyle(Color(.gray1))
+                                
                                 
                             }
                         }
+                    }
+					
 						
-					}
+					
 				}
 				.padding(.leading, 16)
 				.padding(.trailing, 16)
 			}
 		}
+        //safeArea 크기 가져아서 넣기
+        .padding(.top, 1)
 		.onAppear {
-			viewModel.recommendFetchData()
+            Task {
+                await getRecommendData()
+                isRecommendCalled = true
+            }
 		}
 		.navigationDestination(for: HomeViewType.self) { viewType in
 			switch viewType {
 			case .search:
 				SearchMainView()
 			case .nature:
-				NatureMainView()
+                // 광고 클릭으로 들어간게 아닐경우
+				NatureMainView(isAdvertisement: false)
 			case .festival:
 				FestivalMainView()
 			case .shop:
@@ -215,6 +219,11 @@ struct HomeMainView: View {
 			}
 		}
 	}
+    
+    func getRecommendData() async {
+        await viewModel.action(.getRecommendItem)
+    }
+    
 }
 
 struct AdvertisementView: View {
@@ -223,7 +232,7 @@ struct AdvertisementView: View {
     // tabView에 selection에 바인딩 할 값
     // (images가 ForEach문에서 돌면서 나오는 element 값이 String이므로 타입을 String으로 해준다.)
     @State private var selectedNum: String = ""
-    private let images: [String] = ["square", "circle", "triangle"]
+    private let images: [String] = ["ad1", "ad2", "ad3", "ad4"]
     
     
     
@@ -232,10 +241,74 @@ struct AdvertisementView: View {
         TabView(selection: $selectedNum) {
            ForEach(images, id: \.self) { image in
                 // image는 String이자, default tag로 붙는 값
-               Image(systemName: image)
-                    .scaledToFill()
-                    
+               HStack(spacing: 0) {
+                   Button(action: {
+                       switch image {
+                       case "ad1":
+                           AppState.shared.navigationPath.append(AdvertisementViewType.ad1)
+                       case "ad2":
+                           AppState.shared.navigationPath.append(AdvertisementViewType.ad2)
+                       case "ad3":
+                           AppState.shared.navigationPath.append(AdvertisementViewType.ad3)
+                       case "ad4":
+                           AppState.shared.navigationPath.append(AdvertisementViewType.ad4)
+                       default:
+                           break
+                       }
+                   }, label: {
+                       VStack(alignment: .leading, spacing: 0) {
+                           switch image {
+                           case "ad1":
+                               Text("제주도에서 예쁜 바다 보고 싶다고?")
+                                   .font(.gothicNeo(.bold, size: 16))
+                               Text("서귀포시 성산의 자연으로 투어해보자!")
+                                   .font(.gothicNeo(.medium, size: 12))
+                           case "ad2":
+                               Text("보기 귀한 별 보러 가지 않을래?💫")
+                                   .font(.gothicNeo(.bold, size: 16))
+                               Text("애월의 감성 가득 오름들 확인😯")
+                                   .font(.gothicNeo(.medium, size: 12))
+                           case "ad3":
+                               Text("한국의 정감을 느끼고 싶다면, 시장이지!")
+                                   .font(.gothicNeo(.bold, size: 16))
+                               Text("아직도 남은 전통 시장들은 뭐가 있을까?")
+                                   .font(.gothicNeo(.medium, size: 12))
+                           case "ad4":
+                               Text("제주도에서만 여는 7월 축제🎈")
+                                   .font(.gothicNeo(.bold, size: 16))
+                               Text("세계의 보물, 제주도가 가득 느껴지는 축제 보러가자")
+                                   .font(.gothicNeo(.medium, size: 12))
+                           default:
+                               Text("제주도에서 예쁜 바다 보고 싶다고?")
+                                   .font(.gothicNeo(.bold, size: 16))
+                               Text("서귀포시 성산의 자연으로 투어해보자!")
+                                   .font(.gothicNeo(.medium, size: 12))
+                           }
+                           
+                       }
+                       .padding(.leading, 15)
+                       Spacer()
+                       Image(image)
+                           .padding(.trailing, 15)
+                   })
+                   
+               }
+               
+                   
            }
+        }
+        .navigationDestination(for: AdvertisementViewType.self) { viewType in
+            switch viewType {
+            case .ad1:
+                // 광고 클릭으로 들어간 경우
+                NatureMainView(isAdvertisement: true)
+            case .ad2:
+                NatureMainView()
+            case .ad3:
+                ShopMainView()
+            case .ad4:
+                FestivalMainView()
+            }
         }
         .tabViewStyle(.page)
         .onReceive(timer, perform: { _ in
@@ -250,15 +323,20 @@ struct AdvertisementView: View {
     }
 }
 
+enum AdvertisementViewType {
+    case ad1
+    case ad2
+    case ad3
+    case ad4
+}
+
 struct BannerView: View {
-    @ObservedObject var viewModel = HomeMainViewModel()
+    @StateObject var viewModel = HomeMainViewModel()
     
-    init() {
-        viewModel.bannerFetchData()
-    }
+   @State private var isBannerCalled = false
     
     var message = ""
-    private let timer = Timer.publish(every: 2, on: .main, in: .common).autoconnect()
+    private let timer = Timer.publish(every: 3.5, on: .main, in: .common).autoconnect()
     @State private var index = 1
     // tabView에 selection에 바인딩 할 값
     // (images가 ForEach문에서 돌면서 나오는 element 값이 String이므로 타입을 String으로 해준다.)
@@ -269,18 +347,39 @@ struct BannerView: View {
         // selection에 index가 아닌 selectedNum을 바인딩
         ZStack {
             TabView(selection: $selectedNum) {
-                ForEach(images, id: \.self) { image in
+               
                         // image는 String이자, default tag로 붙는 값
                         ZStack {
-                            if let bannerResponseData = viewModel.bannerResponseData {
-                                // 이미지데이터 API 데이터 부족
-                                KFImage(URL(string: bannerResponseData.data[0].thumbnailUrl)!)
-                                    .resizable()
-                                    .frame(width: UIScreen.main.bounds.width, height: 180)
+                            if isBannerCalled {
+                                KFImage(URL(string: viewModel.state.getBannerResponse[index - 1].thumbnailUrl)!)
+                                        .resizable()
+                                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main
+                                            .bounds.width * (220 / 360))
+                                
                             }
-                        }
+                            VStack(spacing: 0) {
+                                
+                                HStack(spacing: 0) {
+                                    Spacer()
+                                    Text(viewModel.state.getBannerResponse[index - 1].version)
+                                        .font(.caption01)
+                                        .foregroundStyle(.white)
+                                        .padding(.trailing, 16)
+                                }
+                                .padding(.top, 8)
+                                
+                                Spacer()
+                            }
+                            
+                            
+                         
                         
-                    }
+                            
+                        }
+                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main
+                            .bounds.width * (220 / 360))
+                        
+                    
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
             .onReceive(timer, perform: { _ in
@@ -292,15 +391,32 @@ struct BannerView: View {
                     selectedNum = images[index - 1]
                 }
             })
-            HStack(spacing: 0) {
+            VStack(spacing: 0) {
                 Spacer()
-                Image(selectedNum)
+                HStack(spacing: 0) {
+                    Spacer()
+                    Image(selectedNum)
+                }
+                .frame(width: UIScreen.main.bounds.width)
+                .padding(.trailing, 15)
+               
             }
-            .frame(width: UIScreen.main.bounds.width)
-            .padding(.trailing, 15)
-            .padding(.top, 135)
+            .padding(.bottom, 16)
+            
+        }
+        .frame(width: Constants.screenWidth, height: Constants.screenWidth * (220 / 360))
+        .onAppear {
+            Task {
+                await getBannerData()
+                isBannerCalled = true
+                
+            }
         }
         
+    }
+    
+    func getBannerData() async {
+        return await viewModel.action(.getBannerItem)
     }
 }
 

@@ -8,11 +8,17 @@
 import Foundation
 
 struct BannerModel: Codable {
-    var message: String
-    var data: [ImageData]
+    var id: Int64
+    var thumbnailUrl: String
+    var version: String
+    var subHeading: String
+    var heading: String
 }
 
 struct ImageData: Codable {
     var id: Int64
     var thumbnailUrl: String
+    var version: String
+    var subHeading: String
+    var heading: String
 }

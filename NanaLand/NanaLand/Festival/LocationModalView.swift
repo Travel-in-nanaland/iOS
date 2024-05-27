@@ -9,6 +9,9 @@ import SwiftUI
 
 struct LocationModalView: View {
     @ObservedObject var viewModel: FestivalMainViewModel
+    @ObservedObject var natureViewModel: NatureMainViewModel
+    @ObservedObject var shopViewModel: ShopMainViewModel
+    
     @Binding var location: String
     @Binding var isModalShown: Bool
 
@@ -20,7 +23,7 @@ struct LocationModalView: View {
     var title: String // 이번달 축제인지, 종료된 축제인지
  
     
-    var locationArray = ["제주시", "애월", "조천", "한경", "구좌", "한림", "성산", "추자", "서귀포시", "대정", "안덕", "남원", "표선", "우도"]
+    var locationArray = ["제주시", "애월", "조천", "한경", "구좌", "한림", "우도", "추자", "서귀포시", "대정", "안덕", "남원", "표선", "성산"]
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 4)
     var body: some View {
         VStack(spacing: 0) {
@@ -41,6 +44,7 @@ struct LocationModalView: View {
                 
             }
             .padding(.bottom, 24)
+            
             VStack(spacing: 0) {
                 Image("icMap")
                 HStack(spacing: 0) {
@@ -114,6 +118,7 @@ struct LocationModalView: View {
                 .frame(height: 40)
                 .padding(.trailing, 58)
             }
+            .padding(.bottom, 24)
             Button(action: {
                 // 눌린 버튼을 selectedLocation에다가 추가해준다. 즉 buttonsToggled[index]가 true인 애들만 골라서 selectedLocation에다가 추가 한 이후에, 그거에 대한 API 호출을 하고 닫는다.
                 // todo
@@ -125,20 +130,32 @@ struct LocationModalView: View {
                 if selectedLocation.count == 0 {
                     selectedLocation = [""]
                 }
-                print(selectedLocation)
-               
                 Task {
                     if title == "이번달" {
                         await getLocationFestivalMainItem(page: 0, size: 18, filterName: selectedLocation.joined(separator: ","), start: "", end: "")
+                        print(selectedLocation.joined(separator: ","))
+                        print(startDate)
+                        print(endDate)
                     }
-                    else {
+                    else if title == "종료된" {
                         await getPastLocationFestivalMainItem(page: 0, size: 18, filterName: selectedLocation.joined(separator: ","))
+                    } 
+                    else if title == "7대자연" {
+                     
+                        await getLocationNatureMainItem(filterName: selectedLocation.joined(separator: ","), page: 0, size: 18)
+                        natureViewModel.state.location = selectedLocation.joined(separator: ",")
+                    } else {
+                        await getLocationShopMainItem(filterName: selectedLocation.joined(separator: ","), page: 0, size: 18)
                     }
+                    
                     location = selectedLocation.joined(separator: ",")
+                    print(location)
                     // 장소 선택 안 할시 전 지역
                     if location == "" {
                         location = "전 지역"
                     }
+                    
+                    
                 }
              
                 isModalShown = false
@@ -158,14 +175,24 @@ struct LocationModalView: View {
         }
         
     }
-    
+    // 이번달 축제에서 지역 선택 시
     func getLocationFestivalMainItem(page: Int32, size: Int32, filterName: String, start: String, end: String) async {
         await viewModel.action(.getThisMonthFestivalMainItem(page: page, size: size, filterName: filterName, startDate: start, endDate: end))
     }
-    
+    // 종료된 축제에서 지역 선택 시
     func getPastLocationFestivalMainItem(page: Int32, size: Int32, filterName: String) async {
         await viewModel.action(.getPastFestivalMainItem(page: page, size: size, filterName: filterName))
     }
+    // 7대 자연에서 지역 선택 시
+    func getLocationNatureMainItem(filterName: String, page: Int64, size: Int64) async {
+        await natureViewModel.action(.getNatureMainItem(page: page, size: size, filterName: filterName))
+        
+    }
+    // 전통시장에서 지역 선택 시
+    func getLocationShopMainItem(filterName: String, page: Int64, size: Int64) async {
+        await shopViewModel.action(.getShopMainItem(page: page, size: size, filterName: filterName))
+    }
+    
     
     func toggleButton(_ index: Int) {
         buttonsToggled[index].toggle()

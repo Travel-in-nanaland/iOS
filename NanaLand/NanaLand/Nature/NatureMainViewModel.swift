@@ -9,6 +9,7 @@ import Foundation
 class NatureMainViewModel: ObservableObject {
     struct State {
         var getNatureMainResponse = NatureMainModel(totalElements: 0, data: [])
+        var location = ""
     }
     
     enum Action {

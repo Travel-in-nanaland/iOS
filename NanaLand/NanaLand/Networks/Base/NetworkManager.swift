@@ -38,6 +38,7 @@ class NetworkManager {
 		let result = await request.serializingData().result
 		var data = Foundation.Data()
 		do {
+            print("request: " + "\(endPoint.headers)")
 			data = try result.get()
 		} catch {
 			print("data fetch error")

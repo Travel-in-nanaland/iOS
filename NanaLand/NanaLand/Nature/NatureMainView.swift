@@ -10,6 +10,7 @@ import Kingfisher
 
 struct NatureMainView: View {
     @EnvironmentObject var appState: AppState
+    @State var isAdvertisement = false
     
     var body: some View {
         
@@ -20,7 +21,7 @@ struct NatureMainView: View {
 
             
             
-            NatureMainGridView()
+            NatureMainGridView(isAdvertisement: isAdvertisement)
             
             Spacer()
         }
@@ -30,9 +31,14 @@ struct NatureMainView: View {
 }
 
 struct NatureMainGridView: View {
+    @State var isAdvertisement = false
     @StateObject var viewModel = NatureMainViewModel()
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
     @State private var isAPICalled = false
+    @State private var filterTitle = "지역"
+    @State private var locationModal = false
+    @State private var location = "전 지역"
+    
     var body: some View {
         HStack(spacing: 0) {
             Text("\(viewModel.state.getNatureMainResponse.data.count)건")
@@ -40,23 +46,34 @@ struct NatureMainGridView: View {
                 .foregroundStyle(Color.gray1)
             Spacer()
             
-            Menu {
-                Text("helo")
+            Button {
+                self.locationModal = true
+            
             } label: {
-                Text(String(localized: "지역"))
-                    .font(.gothicNeo(.medium, size: 12))
-                    .padding(.leading, 12)
-                Spacer()
-                Image("icDownSmall")
-                    .padding(.trailing, 12)
+                HStack(spacing: 0) {
+                    Text(location)
+                        .lineLimit(1)
+                        .font(.gothicNeo(.medium, size: 12))
+                        .padding(.leading, 12)
+                        .padding(.trailing, 4)
+                    
+                    Image("icDownSmall")
+                        .padding(.trailing, 12)
+                }
+                .frame(maxWidth: 100)
             }
             .foregroundStyle(Color.gray1)
-            .frame(width: 70, height: 40)
+            .frame(maxHeight: 40)
             .background(
                 RoundedRectangle(cornerRadius: 30)
                     .strokeBorder(Color.gray1, lineWidth: 1)
+                    .frame(maxWidth: 100, maxHeight: 40)
             )
             .padding(.trailing, 16)
+            .sheet(isPresented: $locationModal) {
+                LocationModalView(viewModel: FestivalMainViewModel(), natureViewModel: viewModel, shopViewModel: ShopMainViewModel(), location: $location, isModalShown: $locationModal, startDate: "", endDate: "", title: "7대자연")
+                    .presentationDetents([.height(Constants.screenWidth * (63 / 36))])
+            }
 
         }
         .padding(.bottom, 16)
@@ -121,9 +138,27 @@ struct NatureMainGridView: View {
             .padding(.bottom, UIApplication.shared.windows.first?.safeAreaInsets.bottom ?? 0)
         }
         .onAppear {
+            print(isAdvertisement)
+            
             Task {
-                await getNatureMainItem(page: 0, size:18, filterName:"")
-                isAPICalled = true
+                if isAdvertisement {
+                    await getNatureMainItem(page: 0, size:18, filterName:"성산")
+                    location = "성산"
+                    isAPICalled = true
+                    isAdvertisement = false
+                    
+                } else {
+                    if location == "전 지역" {
+                        await getNatureMainItem(page: 0, size:18, filterName:"")
+                        isAPICalled = true
+                    } else {
+                        await getNatureMainItem(page: 0, size: 18, filterName: location)
+                        isAPICalled = true
+                    }
+                    
+                }
+                
+                
             }
         }
     }

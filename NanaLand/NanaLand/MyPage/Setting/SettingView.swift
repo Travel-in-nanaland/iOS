@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SettingView: View {
     @State private var showAlert = false
+    @State var alertResult = false
     var body: some View {
         
         VStack(spacing: 0) {
@@ -41,7 +42,7 @@ struct SettingView: View {
                 }
                 .frame(width: Constants.screenWidth, height: 48)
                 .fullScreenCover(isPresented: $showAlert) {
-                    AlertView(showAlert: $showAlert)
+                    AlertView(title: "로그아웃", alertTitle: "정말 로그아웃을\n하시겠습니까?", showAlert: $showAlert, alertResult: $alertResult)
                 }
                 .transaction { transaction in
                     transaction.disablesAnimations = true
@@ -60,11 +61,11 @@ struct SettingView: View {
                 // 각 viewType에 맞는 뷰로 추후 수정 예정
                 AuthorizeView()
             case .language:
-                PolicyView()
+                LanguageView()
             case .version:
                 PolicyView()
             case .withdraw:
-                PolicyView()
+                WithdrawView()
             }
             
         }

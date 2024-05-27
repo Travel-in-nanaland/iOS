@@ -42,6 +42,7 @@ struct FestivalMainView: View {
         
     }
 }
+
 struct FestivalLocationFilterView: View {
     
     @State private var selectedLocation: String = "" // 선택된 지역을 저장하는 상태 변수
@@ -256,26 +257,17 @@ struct FilterView: View {
             .sheet(isPresented: $locationModal) {
                 if yearMonthDay == nil {
                     // 첫 화면 일 때
-                    LocationModalView(viewModel: viewModel, location: $location, isModalShown: $locationModal, startDate: "", endDate: "", title: title)
-                        .presentationDetents([.height(600)])
+                    LocationModalView(viewModel: viewModel, natureViewModel: NatureMainViewModel(), shopViewModel: ShopMainViewModel(),location: $location, isModalShown: $locationModal, startDate: "", endDate: "", title: title)
+                        .presentationDetents([.height(Constants.screenWidth * (63 / 36))])
                 } // 종료 날짜를 선택 안했을 때나, 시작 날짜와 종료날짜를 동일하게 선택 => 당일 조회
                 else if endYearMonthDay == yearMonthDay  || endYearMonthDay == nil {
-                    LocationModalView(viewModel: viewModel, location: $location, isModalShown: $locationModal, startDate: "\(yearMonthDay!.year)" + "\(yearMonthDay!.month)" + "\(yearMonthDay!.day)", endDate: "\(yearMonthDay!.year)" + "\(yearMonthDay!.month)" + "\(yearMonthDay!.day)", title: title)
+                    
+                    LocationModalView(viewModel: viewModel, natureViewModel: NatureMainViewModel(), shopViewModel: ShopMainViewModel(), location: $location, isModalShown: $locationModal, startDate: "\(yearMonthDay!.year)" + "\(yearMonthDay!.month)" + "\(yearMonthDay!.day)", endDate: "\(yearMonthDay!.year)" + "\(yearMonthDay!.month)" + "\(yearMonthDay!.day)", title: title)
                 } else {
                     // 시작 날짜 종료날짜 다를 때
-                    LocationModalView(viewModel: viewModel, location: $location, isModalShown: $locationModal, startDate: "\(yearMonthDay!.year)\(yearMonthDay!.month)\(yearMonthDay!.day)", endDate: "\(endYearMonthDay!.year)\(endYearMonthDay!.month)\(endYearMonthDay!.day)", title: title)
+                    LocationModalView(viewModel: viewModel, natureViewModel: NatureMainViewModel(), shopViewModel: ShopMainViewModel(), location: $location, isModalShown: $locationModal, startDate: "\(yearMonthDay!.year)\(yearMonthDay!.month)\(yearMonthDay!.day)", endDate: "\(endYearMonthDay!.year)\(endYearMonthDay!.month)\(endYearMonthDay!.day)", title: title)
                 }
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                
-                
-                    
+                                          
             }
             
         }

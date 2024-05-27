@@ -31,7 +31,7 @@ struct FestivalDetailView: View {
                                 RoundedRectangle(cornerRadius: 30)
                                     .fill(Color.white)
                                     .frame(maxWidth: Constants.screenWidth - 40, maxHeight: .infinity)
-                                    .shadow(color: Color.black.opacity(0.3), radius: 10, x: 0, y: 5)
+                                    .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
                                 VStack(spacing: 0) {
                                     HStack(spacing: 0) {
                                         Spacer()
@@ -112,7 +112,7 @@ struct FestivalDetailView: View {
                                 RoundedRectangle(cornerRadius: 30)
                                     .fill(Color.white) // 빈 뷰를 하얀색으로 채웁니다.
                                     .frame(maxWidth: Constants.screenWidth - 40) // 뷰의 크기를 지정합니다.
-                                    .shadow(color: Color.black.opacity(0.3), radius: 10, x: 0, y: 5)
+                                    .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
                                 VStack(spacing: 0) {
                                     HStack(spacing: 0) {
                                         Spacer()
@@ -300,6 +300,7 @@ struct FestivalDetailView: View {
                                     .padding(.bottom, 10)
                             }
                         }
+                        .padding(.bottom, 10)
                         .padding(.top, 24)
                     }
                     .id("Scroll_To_Top")

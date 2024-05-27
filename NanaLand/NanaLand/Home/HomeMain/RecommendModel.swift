@@ -8,8 +8,11 @@
 import Foundation
 
 struct RecommendModel: Codable, Hashable {
-    var message: String
-    var data: [RecommendData]
+    var id: Int
+    var category: String
+    var thumbnailUrl: String
+    var title: String
+    var introduction: String
 }
 
 struct RecommendData: Codable, Hashable {
