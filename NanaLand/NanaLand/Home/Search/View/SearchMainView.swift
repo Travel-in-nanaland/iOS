@@ -10,6 +10,7 @@ import Kingfisher
 
 struct SearchMainView: View {
 	@Environment(\.dismiss) var dismiss
+	@EnvironmentObject var localizationManager: LocalizationManager
 	@StateObject var searchVM: SearchViewModel = SearchViewModel()
 	
 	@State var searchTerm = ""
@@ -52,6 +53,7 @@ struct SearchMainView: View {
 			})
 			
 			NanaSearchBar(
+				placeHolder: LocalizedKey.inputSearchTerm.localized(for: localizationManager.language),
 				searchTerm: $searchTerm,
 				searchAction: {
 					await search(term: searchTerm)
@@ -66,7 +68,7 @@ struct SearchMainView: View {
 	private var recentlySearch: some View {
 		VStack(spacing: 0) {
 			HStack {
-				Text(String(localized: "recentSearchTerm"))
+				Text(.recentSearchTerm)
 					.font(.gothicNeo(.bold, size: 18))
 					.foregroundStyle(Color.baseBlack)
 				
@@ -76,7 +78,7 @@ struct SearchMainView: View {
 					searchVM.state.recentSearchTerms.removeAll()
 					UserDefaults.standard.removeObject(forKey: "recentSearch")
 				}, label: {
-					Text(String(localized: "removeAll"))
+					Text(.removeAll)
 						.font(.gothicNeo(.medium, size: 12))
 						.foregroundStyle(Color.gray1)
 				})
@@ -133,15 +135,30 @@ struct SearchMainView: View {
 	
 	private var popularSearch: some View {
 		VStack(alignment: .leading, spacing: 0) {
-			// TODO: 언어별 분기처리
-			Text("가장 많이 ").font(.gothicNeo(.bold, size: 18)).foregroundColor(Color.main) +
-			Text("검색하고 있어요!").font(.gothicNeo(.bold, size: 18)).foregroundColor(Color.baseBlack)
+			HStack(spacing: 0) {
+				if localizationManager.language == .korean {
+					let parts = LocalizedKey.popularSearchTerm.localized(for: localizationManager.language).split(separator: "\\\\")
+					if parts.count == 2 {
+						Text(parts[0])
+							.foregroundStyle(Color.main)
+						
+						Text(parts[1])
+					} else {
+						Text(.popularSearchTerm)
+					}
+				} else {
+					Text(.popularSearchTerm)
+				}
+			}
+			.font(.gothicNeo(.bold, size: 18))
+			.foregroundStyle(Color.baseBlack)
+			.padding(.bottom, 16)
 			
-			Text(searchVM.getCurrentTime())
-				.font(.gothicNeo(.medium, size: 12))
-				.foregroundStyle(Color.gray1)
-				.padding(.top, 4)
-				.padding(.bottom, 16)
+//			Text(searchVM.getCurrentTime())
+//				.font(.gothicNeo(.medium, size: 12))
+//				.foregroundStyle(Color.gray1)
+//				.padding(.top, 4)
+//				.padding(.bottom, 16)
 			
 			HStack(spacing: 24) {
 				// 1~4위
@@ -191,7 +208,7 @@ struct SearchMainView: View {
 	
 	private var recommendContents: some View {
 		VStack(alignment: .leading) {
-			Text(String(localized: "searchVolumeUpJejuPlace"))
+			Text(.searchVolumeUp)
 				.font(.gothicNeo(.bold, size: 18))
 				.foregroundStyle(Color.baseBlack)
 			

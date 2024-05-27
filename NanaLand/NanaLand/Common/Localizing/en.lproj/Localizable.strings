@@ -1,0 +1,31 @@
+/* 
+  Localizable.strings
+  NanaLand
+
+  Created by 정현우 on 5/26/24.
+  
+*/
+//MARK: - Common
+"resultCount" = " Results";
+
+//MARK: - Tab
+"home" = "Home";
+"favorite" = "Favorites";
+"jejuStory" = "Jeju Stories";
+"myNana" = "My Nana";
+
+//MARK: - Category
+"all" = "ALL";
+"nature" = "7 Natural Wonders";
+"festival" = "Festivals";
+"market" = "Traditional Markets";
+"experience" = "Unique Experiences";
+"nanaPick" = "Nana’s Pick";
+
+//MARK: - Search
+"inputSearchTerm" = "Please enter a search";
+"recentSearchTerm" = "Recent Searches";
+"removeAll" = "Clear All";
+"popularSearchTerm" = "Most Searched!";
+"searchVolumeUp" = "Search Volume UP! JEJU Place 🍊";
+"noResult" = "There are no results for that search.";
