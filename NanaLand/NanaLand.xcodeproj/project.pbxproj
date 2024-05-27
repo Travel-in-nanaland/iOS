@@ -16,6 +16,10 @@
 		2C1F31D52BCD2A870066819F /* NanaSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F31D42BCD2A870066819F /* NanaSearchBar.swift */; };
 		2C1F31D72BCD73C00066819F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F31D62BCD73C00066819F /* Constants.swift */; };
 		2C1F31D92BCD7DC90066819F /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F31D82BCD7DC90066819F /* SearchResultView.swift */; };
+		2C2D3D4C2C0385B3002A38AA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C2D3D4A2C0385B3002A38AA /* Localizable.strings */; };
+		2C2D3D512C03898D002A38AA /* LocalizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D3D502C03898D002A38AA /* LocalizationManager.swift */; };
+		2C2D3D532C0389C0002A38AA /* Text+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D3D522C0389C0002A38AA /* Text+.swift */; };
+		2C2D3D552C038A54002A38AA /* LocalizedKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D3D542C038A54002A38AA /* LocalizedKey.swift */; };
 		2C3C75842BCA3ADA00312F26 /* NanaLandApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C75832BCA3ADA00312F26 /* NanaLandApp.swift */; };
 		2C3C75882BCA3ADC00312F26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C3C75872BCA3ADC00312F26 /* Assets.xcassets */; };
 		2C3C758B2BCA3ADC00312F26 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C3C758A2BCA3ADC00312F26 /* Preview Assets.xcassets */; };
@@ -32,7 +36,6 @@
 		2C3C75D12BCAAFF300312F26 /* FavoriteMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C75D02BCAAFF300312F26 /* FavoriteMainView.swift */; };
 		2C3C75D32BCAB00C00312F26 /* StoryMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C75D22BCAB00C00312F26 /* StoryMainView.swift */; };
 		2C3C75D52BCAB01500312F26 /* ProfileMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C75D42BCAB01500312F26 /* ProfileMainView.swift */; };
-		2C40DB7D2BE6174F007A3768 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 2C40DB7C2BE6174E007A3768 /* Localizable.xcstrings */; };
 		2C40DB7F2BE61F05007A3768 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40DB7E2BE61F05007A3768 /* SplashView.swift */; };
 		2C40DB832BE62259007A3768 /* LanguageSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40DB822BE62259007A3768 /* LanguageSelectView.swift */; };
 		2C40DB852BE62351007A3768 /* RegisterNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40DB842BE62351007A3768 /* RegisterNavigationView.swift */; };
@@ -94,6 +97,9 @@
 		2C9CF4E02BFEDB2D00A346E8 /* HomeViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9CF4DF2BFEDB2D00A346E8 /* HomeViewType.swift */; };
 		2C9CF4E22BFEDF7F00A346E8 /* ReportInfoViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9CF4E12BFEDF7F00A346E8 /* ReportInfoViewType.swift */; };
 		2C9CF4E42BFEE59200A346E8 /* ArticleDetailViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9CF4E32BFEE59200A346E8 /* ArticleDetailViewType.swift */; };
+		2C9CF4E62C00701E00A346E8 /* TypeTestNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9CF4E52C00701E00A346E8 /* TypeTestNavigationView.swift */; };
+		2C9CF4E82C00714900A346E8 /* TypeTestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9CF4E72C00714900A346E8 /* TypeTestViewModel.swift */; };
+		2C9CF4EA2C00716B00A346E8 /* RegisterViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9CF4E92C00716B00A346E8 /* RegisterViewType.swift */; };
 		9C6A9C3E2BCC1BAE000413AD /* Fonts+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6A9C3D2BCC1BAE000413AD /* Fonts+.swift */; };
 		9C6A9C632BCC22CE000413AD /* AppleSDGothicNeoL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C6A9C5A2BCC22CE000413AD /* AppleSDGothicNeoL.ttf */; };
 		9C6A9C642BCC22CE000413AD /* AppleSDGothicNeoL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C6A9C5A2BCC22CE000413AD /* AppleSDGothicNeoL.ttf */; };
@@ -205,6 +211,13 @@
 		2C1F31D42BCD2A870066819F /* NanaSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NanaSearchBar.swift; sourceTree = "<group>"; };
 		2C1F31D62BCD73C00066819F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2C1F31D82BCD7DC90066819F /* SearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
+		2C2D3D4B2C0385B3002A38AA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2C2D3D4D2C0385D5002A38AA /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		2C2D3D4E2C0385DC002A38AA /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2C2D3D4F2C0385FD002A38AA /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2C2D3D502C03898D002A38AA /* LocalizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationManager.swift; sourceTree = "<group>"; };
+		2C2D3D522C0389C0002A38AA /* Text+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+.swift"; sourceTree = "<group>"; };
+		2C2D3D542C038A54002A38AA /* LocalizedKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedKey.swift; sourceTree = "<group>"; };
 		2C3C75802BCA3ADA00312F26 /* NanaLand.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NanaLand.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C3C75832BCA3ADA00312F26 /* NanaLandApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NanaLandApp.swift; sourceTree = "<group>"; };
 		2C3C75872BCA3ADC00312F26 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -219,7 +232,6 @@
 		2C3C75D02BCAAFF300312F26 /* FavoriteMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMainView.swift; sourceTree = "<group>"; };
 		2C3C75D22BCAB00C00312F26 /* StoryMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryMainView.swift; sourceTree = "<group>"; };
 		2C3C75D42BCAB01500312F26 /* ProfileMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMainView.swift; sourceTree = "<group>"; };
-		2C40DB7C2BE6174E007A3768 /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		2C40DB7E2BE61F05007A3768 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		2C40DB822BE62259007A3768 /* LanguageSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectView.swift; sourceTree = "<group>"; };
 		2C40DB842BE62351007A3768 /* RegisterNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNavigationView.swift; sourceTree = "<group>"; };
@@ -277,6 +289,9 @@
 		2C9CF4DF2BFEDB2D00A346E8 /* HomeViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewType.swift; sourceTree = "<group>"; };
 		2C9CF4E12BFEDF7F00A346E8 /* ReportInfoViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportInfoViewType.swift; sourceTree = "<group>"; };
 		2C9CF4E32BFEE59200A346E8 /* ArticleDetailViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewType.swift; sourceTree = "<group>"; };
+		2C9CF4E52C00701E00A346E8 /* TypeTestNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeTestNavigationView.swift; sourceTree = "<group>"; };
+		2C9CF4E72C00714900A346E8 /* TypeTestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeTestViewModel.swift; sourceTree = "<group>"; };
+		2C9CF4E92C00716B00A346E8 /* RegisterViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewType.swift; sourceTree = "<group>"; };
 		9C6A9C3D2BCC1BAE000413AD /* Fonts+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fonts+.swift"; sourceTree = "<group>"; };
 		9C6A9C5A2BCC22CE000413AD /* AppleSDGothicNeoL.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoL.ttf; sourceTree = "<group>"; };
 		9C6A9C5B2BCC22CE000413AD /* AppleSDGothicNeoR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoR.ttf; sourceTree = "<group>"; };
@@ -402,7 +417,9 @@
 		2C1F31D12BCD14020066819F /* Localizing */ = {
 			isa = PBXGroup;
 			children = (
-				2C40DB7C2BE6174E007A3768 /* Localizable.xcstrings */,
+				2C2D3D4A2C0385B3002A38AA /* Localizable.strings */,
+				2C2D3D502C03898D002A38AA /* LocalizationManager.swift */,
+				2C2D3D542C038A54002A38AA /* LocalizedKey.swift */,
 			);
 			path = Localizing;
 			sourceTree = "<group>";
@@ -651,9 +668,11 @@
 		2C5424FC2BF70FE700B16439 /* TypeTest */ = {
 			isa = PBXGroup;
 			children = (
+				2C9CF4E52C00701E00A346E8 /* TypeTestNavigationView.swift */,
 				2C5424F22BF5CEC700B16439 /* TypeTestView.swift */,
 				2C5424FD2BF7131600B16439 /* TypeTestResultView.swift */,
 				2C5424FF2BF72C3500B16439 /* TripType.swift */,
+				2C9CF4E72C00714900A346E8 /* TypeTestViewModel.swift */,
 			);
 			path = TypeTest;
 			sourceTree = "<group>";
@@ -783,6 +802,7 @@
 				2C9CF4DF2BFEDB2D00A346E8 /* HomeViewType.swift */,
 				2C9CF4E12BFEDF7F00A346E8 /* ReportInfoViewType.swift */,
 				2C9CF4E32BFEE59200A346E8 /* ArticleDetailViewType.swift */,
+				2C9CF4E92C00716B00A346E8 /* RegisterViewType.swift */,
 			);
 			path = ViewType;
 			sourceTree = "<group>";
@@ -797,6 +817,7 @@
 				2C40DBB32BECE671007A3768 /* UINavigationController+.swift */,
 				2C40DBB52BECEE2A007A3768 /* UITabBarController+.swift */,
 				2C9CF4CB2BFC5C1F00A346E8 /* View+.swift */,
+				2C2D3D522C0389C0002A38AA /* Text+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1082,6 +1103,8 @@
 				en,
 				Base,
 				ko,
+				"zh-Hans",
+				ms,
 			);
 			mainGroup = 2C3C75772BCA3ADA00312F26;
 			packageReferences = (
@@ -1115,8 +1138,8 @@
 				2C3C758B2BCA3ADC00312F26 /* Preview Assets.xcassets in Resources */,
 				9C6A9C632BCC22CE000413AD /* AppleSDGothicNeoL.ttf in Resources */,
 				2C3C75882BCA3ADC00312F26 /* Assets.xcassets in Resources */,
+				2C2D3D4C2C0385B3002A38AA /* Localizable.strings in Resources */,
 				2C1F31C02BCD01240066819F /* AppleSDGothicNeoEB.ttf in Resources */,
-				2C40DB7D2BE6174F007A3768 /* Localizable.xcstrings in Resources */,
 				2C1F31C62BCD01390066819F /* AppleSDGothicNeoB.ttf in Resources */,
 				2C1F31C52BCD01390066819F /* AppleSDGothicNeoH.ttf in Resources */,
 				2C1F31C42BCD01390066819F /* AppleSDGothicNeoM.ttf in Resources */,
@@ -1161,6 +1184,7 @@
 				BFC671F32BF7198800D1A2FD /* ShopMainView.swift in Sources */,
 				2C9CF4DC2BFE0EA800A346E8 /* ReportInfoResultView.swift in Sources */,
 				BF3021EE2BDF8E9300CB3966 /* ShopDetailService.swift in Sources */,
+				2C2D3D552C038A54002A38AA /* LocalizedKey.swift in Sources */,
 				2C3C75D52BCAB01500312F26 /* ProfileMainView.swift in Sources */,
 				BF16114B2BDB7881000340F2 /* ShopEndPoint.swift in Sources */,
 				2C1F31D92BCD7DC90066819F /* SearchResultView.swift in Sources */,
@@ -1177,10 +1201,12 @@
 				BFC671F42BF7198800D1A2FD /* ShopDetailModel.swift in Sources */,
 				BF2D93772BFF0EB80057381A /* PolicyView.swift in Sources */,
 				2C80ECBC2BCFCCDA002F38A7 /* EndPoint.swift in Sources */,
+				2C9CF4EA2C00716B00A346E8 /* RegisterViewType.swift in Sources */,
 				2C80ECDA2BD63BAA002F38A7 /* FavoriteEndPoint.swift in Sources */,
 				2C5424FE2BF7131600B16439 /* TypeTestResultView.swift in Sources */,
 				BFF6466A2C00DDEA00BCC41F /* HomeEndPoint.swift in Sources */,
 				BF607F172BF5A29E00770CE7 /* FestivalDetailService.swift in Sources */,
+				2C9CF4E62C00701E00A346E8 /* TypeTestNavigationView.swift in Sources */,
 				2C9CF4D32BFDC4EB00A346E8 /* ReportInfoWritingView.swift in Sources */,
 				2C9CF4E02BFEDB2D00A346E8 /* HomeViewType.swift in Sources */,
 				2C80ECDC2BD79AE7002F38A7 /* FavoriteService.swift in Sources */,
@@ -1210,6 +1236,7 @@
 				2C1F31D52BCD2A870066819F /* NanaSearchBar.swift in Sources */,
 				BF7C0EC02BD0B725008ACB75 /* secret.swift in Sources */,
 				BFABD3532BE7F9E100C3F3A6 /* SeasonModalView.swift in Sources */,
+				2C2D3D532C0389C0002A38AA /* Text+.swift in Sources */,
 				BFABD34D2BE75F3E00C3F3A6 /* FestivalService.swift in Sources */,
 				BFC671F72BF7198800D1A2FD /* ShopMainModel.swift in Sources */,
 				BF3021F02BDF8E9B00CB3966 /* ShopDetailEndPoint.swift in Sources */,
@@ -1231,6 +1258,7 @@
 				2C40DB9A2BE64973007A3768 /* NanaHome.swift in Sources */,
 				2C1F31CE2BCD049C0066819F /* SearchMainView.swift in Sources */,
 				BF9834212BCE720B00A5C289 /* NanapickMainView.swift in Sources */,
+				2C9CF4E82C00714900A346E8 /* TypeTestViewModel.swift in Sources */,
 				BF607F132BF5A01D00770CE7 /* FestivalDetailViewModel.swift in Sources */,
 				BFABD3512BE7634100C3F3A6 /* FestivalModel.swift in Sources */,
 				BF9834182BCE700B00A5C289 /* FestivalMainView.swift in Sources */,
@@ -1292,6 +1320,7 @@
 				2C80ECA02BCE55E0002F38A7 /* ArticleItem.swift in Sources */,
 				2C80ECEC2BDAA58C002F38A7 /* CalendarFilterView.swift in Sources */,
 				BF1611492BDB7870000340F2 /* ShopService.swift in Sources */,
+				2C2D3D512C03898D002A38AA /* LocalizationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1326,6 +1355,20 @@
 			targetProxy = 2C3C759B2BCA3ADD00312F26 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2C2D3D4A2C0385B3002A38AA /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2C2D3D4B2C0385B3002A38AA /* en */,
+				2C2D3D4D2C0385D5002A38AA /* zh-Hans */,
+				2C2D3D4E2C0385DC002A38AA /* ko */,
+				2C2D3D4F2C0385FD002A38AA /* ms */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		2C3C75A22BCA3ADD00312F26 /* Debug */ = {
@@ -1455,23 +1498,27 @@
 				CODE_SIGN_ENTITLEMENTS = NanaLand/NanaLand.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"NanaLand/Preview Content\"";
 				DEVELOPMENT_TEAM = UM6P9H795G;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NanaLand/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "nanaland in Jeju";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jeju.nanaland;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1489,23 +1536,27 @@
 				CODE_SIGN_ENTITLEMENTS = NanaLand/NanaLand.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"NanaLand/Preview Content\"";
 				DEVELOPMENT_TEAM = UM6P9H795G;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NanaLand/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "nanaland in Jeju";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jeju.nanaland;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

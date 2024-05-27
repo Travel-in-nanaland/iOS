@@ -15,13 +15,13 @@ struct NanaSearchBar: View {
 	let clearButtonAction: () -> Void
 	
 	init(
+		placeHolder: String = "",
 		searchTerm: Binding<String>,
-		placeHolder: String = String(localized: "inputSearchTerm"),
 		searchAction: @escaping () async -> Void = {},
 		clearButtonAction: @escaping () -> Void = {}
 	) {
-		self._searchTerm = searchTerm
 		self.placeHolder = placeHolder
+		self._searchTerm = searchTerm
 		self.searchAction = searchAction
 		self.clearButtonAction = clearButtonAction
 	}
@@ -65,5 +65,5 @@ struct NanaSearchBar: View {
 }
 
 #Preview {
-	NanaSearchBar(searchTerm: .constant(""))
+	NanaSearchBar(placeHolder: LocalizedKey.inputSearchTerm.localized(for: .korean), searchTerm: .constant(""))
 }

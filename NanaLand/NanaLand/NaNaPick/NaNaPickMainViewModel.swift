@@ -33,8 +33,6 @@ class NaNaPickMainViewModel: ObservableObject {
             if data != nil {
                 await MainActor.run {
                     state.getNaNaPickResponse.data.append(contentsOf: data!.data.data)
-                    print(data!.data.data)
-                    
                 }
             } else {
                 print("Error")

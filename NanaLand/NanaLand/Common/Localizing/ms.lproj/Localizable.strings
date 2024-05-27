@@ -1,0 +1,31 @@
+/* 
+  Localizable.strings
+  NanaLand
+
+  Created by 정현우 on 5/26/24.
+  
+*/
+//MARK: - Common
+"resultCount" = " Results";
+
+//MARK: - Tab
+"home" = "Laman Utama";
+"favorite" = "Simpan";
+"jejuStory" = "Cerita Jeju";
+"myNana" = "nana saya";
+
+//MARK: - Category
+"all" = "Seluruh";
+"nature" = "7 Keajaiban Alam";
+"festival" = "Festival";
+"market" = "Pasaran Tradisional";
+"experience" = "Aktiviti Menarik";
+"nanaPick" = "Pilihan Nana";
+
+//MARK: - Search
+"inputSearchTerm" = "Sila masukkan kata carian.";
+"recentSearchTerm" = "Carian terkini";
+"removeAll" = "Kosongkan semua";
+"popularSearchTerm" = "Paling Banyak Dicari!";
+"searchVolumeUp" = "eningkatan Pencarian! Tempat Jeju 🍊";
+"noResult" = "Carian anda tidak\nmengembalikan sebarang hasil.";

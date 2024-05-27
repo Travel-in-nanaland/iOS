@@ -18,7 +18,7 @@ struct HomeMainView: View {
 			VStack(spacing: 0) {
 				HStack(spacing: 0) {
 					Button(action: {
-						print("button1")
+						
 					}) {
 						Image("icLogo")
 						
@@ -42,7 +42,7 @@ struct HomeMainView: View {
 					Spacer()
 					
 					Button(action: {
-						print("alarm")
+						
 					}) {
 						Image("icBell")
 					}

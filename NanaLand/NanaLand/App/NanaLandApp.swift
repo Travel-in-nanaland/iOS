@@ -12,6 +12,7 @@ import GoogleSignIn
 
 @main
 struct NanaLandApp: App {
+	@StateObject var localizationdManager = LocalizationManager.shared
 
 	init() {
 		KakaoSDK.initSDK(appKey: Secrets.kakaoLoginNativeAppKey)
@@ -20,6 +21,7 @@ struct NanaLandApp: App {
     var body: some Scene {
         WindowGroup {
 			NanaHome()
+				.environmentObject(localizationdManager)
 				.onOpenURL{ url in
 					if (AuthApi.isKakaoTalkLoginUrl(url)) {
 						AuthController.handleOpenUrl(url: url)

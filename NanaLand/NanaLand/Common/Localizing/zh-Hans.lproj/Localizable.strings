@@ -1,0 +1,31 @@
+/* 
+  Localizable.strings
+  NanaLand
+
+  Created by 정현우 on 5/26/24.
+  
+*/
+//MARK: - Common
+"resultCount" = "件";
+
+//MARK: - Tab
+"home" = "首页";
+"favorite" = "收藏";
+"jejuStory" = "济州故事";
+"myNana" = "我的nana";
+
+//MARK: - Category
+"all" = "全部";
+"nature" = "七大自然";
+"festival" = "庆典";
+"market" = "传统市场";
+"experience" = "特色体验";
+"nanaPick" = "nana推荐";
+
+//MARK: - Search
+"inputSearchTerm" = "请输入搜索词。";
+"recentSearchTerm" = "最近搜索词";
+"removeAll" = "全部清除";
+"popularSearchTerm" = "搜索量最多";
+"searchVolumeUp" = "搜索量上升！ JEJU Place 🍊";
+"noResult" = "没有符合条件的搜索结果";

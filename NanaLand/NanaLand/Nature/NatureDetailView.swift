@@ -310,7 +310,7 @@ struct NatureDetailView: View {
                             .padding(.bottom, 32)
                             
                             Button {
-                                
+								AppState.shared.navigationPath.append(ArticleViewType.reportInfo(id: viewModel.state.getNatureDetailResponse.id, category: .nature))
                             } label: {
                                 Text("정보 수정 제안")
                                     .background(
@@ -336,7 +336,6 @@ struct NatureDetailView: View {
                     .overlay(
                         GeometryReader { proxy -> Color in
                             let offset = proxy.frame(in: .global).minY
-                            print(offset)
                             return Color.clear
                         }
                             .frame(width: 0, height: 0)

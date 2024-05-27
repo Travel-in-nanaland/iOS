@@ -20,7 +20,7 @@ struct NanaLandTabView: View {
                 HomeMainView()
                     .tabItem {
                         Label(
-                            title: { Text(String(localized: "home")).font(.gothicNeo(.semibold, size: 10)) },
+							title: { Text(.home).font(.gothicNeo(.semibold, size: 10)) },
 							icon: { appState.currentTab == .home ? Image(.icHomeFill) : Image(.icHome) }
                         )
                     }
@@ -29,7 +29,7 @@ struct NanaLandTabView: View {
                 FavoriteMainView()
                     .tabItem {
                         Label(
-                            title: { Text(String(localized: "favorite")).font(.gothicNeo(.semibold, size: 10)) },
+							title: { Text(.favorite).font(.gothicNeo(.semibold, size: 10)) },
                             icon: { appState.currentTab == .favorite ? Image(.icHeartFill) : Image(.icHeart) }
                         )
                     }
@@ -38,7 +38,7 @@ struct NanaLandTabView: View {
                 StoryMainView()
                     .tabItem {
                         Label(
-                            title: { Text("제주 이야기").font(.gothicNeo(.semibold, size: 10)) },
+							title: { Text(.jejuStory).font(.gothicNeo(.semibold, size: 10)) },
                             icon: { appState.currentTab == .story ? Image(.icStoryFill) : Image(.icStory) }
                         )
                     }
@@ -47,7 +47,7 @@ struct NanaLandTabView: View {
                 ProfileMainView()
                     .tabItem {
                         Label(
-                            title: { Text("나의 나나").font(.gothicNeo(.semibold, size: 10)) },
+							title: { Text(.myNana).font(.gothicNeo(.semibold, size: 10)) },
                             icon: { appState.currentTab == .profile ? Image(.icMyPageFill) : Image(.icMyPage) }
                         )
                     }
@@ -64,6 +64,9 @@ struct NanaLandTabView: View {
 			}
 		}
         .tint(.baseBlack)
+		.fullScreenCover(isPresented: $appState.showTypeTest) {
+			TypeTestNavigationView(nickname: appState.userInfo.nickname)
+		}
         .introspect(.tabView, on: .iOS(.v16, .v17)) { tabView in
             let appearance = UITabBarAppearance()
             

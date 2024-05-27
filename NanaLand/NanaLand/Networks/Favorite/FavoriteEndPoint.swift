@@ -15,6 +15,7 @@ enum FavoriteEndPoint {
 	case getMarketFavoriteList(page: Int)
 	case getFestivalFavoriteList(page: Int)
 	case getExperienceFavoriteList(page: Int)
+	case getNanaFavoriteList(page: Int)
 }
 
 extension FavoriteEndPoint: EndPoint {
@@ -36,6 +37,8 @@ extension FavoriteEndPoint: EndPoint {
 			return "/festival/list"
 		case .getExperienceFavoriteList:
 			return "/experience/list"
+		case .getNanaFavoriteList:
+			return "/nana/list"
 		}
 	}
 	
@@ -43,7 +46,7 @@ extension FavoriteEndPoint: EndPoint {
 		switch self {
 		case .toggleFavorite:
 			return .post
-		case .getAllFavoriteList, .getNatureFavoriteList, .getMarketFavoriteList, .getFestivalFavoriteList, .getExperienceFavoriteList:
+		case .getAllFavoriteList, .getNatureFavoriteList, .getMarketFavoriteList, .getFestivalFavoriteList, .getExperienceFavoriteList, .getNanaFavoriteList:
 			return .get
 		}
 	}
@@ -74,6 +77,11 @@ extension FavoriteEndPoint: EndPoint {
 			]
 			return .requestParameters(parameters: param)
 		case let .getExperienceFavoriteList(page: page):
+			let param: [String: Any] = [
+				"page": page
+			]
+			return .requestParameters(parameters: param)
+		case let .getNanaFavoriteList(page: page):
 			let param: [String: Any] = [
 				"page": page
 			]

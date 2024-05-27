@@ -45,11 +45,9 @@ class ProfileUpdateViewModel: ObservableObject {
                         self.state.isDuplicate = true
                     }
                     if let updateUserInfo = updateUserInfo {
-                        print(updateUserInfo.data.profileImageUrl)
                         state.updatedNickName = updateUserInfo.data.nickname
                         state.updatedDescription = updateUserInfo.data.description
                         state.updatedProfilImage = updateUserInfo.data.profileImageUrl
-                        print(state.updatedNickName)
                     }
                  
                     

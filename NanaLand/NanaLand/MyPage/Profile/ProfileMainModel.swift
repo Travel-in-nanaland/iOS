@@ -8,12 +8,13 @@
 import Foundation
 
 struct ProfileMainModel: Codable {
+	let consentItems: [ConsentItem]
     let email: String
     let provider: String
     var profileImageUrl: String
     var nickname: String
     var description: String
     let level: Int
-    let travelType: String
+    let travelType: String?
     let hashtags: [String]
 }

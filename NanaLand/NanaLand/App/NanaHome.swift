@@ -50,12 +50,21 @@ struct NanaHome: View {
 				}
 		} else if locale.isEmpty {
 			LanguageSelectView()
-		} else if registerVM.state.isRegisterNeeded {
+		} else if AppState.shared.isRegisterNeeded {
 			RegisterNavigationView(registerVM: registerVM)
 		} else if !isLogin {
 			LoginView(registerVM: registerVM)
 		} else {
 			NanaLandTabView()
+				.onAppear {
+					if AppState.shared.userInfo.nickname == "" {
+						Task {
+							await getUserInfo()
+							
+							AppState.shared.userInfo = viewModel.state.getProfileMainResponse
+						}
+					}
+				}
 		}
 	}
     

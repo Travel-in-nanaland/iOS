@@ -92,28 +92,28 @@ struct ReportInfoWritingView: View {
 							.font(.title02_bold)
 							.padding(.bottom, 8)
 						
-						TextEditor(text: $content)
-							.focused($focusedField, equals: .content)
-							.padding(.horizontal, 16)
-							.padding(.top, 12)
-							.frame(height: 120)
-							.background {
-								RoundedRectangle(cornerRadius: 12)
-									.stroke(Color.gray2, lineWidth: 1)
+						ZStack {
+							RoundedRectangle(cornerRadius: 12)
+								.stroke(Color.gray2, lineWidth: 1)
+							
+							if content.isEmpty {
+								TextEditor(text: .constant("수정 요청하신 항목의 상세 내용이나 그 외 기타 사항이 있으시면 의견을 남겨주세요."))
+									.padding(.horizontal, 16)
+									.padding(.top, 10)
+									.foregroundStyle(Color.gray2)
+									.scrollContentBackground(.hidden)
+									.font(.body02)
+									.disabled(true)
 							}
-							.scrollContentBackground(.hidden)
-							.font(.body02)
-							.overlay(alignment: .topLeading) {
-								if content.isEmpty {
-									Text("수정 요청하신 항목의 상세 내용이나 그 외 기타 사항이 있으시면 의견을 남겨주세요.")
-										.padding(.top, 16)
-										.padding(.horizontal, 16)
-										.font(.body02)
-										.foregroundStyle(Color.gray2)
-										.multilineTextAlignment(.leading)
-								}
-							}
-							.padding(.bottom, 48)
+							TextEditor(text: $content)
+								.focused($focusedField, equals: .content)
+								.padding(.horizontal, 16)
+								.padding(.top, 10)
+								.scrollContentBackground(.hidden)
+								.font(.body02)
+						}
+						.frame(height: 120)
+						.padding(.bottom, 48)
 						
 						Text("이메일")
 							.font(.title02_bold)
@@ -124,28 +124,28 @@ struct ReportInfoWritingView: View {
 							.foregroundStyle(Color(hex: 0x717171))
 							.padding(.bottom, 8)
 						
-						TextEditor(text: $email)
-							.focused($focusedField, equals: .email)
-							.padding(.horizontal, 16)
-							.padding(.top, 12)
-							.frame(height: 48)
-							.background {
-								RoundedRectangle(cornerRadius: 12)
-									.stroke(reportInfoVM.state.showEmailErrorMessage ? Color.warning : Color.gray2, lineWidth: 1)
+						ZStack {
+							RoundedRectangle(cornerRadius: 12)
+								.stroke(reportInfoVM.state.showEmailErrorMessage ? Color.warning : Color.gray2, lineWidth: 1)
+							
+							if email.isEmpty {
+								TextEditor(text: .constant("aaaaaaa@naver.com"))
+									.padding(.horizontal, 16)
+									.padding(.top, 6)
+									.foregroundStyle(Color.gray2)
+									.font(.body02)
+									.disabled(true)
 							}
-							.lineLimit(1)
-							.scrollContentBackground(.hidden)
-							.font(.body02)
-							.overlay(alignment: .topLeading) {
-								if email.isEmpty {
-									Text(verbatim: "aaaaaaa@naver.com")
-										.padding(.top, 16)
-										.padding(.horizontal, 16)
-										.font(.body02)
-										.foregroundStyle(Color.gray2)
-										.multilineTextAlignment(.leading)
-								}
-							}
+							TextEditor(text: $email)
+								.focused($focusedField, equals: .email)
+								.padding(.horizontal, 16)
+								.padding(.top, 6)
+								.lineLimit(1)
+								.scrollContentBackground(.hidden)
+								.font(.body02)
+						}
+						.frame(height: 48)
+						
 					}
 					.padding(.horizontal, 16)
 					.padding(.bottom, 8)
