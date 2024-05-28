@@ -94,12 +94,7 @@ enum LocalizedKey: String {
 		}
 		return NSLocalizedString(self.rawValue, bundle: bundle, comment: "")
 	}
-	
-//	func localized(for language: Language, _ arguments: CVarArg...) -> String {
-//		let format = localized(for: language)
-//		return String(format: format, arguments: arguments)
-//	}
-	
+
 	func localized(for language: Language, _ arguments: [CVarArg]) -> String {
 			let format = localized(for: language)
 			return String(format: format, arguments: arguments)
