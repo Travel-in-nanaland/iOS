@@ -33,9 +33,10 @@ struct RegisterNicknameAndProfileView: View {
     }
 	
 	private var titleText: some View {
-		Text("사용할 이름을 작성 및\n프로필을 선택해 주세요.")
+		Text(.enterNicknameAndProfile)
 			.font(.largeTitle02)
 			.foregroundStyle(Color.baseBlack)
+			.multilineTextAlignment(.center)
 	}
 	
 	private var profilePic: some View {
@@ -90,7 +91,7 @@ struct RegisterNicknameAndProfileView: View {
 			HStack {
 				Spacer()
 				
-				Text("\(registerVM.state.nickname.count) / 8 자")
+				Text("\(registerVM.state.nickname.count) / 8 " + .charCount)
 					.font(.caption01_semibold)
 					.foregroundStyle(registerVM.state.showNicknameError ? Color.warning : Color.gray1)
 			}
@@ -115,7 +116,7 @@ struct RegisterNicknameAndProfileView: View {
 						.frame(width: 20, height: 20)
 						.foregroundStyle(Color.warning)
 					
-					Text(registerVM.state.nicknameErrorMessage)
+					Text(registerVM.state.nicknameErrorMessage ?? .invalidNickname)
 						.font(.gothicNeo(.medium, size: 12))
 						.foregroundStyle(Color.warning)
 					
@@ -137,7 +138,7 @@ struct RegisterNicknameAndProfileView: View {
 				.frame(width: Constants.screenWidth - 32, height: 48)
 				.opacity(!registerVM.state.nickname.isEmpty ? 1.0 : 0.1)
 				.overlay {
-					Text("확인")
+					Text(.confirm)
 						.foregroundStyle(Color.baseWhite)
 						.font(.body_bold)
 				}
@@ -146,5 +147,10 @@ struct RegisterNicknameAndProfileView: View {
 }
 
 #Preview {
-    RegisterNicknameAndProfileView()
+	@StateObject var lm = LocalizationManager()
+	lm.setLanguage(.malaysia)
+	return RegisterNicknameAndProfileView()
+		.environmentObject(lm)
+		.environmentObject(RegisterViewModel())
+    
 }

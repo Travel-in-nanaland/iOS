@@ -7,6 +7,11 @@
 */
 //MARK: - Common
 "resultCount" = " Results";
+"charCount" = "aksara";
+"confirm" = "Sahkan";
+"next" = "Seterusnya";
+"requiredWithBracket" = "(Wajib)";
+"optionalWithBracket" = "(Opsional)";
 
 //MARK: - Tab
 "home" = "Laman Utama";
@@ -29,3 +34,48 @@
 "popularSearchTerm" = "Paling Banyak Dicari!";
 "searchVolumeUp" = "eningkatan Pencarian! Tempat Jeju 🍊";
 "noResult" = "Carian anda tidak\nmengembalikan sebarang hasil.";
+
+//MARK: - Login/Register
+"nonMemeberLogin" = "Guna Tanpa Log Masuk";
+"welcomeToNanaLand" = "Selamat datang ke\nnanaland in Jeju";
+"enterNicknameAndProfile" = " Sila tulis nama penggunaan\ndan pilih profil.";
+
+//MARK: - Terms
+"allAgree" = "Setuju Semua";
+"termsOfUseAgree" = "Terma Penggunaan & Dasar Privasi";
+"marketingAgree" = "Persetujuan Pemasaran";
+"locationAgree" = "Terma Perkhidmatan Berasaskan Lokasi";
+
+
+//MARK: - Error/Alert
+"duplicatedNickname" = "Nama panggilan ini sudah digunakan oleh pengguna lain.";
+"invalidNickname" = "Nama panggilan ini tidak boleh digunakan.";
+"onlyCharSpaceNumberNickname" = "Nama panggilan hanya boleh mengandungi huruf, ruang, dan nombor.";
+
+//MARK: - TypeTest
+// Question
+"typeTest1Q1L" = "Apakah pilihan %@ ketika memilih destinasi perjalanan?";
+"typeTest1Q2L" = "";
+"typeTest2Q1L" = "Apakah pilihan %@ ketika merancang perjalanan?";
+"typeTest2Q2L" = "";
+"typeTest3Q1L" = "Apakah pilihan %@ ketika menetapkan bajet perjalanan?";
+"typeTest3Q2L" = "";
+"typeTest4Q1L" = "Apakah pilihan %@ ketika berjalan?";
+"typeTest4Q2L" = "";
+"typeTest5Q1L" = "Apa yang paling ingin dilakukan dalam perjalanan?";
+"typeTest5Q2L" = "";
+// Answer
+"touristSpot" = "Tempat Pelancongan Yang Sibuk";
+"localSpot" = "Tempat Tempatan Yang Sunyi";
+"flexible" = "Fleksibel";
+"organized" = "Terancang Sepenuhnya";
+"budgetTravel" = "Perjalanan Nilai Terbaik";
+"luxuryTravel" = "Perjalanan Mewah";
+"photoRemain" = "Hanya Foto Yang Tinggal!";
+"captureWithEyes" = "Perlu Dikenang Dengan Mata";
+"sentimentalPlace" = "Tempat Emosi";
+"traditionalCulture" = "Budaya Tradisional";
+"naturalScenery" = "Pemandangan Semula Jadi";
+"themePark" = "Taman Tema";
+
+"skipTypeTest" = "Langkau ujian";

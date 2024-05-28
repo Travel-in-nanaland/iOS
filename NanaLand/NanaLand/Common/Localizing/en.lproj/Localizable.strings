@@ -7,6 +7,11 @@
 */
 //MARK: - Common
 "resultCount" = " Results";
+"charCount" = "characters";
+"confirm" = "Confirm";
+"next" = "Next";
+"requiredWithBracket" = "(Required)";
+"optionalWithBracket" = "(Optional)";
 
 //MARK: - Tab
 "home" = "Home";
@@ -29,3 +34,48 @@
 "popularSearchTerm" = "Most Searched!";
 "searchVolumeUp" = "Search Volume UP! JEJU Place 🍊";
 "noResult" = "There are no results for that search.";
+
+//MARK: - Login/Register
+"nonMemeberLogin" = "Browse Without Logging In";
+"welcomeToNanaLand" = "Welcome to\nnanaland in Jeju";
+"enterNicknameAndProfile" = "Enter your name and\nselect a profile picture.";
+
+//MARK: - Terms
+"allAgree" = "Agree to All";
+"termsOfUseAgree" = "Agree to Terms of Use and\nPrivacy Policy";
+"marketingAgree" = "Agree to Marketing Use";
+"locationAgree" = "Agree to Location-Based Service Terms";
+
+
+//MARK: - Error/Alert
+"duplicatedNickname" = "This nickname is already in use by another user.";
+"invalidNickname" = "This nickname cannot be used.";
+"onlyCharSpaceNumberNickname" = "Nicknames can only contain letters, spaces, and numbers.";
+
+//MARK: - TypeTest
+// Question
+"typeTest1Q1L" = "When choosing a travel destination,";
+"typeTest1Q2L" = "what is %@’s choice?";
+"typeTest2Q1L" = "When planning a trip,";
+"typeTest2Q2L" = "what is %@'s choice?";
+"typeTest3Q1L" = "When budgeting for a trip,";
+"typeTest3Q2L" = "what is %@'s choice?";
+"typeTest4Q1L" = "When traveling,";
+"typeTest4Q2L" = "what is %@'s preference?";
+"typeTest5Q1L" = "What do you most want to do on your trip?";
+"typeTest5Q2L" = "";
+// Answer
+"touristSpot" = "Active tourist spots";
+"localSpot" = "Quiet local spots";
+"flexible" = "Flexible";
+"organized" = "Highly organized";
+"budgetTravel" = "Budget travel";
+"luxuryTravel" = "Luxury travel";
+"photoRemain" = "Only photos remain!";
+"captureWithEyes" = "Capture with your eyes";
+"sentimentalPlace" = "Sentimental places";
+"traditionalCulture" = "Traditional culture";
+"naturalScenery" = "Natural scenery";
+"themePark" = "Theme parks";
+
+"skipTypeTest" = "Skip the test";

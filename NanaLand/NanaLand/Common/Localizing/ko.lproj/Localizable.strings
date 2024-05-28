@@ -7,6 +7,11 @@
 */
 //MARK: - Common
 "resultCount" = "건";
+"charCount" = "자";
+"confirm" = "확인";
+"next" = "다음";
+"requiredWithBracket" = "(필수)";
+"optionalWithBracket" = "(선택)";
 
 //MARK: - Tab
 "home" = "홈";
@@ -29,3 +34,48 @@
 "popularSearchTerm" = "가장 많이\\\\ 검색하고 있어요!";
 "searchVolumeUp" = "검색량 UP ! JEJU Place 🍊";
 "noResult" = "해당 검색 결과가 없습니다.";
+
+//MARK: - Login/Register
+"nonMemeberLogin" = "로그인없이 둘러보기";
+"welcomeToNanaLand" = "nanaland in Jeju에\n오신 것을 환영합니다.";
+"enterNicknameAndProfile" = "사용할 이름을 작성 및\n프로필을 선택해 주세요.";
+
+//MARK: - Terms
+"allAgree" = "전체 동의";
+"termsOfUseAgree" = "이용약관 동의 및 개인정보 처리방침";
+"marketingAgree" = "마케팅 활용 동의";
+"locationAgree" = "위치기반 서비스 약관 동의";
+
+
+//MARK: - Error/Alert
+"duplicatedNickname" = "해당 닉네임은 다른 사용자가 사용 중입니다.";
+"invalidNickname" = "해당 닉네임은 사용할 수 없습니다.";
+"onlyCharSpaceNumberNickname" = "닉네임에는 문자, 띄어쓰기, 숫자만 가능합니다.";
+
+//MARK: - TypeTest
+// Question
+"typeTest1Q1L" = "여행 장소를";
+"typeTest1Q2L" = "고를 때 %@ 님은?";
+"typeTest2Q1L" = "여행 계획을";
+"typeTest2Q2L" = "세울 때 %@ 님은?";
+"typeTest3Q1L" = "여행 경비를";
+"typeTest3Q2L" = "정할 때 %@ 님은? ";
+"typeTest4Q1L" = "여행 다닐 때";
+"typeTest4Q2L" = "%@ 님은? ";
+"typeTest5Q1L" = "여행에서 가장";
+"typeTest5Q2L" = "하고 싶은 것은? ";
+// Answer
+"touristSpot" = "활발한 관광 장소";
+"localSpot" = "한적한 로컬 장소";
+"flexible" = "유동적";
+"organized" = "완전 계획적";
+"budgetTravel" = "가성비 여행";
+"luxuryTravel" = "럭셔리 여행";
+"photoRemain" = "남는건 사진뿐!";
+"captureWithEyes" = "눈으로 담아야지";
+"sentimentalPlace" = "감성 장소";
+"traditionalCulture" = "전통 문화";
+"naturalScenery" = "자연 경관";
+"themePark" = "테마파크";
+
+"skipTypeTest" = "테스트 건너뛰기";
