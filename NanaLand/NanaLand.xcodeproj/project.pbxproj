@@ -36,8 +36,6 @@
 		2C3C75AF2BCA3C5000312F26 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2C3C75AE2BCA3C5000312F26 /* Alamofire */; };
 		2C3C75B22BCA3C6B00312F26 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 2C3C75B12BCA3C6B00312F26 /* Kingfisher */; };
 		2C3C75B52BCA3F5A00312F26 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 2C3C75B42BCA3F5A00312F26 /* Lottie */; };
-		2C3C75B82BCA41EE00312F26 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 2C3C75B72BCA41EE00312F26 /* Realm */; };
-		2C3C75BA2BCA41EE00312F26 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2C3C75B92BCA41EE00312F26 /* RealmSwift */; };
 		2C3C75BF2BCA53EE00312F26 /* HomeMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C75BE2BCA53EE00312F26 /* HomeMainView.swift */; };
 		2C3C75CC2BCAA93D00312F26 /* NanaLandTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C75CB2BCAA93D00312F26 /* NanaLandTabView.swift */; };
 		2C3C75D12BCAAFF300312F26 /* FavoriteMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C75D02BCAAFF300312F26 /* FavoriteMainView.swift */; };
@@ -390,10 +388,8 @@
 				2C40DB982BE644BE007A3768 /* KakaoSDK in Frameworks */,
 				2C80ECEA2BDAA551002F38A7 /* SwiftUICalendar in Frameworks */,
 				2C3C75AF2BCA3C5000312F26 /* Alamofire in Frameworks */,
-				2C3C75B82BCA41EE00312F26 /* Realm in Frameworks */,
 				2C40DBBB2BEDFBC3007A3768 /* GoogleSignInSwift in Frameworks */,
 				2C80ECCD2BD2C27D002F38A7 /* SwiftUIIntrospect in Frameworks */,
-				2C3C75BA2BCA41EE00312F26 /* RealmSwift in Frameworks */,
 				2C3C75B52BCA3F5A00312F26 /* Lottie in Frameworks */,
 				2C40DBB92BEDFBC3007A3768 /* GoogleSignIn in Frameworks */,
 			);
@@ -1051,8 +1047,6 @@
 				2C3C75AE2BCA3C5000312F26 /* Alamofire */,
 				2C3C75B12BCA3C6B00312F26 /* Kingfisher */,
 				2C3C75B42BCA3F5A00312F26 /* Lottie */,
-				2C3C75B72BCA41EE00312F26 /* Realm */,
-				2C3C75B92BCA41EE00312F26 /* RealmSwift */,
 				2C80ECCC2BD2C27D002F38A7 /* SwiftUIIntrospect */,
 				2C80ECE92BDAA551002F38A7 /* SwiftUICalendar */,
 				2C40DB972BE644BE007A3768 /* KakaoSDK */,
@@ -1138,7 +1132,6 @@
 				2C3C75AD2BCA3C5000312F26 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				2C3C75B02BCA3C6B00312F26 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				2C3C75B32BCA3F5A00312F26 /* XCRemoteSwiftPackageReference "lottie-spm" */,
-				2C3C75B62BCA41EE00312F26 /* XCRemoteSwiftPackageReference "realm-swift" */,
 				2C80ECCB2BD2C27D002F38A7 /* XCRemoteSwiftPackageReference "swiftui-introspect" */,
 				2C80ECE82BDAA551002F38A7 /* XCRemoteSwiftPackageReference "SwiftUICalendar" */,
 				2C40DB962BE644BE007A3768 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
@@ -1738,14 +1731,6 @@
 				minimumVersion = 4.4.2;
 			};
 		};
-		2C3C75B62BCA41EE00312F26 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/realm-swift.git";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 		2C40DB962BE644BE007A3768 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
@@ -1795,16 +1780,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2C3C75B32BCA3F5A00312F26 /* XCRemoteSwiftPackageReference "lottie-spm" */;
 			productName = Lottie;
-		};
-		2C3C75B72BCA41EE00312F26 /* Realm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2C3C75B62BCA41EE00312F26 /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = Realm;
-		};
-		2C3C75B92BCA41EE00312F26 /* RealmSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2C3C75B62BCA41EE00312F26 /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = RealmSwift;
 		};
 		2C40DB972BE644BE007A3768 /* KakaoSDK */ = {
 			isa = XCSwiftPackageProductDependency;
