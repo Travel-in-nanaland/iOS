@@ -26,6 +26,7 @@ struct LocationModalView: View {
     var locationArray = ["제주시", "애월", "조천", "한경", "구좌", "한림", "우도", "추자", "서귀포시", "대정", "안덕", "남원", "표선", "성산"]
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 4)
     var body: some View {
+        
         VStack(spacing: 0) {
             HStack(spacing: 0) {
                 Text("지역")
@@ -119,6 +120,7 @@ struct LocationModalView: View {
                 .padding(.trailing, 58)
             }
             .padding(.bottom, 24)
+            Spacer()
             Button(action: {
                 // 눌린 버튼을 selectedLocation에다가 추가해준다. 즉 buttonsToggled[index]가 true인 애들만 골라서 selectedLocation에다가 추가 한 이후에, 그거에 대한 API 호출을 하고 닫는다.
                 // todo
@@ -133,10 +135,7 @@ struct LocationModalView: View {
 
                 Task {
                     if title == "이번달" {
-                        await getLocationFestivalMainItem(page: 0, size: 18, filterName: selectedLocation.joined(separator: ","), start: "", end: "")
-                        print(selectedLocation.joined(separator: ","))
-                        print(startDate)
-                        print(endDate)
+                        await getLocationFestivalMainItem(page: 0, size: 18, filterName: selectedLocation.joined(separator: ","), start: startDate, end: endDate)
                     }
                     else if title == "종료된" {
                         await getPastLocationFestivalMainItem(page: 0, size: 18, filterName: selectedLocation.joined(separator: ","))
@@ -150,13 +149,10 @@ struct LocationModalView: View {
                     }
                     
                     location = selectedLocation.joined(separator: ",")
-                    print(location)
                     // 장소 선택 안 할시 전 지역
                     if location == "" {
                         location = "전 지역"
                     }
-                    
-                    
                 }
              
                 isModalShown = false
@@ -170,8 +166,7 @@ struct LocationModalView: View {
                 RoundedRectangle(cornerRadius: 30)
                     .fill(Color.main)
             )
-
-            Spacer()
+            .padding(.bottom, 24)
             
         }
         
