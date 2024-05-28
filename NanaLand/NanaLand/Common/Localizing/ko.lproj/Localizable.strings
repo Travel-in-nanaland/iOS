@@ -9,6 +9,7 @@
 "resultCount" = "건";
 "charCount" = "자";
 "confirm" = "확인";
+"next" = "다음";
 "requiredWithBracket" = "(필수)";
 "optionalWithBracket" = "(선택)";
 
@@ -50,3 +51,31 @@
 "duplicatedNickname" = "해당 닉네임은 다른 사용자가 사용 중입니다.";
 "invalidNickname" = "해당 닉네임은 사용할 수 없습니다.";
 "onlyCharSpaceNumberNickname" = "닉네임에는 문자, 띄어쓰기, 숫자만 가능합니다.";
+
+//MARK: - TypeTest
+// Question
+"typeTest1Q1L" = "여행 장소를";
+"typeTest1Q2L" = "고를 때 %@ 님은?";
+"typeTest2Q1L" = "여행 계획을";
+"typeTest2Q2L" = "세울 때 %@ 님은?";
+"typeTest3Q1L" = "여행 경비를";
+"typeTest3Q2L" = "정할 때 %@ 님은? ";
+"typeTest4Q1L" = "여행 다닐 때";
+"typeTest4Q2L" = "%@ 님은? ";
+"typeTest5Q1L" = "여행에서 가장";
+"typeTest5Q2L" = "하고 싶은 것은? ";
+// Answer
+"touristSpot" = "활발한 관광 장소";
+"localSpot" = "한적한 로컬 장소";
+"flexible" = "유동적";
+"organized" = "완전 계획적";
+"budgetTravel" = "가성비 여행";
+"luxuryTravel" = "럭셔리 여행";
+"photoRemain" = "남는건 사진뿐!";
+"captureWithEyes" = "눈으로 담아야지";
+"sentimentalPlace" = "감성 장소";
+"traditionalCulture" = "전통 문화";
+"naturalScenery" = "자연 경관";
+"themePark" = "테마파크";
+
+"skipTypeTest" = "테스트 건너뛰기";

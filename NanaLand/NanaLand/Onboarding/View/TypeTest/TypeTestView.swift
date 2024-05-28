@@ -9,14 +9,15 @@ import SwiftUI
 
 struct TypeTestView: View {
 	@EnvironmentObject var typeTestVM: TypeTestViewModel
+	let nickname: String
 	let page: Int
-	let titleFirstLine: String
-	let titleSecondLine: String
+	let titleFirstLine: LocalizedKey
+	let titleSecondLine: LocalizedKey
 	let isTwoLine: Bool
-	let firstItem: (image: ImageResource, title: String)
-	let secondItem: (image: ImageResource, title: String)
-	let thirdItem: (image: ImageResource, title: String)?
-	let fourthItem: (image: ImageResource, title: String)?
+	let firstItem: (image: ImageResource, title: LocalizedKey)
+	let secondItem: (image: ImageResource, title: LocalizedKey)
+	let thirdItem: (image: ImageResource, title: LocalizedKey)?
+	let fourthItem: (image: ImageResource, title: LocalizedKey)?
 	
 	let itemSize = (Constants.screenWidth - 120) / 2
 	
@@ -24,15 +25,17 @@ struct TypeTestView: View {
 	@State var selectedIndex: Int? = nil
 	
 	init(
+		nickname: String,
 		page: Int,
-		titleFirstLine: String,
-		titleSecondLine: String,
+		titleFirstLine: LocalizedKey,
+		titleSecondLine: LocalizedKey,
 		isTwoLine: Bool = false,
-		firstItem: (image: ImageResource, title: String),
-		secondItem: (image: ImageResource, title: String),
-		thirdItem: (image: ImageResource, title: String)? = nil,
-		fourthItem: (image: ImageResource, title: String)? = nil
+		firstItem: (image: ImageResource, title: LocalizedKey),
+		secondItem: (image: ImageResource, title: LocalizedKey),
+		thirdItem: (image: ImageResource, title: LocalizedKey)? = nil,
+		fourthItem: (image: ImageResource, title: LocalizedKey)? = nil
 	) {
+		self.nickname = nickname
 		self.page = page
 		self.titleFirstLine = titleFirstLine
 		self.titleSecondLine = titleSecondLine
@@ -48,12 +51,15 @@ struct TypeTestView: View {
 			progressBar
 				.padding(.top, 32)
 			
-			Spacer()
+			titleView
+				.padding(.top, 80)
 			
-			titleAndIcons
+			Spacer(minLength: 0)
 			
-			Spacer()
-			Spacer()
+			iconsView
+			
+			Spacer(minLength: 0)
+			Spacer(minLength: 0)
 			
 			if page == 1 {
 				skipButton
@@ -81,31 +87,33 @@ struct TypeTestView: View {
 		}
 	}
 	
-	private var titleAndIcons: some View {
+	private var titleView: some View {
 		VStack {
-			Text(titleFirstLine)
+			Text(titleFirstLine, arguments: [nickname])
 				.font(.gothicNeo(.bold, size: 22))
 				.foregroundStyle(Color.main)
 			
-			Text(titleSecondLine)
+			Text(titleSecondLine, arguments: [nickname])
 				.font(.gothicNeo(.medium, size: 22))
 				.foregroundStyle(Color.main)
-				.padding(.bottom, 40)
+		}
+		.multilineTextAlignment(.center)
+	}
+	
+	private var iconsView: some View {
+		VStack(spacing: 4) {
+			HStack(spacing: 40) {
+				typeItem(firstItem, index: 1)
+				typeItem(secondItem, index: 2)
+			}
 			
-			VStack(spacing: 24) {
+			if isTwoLine,
+			   let thirdItem = thirdItem,
+			   let fourthItem = fourthItem
+			{
 				HStack(spacing: 40) {
-					typeItem(firstItem, index: 1)
-					typeItem(secondItem, index: 2)
-				}
-				
-				if isTwoLine,
-				   let thirdItem = thirdItem,
-				   let fourthItem = fourthItem
-				{
-					HStack(spacing: 40) {
-						typeItem(thirdItem, index: 3)
-						typeItem(fourthItem, index: 4)
-					}
+					typeItem(thirdItem, index: 3)
+					typeItem(fourthItem, index: 4)
 				}
 			}
 		}
@@ -115,7 +123,7 @@ struct TypeTestView: View {
 		Button(action: {
 			typeTestVM.action(.onTapSkipButton)
 		}, label: {
-			Text("테스트 건너뛰기")
+			Text(.skipTypeTest)
 				.font(.body02)
 				.foregroundStyle(Color.gray1)
 		})
@@ -148,7 +156,7 @@ struct TypeTestView: View {
 					.frame(height: 48)
 					.opacity(selectedIndex != nil ? 1.0 : 0.1)
 					.overlay {
-						Text("다음")
+						Text(.next)
 							.foregroundStyle(Color.baseWhite)
 							.font(.body_bold)
 					}
@@ -157,8 +165,8 @@ struct TypeTestView: View {
 		}
 	}
 	
-	private func typeItem(_ type: (image: ImageResource, title: String), index: Int) -> some View {
-		VStack(spacing: 16) {
+	private func typeItem(_ type: (image: ImageResource, title: LocalizedKey), index: Int) -> some View {
+		VStack(spacing: 0) {
 			ZStack {
 				if let selectedIndex = selectedIndex,
 				   index == selectedIndex {
@@ -175,11 +183,16 @@ struct TypeTestView: View {
 					.resizable()
 					.frame(width: itemSize-40, height: itemSize-40)
 			}
+			.padding(.bottom, 16)
 			
 			Text(type.title)
 				.font(.gothicNeo(.semibold, size: 14))
 				.foregroundStyle(Color.baseBlack)
+				.multilineTextAlignment(.center)
+			
+			Spacer(minLength: 0)
 		}
+		.frame(width: itemSize, height: itemSize + 56)
 		.onTapGesture {
 			if selectedIndex != nil,
 			   index == selectedIndex! {
@@ -193,14 +206,25 @@ struct TypeTestView: View {
 
 #Preview {
 	TypeTestView(
-		page: 5,
-		titleFirstLine: "여행에서 가장",
-		titleSecondLine: "하고 싶은 것은?",
-		isTwoLine: true,
-		firstItem: (image: .emotionalSpot, title: "감성 장소"),
-		secondItem: (image: .traditionalCulture, title: "전통 문화"),
-		thirdItem: (image: .naturalScene, title: "자연 경관"),
-		fourthItem: (image: .themepark, title: "테마파크")
+		nickname: "현우",
+		page: 2,
+		titleFirstLine: .typeTest1Q1L,
+		titleSecondLine: .typeTest1Q2L,
+		firstItem: (image: .tourSpot, title: .touristSpot),
+		secondItem: (image: .localSpot, title: .localSpot)
 	)
 	.environmentObject(RegisterViewModel())
+	
+//	TypeTestView(
+//		nickname: "현우",
+//		page: 5,
+//		titleFirstLine: .typeTest5Q1L,
+//		titleSecondLine: .typeTest5Q2L,
+//		isTwoLine: true,
+//		firstItem: (image: .emotionalSpot, title: .sentimentalPlace),
+//		secondItem: (image: .traditionalCulture, title: .traditionalCulture),
+//		thirdItem: (image: .naturalScene, title: .naturalScenery),
+//		fourthItem: (image: .themepark, title: .themePark)
+//	)
+//	.environmentObject(RegisterViewModel())
 }

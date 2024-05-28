@@ -12,6 +12,7 @@ enum LocalizedKey: String {
 	case resultCount
 	case charCount
 	case confirm
+	case next
 	case requiredWithBracket
 	case optionalWithBracket
 	
@@ -54,6 +55,36 @@ enum LocalizedKey: String {
 	case invalidNickname
 	case onlyCharSpaceNumberNickname
 	
+	//MARK: - TypeTest
+	// Question
+	// First Question, First Line
+	case typeTest1Q1L
+	case typeTest1Q2L
+	case typeTest2Q1L
+	case typeTest2Q2L
+	case typeTest3Q1L
+	case typeTest3Q2L
+	case typeTest4Q1L
+	case typeTest4Q2L
+	case typeTest5Q1L
+	case typeTest5Q2L
+	// Answer
+	case touristSpot
+	case localSpot
+	case flexible
+	case organized
+	case budgetTravel
+	case luxuryTravel
+	case photoRemain
+	case captureWithEyes
+	case sentimentalPlace
+	case traditionalCulture
+	case naturalScenery
+	case themePark
+	
+	case skipTypeTest
+	
+	
 	
 	//MARK: - localized()
 	func localized(for language: Language) -> String {
@@ -63,6 +94,16 @@ enum LocalizedKey: String {
 		}
 		return NSLocalizedString(self.rawValue, bundle: bundle, comment: "")
 	}
+	
+//	func localized(for language: Language, _ arguments: CVarArg...) -> String {
+//		let format = localized(for: language)
+//		return String(format: format, arguments: arguments)
+//	}
+	
+	func localized(for language: Language, _ arguments: [CVarArg]) -> String {
+			let format = localized(for: language)
+			return String(format: format, arguments: arguments)
+		}
 	
 	static func + (lhs: LocalizedKey, rhs: LocalizedKey) -> String {
 		let leftLocalizedString = lhs.localized(for: LocalizationManager.shared.language)

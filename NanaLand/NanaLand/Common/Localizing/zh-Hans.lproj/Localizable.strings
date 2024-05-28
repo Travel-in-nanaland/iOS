@@ -9,6 +9,7 @@
 "resultCount" = "件";
 "charCount" = "字";
 "confirm" = "确认";
+"next" = "下一步";
 "requiredWithBracket" = "(必填)";
 "optionalWithBracket" = "(选填)";
 
@@ -50,3 +51,31 @@
 "duplicatedNickname" = "该昵称已被其他用户使用。";
 "invalidNickname" = "该昵称无法使用。";
 "onlyCharSpaceNumberNickname" = "昵称只能包含字母、空格和数字。";
+
+//MARK: - TypeTest
+// Question
+"typeTest1Q1L" = "选拔景点时";
+"typeTest1Q2L" = "你更喜欢？";
+"typeTest2Q1L" = "制定旅行计划时";
+"typeTest2Q2L" = "你更喜欢？";
+"typeTest3Q1L" = "定旅行经费时";
+"typeTest3Q2L" = "你更喜欢？";
+"typeTest4Q1L" = "在旅游时";
+"typeTest4Q2L" = "你更喜欢？";
+"typeTest5Q1L" = "在旅游中";
+"typeTest5Q2L" = "你最注重的是?";
+// Answer
+"touristSpot" = "热闹的观赏景点";
+"localSpot" = "悠闲自在的景点";
+"flexible" = "自由自在";
+"organized" = "按照计划";
+"budgetTravel" = "性价比高的旅游";
+"luxuryTravel" = "奢华的旅游";
+"photoRemain" = "剩下的只有照片！";
+"captureWithEyes" = "看在眼里，记在心中";
+"sentimentalPlace" = "旅游景点";
+"traditionalCulture" = "传统文化";
+"naturalScenery" = "自然景观";
+"themePark" = "主题公园";
+
+"skipTypeTest" = "跳过测试";
