@@ -15,6 +15,6 @@ struct ProfileMainModel: Codable {
     var nickname: String
     var description: String
     let level: Int
-    let travelType: String?
+    var travelType: String?
     let hashtags: [String]
 }

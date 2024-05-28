@@ -24,4 +24,12 @@ enum TripType: String {
 	case GAMGYUL_SIKHYE
 	case GAMGYUL_ADE
 	case GAMGYUL_BUBBLE_TEA
+	
+	var localizedKey: LocalizedKey {
+		return LocalizedKey(rawValue: self.rawValue)!
+	}
+	
+	var descriptionLocalizedKey: LocalizedKey {
+		return LocalizedKey(rawValue: self.rawValue + "_DESCRIPTION")!
+	}
 }
