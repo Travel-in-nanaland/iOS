@@ -20,42 +20,27 @@ struct SeasonModalView: View {
                     .font(.title02_bold)
                 Spacer()
                 Button {
-                    Task {
-                        switch selectedSeason {
-                        case "봄":
-                            await getSeasonFestivalMainItem(page: 0, size: 19, season: "spring")
-                            season = "봄"
-                        case "여름":
-                            await getSeasonFestivalMainItem(page: 0, size: 19, season: "summer")
-                            season = "여름"
-                        case "가을":
-                            await getSeasonFestivalMainItem(page: 0, size: 19, season: "autumn")
-                            season = "가을"
-                        case "겨울":
-                            await getSeasonFestivalMainItem(page: 0, size: 19, season: "winter")
-                            season = "겨울"
-                        default:
-                            await getSeasonFestivalMainItem(page: 0, size: 19, season: "spring")
-                            season = "봄"
-                        }
-                    }
                     isModalShown = false
                 } label: {
                     Image("icX")
                 }
 
             }
-            .padding(.leading, 17)
-            .padding(.trailing, 17)
+            .frame(width: Constants.screenWidth - 32)
             .padding(.top, 24)
-            
+            Spacer()
             HStack(spacing: 0) {
                 VStack(spacing: 0) {
                     Button {
-                        withAnimation(nil) {
-                            selectedSeason = "봄"
-                            
-                        }
+                  
+                            Task {
+                               
+                                await getSeasonFestivalMainItem(page: 0, size: 19, season: "spring")
+                                selectedSeason = "봄"
+                                season = "봄"
+                            }
+                           
+                        
                         
                     } label: {
                         VStack(spacing: 0) {
@@ -65,12 +50,6 @@ struct SeasonModalView: View {
                                     .font(selectedSeason == "봄" ? .body_bold : .body01)
                                     .foregroundStyle(selectedSeason == "봄" ? Color.main : Color.black)
                                     .padding(.trailing, 16)
-                                   
-                                if selectedSeason == "봄" {
-                                    Image("icCheck")
-                                        .renderingMode(.template)
-                                        .foregroundStyle(Color.main)
-                                }
                               
                             Spacer()
                             }
@@ -90,9 +69,14 @@ struct SeasonModalView: View {
                     .background(selectedSeason == "봄" ? .main10P : .white)
                 
                     Button {
-                        withAnimation(nil) {
-                            selectedSeason = "여름"
-                        }
+                       
+                            Task {
+                                selectedSeason = "여름"
+                                await getSeasonFestivalMainItem(page: 0, size: 19, season: "summer")
+                                season = "여름"
+                            }
+                           
+                        
                         
                     } label: {
                         VStack(spacing: 0) {
@@ -102,13 +86,6 @@ struct SeasonModalView: View {
                                     .font(selectedSeason == "여름" ? .body_bold : .body01)
                                     .foregroundStyle(selectedSeason == "여름" ? Color.main : Color.black)
                                     .padding(.trailing, 16)
-                                    
-                                    
-                                if selectedSeason == "여름" {
-                                    Image("icCheck")
-                                        .renderingMode(.template)
-                                        .foregroundStyle(Color.main)
-                                }
                                 Spacer()
                             }
                             HStack(spacing: 0) {
@@ -127,9 +104,14 @@ struct SeasonModalView: View {
                     .background(selectedSeason == "여름" ? .main10P : .white)
                     
                     Button {
-                        withAnimation(nil) {
-                            selectedSeason = "가을"
-                        }
+                
+                            Task {
+                                selectedSeason = "가을"
+                                await getSeasonFestivalMainItem(page: 0, size: 19, season: "autumn")
+                                season = "가을"
+                            }
+                            
+                        
                         
                     } label: {
                         VStack(spacing: 0) {
@@ -139,11 +121,7 @@ struct SeasonModalView: View {
                                     .font(selectedSeason == "가을" ? .body_bold : .body01)
                                     .foregroundStyle(selectedSeason == "가을" ? Color.main : Color.black)
                                     .padding(.trailing, 16)
-                                if selectedSeason == "가을" {
-                                    Image("icCheck")
-                                        .renderingMode(.template)
-                                        .foregroundStyle(Color.main)
-                                }
+                              
                                 Spacer()
                             }
                             HStack(spacing: 0) {
@@ -162,9 +140,13 @@ struct SeasonModalView: View {
                     .background(selectedSeason == "가을" ? .main10P : .white)
                     
                     Button {
-                        withAnimation(nil) {
-                            selectedSeason = "겨울"
-                        }
+         
+                            Task {
+                                selectedSeason = "겨울"
+                                await getSeasonFestivalMainItem(page: 0, size: 19, season: "winter")
+                                season = "겨울"
+                            }
+                        
                         
                     } label: {
                         VStack(spacing: 0) {
@@ -174,11 +156,7 @@ struct SeasonModalView: View {
                                     .font(selectedSeason == "겨울" ? .body_bold : .body01)
                                     .foregroundStyle(selectedSeason == "겨울" ? Color.main : Color.black)
                                     .padding(.trailing, 16)
-                                if selectedSeason == "겨울" {
-                                    Image("icCheck")
-                                        .renderingMode(.template)
-                                        .foregroundStyle(Color.main)
-                                }
+                            
                                 Spacer()
                             }
                             HStack(spacing: 0) {
@@ -199,6 +177,7 @@ struct SeasonModalView: View {
                 .padding(.leading, 17)
                 Spacer()
             }
+            Spacer()
         }
        
         
