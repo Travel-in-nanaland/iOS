@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct RegisterTermsAgreementView: View {
+	@EnvironmentObject var localizaionManager: LocalizationManager
 	@EnvironmentObject var registerVM: RegisterViewModel
 	
     var body: some View {
@@ -41,7 +42,7 @@ struct RegisterTermsAgreementView: View {
 					.resizable()
 					.frame(width: 64, height: 64)
 				
-				Text("nanaland in Jeju에\n오신 것을 환영합니다.")
+				Text(.welcomeToNanaLand)
 					.lineLimit(2)
 					.multilineTextAlignment(.leading)
 					.font(.largeTitle01)
@@ -63,7 +64,7 @@ struct RegisterTermsAgreementView: View {
 				Image(registerVM.isAllAgree() ? .icCheckmarkFilled : .icCheckmark)
 			})
 			
-			Text("전체 동의")
+			Text(.allAgree)
 				.font(.gothicNeo(.semibold, size: 16))
 				.foregroundStyle(Color.baseBlack)
 		}
@@ -72,7 +73,7 @@ struct RegisterTermsAgreementView: View {
 	private var agreements: some View {
 		VStack(spacing: 24) {
 			agreementItem(
-				title: "이용약관 동의 및 개인정보 처리방침",
+				title: LocalizedKey.termsOfUseAgree.localized(for: localizaionManager.language),
 				isOptional: false,
 				isChecked: registerVM.state.privacyAgreement,
 				checkmarkAction: {
@@ -86,7 +87,7 @@ struct RegisterTermsAgreementView: View {
 			)
 			
 			agreementItem(
-				title: "마케팅 활용 동의",
+				title: LocalizedKey.marketingAgree.localized(for: localizaionManager.language),
 				isOptional: true,
 				isChecked: registerVM.state.marketingAgreement,
 				checkmarkAction: {
@@ -100,7 +101,7 @@ struct RegisterTermsAgreementView: View {
 			)
 			
 			agreementItem(
-				title: "위치기반 서비스 약관 동의",
+				title: LocalizedKey.locationAgree.localized(for: localizaionManager.language),
 				isOptional: true,
 				isChecked: registerVM.state.locationAgreement,
 				checkmarkAction: {
@@ -126,19 +127,14 @@ struct RegisterTermsAgreementView: View {
 			
 			HStack(spacing: 0) {
 				Text(title)
-					.font(.body02)
-					.foregroundStyle(Color.gray1)
-				
-				if isOptional {
-					Text(" (선택)")
-						.font(.body02)
-						.foregroundStyle(Color.gray1)
-				} else {
-					Text(" (필수)")
-						.font(.body02)
-						.foregroundStyle(Color.main)
-				}
+					.foregroundColor(Color.gray1)
+				+
+				Text(" ")
+				+
+				Text(isOptional ? .optionalWithBracket : .requiredWithBracket)
+					.foregroundColor(isOptional ? Color.gray1 : Color.main)
 			}
+			.font(.body02)
 			
 			Spacer()
 			
@@ -166,7 +162,7 @@ struct RegisterTermsAgreementView: View {
 				.frame(width: Constants.screenWidth - 32, height: 48)
 				.opacity(registerVM.state.privacyAgreement ? 1.0 : 0.1)
 				.overlay {
-					Text("확인")
+					Text(.confirm)
 						.foregroundStyle(Color.baseWhite)
 						.font(.body_bold)
 				}
@@ -176,5 +172,9 @@ struct RegisterTermsAgreementView: View {
 }
 
 #Preview {
-    RegisterTermsAgreementView()
+	@StateObject var lm = LocalizationManager()
+	lm.setLanguage(.malaysia)
+    return RegisterTermsAgreementView()
+		.environmentObject(lm)
+		.environmentObject(RegisterViewModel())
 }

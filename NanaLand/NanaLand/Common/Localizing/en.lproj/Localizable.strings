@@ -7,6 +7,10 @@
 */
 //MARK: - Common
 "resultCount" = " Results";
+"charCount" = "characters";
+"confirm" = "Confirm";
+"requiredWithBracket" = "(Required)";
+"optionalWithBracket" = "(Optional)";
 
 //MARK: - Tab
 "home" = "Home";
@@ -29,3 +33,20 @@
 "popularSearchTerm" = "Most Searched!";
 "searchVolumeUp" = "Search Volume UP! JEJU Place 🍊";
 "noResult" = "There are no results for that search.";
+
+//MARK: - Login/Register
+"nonMemeberLogin" = "Browse Without Logging In";
+"welcomeToNanaLand" = "Welcome to\nnanaland in Jeju";
+"enterNicknameAndProfile" = "Enter your name and\nselect a profile picture.";
+
+//MARK: - Terms
+"allAgree" = "Agree to All";
+"termsOfUseAgree" = "Agree to Terms of Use and\nPrivacy Policy";
+"marketingAgree" = "Agree to Marketing Use";
+"locationAgree" = "Agree to Location-Based Service Terms";
+
+
+//MARK: - Error/Alert
+"duplicatedNickname" = "This nickname is already in use by another user.";
+"invalidNickname" = "This nickname cannot be used.";
+"onlyCharSpaceNumberNickname" = "Nicknames can only contain letters, spaces, and numbers.";

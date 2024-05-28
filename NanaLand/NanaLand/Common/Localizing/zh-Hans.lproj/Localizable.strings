@@ -7,6 +7,10 @@
 */
 //MARK: - Common
 "resultCount" = "件";
+"charCount" = "字";
+"confirm" = "确认";
+"requiredWithBracket" = "(必填)";
+"optionalWithBracket" = "(选填)";
 
 //MARK: - Tab
 "home" = "首页";
@@ -29,3 +33,20 @@
 "popularSearchTerm" = "搜索量最多";
 "searchVolumeUp" = "搜索量上升！ JEJU Place 🍊";
 "noResult" = "没有符合条件的搜索结果";
+
+//MARK: - Login/Register
+"nonMemeberLogin" = "无需登录浏览";
+"welcomeToNanaLand" = "欢迎来到济州的\nnanaland";
+"enterNicknameAndProfile" = "请填写要使用的名\n称并选择头像";
+
+//MARK: - Terms
+"allAgree" = "全部同意";
+"termsOfUseAgree" = "同意使用条款及隐私政策";
+"marketingAgree" = "同意营销使用";
+"locationAgree" = "同意基于位置的服务条款";
+
+
+//MARK: - Error/Alert
+"duplicatedNickname" = "该昵称已被其他用户使用。";
+"invalidNickname" = "该昵称无法使用。";
+"onlyCharSpaceNumberNickname" = "昵称只能包含字母、空格和数字。";

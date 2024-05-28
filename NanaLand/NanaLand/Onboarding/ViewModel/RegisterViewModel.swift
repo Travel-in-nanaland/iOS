@@ -23,7 +23,7 @@ final class RegisterViewModel: ObservableObject {
 		var pickedImage: Foundation.Data?
 		var nickname: String = ""
 		var showNicknameError: Bool = false
-		var nicknameErrorMessage: String = ""
+		var nicknameErrorMessage: LocalizedKey?
 	}
 	
 	enum Action {
@@ -107,11 +107,11 @@ final class RegisterViewModel: ObservableObject {
 	func nicknameAndProfileOkButtonTapped() async {
 		state.registerRequest.nickname = state.nickname
 		state.showNicknameError = false
-		state.nicknameErrorMessage = ""
+		state.nicknameErrorMessage = nil
 
 		guard nicknameIsValid() else {
 			// 형식에 맞지 않은 닉네임
-			state.nicknameErrorMessage = "해당 닉네임은 사용할 수 없습니다."
+			state.nicknameErrorMessage = .invalidNickname
 			state.showNicknameError = true
 			return
 		}
@@ -131,7 +131,7 @@ final class RegisterViewModel: ObservableObject {
 			}
 		} else if result?.status == 409 {
 			// 닉네임 중복
-			state.nicknameErrorMessage = "해당 닉네임은 다른 사용자가 사용 중입니다."
+			state.nicknameErrorMessage = .duplicatedNickname
 			state.showNicknameError = true
 		} else {
 			// TODO: 에러 처리 필요

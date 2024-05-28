@@ -7,6 +7,10 @@
 */
 //MARK: - Common
 "resultCount" = " Results";
+"charCount" = "aksara";
+"confirm" = "Sahkan";
+"requiredWithBracket" = "(Wajib)";
+"optionalWithBracket" = "(Opsional)";
 
 //MARK: - Tab
 "home" = "Laman Utama";
@@ -29,3 +33,20 @@
 "popularSearchTerm" = "Paling Banyak Dicari!";
 "searchVolumeUp" = "eningkatan Pencarian! Tempat Jeju 🍊";
 "noResult" = "Carian anda tidak\nmengembalikan sebarang hasil.";
+
+//MARK: - Login/Register
+"nonMemeberLogin" = "Guna Tanpa Log Masuk";
+"welcomeToNanaLand" = "Selamat datang ke\nnanaland in Jeju";
+"enterNicknameAndProfile" = " Sila tulis nama penggunaan\ndan pilih profil.";
+
+//MARK: - Terms
+"allAgree" = "Setuju Semua";
+"termsOfUseAgree" = "Terma Penggunaan & Dasar Privasi";
+"marketingAgree" = "Persetujuan Pemasaran";
+"locationAgree" = "Terma Perkhidmatan Berasaskan Lokasi";
+
+
+//MARK: - Error/Alert
+"duplicatedNickname" = "Nama panggilan ini sudah digunakan oleh pengguna lain.";
+"invalidNickname" = "Nama panggilan ini tidak boleh digunakan.";
+"onlyCharSpaceNumberNickname" = "Nama panggilan hanya boleh mengandungi huruf, ruang, dan nombor.";

@@ -132,8 +132,6 @@
 		BF607F172BF5A29E00770CE7 /* FestivalDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF607F162BF5A29E00770CE7 /* FestivalDetailService.swift */; };
 		BF607F192BF5A2A900770CE7 /* FestivalDetailEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF607F182BF5A2A900770CE7 /* FestivalDetailEndPoint.swift */; };
 		BF7714582BF999E00020C8F0 /* NatureMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7714572BF999E00020C8F0 /* NatureMainView.swift */; };
-		BF77145D2BF99BCF0020C8F0 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF77145B2BF99BCF0020C8F0 /* Info.plist */; };
-		BF77145E2BF99BCF0020C8F0 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF77145B2BF99BCF0020C8F0 /* Info.plist */; };
 		BF78A8B82BFB620400C7303A /* ProfileDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF78A8B72BFB620400C7303A /* ProfileDTO.swift */; };
 		BF794B562BF9AAEF0045FAD2 /* UserInfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF794B552BF9AAEF0045FAD2 /* UserInfoService.swift */; };
 		BF794B582BF9AAFA0045FAD2 /* UserInfoEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF794B572BF9AAFA0045FAD2 /* UserInfoEndPoint.swift */; };
@@ -1103,7 +1101,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF77145D2BF99BCF0020C8F0 /* Info.plist in Resources */,
 				9C6A9C6A2BCC22CE000413AD /* AppleSDGothicNeoSB.ttf in Resources */,
 				9C6A9C642BCC22CE000413AD /* AppleSDGothicNeoL.ttf in Resources */,
 				9C6A9C672BCC22CE000413AD /* AppleSDGothicNeoR.ttf in Resources */,
@@ -1114,7 +1111,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF77145E2BF99BCF0020C8F0 /* Info.plist in Resources */,
 				9C6A9C6B2BCC22CE000413AD /* AppleSDGothicNeoSB.ttf in Resources */,
 				9C6A9C652BCC22CE000413AD /* AppleSDGothicNeoL.ttf in Resources */,
 				9C6A9C682BCC22CE000413AD /* AppleSDGothicNeoR.ttf in Resources */,
