@@ -21,7 +21,7 @@ final class AuthManager: NSObject {
 	
 	@ObservedObject var registerVM: RegisterViewModel
 	
-	init(registerVM: RegisterViewModel = .init()) {
+	init(registerVM: RegisterViewModel) {
 		self.registerVM = registerVM
 	}
 
@@ -227,35 +227,116 @@ final class AuthManager: NSObject {
 	}
 	
 	/// 로그아웃
-	func logout() async {
-		// 나나랜드 서버 로그아웃
-		let result = await AuthService.logout()
-		if result?.status == 200 {
-			// 성공시 각 소셜로그인 별 로그아웃
-			if provider == "KAKAO" {
-				kakaoLogout()
-			} else if provider == "GOOGLE" {
-				
-			} else if provider == "APPLE" {
-				
+	func logout() {
+		if provider == "KAKAO" {
+			kakaoLogout()
+		} else if provider == "GOOGLE" {
+			googleLogout()
+		} else if provider == "APPLE" {
+			Task {
+				await logoutFromServer()
 			}
 		}
 	}
 	
 	/// 카카오 소셜 로그아웃
 	private func kakaoLogout() {
-		UserApi.shared.logout {(error) in
+		UserApi.shared.logout { error in
 			if let error = error {
 				print("카카오 로그아웃 에러 - \(error.localizedDescription)")
 			}
 			else {
 				print("카카오 로그아웃 성공")
-				// 토큰 제거하고 메인화면으로
-				KeyChainManager.deleteItem(key: "accessToken")
-				KeyChainManager.deleteItem(key: "refreshToken")
-				provider = ""
-				isLogin = false
+	
+				Task {
+					await self.logoutFromServer()
+				}
 			}
+		}
+	}
+	
+	/// 구글 소셜 로그아웃
+	private func googleLogout() {
+		GIDSignIn.sharedInstance.signOut()
+		Task {
+			await self.logoutFromServer()
+		}
+	}
+	
+	/// 나나랜드 서버 로그아웃
+	private func logoutFromServer() async {
+		let result = await AuthService.logout()
+		if result?.status == 200 {
+			print("나나랜드 서버 로그아웃 성공")
+			// 토큰 제거하고 메인화면으로
+			KeyChainManager.deleteItem(key: "accessToken")
+			KeyChainManager.deleteItem(key: "refreshToken")
+			AppState.shared.currentTab = .home
+			AppState.shared.isRegisterNeeded = false
+			AppState.shared.navigationPath = NavigationPath()
+			self.provider = ""
+			self.isLogin = false
+		} else {
+			print("나나랜드 서버 로그아웃 실패")
+		}
+	}
+	
+	/// 회원탈퇴
+	func withdraw(withdrawalType: String) {
+		if provider == "KAKAO" {
+			kakaoWithdraw(withdrawalType: withdrawalType)
+		} else if provider == "GOOGLE" {
+			googleWithdraw(withdrawalType: withdrawalType)
+		} else if provider == "APPLE" {
+			
+		}
+	}
+	
+	/// 카카오 회원탈퇴
+	private func kakaoWithdraw(withdrawalType: String) {
+		UserApi.shared.unlink {(error) in
+			if let error = error {
+				print("카카오 회원탈퇴 에러 - \(error.localizedDescription)")
+			}
+			else {
+				print("카카오 회원탈퇴 성공")
+				Task {
+					await self.withdrawFromServer(withdrawalType: withdrawalType)
+				}
+			}
+		}
+	}
+	
+	/// 구글 회원탈퇴
+	private func googleWithdraw(withdrawalType: String) {
+		GIDSignIn.sharedInstance.disconnect { error in
+			if let error = error {
+				print("구글 회원탈퇴 에러 - \(error.localizedDescription)")
+			} else {
+				print("구글 회원탈퇴 성공")
+				Task {
+					await self.withdrawFromServer(withdrawalType: withdrawalType)
+				}
+			}
+
+		}
+	}
+	
+	/// 나나랜드 서버 회원탈퇴
+	private func withdrawFromServer(withdrawalType: String) async {
+		let result = await AuthService.withdraw(body: WithdrawRequest(withdrawalType: withdrawalType))
+		if result?.status == 200 {
+			print("나나랜드 서버 회원탈퇴 성공")
+			// 토큰 제거하고 메인화면으로
+			KeyChainManager.deleteItem(key: "accessToken")
+			KeyChainManager.deleteItem(key: "refreshToken")
+			AppState.shared.currentTab = .home
+			AppState.shared.isRegisterNeeded = false
+			AppState.shared.navigationPath = NavigationPath()
+			self.provider = ""
+			self.isLogin = false
+		} else {
+			print("나나랜드 서버 회원탈퇴 실패")
 		}
 	}
 }
@@ -275,6 +356,7 @@ extension AuthManager: ASAuthorizationControllerDelegate, ASAuthorizationControl
 		if let tokenString = String(data: appleIdCredential.identityToken ?? Data(), encoding: .utf8),
 		   let emailFromToken = decode(jwtToken: tokenString)["email"] as? String {
 			
+			KeyChainManager.addItem(key: "appleAuthorizationCode", value: tokenString)
 			
 			let loginRequest = LoginRequest(locale: self.locale, provider: "APPLE", providerId: userId)
 			

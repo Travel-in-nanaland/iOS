@@ -351,20 +351,20 @@ struct BannerView: View {
                         // image는 String이자, default tag로 붙는 값
                         ZStack {
                             if isBannerCalled {
-//                                KFImage(URL(string: viewModel.state.getBannerResponse[index - 1].thumbnailUrl)!)
-//                                        .resizable()
-//                                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main
-//                                            .bounds.width * (220 / 360))
+                                KFImage(URL(string: viewModel.state.getBannerResponse[index - 1].thumbnailUrl)!)
+                                        .resizable()
+                                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main
+                                            .bounds.width * (220 / 360))
                                 
                             }
                             VStack(spacing: 0) {
                                 
                                 HStack(spacing: 0) {
                                     Spacer()
-//                                    Text(viewModel.state.getBannerResponse[index - 1].version)
-//                                        .font(.caption01)
-//                                        .foregroundStyle(.white)
-//                                        .padding(.trailing, 16)
+                                    Text(viewModel.state.getBannerResponse[index - 1].version)
+                                        .font(.caption01)
+                                        .foregroundStyle(.white)
+                                        .padding(.trailing, 16)
                                 }
                                 .padding(.top, 8)
                                 
@@ -416,7 +416,7 @@ struct BannerView: View {
     }
     
     func getBannerData() async {
-//        return await viewModel.action(.getBannerItem)
+        return await viewModel.action(.getBannerItem)
     }
 }
 

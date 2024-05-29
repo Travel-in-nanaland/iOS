@@ -17,6 +17,8 @@ enum LocalizedKey: String {
 	case optionalWithBracket
 	case destination
 	case gotoMainScreen
+	case no
+	case yes
 	
 	//MARK: - Tab
 	case home
@@ -56,6 +58,10 @@ enum LocalizedKey: String {
 	case duplicatedNickname
 	case invalidNickname
 	case onlyCharSpaceNumberNickname
+	case logoutAlertTitle
+	case withdrawAlertTitle
+	case withdrawAlertMessage
+	case changeLanguageAlertTitle
 	
 	//MARK: - TypeTest
 	case skipTypeTest
@@ -146,7 +152,12 @@ enum LocalizedKey: String {
     case deleteAlertSubTitle
     case cancel
     case delete
-    
+	
+	// withdrawType(서비스 탈퇴 사유)
+	case INSUFFICIENT_CONTENT
+	case INCONVENIENT_SERVICE
+    case INCONVENIENT_COMMUNITY
+	case RARE_VISITS
 	
 	//MARK: - localized()
 	func localized(for language: Language) -> String {

@@ -24,6 +24,7 @@
 		2C2D3D602C059E16002A38AA /* TypeTestCheckStyleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D3D5F2C059E16002A38AA /* TypeTestCheckStyleView.swift */; };
 		2C2D3D622C059E22002A38AA /* TypeTestLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D3D612C059E22002A38AA /* TypeTestLoadingView.swift */; };
 		2C2D3D642C05B957002A38AA /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D3D632C05B957002A38AA /* LottieView.swift */; };
+		2C2D3D6C2C076BDA002A38AA /* ClearBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D3D6B2C076BDA002A38AA /* ClearBackground.swift */; };
 		2C3C75842BCA3ADA00312F26 /* NanaLandApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C75832BCA3ADA00312F26 /* NanaLandApp.swift */; };
 		2C3C75882BCA3ADC00312F26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C3C75872BCA3ADC00312F26 /* Assets.xcassets */; };
 		2C3C758B2BCA3ADC00312F26 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C3C758A2BCA3ADC00312F26 /* Preview Assets.xcassets */; };
@@ -231,6 +232,7 @@
 		2C2D3D652C05DE38002A38AA /* loading_drink.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading_drink.json; sourceTree = "<group>"; };
 		2C2D3D662C05DE38002A38AA /* loading_tangerine.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading_tangerine.json; sourceTree = "<group>"; };
 		2C2D3D672C05DE38002A38AA /* report_info_star.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = report_info_star.json; sourceTree = "<group>"; };
+		2C2D3D6B2C076BDA002A38AA /* ClearBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearBackground.swift; sourceTree = "<group>"; };
 		2C3C75802BCA3ADA00312F26 /* NanaLand.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NanaLand.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C3C75832BCA3ADA00312F26 /* NanaLandApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NanaLandApp.swift; sourceTree = "<group>"; };
 		2C3C75872BCA3ADC00312F26 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -587,6 +589,7 @@
 				2C80ECED2BDBE0CE002F38A7 /* CalendarItem.swift */,
 				2C80ECEF2BDBE44C002F38A7 /* RoundedCorners.swift */,
 				2C2D3D632C05B957002A38AA /* LottieView.swift */,
+				2C2D3D6B2C076BDA002A38AA /* ClearBackground.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -1332,6 +1335,7 @@
 				2C40DBC02BF1ED8A007A3768 /* RegisterTermsAgreementView.swift in Sources */,
 				2C40DB872BE630EC007A3768 /* LoginView.swift in Sources */,
 				2C40DBBE2BF1AC3C007A3768 /* AuthError.swift in Sources */,
+				2C2D3D6C2C076BDA002A38AA /* ClearBackground.swift in Sources */,
 				2C2D3D642C05B957002A38AA /* LottieView.swift in Sources */,
 				2C80ECC52BD0A086002F38A7 /* BaseResponse.swift in Sources */,
 				2C3C75CC2BCAA93D00312F26 /* NanaLandTabView.swift in Sources */,
