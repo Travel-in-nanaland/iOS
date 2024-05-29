@@ -36,9 +36,9 @@ struct ProfileUpdateView: View {
                             .foregroundStyle(Color.black)
                     })
                     .alert(isPresented: $showAlert) {
-                        Alert(title: Text("변경 내용을\n삭제하시겠습니까?"), message: Text("지금 돌아가면 변경 내용이 삭제됩니다."), primaryButton: .default(Text("삭제"), action: {
+                        Alert(title: Text(.deleteAlertTitle), message: Text(.deleteAlertSubTitle), primaryButton: .default(Text(.delete), action: {
                             dismiss()
-                        }), secondaryButton: .cancel(Text("취소")))
+                        }), secondaryButton: .cancel(Text(.cancel)))
                     }
                     .padding(.leading, 16)
                     Spacer()
@@ -99,10 +99,10 @@ struct ProfileUpdateView: View {
                     
                     VStack(spacing: 0) {
                         HStack(spacing: 0) {
-                            Text("닉네임")
+                            Text(.nickName)
                                 .font(.body_bold)
                             Spacer()
-                            Text("\(nickName.count) / 8 자")
+                            Text("\(nickName.count) / 8" + " \(LocalizedKey.character.localized(for: localizationManager.language))")
                                 .font(.caption01)
                                 .foregroundStyle(nickName.count > 8 ? Color.red : Color.gray1)
                             
@@ -137,7 +137,7 @@ struct ProfileUpdateView: View {
                                 }
                                 
                                 Text(
-                                    nickName.count > 8 ? "해당 닉네임은 사용할 수 없습니다." : (viewModel.state.isDuplicate ? "해당 닉네임은 다른 사용자가 사용 중 입니다." : " ")
+                                    nickName.count > 8 ? LocalizedKey.nickNameTypingLimitError.localized(for: localizationManager.language) : (viewModel.state.isDuplicate ? LocalizedKey.nickNameDuplicateError.localized(for: localizationManager.language) : " ")
                                     
                                 )
                                     .font(.caption01)
@@ -153,7 +153,7 @@ struct ProfileUpdateView: View {
                     .ignoresSafeArea(.keyboard)
 
                     HStack(spacing: 0) {
-                        Text("소개")
+                        Text(.introduction)
                             .font(.body_bold)
                         Spacer()
                     }
@@ -192,7 +192,7 @@ struct ProfileUpdateView: View {
                             }
                         }
                     }, label: {
-                        Text("수정완료")
+                        Text(.complete)
                             .font(.body_bold)
                             .frame(width: Constants.screenWidth - 32, height: 48)
                             .foregroundStyle(.white)

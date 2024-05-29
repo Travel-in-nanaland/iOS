@@ -47,18 +47,17 @@ struct ShopMainGridView: View {
                     self.locationModal = true
 				} label: {
                     HStack(spacing: 0) {
-                        Text(location)
-                            .lineLimit(1)
+                        Text(location.split(separator: ",").count >= 3 ? "\(location.split(separator: ",").prefix(2).joined(separator: ","))" + ".." : location.split(separator: ",").prefix(2).joined(separator: ","))
                             .font(.gothicNeo(.medium, size: 12))
+                            .lineLimit(1)
                             .padding(.leading, 12)
-                            .padding(.trailing, 4)
+                            .truncationMode(.tail)
                         Image("icDownSmall")
                             .padding(.trailing, 12)
                     }
-					
+                    .frame(height: 40)
 				}
 				.foregroundStyle(Color.gray1)
-				.frame(width: 100, height: 40)
 				.background(
 					RoundedRectangle(cornerRadius: 30)
 						.strokeBorder(Color.gray1, lineWidth: 1)

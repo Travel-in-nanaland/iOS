@@ -83,11 +83,23 @@
 "skipTypeTest" = "跳过测试";
 
 //MARK: - MyPage
+// main
 "editProfile" = "编辑个人资料";
 "mynana" = "我的nana ";
 "travelType" = "旅行类型";
 "retest" = "再次测试";
 "introduction" = "介绍";
+// editProfile
+"nickName" = "昵称";
+"complete" = "修改完成";
+"characters" = "字";
+"nickNameTypingLimitError" = "Nama panggilan ini tidak boleh digunakan.";
+"nickNameDuplicateError"= "Nama panggilan ini sudah digunakan oleh pengguna lain.";
+// deleteAlert
+"deleteAlertTitle" = "要删除更改内容吗？";
+"deleteAlertSubTitle" = "现在返回的话更改内容将被删除";
+"cancel" = "取消";
+"delete" = "删除";
 
 // Result
 "your" = "%@";

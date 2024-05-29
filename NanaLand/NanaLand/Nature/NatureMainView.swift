@@ -51,23 +51,25 @@ struct NatureMainGridView: View {
             
             } label: {
                 HStack(spacing: 0) {
-                    Text(location)
-                        .lineLimit(1)
+                    Text(location.split(separator: ",").count >= 3 ? "\(location.split(separator: ",").prefix(2).joined(separator: ","))" + ".." : location.split(separator: ",").prefix(2).joined(separator: ","))
                         .font(.gothicNeo(.medium, size: 12))
+                        .lineLimit(1)
                         .padding(.leading, 12)
-                        .padding(.trailing, 4)
+                        .truncationMode(.tail)
                     
                     Image("icDownSmall")
+                        .resizable()
+                        .frame(width: 16, height: 16)
                         .padding(.trailing, 12)
                 }
-                .frame(maxWidth: 100)
+                .frame(height: 40)
             }
             .foregroundStyle(Color.gray1)
             .frame(maxHeight: 40)
             .background(
                 RoundedRectangle(cornerRadius: 30)
                     .strokeBorder(Color.gray1, lineWidth: 1)
-                    .frame(maxWidth: 100, maxHeight: 40)
+                    
             )
             .padding(.trailing, 16)
             .sheet(isPresented: $locationModal) {

@@ -135,6 +135,17 @@ enum LocalizedKey: String {
     case introduction
     
     // editPage
+    case nickName
+    case complete
+    case character
+    case nickNameTypingLimitError
+    case nickNameDuplicateError
+    
+    // deleteAlertPage(삭제 확인창)
+    case deleteAlertTitle
+    case deleteAlertSubTitle
+    case cancel
+    case delete
     
 	
 	//MARK: - localized()
