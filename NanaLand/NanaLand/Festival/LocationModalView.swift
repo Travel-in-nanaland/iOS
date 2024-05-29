@@ -149,6 +149,7 @@ struct LocationModalView: View {
                     }
                     
                     location = selectedLocation.joined(separator: ",")
+              
                     // 장소 선택 안 할시 전 지역
                     if location == "" {
                         location = "전 지역"

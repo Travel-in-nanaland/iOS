@@ -80,6 +80,28 @@
 "traditionalCulture" = "전통 문화";
 "naturalScenery" = "자연 경관";
 "themePark" = "테마파크";
+
+"skipTypeTest" = "테스트 건너뛰기";
+
+//MARK: - MyPage
+// main
+"editProfile" = "프로필 수정";
+"mynana" = "나의 나나";
+"travelType" = "여행 유형";
+"retest" = "테스트 다시하기";
+"introduction" = "소개";
+//editProfile
+"nickName" = "닉네임";
+"complete" = "수정완료";
+"characters" = "자";
+"nickNameTypingLimitError" = "해당 닉네임은  사용할 수 없습니다.";
+"nickNameDuplicateError"= "해당 닉네임은 다른 사용자가 사용 중입니다.";
+// deleteAlert
+"deleteAlertTitle" = "변경 내용을\n삭제하시겠습니까?";
+"deleteAlertSubTitle" = "지금 돌아가면 변경 내용이 삭제됩니다.";
+"cancel" = "취소";
+"delete" = "삭제";
+
 // Result
 "your" = "";
 "yourPreference" = "취향은?";

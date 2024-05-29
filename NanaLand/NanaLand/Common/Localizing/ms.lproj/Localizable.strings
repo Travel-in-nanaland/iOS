@@ -80,6 +80,27 @@
 "traditionalCulture" = "Budaya Tradisional";
 "naturalScenery" = "Pemandangan Semula Jadi";
 "themePark" = "Taman Tema";
+"skipTypeTest" = "Langkau ujian";
+
+//MARK: - MyPage
+// main
+"editProfile" = "Ubah Profil";
+"mynana" = "nana saya";
+"travelType" = "Jenis Perjalanan";
+"retest" = "Uji semula";
+"introduction" = "Perkenalan";
+// editProfile
+"nickName" = "Jenis Perjalanan";
+"complete" = "Pembetulan selesai";
+"characters" = "aksara";
+"nickNameTypingLimitError" = "Nama panggilan ini tidak boleh digunakan.";
+"nickNameDuplicateError"= "Nama panggilan ini sudah digunakan oleh pengguna lain.";
+// deleteAlert
+"deleteAlertTitle" = "Adakah anda ingin\nmemadam perubahan?";
+"deleteAlertSubTitle" = "Kembali sekarang akan\nmemadamkan perubahan.";
+"cancel" = "Batal";
+"delete" = "Padam";
+
 // Result
 "your" = "%@?";
 "yourPreference" = "Apakah pilihan";

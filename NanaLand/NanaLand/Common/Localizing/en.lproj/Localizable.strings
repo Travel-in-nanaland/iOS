@@ -80,6 +80,28 @@
 "traditionalCulture" = "Traditional culture";
 "naturalScenery" = "Natural scenery";
 "themePark" = "Theme parks";
+"skipTypeTest" = "Skip the test";
+
+//MARK: - MyPage
+// main
+"editProfile" = "Edit Profile";
+"mynana" = "my nana";
+"travelType" = "Travel Type";
+"retest" = "retest";
+"introduction" = "introduction";
+// editProfile
+"nickName" = "Nickname";
+"complete" = "Update";
+"characters" = "characters";
+"nickNameTypingLimitError" = "This nickname cannot be used.";
+"nickNameDuplicateError"= "This nickname is already in use by another user.";
+// deleteAlert
+"deleteAlertTitle" = "Do you want to delete\nthe changes?";
+"deleteAlertSubTitle" = "If you go back now,\nthe changes will be deleted.";
+"cancel" = "Cancel";
+"delete" = "Delete";
+
+
 // Result
 "your" = "%@";
 "yourPreference" = "what travel style";
@@ -87,6 +109,7 @@
 "tangerineJuiced" = "Squeezing the citrus...";
 "juiceCommingSoon" = "Delicious travel juice coming up soon!";
 "yourTravelStyleIs" = "%@'s travel type is";
+
 // Type
 "GAMGYUL_ICECREAM" = "Tangerine Ice Cream";
 "GAMGYUL_ICECREAM_DESCRIPTION" = "A type that brings sweet memories with its smooth and creamy texture.";
@@ -121,3 +144,4 @@
 "GAMGYUL_BUBBLE_TEA" = "Tapioca Tangerine Tea";
 "GAMGYUL_BUBBLE_TEA_DESCRIPTION" = "A type full of curiosity, surprising with each bite.";
 "nanalandMadeYouJuice" = "nanaland in Jeju has created a custom travel juice for you!";
+

@@ -10,6 +10,7 @@ import Kingfisher
 
 struct ProfileMainView: View {
     @StateObject var viewModel = ProfileMainViewModel()
+    @EnvironmentObject var localizationManager: LocalizationManager
 	@StateObject var appState = AppState.shared
 	@AppStorage("provider") var provider: String = ""
 	
@@ -17,7 +18,7 @@ struct ProfileMainView: View {
 
         VStack(spacing: 0) {
             ZStack {
-                NanaNavigationBar(title: "나의나나")
+                NanaNavigationBar(title: LocalizedKey.mynana.localized(for: localizationManager.language))
                     .padding(.bottom, 16)
                 HStack(spacing: 0) {
                     Spacer()
@@ -68,7 +69,7 @@ struct ProfileMainView: View {
                         }
                         .padding(.bottom, 56)
                         HStack(spacing: 0) {
-                            Text("여행 유형")
+                            Text(.travelType)
                                 .font(.body_bold)
                                 .padding(.leading, 16)
                             Spacer()
@@ -106,10 +107,12 @@ struct ProfileMainView: View {
                         .padding(.bottom, 16)
 
                         HStack(spacing: 0) {
+
 							Button(action: {
 								AppState.shared.showTypeTest = true
 							}, label: {
-                                Text("테스트 다시하기")
+                                Text(.retest)
+
                             })
                             .padding(.leading, 16)
                             Spacer()
@@ -117,7 +120,7 @@ struct ProfileMainView: View {
                         .padding(.bottom, 48)
                         VStack(spacing: 0) {
                             HStack(spacing: 0) {
-                                Text("소개")
+                                Text(.introduction)
                                     .font(.body_bold)
                                     .padding(.leading, 16)
                                 Spacer()
@@ -143,7 +146,7 @@ struct ProfileMainView: View {
                         
                         Spacer()
                         NavigationLink(destination: ProfileUpdateView()) {
-                            Text("프로필 수정")
+                            Text(.editProfile)
                                 .font(.body_bold)
                                 .frame(width: Constants.screenWidth - 32, height: 48)
                                 .foregroundColor(.main) // 텍스트 색상 설정
@@ -155,9 +158,8 @@ struct ProfileMainView: View {
                         }
                         .padding(.bottom, 24)
                     }
-                    .frame(height: geometry.size.height)
-                   
                 }
+                .frame(height: geometry.size.height)
             }
             
             
