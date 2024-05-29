@@ -158,9 +158,8 @@ struct ProfileMainView: View {
                         }
                         .padding(.bottom, 24)
                     }
-                    .frame(height: geometry.size.height)
-                   
                 }
+                .frame(height: geometry.size.height)
             }
             
             
