@@ -21,7 +21,7 @@ final class AuthManager: NSObject {
 	
 	@ObservedObject var registerVM: RegisterViewModel
 	
-	init(registerVM: RegisterViewModel) {
+	init(registerVM: RegisterViewModel = .init()) {
 		self.registerVM = registerVM
 	}
 
@@ -222,6 +222,39 @@ final class AuthManager: NSObject {
 			} else {
 				// TODO: 비회원 에러처리 필요
 				print("비회원 회원가입 - 알 수 없는 에러")
+			}
+		}
+	}
+	
+	/// 로그아웃
+	func logout() async {
+		// 나나랜드 서버 로그아웃
+		let result = await AuthService.logout()
+		if result?.status == 200 {
+			// 성공시 각 소셜로그인 별 로그아웃
+			if provider == "KAKAO" {
+				kakaoLogout()
+			} else if provider == "GOOGLE" {
+				
+			} else if provider == "APPLE" {
+				
+			}
+		}
+	}
+	
+	/// 카카오 소셜 로그아웃
+	private func kakaoLogout() {
+		UserApi.shared.logout {(error) in
+			if let error = error {
+				print("카카오 로그아웃 에러 - \(error.localizedDescription)")
+			}
+			else {
+				print("카카오 로그아웃 성공")
+				// 토큰 제거하고 메인화면으로
+				KeyChainManager.deleteItem(key: "accessToken")
+				KeyChainManager.deleteItem(key: "refreshToken")
+				provider = ""
+				isLogin = false
 			}
 		}
 	}
