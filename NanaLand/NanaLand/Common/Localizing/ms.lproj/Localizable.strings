@@ -12,6 +12,8 @@
 "next" = "Seterusnya";
 "requiredWithBracket" = "(Wajib)";
 "optionalWithBracket" = "(Opsional)";
+"destination" = "Destinasi Perjalanan";
+"gotoMainScreen" = "Terus ke Laman Utama";
 
 //MARK: - Tab
 "home" = "Laman Utama";
@@ -53,6 +55,7 @@
 "onlyCharSpaceNumberNickname" = "Nama panggilan hanya boleh mengandungi huruf, ruang, dan nombor.";
 
 //MARK: - TypeTest
+"skipTypeTest" = "Langkau ujian";
 // Question
 "typeTest1Q1L" = "Apakah pilihan %@ ketika memilih destinasi perjalanan?";
 "typeTest1Q2L" = "";
@@ -77,7 +80,6 @@
 "traditionalCulture" = "Budaya Tradisional";
 "naturalScenery" = "Pemandangan Semula Jadi";
 "themePark" = "Taman Tema";
-
 "skipTypeTest" = "Langkau ujian";
 
 //MARK: - MyPage
@@ -86,3 +88,45 @@
 "travelType" = "Jenis Perjalanan";
 "retest" = "Uji semula";
 "introduction" = "Perkenalan";
+
+// Result
+"your" = "%@?";
+"yourPreference" = "Apakah pilihan";
+"yourTravelStyle" = "Apakah gaya perjalanan yang ingin dilakukan?";
+"tangerineJuiced" = "Jus Tangerin Sedang Diperah...";
+"juiceCommingSoon" = "Jus Perjalanan yang Sedap Akan Segera Tersedia!";
+"yourTravelStyleIs" = "Jenis Perjalanan %@ adalah";
+// Type
+"GAMGYUL_ICECREAM" = "Ais Krim Mandarin";
+"GAMGYUL_ICECREAM_DESCRIPTION" = "Sejenis Ais Krim Mandarin lembut yang dapat meninggalkan kenangan manis";
+"GAMGYUL_RICECAKE" = "Mochi  Mandarin";
+"GAMGYUL_RICECAKE_DESCRIPTION" = "Sejenis Mochi Mandarin yang mampu menghiasi buku nota anda dengan keseronokan tidak terhingga";
+"GAMGYUL" = "Mandarin";
+"GAMGYUL_DESCRIPTION" = "Satu-satunya tempat terkenal yang menghidangkan perisa asli Mandarin";
+"GAMGYUL_CIDER" = "Sida  Mandarin";
+"GAMGYUL_CIDER_DESCRIPTION" = "Sejenis Air Gas Sitrus yang menyegarkan";
+"GAMGYUL_AFFOKATO" = "Jenis Affogato  Mandarin";
+"GAMGYUL_AFFOKATO_DESCRIPTION" = "Jenis Affogato Mandarin yang penuh dengan kreativiti untuk anda yang penuh semangat dan aktif.";
+"GAMGYUL_HANGWA" = "Kuih Tradisional Mandarin";
+"GAMGYUL_HANGWA_DESCRIPTION" = "Kuih Tradisional Mandarin yang mengandungi kepelbagaian rasa Jeju yang indah";
+"GAMGYUL_JUICE" = "Jus  Mandarin";
+"GAMGYUL_JUICE_DESCRIPTION" = "Sejenis Jus Mandarin Asli tetapi terkenal";
+"GAMGYUL_CHOCOLATE" = "Coklat  Mandarin";
+"GAMGYUL_CHOCOLATE_DESCRIPTION" = "Sejenis Coklat Mandarin yang mengutamakan kualiti daripada kuantiti.";
+"GAMGYUL_COCKTAIL" = "Koktel  Mandarin";
+"GAMGYUL_COCKTAIL_DESCRIPTION" = "Sejenis Koktel Mandarin yang mewah dan extreme";
+"TANGERINE_PEEL_TEA" = "Teh Kulit  Mandarin";
+"TANGERINE_PEEL_TEA_DESCRIPTION" = "Sejenis Teh Kulit Mandarin yang dapat menenangkan jiwa sambil menikmati pemandangan";
+"GAMGYUL_YOGURT" = "Yogurt  Mandarin";
+"GAMGYUL_YOGURT_DESCRIPTION" = "Sejenis Yogurt Mandarin lembut yang menawarkan rasa asli Jeju dan menyegarkan!";
+"GAMGYUL_FLATCCINO" = "Frappuccino  Mandarin";
+"GAMGYUL_FLATCCINO_DESCRIPTION" = "Sejenis Frappuccino Mandarin dihidangkan sejuk dengan kesegaran pelbagai buah";
+"GAMGYUL_LATTE" = "Latte  Mandarin";
+"GAMGYUL_LATTE_DESCRIPTION" = "Sejenis Latte Mandarin yang sesuai diminum di bawah keterikan cahaya matahari";
+"GAMGYUL_SIKHYE" = "Sikhye  Mandarin";
+"GAMGYUL_SIKHYE_DESCRIPTION" = "Sejenis Sikhye Mandarin yang kaya dengan rasa ";
+"GAMGYUL_ADE" = "Aid  Mandarin";
+"GAMGYUL_ADE_DESCRIPTION" = "Sejenis minuman Ade Mandarin dengan kesegaran air soda di samping buah yang menyegarkan!";
+"GAMGYUL_BUBBLE_TEA" = "Bubble Tea  Mandarin";
+"GAMGYUL_BUBBLE_TEA_DESCRIPTION" = "Sejenis Bubble Tea Mandaring yang penuh dengan kejutan semakin anda minum!";
+"nanalandMadeYouJuice" = "nanaland in Jeju telah membuat jus perjalanan khas untuk anda!";

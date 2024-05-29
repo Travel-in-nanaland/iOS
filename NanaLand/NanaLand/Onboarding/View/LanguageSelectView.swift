@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct LanguageSelectView: View {
-	@AppStorage("locale") var locale: String = ""
-	
     var body: some View {
 		VStack(spacing: 120) {
 			VStack(spacing: 4) {
@@ -22,18 +20,18 @@ struct LanguageSelectView: View {
 			
 			VStack(spacing: 32) {
 				languageButton(title: "English", callback: {
-					locale = "ENGLISH"
+					LocalizationManager.shared.setLanguage(.english)
 				})
 				
 				languageButton(title: "中国话", callback: {
-					locale = "CHINESE"
+					LocalizationManager.shared.setLanguage(.chinese)
 				})
 				
 				languageButton(title: "Melayu", callback: {
-					locale = "MALAYSIA"
+					LocalizationManager.shared.setLanguage(.malaysia)
 				})
 				languageButton(title: "한국어", callback: {
-					locale = "KOREAN"
+					LocalizationManager.shared.setLanguage(.korean)
 				})
 			}
 			
