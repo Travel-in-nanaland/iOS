@@ -80,6 +80,15 @@
 "traditionalCulture" = "Budaya Tradisional";
 "naturalScenery" = "Pemandangan Semula Jadi";
 "themePark" = "Taman Tema";
+"skipTypeTest" = "Langkau ujian";
+
+//MARK: - MyPage
+"editProfile" = "Ubah Profil";
+"mynana" = "nana saya";
+"travelType" = "Jenis Perjalanan";
+"retest" = "Uji semula";
+"introduction" = "Perkenalan";
+
 // Result
 "your" = "%@?";
 "yourPreference" = "Apakah pilihan";

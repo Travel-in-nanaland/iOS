@@ -80,6 +80,15 @@
 "traditionalCulture" = "Traditional culture";
 "naturalScenery" = "Natural scenery";
 "themePark" = "Theme parks";
+"skipTypeTest" = "Skip the test";
+
+//MARK: - MyPage
+"editProfile" = "Edit Profile";
+"mynana" = "my nana";
+"travelType" = "Travel Type";
+"retest" = "retest";
+"introduction" = "introduction";
+
 // Result
 "your" = "%@";
 "yourPreference" = "what travel style";
@@ -121,3 +130,4 @@
 "GAMGYUL_BUBBLE_TEA" = "Tapioca Tangerine Tea";
 "GAMGYUL_BUBBLE_TEA_DESCRIPTION" = "A type full of curiosity, surprising with each bite.";
 "nanalandMadeYouJuice" = "nanaland in Jeju has created a custom travel juice for you!";
+

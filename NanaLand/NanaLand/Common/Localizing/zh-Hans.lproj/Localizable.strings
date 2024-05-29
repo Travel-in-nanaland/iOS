@@ -80,6 +80,15 @@
 "traditionalCulture" = "传统文化";
 "naturalScenery" = "自然景观";
 "themePark" = "主题公园";
+"skipTypeTest" = "跳过测试";
+
+//MARK: - MyPage
+"editProfile" = "编辑个人资料";
+"mynana" = "我的nana ";
+"travelType" = "旅行类型";
+"retest" = "再次测试";
+"introduction" = "介绍";
+
 // Result
 "your" = "%@";
 "yourPreference" = "的偏好是？";

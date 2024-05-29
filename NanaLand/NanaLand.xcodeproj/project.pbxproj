@@ -129,6 +129,7 @@
 		BF2D937D2BFF3CEF0057381A /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D937C2BFF3CEF0057381A /* AlertView.swift */; };
 		BF3021EE2BDF8E9300CB3966 /* ShopDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3021ED2BDF8E9300CB3966 /* ShopDetailService.swift */; };
 		BF3021F02BDF8E9B00CB3966 /* ShopDetailEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3021EF2BDF8E9B00CB3966 /* ShopDetailEndPoint.swift */; };
+		BF30C7352C05B32F0084702F /* GifImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF30C7342C05B32F0084702F /* GifImageView.swift */; };
 		BF48F4CF2C046FEA00A2D8F1 /* LanguageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF48F4CE2C046FEA00A2D8F1 /* LanguageViewModel.swift */; };
 		BF4F6C682BD54CA4009F070F /* NaNaPickDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4F6C672BD54CA4009F070F /* NaNaPickDetailService.swift */; };
 		BF4F6C6A2BD54CB0009F070F /* NaNaPickDetailEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4F6C692BD54CB0009F070F /* NaNaPickDetailEndPoint.swift */; };
@@ -171,6 +172,8 @@
 		BFABD3512BE7634100C3F3A6 /* FestivalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFABD3502BE7634100C3F3A6 /* FestivalModel.swift */; };
 		BFABD3532BE7F9E100C3F3A6 /* SeasonModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFABD3522BE7F9E100C3F3A6 /* SeasonModalView.swift */; };
 		BFB16AF92BFED71600601537 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB16AF82BFED71600601537 /* SettingView.swift */; };
+		BFB73BB72C05BA6A00A9A10E /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = BFB73BB62C05BA6A00A9A10E /* SDWebImageSwiftUI */; };
+		BFB73BB92C05E11C00A9A10E /* LanguageAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB73BB82C05E11C00A9A10E /* LanguageAlertView.swift */; };
 		BFBB90F62BFF500C00726DED /* WithdrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBB90F52BFF500C00726DED /* WithdrawView.swift */; };
 		BFC671E82BF718F200D1A2FD /* NatureMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC671E72BF718F200D1A2FD /* NatureMainViewModel.swift */; };
 		BFC671EA2BF7191500D1A2FD /* NatureDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC671E92BF7191500D1A2FD /* NatureDetailViewModel.swift */; };
@@ -320,6 +323,7 @@
 		BF2D937C2BFF3CEF0057381A /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		BF3021ED2BDF8E9300CB3966 /* ShopDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDetailService.swift; sourceTree = "<group>"; };
 		BF3021EF2BDF8E9B00CB3966 /* ShopDetailEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDetailEndPoint.swift; sourceTree = "<group>"; };
+		BF30C7342C05B32F0084702F /* GifImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifImageView.swift; sourceTree = "<group>"; };
 		BF48F4CE2C046FEA00A2D8F1 /* LanguageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewModel.swift; sourceTree = "<group>"; };
 		BF4F6C672BD54CA4009F070F /* NaNaPickDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaNaPickDetailService.swift; sourceTree = "<group>"; };
 		BF4F6C692BD54CB0009F070F /* NaNaPickDetailEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaNaPickDetailEndPoint.swift; sourceTree = "<group>"; };
@@ -363,6 +367,7 @@
 		BFABD3502BE7634100C3F3A6 /* FestivalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FestivalModel.swift; sourceTree = "<group>"; };
 		BFABD3522BE7F9E100C3F3A6 /* SeasonModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonModalView.swift; sourceTree = "<group>"; };
 		BFB16AF82BFED71600601537 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		BFB73BB82C05E11C00A9A10E /* LanguageAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageAlertView.swift; sourceTree = "<group>"; };
 		BFBB90F52BFF500C00726DED /* WithdrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawView.swift; sourceTree = "<group>"; };
 		BFC671E72BF718F200D1A2FD /* NatureMainViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NatureMainViewModel.swift; sourceTree = "<group>"; };
 		BFC671E92BF7191500D1A2FD /* NatureDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NatureDetailViewModel.swift; sourceTree = "<group>"; };
@@ -387,6 +392,7 @@
 				2C3C75B22BCA3C6B00312F26 /* Kingfisher in Frameworks */,
 				2C40DB982BE644BE007A3768 /* KakaoSDK in Frameworks */,
 				2C80ECEA2BDAA551002F38A7 /* SwiftUICalendar in Frameworks */,
+				BFB73BB72C05BA6A00A9A10E /* SDWebImageSwiftUI in Frameworks */,
 				2C3C75AF2BCA3C5000312F26 /* Alamofire in Frameworks */,
 				2C40DBBB2BEDFBC3007A3768 /* GoogleSignInSwift in Frameworks */,
 				2C80ECCD2BD2C27D002F38A7 /* SwiftUIIntrospect in Frameworks */,
@@ -435,10 +441,10 @@
 		2C2D3D562C05993D002A38AA /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
-				2C2D3D652C05DE38002A38AA /* loading_drink.json */,
-				2C2D3D662C05DE38002A38AA /* loading_tangerine.json */,
-				2C2D3D672C05DE38002A38AA /* report_info_star.json */,
 				2C2D3D5A2C0599B6002A38AA /* splash.gif */,
+				2C2D3D572C0599B6002A38AA /* loading_drink.json */,
+				2C2D3D592C0599B6002A38AA /* loading_tangerine.json */,
+				2C2D3D582C0599B6002A38AA /* report_info_start.json */,
 			);
 			path = Lottie;
 			sourceTree = "<group>";
@@ -589,6 +595,7 @@
 				2C40DB7E2BE61F05007A3768 /* SplashView.swift */,
 				2C3C75CB2BCAA93D00312F26 /* NanaLandTabView.swift */,
 				2C80ECCE2BD2C777002F38A7 /* AppState.swift */,
+				BF30C7342C05B32F0084702F /* GifImageView.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -1008,6 +1015,7 @@
 				BFBB90F52BFF500C00726DED /* WithdrawView.swift */,
 				BFF8E9E82C045B830081C0A6 /* LanguageView.swift */,
 				BF48F4CE2C046FEA00A2D8F1 /* LanguageViewModel.swift */,
+				BFB73BB82C05E11C00A9A10E /* LanguageAlertView.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -1052,6 +1060,7 @@
 				2C40DB972BE644BE007A3768 /* KakaoSDK */,
 				2C40DBB82BEDFBC3007A3768 /* GoogleSignIn */,
 				2C40DBBA2BEDFBC3007A3768 /* GoogleSignInSwift */,
+				BFB73BB62C05BA6A00A9A10E /* SDWebImageSwiftUI */,
 			);
 			productName = NanaLand;
 			productReference = 2C3C75802BCA3ADA00312F26 /* NanaLand.app */;
@@ -1136,6 +1145,7 @@
 				2C80ECE82BDAA551002F38A7 /* XCRemoteSwiftPackageReference "SwiftUICalendar" */,
 				2C40DB962BE644BE007A3768 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
 				2C40DBB72BEDFBC3007A3768 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				BFB73BB52C05BA6A00A9A10E /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = 2C3C75812BCA3ADA00312F26 /* Products */;
 			projectDirPath = "";
@@ -1279,6 +1289,7 @@
 				BFC671F62BF7198800D1A2FD /* ShopMainViewModel.swift in Sources */,
 				BFF8E9E92C045B830081C0A6 /* LanguageView.swift in Sources */,
 				2C40DB9A2BE64973007A3768 /* NanaHome.swift in Sources */,
+				BF30C7352C05B32F0084702F /* GifImageView.swift in Sources */,
 				2C1F31CE2BCD049C0066819F /* SearchMainView.swift in Sources */,
 				BF9834212BCE720B00A5C289 /* NanapickMainView.swift in Sources */,
 				2C9CF4E82C00714900A346E8 /* TypeTestViewModel.swift in Sources */,
@@ -1340,6 +1351,7 @@
 				BF1493772BD10E1200FC626B /* NaNaPickMainViewModel.swift in Sources */,
 				BF7714582BF999E00020C8F0 /* NatureMainView.swift in Sources */,
 				2C3C75D32BCAB00C00312F26 /* StoryMainView.swift in Sources */,
+				BFB73BB92C05E11C00A9A10E /* LanguageAlertView.swift in Sources */,
 				2C5424F32BF5CEC700B16439 /* TypeTestView.swift in Sources */,
 				2C40DBC22BF1F24D007A3768 /* RegisterViewModel.swift in Sources */,
 				2C80ECA02BCE55E0002F38A7 /* ArticleItem.swift in Sources */,
@@ -1763,6 +1775,14 @@
 				minimumVersion = 0.1.14;
 			};
 		};
+		BFB73BB52C05BA6A00A9A10E /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.4;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1805,6 +1825,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2C80ECE82BDAA551002F38A7 /* XCRemoteSwiftPackageReference "SwiftUICalendar" */;
 			productName = SwiftUICalendar;
+		};
+		BFB73BB62C05BA6A00A9A10E /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BFB73BB52C05BA6A00A9A10E /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

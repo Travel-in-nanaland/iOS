@@ -80,6 +80,16 @@
 "traditionalCulture" = "전통 문화";
 "naturalScenery" = "자연 경관";
 "themePark" = "테마파크";
+
+"skipTypeTest" = "테스트 건너뛰기";
+
+//MARK: - MyPage
+"editProfile" = "프로필 수정";
+"mynana" = "나의 나나";
+"travelType" = "여행 유형";
+"retest" = "테스트 다시하기";
+"introduction" = "소개";
+
 // Result
 "your" = "";
 "yourPreference" = "취향은?";

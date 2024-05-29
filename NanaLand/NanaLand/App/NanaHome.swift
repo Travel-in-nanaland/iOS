@@ -40,7 +40,7 @@ struct NanaHome: View {
 						}
 					}
 					
-					DispatchQueue.main.asyncAfter(deadline: .now()+3, execute: {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3.5, execute: {
 						isSplashCompleted = true
 					})
 					
