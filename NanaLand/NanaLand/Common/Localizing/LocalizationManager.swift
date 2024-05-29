@@ -18,12 +18,12 @@ class LocalizationManager: ObservableObject {
 
 	func setLanguage(_ language: Language) {
 		UserDefaults.standard.set(language.rawValue, forKey: "locale")
-		self.language = language
+        self.language = .english
 	}
 
 	func getLanguage() {
 		let languageCode = UserDefaults.standard.string(forKey: "locale") ?? Locale.preferredLanguages.first ?? "KOREAN"
-		self.language = Language(rawValue: languageCode) ?? .english
+        self.language = .english
 	}
 }
 

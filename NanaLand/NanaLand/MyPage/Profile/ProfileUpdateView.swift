@@ -20,11 +20,12 @@ struct ProfileUpdateView: View {
     @State private var selectedImage: UIImage?
     @State private var duplicateText = "해당 닉네임은 다른사용자가 사용 중입니다."
     @StateObject var viewModel = ProfileUpdateViewModel()
+    @EnvironmentObject var localizationManager: LocalizationManager
     var body: some View {
         
         VStack(spacing: 0) {
             ZStack {
-                NanaNavigationBar(title: "프로필 수정", showBackButton: false)
+                NanaNavigationBar(title: LocalizedKey.editProfile.localized(for: localizationManager.language), showBackButton: false)
                     .padding(.bottom, 16)
                 HStack(spacing: 0) {
                     Button(action: {

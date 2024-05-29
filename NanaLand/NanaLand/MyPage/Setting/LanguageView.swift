@@ -8,11 +8,8 @@
 import SwiftUI
 
 struct LanguageView: View {
-    var languageName = ["한국어", "English", "中国话", "Melayu"]
     @StateObject var viewModel = LanguageViewModel()
-    @State var alertResult = true
-    @State private var showAlert = false
-    @State private var selectedButton: Int? = 0
+    @State private var selectedButton = 0
     var body: some View {
         VStack(spacing: 0) {
             NanaNavigationBar(title: "언어설정", showBackButton: true)
@@ -27,35 +24,12 @@ struct LanguageView: View {
             .padding(.bottom, 24)
             
             VStack(spacing: 0) {
-                ForEach(0...languageName.count - 1, id: \.self) { index in
-                    Button {
-                        withAnimation(nil) {
-                            alertResult = false
-                            showAlert = true
-                            selectedButton = index
-                            
-                        }
-                        
-                    } label: {
-                        HStack(spacing: 0 ){
-                            Text(languageName[index])
-                                .padding(.leading, 16)
-                                .font(selectedButton == index && alertResult ? .body_bold : .body01)
-                                .foregroundStyle(selectedButton == index && alertResult ? .main : .black)
-                            Spacer()
-                        }
-                    }
-                    .frame(height: 50)
-                    .background(selectedButton == index && alertResult ? .main10P : .white)
-                    .fullScreenCover(isPresented: $showAlert) {
-                        AlertView(title: "언어설정", alertTitle: "해당 언어로\n변경하시겠습니까?", showAlert: $showAlert, alertResult: $alertResult)
-                    }
-                    .transaction { transaction in
-                        transaction.disablesAnimations = true
-                    } //애니메이션 효과 없애기
-                    
-
-                }
+            
+                LanguageButtonView(buttonTitle: "한국어")
+                LanguageButtonView(buttonTitle: "English")
+                LanguageButtonView(buttonTitle: "中国话")
+                LanguageButtonView(buttonTitle: "Melayu")
+                
             }
             
             
@@ -66,6 +40,38 @@ struct LanguageView: View {
     }
 }
 
+struct LanguageButtonView: View {
+    var buttons = [0 , 1 , 2, 3]
+    var buttonTitle = ""
+   
+    @State private var showAlert = false
+    @State private var alertResult = false
+
+    
+    var body: some View {
+        Button {
+            showAlert = true
+           
+        } label: {
+            HStack(spacing: 0 ){
+                Text(buttonTitle)
+                    .padding(.leading, 16)
+                    .font(.body01)
+                    .foregroundStyle(.black)
+                Spacer()
+            }
+        }
+        .frame(height: 50)
+        .background(alertResult ? .main10P : .white)
+        .fullScreenCover(isPresented: $showAlert) {
+            LanguageAlertView(title: "언어설정", alertTitle: "해당 언어로\n변경하시겠습니까?", showAlert: $showAlert, alertResult: $alertResult)
+        }
+        .transaction { transaction in
+            transaction.disablesAnimations = true
+        } //애니메이션 효과 없애기
+
+    }
+}
 
 #Preview {
     LanguageView()

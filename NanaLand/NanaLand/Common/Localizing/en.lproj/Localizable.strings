@@ -79,3 +79,10 @@
 "themePark" = "Theme parks";
 
 "skipTypeTest" = "Skip the test";
+
+//MARK: - MyPage
+"editProfile" = "Edit Profile";
+"mynana" = "my nana";
+"travelType" = "Travel Type";
+"retest" = "retest";
+"introduction" = "introduction";

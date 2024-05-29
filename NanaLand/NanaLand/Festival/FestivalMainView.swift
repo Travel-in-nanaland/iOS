@@ -214,8 +214,6 @@ struct FilterView: View {
                                 .font(.gothicNeo(.medium, size: 12))
                         }
                         
-                        
-                        
       
                         Image("icDownSmall")
                             .padding(.trailing, 12)
@@ -234,41 +232,50 @@ struct FilterView: View {
                 }
             }
         
-            
-            Button {
-                self.locationModal = true
-            } label: {
-                Text(location)
-                    .font(.gothicNeo(.medium, size: 12))
-                    .padding(.leading, 12)
-                    .lineLimit(1)
-                Spacer()
-              
-                Image("icDownSmall")
-                    .padding(.trailing, 12)
-            }
-            .foregroundStyle(Color.gray1)
-            .frame(width: 85, height: 40)
-            .background(
-                RoundedRectangle(cornerRadius: 30)
-                    .strokeBorder(Color.gray2, lineWidth: 1)
-            )
-            .padding(.trailing, 16)
-            .sheet(isPresented: $locationModal) {
-                if yearMonthDay == nil {
-                    // 첫 화면 일 때
-                    LocationModalView(viewModel: viewModel, natureViewModel: NatureMainViewModel(), shopViewModel: ShopMainViewModel(),location: $location, isModalShown: $locationModal, startDate: "", endDate: "", title: title)
-                        .presentationDetents([.height(Constants.screenWidth * (630 / Constants.screenWidth))])
-                } // 종료 날짜를 선택 안했을 때나, 시작 날짜와 종료날짜를 동일하게 선택 => 당일 조회
-                else if endYearMonthDay == yearMonthDay  || endYearMonthDay == nil {
-                    
-                    LocationModalView(viewModel: viewModel, natureViewModel: NatureMainViewModel(), shopViewModel: ShopMainViewModel(), location: $location, isModalShown: $locationModal, startDate: "\(yearMonthDay!.year)" + "\(formattedNumber(yearMonthDay!.month))" + "\(formattedNumber(yearMonthDay!.day))", endDate: "\(yearMonthDay!.year)" + "\(formattedNumber(yearMonthDay!.month))" + "\(formattedNumber(yearMonthDay!.day))", title: title)
-                } else {
-                    // 시작 날짜 종료날짜 다를 때
-                    LocationModalView(viewModel: viewModel, natureViewModel: NatureMainViewModel(), shopViewModel: ShopMainViewModel(), location: $location, isModalShown: $locationModal, startDate:  "\(yearMonthDay!.year)" + "\(formattedNumber(yearMonthDay!.month))" + "\(formattedNumber(yearMonthDay!.day))", endDate:  "\(endYearMonthDay!.year)" + "\(formattedNumber(endYearMonthDay!.month))" + "\(formattedNumber(endYearMonthDay!.day))", title: title)
+            VStack(spacing: 0) {
+                Button {
+                    self.locationModal = true
+
+                   
+                } label: {
+                    HStack(spacing: 0) {
+                        Text(location.split(separator: ",").count >= 3 ? "\(location.split(separator: ",").prefix(2).joined(separator: ","))" + ".." : location.split(separator: ",").prefix(2).joined(separator: ","))
+                            .font(.gothicNeo(.medium, size: 12))
+                            .lineLimit(1)
+                            .padding(.leading, 12)
+                            .truncationMode(.tail)
+                         
+                        Image("icDownSmall")
+                            .resizable()
+                            .frame(width: 16, height: 16)
+                            .padding(.trailing, 12)
+                    }
+                    .frame(height: 40)
                 }
-                                          
+                .foregroundStyle(Color.gray1)
+                .background(
+                    RoundedRectangle(cornerRadius: 30)
+                        .strokeBorder(Color.gray2, lineWidth: 1)
+                        
+                )
+                .padding(.trailing, 16)
+                .sheet(isPresented: $locationModal) {
+                    if yearMonthDay == nil {
+                        // 첫 화면 일 때
+                        LocationModalView(viewModel: viewModel, natureViewModel: NatureMainViewModel(), shopViewModel: ShopMainViewModel(),location: $location, isModalShown: $locationModal, startDate: "", endDate: "", title: title)
+                            .presentationDetents([.height(Constants.screenWidth * (630 / Constants.screenWidth))])
+                    } // 종료 날짜를 선택 안했을 때나, 시작 날짜와 종료날짜를 동일하게 선택 => 당일 조회
+                    else if endYearMonthDay == yearMonthDay  || endYearMonthDay == nil {
+                        
+                        LocationModalView(viewModel: viewModel, natureViewModel: NatureMainViewModel(), shopViewModel: ShopMainViewModel(), location: $location, isModalShown: $locationModal, startDate: "\(yearMonthDay!.year)" + "\(formattedNumber(yearMonthDay!.month))" + "\(formattedNumber(yearMonthDay!.day))", endDate: "\(yearMonthDay!.year)" + "\(formattedNumber(yearMonthDay!.month))" + "\(formattedNumber(yearMonthDay!.day))", title: title)
+                    } else {
+                        // 시작 날짜 종료날짜 다를 때
+                        LocationModalView(viewModel: viewModel, natureViewModel: NatureMainViewModel(), shopViewModel: ShopMainViewModel(), location: $location, isModalShown: $locationModal, startDate:  "\(yearMonthDay!.year)" + "\(formattedNumber(yearMonthDay!.month))" + "\(formattedNumber(yearMonthDay!.day))", endDate:  "\(endYearMonthDay!.year)" + "\(formattedNumber(endYearMonthDay!.month))" + "\(formattedNumber(endYearMonthDay!.day))", title: title)
+                    }
+                                              
+                }
             }
+          
             
         }
         .padding(.bottom, 16)

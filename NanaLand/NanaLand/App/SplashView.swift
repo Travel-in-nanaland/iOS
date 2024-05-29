@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
-
+import Lottie
 struct SplashView: View {
     var body: some View {
-        Text("Splash Screen")
+        VStack(spacing: 0) {
+            GifImageView(name: "splash")
+        }
     }
 }
 

@@ -84,7 +84,16 @@ enum LocalizedKey: String {
 	
 	case skipTypeTest
 	
-	
+    //MARK: - MyPage
+    // main
+    case mynana
+    case editProfile
+    case travelType
+	case retest
+    case introduction
+    
+    // editPage
+    
 	
 	//MARK: - localized()
 	func localized(for language: Language) -> String {

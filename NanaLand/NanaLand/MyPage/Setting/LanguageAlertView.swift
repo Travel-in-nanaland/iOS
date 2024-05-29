@@ -1,18 +1,21 @@
 //
-//  AlertView.swift
+//  LanguageAlertView.swift
 //  NanaLand
 //
-//  Created by jun on 5/23/24.
+//  Created by jun on 5/28/24.
 //
 
+import Foundation
 import SwiftUI
 
-struct AlertView: View {
+struct LanguageAlertView: View {
     var title = "" // 어떤 얼럿창인지
     var alertTitle = "" // 얼럿 창에 띄울 제목 메세지
     var subAlertTitle = ""
     @Binding var showAlert: Bool
     @Binding var alertResult: Bool // 언어변경 true면 변경
+  
+    var index = 0
     var body: some View {
         ZStack {
             Color.black
@@ -47,6 +50,7 @@ struct AlertView: View {
                         showAlert = false
                         // 로그아웃 할 시
                         alertResult = false
+                        
                     } label: {
                         if title == "로그아웃" {
                             Text("네")
@@ -67,7 +71,7 @@ struct AlertView: View {
                         showAlert = false
                         // 로그아웃 안 할 시
                         alertResult = true
-                
+               
                     } label: {
                         if title == "로그아웃" {
                             Text("아니오")
@@ -96,22 +100,14 @@ struct AlertView: View {
             
         }
         .background(ClearBackground())
-        
-    }
-}
-// alert창 배경색 투명하게
-struct ClearBackground: UIViewRepresentable {
-    public func makeUIView(context: Context) -> some UIView {
-        let view = UIView()
-        DispatchQueue.main.async {
-            view.superview?.superview?.backgroundColor = .clear
+        .onAppear {
+            print(index)
         }
-        return view
-    }
-    
-    public func updateUIView(_ uiView: UIViewType, context: Context) {
+       
         
     }
+        
 }
+
 
 
