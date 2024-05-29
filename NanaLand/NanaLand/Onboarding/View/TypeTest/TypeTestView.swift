@@ -51,8 +51,10 @@ struct TypeTestView: View {
 			progressBar
 				.padding(.top, 32)
 			
+			Spacer(minLength: 0)
+			Spacer(minLength: 0)
+			
 			titleView
-				.padding(.top, 80)
 			
 			Spacer(minLength: 0)
 			
@@ -92,6 +94,7 @@ struct TypeTestView: View {
 			Text(titleFirstLine, arguments: [nickname])
 				.font(.gothicNeo(.bold, size: 22))
 				.foregroundStyle(Color.main)
+				.multilineTextAlignment(.center)
 			
 			Text(titleSecondLine, arguments: [nickname])
 				.font(.gothicNeo(.medium, size: 22))
@@ -205,26 +208,26 @@ struct TypeTestView: View {
 }
 
 #Preview {
-	TypeTestView(
-		nickname: "현우",
-		page: 2,
-		titleFirstLine: .typeTest1Q1L,
-		titleSecondLine: .typeTest1Q2L,
-		firstItem: (image: .tourSpot, title: .touristSpot),
-		secondItem: (image: .localSpot, title: .localSpot)
-	)
-	.environmentObject(RegisterViewModel())
-	
 //	TypeTestView(
 //		nickname: "현우",
-//		page: 5,
-//		titleFirstLine: .typeTest5Q1L,
-//		titleSecondLine: .typeTest5Q2L,
-//		isTwoLine: true,
-//		firstItem: (image: .emotionalSpot, title: .sentimentalPlace),
-//		secondItem: (image: .traditionalCulture, title: .traditionalCulture),
-//		thirdItem: (image: .naturalScene, title: .naturalScenery),
-//		fourthItem: (image: .themepark, title: .themePark)
+//		page: 2,
+//		titleFirstLine: .typeTest1Q1L,
+//		titleSecondLine: .typeTest1Q2L,
+//		firstItem: (image: .tourSpot, title: .touristSpot),
+//		secondItem: (image: .localSpot, title: .localSpot)
 //	)
 //	.environmentObject(RegisterViewModel())
+	
+	TypeTestView(
+		nickname: "현우",
+		page: 5,
+		titleFirstLine: .typeTest5Q1L,
+		titleSecondLine: .typeTest5Q2L,
+		isTwoLine: true,
+		firstItem: (image: .emotionalSpot, title: .sentimentalPlace),
+		secondItem: (image: .traditionalCulture, title: .traditionalCulture),
+		thirdItem: (image: .naturalScene, title: .naturalScenery),
+		fourthItem: (image: .themepark, title: .themePark)
+	)
+	.environmentObject(RegisterViewModel())
 }

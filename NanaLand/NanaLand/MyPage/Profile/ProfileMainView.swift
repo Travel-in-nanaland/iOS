@@ -10,6 +10,9 @@ import Kingfisher
 
 struct ProfileMainView: View {
     @StateObject var viewModel = ProfileMainViewModel()
+	@StateObject var appState = AppState.shared
+	@AppStorage("provider") var provider: String = ""
+	
     var body: some View {
 
         VStack(spacing: 0) {
@@ -73,10 +76,10 @@ struct ProfileMainView: View {
                         .padding(.bottom, 16)
                         
                         HStack(spacing: 0) {
-        //                    Text("\(AppState.shared.userInfo.travelType)")
-        //                        .font(.title02_bold)
-        //                        .padding(.leading, 16)
-        //                        .foregroundStyle(Color.main)
+							Text("\(appState.userInfo.travelType ?? "")")
+                                .font(.title02_bold)
+                                .padding(.leading, 16)
+                                .foregroundStyle(Color.main)
                             Spacer()
                         }
                         .padding(.bottom, 8)
@@ -101,9 +104,11 @@ struct ProfileMainView: View {
                         }
                         .padding(.leading, 16)
                         .padding(.bottom, 16)
-                        
+
                         HStack(spacing: 0) {
-                            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+							Button(action: {
+								AppState.shared.showTypeTest = true
+							}, label: {
                                 Text("테스트 다시하기")
                             })
                             .padding(.leading, 16)
@@ -158,9 +163,15 @@ struct ProfileMainView: View {
             
         }
         .onAppear {
-            viewModel.state.getProfileMainResponse.nickname = AppState.shared.userInfo.nickname
-            viewModel.state.getProfileMainResponse.profileImageUrl = AppState.shared.userInfo.profileImageUrl
-            viewModel.state.getProfileMainResponse.description = AppState.shared.userInfo.description
+			if provider == "GUEST" {
+				withAnimation {
+					AppState.shared.showRegisterInduction = true
+				}
+			} else {
+				viewModel.state.getProfileMainResponse.nickname = AppState.shared.userInfo.nickname
+				viewModel.state.getProfileMainResponse.profileImageUrl = AppState.shared.userInfo.profileImageUrl
+				viewModel.state.getProfileMainResponse.description = AppState.shared.userInfo.description
+			}
         }
         .navigationDestination(for: MyPageViewType.self) { viewType in
             

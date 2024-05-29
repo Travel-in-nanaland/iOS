@@ -41,6 +41,8 @@ final class TypeTestViewModel: ObservableObject {
 		case onTapNextButtonInTest(page: Int, index: Int)
 		case onTapSkipButton
 		case onTapGotoMainViewButton
+		case onTapLetsgoButton
+		case onAppearLoadingView
 	}
 	
 	@Published var state: State
@@ -57,6 +59,10 @@ final class TypeTestViewModel: ObservableObject {
 			skipButtonTapped()
 		case .onTapGotoMainViewButton:
 			gotoMainViewButtonTapped()
+		case .onTapLetsgoButton:
+			letsgoButtonTapped()
+		case .onAppearLoadingView:
+			loadingViewOnAppeared()
 		}
 	}
 		
@@ -64,14 +70,14 @@ final class TypeTestViewModel: ObservableObject {
 		switch page {
 		case 1:
 			state.isTouristSpot = (index == 0 ? true : false)
-			state.navigationPath.append(.userTypeTest2)
+			state.navigationPath.append(.typeTest2)
 		case 2:
-			state.navigationPath.append(.userTypeTest3)
+			state.navigationPath.append(.typeTest3)
 		case 3:
 			state.isCostEffective = (index == 0 ? true : false)
-			state.navigationPath.append(.userTypeTest4)
+			state.navigationPath.append(.typeTest4)
 		case 4:
-			state.navigationPath.append(.userTypeTest5)
+			state.navigationPath.append(.typeTest5)
 		case 5:
 			switch index {
 			case 1:
@@ -86,14 +92,7 @@ final class TypeTestViewModel: ObservableObject {
 				print("unknown type")
 			}
 			
-			let type = getTripType()
-			state.userType = type
-			
-			Task {
-				await AuthService.patchUserType(body: PatchUserTypeRequest(type: type.rawValue))
-			}
-			
-			state.navigationPath.append(.userTypeTestResult)
+			state.navigationPath.append(.typeTestCheck)
 		default:
 			print("unknown page")
 		}
@@ -105,6 +104,26 @@ final class TypeTestViewModel: ObservableObject {
 	
 	func gotoMainViewButtonTapped() {
 		AppState.shared.showTypeTest = false
+	}
+	
+	func letsgoButtonTapped() {
+		let type = getTripType()
+		
+		Task {
+			let result = await AuthService.patchUserType(body: PatchUserTypeRequest(type: type.rawValue))
+			if result?.status == 200 {
+				state.userType = type
+				AppState.shared.userInfo.travelType = type.localizedKey.localized(for: LocalizationManager.shared.language)
+				state.navigationPath.append(.typeTestLoading)
+			}
+		}
+
+	}
+	
+	func loadingViewOnAppeared() {
+		DispatchQueue.main.asyncAfter(deadline: .now() + 3) {[weak self] in
+			self?.state.navigationPath.append(.typeTestResult)
+		}
 	}
 	
 	func getTripType() -> TripType {

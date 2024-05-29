@@ -15,6 +15,8 @@ enum LocalizedKey: String {
 	case next
 	case requiredWithBracket
 	case optionalWithBracket
+	case destination
+	case gotoMainScreen
 	
 	//MARK: - Tab
 	case home
@@ -56,6 +58,7 @@ enum LocalizedKey: String {
 	case onlyCharSpaceNumberNickname
 	
 	//MARK: - TypeTest
+	case skipTypeTest
 	// Question
 	// First Question, First Line
 	case typeTest1Q1L
@@ -81,8 +84,47 @@ enum LocalizedKey: String {
 	case traditionalCulture
 	case naturalScenery
 	case themePark
-	
-	case skipTypeTest
+	// Result
+	case your
+	case yourPreference
+	case yourTravelStyle
+	case tangerineJuiced
+	case juiceCommingSoon
+	case yourTravelStyleIs
+	// Type
+	case GAMGYUL_ICECREAM
+	case GAMGYUL_ICECREAM_DESCRIPTION
+	case GAMGYUL_RICECAKE
+	case GAMGYUL_RICECAKE_DESCRIPTION
+	case GAMGYUL
+	case GAMGYUL_DESCRIPTION
+	case GAMGYUL_CIDER
+	case GAMGYUL_CIDER_DESCRIPTION
+	case GAMGYUL_AFFOKATO
+	case GAMGYUL_AFFOKATO_DESCRIPTION
+	case GAMGYUL_HANGWA
+	case GAMGYUL_HANGWA_DESCRIPTION
+	case GAMGYUL_JUICE
+	case GAMGYUL_JUICE_DESCRIPTION
+	case GAMGYUL_CHOCOLATE
+	case GAMGYUL_CHOCOLATE_DESCRIPTION
+	case GAMGYUL_COCKTAIL
+	case GAMGYUL_COCKTAIL_DESCRIPTION
+	case TANGERINE_PEEL_TEA
+	case TANGERINE_PEEL_TEA_DESCRIPTION
+	case GAMGYUL_YOGURT
+	case GAMGYUL_YOGURT_DESCRIPTION
+	case GAMGYUL_FLATCCINO
+	case GAMGYUL_FLATCCINO_DESCRIPTION
+	case GAMGYUL_LATTE
+	case GAMGYUL_LATTE_DESCRIPTION
+	case GAMGYUL_SIKHYE
+	case GAMGYUL_SIKHYE_DESCRIPTION
+	case GAMGYUL_ADE
+	case GAMGYUL_ADE_DESCRIPTION
+	case GAMGYUL_BUBBLE_TEA
+	case GAMGYUL_BUBBLE_TEA_DESCRIPTION
+	case nanalandMadeYouJuice
 	
 	
 	
@@ -94,12 +136,7 @@ enum LocalizedKey: String {
 		}
 		return NSLocalizedString(self.rawValue, bundle: bundle, comment: "")
 	}
-	
-//	func localized(for language: Language, _ arguments: CVarArg...) -> String {
-//		let format = localized(for: language)
-//		return String(format: format, arguments: arguments)
-//	}
-	
+
 	func localized(for language: Language, _ arguments: [CVarArg]) -> String {
 			let format = localized(for: language)
 			return String(format: format, arguments: arguments)

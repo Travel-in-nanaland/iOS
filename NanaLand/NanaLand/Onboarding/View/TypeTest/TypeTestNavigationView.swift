@@ -8,11 +8,13 @@
 import SwiftUI
 
 enum TypeTestViewType {
-	case userTypeTest2
-	case userTypeTest3
-	case userTypeTest4
-	case userTypeTest5
-	case userTypeTestResult
+	case typeTest2
+	case typeTest3
+	case typeTest4
+	case typeTest5
+	case typeTestCheck
+	case typeTestLoading
+	case typeTestResult
 	
 }
 
@@ -32,7 +34,7 @@ struct TypeTestNavigationView: View {
 			)
 			.navigationDestination(for: TypeTestViewType.self) { viewType in
 				switch viewType {
-				case .userTypeTest2:
+				case .typeTest2:
 					TypeTestView(
 						nickname: nickname,
 						page: 2,
@@ -41,7 +43,7 @@ struct TypeTestNavigationView: View {
 						firstItem: (image: .fluid, title: .flexible),
 						secondItem: (image: .planned, title: .organized)
 					)
-				case .userTypeTest3:
+				case .typeTest3:
 					TypeTestView(
 						nickname: nickname,
 						page: 3,
@@ -50,7 +52,7 @@ struct TypeTestNavigationView: View {
 						firstItem: (image: .costEffective, title: .budgetTravel),
 						secondItem: (image: .luxury, title: .luxuryTravel)
 					)
-				case .userTypeTest4:
+				case .typeTest4:
 					TypeTestView(
 						nickname: nickname,
 						page: 4,
@@ -59,7 +61,7 @@ struct TypeTestNavigationView: View {
 						firstItem: (image: .takePicture, title: .photoRemain),
 						secondItem: (image: .seeWithEyes, title: .captureWithEyes)
 					)
-				case .userTypeTest5:
+				case .typeTest5:
 					TypeTestView(
 						nickname: nickname,
 						page: 5,
@@ -71,7 +73,11 @@ struct TypeTestNavigationView: View {
 						thirdItem: (image: .naturalScene, title: .naturalScenery),
 						fourthItem: (image: .themepark, title: .themePark)
 					)
-				case .userTypeTestResult:
+				case .typeTestCheck:
+					TypeTestCheckStyleView(nickname: nickname)
+				case .typeTestLoading:
+					TypeTestLoadingView()
+				case .typeTestResult:
 					TypeTestResultView(nickname: nickname)
 				}
 				
