@@ -42,6 +42,7 @@ struct NaNaPickDetailView: View {
                         .resizable()
                         .frame(width: Constants.screenWidth, height: Constants.screenWidth * (237 / 360))
                     
+                    
                     ForEach(viewModel.state.getNaNaPickDetailResponse.nanaDetails, id: \.number) { index in
                         
                         HStack(spacing: 0) {
