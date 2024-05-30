@@ -9,7 +9,7 @@ import Foundation
 
 class NaNaPickDetailViewModel: ObservableObject {
     struct State {
-        var getNaNaPickDetailResponse = NaNaPickDetailModel(originUrl: "https://nanaland-image-bucket.s3.ap-northeast-2.amazonaws.com/images/4.png", notice: nil, nanaDetails: [DetailInfo(number: 1, subTitle: "sub1", title: "title12345", imageUrl: "https://nanaland-image-bucket.s3.ap-northeast-2.amazonaws.com/images/1.png", content: "content1", additionalInfoList: [AdditionalInfo(infoEmoji: "", infoKey: "주차", infoValue: "없음"), AdditionalInfo(infoEmoji: "",infoKey: "주소", infoValue: "제주도")], hashtags: ["ex1", "ex2"])])
+        var getNaNaPickDetailResponse = NaNaPickDetailModel(originUrl: "https://nanaland-image-bucket.s3.ap-northeast-2.amazonaws.com/images/4.png", notice: "", nanaDetails: [DetailInfo(number: 1, subTitle: "sub1", title: "title12345", imageUrl: "https://nanaland-image-bucket.s3.ap-northeast-2.amazonaws.com/images/1.png", content: "content1", additionalInfoList: [AdditionalInfo(infoEmoji: "", infoKey: "주차", infoValue: "없음"), AdditionalInfo(infoEmoji: "",infoKey: "주소", infoValue: "제주도")], hashtags: ["ex1", "ex2"])])
     }
     
     enum Action {

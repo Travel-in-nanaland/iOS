@@ -41,15 +41,44 @@ struct NaNaPickDetailView: View {
                     KFImage(URL(string: viewModel.state.getNaNaPickDetailResponse.originUrl))
                         .resizable()
                         .frame(width: Constants.screenWidth, height: Constants.screenWidth * (237 / 360))
-                    
+                        .padding(.bottom, 16)
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 12)
+                            .fill(Color.main10P)
+                            .frame(maxWidth: Constants.screenWidth - 40)
+                        VStack(alignment: .leading, spacing: 0) {
+                            HStack(alignment: .center, spacing: 0) {
+                                Image("icWarningCircle")
+                                    .resizable()
+                                    .renderingMode(.template)
+                                    .foregroundStyle(.main)
+                                    .frame(width:24, height: 24)
+                                Text("알아두면 좋아요!")
+                                    .font(.body02_bold)
+                                    .foregroundStyle(Color.main)
+                                Spacer()
+                            }
+                            .padding(.leading, 32)
+                            .padding(.trailing, 16)
+                            .padding(.bottom, 4)
+                            .padding(.top, 16)
+                        
+                            Text(viewModel.state.getNaNaPickDetailResponse.notice)
+                                .padding(.leading, 32)
+                                .padding(.trailing, 32)
+                                .padding(.bottom, 16)
+                                .font(.gothicNeo(.regular, size: 14))
+                            Spacer()
+                        }
+                    }
+                    .padding(.bottom, 32)
                     
                     ForEach(viewModel.state.getNaNaPickDetailResponse.nanaDetails, id: \.number) { index in
                         
                         HStack(spacing: 0) {
                             VStack(spacing: 0) {
-                                Text("\(index.subTitle)")
-                                    .foregroundStyle(Color.main)
-                                HStack {
+                               
+                                HStack(alignment: .bottom) {
                                     Text("\(index.number)")
                                         .foregroundStyle(Color.main)
                                         .font(.gothicNeo(.bold, size: 18))
@@ -61,8 +90,13 @@ struct NaNaPickDetailView: View {
                                         )
                                         .padding(.leading, 24)
                                         .padding(.trailing, 16)
-                                    Text("\(index.title)")
-                                        .font(.title01_bold)
+                                    VStack {
+                                        Text("\(index.subTitle)")
+                                            .foregroundStyle(Color.main)
+                                        Text("\(index.title)")
+                                            .font(.title01_bold)
+                                    }
+                                    
                                 }
                                 
                             }

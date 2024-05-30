@@ -9,7 +9,21 @@ import SwiftUI
 
 struct ExperienceMainView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            NanaNavigationBar(title: "이색 체험", showBackButton: true)
+            Spacer()
+            VStack(spacing: 0) {
+                Image("icAirplane")
+                Text("해당 서비스 준비 중입니다. 다음에 만나요!")
+                    .font(.body01)
+                    .foregroundStyle(.gray1)
+                    .multilineTextAlignment(.center)
+            }
+            .frame(width: 169, height: 146)
+            
+            Spacer()
+        }
+        .toolbar(.hidden)
     }
 }
 

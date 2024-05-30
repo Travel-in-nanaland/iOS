@@ -136,16 +136,12 @@ struct HomeMainView: View {
 				.padding(.bottom, 32)
                 
 				/// 광고 뷰
-				HStack {
+                HStack(spacing: 0) {
 					AdvertisementView()
-						.background(.yellow)
-						.frame(height: (UIScreen.main.bounds.width - 40.0) * (80.0 / 328.0))
-						.clipShape(RoundedRectangle(cornerRadius: 10))
+                        .frame(width: Constants.screenWidth, height: (UIScreen.main.bounds.width - 40.0) * (80.0 / 328.0))
 						.padding(.bottom, 40)
-						.padding(.leading, 16)
-						.padding(.trailing, 16)
+                       
 				}
-				
 				HStack {
 					Text("감자마케터 님을 위한 도민 추천 🍊")
 						.font(.gothicNeo(size: 18, font: "bold"))
@@ -155,19 +151,59 @@ struct HomeMainView: View {
 				.padding(.bottom, 8)
 				
 				HStack(spacing: 8) {
-                
-					ForEach(viewModel.state.getRecommendResponse, id: \.id) { article in
-						VStack(alignment: .leading, spacing: 8) {
-							KFImage(URL(string: article.thumbnailUrl)!)
-								.resizable()
-								.frame(height: (Constants.screenWidth - 40) / 2 * (118 / 160))
-								.clipShape(RoundedRectangle(cornerRadius: 12))
-							Text(article.title)
-								.font(.gothicNeo(size: 14, font: "bold"))
-						   
-						}
-					}
-					
+                    ForEach(viewModel.state.getRecommendResponse, id: \.id) { article in
+                        switch article.category {
+                        case "NATURE":
+                            NavigationLink(destination: NatureDetailView(id: Int64(article.id))) {
+                                VStack(alignment: .leading, spacing: 8) {
+                                    KFImage(URL(string: article.thumbnailUrl)!)
+                                        .resizable()
+                                        .frame(height: (Constants.screenWidth - 40) / 2 * (118 / 160))
+                                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                          
+                                    Text(article.title)
+                                        .font(.gothicNeo(size: 14, font: "bold"))
+                                }
+                            }
+                        case "FESTIVAL":
+                            NavigationLink(destination: FestivalDetailView(id: Int64(article.id))) {
+                                VStack(alignment: .leading, spacing: 8) {
+                                    KFImage(URL(string: article.thumbnailUrl)!)
+                                        .resizable()
+                                        .frame(height: (Constants.screenWidth - 40) / 2 * (118 / 160))
+                                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                          
+                                    Text(article.title)
+                                        .font(.gothicNeo(size: 14, font: "bold"))
+                                }
+                            }
+                        case "MARKET":
+                            NavigationLink(destination: ShopDetailView(id: Int64(article.id))) {
+                                VStack(alignment: .leading, spacing: 8) {
+                                    KFImage(URL(string: article.thumbnailUrl)!)
+                                        .resizable()
+                                        .frame(height: (Constants.screenWidth - 40) / 2 * (118 / 160))
+                                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                          
+                                    Text(article.title)
+                                        .font(.gothicNeo(size: 14, font: "bold"))
+                                }
+                            }
+                        default:
+                            NavigationLink(destination: ShopDetailView(id: Int64(article.id))) {
+                                VStack(alignment: .leading, spacing: 8) {
+                                    KFImage(URL(string: article.thumbnailUrl)!)
+                                        .resizable()
+                                        .frame(height: (Constants.screenWidth - 40) / 2 * (118 / 160))
+                                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                          
+                                    Text(article.title)
+                                        .font(.gothicNeo(size: 14, font: "bold"))
+                                }
+                            }
+                        }
+                        
+                    }      
 				}
 				.padding(.leading, 16)
 				.padding(.trailing, 16)
@@ -243,25 +279,76 @@ struct AdvertisementView: View {
                        VStack(alignment: .leading, spacing: 0) {
                            switch image {
                            case "ad1":
-                               Text("제주도에서 예쁜 바다 보고 싶다고?")
-                                   .font(.gothicNeo(.bold, size: 16))
-                               Text("서귀포시 성산의 자연으로 투어해보자!")
-                                   .font(.gothicNeo(.medium, size: 12))
+                               HStack(spacing: 0){
+                                   VStack(alignment: .leading, spacing: 0) {
+                                       Text("제주도에서 예쁜 바다 보고 싶다고?")
+                                           .font(.gothicNeo(.bold, size: 16))
+                                           .padding(.leading, 16)
+                                       Text("서귀포시 성산의 자연으로 투어해보자!")
+                                           .font(.gothicNeo(.medium, size: 12))
+                                           .padding(.leading, 16)
+                                   }
+                                   Spacer()
+                                   Image(image)
+                                       .padding(.trailing, 15)
+                               }
+                               .frame(width: Constants.screenWidth, height: 80)
+                               .background(.skyBlue)
                            case "ad2":
-                               Text("보기 귀한 별 보러 가지 않을래?💫")
-                                   .font(.gothicNeo(.bold, size: 16))
-                               Text("애월의 감성 가득 오름들 확인😯")
-                                   .font(.gothicNeo(.medium, size: 12))
+                               HStack(spacing: 0) {
+                                   VStack(alignment: .leading, spacing: 0) {
+                                       Text("보기 귀한 별 보러 가지 않을래?💫")
+                                           .font(.gothicNeo(.bold, size: 16))
+                                           .padding(.leading, 16)
+                                       Text("애월의 감성 가득 오름들 확인😯")
+                                           .font(.gothicNeo(.medium, size: 12))
+                                           .padding(.leading, 16)
+                                   }
+                                   Spacer()
+                                   Image(image)
+                                       .padding(.trailing, 15)
+                               }
+                               .frame(width: Constants.screenWidth, height: 80)
+                               .background(.main50P)
+                               
+                               
                            case "ad3":
-                               Text("한국의 정감을 느끼고 싶다면, 시장이지!")
-                                   .font(.gothicNeo(.bold, size: 16))
-                               Text("아직도 남은 전통 시장들은 뭐가 있을까?")
-                                   .font(.gothicNeo(.medium, size: 12))
+                               HStack(spacing: 0) {
+                                   VStack(alignment: .leading, spacing: 0) {
+                                       Text("한국의 정감을 느끼고 싶다면, 시장이지!")
+                                           .font(.gothicNeo(.bold, size: 16))
+                                           .padding(.leading, 16)
+                                       Text("아직도 남은 전통 시장들은 뭐가 있을까?")
+                                           .font(.gothicNeo(.medium, size: 12))
+                                           .padding(.leading, 16)
+                                   }
+                                   Spacer()
+                                   Image(image)
+                                       .padding(.trailing, 15)
+                               }
+                               .frame(width: Constants.screenWidth, height: 80)
+                               .background(Color.init(hex: 0xF7C2BC))
+                               
+                               
+                               
                            case "ad4":
-                               Text("제주도에서만 여는 7월 축제🎈")
-                                   .font(.gothicNeo(.bold, size: 16))
-                               Text("세계의 보물, 제주도가 가득 느껴지는 축제 보러가자")
-                                   .font(.gothicNeo(.medium, size: 12))
+                               HStack(spacing: 0){
+                                   VStack(alignment: .leading, spacing: 0) {
+                                       Text("제주도에서만 여는 7월 축제🎈")
+                                           .font(.gothicNeo(.bold, size: 16))
+                                           .padding(.leading, 16)
+                                       Text("세계의 보물, 제주도가 가득 느껴지는 축제 보러가자")
+                                           .font(.gothicNeo(.medium, size: 12))
+                                           .padding(.leading, 16)
+                                   }
+                                   Spacer()
+                                   Image(image)
+                                       .padding(.trailing, 15)
+                               }
+                               .frame(width: Constants.screenWidth, height: 80)
+                               .background(Color.init(hex: 0xFFBC11))
+                               
+                              
                            default:
                                Text("제주도에서 예쁜 바다 보고 싶다고?")
                                    .font(.gothicNeo(.bold, size: 16))
@@ -270,13 +357,12 @@ struct AdvertisementView: View {
                            }
                            
                        }
-                       .padding(.leading, 15)
-                       Spacer()
-                       Image(image)
-                           .padding(.trailing, 15)
+                       .frame(width: Constants.screenWidth)
+                       
                    })
                    
                }
+               .frame(width: Constants.screenWidth, height: 80)
                
                    
            }
