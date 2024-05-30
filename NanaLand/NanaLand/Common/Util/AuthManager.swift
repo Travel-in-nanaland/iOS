@@ -394,13 +394,10 @@ extension AuthManager: ASAuthorizationControllerDelegate, ASAuthorizationControl
 	// 애플 로그인 성공
 	func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
 		guard let appleIdCredential = authorization.credential as? ASAuthorizationAppleIDCredential else {return}
-		
 		let userId = appleIdCredential.user
 		let email = appleIdCredential.email
 		
-		if let tokenString = String(data: appleIdCredential.identityToken ?? Data(), encoding: .utf8),
-		   let emailFromToken = decode(jwtToken: tokenString)["email"] as? String {
-			
+		if let tokenString = String(data: appleIdCredential.identityToken ?? Data(), encoding: .utf8) {
 			KeyChainManager.addItem(key: "appleAuthorizationCode", value: tokenString)
 			
 			let loginRequest = LoginRequest(locale: self.locale, provider: "APPLE", providerId: userId)
@@ -408,7 +405,7 @@ extension AuthManager: ASAuthorizationControllerDelegate, ASAuthorizationControl
 			Task {
 				await self.loginToServer(
 					request: loginRequest,
-					email: email ?? emailFromToken,
+					email: email ?? "",
 					gender: "",
 					birthDate: ""
 				)
