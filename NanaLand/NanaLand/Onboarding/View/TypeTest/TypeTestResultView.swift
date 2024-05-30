@@ -99,7 +99,7 @@ struct TypeTestResultView: View {
 #Preview {
 	@StateObject var lm = LocalizationManager()
 	@StateObject var vm = TypeTestViewModel()
-	lm.setLanguage(.korean)
+	lm.language = .malaysia
 	vm.state.userType = .GAMGYUL_ADE
     return TypeTestResultView(nickname: "현우")
 		.environmentObject(lm)

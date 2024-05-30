@@ -17,9 +17,17 @@ class LocalizationManager: ObservableObject {
 	}
 
 
-	func setLanguage(_ language: Language) {
+	func setLanguage(_ language: Language) async {
 		UserDefaults.standard.set(language.rawValue, forKey: "locale")
-        self.language = language
+		let response = await UserInfoService.patchUserLanguage(body: PatchUserLanguageRequest(locale: language.rawValue))
+		if response?.status == 200 {
+			print("언어 변경 - \(language.rawValue)")
+			await MainActor.run {
+				self.language = language
+			}
+		} else {
+			print("언어 변경 에러")
+		}
 	}
 
 	func getLanguage() {

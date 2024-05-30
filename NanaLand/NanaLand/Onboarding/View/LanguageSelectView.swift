@@ -20,18 +20,26 @@ struct LanguageSelectView: View {
 			
 			VStack(spacing: 32) {
 				languageButton(title: "English", callback: {
-					LocalizationManager.shared.setLanguage(.english)
+					Task {
+						await LocalizationManager.shared.setLanguage(.english)
+					}
 				})
 				
 				languageButton(title: "中国话", callback: {
-					LocalizationManager.shared.setLanguage(.chinese)
+					Task {
+						await LocalizationManager.shared.setLanguage(.chinese)
+					}
 				})
 				
 				languageButton(title: "Melayu", callback: {
-					LocalizationManager.shared.setLanguage(.malaysia)
+					Task {
+						await LocalizationManager.shared.setLanguage(.malaysia)
+					}
 				})
 				languageButton(title: "한국어", callback: {
-					LocalizationManager.shared.setLanguage(.korean)
+					Task {
+						await LocalizationManager.shared.setLanguage(.korean)
+					}
 				})
 			}
 			
