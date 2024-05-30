@@ -9,7 +9,8 @@ import SwiftUI
 
 struct LanguageView: View {
     @StateObject var viewModel = LanguageViewModel()
-    @State private var selectedButton = 0
+	@State private var showAlert = false
+	
     var body: some View {
         VStack(spacing: 0) {
             NanaNavigationBar(title: "언어설정", showBackButton: true)
@@ -24,53 +25,53 @@ struct LanguageView: View {
             .padding(.bottom, 24)
             
             VStack(spacing: 0) {
-            
-                LanguageButtonView(buttonTitle: "한국어")
-                LanguageButtonView(buttonTitle: "English")
-                LanguageButtonView(buttonTitle: "中国话")
-                LanguageButtonView(buttonTitle: "Melayu")
-                
+				languageButton(language: .korean)
+				languageButton(language: .english)
+				languageButton(language: .chinese)
+				languageButton(language: .malaysia)
             }
-            
-            
-            
             Spacer()
         }
         .toolbar(.hidden)
+		.onAppear {
+			viewModel.action(.viewOnAppear)
+		}
+		.fullScreenCover(isPresented: $showAlert) {
+			AlertView(
+				title: .changeLanguageAlertTitle,
+				leftButtonTitle: .no,
+				rightButtonTitle: .yes,
+				leftButtonAction: {
+					showAlert = false
+				},
+				rightButtonAction: {
+					viewModel.action(.changeLanguage)
+					showAlert = false
+				}
+			)
+		}
+		.transaction { transaction in
+			transaction.disablesAnimations = true
+		} //애니메이션 효과 없애기
     }
-}
-
-struct LanguageButtonView: View {
-    var buttons = [0 , 1 , 2, 3]
-    var buttonTitle = ""
-   
-    @State private var showAlert = false
-    @State private var alertResult = false
-
-    
-    var body: some View {
-        Button {
-            showAlert = true
-           
-        } label: {
-            HStack(spacing: 0 ){
-                Text(buttonTitle)
-                    .padding(.leading, 16)
-                    .font(.body01)
-                    .foregroundStyle(.black)
-                Spacer()
-            }
-        }
-        .frame(height: 50)
-        .background(alertResult ? .main10P : .white)
-        .fullScreenCover(isPresented: $showAlert) {
-            LanguageAlertView(title: "언어설정", alertTitle: "해당 언어로\n변경하시겠습니까?", showAlert: $showAlert, alertResult: $alertResult)
-        }
-        .transaction { transaction in
-            transaction.disablesAnimations = true
-        } //애니메이션 효과 없애기
-
-    }
+	
+	private func languageButton(language: Language) -> some View {
+		return Button(action: {
+			viewModel.action(.selectLanguage(language: language))
+			showAlert = true
+		}, label: {
+			HStack {
+				Text(language.name)
+					.padding(.leading, 16)
+					.font(.body01)
+					.foregroundStyle(.black)
+				
+				Spacer()
+			}
+		})
+		.frame(height: 50)
+		.background(language == viewModel.state.selectedLanguage ? .main10P : .baseWhite)
+	}
 }
 
 #Preview {

@@ -7,9 +7,29 @@
 
 import SwiftUI
 
+enum WithDrawType: String, CaseIterable {
+	case INSUFFICIENT_CONTENT  // 콘텐츠 내용 부족
+	case INCONVENIENT_SERVICE  // 서비스 이용 불편
+	case INCONVENIENT_COMMUNITY  // 커뮤니티 사용 불편
+	case RARE_VISITS  // 방문 횟수 거의 없음
+	
+	var localizedKey: LocalizedKey {
+		switch self {
+		case .INSUFFICIENT_CONTENT:
+			return .INSUFFICIENT_CONTENT
+		case .INCONVENIENT_SERVICE:
+			return .INCONVENIENT_SERVICE
+		case .INCONVENIENT_COMMUNITY:
+			return .INCONVENIENT_COMMUNITY
+		case .RARE_VISITS:
+			return .RARE_VISITS
+		}
+	}
+}
+
 struct WithdrawView: View {
-    var buttonName = ["콘텐츠 내용 부족", "서비스 이용 불편", "커뮤니티 사용 불편", "방문 횟수 거의 없음"]
-    @State private var buttonSelected = [false, false, false, false]
+	let buttonType: [WithDrawType] = WithDrawType.allCases
+	@State private var selectedIndex: Int? = nil
     @State private var showAlert = false
     @State private var alertResult = false
     var body: some View {
@@ -71,19 +91,23 @@ struct WithdrawView: View {
                     .font(.title02_bold)
                     
                     VStack(spacing: 0) {
-                        ForEach(0...3, id: \.self) { index in
+						ForEach(Array(zip(buttonType.indices, buttonType)), id: \.0) { (index, type) in
                             Button(action: {
                                 withAnimation(nil) {
-                                    buttonSelected[index].toggle()
+									if selectedIndex == index {
+										selectedIndex = nil
+									} else {
+										selectedIndex = index
+									}
                                 }
                                 
                             }, label: {
                                 HStack(spacing: 0){
-                                    Image(buttonSelected[index] ? "icCheckmarkFilled" : "icCheckmark")
+                                    Image(selectedIndex == index ? "icCheckmarkFilled" : "icCheckmark")
                                         .padding(.trailing, 8)
-                                    Text(buttonName[index])
+									Text(type.localizedKey)
                                         .font(.body02)
-                                        .foregroundStyle(buttonSelected[index] ? .main : .gray1 )
+                                        .foregroundStyle(selectedIndex == index ? .main : .gray1 )
                                     Spacer()
                                 }
                                 .frame(height: 48)
@@ -99,8 +123,10 @@ struct WithdrawView: View {
                     Spacer()
                     
                     HStack(spacing: 0) {
-                        Button(action: {
-                            showAlert = true
+						Button(action: {
+							if selectedIndex != nil {
+								showAlert = true
+							}
                         }, label: {
                             Text("탙퇴")
                                 .padding(.top, 13)
@@ -116,7 +142,19 @@ struct WithdrawView: View {
                         )
                         .padding(.leading, 16)
                         .fullScreenCover(isPresented: $showAlert) {
-                            AlertView(title: "회원탈퇴", alertTitle: "정말 제주도 여행 정보와 혜택을 받지 않으시겠습니까? 😢", subAlertTitle: "*90일 이내에 재가입 시, 기존 계정으로 로그인이 됩니다.", showAlert: $showAlert, alertResult: $alertResult)
+							AlertView(
+								title: .withdrawAlertTitle,
+								message: .withdrawAlertMessage,
+								leftButtonTitle: .cancel,
+								rightButtonTitle: .delete,
+								leftButtonAction: {
+									showAlert = false
+								},
+								rightButtonAction: {
+									// 회원탈퇴
+									AuthManager(registerVM: RegisterViewModel()).withdraw(withdrawalType: buttonType[selectedIndex!].rawValue)
+								}
+							)
                         }
                         .transaction { transaction in
                             transaction.disablesAnimations = true

@@ -14,6 +14,8 @@
 "optionalWithBracket" = "(选填)";
 "destination" = "旅游地";
 "gotoMainScreen" = "前往主屏幕";
+"no" = "否";
+"yes" = "是";
 
 //MARK: - Tab
 "home" = "首页";
@@ -53,6 +55,10 @@
 "duplicatedNickname" = "该昵称已被其他用户使用。";
 "invalidNickname" = "该昵称无法使用。";
 "onlyCharSpaceNumberNickname" = "昵称只能包含字母、空格和数字。";
+"logoutAlertTitle" = "确定要登出吗？";
+"withdrawAlertTitle" = "真的不想收到济州岛旅\n行信息和优惠吗？😢";
+"withdrawAlertMessage" = "*90天内重新加入时，\n可以用原账户登录。";
+"changeLanguageAlertTitle" = "您想更改为该语言吗？";
 
 //MARK: - TypeTest
 "skipTypeTest" = "跳过测试";
@@ -80,27 +86,6 @@
 "traditionalCulture" = "传统文化";
 "naturalScenery" = "自然景观";
 "themePark" = "主题公园";
-"skipTypeTest" = "跳过测试";
-
-//MARK: - MyPage
-// main
-"editProfile" = "编辑个人资料";
-"mynana" = "我的nana ";
-"travelType" = "旅行类型";
-"retest" = "再次测试";
-"introduction" = "介绍";
-// editProfile
-"nickName" = "昵称";
-"complete" = "修改完成";
-"characters" = "字";
-"nickNameTypingLimitError" = "Nama panggilan ini tidak boleh digunakan.";
-"nickNameDuplicateError"= "Nama panggilan ini sudah digunakan oleh pengguna lain.";
-// deleteAlert
-"deleteAlertTitle" = "要删除更改内容吗？";
-"deleteAlertSubTitle" = "现在返回的话更改内容将被删除";
-"cancel" = "取消";
-"delete" = "删除";
-
 // Result
 "your" = "%@";
 "yourPreference" = "的偏好是？";
@@ -142,3 +127,27 @@
 "GAMGYUL_BUBBLE_TEA" = "柑橘珍珠奶茶";
 "GAMGYUL_BUBBLE_TEA_DESCRIPTION" = "充满好奇心的你！越吃越反转的柑橘珍珠奶茶类型！";
 "nanalandMadeYouJuice" = "nanaland in Jeju 为您定制了旅行果汁！";
+
+//MARK: - MyPage
+// main
+"editProfile" = "编辑个人资料";
+"mynana" = "我的nana ";
+"travelType" = "旅行类型";
+"retest" = "再次测试";
+"introduction" = "介绍";
+// editProfile
+"nickName" = "昵称";
+"complete" = "修改完成";
+"characters" = "字";
+"nickNameTypingLimitError" = "Nama panggilan ini tidak boleh digunakan.";
+"nickNameDuplicateError"= "Nama panggilan ini sudah digunakan oleh pengguna lain.";
+// deleteAlert
+"deleteAlertTitle" = "要删除更改内容吗？";
+"deleteAlertSubTitle" = "现在返回的话更改内容将被删除";
+"cancel" = "取消";
+"delete" = "删除";
+// withdrawType(서비스 탈퇴 사유)
+"INSUFFICIENT_CONTENT" = "内容不足";
+"INCONVENIENT_SERVICE" = "服务使用不便";
+"INCONVENIENT_COMMUNITY" = "社区使用不便";
+"RARE_VISITS" = "几乎不访问";

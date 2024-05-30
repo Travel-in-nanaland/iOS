@@ -42,7 +42,18 @@ struct SettingView: View {
                 }
                 .frame(width: Constants.screenWidth, height: 48)
                 .fullScreenCover(isPresented: $showAlert) {
-                    AlertView(title: "로그아웃", alertTitle: "정말 로그아웃을\n하시겠습니까?", showAlert: $showAlert, alertResult: $alertResult)
+					AlertView(
+						title: .logoutAlertTitle,
+						leftButtonTitle: .yes,
+						rightButtonTitle: .no,
+						leftButtonAction: {
+							// 로그아웃
+							AuthManager(registerVM: RegisterViewModel()).logout()
+						},
+						rightButtonAction: {
+							showAlert = false
+						}
+					)
                 }
                 .transaction { transaction in
                     transaction.disablesAnimations = true

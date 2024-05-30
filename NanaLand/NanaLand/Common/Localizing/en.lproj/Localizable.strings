@@ -14,6 +14,8 @@
 "optionalWithBracket" = "(Optional)";
 "destination" = "Destination";
 "gotoMainScreen" = "Go to the main screen";
+"no" = "No";
+"yes" = "Yes";
 
 //MARK: - Tab
 "home" = "Home";
@@ -53,6 +55,10 @@
 "duplicatedNickname" = "This nickname is already in use by another user.";
 "invalidNickname" = "This nickname cannot be used.";
 "onlyCharSpaceNumberNickname" = "Nicknames can only contain letters, spaces, and numbers.";
+"logoutAlertTitle" = "Are you sure\nyou want to log out?";
+"withdrawAlertTitle" = "Are you sure you don't want to receive Jeju travel information and benefits?😢";
+"withdrawAlertMessage" = "*If you rejoin within 90 days, you can log in with your existing account.";
+"changeLanguageAlertTitle" = "Do you want to change\nto this language?";
 
 //MARK: - TypeTest
 "skipTypeTest" = "Skip the test";
@@ -80,28 +86,6 @@
 "traditionalCulture" = "Traditional culture";
 "naturalScenery" = "Natural scenery";
 "themePark" = "Theme parks";
-"skipTypeTest" = "Skip the test";
-
-//MARK: - MyPage
-// main
-"editProfile" = "Edit Profile";
-"mynana" = "my nana";
-"travelType" = "Travel Type";
-"retest" = "retest";
-"introduction" = "introduction";
-// editProfile
-"nickName" = "Nickname";
-"complete" = "Update";
-"characters" = "characters";
-"nickNameTypingLimitError" = "This nickname cannot be used.";
-"nickNameDuplicateError"= "This nickname is already in use by another user.";
-// deleteAlert
-"deleteAlertTitle" = "Do you want to delete\nthe changes?";
-"deleteAlertSubTitle" = "If you go back now,\nthe changes will be deleted.";
-"cancel" = "Cancel";
-"delete" = "Delete";
-
-
 // Result
 "your" = "%@";
 "yourPreference" = "what travel style";
@@ -145,3 +129,26 @@
 "GAMGYUL_BUBBLE_TEA_DESCRIPTION" = "A type full of curiosity, surprising with each bite.";
 "nanalandMadeYouJuice" = "nanaland in Jeju has created a custom travel juice for you!";
 
+//MARK: - MyPage
+// main
+"editProfile" = "Edit Profile";
+"mynana" = "my nana";
+"travelType" = "Travel Type";
+"retest" = "retest";
+"introduction" = "introduction";
+// editProfile
+"nickName" = "Nickname";
+"complete" = "Update";
+"characters" = "characters";
+"nickNameTypingLimitError" = "This nickname cannot be used.";
+"nickNameDuplicateError"= "This nickname is already in use by another user.";
+// deleteAlert
+"deleteAlertTitle" = "Do you want to delete\nthe changes?";
+"deleteAlertSubTitle" = "If you go back now,\nthe changes will be deleted.";
+"cancel" = "Cancel";
+"delete" = "Delete";
+// withdrawType(서비스 탈퇴 사유)
+"INSUFFICIENT_CONTENT" = "Lack of Content";
+"INCONVENIENT_SERVICE" = "Service Inconvenience";
+"INCONVENIENT_COMMUNITY" = "Community Usage Inconvenience";
+"RARE_VISITS" = "Rarely Visit";
