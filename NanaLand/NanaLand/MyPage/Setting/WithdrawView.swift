@@ -8,15 +8,18 @@
 import SwiftUI
 
 struct WithdrawView: View {
-    var buttonName = ["콘텐츠 내용 부족", "서비스 이용 불편", "커뮤니티 사용 불편", "방문 횟수 거의 없음"]
+    @EnvironmentObject var localizationManager: LocalizationManager
+    var buttonName = [LocalizedKey.contentLack.localized(for: LocalizationManager().language), LocalizedKey.serviceInconvenience.localized(for: LocalizationManager().language), LocalizedKey.communityInconvenience.localized(for: LocalizationManager().language), LocalizedKey.fewVisit.localized(for: LocalizationManager().language)]
+ 
     @State private var buttonSelected = [false, false, false, false]
     @State private var showAlert = false
     @State private var alertResult = false
     var body: some View {
         VStack(spacing: 0) {
-            NanaNavigationBar(title: "회원탈퇴", showBackButton: true)
+            NanaNavigationBar(title: LocalizedKey.accountDeletion.localized(for: localizationManager.language), showBackButton: true)
                 .padding(.bottom, 32)
         }
+        
         GeometryReader { geometry in
             ScrollView {
                 VStack(spacing: 0) {
@@ -31,7 +34,7 @@ struct WithdrawView: View {
                     .padding(.bottom, 16)
                     
                     HStack(spacing: 0) {
-                        Text("서비스 탈퇴 안내 사항")
+                        Text(.withDrawNotification)
                             .font(.title02_bold)
                             .padding(.leading, 16)
                             
@@ -40,29 +43,30 @@ struct WithdrawView: View {
                     .padding(.bottom, 8)
                     
                     VStack(alignment: .leading, spacing: 8) {
-                        WithdrawViewItem(itemNumber: 1, contents: "본 서비스를 탈퇴하시면 나나랜드인제주 서비스 기반으로 제공되는 모든 서비스로부터 해지 및 소멸되는 점을 안내드립니다.")
-                        WithdrawViewItem(itemNumber: 2, contents: "회원 탈퇴를 하시면, 보유하고 계신 각종 쿠폰, 포인트는 자동 소멸되며 재가입하실 경우에도 복원되지 않습니다.")
-                        WithdrawViewItem(itemNumber: 3, contents: "서비스 탈퇴 후 전자상거래법에 의해 보존해야 하는 거래기록은 90일간 보관됩니다.")
-                        WithdrawViewItem(itemNumber: 4, contents: "회원 탈퇴 시 회원가입 이벤트에는 재 참여하실 수 없습니다.")
-                        WithdrawViewItem(itemNumber: 5, contents: "탈퇴 후 90일 이내에 재가입을 하시면, 기존 계정으로 사용하실 수 있습니다.")
+                        WithdrawViewItem(itemNumber: 1, contents: LocalizedKey.firstNotification.localized(for: localizationManager.language))
+                        WithdrawViewItem(itemNumber: 2, contents: LocalizedKey.secondNotification.localized(for: localizationManager.language))
+                        WithdrawViewItem(itemNumber: 3, contents: LocalizedKey.thirdNotification.localized(for: localizationManager.language))
+                        WithdrawViewItem(itemNumber: 4, contents: LocalizedKey.fourthNotification.localized(for: localizationManager.language))
+                        WithdrawViewItem(itemNumber: 5, contents: LocalizedKey.fifthNotification.localized(for: localizationManager.language))
                     }
                     .padding(.leading, 16)
                     .padding(.trailing, 16)
-                    .padding(.bottom, 16 )
+                    .padding(.bottom, 16)
                     
                     HStack(spacing: 0) {
-                        Text("안내사항을 확인하였으며 동의합니다.")
+                        Text(.notificationConsent)
                             .font(.body02_bold)
                             .foregroundStyle(.gray1)
+                            .multilineTextAlignment(.center)
                     }
                     .padding(.bottom, 16)
                     
                     Divider()
                         .padding(.bottom, 16)
                     
-                    HStack(spacing: 0) {
-                        Text("서비스 탈퇴 사유")
-                        Text("(필수)")
+                    HStack(spacing: 2) {
+                        Text(.withDrawReason)
+                        Text(.requiredWithBracket)
                             .foregroundStyle(.main)
                         Spacer()
                     }
@@ -102,18 +106,16 @@ struct WithdrawView: View {
                         Button(action: {
                             showAlert = true
                         }, label: {
-                            Text("탙퇴")
-                                .padding(.top, 13)
-                                .padding(.bottom, 13)
-                                .padding(.leading, 63)
-                                .padding(.trailing, 63)
+                            Text(.withdraw)
                                 .foregroundStyle(.gray1)
                                 .font(.body_bold)
                         })
                         .background(
                             RoundedRectangle(cornerRadius: 50)
+                                .frame(width: (Constants.screenWidth - 48) / 2, height: 48)
                                 .foregroundStyle(.gray2)
                         )
+                        .frame(width: (Constants.screenWidth - 48) / 2, height: 48)
                         .padding(.leading, 16)
                         .fullScreenCover(isPresented: $showAlert) {
                             AlertView(title: "회원탈퇴", alertTitle: "정말 제주도 여행 정보와 혜택을 받지 않으시겠습니까? 😢", subAlertTitle: "*90일 이내에 재가입 시, 기존 계정으로 로그인이 됩니다.", showAlert: $showAlert, alertResult: $alertResult)
@@ -125,18 +127,16 @@ struct WithdrawView: View {
                         Spacer()
                         
                         Button(action: {}, label: {
-                            Text("취소")
-                                .padding(.top, 13)
-                                .padding(.bottom, 13)
-                                .padding(.leading, 63)
-                                .padding(.trailing, 63)
+                            Text(.cancel)
                                 .foregroundStyle(.white)
                                 .font(.body_bold)
                         })
                         .background(
                             RoundedRectangle(cornerRadius: 50)
+                                .frame(width: (Constants.screenWidth - 48) / 2, height: 48)
                                 .foregroundStyle(.main)
                         )
+                        .frame(width: (Constants.screenWidth - 48) / 2, height: 48)
                         .padding(.trailing, 16)
                         
                         
@@ -146,15 +146,12 @@ struct WithdrawView: View {
                 }
                 .toolbar(.hidden)
             
-                .frame(height: geometry.size.height)
+                .frame(height: Constants.screenHeight)
                 
             }
-            .frame(maxHeight: geometry.size.height)
+            .frame(maxHeight: Constants.screenHeight)
            
         }
-        
-        
-       
     }
 }
 
@@ -166,6 +163,10 @@ struct WithdrawViewItem: View {
         HStack(alignment: .top, spacing: 0) {
             Text("\(itemNumber).")
             Text(contents)
+                .padding(.leading, 0)
+                .padding(.trailing, 16)
+                .multilineTextAlignment(.leading)
+                
                
         }
         .font(.caption01)

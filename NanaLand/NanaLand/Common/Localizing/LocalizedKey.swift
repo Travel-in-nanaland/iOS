@@ -147,7 +147,69 @@ enum LocalizedKey: String {
     case cancel
     case delete
     
+    // settingPage
+    case settings
+    case setUsage
+    case termsAndPolicies
+    case accessPolicyGuide
+    case languageSetting
+    case versionInfomation
+    case logout
+    case memberWithdraw
+    
+    // termsAndPoliciesPage(약관 및 정책 페이지)
+    case marketingConsent
+    case locationConsent
+    case noConsentError
+    
+    // accessPolicyGuidePage(접근 권한 안내 페이지)
+    case mainDescription
+    // 전화 기기 정보
+    case phoneTitle
+    case phoneDescription
+    // 필수 접근권한 알림
+    case requiredNotification
+    // 저장공간
+    case storageTitle
+    case storageDescription
+    // 위치정보
+    case locationTitle
+    case locationDescription
+    // 카메라
+    case cameraTitle
+    case cameraDescription
+    // 알림
+    case notificationTitle
+    case notificationDescription
+    // 오디오
+    case audioTitle
+    case audioDescription
+    // 선택 접근권한 알림
+    case optionalNotification
+    case notificate
 	
+    // languageSettingPage(언어 설정 페이지)
+    case languageMainDescription
+    case korean
+    case english
+    case chinese
+    case malaysia
+    // withDrawMembershipPage(회원 탈퇴 페이지)
+    case withDrawNotification
+    case firstNotification
+    case secondNotification
+    case thirdNotification
+    case fourthNotification
+    case fifthNotification
+    case notificationConsent
+    case withDrawReason
+    case contentLack
+    case serviceInconvenience
+    case communityInconvenience
+    case fewVisit
+    case withdraw
+    case accountDeletion
+    
 	//MARK: - localized()
 	func localized(for language: Language) -> String {
 		guard let path = Bundle.main.path(forResource: language.localizedName, ofType: "lproj"),

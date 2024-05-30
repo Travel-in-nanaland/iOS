@@ -10,13 +10,15 @@ import SwiftUI
 struct SettingView: View {
     @State private var showAlert = false
     @State var alertResult = false
+    @EnvironmentObject var localizationManager: LocalizationManager
+    
     var body: some View {
         
         VStack(spacing: 0) {
-            NanaNavigationBar(title: "설정", showBackButton: true)
+            NanaNavigationBar(title: LocalizedKey.settings.localized(for: localizationManager.language), showBackButton: true)
                 .padding(.bottom, 20)
             HStack(spacing: 0) {
-                Text("사용 설정")
+                Text(.setUsage)
                     .font(.body02_bold)
                     .padding(.leading, 17)
                 
@@ -24,17 +26,17 @@ struct SettingView: View {
             }
             .padding(.bottom, 6)
             VStack(spacing: 0) {
-                SettingItemButtonView(title: "약관 및 정책")
-                SettingItemButtonView(title: "접근권한 안내")
-                SettingItemButtonView(title: "언어 설정")
-                SettingItemButtonView(title: "버전 정보")
+                SettingItemButtonView(title: LocalizedKey.termsAndPolicies.localized(for: localizationManager.language))
+                SettingItemButtonView(title: LocalizedKey.accessPolicyGuide.localized(for: localizationManager.language))
+                SettingItemButtonView(title: LocalizedKey.languageSetting.localized(for: localizationManager.language))
+                SettingItemButtonView(title: LocalizedKey.versionInfomation.localized(for: localizationManager.language))
                 Divider()
                 // 로그아웃 alert창 띄울 버튼
                 Button {
                     showAlert = true
                 } label: {
                     HStack(spacing: 0) {
-                        Text("로그아웃")
+                        Text(.logout)
                             .font(.body01)
                             .padding(.leading, 16)
                         Spacer()
@@ -48,7 +50,7 @@ struct SettingView: View {
                     transaction.disablesAnimations = true
                 }
 
-                SettingItemButtonView(title: "회원 탈퇴")
+                SettingItemButtonView(title: LocalizedKey.memberWithdraw.localized(for: localizationManager.language))
             }
             Spacer()
         }
@@ -62,8 +64,6 @@ struct SettingView: View {
                 AuthorizeView()
             case .language:
                 LanguageView()
-            case .version:
-                PolicyView()
             case .withdraw:
                 WithdrawView()
             }
@@ -76,18 +76,20 @@ struct SettingView: View {
 struct SettingItemButtonView: View {
     var title = ""
     var path: SettingViewType? = nil
+    @EnvironmentObject var localizationManager: LocalizationManager
     var body: some View {
         Button {
+
             switch title {
-            case "약관 및 정책":
+            case LocalizedKey.termsAndPolicies.localized(for: localizationManager.language):
                 AppState.shared.navigationPath.append(SettingViewType.policy)
-            case "접근권한 안내":
+            case LocalizedKey.accessPolicyGuide.localized(for: localizationManager.language):
                 AppState.shared.navigationPath.append(SettingViewType.authorize)
-            case "언어 설정":
+            case LocalizedKey.languageSetting.localized(for: localizationManager.language):
                 AppState.shared.navigationPath.append(SettingViewType.language)
-            case "버전 정보":
-                AppState.shared.navigationPath.append(SettingViewType.version)
-            case "회원 탈퇴":
+            case LocalizedKey.versionInfomation.localized(for: localizationManager.language):
+                break
+            case LocalizedKey.memberWithdraw.localized(for: localizationManager.language):
                 AppState.shared.navigationPath.append(SettingViewType.withdraw)
             default:
                 break
@@ -95,7 +97,7 @@ struct SettingItemButtonView: View {
             
         } label: {
             HStack(spacing: 0) {
-                if title == "버전 정보" {
+                if title == LocalizedKey.versionInfomation.localized(for: localizationManager.language){
                     Text("\(title)")
                         .font(.body01)
                         .padding(.leading, 16)
@@ -125,7 +127,6 @@ enum SettingViewType {
     case policy
     case authorize
     case language
-    case version
     case withdraw
 }
 
