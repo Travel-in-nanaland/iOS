@@ -16,14 +16,15 @@ class LocalizationManager: ObservableObject {
 		getLanguage()
 	}
 
-    func setLanguage(_ language: Language) {
-        UserDefaults.standard.set(language.rawValue, forKey: "locale")
+
+	func setLanguage(_ language: Language) {
+		UserDefaults.standard.set(language.rawValue, forKey: "locale")
         self.language = language
-    }
+	}
 
 	func getLanguage() {
-		let languageCode = UserDefaults.standard.string(forKey: "locale") ?? Locale.preferredLanguages.first ?? "English"
-        self.language = .english
+		let languageCode: String = UserDefaults.standard.string(forKey: "locale") ?? Locale.preferredLanguages.first ?? "ENGLISH"
+		self.language = Language(rawValue: languageCode) ?? .english
 	}
 }
 
@@ -44,6 +45,19 @@ enum Language: String, CaseIterable {
 			return "zh-Hans"
 		case .malaysia:
 			return  "ms"
+		}
+	}
+	
+	var name: String {
+		switch self {
+		case .english:
+			return "English"
+		case .korean:
+			return "한국어"
+		case .chinese:
+			return "中国话"
+		case .malaysia:
+			return "Melayu"
 		}
 	}
 }

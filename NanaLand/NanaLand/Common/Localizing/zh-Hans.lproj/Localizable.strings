@@ -14,6 +14,8 @@
 "optionalWithBracket" = "(选填)";
 "destination" = "旅游地";
 "gotoMainScreen" = "前往主屏幕";
+"no" = "否";
+"yes" = "是";
 
 //MARK: - Tab
 "home" = "首页";
@@ -53,6 +55,10 @@
 "duplicatedNickname" = "该昵称已被其他用户使用。";
 "invalidNickname" = "该昵称无法使用。";
 "onlyCharSpaceNumberNickname" = "昵称只能包含字母、空格和数字。";
+"logoutAlertTitle" = "确定要登出吗？";
+"withdrawAlertTitle" = "真的不想收到济州岛旅\n行信息和优惠吗？😢";
+"withdrawAlertMessage" = "*90天内重新加入时，\n可以用原账户登录。";
+"changeLanguageAlertTitle" = "您想更改为该语言吗？";
 
 //MARK: - TypeTest
 "skipTypeTest" = "跳过测试";
@@ -80,7 +86,47 @@
 "traditionalCulture" = "传统文化";
 "naturalScenery" = "自然景观";
 "themePark" = "主题公园";
-"skipTypeTest" = "跳过测试";
+// Result
+"your" = "%@";
+"yourPreference" = "的偏好是？";
+"yourTravelStyle" = "想要的旅游风格是？";
+"tangerineJuiced" = "柑橘正在被榨汁……";
+"juiceCommingSoon" = "美味的旅游果汁马上出来！";
+"yourTravelStyleIs" = "%@的旅行类型是";
+// Type
+"GAMGYUL_ICECREAM" = "柑橘冰淇淋";
+"GAMGYUL_ICECREAM_DESCRIPTION" = "柔和且献给甜蜜记忆的柑橘冰淇淋类型";
+"GAMGYUL_RICECAKE" = "柑橘糯米糕";
+"GAMGYUL_RICECAKE_DESCRIPTION" = "把每时每刻的乐趣记在记事本上的柑橘糯米糕类型";
+"GAMGYUL" = "柑橘";
+"GAMGYUL_DESCRIPTION" = "要典型而有名的地方！柑橘类型";
+"GAMGYUL_CIDER" = "柑橘雪碧";
+"GAMGYUL_CIDER_DESCRIPTION" = "清爽而新鲜的柑橘雪碧类型";
+"GAMGYUL_AFFOKATO" = "柑橘阿芙佳朵";
+"GAMGYUL_AFFOKATO_DESCRIPTION" = "热情活泼，充满创意的柑橘阿芙佳朵类型";
+"GAMGYUL_HANGWA" = "柑橘油炸蜜果";
+"GAMGYUL_HANGWA_DESCRIPTION" = "蕴含多彩济州味道的名牌柑橘油炸蜜果";
+"GAMGYUL_JUICE" = "柑橘果汁";
+"GAMGYUL_JUICE_DESCRIPTION" = "只去最基本、最有名的地方！ 柑橘汁类型";
+"GAMGYUL_CHOCOLATE" = "柑橘巧克力";
+"GAMGYUL_CHOCOLATE_DESCRIPTION" = "口味坚定、好胜于多的一款柑橘巧克力类型";
+"GAMGYUL_COCKTAIL" = "柑橘鸡尾酒";
+"GAMGYUL_COCKTAIL_DESCRIPTION" = "华丽极限的柑橘鸡尾酒类型";
+"TANGERINE_PEEL_TEA" = "橘皮茶";
+"TANGERINE_PEEL_TEA_DESCRIPTION" = "幽静地望着风景的橘皮茶类型";
+"GAMGYUL_YOGURT" = "柑橘酸奶";
+"GAMGYUL_YOGURT_DESCRIPTION" = "原汁原味！柔软爽口的柑橘酸奶类型";
+"GAMGYUL_FLATCCINO" = "柑橘冰沙";
+"GAMGYUL_FLATCCINO_DESCRIPTION" = "将各种水果的清爽与冰凉感一举实现，创意性的柑橘冰沙类型";
+"GAMGYUL_LATTE" = "柑橘拿铁";
+"GAMGYUL_LATTE_DESCRIPTION" = "在温暖的阳光下悠然自在的柑橘拿铁类型！";
+"GAMGYUL_SIKHYE" = "柑橘甜米露";
+"GAMGYUL_SIKHYE_DESCRIPTION" = "充满风味的！ 虽然耗时长，但味道浓郁的柑橘甜米露类型！";
+"GAMGYUL_ADE" = "柑橘汽水";
+"GAMGYUL_ADE_DESCRIPTION" = "在爽口的碳酸水中加入新鲜的水果！ 有清凉感的柑橘汽水";
+"GAMGYUL_BUBBLE_TEA" = "柑橘珍珠奶茶";
+"GAMGYUL_BUBBLE_TEA_DESCRIPTION" = "充满好奇心的你！越吃越反转的柑橘珍珠奶茶类型！";
+"nanalandMadeYouJuice" = "nanaland in Jeju 为您定制了旅行果汁！";
 
 //MARK: - MyPage
 // main
@@ -153,45 +199,7 @@
 "fewVisit" = "几乎不访问";
 "withdraw" = "退出";
 "accountDeletion" = "注销会员";
-
-// Result
-"your" = "%@";
-"yourPreference" = "的偏好是？";
-"yourTravelStyle" = "想要的旅游风格是？";
-"tangerineJuiced" = "柑橘正在被榨汁……";
-"juiceCommingSoon" = "美味的旅游果汁马上出来！";
-"yourTravelStyleIs" = "%@的旅行类型是";
-// Type
-"GAMGYUL_ICECREAM" = "柑橘冰淇淋";
-"GAMGYUL_ICECREAM_DESCRIPTION" = "柔和且献给甜蜜记忆的柑橘冰淇淋类型";
-"GAMGYUL_RICECAKE" = "柑橘糯米糕";
-"GAMGYUL_RICECAKE_DESCRIPTION" = "把每时每刻的乐趣记在记事本上的柑橘糯米糕类型";
-"GAMGYUL" = "柑橘";
-"GAMGYUL_DESCRIPTION" = "要典型而有名的地方！柑橘类型";
-"GAMGYUL_CIDER" = "柑橘雪碧";
-"GAMGYUL_CIDER_DESCRIPTION" = "清爽而新鲜的柑橘雪碧类型";
-"GAMGYUL_AFFOKATO" = "柑橘阿芙佳朵";
-"GAMGYUL_AFFOKATO_DESCRIPTION" = "热情活泼，充满创意的柑橘阿芙佳朵类型";
-"GAMGYUL_HANGWA" = "柑橘油炸蜜果";
-"GAMGYUL_HANGWA_DESCRIPTION" = "蕴含多彩济州味道的名牌柑橘油炸蜜果";
-"GAMGYUL_JUICE" = "柑橘果汁";
-"GAMGYUL_JUICE_DESCRIPTION" = "只去最基本、最有名的地方！ 柑橘汁类型";
-"GAMGYUL_CHOCOLATE" = "柑橘巧克力";
-"GAMGYUL_CHOCOLATE_DESCRIPTION" = "口味坚定、好胜于多的一款柑橘巧克力类型";
-"GAMGYUL_COCKTAIL" = "柑橘鸡尾酒";
-"GAMGYUL_COCKTAIL_DESCRIPTION" = "华丽极限的柑橘鸡尾酒类型";
-"TANGERINE_PEEL_TEA" = "橘皮茶";
-"TANGERINE_PEEL_TEA_DESCRIPTION" = "幽静地望着风景的橘皮茶类型";
-"GAMGYUL_YOGURT" = "柑橘酸奶";
-"GAMGYUL_YOGURT_DESCRIPTION" = "原汁原味！柔软爽口的柑橘酸奶类型";
-"GAMGYUL_FLATCCINO" = "柑橘冰沙";
-"GAMGYUL_FLATCCINO_DESCRIPTION" = "将各种水果的清爽与冰凉感一举实现，创意性的柑橘冰沙类型";
-"GAMGYUL_LATTE" = "柑橘拿铁";
-"GAMGYUL_LATTE_DESCRIPTION" = "在温暖的阳光下悠然自在的柑橘拿铁类型！";
-"GAMGYUL_SIKHYE" = "柑橘甜米露";
-"GAMGYUL_SIKHYE_DESCRIPTION" = "充满风味的！ 虽然耗时长，但味道浓郁的柑橘甜米露类型！";
-"GAMGYUL_ADE" = "柑橘汽水";
-"GAMGYUL_ADE_DESCRIPTION" = "在爽口的碳酸水中加入新鲜的水果！ 有清凉感的柑橘汽水";
-"GAMGYUL_BUBBLE_TEA" = "柑橘珍珠奶茶";
-"GAMGYUL_BUBBLE_TEA_DESCRIPTION" = "充满好奇心的你！越吃越反转的柑橘珍珠奶茶类型！";
-"nanalandMadeYouJuice" = "nanaland in Jeju 为您定制了旅行果汁！";
+"INSUFFICIENT_CONTENT" = "内容不足";
+"INCONVENIENT_SERVICE" = "服务使用不便";
+"INCONVENIENT_COMMUNITY" = "社区使用不便";
+"RARE_VISITS" = "几乎不访问";

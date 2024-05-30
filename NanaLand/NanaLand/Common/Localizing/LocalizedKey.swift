@@ -17,6 +17,8 @@ enum LocalizedKey: String {
 	case optionalWithBracket
 	case destination
 	case gotoMainScreen
+	case no
+	case yes
 	
 	//MARK: - Tab
 	case home
@@ -56,6 +58,10 @@ enum LocalizedKey: String {
 	case duplicatedNickname
 	case invalidNickname
 	case onlyCharSpaceNumberNickname
+	case logoutAlertTitle
+	case withdrawAlertTitle
+	case withdrawAlertMessage
+	case changeLanguageAlertTitle
 	
 	//MARK: - TypeTest
 	case skipTypeTest
@@ -187,6 +193,12 @@ enum LocalizedKey: String {
     // 선택 접근권한 알림
     case optionalNotification
     case notificate
+	
+	// withdrawType(서비스 탈퇴 사유)
+	case INSUFFICIENT_CONTENT
+	case INCONVENIENT_SERVICE
+    case INCONVENIENT_COMMUNITY
+	case RARE_VISITS
 	
     // languageSettingPage(언어 설정 페이지)
     case languageMainDescription

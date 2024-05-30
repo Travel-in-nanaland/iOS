@@ -14,6 +14,8 @@
 "optionalWithBracket" = "(선택)";
 "destination" = "여행지";
 "gotoMainScreen" = "메인 화면 바로가기";
+"no" = "아니오";
+"yes" = "네";
 
 //MARK: - Tab
 "home" = "홈";
@@ -53,6 +55,10 @@
 "duplicatedNickname" = "해당 닉네임은 다른 사용자가 사용 중입니다.";
 "invalidNickname" = "해당 닉네임은 사용할 수 없습니다.";
 "onlyCharSpaceNumberNickname" = "닉네임에는 문자, 띄어쓰기, 숫자만 가능합니다.";
+"logoutAlertTitle" = "정말 로그아웃을\n하시겠습니까?";
+"withdrawAlertTitle" = "정말 제주도 여행 정보와 혜택을 받지 않으시겠습니까? 😢";
+"withdrawAlertMessage" = "*90일 이내에 재가입 시,\n기존 계정으로 로그인이 됩니다.";
+"changeLanguageAlertTitle" = "해당 언어로\n변경하시겠습니다?";
 
 //MARK: - TypeTest
 "skipTypeTest" = "테스트 건너뛰기";
@@ -80,8 +86,47 @@
 "traditionalCulture" = "전통 문화";
 "naturalScenery" = "자연 경관";
 "themePark" = "테마파크";
-
-"skipTypeTest" = "테스트 건너뛰기";
+// Result
+"your" = "";
+"yourPreference" = "취향은?";
+"yourTravelStyle" = "하고 싶은 여행 스타일은?";
+"tangerineJuiced" = "감귤이 착즙 되는 중...";
+"juiceCommingSoon" = "맛있는 여행 주스가 곧 나옵니다 !";
+"yourTravelStyleIs" = "%@ 님의 여행 유형은";
+// Type
+"GAMGYUL_ICECREAM" = "감귤아이스크림";
+"GAMGYUL_ICECREAM_DESCRIPTION" = "부드러우면서도, 달콤한 기억을 선사해주는 감귤아이스크림 유형";
+"GAMGYUL_RICECAKE" = "감귤 찹쌀떡";
+"GAMGYUL_RICECAKE_DESCRIPTION" = "통통튀는 즐거움을 메모장에 하나씩 수 놓는, 감귤 찹쌀떡 유형";
+"GAMGYUL" = "감귤";
+"GAMGYUL_DESCRIPTION" = "가장 기본적이면서도 유명한 곳으로만! 감귤유형";
+"GAMGYUL_CIDER" = "감귤사이다";
+"GAMGYUL_CIDER_DESCRIPTION" = "톡톡쏘면서 상큼한 감귤사이다유형";
+"GAMGYUL_AFFOKATO" = "감귤 아포카토";
+"GAMGYUL_AFFOKATO_DESCRIPTION" = "열정적이면서 활발한 당신에게 창의성이 가득한 감귤 아포카토 유형";
+"GAMGYUL_HANGWA" = "감귤한과";
+"GAMGYUL_HANGWA_DESCRIPTION" = "다채로운 제주의 맛을 담은 명품 감귤한과";
+"GAMGYUL_JUICE" = "감귤주스";
+"GAMGYUL_JUICE_DESCRIPTION" = "가장 기본적이면서도 유명한 곳으로만! 감귤주스 유형";
+"GAMGYUL_CHOCOLATE" = "감귤 초콜릿";
+"GAMGYUL_CHOCOLATE_DESCRIPTION" = "취향이 확고하고 많은 것보다는 좋은 것이 중요한 감귤 초콜릿 유형";
+"GAMGYUL_COCKTAIL" = "감귤 칵테일";
+"GAMGYUL_COCKTAIL_DESCRIPTION" = "화려하고 익스트림한 감귤 칵테일 유형";
+"TANGERINE_PEEL_TEA" = "귤피차";
+"TANGERINE_PEEL_TEA_DESCRIPTION" = "고즈넉하게 풍경을 바라보는 귤피차 유형";
+"GAMGYUL_YOGURT" = "감귤 요거트";
+"GAMGYUL_YOGURT_DESCRIPTION" = "있는 그대로의 맛! 부드럽고 톡 쏘는 감귤요거트 유형";
+"GAMGYUL_FLATCCINO" = "감귤 플랫치노";
+"GAMGYUL_FLATCCINO_DESCRIPTION" = "각종 과일들의 상큼함과 얼음의 차가움을 한번에, 창의적인 감귤 플랫치노 유형";
+"GAMGYUL_LATTE" = "감귤 라떼";
+"GAMGYUL_LATTE_DESCRIPTION" = "따뜻한 햇살 밑에서 유유자적 하는 감귤 라떼 유형!";
+"GAMGYUL_SIKHYE" = "감귤식혜";
+"GAMGYUL_SIKHYE_DESCRIPTION" = "풍미 가득한! 느리지만, 깊은 감귤식혜유형!";
+"GAMGYUL_ADE" = "감귤에이드";
+"GAMGYUL_ADE_DESCRIPTION" = "톡 쏘는 탄산수에 싱그러운 과일이 퐁당! 청량감이 느껴지는 감귤에이드";
+"GAMGYUL_BUBBLE_TEA" = "감귤 버블티";
+"GAMGYUL_BUBBLE_TEA_DESCRIPTION" = "호기심 가득한 당신! 먹을수록 반전인 감귤 버블티 유형!";
+"nanalandMadeYouJuice" = "nanaland in Jeju 가 당신을 위해\n맞춤 여행 주스를 만들었어요!";
 
 //MARK: - MyPage
 // main
@@ -154,45 +199,7 @@
 "fewVisit" = "방문 횟수 거의 없음";
 "withdraw" = "탈퇴";
 "accountDeletion" = "회원탈퇴";
-
-// Result
-"your" = "";
-"yourPreference" = "취향은?";
-"yourTravelStyle" = "하고 싶은 여행 스타일은?";
-"tangerineJuiced" = "감귤이 착즙 되는 중...";
-"juiceCommingSoon" = "맛있는 여행 주스가 곧 나옵니다 !";
-"yourTravelStyleIs" = "%@ 님의 여행 유형은";
-// Type
-"GAMGYUL_ICECREAM" = "감귤아이스크림";
-"GAMGYUL_ICECREAM_DESCRIPTION" = "부드러우면서도, 달콤한 기억을 선사해주는 감귤아이스크림 유형";
-"GAMGYUL_RICECAKE" = "감귤 찹쌀떡";
-"GAMGYUL_RICECAKE_DESCRIPTION" = "통통튀는 즐거움을 메모장에 하나씩 수 놓는, 감귤 찹쌀떡 유형";
-"GAMGYUL" = "감귤";
-"GAMGYUL_DESCRIPTION" = "가장 기본적이면서도 유명한 곳으로만! 감귤유형";
-"GAMGYUL_CIDER" = "감귤사이다";
-"GAMGYUL_CIDER_DESCRIPTION" = "톡톡쏘면서 상큼한 감귤사이다유형";
-"GAMGYUL_AFFOKATO" = "감귤 아포카토";
-"GAMGYUL_AFFOKATO_DESCRIPTION" = "열정적이면서 활발한 당신에게 창의성이 가득한 감귤 아포카토 유형";
-"GAMGYUL_HANGWA" = "감귤한과";
-"GAMGYUL_HANGWA_DESCRIPTION" = "다채로운 제주의 맛을 담은 명품 감귤한과";
-"GAMGYUL_JUICE" = "감귤주스";
-"GAMGYUL_JUICE_DESCRIPTION" = "가장 기본적이면서도 유명한 곳으로만! 감귤주스 유형";
-"GAMGYUL_CHOCOLATE" = "감귤 초콜릿";
-"GAMGYUL_CHOCOLATE_DESCRIPTION" = "취향이 확고하고 많은 것보다는 좋은 것이 중요한 감귤 초콜릿 유형";
-"GAMGYUL_COCKTAIL" = "감귤 칵테일";
-"GAMGYUL_COCKTAIL_DESCRIPTION" = "화려하고 익스트림한 감귤 칵테일 유형";
-"TANGERINE_PEEL_TEA" = "귤피차";
-"TANGERINE_PEEL_TEA_DESCRIPTION" = "고즈넉하게 풍경을 바라보는 귤피차 유형";
-"GAMGYUL_YOGURT" = "감귤 요거트";
-"GAMGYUL_YOGURT_DESCRIPTION" = "있는 그대로의 맛! 부드럽고 톡 쏘는 감귤요거트 유형";
-"GAMGYUL_FLATCCINO" = "감귤 플랫치노";
-"GAMGYUL_FLATCCINO_DESCRIPTION" = "각종 과일들의 상큼함과 얼음의 차가움을 한번에, 창의적인 감귤 플랫치노 유형";
-"GAMGYUL_LATTE" = "감귤 라떼";
-"GAMGYUL_LATTE_DESCRIPTION" = "따뜻한 햇살 밑에서 유유자적 하는 감귤 라떼 유형!";
-"GAMGYUL_SIKHYE" = "감귤식혜";
-"GAMGYUL_SIKHYE_DESCRIPTION" = "풍미 가득한! 느리지만, 깊은 감귤식혜유형!";
-"GAMGYUL_ADE" = "감귤에이드";
-"GAMGYUL_ADE_DESCRIPTION" = "톡 쏘는 탄산수에 싱그러운 과일이 퐁당! 청량감이 느껴지는 감귤에이드";
-"GAMGYUL_BUBBLE_TEA" = "감귤 버블티";
-"GAMGYUL_BUBBLE_TEA_DESCRIPTION" = "호기심 가득한 당신! 먹을수록 반전인 감귤 버블티 유형!";
-"nanalandMadeYouJuice" = "nanaland in Jeju 가 당신을 위해\n맞춤 여행 주스를 만들었어요!";
+"INSUFFICIENT_CONTENT" = "콘텐츠 내용 부족";
+"INCONVENIENT_SERVICE" = "서비스 이용 불편";
+"INCONVENIENT_COMMUNITY" = "커뮤니티 사용 불편";
+"RARE_VISITS" = "방문 횟수 거의 없음";
