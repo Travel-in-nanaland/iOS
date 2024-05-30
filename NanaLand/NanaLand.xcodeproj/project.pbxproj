@@ -25,6 +25,7 @@
 		2C2D3D622C059E22002A38AA /* TypeTestLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D3D612C059E22002A38AA /* TypeTestLoadingView.swift */; };
 		2C2D3D642C05B957002A38AA /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D3D632C05B957002A38AA /* LottieView.swift */; };
 		2C2D3D6C2C076BDA002A38AA /* ClearBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D3D6B2C076BDA002A38AA /* ClearBackground.swift */; };
+		2C2D3D6E2C07F9D1002A38AA /* LanguageDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D3D6D2C07F9D1002A38AA /* LanguageDTO.swift */; };
 		2C3C75842BCA3ADA00312F26 /* NanaLandApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C75832BCA3ADA00312F26 /* NanaLandApp.swift */; };
 		2C3C75882BCA3ADC00312F26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C3C75872BCA3ADC00312F26 /* Assets.xcassets */; };
 		2C3C758B2BCA3ADC00312F26 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C3C758A2BCA3ADC00312F26 /* Preview Assets.xcassets */; };
@@ -171,7 +172,6 @@
 		BFABD3532BE7F9E100C3F3A6 /* SeasonModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFABD3522BE7F9E100C3F3A6 /* SeasonModalView.swift */; };
 		BFB16AF92BFED71600601537 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB16AF82BFED71600601537 /* SettingView.swift */; };
 		BFB73BB72C05BA6A00A9A10E /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = BFB73BB62C05BA6A00A9A10E /* SDWebImageSwiftUI */; };
-		BFB73BB92C05E11C00A9A10E /* LanguageAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB73BB82C05E11C00A9A10E /* LanguageAlertView.swift */; };
 		BFB73BD32C06CE6600A9A10E /* loading_tangerine.json in Resources */ = {isa = PBXBuildFile; fileRef = BFB73BD02C06CE6600A9A10E /* loading_tangerine.json */; };
 		BFB73BD42C06CE6600A9A10E /* loading_drink.json in Resources */ = {isa = PBXBuildFile; fileRef = BFB73BD12C06CE6600A9A10E /* loading_drink.json */; };
 		BFB73BD52C06CE6600A9A10E /* report_info_start.json in Resources */ = {isa = PBXBuildFile; fileRef = BFB73BD22C06CE6600A9A10E /* report_info_start.json */; };
@@ -233,6 +233,7 @@
 		2C2D3D662C05DE38002A38AA /* loading_tangerine.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading_tangerine.json; sourceTree = "<group>"; };
 		2C2D3D672C05DE38002A38AA /* report_info_star.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = report_info_star.json; sourceTree = "<group>"; };
 		2C2D3D6B2C076BDA002A38AA /* ClearBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearBackground.swift; sourceTree = "<group>"; };
+		2C2D3D6D2C07F9D1002A38AA /* LanguageDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageDTO.swift; sourceTree = "<group>"; };
 		2C3C75802BCA3ADA00312F26 /* NanaLand.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NanaLand.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C3C75832BCA3ADA00312F26 /* NanaLandApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NanaLandApp.swift; sourceTree = "<group>"; };
 		2C3C75872BCA3ADC00312F26 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -369,7 +370,6 @@
 		BFABD3502BE7634100C3F3A6 /* FestivalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FestivalModel.swift; sourceTree = "<group>"; };
 		BFABD3522BE7F9E100C3F3A6 /* SeasonModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonModalView.swift; sourceTree = "<group>"; };
 		BFB16AF82BFED71600601537 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
-		BFB73BB82C05E11C00A9A10E /* LanguageAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageAlertView.swift; sourceTree = "<group>"; };
 		BFB73BD02C06CE6600A9A10E /* loading_tangerine.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading_tangerine.json; sourceTree = "<group>"; };
 		BFB73BD12C06CE6600A9A10E /* loading_drink.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading_drink.json; sourceTree = "<group>"; };
 		BFB73BD22C06CE6600A9A10E /* report_info_start.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = report_info_start.json; sourceTree = "<group>"; };
@@ -581,6 +581,7 @@
 		2C3C75C32BCA54AB00312F26 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				BF2D937C2BFF3CEF0057381A /* AlertView.swift */,
 				2C1F31D42BCD2A870066819F /* NanaSearchBar.swift */,
 				2C80EC9F2BCE55E0002F38A7 /* ArticleItem.swift */,
 				BF9F02902BD89EB1003E72E6 /* NavigationBar.swift */,
@@ -630,7 +631,6 @@
 			children = (
 				BFF8E9EA2C045B8A0081C0A6 /* Setting */,
 				BFFE27F52BFF51CE005924A3 /* Profile */,
-				BF2D937C2BFF3CEF0057381A /* AlertView.swift */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -1031,8 +1031,8 @@
 				BF2D937A2BFF25C60057381A /* AuthorizeView.swift */,
 				BFBB90F52BFF500C00726DED /* WithdrawView.swift */,
 				BFF8E9E82C045B830081C0A6 /* LanguageView.swift */,
+				2C2D3D6D2C07F9D1002A38AA /* LanguageDTO.swift */,
 				BF48F4CE2C046FEA00A2D8F1 /* LanguageViewModel.swift */,
-				BFB73BB82C05E11C00A9A10E /* LanguageAlertView.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -1287,6 +1287,7 @@
 				BF7C0EC02BD0B725008ACB75 /* secret.swift in Sources */,
 				BFABD3532BE7F9E100C3F3A6 /* SeasonModalView.swift in Sources */,
 				2C2D3D532C0389C0002A38AA /* Text+.swift in Sources */,
+				2C2D3D6E2C07F9D1002A38AA /* LanguageDTO.swift in Sources */,
 				BFABD34D2BE75F3E00C3F3A6 /* FestivalService.swift in Sources */,
 				BFC671F72BF7198800D1A2FD /* ShopMainModel.swift in Sources */,
 				BF3021F02BDF8E9B00CB3966 /* ShopDetailEndPoint.swift in Sources */,
@@ -1369,7 +1370,6 @@
 				BF1493772BD10E1200FC626B /* NaNaPickMainViewModel.swift in Sources */,
 				BF7714582BF999E00020C8F0 /* NatureMainView.swift in Sources */,
 				2C3C75D32BCAB00C00312F26 /* StoryMainView.swift in Sources */,
-				BFB73BB92C05E11C00A9A10E /* LanguageAlertView.swift in Sources */,
 				2C5424F32BF5CEC700B16439 /* TypeTestView.swift in Sources */,
 				2C40DBC22BF1F24D007A3768 /* RegisterViewModel.swift in Sources */,
 				2C80ECA02BCE55E0002F38A7 /* ArticleItem.swift in Sources */,

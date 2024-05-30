@@ -15,6 +15,22 @@ struct AlertView: View {
 	let leftButtonAction: () -> Void
 	let rightButtonAction: () -> Void
 	
+	init(
+		title: LocalizedKey,
+		message: LocalizedKey? = nil,
+		leftButtonTitle: LocalizedKey,
+		rightButtonTitle: LocalizedKey,
+		leftButtonAction: @escaping () -> Void,
+		rightButtonAction: @escaping () -> Void
+	) {
+		self.title = title
+		self.message = message
+		self.leftButtonTitle = leftButtonTitle
+		self.rightButtonTitle = rightButtonTitle
+		self.leftButtonAction = leftButtonAction
+		self.rightButtonAction = rightButtonAction
+	}
+	
 	var body: some View {
 		ZStack {
 			Color.black

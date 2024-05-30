@@ -44,7 +44,6 @@ struct SettingView: View {
                 .fullScreenCover(isPresented: $showAlert) {
 					AlertView(
 						title: .logoutAlertTitle,
-						message: nil,
 						leftButtonTitle: .yes,
 						rightButtonTitle: .no,
 						leftButtonAction: {

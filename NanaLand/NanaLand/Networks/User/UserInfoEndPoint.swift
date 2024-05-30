@@ -10,6 +10,7 @@ import Alamofire
 
 enum UserInfoEndPoint {
     case getUserInfo
+	case patchUserLanguage(locale: PatchUserLanguageRequest)
 }
 
 extension UserInfoEndPoint: EndPoint {
@@ -21,6 +22,8 @@ extension UserInfoEndPoint: EndPoint {
         switch self {
         case .getUserInfo:
             return "/profile"
+		case .patchUserLanguage:
+			return "/language"
         }
     }
     
@@ -28,6 +31,8 @@ extension UserInfoEndPoint: EndPoint {
         switch self {
         case .getUserInfo:
             return .get
+		case .patchUserLanguage:
+			return .patch
         }
     }
     
@@ -35,6 +40,8 @@ extension UserInfoEndPoint: EndPoint {
         switch self {
         case .getUserInfo:
             return .requestPlain
+		case let .patchUserLanguage(locale):
+			return .requestJSONEncodable(body: locale)
         }
     }
     
