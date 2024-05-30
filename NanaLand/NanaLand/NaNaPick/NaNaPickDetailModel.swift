@@ -9,7 +9,7 @@ import Foundation
 
 struct NaNaPickDetailModel: Codable {
     let originUrl: String
-    let notice: String?
+    let notice: String
     let nanaDetails: [DetailInfo]
 }
 

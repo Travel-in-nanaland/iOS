@@ -30,7 +30,7 @@ extension HomeEndPoint: EndPoint {
         case .getBannerData:
             return ""
         case .getRecommendData:
-            return "/recommended"
+            return "/recommended/random"
         }
     }
     

@@ -59,6 +59,21 @@ struct NanapickMainView: View {
                                 }
                                 .padding(.top, 8)
                                 Spacer()
+                                HStack(spacing: 0) {
+                                    VStack(alignment: .leading, spacing: 2) {
+                                        Text(index.subHeading)
+                                            .font(.body_bold)
+                                            .foregroundStyle(.white)
+                                        Text(index.heading)
+                                            .font(.largeTitle02)
+                                            .foregroundStyle(.white)
+                                        
+                                    }
+                                    Spacer()
+                                }
+                                .padding(.leading, 16)
+                                .padding(.bottom, 16)
+                               
                             }
                             
                             
@@ -71,6 +86,7 @@ struct NanapickMainView: View {
                         .onAppear {
                                 Task {
                                     await getNana(page: page, size: size)
+                                    page += 1
                                 }
                         }
                 }
