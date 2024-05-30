@@ -138,7 +138,6 @@
 //editProfile
 "nickName" = "닉네임";
 "complete" = "수정완료";
-"characters" = "자";
 "nickNameTypingLimitError" = "해당 닉네임은  사용할 수 없습니다.";
 "nickNameDuplicateError"= "해당 닉네임은 다른 사용자가 사용 중입니다.";
 // deleteAlert
@@ -146,7 +145,51 @@
 "deleteAlertSubTitle" = "지금 돌아가면 변경 내용이 삭제됩니다.";
 "cancel" = "취소";
 "delete" = "삭제";
-// withdrawType(서비스 탈퇴 사유)
+// settingPage
+"settings" = "설정";
+"setUsage" = "사용 설정";
+"termsAndPolicies" = "약관 및 정책";
+"accessPolicyGuide" = "접근권한 안내";
+"languageSetting" = "언어 설정";
+"versionInfomation" = "버전 정보";
+"logout" = "로그아웃";
+"memberWithdraw" = "회원탈퇴";
+// termsAndPoliciesPage
+"notificate" = "알려드립니다.";
+"marketingConsent" = "마케팅 활용 동의";
+"locationConsent" = "위치기반 서비스 약관 동의";
+"noConsentError" = "* 비동의시, 받지 못하는 서비스 또는 혜택이 있을 수 있으니 주의하시길 바랍니다.";
+// accessPolicyGuidePage
+"mainDescription" = "나나랜드인제주 사용을 위해 다음 접근 권한 허용이 필요합니다.";
+"phoneTitle" = "전화 기기 정보";
+"phoneDescription" = "휴대폰 상태 및 ID 검증을 위해 접근 권한이 필요합니다.단말기 위변조 탐지 솔류션 제공시 필요합니다.";
+"requiredNotification" = "필수적 접근권한은 나나랜드인제주 서비스 이용에 반드시 필요하며, 권한이 거부되면 서비스 이용이 제한되는 점 안내드립니다.";
+"storageTitle" = "저장공간";
+"storageDescription" = "사진 저장 기능을 제공하기 위해 필요합니다.";
+"locationTitle" = "위치정보";
+"locationDescription" = "현재 위치기반으로 주변 맛집 관광지 등 정보를 제공하기 위해 필요
+합니다.";
+"cameraTitle" = "카메라";
+"cameraDescription" = "리뷰  사진 등록 및 맛집정보 등록을 위해 필요합니다.";
+"notificationTitle" = "알림";
+"notificationDescription" = "이벤트 및 혜택정보 알림 수신을 위해 필요합니다.";
+"audioTitle" = "오디오 및 음악";
+"audioDescription" = "영상 콘텐츠 등록을 위해 필요합니다.";
+"optionalNotification" = "선택적 접근 권한에 동의하지 않으셨을 경우에,  나나랜드인제주
+  서비스의 일부 기능을 제한 받으실 수 있는 점 안내드립니다.";
+// languageSettingPage
+"languageMainDescription" = "맨위에 있는 언어로 기본 설정 되어 있습니다.";
+// withdrawMembershipPage
+"withDrawNotification" = "서비스 탈퇴 안내 사항";
+"firstNotification" = "본 서비스를 탈퇴하시면 나나랜드인제주 서비스 기반으로 제공되는 모든 서비스로부터 해지 및 소멸되는 점을 안내드립니다.";
+"secondNotification" = "회원 탈퇴를 하시면, 보유하고 계신 각종 쿠폰, 포인트는 자동 소멸되며 재가입하실 경우에도 복원되지 않습니다.";
+"thirdNotification" = "서비스 탈퇴 후 전자상거래법에 의해 보존해야 하는 거래기록은 90일간 보관됩니다.";
+"fourthNotification" = "회원 탈퇴 시 회원가입 이벤트에는 재 참여하실 수 없습니다.";
+"fifthNotification" = "탈퇴 후 90일 이내에 재가입을 하시면, 기존 계정으로 사용하실 수 있습니다.";
+"notificationConsent" = "안내사항을 확인하였으며 동의합니다.";
+"withDrawReason" = "서비스 탈퇴 사유";
+"withdraw" = "탈퇴";
+"accountDeletion" = "회원탈퇴";
 "INSUFFICIENT_CONTENT" = "콘텐츠 내용 부족";
 "INCONVENIENT_SERVICE" = "서비스 이용 불편";
 "INCONVENIENT_COMMUNITY" = "커뮤니티 사용 불편";

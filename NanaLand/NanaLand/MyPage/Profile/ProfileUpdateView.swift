@@ -102,7 +102,7 @@ struct ProfileUpdateView: View {
                             Text(.nickName)
                                 .font(.body_bold)
                             Spacer()
-                            Text("\(nickName.count) / 8" + " \(LocalizedKey.character.localized(for: localizationManager.language))")
+							Text("\(nickName.count) / 8 " + .charCount)
                                 .font(.caption01)
                                 .foregroundStyle(nickName.count > 8 ? Color.red : Color.gray1)
                             

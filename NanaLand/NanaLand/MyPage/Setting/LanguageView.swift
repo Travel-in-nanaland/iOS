@@ -9,15 +9,16 @@ import SwiftUI
 
 struct LanguageView: View {
     @StateObject var viewModel = LanguageViewModel()
+    @EnvironmentObject var localizationManager: LocalizationManager
 	@State private var showAlert = false
-	
+  
     var body: some View {
         VStack(spacing: 0) {
-            NanaNavigationBar(title: "언어설정", showBackButton: true)
+            NanaNavigationBar(title: LocalizedKey.languageSetting.localized(for: localizationManager.language), showBackButton: true)
                 .padding(.bottom, 32)
             
             HStack(spacing: 0) {
-                Text("맨위에 있는 언어로\n기본 설정 되어 있습니다.")
+                Text(.languageMainDescription)
                     .padding(.leading, 16)
                     .font(.title2)
                 Spacer()
@@ -25,6 +26,7 @@ struct LanguageView: View {
             .padding(.bottom, 24)
             
             VStack(spacing: 0) {
+
 				languageButton(language: .korean)
 				languageButton(language: .english)
 				languageButton(language: .chinese)

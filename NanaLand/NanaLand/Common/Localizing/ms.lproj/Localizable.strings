@@ -138,7 +138,6 @@
 // editProfile
 "nickName" = "Jenis Perjalanan";
 "complete" = "Pembetulan selesai";
-"characters" = "aksara";
 "nickNameTypingLimitError" = "Nama panggilan ini tidak boleh digunakan.";
 "nickNameDuplicateError"= "Nama panggilan ini sudah digunakan oleh pengguna lain.";
 // deleteAlert
@@ -146,7 +145,52 @@
 "deleteAlertSubTitle" = "Kembali sekarang akan\nmemadamkan perubahan.";
 "cancel" = "Batal";
 "delete" = "Padam";
-// withdrawType(서비스 탈퇴 사유)
+// settingPage
+"settings" = "Tetapan";
+"setUsage" = "Tetapkan penggunaan";
+"termsAndPolicies" = "Terma dan dasar";
+"accessPolicyGuide" = "Panduan akses kebenaran";
+"languageSetting" = "Tetapan bahasa";
+"versionInfomation" = "Maklumat versi";
+"logout" = "Log keluar";
+"memberWithdraw" = "Daftar keluar";
+// termsAndPoliciesPage
+"notificate" = "Makluman";
+"marketingConsent" = "Persetujuan penggunaan pemasaran";
+"locationConsent" = "Persetujuan terma perkhidmatan berasaskan lokasi";
+"noConsentError" = "*Jika tidak bersetuju, beberapa perkhidmatan atau tawaran mungkin tidak dapat diterima, sila ambil perhatian.";
+
+// accessPolicyGuidePage
+"mainDescription" = "Untuk menggunakan aplikasi nanaland in Jeju, Keizinan Akses berikut diperlukan.";
+"phoneTitle" = "Maklumat Peranti Telefon";
+"phoneDescription" = "Keizinan akses diperlukan untuk mengesahkan status telefon bimbit dan ID. Diperlukan untuk menyediakan penyelesaian pengesanan pengubahan peranti.";
+"requiredNotification" = "Keizinan akses yang wajib diperlukan untuk menggunakan perkhidmatan nanaland in Jeju, dan jika ditolak, penggunaan perkhidmatan akan terhad.";
+"storageTitle" = "Ruang Simpanan";
+"storageDescription" = "Diperlukan untuk menyediakan fungsi simpanan gambar.";
+"locationTitle" = "Maklumat Lokasi";
+"locationDescription" = "Diperlukan untuk menyediakan maklumat seperti restoran dan tempat menarik berdekatan berdasarkan lokasi semasa.";
+"cameraTitle" = "Kamera";
+"cameraDescription" = "Diperlukan untuk mendaftar gambar ulasan dan maklumat restoran.";
+"notificationTitle" = "Notifikasi";
+"notificationDescription" = "Diperlukan untuk menerima pemberitahuan acara dan maklumat tawaran.";
+"audioTitle" = "Audio dan Musik";
+"audioDescription" = "Diperlukan untuk mendaftar kandungan video.";
+"optionalNotification" = "Jika anda tidak bersetuju dengan keizinan akses pilihan, beberapa fungsi dalam perkhidmatan nanaland in Jeju mungkin terhad.";
+// languageSettingPage
+"languageMainDescription" = "Bahasa di atas telah
+ditetapkan sebagai lalai.";
+// withdrawMembershipPage
+"withDrawNotification" = "Panduan Penarikan Servis";
+"firstNotification" = "Jika anda menarik diri dari perkhidmatan ini, semua perkhidmatan yang disediakan berdasarkan nanaland in Jeju akan ditamatkan dan dihapuskan.";
+"secondNotification" = "Jika anda menarik diri, semua kupon dan mata yang anda miliki akan dihapuskan secara automatik dan tidak akan dipulihkan jika anda mendaftar semula.";
+"thirdNotification" = "Rekod transaksi yang perlu disimpan menurut undang-undang e-dagang akan disimpan selama 5 tahun selepas menarik diri daripada perkhidmatan.";
+"fourthNotification" = "Anda tidak boleh menyertai semula acara pendaftaran ahli selepas menarik diri.";
+"fifthNotification" = "Jika anda mendaftar kembali dalam 90 hari selepas penarikan diri, anda boleh menggunakan akaun lama anda.";
+"notificationConsent" = "Saya telah membaca dan
+ bersetuju dengan panduan ini";
+"withDrawReason" = "Sebab Penarikan Perkhidmatan";
+"withdraw" = "Berhenti";
+"accountDeletion" = "Pengeluaran Ahli";
 "INSUFFICIENT_CONTENT" = "Kandungan Tidak Cukup";
 "INCONVENIENT_SERVICE" = "Ketidakselesaan Penggunaan Servis";
 "INCONVENIENT_COMMUNITY" = "Ketidakselesaan Penggunaan Komuniti";

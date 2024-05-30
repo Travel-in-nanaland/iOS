@@ -16,6 +16,7 @@ class LocalizationManager: ObservableObject {
 		getLanguage()
 	}
 
+
 	func setLanguage(_ language: Language) {
 		UserDefaults.standard.set(language.rawValue, forKey: "locale")
         self.language = language

@@ -138,7 +138,6 @@
 // editProfile
 "nickName" = "昵称";
 "complete" = "修改完成";
-"characters" = "字";
 "nickNameTypingLimitError" = "Nama panggilan ini tidak boleh digunakan.";
 "nickNameDuplicateError"= "Nama panggilan ini sudah digunakan oleh pengguna lain.";
 // deleteAlert
@@ -146,7 +145,50 @@
 "deleteAlertSubTitle" = "现在返回的话更改内容将被删除";
 "cancel" = "取消";
 "delete" = "删除";
-// withdrawType(서비스 탈퇴 사유)
+// settingPage
+"settings" = "设置";
+"setUsage" = "应用设置";
+"termsAndPolicies" = "条款与政策";
+"accessPolicyGuide" = "权限指南";
+"languageSetting" = "语言设置";
+"versionInfomation" = "版本信息";
+"logout" = "登出";
+"memberWithdraw" = "注销会员";
+// termsAndPoliciesPage
+"notificate" = "提醒您";
+"marketingConsent" = "营销使用同意";
+"locationConsent" = "位置服务条款同意";
+"noConsentError" = "*不同意时，可能无法享受某些服务或优惠，请注意";
+// accessPolicyGuidePage
+"mainDescription" = "使用nanaland in Jeju 需要以下访问权限";
+"phoneTitle" = "电话设备信息";
+"phoneDescription" = "为验证手机状态和ID需要访问权限。
+在提供终端设备伪造检测解决方案时需要。";
+"requiredNotification" = "必要访问权限是使用Nanaland in Jeju服务所必需的，如果权限被拒绝，服务将受到限制。";
+"storageTitle" = "存储空间";
+"storageDescription" = "为提供照片存储功能所需";
+"locationTitle" = "位置信息";
+"locationDescription" = "为提供基于当前位置的周边美食和旅游景点信息所需。";
+"cameraTitle" = "相机";
+"cameraDescription" = "为注册评论照片和美食信息所需.";
+"notificationTitle" = "通知";
+"notificationDescription" = "为接收活动及优惠信息通知所需。";
+"audioTitle" = "音频及音乐";
+"audioDescription" = "注册视频内容所需。";
+"optionalNotification" = "如不同意选择性访问权限，Nanaland in Jeju服务的部分功能将受到限制。";
+// languageSettingPage
+"languageMainDescription" = "以顶部的语言设为默认设置";
+// withdrawMembershipPage
+"withDrawNotification" = "服务退出指南";
+"firstNotification" = "退出本服务后，将取消并终止基于Nanaland in Jeju服务提供的所有服务。";
+"secondNotification" = "退出会员后，您持有的各类优惠券和积分将自动失效，即使重新加入也不会恢复。";
+"thirdNotification" = "服务退出后，根据电子商务法需保存的交易记录将保留5年。";
+"fourthNotification" = "退出会员后无法重新参加会员注册活动。";
+"fifthNotification" = "若在退出后90天内重新加入，您可以继续使用原账户。";
+"notificationConsent" = "我已确认指南事项并同意。";
+"withDrawReason" = "服务退出原因";
+"withdraw" = "退出";
+"accountDeletion" = "注销会员";
 "INSUFFICIENT_CONTENT" = "内容不足";
 "INCONVENIENT_SERVICE" = "服务使用不便";
 "INCONVENIENT_COMMUNITY" = "社区使用不便";

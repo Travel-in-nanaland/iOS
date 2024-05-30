@@ -139,7 +139,6 @@
 // editProfile
 "nickName" = "Nickname";
 "complete" = "Update";
-"characters" = "characters";
 "nickNameTypingLimitError" = "This nickname cannot be used.";
 "nickNameDuplicateError"= "This nickname is already in use by another user.";
 // deleteAlert
@@ -147,7 +146,51 @@
 "deleteAlertSubTitle" = "If you go back now,\nthe changes will be deleted.";
 "cancel" = "Cancel";
 "delete" = "Delete";
-// withdrawType(서비스 탈퇴 사유)
+// settingPage
+"settings" = "Settings";
+"setUsage"= "Set usage";
+"termsAndPolicies" = "Terms and policies";
+"accessPolicyGuide" = "Access permission guide";
+"languageSetting" = "Language settings";
+"versionInfomation" = "Version Information";
+"logout" = "Log out";
+"memberWithdraw" = "Withdraw membership";
+// termsAndPoliciesPage
+"notificate" = "Notice";
+"marketingConsent" = "Marketing usage consent";
+"locationConsent" = "Location-based service terms consent";
+"noConsentError" = "* If you disagree, you may not be able to receive some services or \nbenefits, please be aware.";
+// accessPolicyGuidePage
+"mainDescription" = "The following permissions are required
+to use Nanaland in Jeju.";
+"phoneTitle" = "Phone Information";
+"phoneDescription" = "Access is required to verify phone status and ID.
+Needed for device tampering detection solutions";
+"requiredNotification" = "Required permissions are essential for using Nanaland in Jeju. Service usage may be restricted if permissions are denied.";
+"storageTitle" = "Storage";
+"storageDescription" = "Needed to provide photo storage functions.";
+"locationTitle" = "Location Information";
+"locationDescription" = "Needed to provide information on nearby restaurants and attractions based on current location.";
+"cameraTitle" = "Camera";
+"cameraDescription" = "Needed to upload review photos and restaurant information.";
+"notificationTitle" = "Notifications";
+"notificationDescription" = "Needed to receive notifications about events and benefits.";
+"audioTitle" = "Audio and Music";
+"audioDescription" = "Needed to upload video content.";
+"optionalNotification" = "Note that if you do not agree to optional permissions, some features of Nanaland in Jeju may be restricted.";
+// languageSettingPage
+"languageMainDescription" = "The language at the top is set as default.";
+// withdrawMembershipPage
+"withDrawNotification" = "Service Withdrawal Information";
+"firstNotification" = "By deleting your account, you will be unsubscribed from all services provided by Nanaland in Jeju.";
+"secondNotification" = "Upon account deletion, all coupons and points will be lost and will not be restored even if you re-register.";
+"thirdNotification" = "Transaction records that must be preserved under the e-commerce law will be kept for 5 years after account deletion.";
+"fourthNotification" = "You will not be able to participate in membership events again after account deletion.";
+"fifthNotification" = "If you re-register within 90 days after withdrawal, you can use your previous account.";
+"notificationConsent" = "I have read and agree to the information provided.";
+"withDrawReason" = "Reason for Account Deletion";
+"withdraw" = "Delete Account";
+"accountDeletion" = "Account Deletion";
 "INSUFFICIENT_CONTENT" = "Lack of Content";
 "INCONVENIENT_SERVICE" = "Service Inconvenience";
 "INCONVENIENT_COMMUNITY" = "Community Usage Inconvenience";
