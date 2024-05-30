@@ -12,6 +12,7 @@ import KakaoSDKAuth
 import KakaoSDKUser
 import GoogleSignIn
 import AuthenticationServices
+import SwiftJWT
 
 // 소셜 로그인을 다루는 manager
 final class AuthManager: NSObject {
@@ -288,7 +289,7 @@ final class AuthManager: NSObject {
 		} else if provider == "GOOGLE" {
 			googleWithdraw(withdrawalType: withdrawalType)
 		} else if provider == "APPLE" {
-			
+			appleWithdraw(withdrawalType: withdrawalType)
 		}
 	}
 	
@@ -320,6 +321,48 @@ final class AuthManager: NSObject {
 			}
 
 		}
+	}
+	
+	/// 애플 회원탈퇴
+	private func appleWithdraw(withdrawalType: String) {
+		makeAppleJWT()
+	}
+	
+	private func makeAppleJWT() -> String {
+		let myHeader = Header(kid: Secrets.appleKeyId)
+		struct MyClaims: Claims {
+			let iss: String  // apple team id
+			let iat: Int  // 현재일자
+			let exp: Int  // 만료일자
+			let aud: String  // "https://appleid.apple.com/"
+			let sub: String  // 번들 id
+		}
+		
+		let nowDate = Date()
+		var dateComponent = DateComponents()
+		dateComponent.month = 6
+		let sixDate = Calendar.current.date(byAdding: dateComponent, to: nowDate) ?? Date()
+		let iat = Int(Date().timeIntervalSince1970)
+		let exp = iat + 3600
+		let myClaims = MyClaims(
+			iss: Secrets.appleTeamId,
+			iat: iat,
+			exp: exp,
+			aud: "https://appleid.apple.com",
+			sub: "com.jeju.nanaland"
+		)
+		var myJWT = JWT(header: myHeader, claims: myClaims)
+		
+		//JWT 발급을 요청값의 암호화 과정에서 다운받아두었던 Key File이 필요하다.(.p8 파일)
+		guard let url = Bundle.main.url(forResource: Secrets.appleKeyPath, withExtension: "p8") else{
+			return ""
+		}
+		
+		let privateKey: Data = try! Data(contentsOf: url, options: .alwaysMapped)
+		let jwtSigner = JWTSigner.es256(privateKey: privateKey)
+		let signedJWT = try! myJWT.sign(using: jwtSigner)
+		print("🗝 singedJWT - \(signedJWT)")
+		return signedJWT
 	}
 	
 	/// 나나랜드 서버 회원탈퇴

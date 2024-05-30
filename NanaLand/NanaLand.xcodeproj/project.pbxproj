@@ -16,6 +16,8 @@
 		2C1F31D52BCD2A870066819F /* NanaSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F31D42BCD2A870066819F /* NanaSearchBar.swift */; };
 		2C1F31D72BCD73C00066819F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F31D62BCD73C00066819F /* Constants.swift */; };
 		2C1F31D92BCD7DC90066819F /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F31D82BCD7DC90066819F /* SearchResultView.swift */; };
+		2C27497B2C08ADC600ECBA71 /* SwiftJWT in Frameworks */ = {isa = PBXBuildFile; productRef = 2C27497A2C08ADC600ECBA71 /* SwiftJWT */; };
+		2C27497F2C08BCCC00ECBA71 /* AuthKey_9JRUHFTK3L.p8 in Resources */ = {isa = PBXBuildFile; fileRef = 2C27497E2C08BCCC00ECBA71 /* AuthKey_9JRUHFTK3L.p8 */; };
 		2C2D3D4C2C0385B3002A38AA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C2D3D4A2C0385B3002A38AA /* Localizable.strings */; };
 		2C2D3D512C03898D002A38AA /* LocalizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D3D502C03898D002A38AA /* LocalizationManager.swift */; };
 		2C2D3D532C0389C0002A38AA /* Text+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D3D522C0389C0002A38AA /* Text+.swift */; };
@@ -218,6 +220,7 @@
 		2C1F31D42BCD2A870066819F /* NanaSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NanaSearchBar.swift; sourceTree = "<group>"; };
 		2C1F31D62BCD73C00066819F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2C1F31D82BCD7DC90066819F /* SearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
+		2C27497E2C08BCCC00ECBA71 /* AuthKey_9JRUHFTK3L.p8 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AuthKey_9JRUHFTK3L.p8; sourceTree = "<group>"; };
 		2C2D3D4B2C0385B3002A38AA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2C2D3D4D2C0385D5002A38AA /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		2C2D3D4E2C0385DC002A38AA /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -402,6 +405,7 @@
 				2C40DBBB2BEDFBC3007A3768 /* GoogleSignInSwift in Frameworks */,
 				2C80ECCD2BD2C27D002F38A7 /* SwiftUIIntrospect in Frameworks */,
 				2C3C75B52BCA3F5A00312F26 /* Lottie in Frameworks */,
+				2C27497B2C08ADC600ECBA71 /* SwiftJWT in Frameworks */,
 				2C40DBB92BEDFBC3007A3768 /* GoogleSignIn in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -478,6 +482,7 @@
 		2C3C75822BCA3ADA00312F26 /* NanaLand */ = {
 			isa = PBXGroup;
 			children = (
+				2C27497E2C08BCCC00ECBA71 /* AuthKey_9JRUHFTK3L.p8 */,
 				2C5425092BF76D8200B16439 /* NanaLand.entitlements */,
 				BF77145B2BF99BCF0020C8F0 /* Info.plist */,
 				BF98341F2BCE71F400A5C289 /* NaNaPick */,
@@ -1078,6 +1083,7 @@
 				2C40DBB82BEDFBC3007A3768 /* GoogleSignIn */,
 				2C40DBBA2BEDFBC3007A3768 /* GoogleSignInSwift */,
 				BFB73BB62C05BA6A00A9A10E /* SDWebImageSwiftUI */,
+				2C27497A2C08ADC600ECBA71 /* SwiftJWT */,
 			);
 			productName = NanaLand;
 			productReference = 2C3C75802BCA3ADA00312F26 /* NanaLand.app */;
@@ -1163,6 +1169,7 @@
 				2C40DB962BE644BE007A3768 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
 				2C40DBB72BEDFBC3007A3768 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				BFB73BB52C05BA6A00A9A10E /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				2C2749792C08ADC600ECBA71 /* XCRemoteSwiftPackageReference "Swift-JWT" */,
 			);
 			productRefGroup = 2C3C75812BCA3ADA00312F26 /* Products */;
 			projectDirPath = "";
@@ -1185,6 +1192,7 @@
 				9C6A9C662BCC22CE000413AD /* AppleSDGothicNeoR.ttf in Resources */,
 				2C3C758B2BCA3ADC00312F26 /* Preview Assets.xcassets in Resources */,
 				9C6A9C632BCC22CE000413AD /* AppleSDGothicNeoL.ttf in Resources */,
+				2C27497F2C08BCCC00ECBA71 /* AuthKey_9JRUHFTK3L.p8 in Resources */,
 				2C3C75882BCA3ADC00312F26 /* Assets.xcassets in Resources */,
 				2C2D3D4C2C0385B3002A38AA /* Localizable.strings in Resources */,
 				2C1F31C02BCD01240066819F /* AppleSDGothicNeoEB.ttf in Resources */,
@@ -1737,6 +1745,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		2C2749792C08ADC600ECBA71 /* XCRemoteSwiftPackageReference "Swift-JWT" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Kitura/Swift-JWT.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.1;
+			};
+		};
 		2C3C75AD2BCA3C5000312F26 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -1804,6 +1820,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2C27497A2C08ADC600ECBA71 /* SwiftJWT */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C2749792C08ADC600ECBA71 /* XCRemoteSwiftPackageReference "Swift-JWT" */;
+			productName = SwiftJWT;
+		};
 		2C3C75AE2BCA3C5000312F26 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2C3C75AD2BCA3C5000312F26 /* XCRemoteSwiftPackageReference "Alamofire" */;
