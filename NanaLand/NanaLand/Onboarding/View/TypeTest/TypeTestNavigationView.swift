@@ -89,7 +89,7 @@ struct TypeTestNavigationView: View {
 
 #Preview {
 	@StateObject var lm = LocalizationManager()
-	lm.setLanguage(.malaysia)
+	lm.language = .malaysia
     return TypeTestNavigationView(nickname: "현우")
 		.environmentObject(lm)
 	

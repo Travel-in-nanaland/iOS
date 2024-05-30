@@ -13,9 +13,16 @@ import GoogleSignIn
 @main
 struct NanaLandApp: App {
 	@StateObject var localizationdManager = LocalizationManager.shared
+	@AppStorage("hasRunBefore") var hasRunBefore: Bool = false
 
 	init() {
 		KakaoSDK.initSDK(appKey: Secrets.kakaoLoginNativeAppKey)
+		
+		if !hasRunBefore {
+			KeyChainManager.deleteItem(key: "accessToken")
+			KeyChainManager.deleteItem(key: "refreshToken")
+			hasRunBefore = true
+		}
 	}
 	
     var body: some Scene {

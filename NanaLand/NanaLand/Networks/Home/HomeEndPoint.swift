@@ -43,10 +43,6 @@ extension HomeEndPoint: EndPoint {
         }
     }
     
-    var headers: HTTPHeaders? {
-        return ["Content-Type": "application/json", "Authorization": "Bearer " + "\(KeyChainManager.readItem(key: "accessToken")!)"]
-    }
-    
     var task: APITask {
         switch self {
         case .getBannerData:

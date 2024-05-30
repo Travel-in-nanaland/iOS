@@ -45,12 +45,8 @@ class HomeMainViewModel: ObservableObject {
 //    }
     
     struct State {
-        var getBannerResponse = [
-            BannerModel(id: 1, thumbnailUrl: "https://nanaland-image-bucket.s3.ap-northeast-2.amazonaws.com/images/nana'spick1_.png", version: "나나's Pick vol1", subHeading: "subheading1", heading: "heading1"),
-            BannerModel(id: 2, thumbnailUrl: "https://nanaland-image-bucket.s3.ap-northeast-2.amazonaws.com/images/nana'spick1_.png", version: "나나's Pick vol2", subHeading: "subheading2", heading: "heading2"),
-            BannerModel(id: 3, thumbnailUrl: "https://nanaland-image-bucket.s3.ap-northeast-2.amazonaws.com/images/nana'spick1_.png", version: "나나's Pick vol3", subHeading: "subheading3", heading: "heading3"),
-            BannerModel(id: 4, thumbnailUrl: "https://nanaland-image-bucket.s3.ap-northeast-2.amazonaws.com/images/nana'spick1_.png", version: "나나's Pick vol4", subHeading: "subheading4", heading: "heading4")]
-        var getRecommendResponse = [RecommendModel(id: 466, category: "NATURE", thumbnailUrl: "https://api.cdn.visitjeju.net/photomng/thumbnailpath/201804/30/5e8a2789-4812-418b-a542-ee68632f8565.jpg", title: "용머리해안", introduction: ""), RecommendModel(id: 479, category: "NATURE", thumbnailUrl: "https://api.cdn.visitjeju.net/photomng/thumbnailpath/202110/25/c725ba8d-6837-4d07-904a-0df9f56b1ff5.JPG", title: "쇠소깍", introduction: "")]
+        var getBannerResponse = [BannerModel]()
+        var getRecommendResponse = [RecommendModel]()
     }
     
     enum Action {
@@ -72,17 +68,7 @@ class HomeMainViewModel: ObservableObject {
             let response = await HomeService.getBannerData()
             if response != nil {
                 await MainActor.run {
-                    print("banner: \(response)")
-                    if let responseData = response!.data {
-                        state.getBannerResponse = responseData
-                    } else {
-                        state.getBannerResponse = [
-                            BannerModel(id: 1, thumbnailUrl: "https://nanaland-image-bucket.s3.ap-northeast-2.amazonaws.com/images/nana'spick1_.png", version: "나나's Pick vol1", subHeading: "subheading1", heading: "heading1"),
-                            BannerModel(id: 2, thumbnailUrl: "https://nanaland-image-bucket.s3.ap-northeast-2.amazonaws.com/images/nana'spick1_.png", version: "나나's Pick vol2", subHeading: "subheading2", heading: "heading2"),
-                            BannerModel(id: 3, thumbnailUrl: "https://nanaland-image-bucket.s3.ap-northeast-2.amazonaws.com/images/nana'spick1_.png", version: "나나's Pick vol3", subHeading: "subheading3", heading: "heading3"), 
-                            BannerModel(id: 4, thumbnailUrl: "https://nanaland-image-bucket.s3.ap-northeast-2.amazonaws.com/images/nana'spick1_.png", version: "나나's Pick vol4", subHeading: "subheading4", heading: "heading4")]
-                    }
-                    
+					state.getBannerResponse = response?.data ?? []
                 }
             } else {
                 print("Error")
@@ -91,13 +77,7 @@ class HomeMainViewModel: ObservableObject {
             let response = await HomeService.getRecommendData()
             if response != nil {
                 await MainActor.run {
-                    print("reco:\(response)")
-                    if let responseData = response!.data {
-                        state.getRecommendResponse = responseData
-                    } else {
-                        state.getRecommendResponse = [RecommendModel(id: 466, category: "NATURE", thumbnailUrl: "https://api.cdn.visitjeju.net/photomng/thumbnailpath/201804/30/5e8a2789-4812-418b-a542-ee68632f8565.jpg", title: "용머리해안", introduction: ""), RecommendModel(id: 479, category: "NATURE", thumbnailUrl: "https://api.cdn.visitjeju.net/photomng/thumbnailpath/202110/25/c725ba8d-6837-4d07-904a-0df9f56b1ff5.JPG", title: "쇠소깍", introduction: "")]
-                    }
-                    
+					state.getRecommendResponse = response?.data ?? []
                 }
             }
         }

@@ -148,7 +148,7 @@ struct RegisterNicknameAndProfileView: View {
 
 #Preview {
 	@StateObject var lm = LocalizationManager()
-	lm.setLanguage(.malaysia)
+	lm.language = .malaysia
 	return RegisterNicknameAndProfileView()
 		.environmentObject(lm)
 		.environmentObject(RegisterViewModel())

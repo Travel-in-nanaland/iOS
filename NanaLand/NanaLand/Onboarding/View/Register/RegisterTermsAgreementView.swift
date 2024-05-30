@@ -173,7 +173,7 @@ struct RegisterTermsAgreementView: View {
 
 #Preview {
 	@StateObject var lm = LocalizationManager()
-	lm.setLanguage(.malaysia)
+	lm.language = .malaysia
     return RegisterTermsAgreementView()
 		.environmentObject(lm)
 		.environmentObject(RegisterViewModel())

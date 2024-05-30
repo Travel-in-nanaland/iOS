@@ -203,12 +203,16 @@ struct HomeMainView: View {
                             }
                         }
                         
-                    }
+                    }      
 				}
 				.padding(.leading, 16)
 				.padding(.trailing, 16)
+				
+				Spacer()
+					.frame(height: 50)
 			}
 		}
+		.scrollIndicators(.hidden)
         //safeArea 크기 가져아서 넣기
         .padding(.top, 1)
 		.onAppear {
@@ -403,73 +407,49 @@ struct BannerView: View {
     
     var message = ""
     private let timer = Timer.publish(every: 3.5, on: .main, in: .common).autoconnect()
-    @State private var index = 1
-    // tabView에 selection에 바인딩 할 값
-    // (images가 ForEach문에서 돌면서 나오는 element 값이 String이므로 타입을 String으로 해준다.)
-    @State private var selectedNum: String = "icTabNumber1"
+	// tabView에 selection에 바인딩 할 값
+    @State private var index = 0
     private let images: [String] = ["icTabNumber1", "icTabNumber2", "icTabNumber3", "icTabNumber4"]
     
     var body: some View {
         // selection에 index가 아닌 selectedNum을 바인딩
         ZStack {
-            TabView(selection: $selectedNum) {
-               
-                        // image는 String이자, default tag로 붙는 값
-                        ZStack {
-                            if isBannerCalled {
-                                KFImage(URL(string: viewModel.state.getBannerResponse[index - 1].thumbnailUrl)!)
-                                        .resizable()
-                                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main
-                                            .bounds.width * (220 / 360))
-                                
-                            }
-                            VStack(spacing: 0) {
-                                
-                                HStack(spacing: 0) {
-                                    Spacer()
-                                    Text(viewModel.state.getBannerResponse[index - 1].version)
-                                        .font(.caption01)
-                                        .foregroundStyle(.white)
-                                        .padding(.trailing, 16)
-                                }
-                                .padding(.top, 8)
-                                
-                                Spacer()
-                                HStack(spacing: 0) {
-                                    VStack(alignment: .leading, spacing: 2) {
-                                        Text(viewModel.state.getBannerResponse[index - 1].subHeading)
-                                            .font(.body_bold)
-                                            .foregroundStyle(.white)
-                                        Text(viewModel.state.getBannerResponse[index - 1].heading)
-                                            .font(.largeTitle02)
-                                            .foregroundStyle(.white)
-                                    }
-                                    Spacer()
-                                }
-                                .padding(.leading, 16)
-                                .padding(.bottom, 16)
-                            }
-                        }
-                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main
-                            .bounds.width * (220 / 360))
-                        
-                    
+            TabView(selection: $index) {
+				ForEach(viewModel.state.getBannerResponse.indices, id: \.self) { index in
+					let banner = viewModel.state.getBannerResponse[index]
+					ZStack {
+						KFImage(URL(string: banner.thumbnailUrl))
+							.resizable()
+							.frame(width: Constants.screenWidth, height: Constants.screenWidth * (220 / 360))
+						
+						VStack(spacing: 0) {
+							HStack(spacing: 0) {
+								Spacer()
+								Text(banner.version)
+									.font(.caption01)
+									.foregroundStyle(.white)
+									.padding(.trailing, 16)
+							}
+							.padding(.top, 8)
+							
+							Spacer()
+						}
+					}
+					.frame(width: Constants.screenWidth, height: Constants.screenWidth * (220 / 360))
+				}
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
             .onReceive(timer, perform: { _ in
                 withAnimation {
-                    // index값을 증가, 아니면 1
-                    // (selectedNum의 값을 변경해주기 위함)
-                    index = index < images.count ? index + 1 : 1
-                    // selectedNum 값은 images 배열의 element 값
-                    selectedNum = images[index - 1]
+                    // index값을 증가, 아니면 0
+                    index = index < (images.count-1) ? index + 1 : 0
                 }
             })
             VStack(spacing: 0) {
                 Spacer()
                 HStack(spacing: 0) {
                     Spacer()
-                    Image(selectedNum)
+                    Image(images[index])
                 }
                 .frame(width: UIScreen.main.bounds.width)
                 .padding(.trailing, 15)

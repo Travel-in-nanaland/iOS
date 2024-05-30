@@ -43,7 +43,9 @@ class LanguageViewModel: ObservableObject {
 	
 	private func changeLanguage() {
 		if state.selectedLanguage != nil {
-			LocalizationManager.shared.setLanguage(state.selectedLanguage!)
+			Task {
+				await LocalizationManager.shared.setLanguage(state.selectedLanguage!)
+			}
 		}
 	}
 	
