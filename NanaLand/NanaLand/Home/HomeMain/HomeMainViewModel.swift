@@ -45,8 +45,8 @@ class HomeMainViewModel: ObservableObject {
 //    }
     
     struct State {
-        var getBannerResponse = [BannerModel(id: 0, thumbnailUrl: "", version: "", subHeading: "", heading: "")]
-        var getRecommendResponse = [RecommendModel(id: 0, category: "", thumbnailUrl: "", title: "", introduction: "")]
+        var getBannerResponse = [BannerModel]()
+        var getRecommendResponse = [RecommendModel]()
     }
     
     enum Action {
@@ -68,8 +68,7 @@ class HomeMainViewModel: ObservableObject {
             let response = await HomeService.getBannerData()
             if response != nil {
                 await MainActor.run {
-                    print("banner: \(response)")
-                    state.getBannerResponse = response!.data!
+					state.getBannerResponse = response?.data ?? []
                 }
             } else {
                 print("Error")
@@ -78,8 +77,7 @@ class HomeMainViewModel: ObservableObject {
             let response = await HomeService.getRecommendData()
             if response != nil {
                 await MainActor.run {
-                    print("reco:\(response)")
-                    state.getRecommendResponse = response!.data!
+					state.getRecommendResponse = response?.data ?? []
                 }
             }
         }

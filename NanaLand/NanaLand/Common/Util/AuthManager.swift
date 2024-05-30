@@ -273,6 +273,7 @@ final class AuthManager: NSObject {
 			KeyChainManager.deleteItem(key: "accessToken")
 			KeyChainManager.deleteItem(key: "refreshToken")
 			AppState.shared.currentTab = .home
+			AppState.shared.userInfo = .init()
 			AppState.shared.isRegisterNeeded = false
 			AppState.shared.navigationPath = NavigationPath()
 			self.provider = ""
@@ -374,6 +375,7 @@ final class AuthManager: NSObject {
 			KeyChainManager.deleteItem(key: "accessToken")
 			KeyChainManager.deleteItem(key: "refreshToken")
 			AppState.shared.currentTab = .home
+			AppState.shared.userInfo = .init()
 			AppState.shared.isRegisterNeeded = false
 			AppState.shared.navigationPath = NavigationPath()
 			self.provider = ""

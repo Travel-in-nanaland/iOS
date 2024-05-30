@@ -32,13 +32,13 @@ extension UserInfoUpdateEndPoint: EndPoint {
     }
     
     var headers: HTTPHeaders? {
-        return ["Content-Type": "multipart/form-data", "Authorization": KeyChainManager.readItem(key: "accessToken")!]
+        return ["Content-Type": "multipart/form-data"]
     }
 
     var task: APITask {
         switch self {
         case let .updateUserInfo(body, multipartFile):
-            return .requestJSONWithImage(multipartFile: multipartFile, body: body, withInterceptor: true)
+            return .requestJSONWithImage(multipartFile: multipartFile, body: body)
         }
     }
 }

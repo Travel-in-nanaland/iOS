@@ -32,7 +32,7 @@ extension UserInfoEndPoint: EndPoint {
         case .getUserInfo:
             return .get
 		case .patchUserLanguage:
-			return .patch
+			return .post
         }
     }
     
