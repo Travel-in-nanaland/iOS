@@ -138,7 +138,6 @@
 // editProfile
 "nickName" = "Jenis Perjalanan";
 "complete" = "Pembetulan selesai";
-"characters" = "aksara";
 "nickNameTypingLimitError" = "Nama panggilan ini tidak boleh digunakan.";
 "nickNameDuplicateError"= "Nama panggilan ini sudah digunakan oleh pengguna lain.";
 // deleteAlert
@@ -180,10 +179,6 @@
 // languageSettingPage
 "languageMainDescription" = "Bahasa di atas telah
 ditetapkan sebagai lalai.";
-"korean" = "한국어";
-"english" = "English";
-"chinese" = "中国话";
-"malaysia" = "Melayu";
 // withdrawMembershipPage
 "withDrawNotification" = "Panduan Penarikan Servis";
 "firstNotification" = "Jika anda menarik diri dari perkhidmatan ini, semua perkhidmatan yang disediakan berdasarkan nanaland in Jeju akan ditamatkan dan dihapuskan.";
@@ -194,10 +189,6 @@ ditetapkan sebagai lalai.";
 "notificationConsent" = "Saya telah membaca dan
  bersetuju dengan panduan ini";
 "withDrawReason" = "Sebab Penarikan Perkhidmatan";
-"contentLack" = "Kandungan Tidak Cukup";
-"serviceInconvenience" = "Ketidakselesaan Penggunaan Servis";
-"communityInconvenience" = "Ketidakselesaan Penggunaan Komuniti";
-"fewVisit" = "Jarang Berkunjung";
 "withdraw" = "Berhenti";
 "accountDeletion" = "Pengeluaran Ahli";
 "INSUFFICIENT_CONTENT" = "Kandungan Tidak Cukup";

@@ -138,7 +138,6 @@
 // editProfile
 "nickName" = "昵称";
 "complete" = "修改完成";
-"characters" = "字";
 "nickNameTypingLimitError" = "Nama panggilan ini tidak boleh digunakan.";
 "nickNameDuplicateError"= "Nama panggilan ini sudah digunakan oleh pengguna lain.";
 // deleteAlert
@@ -179,11 +178,6 @@
 "optionalNotification" = "如不同意选择性访问权限，Nanaland in Jeju服务的部分功能将受到限制。";
 // languageSettingPage
 "languageMainDescription" = "以顶部的语言设为默认设置";
-"korean" = "한국어";
-"english" = "English";
-"chinese" = "中国话";
-"malaysia" = "Melayu";
-"withdraw" = "退出";
 // withdrawMembershipPage
 "withDrawNotification" = "服务退出指南";
 "firstNotification" = "退出本服务后，将取消并终止基于Nanaland in Jeju服务提供的所有服务。";
@@ -193,10 +187,6 @@
 "fifthNotification" = "若在退出后90天内重新加入，您可以继续使用原账户。";
 "notificationConsent" = "我已确认指南事项并同意。";
 "withDrawReason" = "服务退出原因";
-"contentLack" = "内容不足";
-"serviceInconvenience" = "服务使用不便";
-"communityInconvenience" = "社区使用不便";
-"fewVisit" = "几乎不访问";
 "withdraw" = "退出";
 "accountDeletion" = "注销会员";
 "INSUFFICIENT_CONTENT" = "内容不足";

@@ -139,7 +139,6 @@
 // editProfile
 "nickName" = "Nickname";
 "complete" = "Update";
-"characters" = "characters";
 "nickNameTypingLimitError" = "This nickname cannot be used.";
 "nickNameDuplicateError"= "This nickname is already in use by another user.";
 // deleteAlert
@@ -181,10 +180,6 @@ Needed for device tampering detection solutions";
 "optionalNotification" = "Note that if you do not agree to optional permissions, some features of Nanaland in Jeju may be restricted.";
 // languageSettingPage
 "languageMainDescription" = "The language at the top is set as default.";
-"korean" = "한국어";
-"english" = "English";
-"chinese" = "中国话";
-"malaysia" = "Melayu";
 // withdrawMembershipPage
 "withDrawNotification" = "Service Withdrawal Information";
 "firstNotification" = "By deleting your account, you will be unsubscribed from all services provided by Nanaland in Jeju.";
@@ -194,10 +189,6 @@ Needed for device tampering detection solutions";
 "fifthNotification" = "If you re-register within 90 days after withdrawal, you can use your previous account.";
 "notificationConsent" = "I have read and agree to the information provided.";
 "withDrawReason" = "Reason for Account Deletion";
-"contentLack" = "Lack of Content";
-"serviceInconvenience" = "Service Inconvenience";
-"communityInconvenience" = "Community Usage Inconvenience";
-"fewVisit" = "Rarely Visit";
 "withdraw" = "Delete Account";
 "accountDeletion" = "Account Deletion";
 "INSUFFICIENT_CONTENT" = "Lack of Content";

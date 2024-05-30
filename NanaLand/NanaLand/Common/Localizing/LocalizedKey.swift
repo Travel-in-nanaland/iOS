@@ -143,7 +143,6 @@ enum LocalizedKey: String {
     // editPage
     case nickName
     case complete
-    case character
     case nickNameTypingLimitError
     case nickNameDuplicateError
     
@@ -202,10 +201,6 @@ enum LocalizedKey: String {
 	
     // languageSettingPage(언어 설정 페이지)
     case languageMainDescription
-    case korean
-    case english
-    case chinese
-    case malaysia
     // withDrawMembershipPage(회원 탈퇴 페이지)
     case withDrawNotification
     case firstNotification
@@ -215,10 +210,6 @@ enum LocalizedKey: String {
     case fifthNotification
     case notificationConsent
     case withDrawReason
-    case contentLack
-    case serviceInconvenience
-    case communityInconvenience
-    case fewVisit
     case withdraw
     case accountDeletion
     

@@ -138,7 +138,6 @@
 //editProfile
 "nickName" = "닉네임";
 "complete" = "수정완료";
-"characters" = "자";
 "nickNameTypingLimitError" = "해당 닉네임은  사용할 수 없습니다.";
 "nickNameDuplicateError"= "해당 닉네임은 다른 사용자가 사용 중입니다.";
 // deleteAlert
@@ -180,10 +179,6 @@
   서비스의 일부 기능을 제한 받으실 수 있는 점 안내드립니다.";
 // languageSettingPage
 "languageMainDescription" = "맨위에 있는 언어로 기본 설정 되어 있습니다.";
-"korean" = "한국어";
-"english" = "English";
-"chinese" = "中国话";
-"malaysia" = "Melayu";
 // withdrawMembershipPage
 "withDrawNotification" = "서비스 탈퇴 안내 사항";
 "firstNotification" = "본 서비스를 탈퇴하시면 나나랜드인제주 서비스 기반으로 제공되는 모든 서비스로부터 해지 및 소멸되는 점을 안내드립니다.";
@@ -193,10 +188,6 @@
 "fifthNotification" = "탈퇴 후 90일 이내에 재가입을 하시면, 기존 계정으로 사용하실 수 있습니다.";
 "notificationConsent" = "안내사항을 확인하였으며 동의합니다.";
 "withDrawReason" = "서비스 탈퇴 사유";
-"contentLack" = "콘텐츠 내용 부족";
-"serviceInconvenience" = "서비스 이용 불편";
-"communityInconvenience" = "커뮤니티 사용 불편";
-"fewVisit" = "방문 횟수 거의 없음";
 "withdraw" = "탈퇴";
 "accountDeletion" = "회원탈퇴";
 "INSUFFICIENT_CONTENT" = "콘텐츠 내용 부족";
