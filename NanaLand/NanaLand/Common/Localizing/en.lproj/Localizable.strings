@@ -62,6 +62,7 @@
 "withdrawAlertTitle" = "Are you sure you don't want to receive Jeju travel information and benefits?😢";
 "withdrawAlertMessage" = "*If you rejoin within 90 days, you can log in with your existing account.";
 "changeLanguageAlertTitle" = "Do you want to change\nto this language?";
+"invalidEmail" = "";
 
 //MARK: - TypeTest
 "skipTypeTest" = "Skip the test";
@@ -261,3 +262,25 @@ the market is the place!";
 "amenity" = "Facilities";
 "proposeUpdateInfo" = "Information Update Suggestions";
 
+// MARK: - 정보 수정 제안
+"reportInfo" = "Information Update Suggestions";
+"reportInfoTitle" = "Suggest an Information Update!";
+"reportInfoDescription" = "You may receive rewards if photos attached with your suggestions help verify location information.";
+"numberAndHomepage" = "Phone Number and Website";
+"oprationTime" = "Name and Location";
+"placeNameAndLocation" = "Operating Hours";
+"priceInfo" = "Price Information";
+"deletePlace" = "Delete Location";
+"etcReportInfoTitle" = "Share Other Information!";
+"provideService" = "Offering service";
+"addPhoto" = "Add Photos";
+"addPhotoDescription" = "Attach photos of verified information for more\n accurate details.";
+"reportInfoContentTitle" = "Suggest an Information Update";
+"reportInfoContentPlaceHolder" = "Leave detailed information on the items you want to update or any other comments.";
+"email" = "Email";
+"reportInfoEmailDescription" = "Enter your email to receive the results of your suggestion.";
+"send" = "Submit";
+"thxForReportInfoTitle" = "Thank you for your information correction suggestion";
+"thxForReportInfoDescription" = "With the information correction suggestion, the attractiveness of the travel destination has also increased!\n\nIt’s getting more and more exciting🧚‍♀️";
+"showContentAgain" = "View Content Again";
+"reportAgain" = "Add Another Item";

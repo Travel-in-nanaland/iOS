@@ -594,6 +594,7 @@
 		2C3C75C32BCA54AB00312F26 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				BF30C7342C05B32F0084702F /* GifImageView.swift */,
 				BF2D937C2BFF3CEF0057381A /* AlertView.swift */,
 				2C1F31D42BCD2A870066819F /* NanaSearchBar.swift */,
 				2C80EC9F2BCE55E0002F38A7 /* ArticleItem.swift */,
@@ -617,7 +618,6 @@
 				2C40DB7E2BE61F05007A3768 /* SplashView.swift */,
 				2C3C75CB2BCAA93D00312F26 /* NanaLandTabView.swift */,
 				2C80ECCE2BD2C777002F38A7 /* AppState.swift */,
-				BF30C7342C05B32F0084702F /* GifImageView.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";

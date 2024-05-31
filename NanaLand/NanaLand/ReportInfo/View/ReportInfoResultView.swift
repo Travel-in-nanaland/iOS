@@ -20,12 +20,13 @@ struct ReportInfoResultView: View {
 				.padding(.leading, 59)
 				.padding(.trailing, 49)
 			
-			Text("정보 수정 제안 감사드립니다")
+			Text(.thxForReportInfoTitle)
+				.multilineTextAlignment(.center)
 				.padding(.bottom, 8)
 				.font(.largeTitle02)
 				.foregroundStyle(Color.main)
 			
-			Text("정보 수정 제안으로\n여행지의 매력도 함께 올라갔어요!\n\n점점 기대될 것 같아요🧚‍♀️")
+			Text(.thxForReportInfoDescription)
 				.multilineTextAlignment(.center)
 				.font(.gothicNeo(.medium, size: 18))
 				.foregroundStyle(Color.baseBlack)
@@ -40,7 +41,7 @@ struct ReportInfoResultView: View {
 					.stroke(Color.main, lineWidth: 1)
 					.frame(height: 48)
 					.overlay {
-						Text("콘텐츠 다시 보러 가기")
+						Text(.showContentAgain)
 							.font(.body_bold)
 							.foregroundStyle(Color.main)
 					}
@@ -56,7 +57,7 @@ struct ReportInfoResultView: View {
 					.fill(Color.main)
 					.frame(height: 48)
 					.overlay {
-						Text("다른 항목 추가하기")
+						Text(.reportAgain)
 							.font(.body_bold)
 							.foregroundStyle(Color.baseWhite)
 					}

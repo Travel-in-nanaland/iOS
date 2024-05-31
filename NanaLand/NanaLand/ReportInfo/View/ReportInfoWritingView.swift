@@ -26,7 +26,7 @@ struct ReportInfoWritingView: View {
 	
 	var body: some View {
 		VStack(spacing: 0) {
-			NanaNavigationBar(title: .proposeUpdateInfo, showBackButton: true)
+			NanaNavigationBar(title: .reportInfo, showBackButton: true)
 			
 			ScrollView(.vertical, showsIndicators: false) {
 				VStack(alignment: .leading, spacing: 0) {
@@ -57,12 +57,12 @@ struct ReportInfoWritingView: View {
 										.frame(width: 56, height: 56)
 										.foregroundStyle(Color.baseWhite)
 									
-									Text("사진 추가하기")
+									Text(.addPhoto)
 										.font(.body_bold)
 										.foregroundStyle(Color.baseWhite)
 										.padding(.bottom, 4)
 									
-									Text("실제 확인한 정보를 사진과 함께 첨부해주시면,\n좀 더 정확한 정보가 완성되어요")
+									Text(.addPhotoDescription)
 										.multilineTextAlignment(.center)
 										.font(.caption)
 										.foregroundStyle(Color.baseWhite)
@@ -88,7 +88,7 @@ struct ReportInfoWritingView: View {
 					}
 					
 					VStack(alignment: .leading, spacing: 0) {
-						Text("정보 수정 제안")
+						Text(.reportInfoContentTitle)
 							.font(.title02_bold)
 							.padding(.bottom, 8)
 						
@@ -97,7 +97,7 @@ struct ReportInfoWritingView: View {
 								.stroke(Color.gray2, lineWidth: 1)
 							
 							if content.isEmpty {
-								TextEditor(text: .constant("수정 요청하신 항목의 상세 내용이나 그 외 기타 사항이 있으시면 의견을 남겨주세요."))
+								TextEditor(text: .constant(LocalizedKey.reportInfoContentPlaceHolder.localized(for: LocalizationManager.shared.language)))
 									.padding(.horizontal, 16)
 									.padding(.top, 10)
 									.foregroundStyle(Color.gray2)
@@ -115,11 +115,11 @@ struct ReportInfoWritingView: View {
 						.frame(height: 120)
 						.padding(.bottom, 48)
 						
-						Text("이메일")
+						Text(.email)
 							.font(.title02_bold)
 							.padding(.bottom, 4)
 						
-						Text("정보 수정 제안 결과를 받을 이메일을 입력해주세요")
+						Text(.reportInfoEmailDescription)
 							.font(.body02)
 							.foregroundStyle(Color(hex: 0x717171))
 							.padding(.bottom, 8)
@@ -157,7 +157,7 @@ struct ReportInfoWritingView: View {
 								.frame(width: 20, height: 20)
 								.foregroundStyle(Color.warning)
 							
-							Text("이메일 형식이 잘못 되었습니다. 다시 입력해 주세요!")
+							Text(.invalidEmail)
 								.font(.gothicNeo(.medium, size: 12))
 								.foregroundStyle(Color.warning)
 							
@@ -181,7 +181,7 @@ struct ReportInfoWritingView: View {
 					.opacity((!content.isEmpty && !email.isEmpty) ? 1 : 0.1)
 					.frame(height: 48)
 					.overlay {
-						Text("보내기")
+						Text(.send)
 							.font(.body_bold)
 							.foregroundStyle(Color.baseWhite)
 					}
