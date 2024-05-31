@@ -14,11 +14,3 @@ struct RecommendModel: Codable, Hashable {
     var title: String
     var introduction: String
 }
-
-struct RecommendData: Codable, Hashable {
-    var id: Int
-    var category: String
-    var thumbnailUrl: String
-    var title: String
-    var introduction: String
-}

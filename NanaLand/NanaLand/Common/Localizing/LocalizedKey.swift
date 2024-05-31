@@ -44,9 +44,12 @@ enum LocalizedKey: String {
 	case noResult
 	
 	//MARK: - Login/Register
+	case appleLogin
+	case googleLogin
 	case nonMemeberLogin
 	case welcomeToNanaLand
 	case enterNicknameAndProfile
+	case nicknameTextFieldPlaceHolder
 	
 	//MARK: - Terms
 	case allAgree
@@ -131,6 +134,10 @@ enum LocalizedKey: String {
 	case GAMGYUL_BUBBLE_TEA
 	case GAMGYUL_BUBBLE_TEA_DESCRIPTION
 	case nanalandMadeYouJuice
+	// 결과 값 추천 여행지
+	case recommendedTravelPlace
+	case recommenedeTravelTitleFirstLine
+	case recommenedeTravelTitleSecondLine
 	
     //MARK: - MyPage
     // main
@@ -212,6 +219,10 @@ enum LocalizedKey: String {
     case withDrawReason
     case withdraw
     case accountDeletion
+	
+	// MARK: - 비회원
+	case nonMemeberAlertDescription
+	case nonMemeberAlertGoRegister
     
     // MARK: - Home
     case recommendTitle

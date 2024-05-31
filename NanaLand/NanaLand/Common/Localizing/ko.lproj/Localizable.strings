@@ -40,9 +40,12 @@
 "noResult" = "해당 검색 결과가 없습니다.";
 
 //MARK: - Login/Register
+"appleLogin" = "Apple로 로그인";
+"googleLogin" = "Google 로그인";
 "nonMemeberLogin" = "로그인없이 둘러보기";
 "welcomeToNanaLand" = "nanaland in Jeju에\n오신 것을 환영합니다.";
 "enterNicknameAndProfile" = "사용할 이름을 작성 및\n프로필을 선택해 주세요.";
+"nicknameTextFieldPlaceHolder" = "이름을 입력해 주세요";
 
 //MARK: - Terms
 "allAgree" = "전체 동의";
@@ -127,6 +130,11 @@
 "GAMGYUL_BUBBLE_TEA" = "감귤 버블티";
 "GAMGYUL_BUBBLE_TEA_DESCRIPTION" = "호기심 가득한 당신! 먹을수록 반전인 감귤 버블티 유형!";
 "nanalandMadeYouJuice" = "nanaland in Jeju 가 당신을 위해\n맞춤 여행 주스를 만들었어요!";
+// 결과 값 추천 여행지
+"recommendedTravelPlace" = "추천 여행지";
+"recommenedeTravelTitleFirstLine" = "%@ 님을 위한";
+"recommenedeTravelTitleSecondLine" = "추천 여행지";
+
 
 //MARK: - MyPage
 // main
@@ -194,6 +202,10 @@
 "INCONVENIENT_SERVICE" = "서비스 이용 불편";
 "INCONVENIENT_COMMUNITY" = "커뮤니티 사용 불편";
 "RARE_VISITS" = "방문 횟수 거의 없음";
+
+// MARK: - 비회원
+"nonMemeberAlertDescription" = "나나랜드의 회원이 되셔야,\n모든 서비스를\n이용하실 수 있습니다✨";
+"nonMemeberAlertGoRegister" = "회원가입 하러 가기";
 
 // MARK: - Home
 "recommendTitle" = "님을 위한 도민 추천";

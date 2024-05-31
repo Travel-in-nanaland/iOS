@@ -10,11 +10,10 @@ import Lottie
 
 struct TypeTestLoadingView: View {
 	@EnvironmentObject var typeTestVM: TypeTestViewModel
-	@State var jsonName: String = ""
+	let jsonName: String = ["loading_drink", "loading_tangerine"].randomElement()!
 	
     var body: some View {
-		VStack(spacing: 0) {
-			
+		VStack(spacing: 4) {
 			LottieView(jsonName: jsonName, loopMode: .loop)
 				.frame(height: 250)
 			
@@ -26,13 +25,12 @@ struct TypeTestLoadingView: View {
 				.font(.title2)
 				.foregroundStyle(Color.black)
 				.multilineTextAlignment(.center)
-			
 		}
 		.onAppear {
-			jsonName = ["loading_drink", "loading_tangerine"].randomElement()!
 			typeTestVM.action(.onAppearLoadingView)
 		}
 		.toolbar(.hidden, for: .navigationBar)
+		.offset(y: -40)
     }
 }
 

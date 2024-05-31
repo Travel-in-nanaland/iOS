@@ -32,7 +32,7 @@ struct FavoriteMainView: View {
 	}
 	
 	private var navigationBar: some View {
-		NanaNavigationBar(title: String(localized: "favorite"))
+		NanaNavigationBar(title: .favorite)
 			.padding(.bottom, 16)
 	}
 	

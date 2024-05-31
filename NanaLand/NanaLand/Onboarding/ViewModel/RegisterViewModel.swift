@@ -116,6 +116,13 @@ final class RegisterViewModel: ObservableObject {
 			return
 		}
 		
+		guard state.nickname.isValidNickname() else {
+			// 형식에 맞지 않은 닉네임
+			state.nicknameErrorMessage = .onlyCharSpaceNumberNickname
+			state.showNicknameError = true
+			return
+		}
+		
 		let result = await AuthService.registerServer(body: state.registerRequest, image: [state.pickedImage])
 		
 		if let tokens = result?.data {

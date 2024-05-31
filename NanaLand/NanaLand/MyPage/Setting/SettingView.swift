@@ -15,7 +15,7 @@ struct SettingView: View {
     var body: some View {
         
         VStack(spacing: 0) {
-            NanaNavigationBar(title: LocalizedKey.settings.localized(for: localizationManager.language), showBackButton: true)
+			NanaNavigationBar(title: .settings, showBackButton: true)
                 .padding(.bottom, 20)
             HStack(spacing: 0) {
                 Text(.setUsage)

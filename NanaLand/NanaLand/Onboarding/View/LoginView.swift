@@ -39,24 +39,26 @@ struct LoginView: View {
 			Spacer()
 			
 			VStack(spacing: 16) {
-				Button(action: {
-					authManager.kakaoLogin()
-				}, label: {
-					HStack(spacing: 8) {
-						Image(.kakaoLoginIcon)
-							.resizable()
-							.frame(width: 18, height: 18)
-						
-						Text("카카오 로그인")
-							.font(.gothicNeo(.medium, size: 14))
-							.foregroundStyle(Color.black)
-					}
-					.frame(width: Constants.screenWidth-32, height: 48)
-					.background {
-						RoundedRectangle(cornerRadius: 12)
-							.fill(Color(hex: 0xFEE500))
-					}
-				})
+				if LocalizationManager.shared.language == .korean {
+					Button(action: {
+						authManager.kakaoLogin()
+					}, label: {
+						HStack(spacing: 8) {
+							Image(.kakaoLoginIcon)
+								.resizable()
+								.frame(width: 18, height: 18)
+							
+							Text("카카오 로그인")
+								.font(.gothicNeo(.medium, size: 14))
+								.foregroundStyle(Color.black)
+						}
+						.frame(width: Constants.screenWidth-32, height: 48)
+						.background {
+							RoundedRectangle(cornerRadius: 12)
+								.fill(Color(hex: 0xFEE500))
+						}
+					})
+				}
 				
 				
 				Button(action: {
@@ -67,7 +69,7 @@ struct LoginView: View {
 							.resizable()
 							.frame(width: 18, height: 18)
 						
-						Text("Apple로 로그인")
+						Text(.appleLogin)
 							.font(.gothicNeo(.medium, size: 14))
 							.foregroundStyle(Color.white)
 						
@@ -87,7 +89,7 @@ struct LoginView: View {
 							.resizable()
 							.frame(width: 18, height: 18)
 						
-						Text("Google 로그인")
+						Text(.googleLogin)
 							.font(.system(size: 14))
 							.foregroundStyle(Color.baseBlack)
 					}

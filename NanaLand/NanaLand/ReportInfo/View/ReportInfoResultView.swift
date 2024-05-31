@@ -9,10 +9,16 @@ import SwiftUI
 
 struct ReportInfoResultView: View {
 	@ObservedObject var reportInfoVM: ReportInfoViewModel
+	let itemSize = Constants.screenWidth - 108
 	
 	var body: some View {
 		VStack(spacing: 0) {
 			Spacer()
+			
+			LottieView(jsonName: "report_info_star")
+				.frame(width: itemSize, height: itemSize)
+				.padding(.leading, 59)
+				.padding(.trailing, 49)
 			
 			Text("정보 수정 제안 감사드립니다")
 				.padding(.bottom, 8)

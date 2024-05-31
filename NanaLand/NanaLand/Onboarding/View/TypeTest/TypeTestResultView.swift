@@ -10,22 +10,26 @@ import SwiftUI
 struct TypeTestResultView: View {
 	@EnvironmentObject var typeTestVM: TypeTestViewModel
 	let nickname: String
+	let imageSize = Constants.screenWidth / 9 * 5
 	
-    var body: some View {
+	var body: some View {
 		VStack(spacing: 0) {
-			header
-				.padding(.top, 40)
-				.padding(.bottom, 32)
-			
-			Spacer(minLength: 0)
-			contentsPart
-			Spacer(minLength: 0)
-			
-			bottomButtons
-				.padding(.bottom, 24)
+			ScrollView {
+				header
+					.padding(.top, 40)
+					.padding(.bottom, 32)
+				
+				contentsPart
+					.padding(.bottom, 40)
+				
+				bottomButtons
+					.padding(.bottom, 24)
+			}
+			.scrollIndicators(.hidden)
 		}
+		.padding(.vertical, 1)
 		.toolbar(.hidden, for: .navigationBar)
-    }
+	}
 	
 	private var header: some View {
 		VStack(spacing: 8) {
@@ -41,9 +45,10 @@ struct TypeTestResultView: View {
 	
 	private var contentsPart: some View {
 		VStack(spacing: 32) {
-			Rectangle()
-				.fill(Color.gray2)
-				.frame(width: Constants.screenWidth, height: Constants.screenWidth/3*2)
+			Image(typeTestVM.state.userType?.image ?? .GAMGYUL_ICECREAM)
+				.resizable()
+				.frame(width: imageSize, height: imageSize)
+				.clipShape(Circle())
 			
 			Text(typeTestVM.state.userType?.descriptionLocalizedKey ?? .GAMGYUL_DESCRIPTION)
 				.foregroundColor(Color.main)
@@ -61,7 +66,7 @@ struct TypeTestResultView: View {
 	private var bottomButtons: some View {
 		VStack(spacing: 16) {
 			Button(action: {
-
+				typeTestVM.action(.onTapGotoRecommendPlaceView)
 			}, label: {
 				RoundedRectangle(cornerRadius: 50)
 					.stroke(Color.main, lineWidth: 1)

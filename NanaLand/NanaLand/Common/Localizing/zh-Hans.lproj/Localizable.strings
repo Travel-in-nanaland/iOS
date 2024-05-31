@@ -40,9 +40,12 @@
 "noResult" = "没有符合条件的搜索结果";
 
 //MARK: - Login/Register
+"appleLogin" = "Sign in with Apple";
+"googleLogin" = "Sign in with Google";
 "nonMemeberLogin" = "无需登录浏览";
 "welcomeToNanaLand" = "欢迎来到济州的\nnanaland";
 "enterNicknameAndProfile" = "请填写要使用的名\n称并选择头像";
+"nicknameTextFieldPlaceHolder" = "请输入名字";
 
 //MARK: - Terms
 "allAgree" = "全部同意";
@@ -127,6 +130,11 @@
 "GAMGYUL_BUBBLE_TEA" = "柑橘珍珠奶茶";
 "GAMGYUL_BUBBLE_TEA_DESCRIPTION" = "充满好奇心的你！越吃越反转的柑橘珍珠奶茶类型！";
 "nanalandMadeYouJuice" = "nanaland in Jeju 为您定制了旅行果汁！";
+// 결과 값 추천 여행지
+"recommendedTravelPlace" = "推荐旅游地";
+"recommenedeTravelTitleFirstLine" = "为%@推荐";
+"recommenedeTravelTitleSecondLine" = "的旅游地";
+
 
 //MARK: - MyPage
 // main
@@ -194,6 +202,10 @@
 "INCONVENIENT_COMMUNITY" = "社区使用不便";
 "RARE_VISITS" = "几乎不访问";
 
+// MARK: - 비회원
+"nonMemeberAlertDescription" = "必须成为会员\n才能使用所有服务✨";
+"nonMemeberAlertGoRegister" = "去注册会员";
+
 // MARK: - Home
 "recommendTitle" = "";
 "firstAdvertismentTitle" = "想在济州岛看美丽的大海吗？";
@@ -239,3 +251,4 @@
 "detailInfo" = "详细信息";
 "amenity" = "便利设施";
 "proposeUpdateInfo" = "建议修改信息";
+

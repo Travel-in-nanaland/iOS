@@ -12,7 +12,7 @@ struct PolicyView: View {
     @EnvironmentObject var localizationManager: LocalizationManager
     var body: some View {
         VStack(spacing: 0) {
-            NanaNavigationBar(title: LocalizedKey.termsAndPolicies.localized(for: localizationManager.language), showBackButton: true)
+            NanaNavigationBar(title: .termsAndPolicies, showBackButton: true)
                 .padding(.bottom, 24)
             PolicyItemButtonView(title: LocalizedKey.marketingConsent.localized(for: localizationManager.language), isSelected: $viewModel.state.marketingAgree)
             PolicyItemButtonView(title: LocalizedKey.locationConsent.localized(for: localizationManager.language), isSelected: $viewModel.state.gpsAgree)

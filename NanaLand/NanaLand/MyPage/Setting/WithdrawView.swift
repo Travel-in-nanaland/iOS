@@ -36,7 +36,7 @@ struct WithdrawView: View {
     @State private var alertResult = false
     var body: some View {
         VStack(spacing: 0) {
-            NanaNavigationBar(title: LocalizedKey.accountDeletion.localized(for: localizationManager.language), showBackButton: true)
+			NanaNavigationBar(title: .accountDeletion, showBackButton: true)
                 .padding(.bottom, 32)
 			
 			ScrollView {

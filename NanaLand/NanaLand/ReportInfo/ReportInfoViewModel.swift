@@ -53,6 +53,11 @@ class ReportInfoViewModel: ObservableObject {
 	}
 	
 	func sendButtonTapped(image: [Foundation.Data?], content: String, email: String) async {
+		state.showEmailErrorMessage = false
+		guard email.isValidEmail() else {
+			state.showEmailErrorMessage = true
+			return
+		}
 		let request = ReportInfoRequest(
 			postId: state.postId,
 			fixType: state.fixType.name,

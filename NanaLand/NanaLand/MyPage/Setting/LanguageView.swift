@@ -9,12 +9,11 @@ import SwiftUI
 
 struct LanguageView: View {
     @StateObject var viewModel = LanguageViewModel()
-    @EnvironmentObject var localizationManager: LocalizationManager
 	@State private var showAlert = false
   
     var body: some View {
         VStack(spacing: 0) {
-            NanaNavigationBar(title: LocalizedKey.languageSetting.localized(for: localizationManager.language), showBackButton: true)
+			NanaNavigationBar(title: .languageSetting, showBackButton: true)
                 .padding(.bottom, 32)
             
             HStack(spacing: 0) {
