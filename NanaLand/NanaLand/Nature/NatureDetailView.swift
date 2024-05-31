@@ -10,12 +10,13 @@ import Kingfisher
 
 struct NatureDetailView: View {
     @StateObject var viewModel = NatureDetailViewModel()
+    @EnvironmentObject var localizationManager: LocalizationManager
     @State private var isOn = false // 더보기 버튼 클릭 여부
     @State private var roundedHeight: CGFloat = (Constants.screenWidth - 40) * (224.0 / 358.0)
     var id: Int64
     
     var body: some View {
-        NavigationBar(title: "7대 자연")
+        NavigationBar(title: LocalizedKey.nature.localized(for: localizationManager.language))
             .frame(height: 56)
         ZStack {
             ScrollViewReader { proxyReader in
@@ -90,7 +91,7 @@ struct NatureDetailView: View {
                                             Button {
                                                 isOn.toggle()
                                             } label: {
-                                                Text("더 보기")
+                                                Text(.unfoldView)
                                                     .foregroundStyle(Color.gray1)
                                                     .font(.gothicNeo(.regular, size: 14))
                                             }
@@ -166,7 +167,7 @@ struct NatureDetailView: View {
                                             Button {
                                                 isOn.toggle()
                                             } label: {
-                                                Text("접기")
+                                                Text(.foldView)
                                                     .foregroundStyle(Color.gray1)
                                                     .font(.gothicNeo(.regular, size: 14))
                                             }
@@ -193,7 +194,7 @@ struct NatureDetailView: View {
                                 VStack(alignment: .leading, spacing: 0) {
                                     HStack(spacing: 0) {
                                         Image("icWarningCircleMain")
-                                        Text("소개합니다!")
+                                        Text(.introduce)
                                             .font(.gothicNeo(.bold, size: 14))
                                             .foregroundStyle(Color.main)
                                         Spacer()
@@ -219,7 +220,7 @@ struct NatureDetailView: View {
                                 }
                                 
                                 VStack(alignment: .leading, spacing: 0) {
-                                    Text("주소")
+                                    Text(.address)
                                         .font(.gothicNeo(.bold, size: 14))
                                     Text(viewModel.state.getNatureDetailResponse.address)
                                         .font(.gothicNeo(.regular, size: 12))
@@ -227,7 +228,7 @@ struct NatureDetailView: View {
                                 Spacer()
                                 
                             }
-                            .frame(width: Constants.screenWidth - 40, height: (Constants.screenWidth - 40) * ( 42 / 358))
+                            .frame(width: Constants.screenWidth - 40)
                             
                             HStack(spacing: 10) {
                                 VStack(spacing: 0) {
@@ -236,7 +237,7 @@ struct NatureDetailView: View {
                                 }
                                 
                                 VStack(alignment: .leading, spacing: 0) {
-                                    Text("연락처")
+                                    Text(.phoneNumber)
                                         .font(.gothicNeo(.bold, size: 14))
                                     Text(viewModel.state.getNatureDetailResponse.contact)
                                         .font(.gothicNeo(.regular, size: 12))
@@ -252,7 +253,7 @@ struct NatureDetailView: View {
                                 }
                                 
                                 VStack(alignment: .leading, spacing: 0) {
-                                    Text("이용시간")
+                                    Text(.time)
                                         .font(.gothicNeo(.bold, size: 14))
                                     Text(viewModel.state.getNatureDetailResponse.time)
                                         .font(.gothicNeo(.regular, size: 12))
@@ -269,7 +270,7 @@ struct NatureDetailView: View {
                                 }
                                 
                                 VStack(alignment: .leading, spacing: 0) {
-                                    Text("입장료")
+                                    Text(.fee)
                                         .font(.gothicNeo(.bold, size: 14))
                                     Text(viewModel.state.getNatureDetailResponse.fee)
                                         .font(.gothicNeo(.regular, size: 12))
@@ -285,21 +286,21 @@ struct NatureDetailView: View {
                                 }
                                 
                                 VStack(alignment: .leading, spacing: 0) {
-                                    Text("상세 정보")
+                                    Text(.detailInfo)
                                         .font(.gothicNeo(.bold, size: 14))
                                     Text(viewModel.state.getNatureDetailResponse.details)
                                         .font(.gothicNeo(.regular, size: 12))
                                 }
                                 Spacer()
                             }
-                            .frame(width: Constants.screenWidth - 40, height: (Constants.screenWidth - 40) * ( 42 / 358))
+                            .frame(width: Constants.screenWidth - 40)
                             HStack(spacing: 10) {
                                 VStack(spacing: 0) {
                                     Image("icFacility")
                                     Spacer()
                                 }
                                 VStack(alignment: .leading, spacing: 0) {
-                                    Text("편의시설")
+                                    Text(.amenity)
                                         .font(.gothicNeo(.bold, size: 14))
                                     Text(viewModel.state.getNatureDetailResponse.amenity)
                                         .font(.gothicNeo(.regular, size: 12))
@@ -312,7 +313,7 @@ struct NatureDetailView: View {
                             Button {
 								AppState.shared.navigationPath.append(ArticleViewType.reportInfo(id: viewModel.state.getNatureDetailResponse.id, category: .nature))
                             } label: {
-                                Text("정보 수정 제안")
+                                Text(.proposeUpdateInfo)
                                     .background(
                                         RoundedRectangle(cornerRadius: 12.0)
                                             .foregroundStyle(Color.gray2)
