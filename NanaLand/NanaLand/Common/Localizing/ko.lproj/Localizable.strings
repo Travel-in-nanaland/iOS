@@ -40,6 +40,8 @@
 "noResult" = "해당 검색 결과가 없습니다.";
 
 //MARK: - Login/Register
+"appleLogin" = "Apple로 로그인";
+"googleLogin" = "Google 로그인";
 "nonMemeberLogin" = "로그인없이 둘러보기";
 "welcomeToNanaLand" = "nanaland in Jeju에\n오신 것을 환영합니다.";
 "enterNicknameAndProfile" = "사용할 이름을 작성 및\n프로필을 선택해 주세요.";

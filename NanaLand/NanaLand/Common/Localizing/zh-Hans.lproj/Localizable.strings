@@ -40,6 +40,8 @@
 "noResult" = "没有符合条件的搜索结果";
 
 //MARK: - Login/Register
+"appleLogin" = "Sign in with Apple";
+"googleLogin" = "Sign in with Google";
 "nonMemeberLogin" = "无需登录浏览";
 "welcomeToNanaLand" = "欢迎来到济州的\nnanaland";
 "enterNicknameAndProfile" = "请填写要使用的名\n称并选择头像";

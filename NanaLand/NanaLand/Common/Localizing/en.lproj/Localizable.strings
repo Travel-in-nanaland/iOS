@@ -40,6 +40,8 @@
 "noResult" = "There are no results for that search.";
 
 //MARK: - Login/Register
+"appleLogin" = "Sign in with Apple";
+"googleLogin" = "Sign in with Google";
 "nonMemeberLogin" = "Browse Without Logging In";
 "welcomeToNanaLand" = "Welcome to\nnanaland in Jeju";
 "enterNicknameAndProfile" = "Enter your name and\nselect a profile picture.";

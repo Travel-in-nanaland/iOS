@@ -44,6 +44,8 @@ enum LocalizedKey: String {
 	case noResult
 	
 	//MARK: - Login/Register
+	case appleLogin
+	case googleLogin
 	case nonMemeberLogin
 	case welcomeToNanaLand
 	case enterNicknameAndProfile

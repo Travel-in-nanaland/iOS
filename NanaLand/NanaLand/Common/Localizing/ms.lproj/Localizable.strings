@@ -40,6 +40,8 @@
 "noResult" = "Carian anda tidak\nmengembalikan sebarang hasil.";
 
 //MARK: - Login/Register
+"appleLogin" = "Sign in with Apple";
+"googleLogin" = "Sign in with Google";
 "nonMemeberLogin" = "Guna Tanpa Log Masuk";
 "welcomeToNanaLand" = "Selamat datang ke\nnanaland in Jeju";
 "enterNicknameAndProfile" = " Sila tulis nama penggunaan\ndan pilih profil.";
