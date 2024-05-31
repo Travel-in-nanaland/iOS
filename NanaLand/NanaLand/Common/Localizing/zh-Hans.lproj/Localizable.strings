@@ -62,6 +62,7 @@
 "withdrawAlertTitle" = "真的不想收到济州岛旅\n行信息和优惠吗？😢";
 "withdrawAlertMessage" = "*90天内重新加入时，\n可以用原账户登录。";
 "changeLanguageAlertTitle" = "您想更改为该语言吗？";
+"invalidEmail" = "";
 
 //MARK: - TypeTest
 "skipTypeTest" = "跳过测试";
@@ -252,3 +253,25 @@
 "amenity" = "便利设施";
 "proposeUpdateInfo" = "建议修改信息";
 
+// MARK: - 정보 수정 제안
+"reportInfo" = "建议修改信息";
+"reportInfoTitle" = "请提出需要修改的信息 !";
+"reportInfoDescription" = "如果您在建议地点时附上的照片对确认地点信息有帮助， 将有机会获得福利.";
+"numberAndHomepage" = "电话号码和网站";
+"oprationTime" = "使用时间";
+"placeNameAndLocation" = "地点名称及位置";
+"priceInfo" = "价格信息";
+"deletePlace" = "删除地点";
+"etcReportInfoTitle" = "请分享其他信息！";
+"provideService" = "提供服务";
+"addPhoto" = "添加照片";
+"addPhotoDescription" = "如果您附上实际核实过的信息及照片，\n将能提供更准确的信息";
+"reportInfoContentTitle" = "建议修改信息";
+"reportInfoContentPlaceHolder" = "如有修改请求的详细内容或其他事项，请留下您的意见";
+"email" = "电子邮件";
+"reportInfoEmailDescription" = "请输入接收信息修改建议结果的电子邮件";
+"send" = "发送";
+"thxForReportInfoTitle" = "感谢您的信息修改建议";
+"thxForReportInfoDescription" = "通过信息修改建议，\n旅行地的吸引力也提高了！\n\n越来越期待了🧚‍♀️";
+"showContentAgain" = "重新查看内容";
+"reportAgain" = "添加其他项目";

@@ -65,6 +65,7 @@ enum LocalizedKey: String {
 	case withdrawAlertTitle
 	case withdrawAlertMessage
 	case changeLanguageAlertTitle
+	case invalidEmail
 	
 	//MARK: - TypeTest
 	case skipTypeTest
@@ -270,7 +271,28 @@ enum LocalizedKey: String {
     case amenity
     case proposeUpdateInfo
     
-    
+    // MARK: - 정보 수정 제안
+	case reportInfo
+	case reportInfoTitle
+	case reportInfoDescription
+	case numberAndHomepage
+	case oprationTime
+	case placeNameAndLocation
+	case priceInfo
+	case deletePlace
+	case etcReportInfoTitle
+	case provideService
+	case addPhoto
+	case addPhotoDescription
+	case reportInfoContentTitle
+	case reportInfoContentPlaceHolder
+	case email
+	case reportInfoEmailDescription
+	case send
+	case thxForReportInfoTitle
+	case thxForReportInfoDescription
+	case showContentAgain
+	case reportAgain
     
     
 	//MARK: - localized()

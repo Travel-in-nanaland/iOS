@@ -43,6 +43,24 @@ enum ReportInfoType: String {
 			return "ETC"
 		}
 	}
+	
+	var localizedKey: LocalizedKey {
+		switch self {
+		case .numberAndHompage:
+			return .numberAndHomepage
+		case .placeNameAndLocation:
+			return .placeNameAndLocation
+		case .operatinghour:
+			return .oprationTime
+		case .priceInfo:
+			return .priceInfo
+		case .deletePlace:
+			return .deletePlace
+		case .provideService:
+			return .provideService
+		}
+	}
+
 }
 
 struct ReportInfoCategory: Hashable {

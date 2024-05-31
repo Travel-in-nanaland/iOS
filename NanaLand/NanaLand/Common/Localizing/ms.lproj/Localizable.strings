@@ -62,6 +62,7 @@
 "withdrawAlertTitle" = "Betul-betul tidak mahu menerima maklumat dan tawaran perjalanan ke Jeju?😢";
 "withdrawAlertMessage" = "*Jika menyertai semula\ndalam masa 90 hari,";
 "changeLanguageAlertTitle" = "Adakah anda ingin menukar kepada bahasa tersebut?";
+"invalidEmail" = "";
 
 //MARK: - TypeTest
 "skipTypeTest" = "Langkau ujian";
@@ -253,3 +254,26 @@ ditetapkan sebagai lalai.";
 "detailInfo" = "Maklumat Terperinci";
 "amenity" = "Kemudahan";
 "proposeUpdateInfo" = "Cadangan Pembetulan Maklumat";
+
+// MARK: - 정보 수정 제안
+"reportInfo" = "Cadangan Pembetulan";
+"reportInfoTitle" = "Sila berikan cadangan maklumat yang perlu dibetulkan.";
+"reportInfoDescription" = "Jika foto yang dilampirkan untuk cadangan lokasi membantu mengesahkan maklumat lokasi, anda boleh mendapat faedah.";
+"numberAndHomepage" = "Nombor Telefon & Laman Web";
+"oprationTime" = "Waktu Penggunaan";
+"placeNameAndLocation" = "Alamat  & Nama Tempat";
+"priceInfo" = "Maklumat Harga";
+"deletePlace" = "Padam Lokasi";
+"etcReportInfoTitle" = "Sila kongsi maklumat tambahan!";
+"provideService" = "Perkhidmatan yang Disediakan";
+"addPhoto" = "Tambah Gambar";
+"addPhotoDescription" = "Jika anda melampirkan maklumat yang disahkan\nbersama foto, maklumat yang lebih tepat akan\n dilengkapkan.";
+"reportInfoContentTitle" = "Cadangan Pembetulan Maklumat";
+"reportInfoContentPlaceHolder" = "Sila lampirkan gambar bersama dengan maklumat yang telah disahkan untuk melengkapkan maklumat yang lebih tepat";
+"email" = "E-mel";
+"reportInfoEmailDescription" = "Sila tinggalkan komen jika ada butiran mengenai item yang anda minta untuk diubah atau apa-apa isu lain";
+"send" = "Hantar";
+"thxForReportInfoTitle" = "Terima kasih atas cadangan pembetulan maklumat anda";
+"thxForReportInfoDescription" = "Dengan cadangan pembetulan maklumat, daya tarikan destinasi pelancongan turut meningkat!\n\nSemakin dinanti-nantikan🧚‍♀️";
+"showContentAgain" = "Tengok Kandungan Semula";
+"reportAgain" = "Tambah Item Lain";
