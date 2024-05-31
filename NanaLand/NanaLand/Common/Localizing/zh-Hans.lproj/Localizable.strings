@@ -193,3 +193,7 @@
 "INCONVENIENT_SERVICE" = "服务使用不便";
 "INCONVENIENT_COMMUNITY" = "社区使用不便";
 "RARE_VISITS" = "几乎不访问";
+
+// MARK: - 비회원
+"nonMemeberAlertDescription" = "必须成为会员\n才能使用所有服务✨";
+"nonMemeberAlertGoRegister" = "去注册会员";

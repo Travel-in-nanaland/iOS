@@ -195,3 +195,7 @@ Needed for device tampering detection solutions";
 "INCONVENIENT_SERVICE" = "Service Inconvenience";
 "INCONVENIENT_COMMUNITY" = "Community Usage Inconvenience";
 "RARE_VISITS" = "Rarely Visit";
+
+// MARK: - 비회원
+"nonMemeberAlertDescription" = "You need to become a\nmember to use all services✨";
+"nonMemeberAlertGoRegister" = "Sign Up for Membership";

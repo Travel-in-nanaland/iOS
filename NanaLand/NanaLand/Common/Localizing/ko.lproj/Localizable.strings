@@ -194,3 +194,7 @@
 "INCONVENIENT_SERVICE" = "서비스 이용 불편";
 "INCONVENIENT_COMMUNITY" = "커뮤니티 사용 불편";
 "RARE_VISITS" = "방문 횟수 거의 없음";
+
+// MARK: - 비회원
+"nonMemeberAlertDescription" = "나나랜드의 회원이 되셔야,\n모든 서비스를\n이용하실 수 있습니다✨";
+"nonMemeberAlertGoRegister" = "회원가입 하러 가기";

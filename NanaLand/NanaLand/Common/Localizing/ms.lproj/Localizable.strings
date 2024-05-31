@@ -195,3 +195,7 @@ ditetapkan sebagai lalai.";
 "INCONVENIENT_SERVICE" = "Ketidakselesaan Penggunaan Servis";
 "INCONVENIENT_COMMUNITY" = "Ketidakselesaan Penggunaan Komuniti";
 "RARE_VISITS" = "Jarang Berkunjung";
+
+// MARK: - 비회원
+"nonMemeberAlertDescription" = "Anda perlu menjadi ahli\nuntuk menggunakan\nsemua perkhidmatan✨";
+"nonMemeberAlertGoRegister" = "Daftar Ahli";

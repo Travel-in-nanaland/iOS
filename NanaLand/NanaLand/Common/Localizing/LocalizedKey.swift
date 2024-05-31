@@ -212,6 +212,10 @@ enum LocalizedKey: String {
     case withDrawReason
     case withdraw
     case accountDeletion
+	
+	// MARK: - 비회원
+	case nonMemeberAlertDescription
+	case nonMemeberAlertGoRegister
     
 	//MARK: - localized()
 	func localized(for language: Language) -> String {
