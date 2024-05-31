@@ -36,6 +36,7 @@ struct NanaLandApp: App {
 						GIDSignIn.sharedInstance.handle(url)
 					}
 				}
+				.onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
 		}
 	}
 }
