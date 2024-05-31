@@ -201,3 +201,49 @@
 // MARK: - 비회원
 "nonMemeberAlertDescription" = "나나랜드의 회원이 되셔야,\n모든 서비스를\n이용하실 수 있습니다✨";
 "nonMemeberAlertGoRegister" = "회원가입 하러 가기";
+
+// MARK: - Home
+"recommendTitle" = "님을 위한 도민 추천";
+"firstAdvertismentTitle" = "제주도에서 예쁜 바다 보고 싶다고?";
+"firstAdvertismentSubTitle" = "서귀포시 성산의 자연으로 투어해보자!!";
+"secondAdvertismentTitle" = "보기 귀한 별 보러 가지 않을래?💫";
+"secondAdvertismentSubTitle" = "애월의 감성 가득 오름들 확인😯";
+"thirdAdvertismentTitle" = "한국의 정감을 느끼고 싶다면, 시장이지!";
+"thirdAdvertismentSubTitle" = "아직도 남은 전통 시장들은 뭐가 있을까?";
+"fourthAdvertismentTitle" = "제주도에서만 여는 7월 축제🎈";
+"fourthAdvertismentSubTitle" = "세계의 보물, 제주도가 가득 느껴지는 축제 보러가자";
+
+// MARK: - FilterView
+"count" = "건";
+"location" = "지역";
+"allLocation" = "전 지역";
+"jejuCity" = "제주시";
+"Aewol" = "애월";
+"Jocheon" = "조천";
+"Hangyeong" = "한경";
+"Gunjwa" = "군자";
+"Hallim" = "한림";
+"Udo" = "우도";
+"Chuja" = "추자";
+"SeogwipoCity" = "서귀포시";
+"Daejeong" = "대정";
+"Andeok" = "안덕";
+"Namwon" = "남원";
+"Pyoseon" = "표선";
+"Seongsan" = "성산";
+"allSelect" = "전체선택";
+"reset" = "해제";
+"apply" = "적용하기";
+"photoDescription" = "*참고용 사진입니다.";
+
+// MARK: - NatureDetailView
+"unfoldView" = "더 보기"; // 더보기
+"foldView" = "접기"; // 접기
+"introduce" = "소개합니다!";
+"address" = "주소";
+"phoneNumber" = "전화번호";
+"time" = "이용시간";
+"fee" = "입장료";
+"detailInfo" = "상세 정보";
+"amenity" = "편의시설";
+"proposeUpdateInfo" = "정보 수정 제안";

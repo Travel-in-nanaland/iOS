@@ -10,7 +10,7 @@ import Kingfisher
 import SwiftUIIntrospect
 
 struct HomeMainView: View {
-
+    @EnvironmentObject var localizationManager: LocalizationManager
 	@StateObject var viewModel = HomeMainViewModel()
     @State private var isRecommendCalled = false
 	var body: some View {
@@ -56,7 +56,7 @@ struct HomeMainView: View {
 					.padding(.bottom, 16)
 				
 				/// category View
-				HStack(spacing: 0) {
+                HStack(alignment: .top, spacing: 0) {
 					// 7대자연 link
 					Button(action: {
 						AppState.shared.navigationPath.append(HomeViewType.nature)
@@ -65,12 +65,12 @@ struct HomeMainView: View {
 							Image("icNature")
 								.frame(width: 62, height: 48)
 							
-							Text("7대자연")
+                            Text(.nature)
 								.font(.gothicNeo(size: 12, font: "semibold"))
 								.tint(.black)
 						}
 					})
-					.frame(height: 65)
+					.frame(minHeight: 65)
              
 					Spacer()
 					// 축제 link
@@ -81,12 +81,12 @@ struct HomeMainView: View {
 							Image("icFestival")
 								.frame(width: 62, height: 48)
 							
-							Text("축제")
+                            Text(.festival)
 								.font(.gothicNeo(size: 12, font: "semibold"))
 								.tint(.black)
 						}
 					})
-					.frame(height: 65)
+					.frame(minHeight: 65)
 					Spacer()
 					// 전통시장 link
 					Button(action: {
@@ -96,12 +96,12 @@ struct HomeMainView: View {
 							Image("icShop")
 								.frame(width: 62, height: 48)
 							
-							Text("전통시장")
+                            Text(.market)
 								.font(.gothicNeo(size: 12, font: "semibold"))
 								.tint(.black)
 						}
 					})
-					.frame(height: 65)
+					.frame(minHeight: 65)
 					Spacer()
 					// 이색체험 link
 					Button(action: {
@@ -110,12 +110,12 @@ struct HomeMainView: View {
 						VStack(spacing: 0) {
 							Image("icExp")
 								.frame(width: 62, height: 48)
-							Text("이색 체험")
+                            Text(.experience)
 								.font(.gothicNeo(size: 12, font: "semibold"))
 								.tint(.black)
 						}
 					})
-					.frame(height: 65)
+					.frame(minHeight: 65)
 					Spacer()
 					// 나나 Pick link
 					Button(action: {
@@ -125,12 +125,12 @@ struct HomeMainView: View {
 							Image("icNana")
 								.frame(width: 62, height: 48)
 							
-							Text(String(localized: "nanaPick"))
+                            Text(.nanaPick)
 								.font(.gothicNeo(size: 12, font: "semibold"))
 								.tint(.black)
 						}
 					})
-					.frame(height: 65)
+					.frame(minHeight: 65)
 				}
                 .frame(width: UIScreen.main.bounds.width - 32)
 				.padding(.bottom, 32)
@@ -143,14 +143,28 @@ struct HomeMainView: View {
                        
 				}
 				HStack {
-					Text("감자마케터 님을 위한 도민 추천 🍊")
-						.font(.gothicNeo(size: 18, font: "bold"))
+                    // 언어 별로 문장 순서가 다름
+                    switch localizationManager.language {
+                    case .chinese:
+                        Text("为" + "\(AppState.shared.userInfo.nickname)" + "的当地人推荐🍊")
+                            .font(.gothicNeo(size: 18, font: "bold"))
+                    case .english:
+                        Text(.recommendTitle + " \(AppState.shared.userInfo.nickname)" + "🍊")
+                            .font(.gothicNeo(size: 18, font: "bold"))
+                    case .korean:
+                        Text("\(AppState.shared.userInfo.nickname) " + .recommendTitle + "🍊")
+                            .font(.gothicNeo(size: 18, font: "bold"))
+                    case .malaysia:
+                        Text(.recommendTitle + " \(AppState.shared.userInfo.nickname)" + "🍊")
+                            .font(.gothicNeo(size: 18, font: "bold"))
+                    }
+                    
 					Spacer()
 				}
 				.padding(.leading, 16)
 				.padding(.bottom, 8)
 				
-				HStack(spacing: 8) {
+                HStack(alignment: .top, spacing: 8) {
                     ForEach(viewModel.state.getRecommendResponse, id: \.id) { article in
                         switch article.category {
                         case "NATURE":
@@ -281,12 +295,14 @@ struct AdvertisementView: View {
                            case "ad1":
                                HStack(spacing: 0){
                                    VStack(alignment: .leading, spacing: 0) {
-                                       Text("제주도에서 예쁜 바다 보고 싶다고?")
+                                       Text(.firstAdvertismentTitle)
                                            .font(.gothicNeo(.bold, size: 16))
                                            .padding(.leading, 16)
-                                       Text("서귀포시 성산의 자연으로 투어해보자!")
+                                           .multilineTextAlignment(.leading)
+                                       Text(.firstAdvertismentSubTitle)
                                            .font(.gothicNeo(.medium, size: 12))
                                            .padding(.leading, 16)
+                                           .multilineTextAlignment(.leading)
                                    }
                                    Spacer()
                                    Image(image)
@@ -297,12 +313,14 @@ struct AdvertisementView: View {
                            case "ad2":
                                HStack(spacing: 0) {
                                    VStack(alignment: .leading, spacing: 0) {
-                                       Text("보기 귀한 별 보러 가지 않을래?💫")
+                                       Text(.secondAdvertismentTitle)
                                            .font(.gothicNeo(.bold, size: 16))
                                            .padding(.leading, 16)
-                                       Text("애월의 감성 가득 오름들 확인😯")
+                                           .multilineTextAlignment(.leading)
+                                       Text(.secondAdvertismentSubTitle)
                                            .font(.gothicNeo(.medium, size: 12))
                                            .padding(.leading, 16)
+                                           .multilineTextAlignment(.leading)
                                    }
                                    Spacer()
                                    Image(image)
@@ -315,12 +333,14 @@ struct AdvertisementView: View {
                            case "ad3":
                                HStack(spacing: 0) {
                                    VStack(alignment: .leading, spacing: 0) {
-                                       Text("한국의 정감을 느끼고 싶다면, 시장이지!")
+                                       Text(.thirdAdvertismentTitle)
                                            .font(.gothicNeo(.bold, size: 16))
                                            .padding(.leading, 16)
-                                       Text("아직도 남은 전통 시장들은 뭐가 있을까?")
+                                           .multilineTextAlignment(.leading)
+                                       Text(.thirdAdvertismentSubTitle)
                                            .font(.gothicNeo(.medium, size: 12))
                                            .padding(.leading, 16)
+                                           .multilineTextAlignment(.leading)
                                    }
                                    Spacer()
                                    Image(image)
@@ -334,12 +354,14 @@ struct AdvertisementView: View {
                            case "ad4":
                                HStack(spacing: 0){
                                    VStack(alignment: .leading, spacing: 0) {
-                                       Text("제주도에서만 여는 7월 축제🎈")
+                                       Text(.fourthAdvertismentTitle)
                                            .font(.gothicNeo(.bold, size: 16))
                                            .padding(.leading, 16)
-                                       Text("세계의 보물, 제주도가 가득 느껴지는 축제 보러가자")
+                                           .multilineTextAlignment(.leading)
+                                       Text(.fourthAdvertismentSubTitle)
                                            .font(.gothicNeo(.medium, size: 12))
                                            .padding(.leading, 16)
+                                           .multilineTextAlignment(.leading)
                                    }
                                    Spacer()
                                    Image(image)
@@ -350,9 +372,9 @@ struct AdvertisementView: View {
                                
                               
                            default:
-                               Text("제주도에서 예쁜 바다 보고 싶다고?")
+                               Text(.firstAdvertismentTitle)
                                    .font(.gothicNeo(.bold, size: 16))
-                               Text("서귀포시 성산의 자연으로 투어해보자!")
+                               Text(.firstAdvertismentSubTitle)
                                    .font(.gothicNeo(.medium, size: 12))
                            }
                            
@@ -433,6 +455,20 @@ struct BannerView: View {
 							.padding(.top, 8)
 							
 							Spacer()
+                            HStack(spacing: 0) {
+                                VStack(alignment: .leading, spacing: 2) {
+                                    Text(banner.subHeading)
+                                        .foregroundStyle(.white)
+                                        .font(.body_bold)
+                                    Text(banner.heading)
+                                        .foregroundStyle(.white)
+                                        .font(.largeTitle02)
+                                }
+                                Spacer()
+                            }
+                            .padding(.bottom, 16)
+                            .padding(.leading, 16)
+                            
 						}
 					}
 					.frame(width: Constants.screenWidth, height: Constants.screenWidth * (220 / 360))

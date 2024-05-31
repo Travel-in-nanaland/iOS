@@ -10,17 +10,17 @@ import Kingfisher
 
 struct NatureMainView: View {
     @EnvironmentObject var appState: AppState
+    @EnvironmentObject var localizationManager: LocalizationManager
+
     @State var isAdvertisement = false
     
     var body: some View {
         
         VStack(spacing: 0) {
-            NavigationBar(title: "7대자연")
+            NavigationBar(title: LocalizedKey.nature.localized(for: localizationManager.language))
                 .frame(height: 56)
                 .padding(.bottom, 24)
 
-            
-            
             NatureMainGridView(isAdvertisement: isAdvertisement)
             
             Spacer()
@@ -32,16 +32,18 @@ struct NatureMainView: View {
 
 struct NatureMainGridView: View {
     @State var isAdvertisement = false
+    @EnvironmentObject var localizationManager: LocalizationManager
+
     @StateObject var viewModel = NatureMainViewModel()
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
     @State private var isAPICalled = false
     @State private var filterTitle = "지역"
     @State private var locationModal = false
-    @State private var location = "전 지역"
+    @State private var location = LocalizedKey.allLocation.localized(for: LocalizationManager().language)
     
     var body: some View {
         HStack(spacing: 0) {
-            Text("\(viewModel.state.getNatureMainResponse.data.count)건")
+            Text("\(viewModel.state.getNatureMainResponse.data.count)" + .count)
                 .padding(.leading, 16)
                 .foregroundStyle(Color.gray1)
             Spacer()
@@ -144,13 +146,13 @@ struct NatureMainGridView: View {
             
             Task {
                 if isAdvertisement {
-                    await getNatureMainItem(page: 0, size:18, filterName:"성산")
-                    location = "성산"
+                    await getNatureMainItem(page: 0, size:18, filterName: LocalizedKey.Seongsan.localized(for: localizationManager.language))
+                    location = LocalizedKey.Seongsan.localized(for: localizationManager.language)
                     isAPICalled = true
                     isAdvertisement = false
                     
                 } else {
-                    if location == "전 지역" {
+                    if location == LocalizedKey.allLocation.localized(for: localizationManager.language) {
                         await getNatureMainItem(page: 0, size:18, filterName:"")
                         isAPICalled = true
                     } else {

@@ -220,6 +220,55 @@ enum LocalizedKey: String {
 	case nonMemeberAlertDescription
 	case nonMemeberAlertGoRegister
     
+    // MARK: - Home
+    case recommendTitle
+    case firstAdvertismentTitle
+    case firstAdvertismentSubTitle
+    case secondAdvertismentTitle
+    case secondAdvertismentSubTitle
+    case thirdAdvertismentTitle
+    case thirdAdvertismentSubTitle
+    case fourthAdvertismentTitle
+    case fourthAdvertismentSubTitle
+    
+    // MARK: - FilterView(아이템 개수, 지역, 계절, 날짜)
+    case count
+    // 지역
+    case location
+    case allLocation
+    case jejuCity
+    case Aewol
+    case Jocheon
+    case Hangyeong
+    case Gunjwa
+    case Hallim
+    case Udo
+    case Chuja
+    case SeogwipoCity
+    case Daejeong
+    case Andeok
+    case Namwon
+    case Pyoseon
+    case Seongsan
+    case allSelect
+    case reset
+    case apply
+    case photoDescription
+    // MARK: - NatureDetailView(7대자연 디테일 뷰)
+    case unfoldView // 더보기
+    case foldView // 접기
+    case introduce
+    case address
+    case phoneNumber
+    case time
+    case fee
+    case detailInfo
+    case amenity
+    case proposeUpdateInfo
+    
+    
+    
+    
 	//MARK: - localized()
 	func localized(for language: Language) -> String {
 		guard let path = Bundle.main.path(forResource: language.localizedName, ofType: "lproj"),

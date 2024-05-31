@@ -200,3 +200,50 @@
 // MARK: - 비회원
 "nonMemeberAlertDescription" = "必须成为会员\n才能使用所有服务✨";
 "nonMemeberAlertGoRegister" = "去注册会员";
+
+// MARK: - Home
+"recommendTitle" = "";
+"firstAdvertismentTitle" = "想在济州岛看美丽的大海吗？";
+"firstAdvertismentSubTitle" = "那就来西归浦市城山体验大自然吧！";
+"secondAdvertismentTitle" = "想去看稀有的星星吗？💫";
+"secondAdvertismentSubTitle" = "来确认一下充满感性的涯月的山丘吧😯";
+"thirdAdvertismentTitle" = "如果你想感受韩国的氛围，就去市场吧！";
+"thirdAdvertismentSubTitle" = "那些传统市场依然存在呢？";
+"fourthAdvertismentTitle" = "济州岛七月举办的独特节日🎈";
+"fourthAdvertismentSubTitle" = "来看看充满济州岛风情的世界宝藏节日吧";
+
+// MARK: - FilterView
+"count" = "件";
+"location" = "地点";
+"allLocation" = "全区域 ";
+"jejuCity" = "济州市";
+"Aewol" = "涯月";
+"Jocheon" = "朝天";
+"Hangyeong" = "汉京";
+"Gunjwa" = "旧左";
+"Hallim" = "翰林";
+"Udo" = "牛岛";
+"Chuja" = "楸子";
+"SeogwipoCity" = "西归浦市";
+"Daejeong" = "大静";
+"Andeok" = "安德";
+"Namwon" = "南元";
+"Pyoseon" = "表善";
+"Seongsan" = "城山";
+"allSelect" = "选择所有";
+"reset" = "重置";
+"apply" = "应用";
+"photoDescription" = "*参考照片。";
+
+// MARK: - NatureDetailView
+"unfoldView" = "더 보기"; // 더보기
+"foldView" = "접기"; // 접기
+"introduce" = "为您介绍!!";
+"address" = "地址";
+"phoneNumber" = "电话";
+"time" = "使用时间";
+"fee" = "门票";
+"detailInfo" = "详细信息";
+"amenity" = "便利设施";
+"proposeUpdateInfo" = "建议修改信息";
+

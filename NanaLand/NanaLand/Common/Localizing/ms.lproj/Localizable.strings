@@ -202,3 +202,49 @@ ditetapkan sebagai lalai.";
 // MARK: - 비회원
 "nonMemeberAlertDescription" = "Anda perlu menjadi ahli\nuntuk menggunakan\nsemua perkhidmatan✨";
 "nonMemeberAlertGoRegister" = "Daftar Ahli";
+
+// MARK: - Home
+"recommendTitle" = "Cadangan untuk";
+"firstAdvertismentTitle" = "Nak lihat laut yang cantik di Pulau Jeju?";
+"firstAdvertismentSubTitle" = "Mari kita lawati alam semula jadi di Seogwipo-si, Seongsan!";
+"secondAdvertismentTitle" = "Mahu lihat bintang yang jarang dilihat?💫";
+"secondAdvertismentSubTitle" = "Jom periksa bukit-bukit yang penuh dengan emosi di Aewol😯";
+"thirdAdvertismentTitle" = "Jika ingin merasai suasana Korea, pasar adalah tempatnya!";
+"thirdAdvertismentSubTitle" = "Pasar tradisional apa yang masih ada?";
+"fourthAdvertismentTitle" = "Festival khas di Jeju pada bulan Julai🎈";
+"fourthAdvertismentSubTitle" = "Mari saksikan festival yang penuh dengan harta karun dunia, rasa Pulau Jeju!";
+
+// MARK: - FilterView
+"count" = "Results";
+"location" = "Kawasan";
+"allLocation" = "All";
+"jejuCity" = "jejuCity";
+"Aewol" = "Aewol";
+"Jocheon" = "Jocheon";
+"Hangyeong" = "Hangyeong";
+"Gunjwa" = "Gunjwa";
+"Hallim" = "Hallim";
+"Udo" = "Udo";
+"Chuja" = "Chuja";
+"SeogwipoCity" = "SeogwipoCity";
+"Daejeong" = "Daejeong";
+"Andeok" = "Andeok";
+"Namwon" = "Namwon";
+"Pyoseon" = "Pyoseon";
+"Seongsan" = "Seongsan";
+"allSelect" = "Pilih semua";
+"reset" = "Memulakan";
+"apply" = "Permohonan";
+"photoDescription" = "*Gambar untuk rujukan.";
+
+// MARK: - NatureDetailView
+"unfoldView" = "Lihat Lagi"; // 더보기
+"foldView" = "Kemudahan"; // 접기
+"introduce" = "Memperkenalkan!";
+"address" = "Alamat ";
+"phoneNumber" = "Hubungi";
+"time" = "Waktu Penggunaan";
+"fee" = "Bayaran Masuk";
+"detailInfo" = "Maklumat Terperinci";
+"amenity" = "Kemudahan";
+"proposeUpdateInfo" = "Cadangan Pembetulan Maklumat";

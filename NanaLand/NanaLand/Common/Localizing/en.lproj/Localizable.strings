@@ -139,16 +139,19 @@
 "travelType" = "Travel Type";
 "retest" = "retest";
 "introduction" = "introduction";
+
 // editProfile
 "nickName" = "Nickname";
 "complete" = "Update";
 "nickNameTypingLimitError" = "This nickname cannot be used.";
 "nickNameDuplicateError"= "This nickname is already in use by another user.";
+
 // deleteAlert
 "deleteAlertTitle" = "Do you want to delete\nthe changes?";
 "deleteAlertSubTitle" = "If you go back now,\nthe changes will be deleted.";
 "cancel" = "Cancel";
 "delete" = "Delete";
+
 // settingPage
 "settings" = "Settings";
 "setUsage"= "Set usage";
@@ -158,11 +161,13 @@
 "versionInfomation" = "Version Information";
 "logout" = "Log out";
 "memberWithdraw" = "Withdraw membership";
+
 // termsAndPoliciesPage
 "notificate" = "Notice";
 "marketingConsent" = "Marketing usage consent";
 "locationConsent" = "Location-based service terms consent";
 "noConsentError" = "* If you disagree, you may not be able to receive some services or \nbenefits, please be aware.";
+
 // accessPolicyGuidePage
 "mainDescription" = "The following permissions are required
 to use Nanaland in Jeju.";
@@ -181,8 +186,10 @@ Needed for device tampering detection solutions";
 "audioTitle" = "Audio and Music";
 "audioDescription" = "Needed to upload video content.";
 "optionalNotification" = "Note that if you do not agree to optional permissions, some features of Nanaland in Jeju may be restricted.";
+
 // languageSettingPage
 "languageMainDescription" = "The language at the top is set as default.";
+
 // withdrawMembershipPage
 "withDrawNotification" = "Service Withdrawal Information";
 "firstNotification" = "By deleting your account, you will be unsubscribed from all services provided by Nanaland in Jeju.";
@@ -202,3 +209,51 @@ Needed for device tampering detection solutions";
 // MARK: - 비회원
 "nonMemeberAlertDescription" = "You need to become a\nmember to use all services✨";
 "nonMemeberAlertGoRegister" = "Sign Up for Membership";
+
+// MARK: - Home
+"recommendTitle" = "Local Picks for";
+"firstAdvertismentTitle" = "Want to see the beautiful sea in Jeju Island?";
+"firstAdvertismentSubTitle" = "Let's tour the nature in Seogwipo-si, Seongsan!";
+"secondAdvertismentTitle" = "How about going to see rare stars?💫";
+"secondAdvertismentSubTitle" = "Check out the emotional hills of Aewol😯";
+"thirdAdvertismentTitle" = "If you want to feel the sentiment of Korea,
+the market is the place!";
+"thirdAdvertismentSubTitle" = "Which traditional markets are still around?";
+"fourthAdvertismentTitle" = "Jeju's unique festival in July🎈";
+"fourthAdvertismentSubTitle" = "Let's go see the festival full of the treasures of the world, feeling Jeju Island!";
+
+// MARK: - FilterView
+"count" = "Results";
+"location" = "Location";
+"allLocation" = "All";
+"jejuCity" = "jejuCity";
+"Aewol" = "Aewol";
+"Jocheon" = "Jocheon";
+"Hangyeong" = "Hangyeong";
+"Gunjwa" = "Gunjwa";
+"Hallim" = "Hallim";
+"Udo" = "Udo";
+"Chuja" = "Chuja";
+"SeogwipoCity" = "SeogwipoCity";
+"Daejeong" = "Daejeong";
+"Andeok" = "Andeok";
+"Namwon" = "Namwon";
+"Pyoseon" = "Pyoseon";
+"Seongsan" = "Seongsan";
+"allSelect" = "Select all";
+"reset" = "Reset";
+"apply" = "Apply";
+"photoDescription" = "*Reference photos.";
+
+// MARK: - NatureDetailView
+"unfoldView" = "more"; // 더보기
+"foldView" = "fold"; // 접기
+"introduce" = "Introduce!";
+"address" = "Address";
+"phoneNumber" = "Contact";
+"time" = "Operating Hours";
+"fee" = "Fee";
+"detailInfo" = "Details";
+"amenity" = "Facilities";
+"proposeUpdateInfo" = "Information Update Suggestions";
+
