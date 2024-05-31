@@ -45,6 +45,7 @@
 "nonMemeberLogin" = "Guna Tanpa Log Masuk";
 "welcomeToNanaLand" = "Selamat datang ke\nnanaland in Jeju";
 "enterNicknameAndProfile" = " Sila tulis nama penggunaan\ndan pilih profil.";
+"nicknameTextFieldPlaceHolder" = "Sila masukkan nama";
 
 //MARK: - Terms
 "allAgree" = "Setuju Semua";

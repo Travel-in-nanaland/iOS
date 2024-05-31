@@ -11,6 +11,9 @@ struct RegisterTermsAgreementView: View {
 	@EnvironmentObject var localizaionManager: LocalizationManager
 	@EnvironmentObject var registerVM: RegisterViewModel
 	
+	@State var safariLink: String = ""
+	@State var showTermsWithSafari: Bool = false
+	
     var body: some View {
 		VStack(spacing: 0) {
 			titleView
@@ -33,7 +36,17 @@ struct RegisterTermsAgreementView: View {
 			okButton
 		}
 		.padding(.bottom, 24)
-    }
+		.sheet(isPresented: $showTermsWithSafari) {
+			if let url = URL(string: safariLink) {
+				SafariView(url: url)
+					.ignoresSafeArea()
+			}
+		}
+		.onChange(of: safariLink) { _ in
+			// subview에서 update한 링크가 SafariView에 반영되지 않아
+			// body 업데이트를 위한 임시 코드
+		}
+	}
 	
 	private var titleView: some View {
 		HStack {
@@ -73,7 +86,7 @@ struct RegisterTermsAgreementView: View {
 	private var agreements: some View {
 		VStack(spacing: 24) {
 			agreementItem(
-				title: LocalizedKey.termsOfUseAgree.localized(for: localizaionManager.language),
+				title: .termsOfUseAgree,
 				isOptional: false,
 				isChecked: registerVM.state.privacyAgreement,
 				checkmarkAction: {
@@ -82,12 +95,13 @@ struct RegisterTermsAgreementView: View {
 					}
 				},
 				arrowAction: {
-					
+					safariLink = "https://marbled-melon-1d2.notion.site/1d159953c91a4f25967f5e44e9662d57?pvs=4"
+					showTermsWithSafari = true
 				}
 			)
 			
 			agreementItem(
-				title: LocalizedKey.marketingAgree.localized(for: localizaionManager.language),
+				title: .marketingAgree,
 				isOptional: true,
 				isChecked: registerVM.state.marketingAgreement,
 				checkmarkAction: {
@@ -96,12 +110,13 @@ struct RegisterTermsAgreementView: View {
 					}
 				},
 				arrowAction: {
-					
+					safariLink = "https://marbled-melon-1d2.notion.site/a46f94192c5a43269d784b1c940634f7?pvs=4"
+					showTermsWithSafari = true
 				}
 			)
 			
 			agreementItem(
-				title: LocalizedKey.locationAgree.localized(for: localizaionManager.language),
+				title: .locationAgree,
 				isOptional: true,
 				isChecked: registerVM.state.locationAgreement,
 				checkmarkAction: {
@@ -110,14 +125,15 @@ struct RegisterTermsAgreementView: View {
 					}
 				},
 				arrowAction: {
-					
+					safariLink = "https://marbled-melon-1d2.notion.site/55d9bfc40f6c41728b5b16f79ed9b08d?pvs=4"
+					showTermsWithSafari = true
 				}
 			)
 		}
 		.padding(.horizontal, 16)
 	}
 	
-	private func agreementItem(title: String, isOptional: Bool, isChecked: Bool, checkmarkAction: @escaping () -> Void, arrowAction: @escaping () -> Void) -> some View {
+	private func agreementItem(title: LocalizedKey, isOptional: Bool, isChecked: Bool, checkmarkAction: @escaping () -> Void, arrowAction: @escaping () -> Void) -> some View {
 		HStack(spacing: 8) {
 			Button(action: {
 				checkmarkAction()

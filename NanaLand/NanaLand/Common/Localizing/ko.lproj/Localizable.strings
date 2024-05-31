@@ -45,6 +45,7 @@
 "nonMemeberLogin" = "로그인없이 둘러보기";
 "welcomeToNanaLand" = "nanaland in Jeju에\n오신 것을 환영합니다.";
 "enterNicknameAndProfile" = "사용할 이름을 작성 및\n프로필을 선택해 주세요.";
+"nicknameTextFieldPlaceHolder" = "이름을 입력해 주세요";
 
 //MARK: - Terms
 "allAgree" = "전체 동의";

@@ -97,7 +97,7 @@ struct RegisterNicknameAndProfileView: View {
 			}
 			
 			TextField(text: $registerVM.state.nickname, label: {
-				Text("이름을 입력해 주세요")
+				Text(.nicknameTextFieldPlaceHolder)
 					.font(.body02)
 					.foregroundStyle(Color.gray1)
 			})

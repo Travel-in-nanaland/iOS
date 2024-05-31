@@ -45,6 +45,7 @@
 "nonMemeberLogin" = "Browse Without Logging In";
 "welcomeToNanaLand" = "Welcome to\nnanaland in Jeju";
 "enterNicknameAndProfile" = "Enter your name and\nselect a profile picture.";
+"nicknameTextFieldPlaceHolder" = "Please enter your name";
 
 //MARK: - Terms
 "allAgree" = "Agree to All";

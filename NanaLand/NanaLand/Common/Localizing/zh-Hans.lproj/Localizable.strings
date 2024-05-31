@@ -45,6 +45,7 @@
 "nonMemeberLogin" = "无需登录浏览";
 "welcomeToNanaLand" = "欢迎来到济州的\nnanaland";
 "enterNicknameAndProfile" = "请填写要使用的名\n称并选择头像";
+"nicknameTextFieldPlaceHolder" = "请输入名字";
 
 //MARK: - Terms
 "allAgree" = "全部同意";

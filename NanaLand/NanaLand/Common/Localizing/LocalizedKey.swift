@@ -49,6 +49,7 @@ enum LocalizedKey: String {
 	case nonMemeberLogin
 	case welcomeToNanaLand
 	case enterNicknameAndProfile
+	case nicknameTextFieldPlaceHolder
 	
 	//MARK: - Terms
 	case allAgree
