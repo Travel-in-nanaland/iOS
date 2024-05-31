@@ -131,6 +131,10 @@
 "GAMGYUL_BUBBLE_TEA" = "Tapioca Tangerine Tea";
 "GAMGYUL_BUBBLE_TEA_DESCRIPTION" = "A type full of curiosity, surprising with each bite.";
 "nanalandMadeYouJuice" = "nanaland in Jeju has created a custom travel juice for you!";
+// 결과 값 추천 여행지
+"recommendedTravelPlace" = "Recommended\nTravel Destinations";
+"recommenedeTravelTitleFirstLine" = "Recommended Travel";
+"recommenedeTravelTitleSecondLine" = "Destinations for %@";
 
 //MARK: - MyPage
 // main

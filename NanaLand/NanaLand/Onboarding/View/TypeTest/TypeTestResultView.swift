@@ -66,7 +66,7 @@ struct TypeTestResultView: View {
 	private var bottomButtons: some View {
 		VStack(spacing: 16) {
 			Button(action: {
-
+				typeTestVM.action(.onTapGotoRecommendPlaceView)
 			}, label: {
 				RoundedRectangle(cornerRadius: 50)
 					.stroke(Color.main, lineWidth: 1)

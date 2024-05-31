@@ -134,6 +134,10 @@ enum LocalizedKey: String {
 	case GAMGYUL_BUBBLE_TEA
 	case GAMGYUL_BUBBLE_TEA_DESCRIPTION
 	case nanalandMadeYouJuice
+	// 결과 값 추천 여행지
+	case recommendedTravelPlace
+	case recommenedeTravelTitleFirstLine
+	case recommenedeTravelTitleSecondLine
 	
     //MARK: - MyPage
     // main

@@ -130,6 +130,11 @@
 "GAMGYUL_BUBBLE_TEA" = "Bubble Tea  Mandarin";
 "GAMGYUL_BUBBLE_TEA_DESCRIPTION" = "Sejenis Bubble Tea Mandaring yang penuh dengan kejutan semakin anda minum!";
 "nanalandMadeYouJuice" = "nanaland in Jeju telah membuat jus perjalanan khas untuk anda!";
+// 결과 값 추천 여행지
+"recommendedTravelPlace" = "Destinasi\nPelancongan Disyorkan";
+"recommenedeTravelTitleFirstLine" = "Destinasi Pelancongan";
+"recommenedeTravelTitleSecondLine" = "Disyorkan untuk %@";
+
 
 //MARK: - MyPage
 // main

@@ -130,6 +130,11 @@
 "GAMGYUL_BUBBLE_TEA" = "감귤 버블티";
 "GAMGYUL_BUBBLE_TEA_DESCRIPTION" = "호기심 가득한 당신! 먹을수록 반전인 감귤 버블티 유형!";
 "nanalandMadeYouJuice" = "nanaland in Jeju 가 당신을 위해\n맞춤 여행 주스를 만들었어요!";
+// 결과 값 추천 여행지
+"recommendedTravelPlace" = "추천 여행지";
+"recommenedeTravelTitleFirstLine" = "%@ 님을 위한";
+"recommenedeTravelTitleSecondLine" = "추천 여행지";
+
 
 //MARK: - MyPage
 // main

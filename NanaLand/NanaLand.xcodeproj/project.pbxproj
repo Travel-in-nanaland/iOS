@@ -23,6 +23,7 @@
 		2C2749872C0992AB00ECBA71 /* report_info_star.json in Resources */ = {isa = PBXBuildFile; fileRef = 2C2749862C0992AA00ECBA71 /* report_info_star.json */; };
 		2C27498A2C09950900ECBA71 /* loading_drink.json in Resources */ = {isa = PBXBuildFile; fileRef = 2C2749882C09950900ECBA71 /* loading_drink.json */; };
 		2C27498B2C09950900ECBA71 /* loading_tangerine.json in Resources */ = {isa = PBXBuildFile; fileRef = 2C2749892C09950900ECBA71 /* loading_tangerine.json */; };
+		2C27498F2C09B3D700ECBA71 /* TypeTestRecommendPlaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C27498E2C09B3D700ECBA71 /* TypeTestRecommendPlaceView.swift */; };
 		2C2D3D4C2C0385B3002A38AA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C2D3D4A2C0385B3002A38AA /* Localizable.strings */; };
 		2C2D3D512C03898D002A38AA /* LocalizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D3D502C03898D002A38AA /* LocalizationManager.swift */; };
 		2C2D3D532C0389C0002A38AA /* Text+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D3D522C0389C0002A38AA /* Text+.swift */; };
@@ -228,6 +229,7 @@
 		2C2749862C0992AA00ECBA71 /* report_info_star.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = report_info_star.json; sourceTree = "<group>"; };
 		2C2749882C09950900ECBA71 /* loading_drink.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading_drink.json; sourceTree = "<group>"; };
 		2C2749892C09950900ECBA71 /* loading_tangerine.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading_tangerine.json; sourceTree = "<group>"; };
+		2C27498E2C09B3D700ECBA71 /* TypeTestRecommendPlaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeTestRecommendPlaceView.swift; sourceTree = "<group>"; };
 		2C2D3D4B2C0385B3002A38AA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2C2D3D4D2C0385D5002A38AA /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		2C2D3D4E2C0385DC002A38AA /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -718,6 +720,7 @@
 				2C2D3D5F2C059E16002A38AA /* TypeTestCheckStyleView.swift */,
 				2C2D3D612C059E22002A38AA /* TypeTestLoadingView.swift */,
 				2C5424FD2BF7131600B16439 /* TypeTestResultView.swift */,
+				2C27498E2C09B3D700ECBA71 /* TypeTestRecommendPlaceView.swift */,
 				2C5424FF2BF72C3500B16439 /* TripType.swift */,
 				2C9CF4E72C00714900A346E8 /* TypeTestViewModel.swift */,
 			);
@@ -1358,6 +1361,7 @@
 				2C3C75CC2BCAA93D00312F26 /* NanaLandTabView.swift in Sources */,
 				2C80ECDE2BD7E63E002F38A7 /* FavoriteDTO.swift in Sources */,
 				9C6A9C3E2BCC1BAE000413AD /* Fonts+.swift in Sources */,
+				2C27498F2C09B3D700ECBA71 /* TypeTestRecommendPlaceView.swift in Sources */,
 				BF4F6C6A2BD54CB0009F070F /* NaNaPickDetailEndPoint.swift in Sources */,
 				2C2D3D622C059E22002A38AA /* TypeTestLoadingView.swift in Sources */,
 				BF0997982BD1FFF900563E9A /* NaNaPickDetailView.swift in Sources */,
