@@ -10,10 +10,10 @@ import SwiftUI
 struct NanaNavigationBar: View {
 	@Environment(\.dismiss) var dismiss
 	
-	let title: String
+	let title: LocalizedKey
 	let showBackButton: Bool
 	
-	init(title: String, showBackButton: Bool = false) {
+	init(title: LocalizedKey, showBackButton: Bool = false) {
 		self.title = title
 		self.showBackButton = showBackButton
 	}
@@ -55,5 +55,5 @@ struct NanaNavigationBar: View {
 }
 
 #Preview {
-    NanaNavigationBar(title: String(localized: "favorite"), showBackButton: true)
+	NanaNavigationBar(title: .favorite, showBackButton: true)
 }

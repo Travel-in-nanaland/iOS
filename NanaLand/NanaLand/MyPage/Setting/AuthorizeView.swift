@@ -12,7 +12,7 @@ struct AuthorizeView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            NanaNavigationBar(title: LocalizedKey.accessPolicyGuide.localized(for: localizationManager.language), showBackButton: true)
+            NanaNavigationBar(title: .accessPolicyGuide, showBackButton: true)
                 .padding(.bottom, 32)
             ScrollView {
                 HStack(spacing: 0) {

@@ -25,7 +25,7 @@ struct ProfileUpdateView: View {
         
         VStack(spacing: 0) {
             ZStack {
-                NanaNavigationBar(title: LocalizedKey.editProfile.localized(for: localizationManager.language), showBackButton: false)
+                NanaNavigationBar(title: .editProfile, showBackButton: false)
                     .padding(.bottom, 16)
                 HStack(spacing: 0) {
                     Button(action: {

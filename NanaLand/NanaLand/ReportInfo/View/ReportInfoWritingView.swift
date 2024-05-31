@@ -26,7 +26,7 @@ struct ReportInfoWritingView: View {
 	
 	var body: some View {
 		VStack(spacing: 0) {
-			NanaNavigationBar(title: String(localized: "modifyInfo"), showBackButton: true)
+			NanaNavigationBar(title: .proposeUpdateInfo, showBackButton: true)
 			
 			ScrollView(.vertical, showsIndicators: false) {
 				VStack(alignment: .leading, spacing: 0) {
