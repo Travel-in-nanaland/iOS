@@ -12,6 +12,8 @@ import KakaoSDKAuth
 import KakaoSDKUser
 import GoogleSignIn
 import AuthenticationServices
+import SwiftJWT
+import Alamofire
 
 // 소셜 로그인을 다루는 manager
 final class AuthManager: NSObject {
@@ -289,7 +291,7 @@ final class AuthManager: NSObject {
 		} else if provider == "GOOGLE" {
 			googleWithdraw(withdrawalType: withdrawalType)
 		} else if provider == "APPLE" {
-			
+			appleWithdraw(withdrawalType: withdrawalType)
 		}
 	}
 	
@@ -323,6 +325,101 @@ final class AuthManager: NSObject {
 		}
 	}
 	
+	/// 애플 회원탈퇴
+	private func appleWithdraw(withdrawalType: String) {
+		guard let authorizationCode = KeyChainManager.readItem(key: "appleAuthorizationCode") else {return}
+		let jwt = makeAppleJWT()
+		getAppleRefreshToken(jwt: jwt, code: authorizationCode, completion: { refreshToken in
+			self.revokeAppleToken(jwt: jwt, token: refreshToken, completion: {
+				print("애플 회원 탈퇴 성공")
+				Task {
+					await self.withdrawFromServer(withdrawalType: withdrawalType)
+				}
+			})
+		})
+	}
+	
+	private func makeAppleJWT() -> String {
+		let myHeader = Header(kid: Secrets.appleKeyId)
+		struct MyClaims: Claims {
+			let iss: String  // apple team id
+			let iat: Int  // 현재일자
+			let exp: Int  // 만료일자
+			let aud: String  // "https://appleid.apple.com/"
+			let sub: String  // 번들 id
+		}
+		
+		let nowDate = Date()
+		var dateComponent = DateComponents()
+		dateComponent.month = 6
+		let sixDate = Calendar.current.date(byAdding: dateComponent, to: nowDate) ?? Date()
+		let iat = Int(Date().timeIntervalSince1970)
+		let exp = iat + 3600
+		let myClaims = MyClaims(
+			iss: Secrets.appleTeamId,
+			iat: iat,
+			exp: exp,
+			aud: "https://appleid.apple.com",
+			sub: "com.jeju.nanaland"
+		)
+		var myJWT = JWT(header: myHeader, claims: myClaims)
+		
+		//JWT 발급을 요청값의 암호화 과정에서 다운받아두었던 Key File이 필요하다.(.p8 파일)
+		guard let url = Bundle.main.url(forResource: Secrets.appleKeyPath, withExtension: "p8") else{
+			return ""
+		}
+		
+		let privateKey: Data = try! Data(contentsOf: url, options: .alwaysMapped)
+		let jwtSigner = JWTSigner.es256(privateKey: privateKey)
+		let signedJWT = try! myJWT.sign(using: jwtSigner)
+		print("🗝 singedJWT - \(signedJWT)")
+		return signedJWT
+	}
+	
+	// 애플 토큰 리프레싱
+	private func getAppleRefreshToken(jwt: String, code: String, completion: @escaping (String) -> Void) {
+		let url = "https://appleid.apple.com/auth/token?client_id=com.jeju.nanaland&client_secret=\(jwt)&code=\(code)&grant_type=authorization_code"
+		let header: HTTPHeaders = ["Content-Type": "application/x-www-form-urlencoded"]
+		
+		AF.request(url, method: .post, encoding: JSONEncoding.default, headers: header)
+			.validate(statusCode: 200..<500)
+			.responseData { response in
+				switch response.result {
+				case .success(let result):
+					let decoder = JSONDecoder()
+					if let decodedData = try? decoder.decode(AppleTokenResponse.self, from: result) {
+						print("애플 토큰 발급 성공 \(decodedData.refresh_token)")
+						completion(decodedData.refresh_token)
+					} else {
+						print("애플 토큰 발급 실패")
+					}
+				case .failure(let error):
+					print("애플 토큰 발급 실패 - \(error.localizedDescription)")
+				}
+			}
+	}
+	
+	// 발금된 토큰 revoke
+	private func revokeAppleToken(jwt: String, token: String, completion: @escaping () -> Void) {
+		let url = "https://appleid.apple.com/auth/revoke?client_id=com.jeju.nanaland&client_secret=\(jwt)&token=\(token)&token_type_hint=refresh_token"
+		let header: HTTPHeaders = ["Content-Type": "application/x-www-form-urlencoded"]
+		
+		AF.request(url, method: .post, headers: header)
+			.validate(statusCode: 200..<600)
+			.responseData { response in
+				guard let statusCode = response.response?.statusCode else {
+					print("애플 토큰 삭제 실패")
+					return
+				}
+				if statusCode == 200 {
+					print("애플 토큰 삭제 성공")
+					completion()
+				} else {
+					print("애플 토큰 삭제 실패")
+				}
+			}
+	}
+	
 	/// 나나랜드 서버 회원탈퇴
 	private func withdrawFromServer(withdrawalType: String) async {
 		let result = await AuthService.withdraw(body: WithdrawRequest(withdrawalType: withdrawalType))
@@ -343,6 +440,14 @@ final class AuthManager: NSObject {
 	}
 }
 
+struct AppleTokenResponse: Codable {
+	let access_token: String
+	let token_type: String
+	let expires_in: Int
+	let refresh_token: String
+	let id_token: String
+}
+
 extension AuthManager: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
 	func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
 		return ASPresentationAnchor()
@@ -351,21 +456,18 @@ extension AuthManager: ASAuthorizationControllerDelegate, ASAuthorizationControl
 	// 애플 로그인 성공
 	func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
 		guard let appleIdCredential = authorization.credential as? ASAuthorizationAppleIDCredential else {return}
-		
 		let userId = appleIdCredential.user
 		let email = appleIdCredential.email
 		
-		if let tokenString = String(data: appleIdCredential.identityToken ?? Data(), encoding: .utf8),
-		   let emailFromToken = decode(jwtToken: tokenString)["email"] as? String {
-			
-			KeyChainManager.addItem(key: "appleAuthorizationCode", value: tokenString)
+		if let authorizationCode = String(data: appleIdCredential.authorizationCode ?? Data(), encoding: .utf8) {
+			KeyChainManager.addItem(key: "appleAuthorizationCode", value: authorizationCode)
 			
 			let loginRequest = LoginRequest(locale: self.locale, provider: "APPLE", providerId: userId)
 			
 			Task {
 				await self.loginToServer(
 					request: loginRequest,
-					email: email ?? emailFromToken,
+					email: email ?? "",
 					gender: "",
 					birthDate: ""
 				)
