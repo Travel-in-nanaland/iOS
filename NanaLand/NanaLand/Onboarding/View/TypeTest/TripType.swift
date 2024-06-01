@@ -62,7 +62,7 @@ enum TripType: String {
 		case .GAMGYUL_LATTE:
 			return .GAMGYUL_LATTE
 		case .GAMGYUL_SIKHYE:
-			return .GAMGYUL // TODO: 미구현 이미지 변경 필요
+			return .GAMGYUL_SIKHYE
 		case .GAMGYUL_ADE:
 			return .GAMGYUL_ADE
 		case .GAMGYUL_BUBBLE_TEA:

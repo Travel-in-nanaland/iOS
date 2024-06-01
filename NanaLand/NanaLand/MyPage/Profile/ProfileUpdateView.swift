@@ -12,7 +12,7 @@ import Kingfisher
 struct ProfileUpdateView: View {
     @EnvironmentObject var appState: AppState
     @State private var nickName: String = AppState.shared.userInfo.nickname
-    @State private var introduceText: String = "나나랜드 인 제주로"
+	@State private var introduceText: String = AppState.shared.userInfo.description
     @State private var showAlert = false
     @State private var warningLabel = ""
     @Environment(\.dismiss) private var dismiss

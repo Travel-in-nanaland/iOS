@@ -38,6 +38,7 @@ enum LocalizedKey: String {
 	//MARK: - Search
 	case inputSearchTerm
 	case recentSearchTerm
+	case noRecentSearchTerm
 	case removeAll
 	case popularSearchTerm
 	case searchVolumeUp
@@ -143,8 +144,11 @@ enum LocalizedKey: String {
     //MARK: - MyPage
     // main
     case mynana
+	case loginRequired
+	case none
     case editProfile
     case travelType
+	case goTest
 	case retest
     case introduction
     
@@ -227,6 +231,7 @@ enum LocalizedKey: String {
     
     // MARK: - Home
     case recommendTitle
+	case ourNana
     case firstAdvertismentTitle
     case firstAdvertismentSubTitle
     case secondAdvertismentTitle

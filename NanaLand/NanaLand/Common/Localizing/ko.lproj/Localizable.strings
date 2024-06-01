@@ -34,6 +34,7 @@
 //MARK: - Search
 "inputSearchTerm" = "검색어를 입력해 주세요";
 "recentSearchTerm" = "최근 검색어";
+"noRecentSearchTerm" = "최근 검색어가 없습니다.";
 "removeAll" = "모두 지우기";
 "popularSearchTerm" = "가장 많이\\\\ 검색하고 있어요!";
 "searchVolumeUp" = "검색량 UP ! JEJU Place 🍊";
@@ -141,7 +142,10 @@
 // main
 "editProfile" = "프로필 수정";
 "mynana" = "나의 나나";
+"loginRequired" = "로그인이 필요해요";
+"none" = "없음";
 "travelType" = "여행 유형";
+"goTest" = "테스트 하기";
 "retest" = "테스트 다시하기";
 "introduction" = "소개";
 //editProfile
@@ -209,7 +213,8 @@
 "nonMemeberAlertGoRegister" = "회원가입 하러 가기";
 
 // MARK: - Home
-"recommendTitle" = "님을 위한 도민 추천";
+"recommendTitle" = "%@ 님을 위한 도민 추천 🍊";
+"ourNana" = "우리 나나";
 "firstAdvertismentTitle" = "제주도에서 예쁜 바다 보고 싶다고?";
 "firstAdvertismentSubTitle" = "서귀포시 성산의 자연으로 투어해보자!!";
 "secondAdvertismentTitle" = "보기 귀한 별 보러 가지 않을래?💫";

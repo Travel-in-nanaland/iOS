@@ -34,6 +34,7 @@
 //MARK: - Search
 "inputSearchTerm" = "请输入搜索词。";
 "recentSearchTerm" = "最近搜索词";
+"noRecentSearchTerm" = "";
 "removeAll" = "全部清除";
 "popularSearchTerm" = "搜索量最多";
 "searchVolumeUp" = "搜索量上升！ JEJU Place 🍊";
@@ -62,7 +63,7 @@
 "withdrawAlertTitle" = "真的不想收到济州岛旅\n行信息和优惠吗？😢";
 "withdrawAlertMessage" = "*90天内重新加入时，\n可以用原账户登录。";
 "changeLanguageAlertTitle" = "您想更改为该语言吗？";
-"invalidEmail" = "";
+"invalidEmail" = "电子邮件格式不正确。请重新输入！";
 
 //MARK: - TypeTest
 "skipTypeTest" = "跳过测试";
@@ -141,7 +142,10 @@
 // main
 "editProfile" = "编辑个人资料";
 "mynana" = "我的nana ";
+"loginRequired" = "需要登录";
+"none" = "无";
 "travelType" = "旅行类型";
+"goTest" = "测试";
 "retest" = "再次测试";
 "introduction" = "介绍";
 // editProfile
@@ -208,7 +212,8 @@
 "nonMemeberAlertGoRegister" = "去注册会员";
 
 // MARK: - Home
-"recommendTitle" = "";
+"recommendTitle" = "为%@的当地人推荐🍊";
+"ourNana" = "我们的奶奶";
 "firstAdvertismentTitle" = "想在济州岛看美丽的大海吗？";
 "firstAdvertismentSubTitle" = "那就来西归浦市城山体验大自然吧！";
 "secondAdvertismentTitle" = "想去看稀有的星星吗？💫";

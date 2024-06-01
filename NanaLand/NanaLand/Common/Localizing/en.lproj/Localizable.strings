@@ -34,6 +34,7 @@
 //MARK: - Search
 "inputSearchTerm" = "Please enter a search";
 "recentSearchTerm" = "Recent Searches";
+"noRecentSearchTerm" = "";
 "removeAll" = "Clear All";
 "popularSearchTerm" = "Most Searched!";
 "searchVolumeUp" = "Search Volume UP! JEJU Place 🍊";
@@ -62,7 +63,7 @@
 "withdrawAlertTitle" = "Are you sure you don't want to receive Jeju travel information and benefits?😢";
 "withdrawAlertMessage" = "*If you rejoin within 90 days, you can log in with your existing account.";
 "changeLanguageAlertTitle" = "Do you want to change\nto this language?";
-"invalidEmail" = "";
+"invalidEmail" = "The email format is incorrect. Please re-enter!";
 
 //MARK: - TypeTest
 "skipTypeTest" = "Skip the test";
@@ -141,7 +142,10 @@
 // main
 "editProfile" = "Edit Profile";
 "mynana" = "my nana";
+"loginRequired" = "Login is required";
+"none" = "None";
 "travelType" = "Travel Type";
+"goTest" = "Testing";
 "retest" = "retest";
 "introduction" = "introduction";
 
@@ -216,7 +220,8 @@ Needed for device tampering detection solutions";
 "nonMemeberAlertGoRegister" = "Sign Up for Membership";
 
 // MARK: - Home
-"recommendTitle" = "Local Picks for";
+"recommendTitle" = "Local Picks for %@! 🍊";
+"ourNana" = "Our Nana";
 "firstAdvertismentTitle" = "Want to see the beautiful sea in Jeju Island?";
 "firstAdvertismentSubTitle" = "Let's tour the nature in Seogwipo-si, Seongsan!";
 "secondAdvertismentTitle" = "How about going to see rare stars?💫";
