@@ -15,6 +15,9 @@ class AppState: ObservableObject {
   @Published var isTabViewHidden: Bool = false
 	@Published var isRegisterNeeded = false
 	
+	// 딥링크 용 스플래시 완료됐는지 확인하는 변수
+	@Published var isSplashCompleted: Bool = false
+	
 	// type test 띄우기
 	@Published var showTypeTest: Bool = false
   

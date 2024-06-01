@@ -45,11 +45,10 @@ struct FestivalDetailView: View {
                                             viewModel.state.getFestivalDetailResponse.favorite ? Image("icHeartFillMain") : Image("icHeart")
                                        
                                         }
-                                        Button {
-                                            
-                                        } label: {
-                                            Image("icShare2")
-                                        }
+										
+										ShareLink(item: DeepLinkManager.shared.makeLink(category: .festival, id: Int(viewModel.state.getFestivalDetailResponse.id)), label: {
+											Image("icShare2")
+										})
                                     }
                                     .padding(.trailing, 16)
                                     Spacer()
@@ -122,11 +121,10 @@ struct FestivalDetailView: View {
                                             viewModel.state.getFestivalDetailResponse.favorite ? Image("icHeartFillMain") :
                                             Image("icHeart")
                                         }
-                                        Button {
-                                            
-                                        } label: {
-                                            Image("icShare2")
-                                        }
+										
+										ShareLink(item: DeepLinkManager.shared.makeLink(category: .festival, id: Int(viewModel.state.getFestivalDetailResponse.id)), label: {
+											Image("icShare2")
+										})
                                     }
                                     .padding(.trailing, 16)
                                     Spacer()
@@ -287,7 +285,7 @@ struct FestivalDetailView: View {
                             .padding(.bottom, 32)
                             
                             Button {
-								AppState.shared.navigationPath.append(ArticleViewType.reportInfo(id: viewModel.state.getFestivalDetailResponse.id, category: .festival))
+								AppState.shared.navigationPath.append(ArticleDetailViewType.reportInfo(id: viewModel.state.getFestivalDetailResponse.id, category: .festival))
                             } label: {
                                 Text("정보 수정 제안")
                                     .background(
@@ -346,6 +344,12 @@ struct FestivalDetailView: View {
             }
 
         }
+		.navigationDestination(for: ArticleDetailViewType.self) { viewType in
+			switch viewType {
+			case let .reportInfo(id, category):
+				ReportInfoMainView(id: id, category: category)
+			}
+		}
      
     }
     

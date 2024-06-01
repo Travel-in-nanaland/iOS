@@ -7,11 +7,14 @@
 
 import Foundation
 
-enum HomeViewType {
+enum HomeViewType: Hashable {
 	case search
 	case nature
 	case festival
 	case shop
 	case experience
 	case nanapick
+	case natureDetail(id: Int)
+	case shopDetail(id: Int)
+	case festivalDetail(id: Int)
 }

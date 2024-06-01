@@ -43,11 +43,10 @@ struct NatureDetailView: View {
                                         } label: {
                                             viewModel.state.getNatureDetailResponse.favorite ? Image("icHeartFillMain") : Image("icHeart")
                                         }
-                                        Button {
-                                            
-                                        } label: {
-                                            Image("icShare2")
-                                        }
+										
+										ShareLink(item: DeepLinkManager.shared.makeLink(category: .nature, id: Int(viewModel.state.getNatureDetailResponse.id)), label: {
+											Image("icShare2")
+										})
                                     }
                                     .padding(.trailing, 16)
                                     Spacer()
@@ -121,11 +120,10 @@ struct NatureDetailView: View {
                                         } label: {
                                             viewModel.state.getNatureDetailResponse.favorite ? Image("icHeartFillMain") : Image("icHeart")
                                         }
-                                        Button {
-                                            
-                                        } label: {
-                                            Image("icShare2")
-                                        }
+										
+										ShareLink(item: DeepLinkManager.shared.makeLink(category: .nature, id: Int(viewModel.state.getNatureDetailResponse.id)), label: {
+											Image("icShare2")
+										})
                                     }
                                     .padding(.trailing, 16)
                                     Spacer()
@@ -311,7 +309,7 @@ struct NatureDetailView: View {
                             .padding(.bottom, 32)
                             
                             Button {
-								AppState.shared.navigationPath.append(ArticleViewType.reportInfo(id: viewModel.state.getNatureDetailResponse.id, category: .nature))
+								AppState.shared.navigationPath.append(ArticleDetailViewType.reportInfo(id: viewModel.state.getNatureDetailResponse.id, category: .nature))
                             } label: {
                                 Text(.proposeUpdateInfo)
                                     .background(
@@ -370,6 +368,12 @@ struct NatureDetailView: View {
             }
 
         }
+		.navigationDestination(for: ArticleDetailViewType.self) { viewType in
+			switch viewType {
+			case let .reportInfo(id, category):
+				ReportInfoMainView(id: id, category: category)
+			}
+		}
      
     }
     

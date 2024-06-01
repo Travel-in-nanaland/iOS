@@ -104,7 +104,9 @@ struct LoginView: View {
 			.padding(.bottom, 24)
 			
 			Button(action: {
-				authManager.nonMemeberLogin()
+				Task {
+					await authManager.nonMemeberLogin()
+				}
 			}, label: {
 				Text(.nonMemeberLogin)
 					.font(.gothicNeo(.medium, size: 14))

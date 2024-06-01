@@ -437,8 +437,6 @@ struct FestivalMainGridView: View {
 			switch viewType {
 			case let .detail(id):
 				FestivalDetailView(id: id)
-			case let .reportInfo(id, category):
-				ReportInfoMainView(id: id, category: category)
 			}
 		}
         .onAppear {
