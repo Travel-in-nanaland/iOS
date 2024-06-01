@@ -148,11 +148,12 @@ struct LocationModalView: View {
                         await getLocationNatureMainItem(filterName: selectedLocation.joined(separator: ","), page: 0, size: 18)
                         natureViewModel.state.location = selectedLocation.joined(separator: ",")
                     } else {
+                        print(selectedLocation)
                         await getLocationShopMainItem(filterName: selectedLocation.joined(separator: ","), page: 0, size: 18)
                     }
                     
                     location = selectedLocation.joined(separator: ",")
-              
+                    print(location)
                     // 장소 선택 안 할시 전 지역
                     if location == "" {
                         location = LocalizedKey.allLocation.localized(for: localizationManager.language)

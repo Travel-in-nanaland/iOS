@@ -177,6 +177,7 @@ struct HomeMainView: View {
                           
                                     Text(article.title)
                                         .font(.gothicNeo(size: 14, font: "bold"))
+                                        .multilineTextAlignment(.leading)
                                 }
                             }
                         case "FESTIVAL":

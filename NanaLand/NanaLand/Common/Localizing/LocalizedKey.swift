@@ -271,6 +271,23 @@ enum LocalizedKey: String {
     case amenity
     case proposeUpdateInfo
     
+    // MARK: - FestivalView
+    case thisMonthFestival
+    case pastFestival
+    case seasonFestival
+    
+    // MARK: - SeasonModalView
+    case selectSeason
+    case spring
+    case summer
+    case autumn
+    case winter
+    case month
+    case springMonth
+    case summerMonth
+    case autumnMonth
+    case winterMonth
+  
     // MARK: - 정보 수정 제안
 	case reportInfo
 	case reportInfoTitle

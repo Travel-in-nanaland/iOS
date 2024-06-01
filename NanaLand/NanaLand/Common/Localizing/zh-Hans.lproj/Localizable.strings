@@ -242,8 +242,8 @@
 "photoDescription" = "*参考照片。";
 
 // MARK: - NatureDetailView
-"unfoldView" = "더 보기"; // 더보기
-"foldView" = "접기"; // 접기
+"unfoldView" = "更多"; // 더보기
+"foldView" = "收起"; // 접기
 "introduce" = "为您介绍!!";
 "address" = "地址";
 "phoneNumber" = "电话";
@@ -252,6 +252,23 @@
 "detailInfo" = "详细信息";
 "amenity" = "便利设施";
 "proposeUpdateInfo" = "建议修改信息";
+
+// MARK: - FestivalView
+"thisMonthFestival" = "本月庆典";
+"pastFestival" = "已结束的庆典";
+"seasonFestival" = "各季节的庆典";
+
+// MARK: - SeasonModalView
+"selectSeason" = "季节选择";
+"spring" = "春天";
+"summer" = "夏天";
+"autumn" = "秋天";
+"winter" = "冬天";
+"month" = "월";
+"springMonth" = "3, 4月";
+"summerMonth" = "5, 6, 7, 8月";
+"autumnMonth" = "9, 10月";
+"winterMonth" = "11, 12, 1, 2月";
 
 // MARK: - 정보 수정 제안
 "reportInfo" = "建议修改信息";
@@ -275,3 +292,4 @@
 "thxForReportInfoDescription" = "通过信息修改建议，\n旅行地的吸引力也提高了！\n\n越来越期待了🧚‍♀️";
 "showContentAgain" = "重新查看内容";
 "reportAgain" = "添加其他项目";
+

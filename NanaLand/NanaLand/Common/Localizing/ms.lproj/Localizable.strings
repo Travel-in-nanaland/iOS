@@ -224,7 +224,7 @@ ditetapkan sebagai lalai.";
 "count" = "Results";
 "location" = "Kawasan";
 "allLocation" = "All";
-"jejuCity" = "jejuCity";
+"jejuCity" = "Jeju City";
 "Aewol" = "Aewol";
 "Jocheon" = "Jocheon";
 "Hangyeong" = "Hangyeong";
@@ -255,6 +255,24 @@ ditetapkan sebagai lalai.";
 "amenity" = "Kemudahan";
 "proposeUpdateInfo" = "Cadangan Pembetulan Maklumat";
 
+// MARK: - FestivalView
+"thisMonthFestival" = "Festival Bulanan ";
+"pastFestival" = "Festival yang
+Telah Berakhir";
+"seasonFestival" = "Festival Musim";
+
+// MARK: - SeasonModalView
+"selectSeason" = "계절 선택";
+"spring" = "Musim bunga";
+"summer" = "Musim panas";
+"autumn" = "Musim luruh";
+"winter" = "Musim sejuk";
+"month" = "월";
+"springMonth" = "March, April";
+"summerMonth" = "May, June, July, August";
+"autumnMonth" = "September, October";
+"winterMonth" = "November, December, January, February";
+
 // MARK: - 정보 수정 제안
 "reportInfo" = "Cadangan Pembetulan";
 "reportInfoTitle" = "Sila berikan cadangan maklumat yang perlu dibetulkan.";
@@ -277,3 +295,4 @@ ditetapkan sebagai lalai.";
 "thxForReportInfoDescription" = "Dengan cadangan pembetulan maklumat, daya tarikan destinasi pelancongan turut meningkat!\n\nSemakin dinanti-nantikan🧚‍♀️";
 "showContentAgain" = "Tengok Kandungan Semula";
 "reportAgain" = "Tambah Item Lain";
+

@@ -254,6 +254,23 @@
 "amenity" = "편의시설";
 "proposeUpdateInfo" = "정보 수정 제안";
 
+// MARK: - FestivalView
+"thisMonthFestival" = "이번달 축제";
+"pastFestival" = "종료된 축제";
+"seasonFestival" = "계절별 축제";
+
+// MARK: - SeasonModalView
+"selectSeason" = "계절 선택";
+"spring" = "봄";
+"summer" = "여름";
+"autumn" = "가을";
+"winter" = "겨울";
+"month" = "월";
+"springMonth" = "3, 4월";
+"summerMonth" = "5, 6, 7, 8월";
+"autumnMonth" = "9, 10월";
+"winterMonth" = "11, 12, 1, 2월";
+
 // MARK: - 정보 수정 제안
 "reportInfo" = "정보 수정 제안";
 "reportInfoTitle" = "수정해야 할 정보를 제안해 주세요!";
@@ -276,3 +293,4 @@
 "thxForReportInfoDescription" = "정보 수정 제안으로\n여행지의 매력도 함께 올라갔어요!\n\n점점 기대될 것 같아요🧚‍♀️";
 "showContentAgain" = "콘텐츠 다시 보러 가기";
 "reportAgain" = "다른 항목 추가하기";
+
