@@ -62,7 +62,7 @@
 "withdrawAlertTitle" = "Betul-betul tidak mahu menerima maklumat dan tawaran perjalanan ke Jeju?😢";
 "withdrawAlertMessage" = "*Jika menyertai semula\ndalam masa 90 hari,";
 "changeLanguageAlertTitle" = "Adakah anda ingin menukar kepada bahasa tersebut?";
-"invalidEmail" = "";
+"invalidEmail" = "Format e-mel tidak betul. Sila masukkan semula!";
 
 //MARK: - TypeTest
 "skipTypeTest" = "Langkau ujian";
@@ -141,7 +141,10 @@
 // main
 "editProfile" = "Ubah Profil";
 "mynana" = "nana saya";
+"loginRequired" = "Log masuk diperlukan";
+"none" = "Tiada";
 "travelType" = "Jenis Perjalanan";
+"goTest" = "Ujian";
 "retest" = "Uji semula";
 "introduction" = "Perkenalan";
 // editProfile
@@ -210,7 +213,8 @@ ditetapkan sebagai lalai.";
 "nonMemeberAlertGoRegister" = "Daftar Ahli";
 
 // MARK: - Home
-"recommendTitle" = "Cadangan untuk";
+"recommendTitle" = "Cadangan untuk %@ 🍊";
+"ourNana" = "Nenek Kami";
 "firstAdvertismentTitle" = "Nak lihat laut yang cantik di Pulau Jeju?";
 "firstAdvertismentSubTitle" = "Mari kita lawati alam semula jadi di Seogwipo-si, Seongsan!";
 "secondAdvertismentTitle" = "Mahu lihat bintang yang jarang dilihat?💫";

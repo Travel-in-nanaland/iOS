@@ -13,6 +13,7 @@ struct HomeMainView: View {
     @EnvironmentObject var localizationManager: LocalizationManager
 	@StateObject var viewModel = HomeMainViewModel()
     @State private var isRecommendCalled = false
+	@AppStorage("provider") var provider:String = ""
 	var body: some View {
 		ScrollView {
 			VStack(spacing: 0) {
@@ -143,21 +144,9 @@ struct HomeMainView: View {
                        
 				}
 				HStack {
-                    // 언어 별로 문장 순서가 다름
-                    switch localizationManager.language {
-                    case .chinese:
-                        Text("为" + "\(AppState.shared.userInfo.nickname)" + "的当地人推荐🍊")
-                            .font(.gothicNeo(size: 18, font: "bold"))
-                    case .english:
-                        Text(.recommendTitle + " \(AppState.shared.userInfo.nickname)" + "🍊")
-                            .font(.gothicNeo(size: 18, font: "bold"))
-                    case .korean:
-                        Text("\(AppState.shared.userInfo.nickname) " + .recommendTitle + "🍊")
-                            .font(.gothicNeo(size: 18, font: "bold"))
-                    case .malaysia:
-                        Text(.recommendTitle + " \(AppState.shared.userInfo.nickname)" + "🍊")
-                            .font(.gothicNeo(size: 18, font: "bold"))
-                    }
+					let nickname: String = provider == "GUEST" ? LocalizedKey.ourNana.localized(for: LocalizationManager.shared.language) : AppState.shared.userInfo.nickname
+					Text(.recommendTitle, arguments: [nickname])
+						.font(.gothicNeo(size: 18, font: "bold"))
                     
 					Spacer()
 				}

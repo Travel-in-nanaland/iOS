@@ -59,7 +59,10 @@ struct NanaLandTabView: View {
 				RegisterInductionView(
 					closeAction: {
 						appState.showRegisterInduction = false
-						appState.currentTab = appState.previousTab
+						
+						if appState.currentTab == .favorite {
+							appState.currentTab = appState.previousTab
+						}
 				})
 			}
 		}

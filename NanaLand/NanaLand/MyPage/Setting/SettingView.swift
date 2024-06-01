@@ -88,14 +88,23 @@ struct SettingItemButtonView: View {
     var title = ""
     var path: SettingViewType? = nil
     @EnvironmentObject var localizationManager: LocalizationManager
+	@AppStorage("provider") var provider: String = ""
     var body: some View {
         Button {
 
             switch title {
             case LocalizedKey.termsAndPolicies.localized(for: localizationManager.language):
-                AppState.shared.navigationPath.append(SettingViewType.policy)
+				if provider == "GUEST" {
+					AppState.shared.showRegisterInduction = true
+				} else {
+					AppState.shared.navigationPath.append(SettingViewType.policy)
+				}
             case LocalizedKey.accessPolicyGuide.localized(for: localizationManager.language):
-                AppState.shared.navigationPath.append(SettingViewType.authorize)
+				if provider == "GUEST" {
+					AppState.shared.showRegisterInduction = true
+				} else {
+					AppState.shared.navigationPath.append(SettingViewType.authorize)
+				}
             case LocalizedKey.languageSetting.localized(for: localizationManager.language):
                 AppState.shared.navigationPath.append(SettingViewType.language)
             case LocalizedKey.versionInfomation.localized(for: localizationManager.language):

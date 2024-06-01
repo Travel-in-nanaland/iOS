@@ -234,6 +234,10 @@ final class AuthManager: NSObject {
 			Task {
 				await logoutFromServer()
 			}
+		} else {
+			Task {
+				await logoutFromServer()
+			}
 		}
 	}
 	
@@ -288,6 +292,10 @@ final class AuthManager: NSObject {
 			googleWithdraw(withdrawalType: withdrawalType)
 		} else if provider == "APPLE" {
 			appleWithdraw(withdrawalType: withdrawalType)
+		} else {
+			Task {
+				await self.withdrawFromServer(withdrawalType: withdrawalType)
+			}
 		}
 	}
 	
