@@ -26,18 +26,15 @@ struct HomeMainView: View {
 					}
 					.padding(.leading, 16)
 					Spacer()
-					Button(action: {
+					
+					NanaSearchBar(
+						placeHolder: "제주도는 지금 유채꽃 축제🏵️",
+						searchTerm: .constant(""),
+						showClearButton: false,
+						disabled: true
+					)
+					.simultaneousGesture(TapGesture().onEnded {
 						AppState.shared.navigationPath.append(HomeViewType.search)
-					}, label: {
-						Text("제주도는 지금 유채꽃 축제🏵️")
-							.padding()
-							.frame(width: 278, alignment: .leading)
-							.font(.gothicNeo(size: 14, font: "mid"))
-							.foregroundStyle(Color("Gray1"))
-							.overlay(RoundedRectangle(cornerRadius: 30)
-								.stroke(Color("Main"))
-							)
-
 					})
 					
 					Spacer()
