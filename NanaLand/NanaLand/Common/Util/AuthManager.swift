@@ -150,7 +150,7 @@ final class AuthManager: NSObject {
 		authorizationController.performRequests()
 	}
 	
-	func nonMemeberLogin() {
+	func nonMemeberLogin() async {
 		guard let deviceId = UIDevice.current.identifierForVendor?.uuidString else {return}
 		print(deviceId)
 		
@@ -160,9 +160,7 @@ final class AuthManager: NSObject {
 			providerId: deviceId
 		)
 		
-		Task {
-			await loginToServerFromNonMember(request: loginRequest)
-		}
+		await loginToServerFromNonMember(request: loginRequest)
 	}
 	
 	/// 서버에 로그인 실패(404)시 회원가입 필요(데이터 임시저장)
@@ -196,14 +194,12 @@ final class AuthManager: NSObject {
 	/// 비회원 로그인/회원가입
 	func loginToServerFromNonMember(request: LoginRequest) async {
 		let result = await AuthService.loginServer(body: request)
-		
 		if let tokens = result?.data {
 			// 로그인 성공 토큰 저장하고 홈 화면으로
 			KeyChainManager.addItem(key: "accessToken", value: tokens.accessToken)
 			KeyChainManager.addItem(key: "refreshToken", value: tokens.refreshToken)
 			self.isLogin = true
 			self.provider = "GUEST"
-			
 		} else if result?.status == 404 {
 			// 로그인 실패(404)인 경우 회원가입 필요
 			let registerRequest = RegisterRequest(

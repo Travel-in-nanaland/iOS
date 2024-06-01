@@ -42,11 +42,10 @@ struct ShopDetailView: View {
                                     } label: {
                                         viewModel.state.getShopDetailResponse.favorite ? Image("icHeartFillMain") : Image("icHeart")
                                     }
-                                    Button {
-                                        
-                                    } label: {
-                                        Image("icShare2")
-                                    }
+									
+									ShareLink(item: DeepLinkManager.shared.makeLink(category: .market, id: Int(viewModel.state.getShopDetailResponse.id)), label: {
+										Image("icShare2")
+									})
 
                                 }
                                 .padding(.trailing, 16)
@@ -119,11 +118,10 @@ struct ShopDetailView: View {
                                     } label: {
                                         viewModel.state.getShopDetailResponse.favorite ? Image("icHeartFillMain") : Image("icHeart")
                                     }
-                                    Button {
-                                        
-                                    } label: {
-                                        Image("icShare2")
-                                    }
+									
+									ShareLink(item: DeepLinkManager.shared.makeLink(category: .market, id: Int(viewModel.state.getShopDetailResponse.id)), label: {
+										Image("icShare2")
+									})
                                 }
                                 .padding(.trailing, 16)
                                 Spacer()
@@ -272,7 +270,7 @@ struct ShopDetailView: View {
                         .padding(.bottom, 32)
                         
 						Button(action: {
-							AppState.shared.navigationPath.append(ArticleViewType.reportInfo(id: viewModel.state.getShopDetailResponse.id, category: .market))
+							AppState.shared.navigationPath.append(ArticleDetailViewType.reportInfo(id: viewModel.state.getShopDetailResponse.id, category: .market))
 						}, label: {
 							Text("정보 수정 제안")
 								.background(
@@ -309,6 +307,12 @@ struct ShopDetailView: View {
             
             
         }
+		.navigationDestination(for: ArticleDetailViewType.self) { viewType in
+			switch viewType {
+			case let .reportInfo(id, category):
+				ReportInfoMainView(id: id, category: category)
+			}
+		}
         
         
     }

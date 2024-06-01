@@ -40,8 +40,9 @@ struct NanaHome: View {
 						}
 					}
 					
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 3.5, execute: {
+					DispatchQueue.main.asyncAfter(deadline: .now() + Constants.splashTime, execute: {
 						isSplashCompleted = true
+						AppState.shared.isSplashCompleted = true
 					})
 					
 					// 테스트 용
