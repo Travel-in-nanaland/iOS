@@ -278,6 +278,9 @@ Telah Berakhir";
 "autumnMonth" = "September, October";
 "winterMonth" = "November, December, January, February";
 
+// MARK: - MarketDetailView
+"homepage" = "Laman Web";
+
 // MARK: - 정보 수정 제안
 "reportInfo" = "Cadangan Pembetulan";
 "reportInfoTitle" = "Sila berikan cadangan maklumat yang perlu dibetulkan.";

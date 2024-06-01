@@ -9,15 +9,13 @@ import SwiftUI
 import Kingfisher
 
 struct ShopMainView: View {
+    @EnvironmentObject var localizationMangaer: LocalizationManager
     var body: some View {
-        
+    
         VStack(spacing: 0) {
-            NavigationBar(title: String(localized: "market"))
+            NavigationBar(title: LocalizedKey.market.localized(for: localizationMangaer.language))
                 .frame(height: 56)
                 .padding(.bottom, 24)
-
-            
-            
             ShopMainGridView()
             
             Spacer()
@@ -29,15 +27,16 @@ struct ShopMainView: View {
 }
 // 정보 담는 grid 뷰
 struct ShopMainGridView: View {
+    @EnvironmentObject var localizationMangaer: LocalizationManager
     @StateObject var viewModel = ShopMainViewModel()
     @State private var locationModal = false
-    @State private var location = "전 지역"
+    @State private var location = LocalizedKey.allLocation.localized(for: LocalizationManager().language)
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
     @State private var isAPICalled = false
     var body: some View {
 		VStack(spacing: 0) {
 			HStack(spacing: 0) {
-				Text("\(viewModel.state.getShopMainResponse.data.count)건")
+                Text("\(viewModel.state.getShopMainResponse.data.count)" + .count)
 					.padding(.leading, 16)
 					.foregroundStyle(Color.gray1)
 				
@@ -64,7 +63,7 @@ struct ShopMainGridView: View {
 				)
 				.padding(.trailing, 16)
                     .sheet(isPresented: $locationModal) {
-                    LocationModalView(viewModel: FestivalMainViewModel(), natureViewModel: NatureMainViewModel(), shopViewModel: viewModel, location: $location, isModalShown: $locationModal, startDate: "", endDate: "", title: "전통시장")
+                        LocationModalView(viewModel: FestivalMainViewModel(), natureViewModel: NatureMainViewModel(), shopViewModel: viewModel, location: $location, isModalShown: $locationModal, startDate: "", endDate: "", title: LocalizedKey.market.localized(for: localizationMangaer.language))
                         .presentationDetents([.height(Constants.screenWidth * (63 / 36))])
                 }
 			}

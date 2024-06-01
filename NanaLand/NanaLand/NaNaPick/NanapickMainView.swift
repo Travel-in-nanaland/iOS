@@ -12,7 +12,7 @@ struct NanapickMainView: View {
     @StateObject var viewModel = NaNaPickMainViewModel()
     @State var isAPICalled = false
     @State private var page: Int = 0
-    @State private var size: Int = 4
+    @State private var size: Int = 5
     @State private var isLoading = false
 
     init() {
@@ -86,7 +86,9 @@ struct NanapickMainView: View {
                         .onAppear {
                                 Task {
                                     await getNana(page: page, size: size)
+                                    print(page)
                                     page += 1
+                                    
                                 }
                         }
                 }
