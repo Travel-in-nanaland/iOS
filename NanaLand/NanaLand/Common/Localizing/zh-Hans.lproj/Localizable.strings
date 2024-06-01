@@ -270,6 +270,9 @@
 "autumnMonth" = "9, 10月";
 "winterMonth" = "11, 12, 1, 2月";
 
+// MARK: - MarketDetailView
+"homepage" = "官方网站";
+
 // MARK: - 정보 수정 제안
 "reportInfo" = "建议修改信息";
 "reportInfoTitle" = "请提出需要修改的信息 !";

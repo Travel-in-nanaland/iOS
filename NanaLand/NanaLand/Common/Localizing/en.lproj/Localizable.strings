@@ -279,6 +279,9 @@ the market is the place!";
 "autumnMonth" = "September, October";
 "winterMonth" = "November, December, January, February";
 
+// MARK: - MarketDetailView
+"homepage" = "Website";
+
 // MARK: - 정보 수정 제안
 "reportInfo" = "Information Update Suggestions";
 "reportInfoTitle" = "Suggest an Information Update!";

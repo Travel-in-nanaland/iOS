@@ -287,6 +287,9 @@ enum LocalizedKey: String {
     case summerMonth
     case autumnMonth
     case winterMonth
+    
+    //MARK: - MarketDetailView
+    case homepage
   
     // MARK: - 정보 수정 제안
 	case reportInfo

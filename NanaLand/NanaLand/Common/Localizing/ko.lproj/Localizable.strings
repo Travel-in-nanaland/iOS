@@ -271,6 +271,9 @@
 "autumnMonth" = "9, 10월";
 "winterMonth" = "11, 12, 1, 2월";
 
+// MARK: - MarketDetailView
+"homepage" = "홈페이지";
+
 // MARK: - 정보 수정 제안
 "reportInfo" = "정보 수정 제안";
 "reportInfoTitle" = "수정해야 할 정보를 제안해 주세요!";

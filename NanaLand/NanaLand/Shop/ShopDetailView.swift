@@ -8,6 +8,7 @@
 import SwiftUI
 import Kingfisher
 struct ShopDetailView: View {
+    @EnvironmentObject var localizationManager: LocalizationManager
     @StateObject var viewModel = ShopDetailViewModel()
     @State private var isAPICalled = false
     @State private var isOn = false
@@ -16,7 +17,7 @@ struct ShopDetailView: View {
     var id: Int64
     
     var body: some View {
-        NavigationBar(title: "전통시장")
+        NavigationBar(title: LocalizedKey.market.localized(for: localizationManager.language))
             .frame(height: 56)
         ZStack {
             ScrollView {
@@ -89,7 +90,7 @@ struct ShopDetailView: View {
                                         Button {
                                             isOn.toggle()
                                         } label: {
-                                            Text("더 보기")
+                                            Text(.unfoldView)
                                                 .foregroundStyle(Color.gray1)
                                                 .font(.gothicNeo(.regular, size: 14))
                                         }
@@ -163,7 +164,7 @@ struct ShopDetailView: View {
                                         Button {
                                             isOn.toggle()
                                         } label: {
-                                            Text("더 보기")
+                                            Text(.foldView)
                                                 .foregroundStyle(Color.gray1)
                                                 .font(.gothicNeo(.regular, size: 14))
                                         }
@@ -190,7 +191,7 @@ struct ShopDetailView: View {
                             }
                             
                             VStack(alignment: .leading, spacing: 0) {
-                                Text("주소")
+                                Text(.address)
                                     .font(.gothicNeo(.bold, size: 14))
                                 Text(viewModel.state.getShopDetailResponse.address)
                                     .font(.gothicNeo(.regular, size: 12))
@@ -199,7 +200,7 @@ struct ShopDetailView: View {
                             Spacer()
                            
                         }
-                        .frame(width: Constants.screenWidth - 40, height: (Constants.screenWidth - 40) * ( 42 / 358))
+                        .frame(width: Constants.screenWidth - 40)
                      
                         HStack(spacing: 10) {
                             VStack(spacing: 0) {
@@ -208,7 +209,7 @@ struct ShopDetailView: View {
                             }
                             
                             VStack(alignment: .leading, spacing: 0) {
-                                Text("연락처")
+                                Text(.phoneNumber)
                                     .font(.gothicNeo(.bold, size: 14))
                                 Text(viewModel.state.getShopDetailResponse.contact)
                                     .font(.gothicNeo(.regular, size: 12))
@@ -216,7 +217,7 @@ struct ShopDetailView: View {
                             }
                             Spacer()
                         }
-                        .frame(width: Constants.screenWidth - 40, height: (Constants.screenWidth - 40) * ( 42 / 358))
+                        .frame(width: Constants.screenWidth - 40)
                             
                         HStack(spacing: 10) {
                             VStack(spacing: 0) {
@@ -225,7 +226,7 @@ struct ShopDetailView: View {
                             }
                             
                             VStack(alignment: .leading, spacing: 0) {
-                                Text("이용시간")
+                                Text(.time)
                                     .font(.gothicNeo(.bold, size: 14))
                                 Text(viewModel.state.getShopDetailResponse.time)
                                     .font(.gothicNeo(.regular, size: 12))
@@ -242,7 +243,7 @@ struct ShopDetailView: View {
                             }
                             
                             VStack(alignment: .leading, spacing: 0) {
-                                Text("편의시설")
+                                Text(.amenity)
                                     .font(.gothicNeo(.bold, size: 14))
                                 Text(viewModel.state.getShopDetailResponse.amenity)
                                     .font(.gothicNeo(.regular, size: 12))
@@ -258,7 +259,7 @@ struct ShopDetailView: View {
                             }
                             
                             VStack(alignment: .leading, spacing: 0) {
-                                Text("홈페이지")
+                                Text(.homepage)
                                     .font(.gothicNeo(.bold, size: 14))
                                 Text(viewModel.state.getShopDetailResponse.homepage)
                                     .font(.gothicNeo(.regular, size: 12))
@@ -272,7 +273,7 @@ struct ShopDetailView: View {
 						Button(action: {
 							AppState.shared.navigationPath.append(ArticleDetailViewType.reportInfo(id: viewModel.state.getShopDetailResponse.id, category: .market))
 						}, label: {
-							Text("정보 수정 제안")
+                            Text(.proposeUpdateInfo)
 								.background(
 									RoundedRectangle(cornerRadius: 12.0)
 										.foregroundStyle(Color.gray2)
