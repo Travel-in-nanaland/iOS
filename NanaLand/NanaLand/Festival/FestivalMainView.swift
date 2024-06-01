@@ -89,19 +89,21 @@ struct SeasonFilterButtonView: View {
 
 struct SeasonFilterView: View {
     @StateObject var viewModel: FestivalMainViewModel
-    @State private var seasonModal = false // 장소 선택 뷰 모달 여부
-    @State private var season = LocalizedKey.spring.localized(for: LocalizationManager().language)
+    @State var seasonModal = false // 장소 선택 뷰 모달 여부
+    @State var season = LocalizedKey.spring.localized(for: LocalizationManager().language)
+    @Binding var selectedSeason : String
     var count: Int // item 갯수
     var body: some View{
         HStack(spacing: 0) {
             Text("\(count) " + .count)
                 .padding(.leading, 16)
                 .foregroundStyle(Color.gray1)
-            
+            Text(selectedSeason)
             Spacer()
             
             Button {
                 self.seasonModal = true
+                
             } label: {
                 Text(season)
                     .font(.gothicNeo(.medium, size: 12))
@@ -120,6 +122,10 @@ struct SeasonFilterView: View {
             .sheet(isPresented: $seasonModal) {
                 SeasonModalView(viewModel: viewModel, season: $season, isModalShown: $seasonModal)
                     .presentationDetents([.height(300)])
+                    .onDisappear {
+                        selectedSeason = season
+                    }
+                
             }
         }
         .padding(.bottom, 16)
@@ -262,7 +268,7 @@ struct FilterView: View {
 
 struct TabBarView: View {
     @Binding var currentTab: Int
-    var tabBarOptions: [String] = [LocalizedKey.thisMonthFestival.localized(for: LocalizationManager().language), LocalizedKey.pastFestival.localized(for: LocalizationManager().language), LocalizedKey.pastFestival.localized(for: LocalizationManager().language)]
+    var tabBarOptions: [String] = [LocalizedKey.thisMonthFestival.localized(for: LocalizationManager().language), LocalizedKey.pastFestival.localized(for: LocalizationManager().language), LocalizedKey.seasonFestival.localized(for: LocalizationManager().language)]
     @Namespace var namespace
     var body: some View {
         HStack {
@@ -314,18 +320,22 @@ struct FestivalMainGridView: View {
     @State private var isAPICalled = false
     @State var buttonsToggled = Array(repeating: false, count: 0)
     @State var isFirstAPICalled = true // 첫 appear에서만 API 호출
+    @State private var page = 0
+    @State private var size = 12
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
     var title: String = ""
     var locationTitle = ""
+    @State var selectedSeason = ""
+    @EnvironmentObject var localizationManager: LocalizationManager
     var body: some View {
 		VStack(spacing: 0) {
 			if title == "이번달" {
-				FilterView(viewModel: viewModel, count: viewModel.state.getFestivalMainResponse.data.count, title: title)
+                FilterView(viewModel: viewModel, count: Int(viewModel.state.getFestivalMainResponse.totalElements), title: title)
 			} else if title == "종료된" {
-				FilterView(viewModel: viewModel, count: viewModel.state.getFestivalMainResponse.data.count, title: title)
+                FilterView(viewModel: viewModel, count: Int(viewModel.state.getFestivalMainResponse.totalElements), title: title)
 			}
 			else {
-				SeasonFilterView(viewModel: viewModel, count: viewModel.state.getFestivalMainResponse.data.count)
+                SeasonFilterView(viewModel: viewModel, selectedSeason: $selectedSeason, count: Int(viewModel.state.getFestivalMainResponse.totalElements))
 			}
 			
 			
@@ -343,7 +353,7 @@ struct FestivalMainGridView: View {
 						LazyVGrid(columns: columns, spacing: 16) {
 							
 							// 보여줄 데이터가 있을 때
-							
+                            
 							ForEach((0...viewModel.state.getFestivalMainResponse.data.count - 1), id: \.self) { index in
 								Button(action: {
 									AppState.shared.navigationPath.append(ArticleViewType.detail(id: viewModel.state.getFestivalMainResponse.data[index].id))
@@ -400,6 +410,111 @@ struct FestivalMainGridView: View {
 									.frame(width: (Constants.screenWidth - 40) / 2)
 								})
 							}
+                            if title == "종료된" {
+                                if viewModel.state.getFestivalMainResponse.totalElements >= 12 {
+                                    if page < 6 {
+                                        ProgressView()
+                                            .onAppear {
+                                                Task {
+                                                    
+                                                        await getPastFestivalMainITem(page: Int32(page + 1),size: Int32(size), filterName:[""].joined(separator: ","))
+                                                        print(page)
+                                                        page += 1
+                                                    
+                                                    
+                                                }
+                                            }
+                                    }
+                                }
+                                
+                            }
+//                            else if title == "이번달" {
+//                                if page < 5 {
+//                                    ProgressView()
+//                                        .onAppear {
+//                                            Task {
+//                                                await getThisMonthFestivalMainItem(page: Int32(page + 1),size: Int32(size), filterName:[""].joined(separator: ","), startDate: "", endDate:"")
+//                                                print(page)
+//                                                page += 1
+//                                            }
+//                                        }
+//                                }
+//                            }
+                            else if title == "계절별" {
+                                switch selectedSeason {
+                                case LocalizedKey.spring.localized(for: LocalizationManager().language):
+                                    
+                                    if viewModel.state.page < 10 {
+                                        ProgressView()
+                                            .onAppear {
+                                                Task {
+                                                    // 필터가 바뀌면 페이지 초기화 해주고 어떤 계절 선택했는지에 따라서 season값 달리줘야함
+                                                    await getSeasonFestivalMainItem(page: Int32(viewModel.state.page + 1),size: Int32(size), season: "spring")
+                                                    viewModel.state.page += 1
+                                      
+                                                }
+                                            }
+                                    }
+                                case LocalizedKey.summer.localized(for: LocalizationManager().language):
+                                    
+                                    if viewModel.state.page < 10 {
+                                        ProgressView()
+                                            .onAppear {
+                                                Task {
+                                                    // 필터가 바뀌면 페이지 초기화 해주고 어떤 계절 선택했는지에 따라서 season값 달리줘야함
+                                                    await getSeasonFestivalMainItem(page: Int32(viewModel.state.page + 1),size: Int32(size), season: "summer")
+                                                  
+                                                    viewModel.state.page += 1
+                                              
+                                                }
+                                            }
+                                    }
+                                case LocalizedKey.autumn.localized(for: LocalizationManager().language):
+                        
+                                    if viewModel.state.page < 10 {
+                                        ProgressView()
+                                            .onAppear {
+                                                Task {
+                                                    // 필터가 바뀌면 페이지 초기화 해주고 어떤 계절 선택했는지에 따라서 season값 달리줘야함
+                                                    await getSeasonFestivalMainItem(page: Int32(viewModel.state.page
+                                                                                                + 1),size: Int32(size), season: "autumn")
+                                                    viewModel.state.page += 1
+                                                   
+                                                    
+                                                }
+                                            }
+                                    }
+                                case LocalizedKey.winter.localized(for: LocalizationManager().language):
+                                   
+                                    if viewModel.state.page < 10 {
+                                        ProgressView()
+                                            .onAppear {
+                                                Task {
+                                                    // 필터가 바뀌면 페이지 초기화 해주고 어떤 계절 선택했는지에 따라서 season값 달리줘야함
+                                                    await getSeasonFestivalMainItem(page: Int32(viewModel.state.page + 1),size: Int32(size), season: "winter")
+                                                    
+                                                    viewModel.state.page += 1
+                                       
+                                                }
+                                            }
+                                    }
+                                default:
+                                    
+                                    if page < 10 {
+                                        ProgressView()
+                                            .onAppear {
+                                                Task {
+                                                    // 필터가 바뀌면 페이지 초기화 해주고 어떤 계절 선택했는지에 따라서 season값 달리줘야함
+                                                    await getSeasonFestivalMainItem(page: Int32(page + 1),size: Int32(size), season: "spring")
+                                                    print("\(viewModel.state.page)기본")
+                                                    page += 1
+                                                }
+                                            }
+                                    }
+                                }
+                                
+                            }
+                            
 						}
 						.padding(.horizontal, 16)
 					}
@@ -413,15 +528,17 @@ struct FestivalMainGridView: View {
 			}
 		}
         .onAppear {
+            page = 0
+            print("hello")
             Task {
                 if title == "이번달" {
-                    await getThisMonthFestivalMainItem(page: 0, size: 18, filterName: [""].joined(separator: ","), startDate: "", endDate: "")
+                    await getThisMonthFestivalMainItem(page: 0, size: 12, filterName: [""].joined(separator: ","), startDate: "", endDate: "")
                     isAPICalled = true
                 } else if title == "계절별" {
-                    await getSeasonFestivalMainItem(page: 0, size: 50, season: "spring")
+                    await getSeasonFestivalMainItem(page: 0, size: 12, season: "spring")
                     isAPICalled = true
                 } else {
-                    await getPastFestivalMainITem(page: 0, size: 18, filterName: [""].joined(separator: ","))
+                    await getPastFestivalMainITem(page: Int32(page), size: 12, filterName: [""].joined(separator: ","))
                     isAPICalled = true
                 }
                 buttonsToggled = Array(repeating: false, count: viewModel.state.getFestivalMainResponse.data.count)

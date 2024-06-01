@@ -279,6 +279,34 @@
 // MARK: - MarketDetailView
 "homepage" = "홈페이지";
 
+// MARK: - FestivalDetailView
+"duration" = "기간";
+
+// MARK: - CalendarView
+"chooseDate" = "날짜선택";
+"calendarMonth" = "";
+"monday" = "월";
+"tuesday" = "화";
+"wednesday" = "수";
+"thursday" = "목";
+"friday" = "금";
+"saturday" = "토";
+"sunday" = "일";
+"jan" = "1월";
+"feb" = "2월";
+"mar" = "3월";
+"apr" = "4월";
+"may" = "5월";
+"jun" = "6월";
+"jul" = "7월";
+"aug" = "8월";
+"sep" = "9월";
+"oct" = "10월";
+"nov" = "11월";
+"dec" = "12월";
+
+
+
 // MARK: - 정보 수정 제안
 "reportInfo" = "정보 수정 제안";
 "reportInfoTitle" = "수정해야 할 정보를 제안해 주세요!";

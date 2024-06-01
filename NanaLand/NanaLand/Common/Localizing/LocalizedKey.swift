@@ -293,9 +293,38 @@ enum LocalizedKey: String {
     case autumnMonth
     case winterMonth
     
-    //MARK: - MarketDetailView
+    // MARK: - MarketDetailView
     case homepage
   
+    // MARK: - FestivalDetailView
+    case duration
+    
+    // MARK: - CalendarView
+    case chooseDate
+    case calendarMonth
+    case monday
+    case tuesday
+    case wednesday
+    case thursday
+    case friday
+    case saturday
+    case sunday
+    
+    case jan
+    case feb
+    case mar
+    case apr
+    case may
+    case jun
+    case jul
+    case aug
+    case sep
+    case oct
+    case nov
+    case dec
+    
+    case year
+    
     // MARK: - 정보 수정 제안
 	case reportInfo
 	case reportInfoTitle

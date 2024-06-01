@@ -9,13 +9,14 @@ import SwiftUI
 import Kingfisher
 
 struct FestivalDetailView: View {
+    @EnvironmentObject var localizationManager: LocalizationManager
     @StateObject var viewModel = FestivalDetailViewModel()
     @State private var isOn = false // 더보기 버튼 클릭 여부
     @State private var roundedHeight: CGFloat = (Constants.screenWidth - 40) * (224.0 / 358.0)
     var id: Int64
     
     var body: some View {
-        NavigationBar(title: "축제")
+        NavigationBar(title: LocalizedKey.festival.localized(for: localizationManager.language))
             .frame(height: 56)
         ZStack {
             ScrollViewReader { proxyReader in
@@ -92,7 +93,7 @@ struct FestivalDetailView: View {
                                             Button {
                                                 isOn.toggle()
                                             } label: {
-                                                Text("더 보기")
+                                                Text(.unfoldView)
                                                     .foregroundStyle(Color.gray1)
                                                     .font(.gothicNeo(.regular, size: 14))
                                             }
@@ -166,7 +167,7 @@ struct FestivalDetailView: View {
                                             Button {
                                                 isOn.toggle()
                                             } label: {
-                                                Text("접기")
+                                                Text(.foldView)
                                                     .foregroundStyle(Color.gray1)
                                                     .font(.gothicNeo(.regular, size: 14))
                                             }
@@ -194,7 +195,7 @@ struct FestivalDetailView: View {
                                 }
                                 
                                 VStack(alignment: .leading, spacing: 0) {
-                                    Text("주소")
+                                    Text(.address)
                                         .font(.gothicNeo(.bold, size: 14))
                                     Text(viewModel.state.getFestivalDetailResponse.address)
                                         .font(.gothicNeo(.regular, size: 12))
@@ -211,7 +212,7 @@ struct FestivalDetailView: View {
                                 }
                                 
                                 VStack(alignment: .leading, spacing: 0) {
-                                    Text("연락처")
+                                    Text(.phoneNumber)
                                         .font(.gothicNeo(.bold, size: 14))
                                     Text(viewModel.state.getFestivalDetailResponse.contact)
                                         .font(.gothicNeo(.regular, size: 12))
@@ -227,7 +228,7 @@ struct FestivalDetailView: View {
                                 }
                                 
                                 VStack(alignment: .leading, spacing: 0) {
-                                    Text("기간")
+                                    Text(.duration)
                                         .font(.gothicNeo(.bold, size: 14))
                                     Text(viewModel.state.getFestivalDetailResponse.period)
                                         .font(.gothicNeo(.regular, size: 12))
@@ -244,7 +245,7 @@ struct FestivalDetailView: View {
                                 }
                                 
                                 VStack(alignment: .leading, spacing: 0) {
-                                    Text("이용시간")
+                                    Text(.time)
                                         .font(.gothicNeo(.bold, size: 14))
                                     Text(viewModel.state.getFestivalDetailResponse.time)
                                         .font(.gothicNeo(.regular, size: 12))
@@ -253,28 +254,28 @@ struct FestivalDetailView: View {
                             }
                             .frame(width: Constants.screenWidth - 40)
                             
-                            HStack(spacing: 10) {
+                            HStack(alignment: .top, spacing: 10) {
                                 VStack(spacing: 0) {
                                     Image("icClock")
                                     
                                 }
                                 
                                 VStack(alignment: .leading, spacing: 0) {
-                                    Text("입장료")
+                                    Text(.fee)
                                         .font(.gothicNeo(.bold, size: 14))
                                     Text(viewModel.state.getFestivalDetailResponse.fee)
                                         .font(.gothicNeo(.regular, size: 12))
                                 }
                                 Spacer()
                             }
-                            .frame(width: Constants.screenWidth - 40, height: (Constants.screenWidth - 40) * ( 42 / 358))
+                            .frame(width: Constants.screenWidth - 40)
                             HStack(spacing: 10) {
                                 VStack(spacing: 0) {
                                     Image("icHomepage")
                                  
                                 }
                                 VStack(alignment: .leading, spacing: 0) {
-                                    Text("홈페이지")
+                                    Text(.homepage)
                                         .font(.gothicNeo(.bold, size: 14))
                                     Text(viewModel.state.getFestivalDetailResponse.homepage)
                                         .font(.gothicNeo(.regular, size: 12))
@@ -287,7 +288,7 @@ struct FestivalDetailView: View {
                             Button {
 								AppState.shared.navigationPath.append(ArticleDetailViewType.reportInfo(id: viewModel.state.getFestivalDetailResponse.id, category: .festival))
                             } label: {
-                                Text("정보 수정 제안")
+                                Text(.proposeUpdateInfo)
                                     .background(
                                         RoundedRectangle(cornerRadius: 12.0)
                                             .foregroundStyle(Color.gray2)

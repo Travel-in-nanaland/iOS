@@ -10,6 +10,7 @@ import SwiftUI
 struct SeasonModalView: View {
     @ObservedObject var viewModel: FestivalMainViewModel
     @EnvironmentObject var localizationManager: LocalizationManager
+    
     @Binding var season: String
     @Binding var isModalShown: Bool
     @State var selectedSeason = ""
@@ -35,9 +36,10 @@ struct SeasonModalView: View {
                     Button {
                   
                             Task {
-                               
-                                await getSeasonFestivalMainItem(page: 0, size: 19, season: "spring")
+                                viewModel.state.getFestivalMainResponse = FestivalModel(totalElements: 0, data: [])
+                                await getSeasonFestivalMainItem(page: 0, size: 12, season: "spring")
                                 selectedSeason = LocalizedKey.spring.localized(for: localizationManager.language)
+                                viewModel.state.page = 0
                                 season = selectedSeason
                             }
                            
@@ -72,8 +74,10 @@ struct SeasonModalView: View {
                     Button {
                        
                             Task {
+                                viewModel.state.getFestivalMainResponse = FestivalModel(totalElements: 0, data: [])
                                 selectedSeason = LocalizedKey.summer.localized(for: localizationManager.language)
-                                await getSeasonFestivalMainItem(page: 0, size: 19, season: "summer")
+                                viewModel.state.page = 0
+                                await getSeasonFestivalMainItem(page: 0, size: 12, season: "summer")
                                 season = selectedSeason
                             }
                            
@@ -107,8 +111,10 @@ struct SeasonModalView: View {
                     Button {
                 
                             Task {
+                                viewModel.state.getFestivalMainResponse = FestivalModel(totalElements: 0, data: [])
                                 selectedSeason = LocalizedKey.autumn.localized(for: localizationManager.language)
-                                await getSeasonFestivalMainItem(page: 0, size: 19, season: "autumn")
+                                viewModel.state.page = 0
+                                await getSeasonFestivalMainItem(page: 0, size: 12, season: "autumn")
                                 season = selectedSeason
                             }
                             
@@ -143,8 +149,10 @@ struct SeasonModalView: View {
                     Button {
          
                             Task {
+                                viewModel.state.getFestivalMainResponse = FestivalModel(totalElements: 0, data: [])
                                 selectedSeason = LocalizedKey.winter.localized(for: localizationManager.language)
-                                await getSeasonFestivalMainItem(page: 0, size: 19, season: "winter")
+                                viewModel.state.page = 0
+                                await getSeasonFestivalMainItem(page: 0, size: 12, season: "winter")
                                 season = selectedSeason
                             }
                         

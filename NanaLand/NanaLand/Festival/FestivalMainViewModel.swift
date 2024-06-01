@@ -11,6 +11,7 @@ class FestivalMainViewModel: ObservableObject {
     struct State {
         var getFestivalMainResponse = FestivalModel(totalElements: 0, data: [])
         var title = ""
+        var page = 0
         
     }
     
@@ -46,7 +47,8 @@ class FestivalMainViewModel: ObservableObject {
             let response = await FestivalService.getThisMonthFestivalMainItem(page: page, size: size, filterName: filterName, startDate: startDate, endDate: endDate)
             if response != nil {
                 await MainActor.run {
-                    state.getFestivalMainResponse.data = response!.data.data
+                    state.getFestivalMainResponse.totalElements = response!.data.totalElements
+                    state.getFestivalMainResponse.data.append(contentsOf: response!.data.data)
                     state.title = "이번달"
                     
                 }
@@ -55,7 +57,8 @@ class FestivalMainViewModel: ObservableObject {
             let response = await FestivalService.getSeasonFestivalMainItem(page: page, size: size, season: season)
             if response != nil {
                 await MainActor.run {
-                    state.getFestivalMainResponse.data = response!.data.data
+                    state.getFestivalMainResponse.totalElements = response!.data.totalElements
+                    state.getFestivalMainResponse.data.append(contentsOf: response!.data.data)
                     state.title = "계절별"
                 }
             }
@@ -63,7 +66,8 @@ class FestivalMainViewModel: ObservableObject {
             let response = await FestivalService.getPastFestivalMainItem(page: page, size: size, filterName: filterName)
             if response != nil {
                 await MainActor.run {
-                    state.getFestivalMainResponse.data = response!.data.data
+                    state.getFestivalMainResponse.totalElements = response!.data.totalElements
+                    state.getFestivalMainResponse.data.append(contentsOf: response!.data.data)
                     state.title = "종료된"
                 }
             }
