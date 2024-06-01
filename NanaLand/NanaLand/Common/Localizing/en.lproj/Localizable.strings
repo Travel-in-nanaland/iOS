@@ -219,7 +219,7 @@ the market is the place!";
 "count" = "Results";
 "location" = "Location";
 "allLocation" = "All";
-"jejuCity" = "jejuCity";
+"jejuCity" = "Jeju-si";
 "Aewol" = "Aewol";
 "Jocheon" = "Jocheon";
 "Hangyeong" = "Hangyeong";
@@ -250,3 +250,19 @@ the market is the place!";
 "amenity" = "Facilities";
 "proposeUpdateInfo" = "Information Update Suggestions";
 
+// MARK: - FestivalView
+"thisMonthFestival" = "Monthly Festival";
+"pastFestival" = "Ended Festival";
+"seasonFestival" = "Seasonal Festival";
+
+// MARK: - SeasonModalView
+"selectSeason" = "Select Season";
+"spring" = "Spring";
+"summer" = "Summer";
+"autumn" = "Autumn";
+"winter" = "Winter";
+"month" = "월";
+"springMonth" = "March, April";
+"summerMonth" = "May, June, July, August";
+"autumnMonth" = "September, October";
+"winterMonth" = "November, December, January, February";

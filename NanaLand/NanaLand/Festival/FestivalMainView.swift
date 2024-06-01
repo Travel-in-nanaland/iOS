@@ -10,14 +10,14 @@ import Kingfisher
 import SwiftUICalendar
 
 struct FestivalMainView: View {
-   
+    @EnvironmentObject var localizationManager: LocalizationManager
     @State private var tabIndex = 0
     // 피커뷰에서 지역이 선택되었을 때 데이터 저장할 변수
     @State var locationTitle = "1"
     
     var body: some View {
         VStack(spacing: 0) {
-            NavigationBar(title: "축제")
+            NavigationBar(title: LocalizedKey.festival.localized(for: localizationManager.language))
                 .frame(height: 56)
                 .padding(.bottom, 16)
             
@@ -41,34 +41,6 @@ struct FestivalMainView: View {
         
         
     }
-}
-
-struct FestivalLocationFilterView: View {
-    
-    @State private var selectedLocation: String = "" // 선택된 지역을 저장하는 상태 변수
-    let locations = ["Seoul", "Busan", "Incheon", "Daegu", "Daejeon", "Gwangju"] // 사용 가능한 지역 목록
-
-    var body: some View {
-        VStack {
-            // 지역 선택 드롭다운 메뉴
-            Picker("지역을 선택해주세요", selection: $selectedLocation) {
-                ForEach(locations, id: \.self) { location in
-                    Text(location)
-                }
-            }
-            .pickerStyle(.menu) // 드롭다운 메뉴 스타일
-            .onChange(of: selectedLocation) { value in
-                print("change")
-               
-            }
-            // 선택된 지역 표시
-            Text("Selected Location: \(selectedLocation)")
-                .padding()
-           
-        }
-        .padding()
-    }
-
 }
 
 struct SeasonFilterButtonView: View {
@@ -118,11 +90,11 @@ struct SeasonFilterButtonView: View {
 struct SeasonFilterView: View {
     @StateObject var viewModel: FestivalMainViewModel
     @State private var seasonModal = false // 장소 선택 뷰 모달 여부
-    @State private var season = "봄"
+    @State private var season = LocalizedKey.spring.localized(for: LocalizationManager().language)
     var count: Int // item 갯수
     var body: some View{
         HStack(spacing: 0) {
-            Text("\(count)건")
+            Text("\(count) " + .count)
                 .padding(.leading, 16)
                 .foregroundStyle(Color.gray1)
             
@@ -134,12 +106,12 @@ struct SeasonFilterView: View {
                 Text(season)
                     .font(.gothicNeo(.medium, size: 12))
                     .padding(.leading, 12)
-                Spacer()
+                
                 Image("icDownSmall")
                     .padding(.trailing, 12)
             }
             .foregroundStyle(Color.gray1)
-            .frame(width: 70, height: 40)
+            .frame(height: 40)
             .background(
                 RoundedRectangle(cornerRadius: 30)
                     .strokeBorder(Color.gray2, lineWidth: 1)
@@ -154,11 +126,12 @@ struct SeasonFilterView: View {
     }
 }
 struct FilterView: View {
+    @EnvironmentObject var localizationManager: LocalizationManager
     @StateObject var viewModel: FestivalMainViewModel
     var count: Int // item 갯수
     @State private var locationModal = false
     @State private var dateModal = false
-    @State private var location = "전 지역"
+    @State private var location = LocalizedKey.allLocation.localized(for: LocalizationManager().language)
     @State private var yearMonthDay: YearMonthDay? // 시작날짜 선택 했을 때
     @State private var endYearMonthDay: YearMonthDay? // 종료날짜 선택 했을 때
     var title: String
@@ -184,7 +157,7 @@ struct FilterView: View {
     var body: some View{
        
         HStack(spacing: 0) {
-            Text("\(count)건")
+            Text("\(count) " + .count)
                 .padding(.leading, 16)
                 .foregroundStyle(Color.gray1)
             Spacer()
@@ -289,7 +262,7 @@ struct FilterView: View {
 
 struct TabBarView: View {
     @Binding var currentTab: Int
-    var tabBarOptions: [String] = ["이번달 축제", "종료된 축제", "계절별 축제"]
+    var tabBarOptions: [String] = [LocalizedKey.thisMonthFestival.localized(for: LocalizationManager().language), LocalizedKey.pastFestival.localized(for: LocalizationManager().language), LocalizedKey.pastFestival.localized(for: LocalizationManager().language)]
     @Namespace var namespace
     var body: some View {
         HStack {
