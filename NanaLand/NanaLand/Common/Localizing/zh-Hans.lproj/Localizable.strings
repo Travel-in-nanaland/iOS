@@ -34,6 +34,7 @@
 //MARK: - Search
 "inputSearchTerm" = "请输入搜索词。";
 "recentSearchTerm" = "最近搜索词";
+"noRecentSearchTerm" = "";
 "removeAll" = "全部清除";
 "popularSearchTerm" = "搜索量最多";
 "searchVolumeUp" = "搜索量上升！ JEJU Place 🍊";

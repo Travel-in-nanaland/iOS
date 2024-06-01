@@ -38,6 +38,7 @@ enum LocalizedKey: String {
 	//MARK: - Search
 	case inputSearchTerm
 	case recentSearchTerm
+	case noRecentSearchTerm
 	case removeAll
 	case popularSearchTerm
 	case searchVolumeUp

@@ -34,6 +34,7 @@
 //MARK: - Search
 "inputSearchTerm" = "검색어를 입력해 주세요";
 "recentSearchTerm" = "최근 검색어";
+"noRecentSearchTerm" = "최근 검색어가 없습니다.";
 "removeAll" = "모두 지우기";
 "popularSearchTerm" = "가장 많이\\\\ 검색하고 있어요!";
 "searchVolumeUp" = "검색량 UP ! JEJU Place 🍊";

@@ -119,7 +119,7 @@ struct SearchMainView: View {
 				.padding(.top, 8)
 			} else {
 				HStack {
-					Text(String(localized: "noRecentSearchTerm"))
+					Text(.noRecentSearchTerm)
 						.font(.gothicNeo(.medium, size: 14))
 						.foregroundStyle(Color.gray1)
 					Spacer()

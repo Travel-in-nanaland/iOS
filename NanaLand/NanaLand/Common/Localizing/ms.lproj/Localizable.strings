@@ -34,6 +34,7 @@
 //MARK: - Search
 "inputSearchTerm" = "Sila masukkan kata carian.";
 "recentSearchTerm" = "Carian terkini";
+"noRecentSearchTerm" = "";
 "removeAll" = "Kosongkan semua";
 "popularSearchTerm" = "Paling Banyak Dicari!";
 "searchVolumeUp" = "eningkatan Pencarian! Tempat Jeju 🍊";
