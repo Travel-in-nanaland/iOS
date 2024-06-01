@@ -10,7 +10,6 @@ import Kingfisher
 
 struct ProfileMainView: View {
     @StateObject var viewModel = ProfileMainViewModel()
-    @EnvironmentObject var localizationManager: LocalizationManager
 	@StateObject var appState = AppState.shared
 	@AppStorage("provider") var provider: String = ""
 	
@@ -18,7 +17,7 @@ struct ProfileMainView: View {
 
         VStack(spacing: 0) {
             ZStack {
-                NanaNavigationBar(title: LocalizedKey.mynana.localized(for: localizationManager.language))
+                NanaNavigationBar(title: .mynana)
                     .padding(.bottom, 16)
                 HStack(spacing: 0) {
                     Spacer()

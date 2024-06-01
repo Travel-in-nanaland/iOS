@@ -44,9 +44,12 @@ enum LocalizedKey: String {
 	case noResult
 	
 	//MARK: - Login/Register
+	case appleLogin
+	case googleLogin
 	case nonMemeberLogin
 	case welcomeToNanaLand
 	case enterNicknameAndProfile
+	case nicknameTextFieldPlaceHolder
 	
 	//MARK: - Terms
 	case allAgree
@@ -62,6 +65,7 @@ enum LocalizedKey: String {
 	case withdrawAlertTitle
 	case withdrawAlertMessage
 	case changeLanguageAlertTitle
+	case invalidEmail
 	
 	//MARK: - TypeTest
 	case skipTypeTest
@@ -131,6 +135,10 @@ enum LocalizedKey: String {
 	case GAMGYUL_BUBBLE_TEA
 	case GAMGYUL_BUBBLE_TEA_DESCRIPTION
 	case nanalandMadeYouJuice
+	// 결과 값 추천 여행지
+	case recommendedTravelPlace
+	case recommenedeTravelTitleFirstLine
+	case recommenedeTravelTitleSecondLine
 	
     //MARK: - MyPage
     // main
@@ -212,6 +220,10 @@ enum LocalizedKey: String {
     case withDrawReason
     case withdraw
     case accountDeletion
+	
+	// MARK: - 비회원
+	case nonMemeberAlertDescription
+	case nonMemeberAlertGoRegister
     
     // MARK: - Home
     case recommendTitle
@@ -275,6 +287,30 @@ enum LocalizedKey: String {
     case summerMonth
     case autumnMonth
     case winterMonth
+  
+    // MARK: - 정보 수정 제안
+	case reportInfo
+	case reportInfoTitle
+	case reportInfoDescription
+	case numberAndHomepage
+	case oprationTime
+	case placeNameAndLocation
+	case priceInfo
+	case deletePlace
+	case etcReportInfoTitle
+	case provideService
+	case addPhoto
+	case addPhotoDescription
+	case reportInfoContentTitle
+	case reportInfoContentPlaceHolder
+	case email
+	case reportInfoEmailDescription
+	case send
+	case thxForReportInfoTitle
+	case thxForReportInfoDescription
+	case showContentAgain
+	case reportAgain
+    
     
 	//MARK: - localized()
 	func localized(for language: Language) -> String {

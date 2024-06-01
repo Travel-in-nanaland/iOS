@@ -23,17 +23,16 @@ struct ReportInfoMainView: View {
 	
 	var body: some View {
 		VStack(spacing: 0) {
-			NanaNavigationBar(title: String(localized: "modifyInfo"), showBackButton: true)
+			NanaNavigationBar(title: .reportInfo, showBackButton: true)
 				.padding(.bottom, 32)
 			
 			ScrollView(.vertical, showsIndicators: false) {
 				VStack(alignment: .leading, spacing: 0) {
-					Text(String(localized: "suggestInfoModificationTitle"))
+					Text(.reportInfoTitle)
 						.font(.title01_bold)
 						.padding(.bottom, 4)
 					
-					Text(String(localized: "suggestInfoModificationDescription"))
-						.lineLimit(2)
+					Text(.reportInfoDescription)
 						.font(.body02)
 						.padding(.bottom, 32)
 						.foregroundStyle(Color(hex: 0x717171))
@@ -50,7 +49,7 @@ struct ReportInfoMainView: View {
 						
 					}
 					
-					Text(String(localized: "shareETCInfo"))
+					Text(.etcReportInfoTitle)
 						.font(.title01_bold)
 						.padding(.top, 32)
 						.padding(.bottom, 16)
@@ -97,7 +96,7 @@ struct ReportInfoItemView: View {
 				.frame(width: 28, height: 28)
 				.foregroundStyle(Color.baseBlack)
 			
-			Text(String(localized: "\(category.type.rawValue)"))
+			Text(category.type.localizedKey)
 				.font(.body02)
 				.foregroundStyle(Color.baseBlack)
 			

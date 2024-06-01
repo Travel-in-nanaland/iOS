@@ -35,6 +35,9 @@ final class TypeTestViewModel: ObservableObject {
 		
 		// 결과 타입
 		var userType: TripType? = nil
+		
+		// 추천 여행지
+		var recommendPlace: [RecommendModel] = []
 	}
 	
 	enum Action {
@@ -43,6 +46,7 @@ final class TypeTestViewModel: ObservableObject {
 		case onTapGotoMainViewButton
 		case onTapLetsgoButton
 		case onAppearLoadingView
+		case onTapGotoRecommendPlaceView
 	}
 	
 	@Published var state: State
@@ -63,6 +67,8 @@ final class TypeTestViewModel: ObservableObject {
 			letsgoButtonTapped()
 		case .onAppearLoadingView:
 			loadingViewOnAppeared()
+		case .onTapGotoRecommendPlaceView:
+			gotoRecommendPlace()
 		}
 	}
 		
@@ -123,6 +129,17 @@ final class TypeTestViewModel: ObservableObject {
 	func loadingViewOnAppeared() {
 		DispatchQueue.main.asyncAfter(deadline: .now() + 3) {[weak self] in
 			self?.state.navigationPath.append(.typeTestResult)
+		}
+	}
+	
+	func gotoRecommendPlace() {
+		Task {
+			let result = await HomeService.getRecommendDataInTypeTest()
+			
+			await MainActor.run {
+				state.recommendPlace = result?.data ?? []
+				state.navigationPath.append(.typeTestRecommendPlace)
+			}
 		}
 	}
 	

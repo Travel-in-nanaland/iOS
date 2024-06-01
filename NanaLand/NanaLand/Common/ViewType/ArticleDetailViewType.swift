@@ -10,5 +10,8 @@ import Foundation
 // shop, nature등 리스트에서 detail과 정보 수정 제안으로 navigation
 enum ArticleViewType: Hashable {
 	case detail(id: Int64)
+}
+
+enum ArticleDetailViewType: Hashable {
 	case reportInfo(id: Int64, category: Category)
 }

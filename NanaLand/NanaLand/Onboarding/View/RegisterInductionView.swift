@@ -22,7 +22,7 @@ struct RegisterInductionView: View {
 					.padding(.top, 47)
 					.padding(.bottom, 32)
 				
-				Text("나나랜드의 회원이 되셔야,\n모든 서비스를\n이용하실 수 있습니다✨")
+				Text(.nonMemeberAlertDescription)
 					.multilineTextAlignment(.center)
 					.font(.title01_bold)
 					.padding(.bottom, 40)
@@ -37,7 +37,7 @@ struct RegisterInductionView: View {
 						.frame(width: Constants.screenWidth-120, height: 48)
 						.overlay {
 							HStack(spacing: 4) {
-								Text("회원가입 하러 가기")
+								Text(.nonMemeberAlertGoRegister)
 									.font(.body_semibold)
 								
 								Image(.icRight)

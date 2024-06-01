@@ -15,7 +15,7 @@ enum TypeTestViewType {
 	case typeTestCheck
 	case typeTestLoading
 	case typeTestResult
-	
+	case typeTestRecommendPlace
 }
 
 struct TypeTestNavigationView: View {
@@ -79,6 +79,8 @@ struct TypeTestNavigationView: View {
 					TypeTestLoadingView()
 				case .typeTestResult:
 					TypeTestResultView(nickname: nickname)
+				case .typeTestRecommendPlace:
+					TypeTestRecommendPlaceView(nickname: nickname)
 				}
 				
 			}

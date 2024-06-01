@@ -40,9 +40,12 @@
 "noResult" = "There are no results for that search.";
 
 //MARK: - Login/Register
+"appleLogin" = "Sign in with Apple";
+"googleLogin" = "Sign in with Google";
 "nonMemeberLogin" = "Browse Without Logging In";
 "welcomeToNanaLand" = "Welcome to\nnanaland in Jeju";
 "enterNicknameAndProfile" = "Enter your name and\nselect a profile picture.";
+"nicknameTextFieldPlaceHolder" = "Please enter your name";
 
 //MARK: - Terms
 "allAgree" = "Agree to All";
@@ -59,6 +62,7 @@
 "withdrawAlertTitle" = "Are you sure you don't want to receive Jeju travel information and benefits?😢";
 "withdrawAlertMessage" = "*If you rejoin within 90 days, you can log in with your existing account.";
 "changeLanguageAlertTitle" = "Do you want to change\nto this language?";
+"invalidEmail" = "";
 
 //MARK: - TypeTest
 "skipTypeTest" = "Skip the test";
@@ -128,6 +132,10 @@
 "GAMGYUL_BUBBLE_TEA" = "Tapioca Tangerine Tea";
 "GAMGYUL_BUBBLE_TEA_DESCRIPTION" = "A type full of curiosity, surprising with each bite.";
 "nanalandMadeYouJuice" = "nanaland in Jeju has created a custom travel juice for you!";
+// 결과 값 추천 여행지
+"recommendedTravelPlace" = "Recommended\nTravel Destinations";
+"recommenedeTravelTitleFirstLine" = "Recommended Travel";
+"recommenedeTravelTitleSecondLine" = "Destinations for %@";
 
 //MARK: - MyPage
 // main
@@ -203,6 +211,10 @@ Needed for device tampering detection solutions";
 "INCONVENIENT_COMMUNITY" = "Community Usage Inconvenience";
 "RARE_VISITS" = "Rarely Visit";
 
+// MARK: - 비회원
+"nonMemeberAlertDescription" = "You need to become a\nmember to use all services✨";
+"nonMemeberAlertGoRegister" = "Sign Up for Membership";
+
 // MARK: - Home
 "recommendTitle" = "Local Picks for";
 "firstAdvertismentTitle" = "Want to see the beautiful sea in Jeju Island?";
@@ -266,3 +278,27 @@ the market is the place!";
 "summerMonth" = "May, June, July, August";
 "autumnMonth" = "September, October";
 "winterMonth" = "November, December, January, February";
+
+// MARK: - 정보 수정 제안
+"reportInfo" = "Information Update Suggestions";
+"reportInfoTitle" = "Suggest an Information Update!";
+"reportInfoDescription" = "You may receive rewards if photos attached with your suggestions help verify location information.";
+"numberAndHomepage" = "Phone Number and Website";
+"oprationTime" = "Name and Location";
+"placeNameAndLocation" = "Operating Hours";
+"priceInfo" = "Price Information";
+"deletePlace" = "Delete Location";
+"etcReportInfoTitle" = "Share Other Information!";
+"provideService" = "Offering service";
+"addPhoto" = "Add Photos";
+"addPhotoDescription" = "Attach photos of verified information for more\n accurate details.";
+"reportInfoContentTitle" = "Suggest an Information Update";
+"reportInfoContentPlaceHolder" = "Leave detailed information on the items you want to update or any other comments.";
+"email" = "Email";
+"reportInfoEmailDescription" = "Enter your email to receive the results of your suggestion.";
+"send" = "Submit";
+"thxForReportInfoTitle" = "Thank you for your information correction suggestion";
+"thxForReportInfoDescription" = "With the information correction suggestion, the attractiveness of the travel destination has also increased!\n\nIt’s getting more and more exciting🧚‍♀️";
+"showContentAgain" = "View Content Again";
+"reportAgain" = "Add Another Item";
+

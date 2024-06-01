@@ -142,8 +142,6 @@ struct ShopMainGridView: View {
 			switch viewType {
 			case let .detail(id):
 				ShopDetailView(id: id)
-			case let .reportInfo(id, category):
-				ReportInfoMainView(id: id, category: category)
 			}
 		}
         .onAppear {

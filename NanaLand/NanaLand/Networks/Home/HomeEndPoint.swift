@@ -13,6 +13,8 @@ enum HomeEndPoint {
     case getBannerData
     // 추천 게시물 2개 데이터 받아오기
     case getRecommendData
+	// 타입 테스트 후 추천 게시물 2개
+	case getRecommendDataInTypeTest
 }
 
 extension HomeEndPoint: EndPoint {
@@ -20,7 +22,7 @@ extension HomeEndPoint: EndPoint {
         switch self {
         case .getBannerData:
             return "\(Secrets.baseUrl)/nana"
-        case .getRecommendData:
+		case .getRecommendData, .getRecommendDataInTypeTest:
             return "\(Secrets.baseUrl)/member"
         }
     }
@@ -31,6 +33,8 @@ extension HomeEndPoint: EndPoint {
             return ""
         case .getRecommendData:
             return "/recommended/random"
+		case .getRecommendDataInTypeTest:
+			return "/recommended"
         }
     }
     
@@ -40,6 +44,8 @@ extension HomeEndPoint: EndPoint {
             return .get
         case .getRecommendData:
             return .get
+		case .getRecommendDataInTypeTest:
+			return .get
         }
     }
     
@@ -49,6 +55,8 @@ extension HomeEndPoint: EndPoint {
             return .requestPlain
         case .getRecommendData:
             return .requestPlain
+		case .getRecommendDataInTypeTest:
+			return .requestPlain
         }
         
     }

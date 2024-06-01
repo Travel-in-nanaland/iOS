@@ -13,6 +13,7 @@ import GoogleSignIn
 @main
 struct NanaLandApp: App {
 	@StateObject var localizationdManager = LocalizationManager.shared
+	@StateObject var appState = AppState.shared
 	@AppStorage("hasRunBefore") var hasRunBefore: Bool = false
 
 	init() {
@@ -30,12 +31,15 @@ struct NanaLandApp: App {
 			NanaHome()
 				.environmentObject(localizationdManager)
 				.onOpenURL{ url in
-					if (AuthApi.isKakaoTalkLoginUrl(url)) {
+					if url.scheme == "nanaland" {
+						DeepLinkManager.shared.handleDeepLink(url: url )
+					} else if (AuthApi.isKakaoTalkLoginUrl(url)) {
 						AuthController.handleOpenUrl(url: url)
 					} else {
 						GIDSignIn.sharedInstance.handle(url)
 					}
 				}
+				.onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
 		}
 	}
 }

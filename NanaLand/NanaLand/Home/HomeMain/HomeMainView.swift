@@ -251,8 +251,30 @@ struct HomeMainView: View {
 				ExperienceMainView()
 			case .nanapick:
 				NanapickMainView()
+			case let .shopDetail(id):
+				ShopDetailView(id: Int64(id))
+			case let .festivalDetail(id):
+				FestivalDetailView(id: Int64(id))
+			case let .natureDetail(id):
+				NatureDetailView(id: Int64(id))
 			}
 		}
+		.onReceive(NotificationCenter.default.publisher(for: .deeplinkShowMarketDetail)) { notification in
+			if let userInfo = notification.userInfo, let id = userInfo["id"] as? Int {
+				AppState.shared.navigationPath.append(HomeViewType.shopDetail(id: id))
+			}
+		}
+		.onReceive(NotificationCenter.default.publisher(for: .deeplinkShowFestivalDetail)) { notification in
+			if let userInfo = notification.userInfo, let id = userInfo["id"] as? Int {
+				AppState.shared.navigationPath.append(HomeViewType.festivalDetail(id: id))
+			}
+		}
+		.onReceive(NotificationCenter.default.publisher(for: .deeplinkShowNatureDetail)) { notification in
+			if let userInfo = notification.userInfo, let id = userInfo["id"] as? Int {
+				AppState.shared.navigationPath.append(HomeViewType.natureDetail(id: id))
+			}
+		}
+		
 	}
     
     func getRecommendData() async {

@@ -43,6 +43,21 @@ enum Language: String, CaseIterable {
 	case chinese = "CHINESE"
 	case malaysia = "MALAYSIA"
 	
+	init?(deeplinkName: String) {
+		switch deeplinkName {
+		case "en":
+			self = .english
+		case "ko":
+			self = .korean
+		case "zh":
+			self = .chinese
+		case "ms":
+			self = .malaysia
+		default:
+			return nil
+		}
+	}
+	
 	var localizedName: String {
 		switch self {
 		case .english:
@@ -66,6 +81,20 @@ enum Language: String, CaseIterable {
 			return "中国话"
 		case .malaysia:
 			return "Melayu"
+		}
+	}
+	
+	// 딥링크에서 사용하는 언어 이름
+	var deeplinkName: String {
+		switch self {
+		case .english:
+			return "en"
+		case .korean:
+			return "ko"
+		case .chinese:
+			return "zh"
+		case .malaysia:
+			return  "ms"
 		}
 	}
 }

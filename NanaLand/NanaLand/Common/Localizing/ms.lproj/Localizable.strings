@@ -40,9 +40,12 @@
 "noResult" = "Carian anda tidak\nmengembalikan sebarang hasil.";
 
 //MARK: - Login/Register
+"appleLogin" = "Sign in with Apple";
+"googleLogin" = "Sign in with Google";
 "nonMemeberLogin" = "Guna Tanpa Log Masuk";
 "welcomeToNanaLand" = "Selamat datang ke\nnanaland in Jeju";
 "enterNicknameAndProfile" = " Sila tulis nama penggunaan\ndan pilih profil.";
+"nicknameTextFieldPlaceHolder" = "Sila masukkan nama";
 
 //MARK: - Terms
 "allAgree" = "Setuju Semua";
@@ -59,6 +62,7 @@
 "withdrawAlertTitle" = "Betul-betul tidak mahu menerima maklumat dan tawaran perjalanan ke Jeju?😢";
 "withdrawAlertMessage" = "*Jika menyertai semula\ndalam masa 90 hari,";
 "changeLanguageAlertTitle" = "Adakah anda ingin menukar kepada bahasa tersebut?";
+"invalidEmail" = "";
 
 //MARK: - TypeTest
 "skipTypeTest" = "Langkau ujian";
@@ -127,6 +131,11 @@
 "GAMGYUL_BUBBLE_TEA" = "Bubble Tea  Mandarin";
 "GAMGYUL_BUBBLE_TEA_DESCRIPTION" = "Sejenis Bubble Tea Mandaring yang penuh dengan kejutan semakin anda minum!";
 "nanalandMadeYouJuice" = "nanaland in Jeju telah membuat jus perjalanan khas untuk anda!";
+// 결과 값 추천 여행지
+"recommendedTravelPlace" = "Destinasi\nPelancongan Disyorkan";
+"recommenedeTravelTitleFirstLine" = "Destinasi Pelancongan";
+"recommenedeTravelTitleSecondLine" = "Disyorkan untuk %@";
+
 
 //MARK: - MyPage
 // main
@@ -196,6 +205,10 @@ ditetapkan sebagai lalai.";
 "INCONVENIENT_COMMUNITY" = "Ketidakselesaan Penggunaan Komuniti";
 "RARE_VISITS" = "Jarang Berkunjung";
 
+// MARK: - 비회원
+"nonMemeberAlertDescription" = "Anda perlu menjadi ahli\nuntuk menggunakan\nsemua perkhidmatan✨";
+"nonMemeberAlertGoRegister" = "Daftar Ahli";
+
 // MARK: - Home
 "recommendTitle" = "Cadangan untuk";
 "firstAdvertismentTitle" = "Nak lihat laut yang cantik di Pulau Jeju?";
@@ -259,3 +272,27 @@ Telah Berakhir";
 "summerMonth" = "May, June, July, August";
 "autumnMonth" = "September, October";
 "winterMonth" = "November, December, January, February";
+
+// MARK: - 정보 수정 제안
+"reportInfo" = "Cadangan Pembetulan";
+"reportInfoTitle" = "Sila berikan cadangan maklumat yang perlu dibetulkan.";
+"reportInfoDescription" = "Jika foto yang dilampirkan untuk cadangan lokasi membantu mengesahkan maklumat lokasi, anda boleh mendapat faedah.";
+"numberAndHomepage" = "Nombor Telefon & Laman Web";
+"oprationTime" = "Waktu Penggunaan";
+"placeNameAndLocation" = "Alamat  & Nama Tempat";
+"priceInfo" = "Maklumat Harga";
+"deletePlace" = "Padam Lokasi";
+"etcReportInfoTitle" = "Sila kongsi maklumat tambahan!";
+"provideService" = "Perkhidmatan yang Disediakan";
+"addPhoto" = "Tambah Gambar";
+"addPhotoDescription" = "Jika anda melampirkan maklumat yang disahkan\nbersama foto, maklumat yang lebih tepat akan\n dilengkapkan.";
+"reportInfoContentTitle" = "Cadangan Pembetulan Maklumat";
+"reportInfoContentPlaceHolder" = "Sila lampirkan gambar bersama dengan maklumat yang telah disahkan untuk melengkapkan maklumat yang lebih tepat";
+"email" = "E-mel";
+"reportInfoEmailDescription" = "Sila tinggalkan komen jika ada butiran mengenai item yang anda minta untuk diubah atau apa-apa isu lain";
+"send" = "Hantar";
+"thxForReportInfoTitle" = "Terima kasih atas cadangan pembetulan maklumat anda";
+"thxForReportInfoDescription" = "Dengan cadangan pembetulan maklumat, daya tarikan destinasi pelancongan turut meningkat!\n\nSemakin dinanti-nantikan🧚‍♀️";
+"showContentAgain" = "Tengok Kandungan Semula";
+"reportAgain" = "Tambah Item Lain";
+

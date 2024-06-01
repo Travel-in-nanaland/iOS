@@ -10,7 +10,7 @@ import SwiftUI
 struct ExperienceMainView: View {
     var body: some View {
         VStack {
-            NanaNavigationBar(title: "이색 체험", showBackButton: true)
+			NanaNavigationBar(title: .experience, showBackButton: true)
             Spacer()
             VStack(spacing: 0) {
                 Image("icAirplane")
