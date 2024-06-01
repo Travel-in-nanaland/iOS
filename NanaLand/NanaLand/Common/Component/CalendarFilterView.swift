@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftUICalendar
 
 struct CalendarFilterView: View {
+    @EnvironmentObject var localizationManager: LocalizationManager
 	@Environment(\.dismiss) var dismiss
     @ObservedObject var viewModel: FestivalMainViewModel
 	@StateObject var calendarController = CalendarController()
@@ -50,7 +51,7 @@ struct CalendarFilterView: View {
     
 	private var titleAndCloseButton: some View {
 		HStack {
-			Text(String(localized: "chooseDate"))
+            Text(.chooseDate)
 				.font(.gothicNeo(.bold, size: 18))
 			
 			Spacer()
@@ -84,10 +85,60 @@ struct CalendarFilterView: View {
 							.resizable()
 							.frame(width: 24, height: 24)
 					})
+                    switch calendarController.yearMonth.month {
+                    case 1:
+                        Text(.jan)
+                            .font(.largeTitle02)
+                            .foregroundStyle(Color.baseBlack)
+                    case 2:
+                        Text(.feb)
+                            .font(.largeTitle02)
+                            .foregroundStyle(Color.baseBlack)
+                    case 3:
+                        Text(.mar)
+                            .font(.largeTitle02)
+                            .foregroundStyle(Color.baseBlack)
+                    case 4:
+                        Text(.apr)
+                            .font(.largeTitle02)
+                            .foregroundStyle(Color.baseBlack)
+                    case 5:
+                        Text(.may)
+                            .font(.largeTitle02)
+                            .foregroundStyle(Color.baseBlack)
+                    case 6:
+                        Text(.jun)
+                            .font(.largeTitle02)
+                            .foregroundStyle(Color.baseBlack)
+                    case 7:
+                        Text(.jul)
+                            .font(.largeTitle02)
+                            .foregroundStyle(Color.baseBlack)
+                    case 8:
+                        Text(.aug)
+                            .font(.largeTitle02)
+                            .foregroundStyle(Color.baseBlack)
+                    case 9:
+                        Text(.sep)
+                            .font(.largeTitle02)
+                            .foregroundStyle(Color.baseBlack)
+                    case 10:
+                        Text(.oct)
+                            .font(.largeTitle02)
+                            .foregroundStyle(Color.baseBlack)
+                    case 11:
+                        Text(.nov)
+                            .font(.largeTitle02)
+                            .foregroundStyle(Color.baseBlack)
+                    case 12:
+                        Text(.dec)
+                            .font(.largeTitle02)
+                            .foregroundStyle(Color.baseBlack)
+                    
+                    default:
+                        Text(.jan)
+                    }
 					
-					Text("\(calendarController.yearMonth.month)\(String(localized: "month"))")
-						.font(.largeTitle02)
-						.foregroundStyle(Color.baseBlack)
 					
 					Button(action: {
 						calendarController.scrollTo(calendarController.yearMonth.addMonth(value: 1))
@@ -110,9 +161,26 @@ struct CalendarFilterView: View {
 			headerSize: .fixHeight(28),
 			header: { week in
 				VStack(alignment: .center) {
-					Text("\(week.shortString)")
-						.font(.caption01)
-						.foregroundStyle(Color.gray1)
+                    switch localizationManager.language {
+                    case .chinese:
+                        Text("\(week.shortString(locale: Locale(languageCode: .chinese)))")
+                            .font(.caption01)
+                            .foregroundStyle(Color.gray1)
+                    case .english:
+                        Text("\(week.shortString(locale: Locale(languageCode: .english)))")
+                            .font(.caption01)
+                            .foregroundStyle(Color.gray1)
+                    case .korean:
+                        Text("\(week.shortString(locale: Locale(languageCode: .korean)))")
+                            .font(.caption01)
+                            .foregroundStyle(Color.gray1)
+                    case .malaysia:
+                        Text("\(week.shortString(locale: Locale(languageCode: .malay)))")
+                            .font(.caption01)
+                            .foregroundStyle(Color.gray1)
+                        
+                    }
+                    
 				}
 				.frame(width: 52, height: 28)
 			}, component: { date in
@@ -164,7 +232,7 @@ struct CalendarFilterView: View {
 						.resizable()
 						.frame(width: 24, height: 24)
 					
-					Text(String(localized: "reset"))
+                    Text(.reset)
 				}
 			})
 			.tint(.baseBlack)
@@ -193,18 +261,18 @@ struct CalendarFilterView: View {
                 let strEndDate = String(endDate?.year ?? strCurrentYear!) + formattedNumber(endDate?.month ?? Int(strCurrentMonth)!) + formattedNumber(endDate?.day ?? strCurrentDay!)
                 
                 Task {
-                    if location == "지역" || location == "전 지역" {
+                    if location == "지역" || location == LocalizedKey.allLocation.localized(for: localizationManager.language) {
                         location = ""
                     }
                     
                     await getDateFestivalMainItem(page: 0, size: 18, filterName: [location].joined(separator: ","), start: strStartDate, end: strEndDate)
                     if location == "" {
-                        location = "전 지역"
+                        location = LocalizedKey.allLocation.localized(for: localizationManager.language)
                     }
                 }
 				dismiss()
 			}, label: {
-				Text(String(localized: "apply"))
+                Text(.apply)
 					.frame(height: 48)
 					.frame(maxWidth: .infinity)
 			})

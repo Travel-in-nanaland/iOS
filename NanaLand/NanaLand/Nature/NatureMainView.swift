@@ -146,17 +146,17 @@ struct NatureMainGridView: View {
             
             Task {
                 if isAdvertisement {
-                    await getNatureMainItem(page: 0, size:18, filterName: LocalizedKey.Seongsan.localized(for: localizationManager.language))
+                    await getNatureMainItem(page: 0, size:487, filterName: LocalizedKey.Seongsan.localized(for: localizationManager.language))
                     location = LocalizedKey.Seongsan.localized(for: localizationManager.language)
                     isAPICalled = true
                     isAdvertisement = false
                     
                 } else {
                     if location == LocalizedKey.allLocation.localized(for: localizationManager.language) {
-                        await getNatureMainItem(page: 0, size:18, filterName:"")
+                        await getNatureMainItem(page: 0, size:487, filterName:"")
                         isAPICalled = true
                     } else {
-                        await getNatureMainItem(page: 0, size: 18, filterName: location)
+                        await getNatureMainItem(page: 0, size: 487, filterName: location)
                         isAPICalled = true
                     }
                     

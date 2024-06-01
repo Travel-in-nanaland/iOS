@@ -287,6 +287,33 @@ the market is the place!";
 // MARK: - MarketDetailView
 "homepage" = "Website";
 
+// MARK: - FestivalDetailView
+"duration" = "Duration";
+
+// MARK: - CalendarView
+"chooseDate" = "ChooseDate";
+"calendarMonth" = "";
+"monday" = "MON";
+"tuesday" = "TUE";
+"wednesday" = "WED";
+"thursday" = "TUR";
+"friday" = "FRI";
+"saturday" = "SAT";
+"sunday" = "SUN";
+
+"jan" = "JAN";
+"feb" = "FEB";
+"mar" = "MAR";
+"apr" = "APR";
+"may" = "MAY";
+"jun" = "JUN";
+"jul" = "JUL";
+"aug" = "AUG";
+"sep" = "SEP";
+"oct" = "OCT";
+"nov" = "NOV";
+"dec" = "DEC";
+
 // MARK: - 정보 수정 제안
 "reportInfo" = "Information Update Suggestions";
 "reportInfoTitle" = "Suggest an Information Update!";

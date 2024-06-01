@@ -8,7 +8,7 @@
 import Foundation
 
 struct FestivalModel: Codable {
-    let totalElements: Int64
+    var totalElements: Int64
     var data: [FestivalData]
 }
 

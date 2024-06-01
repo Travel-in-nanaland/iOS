@@ -13,6 +13,7 @@ struct LocationModalView: View {
     @ObservedObject var shopViewModel: ShopMainViewModel
     @EnvironmentObject var localizationManager: LocalizationManager
     
+    
     @Binding var location: String
     @Binding var isModalShown: Bool
 
@@ -141,11 +142,13 @@ struct LocationModalView: View {
                         await getLocationFestivalMainItem(page: 0, size: 18, filterName: selectedLocation.joined(separator: ","), start: startDate, end: endDate)
                     }
                     else if title == "종료된" {
-                        await getPastLocationFestivalMainItem(page: 0, size: 18, filterName: selectedLocation.joined(separator: ","))
-                    } 
+                        viewModel.state.getFestivalMainResponse = FestivalModel(totalElements: 0, data: [])
+                        await getPastLocationFestivalMainItem(page: 0, size: 12, filterName: selectedLocation.joined(separator: ","))
+                  
+                    }
                     else if title == "7대자연" {
                      
-                        await getLocationNatureMainItem(filterName: selectedLocation.joined(separator: ","), page: 0, size: 18)
+                        await getLocationNatureMainItem(filterName: selectedLocation.joined(separator: ","), page: 0, size: 487)
                         natureViewModel.state.location = selectedLocation.joined(separator: ",")
                     } else {
                         print(selectedLocation)
