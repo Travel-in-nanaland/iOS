@@ -320,6 +320,10 @@ Telah Berakhir";
 "nov" = "NOV";
 "dec" = "DIS";
 
+// MARK: - 검색 결과 없을 시 뷰
+"noResult" = "Carian anda tidak
+mengembalikan sebarang hasil.";
+
 
 // MARK: - 정보 수정 제안
 "reportInfo" = "Cadangan Pembetulan";

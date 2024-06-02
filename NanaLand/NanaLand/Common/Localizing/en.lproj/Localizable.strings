@@ -327,6 +327,9 @@ the market is the place!";
 "nov" = "NOV";
 "dec" = "DEC";
 
+// MARK: - 검색 결과 없을 시 뷰
+"noResult" = "There are no results for that search.";
+
 // MARK: - 정보 수정 제안
 "reportInfo" = "Information Update Suggestions";
 "reportInfoTitle" = "Suggest an Information Update!";

@@ -43,7 +43,7 @@ struct NatureMainGridView: View {
     
     var body: some View {
         HStack(spacing: 0) {
-            Text("\(viewModel.state.getNatureMainResponse.data.count)" + .count)
+            Text("\(viewModel.state.getNatureMainResponse.totalElements)" + .count)
                 .padding(.leading, 16)
                 .foregroundStyle(Color.gray1)
             Spacer()
@@ -82,82 +82,109 @@ struct NatureMainGridView: View {
         }
         .padding(.bottom, 16)
         ScrollView {
-            LazyVGrid(columns: columns, spacing: 16) {
-                if isAPICalled {
-                    ForEach((0...viewModel.state.getNatureMainResponse.data.count-1), id: \.self) { index in
-                        NavigationLink(destination: NatureDetailView(id: viewModel.state.getNatureMainResponse.data[index].id)) {
-                            VStack(alignment: .leading) {
-                                ZStack {
-                                    KFImage(URL(string: viewModel.state.getNatureMainResponse.data[index].thumbnailUrl))
-                                        .resizable()
-                                        .frame(width: (UIScreen.main.bounds.width - 40) / 2, height: ((UIScreen.main.bounds.width - 40) / 2) * (12 / 16))
-                                        .clipShape(RoundedRectangle(cornerRadius: 12))
-                                    VStack {
-                                        HStack {
-                                            Spacer()
-                                            
-                                            Button {
-                                                Task {
-                                                    await toggleFavorite(body: FavoriteToggleRequest(id: Int(viewModel.state.getNatureMainResponse.data[index].id), category: .nature), index: index)
+            if isAPICalled {
+                if viewModel.state.getNatureMainResponse.data.count == 0 {
+                    NoResultView()
+                        .frame(height: 70)
+                        .padding(.top, (Constants.screenHeight - 208) * (179 / 636))
+                }
+                else {
+                    LazyVGrid(columns: columns, spacing: 16) {
+                        
+                            ForEach((0...viewModel.state.getNatureMainResponse.data.count-1), id: \.self) { index in
+                                NavigationLink(destination: NatureDetailView(id: viewModel.state.getNatureMainResponse.data[index].id)) {
+                                    VStack(alignment: .leading) {
+                                        ZStack {
+                                            KFImage(URL(string: viewModel.state.getNatureMainResponse.data[index].thumbnailUrl))
+                                                .resizable()
+                                                .frame(width: (UIScreen.main.bounds.width - 40) / 2, height: ((UIScreen.main.bounds.width - 40) / 2) * (12 / 16))
+                                                .clipShape(RoundedRectangle(cornerRadius: 12))
+                                            VStack {
+                                                HStack {
+                                                    Spacer()
+                                                    
+                                                    Button {
+                                                        Task {
+                                                            await toggleFavorite(body: FavoriteToggleRequest(id: Int(viewModel.state.getNatureMainResponse.data[index].id), category: .nature), index: index)
+                                                        }
+                                                      
+                                                    } label: {
+                                                        viewModel.state.getNatureMainResponse.data[index].favorite ? Image("icHeartFillMain") : Image("icHeart")
+                                                    }
                                                 }
-                                              
-                                            } label: {
-                                                viewModel.state.getNatureMainResponse.data[index].favorite ? Image("icHeartFillMain") : Image("icHeart")
+                                                .padding(.top, 8)
+                                                Spacer()
                                             }
+                                            .padding(.trailing, 8)
                                         }
-                                        .padding(.top, 8)
+                                        
+                                        
                                         Spacer()
+                                        
+                                        Text("\(viewModel.state.getNatureMainResponse.data[index].title)")
+                                            .font(.gothicNeo(.bold, size: 14))
+                                            .foregroundStyle(.black)
+                                            .lineLimit(1)
+                                        
+                                        Spacer()
+                                        Text("\(viewModel.state.getNatureMainResponse.data[index].addressTag)")
+                                            .frame(width:64, height: 20)
+                                            .background(
+                                                RoundedRectangle(cornerRadius: 30)
+                                                    .foregroundStyle(Color.main10P)
+                                            )
+                                            .font(.gothicNeo(.regular, size: 12))
+                                            .foregroundStyle(Color.main)
                                     }
-                                    .padding(.trailing, 8)
+                                    
+                                    .frame(width: (UIScreen.main.bounds.width - 40) / 2, height: 196)
+                                    
+                                    .padding(.leading, 0)
                                 }
                                 
-                                
-                                Spacer()
-                                
-                                Text("\(viewModel.state.getNatureMainResponse.data[index].title)")
-                                    .font(.gothicNeo(.bold, size: 14))
-                                    .foregroundStyle(.black)
-                                    .lineLimit(1)
-                                
-                                Spacer()
-                                Text("\(viewModel.state.getNatureMainResponse.data[index].addressTag)")
-                                    .frame(width:64, height: 20)
-                                    .background(
-                                        RoundedRectangle(cornerRadius: 30)
-                                            .foregroundStyle(Color.main10P)
-                                    )
-                                    .font(.gothicNeo(.regular, size: 12))
-                                    .foregroundStyle(Color.main)
                             }
-                            
-                            .frame(width: (UIScreen.main.bounds.width - 40) / 2, height: 196)
-                            
-                            .padding(.leading, 0)
-                        }
+                            if viewModel.state.page < 40 {
+                                ProgressView()
+                                    .onAppear {
+                                        Task {
+                                            if location == LocalizedKey.allLocation.localized(for: LocalizationManager().language) {
+                                                await getNatureMainItem(page: Int64(viewModel.state.page + 1), size: 12, filterName: "")
+                                            } else {
+                                                await getNatureMainItem(page: Int64(viewModel.state.page + 1), size: 12, filterName: location)
+                                            }
+                                            
+                                            viewModel.state.page += 1
+                                        }
+                                    }
+                            }
                         
                     }
+                    .padding(.horizontal, 16)
+                    .padding(.bottom, UIApplication.shared.windows.first?.safeAreaInsets.bottom ?? 0)
                 }
             }
-            .padding(.horizontal, 16)
-            .padding(.bottom, UIApplication.shared.windows.first?.safeAreaInsets.bottom ?? 0)
+           
         }
         .onAppear {
             print(isAdvertisement)
             
             Task {
                 if isAdvertisement {
-                    await getNatureMainItem(page: 0, size:487, filterName: LocalizedKey.Seongsan.localized(for: localizationManager.language))
+                    await getNatureMainItem(page: 0, size: 12, filterName: LocalizedKey.Seongsan.localized(for: localizationManager.language))
                     location = LocalizedKey.Seongsan.localized(for: localizationManager.language)
                     isAPICalled = true
                     isAdvertisement = false
+                    viewModel.state.page = 0
                     
                 } else {
                     if location == LocalizedKey.allLocation.localized(for: localizationManager.language) {
-                        await getNatureMainItem(page: 0, size:487, filterName:"")
+                        await getNatureMainItem(page: 0, size: 12, filterName:"")
                         isAPICalled = true
+                        viewModel.state.page = 0
                     } else {
-                        await getNatureMainItem(page: 0, size: 487, filterName: location)
+                        await getNatureMainItem(page: 0, size: 12, filterName: location)
                         isAPICalled = true
+                        viewModel.state.page = 0
                     }
                     
                 }

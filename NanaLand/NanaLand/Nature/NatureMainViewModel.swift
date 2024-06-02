@@ -10,6 +10,7 @@ class NatureMainViewModel: ObservableObject {
     struct State {
         var getNatureMainResponse = NatureMainModel(totalElements: 0, data: [])
         var location = ""
+        var page = 0
     }
     
     enum Action {
@@ -33,7 +34,9 @@ class NatureMainViewModel: ObservableObject {
             
             if response != nil {
                 await MainActor.run {
-                    state.getNatureMainResponse.data = response!.data.data
+                    print(filterName)
+                    state.getNatureMainResponse.totalElements = response!.data.totalElements
+                    state.getNatureMainResponse.data.append(contentsOf: response!.data.data)
                 }
             } else {
                 print("Erorr")

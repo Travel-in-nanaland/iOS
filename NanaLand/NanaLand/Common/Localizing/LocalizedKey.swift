@@ -358,7 +358,7 @@ enum LocalizedKey: String {
 	case thxForReportInfoTitle
 	case thxForReportInfoDescription
 	case showContentAgain
-	case reportAgain
+	case reportAgain    
     
     
 	//MARK: - localized()

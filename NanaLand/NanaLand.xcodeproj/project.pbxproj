@@ -176,7 +176,7 @@
 		BF9F02912BD89EB1003E72E6 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9F02902BD89EB1003E72E6 /* NavigationBar.swift */; };
 		BF9F02952BD8A6AD003E72E6 /* FestivalDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9F02942BD8A6AD003E72E6 /* FestivalDetailView.swift */; };
 		BF9F02992BD8DFC0003E72E6 /* FestivalMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9F02982BD8DFC0003E72E6 /* FestivalMainViewModel.swift */; };
-		BF9F029B2BD8F567003E72E6 /* FestivalNoResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9F029A2BD8F567003E72E6 /* FestivalNoResultView.swift */; };
+		BF9F029B2BD8F567003E72E6 /* NoResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9F029A2BD8F567003E72E6 /* NoResultView.swift */; };
 		BFABD34D2BE75F3E00C3F3A6 /* FestivalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFABD34C2BE75F3E00C3F3A6 /* FestivalService.swift */; };
 		BFABD34F2BE75F4600C3F3A6 /* FestivalEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFABD34E2BE75F4600C3F3A6 /* FestivalEndPoint.swift */; };
 		BFABD3512BE7634100C3F3A6 /* FestivalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFABD3502BE7634100C3F3A6 /* FestivalModel.swift */; };
@@ -382,7 +382,7 @@
 		BF9F02902BD89EB1003E72E6 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		BF9F02942BD8A6AD003E72E6 /* FestivalDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FestivalDetailView.swift; sourceTree = "<group>"; };
 		BF9F02982BD8DFC0003E72E6 /* FestivalMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FestivalMainViewModel.swift; sourceTree = "<group>"; };
-		BF9F029A2BD8F567003E72E6 /* FestivalNoResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FestivalNoResultView.swift; sourceTree = "<group>"; };
+		BF9F029A2BD8F567003E72E6 /* NoResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoResultView.swift; sourceTree = "<group>"; };
 		BFABD34C2BE75F3E00C3F3A6 /* FestivalService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FestivalService.swift; sourceTree = "<group>"; };
 		BFABD34E2BE75F4600C3F3A6 /* FestivalEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FestivalEndPoint.swift; sourceTree = "<group>"; };
 		BFABD3502BE7634100C3F3A6 /* FestivalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FestivalModel.swift; sourceTree = "<group>"; };
@@ -974,7 +974,7 @@
 				BF607F122BF5A01D00770CE7 /* FestivalDetailViewModel.swift */,
 				BFABD3502BE7634100C3F3A6 /* FestivalModel.swift */,
 				BF607F142BF5A15E00770CE7 /* FestivalDetailModel.swift */,
-				BF9F029A2BD8F567003E72E6 /* FestivalNoResultView.swift */,
+				BF9F029A2BD8F567003E72E6 /* NoResultView.swift */,
 				BFABD3522BE7F9E100C3F3A6 /* SeasonModalView.swift */,
 				BFF5DA902BE809D100FD8764 /* LocationModalView.swift */,
 			);
@@ -1320,7 +1320,7 @@
 				BFC671F72BF7198800D1A2FD /* ShopMainModel.swift in Sources */,
 				BF3021F02BDF8E9B00CB3966 /* ShopDetailEndPoint.swift in Sources */,
 				BF0997B62BD4E38500563E9A /* NaNaPickDetailModel.swift in Sources */,
-				BF9F029B2BD8F567003E72E6 /* FestivalNoResultView.swift in Sources */,
+				BF9F029B2BD8F567003E72E6 /* NoResultView.swift in Sources */,
 				2C80ECB72BCFA055002F38A7 /* Data+.swift in Sources */,
 				2C9CF4D62BFDF32E00A346E8 /* ReportInfoEndPoint.swift in Sources */,
 				BF794B652BF9BB860045FAD2 /* ProfileUpdateView.swift in Sources */,
