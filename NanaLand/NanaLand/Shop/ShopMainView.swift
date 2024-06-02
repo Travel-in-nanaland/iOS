@@ -36,7 +36,7 @@ struct ShopMainGridView: View {
     var body: some View {
 		VStack(spacing: 0) {
 			HStack(spacing: 0) {
-                Text("\(viewModel.state.getShopMainResponse.data.count)" + .count)
+                Text("\(viewModel.state.getShopMainResponse.totalElements)" + .count)
 					.padding(.leading, 16)
 					.foregroundStyle(Color.gray1)
 				
@@ -71,64 +71,77 @@ struct ShopMainGridView: View {
 			ScrollView {
                 if isAPICalled {
                     if viewModel.state.getShopMainResponse.data.count == 0 {
-                        FestivalNoResultView()
+                        NoResultView()
                             .frame(height: 70)
                             .padding(.top, (Constants.screenHeight - 208) * (179 / 636))
                         
                     } else {
                         LazyVGrid(columns: columns, spacing: 16) {
                             
-                                ForEach((0...viewModel.state.getShopMainResponse.data.count-1), id: \.self) { index in
-                                    Button(action: {
-                                        AppState.shared.navigationPath.append(ArticleViewType.detail(id: viewModel.state.getShopMainResponse.data[index].id))
-                                    }, label: {
-                                        VStack(alignment: .leading) {
-                                            ZStack {
-                                                KFImage(URL(string: viewModel.state.getShopMainResponse.data[index].thumbnailUrl))
-                                                    .resizable()
-                                                    .frame(width: (UIScreen.main.bounds.width - 40) / 2, height: ((UIScreen.main.bounds.width - 40) / 2) * (12 / 16))
-                                                    .clipShape(RoundedRectangle(cornerRadius: 12))
-                                                VStack {
-                                                    HStack {
-                                                        Spacer()
-                                                        
-                                                        Button {
-                                                            Task {
-                                                                await toggleFavorite(body: FavoriteToggleRequest(id: Int(viewModel.state.getShopMainResponse.data[index].id), category: .market), index: index)
-                                                            }
-                                                            
-                                                        } label: {
-                                                            viewModel.state.getShopMainResponse.data[index].favorite ? Image("icHeartFillMain") : Image("icHeart")
-                                                        }
-                                                    }
-                                                    .padding(.top, 8)
+                            ForEach((0...viewModel.state.getShopMainResponse.data.count-1), id: \.self) { index in
+                                Button(action: {
+                                    AppState.shared.navigationPath.append(ArticleViewType.detail(id: viewModel.state.getShopMainResponse.data[index].id))
+                                }, label: {
+                                    VStack(alignment: .leading) {
+                                        ZStack {
+                                            KFImage(URL(string: viewModel.state.getShopMainResponse.data[index].thumbnailUrl))
+                                                .resizable()
+                                                .frame(width: (UIScreen.main.bounds.width - 40) / 2, height: ((UIScreen.main.bounds.width - 40) / 2) * (12 / 16))
+                                                .clipShape(RoundedRectangle(cornerRadius: 12))
+                                            VStack {
+                                                HStack {
                                                     Spacer()
+                                                    
+                                                    Button {
+                                                        Task {
+                                                            await toggleFavorite(body: FavoriteToggleRequest(id: Int(viewModel.state.getShopMainResponse.data[index].id), category: .market), index: index)
+                                                        }
+                                                        
+                                                    } label: {
+                                                        viewModel.state.getShopMainResponse.data[index].favorite ? Image("icHeartFillMain") : Image("icHeart")
+                                                    }
                                                 }
-                                                .padding(.trailing, 8)
+                                                .padding(.top, 8)
+                                                Spacer()
                                             }
-                                            
-                                            
-                                            Spacer()
-                                            
-                                            Text("\(viewModel.state.getShopMainResponse.data[index].title)")
-                                                .font(.gothicNeo(.bold, size: 14))
-                                                .foregroundStyle(.black)
-                                                .lineLimit(1)
-                                            
-                                            Spacer()
-                                            Text("\(viewModel.state.getShopMainResponse.data[index].addressTag)")
-                                                .frame(width:64, height: 20)
-                                                .background(
-                                                    RoundedRectangle(cornerRadius: 30)
-                                                        .foregroundStyle(Color.main10P)
-                                                )
-                                                .font(.gothicNeo(.regular, size: 12))
-                                                .foregroundStyle(Color.main)
+                                            .padding(.trailing, 8)
                                         }
                                         
-                                        .frame(width: (UIScreen.main.bounds.width - 40) / 2, height: 196)
-                                    })
-                                }
+                                        
+                                        Spacer()
+                                        
+                                        Text("\(viewModel.state.getShopMainResponse.data[index].title)")
+                                            .font(.gothicNeo(.bold, size: 14))
+                                            .foregroundStyle(.black)
+                                            .lineLimit(1)
+                                        
+                                        Spacer()
+                                        Text("\(viewModel.state.getShopMainResponse.data[index].addressTag)")
+                                            .frame(width:64, height: 20)
+                                            .background(
+                                                RoundedRectangle(cornerRadius: 30)
+                                                    .foregroundStyle(Color.main10P)
+                                            )
+                                            .font(.gothicNeo(.regular, size: 12))
+                                            .foregroundStyle(Color.main)
+                                    }
+                                    
+                                    .frame(width: (UIScreen.main.bounds.width - 40) / 2, height: 196)
+                                })
+                            }
+                            if viewModel.state.page < 40 {
+                                ProgressView()
+                                    .onAppear {
+                                        Task {
+                                            if location == LocalizedKey.allLocation.localized(for: LocalizationManager().language) {
+                                                await getShopMainItem(page: Int64(viewModel.state.page + 1), size: 12, filterName: "")
+                                            } else {
+                                                await getShopMainItem(page: Int64(viewModel.state.page + 1), size: 12, filterName: location)
+                                            }
+                                            viewModel.state.page += 1
+                                        }
+                                    }
+                            }
                             
                         }
                         .padding(.horizontal, 16)
@@ -145,7 +158,7 @@ struct ShopMainGridView: View {
 		}
         .onAppear {
             Task {
-                await getShopMainItem(page: 0, size:18, filterName:"")
+                await getShopMainItem(page: 0, size:12, filterName:"")
                 isAPICalled = true
             }
         }

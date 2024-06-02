@@ -11,6 +11,7 @@ class ShopMainViewModel: ObservableObject {
     struct State {
         var getShopMainResponse = ShopMainModel(totalElements: 0, data: [])
         var location = ""
+        var page = 0
     }
     
     enum Action {
@@ -34,7 +35,8 @@ class ShopMainViewModel: ObservableObject {
             
             if response != nil {
                 await MainActor.run {
-                    state.getShopMainResponse.data = response!.data.data
+                    state.getShopMainResponse.totalElements = response!.data.totalElements
+                    state.getShopMainResponse.data.append(contentsOf: response!.data.data)
                 }
             } else {
                 print("Erorr")

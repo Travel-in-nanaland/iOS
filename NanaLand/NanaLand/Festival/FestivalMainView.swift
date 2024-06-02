@@ -98,7 +98,6 @@ struct SeasonFilterView: View {
             Text("\(count) " + .count)
                 .padding(.leading, 16)
                 .foregroundStyle(Color.gray1)
-            Text(selectedSeason)
             Spacer()
             
             Button {
@@ -343,7 +342,7 @@ struct FestivalMainGridView: View {
 				if isAPICalled {
 					// 보여줄 데이터가 없을 때
 					if viewModel.state.getFestivalMainResponse.data.count == 0 {
-						FestivalNoResultView()
+						NoResultView()
 							.frame(height: 70)
 							.padding(.top, (Constants.screenHeight - 208) * (179 / 636))
 						

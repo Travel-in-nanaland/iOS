@@ -147,12 +147,17 @@ struct LocationModalView: View {
                   
                     }
                     else if title == "7대자연" {
-                     
-                        await getLocationNatureMainItem(filterName: selectedLocation.joined(separator: ","), page: 0, size: 487)
-                        natureViewModel.state.location = selectedLocation.joined(separator: ",")
-                    } else {
+                        natureViewModel.state.getNatureMainResponse = NatureMainModel(totalElements: 0, data: [])
+                        
                         print(selectedLocation)
+                        await getLocationNatureMainItem(filterName: selectedLocation.joined(separator: ","), page: 0, size: 12)
+                        natureViewModel.state.location = selectedLocation.joined(separator: ",")
+                        natureViewModel.state.page = 0
+                        
+                    } else { // 전통시장
+                        shopViewModel.state.getShopMainResponse = ShopMainModel(totalElements: 0, data: [])
                         await getLocationShopMainItem(filterName: selectedLocation.joined(separator: ","), page: 0, size: 18)
+                        shopViewModel.state.page = 0
                     }
                     
                     location = selectedLocation.joined(separator: ",")

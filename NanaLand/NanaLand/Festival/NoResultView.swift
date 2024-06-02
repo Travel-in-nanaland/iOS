@@ -7,17 +7,19 @@
 
 import SwiftUI
 
-struct FestivalNoResultView: View {
+struct NoResultView: View {
     var body: some View {
-        VStack(spacing: 4) {
+        VStack(alignment: .center, spacing: 4) {
             Image("icNoResult")
-            Text("해당 검색 결과가 없습니다.")
+            Text(.noResult)
                 .font(.body02)
                 .foregroundStyle(Color.gray1)
+                .frame(height: 50)
+                .multilineTextAlignment(.center)
         }
     }
 }
 
 #Preview {
-    FestivalNoResultView()
+    NoResultView()
 }
