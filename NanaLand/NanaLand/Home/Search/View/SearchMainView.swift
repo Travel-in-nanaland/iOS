@@ -53,7 +53,7 @@ struct SearchMainView: View {
 			})
 			
 			NanaSearchBar(
-				placeHolder: LocalizedKey.inputSearchTerm.localized(for: localizationManager.language),
+				placeHolder: .inputSearchTerm,
 				searchTerm: $searchTerm,
 				searchAction: {
 					search(term: searchTerm)

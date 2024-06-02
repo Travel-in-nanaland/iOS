@@ -16,6 +16,7 @@
 "gotoMainScreen" = "메인 화면 바로가기";
 "no" = "아니오";
 "yes" = "네";
+"emptyString" = "";
 
 //MARK: - Tab
 "home" = "홈";
@@ -223,6 +224,17 @@
 "thirdAdvertismentSubTitle" = "아직도 남은 전통 시장들은 뭐가 있을까?";
 "fourthAdvertismentTitle" = "제주도에서만 여는 7월 축제🎈";
 "fourthAdvertismentSubTitle" = "세계의 보물, 제주도가 가득 느껴지는 축제 보러가자";
+// 홈화면 검색 placeholder
+"jejuCanolaFestival" = "제주도는 지금 유채꽃 축제🏵️";
+"jejuGreenTeaField" = "제주도 녹차밭 가보자고😎";
+"jejuFiveDayMarket" = "제주 5일장 언제 열지❓";
+"udoToday" = "우도에서 오늘 뭐하지🏝️";
+"trendyGujwa" = "요즘 HOT한 구좌 탐방하러👒";
+"hallasanTrail" = "한라산 오름길 도장 깨기🏔️";
+"jejuNightDrive" = "제주도 야간 드라이브만한 낭만 또 없지🌉";
+"nearJejuAirport" = "마지막까지, 제주 공항 근처에서 놀자🛫";
+"jejuSummerHydrangea" = "제주의 여름은 수국 DAY😀";
+"jejuCharmingHanok" = "제주도에 감성 낭낭한 한옥 숙소🏠";
 
 // MARK: - FilterView
 "count" = "건";

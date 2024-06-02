@@ -10,14 +10,14 @@ import SwiftUI
 struct NanaSearchBar: View {
 	@Binding var searchTerm: String
 	
-	let placeHolder: String
+	let placeHolder: LocalizedKey
 	let searchAction: () async -> Void
 	let showClearButton: Bool
 	let clearButtonAction: () -> Void
 	let disabled: Bool
 	
 	init(
-		placeHolder: String = "",
+		placeHolder: LocalizedKey = .emptyString,
 		searchTerm: Binding<String>,
 		searchAction: @escaping () async -> Void = {},
 		showClearButton: Bool = true,
@@ -75,5 +75,5 @@ struct NanaSearchBar: View {
 }
 
 #Preview {
-	NanaSearchBar(placeHolder: LocalizedKey.inputSearchTerm.localized(for: .korean), searchTerm: .constant(""))
+	NanaSearchBar(placeHolder: .inputSearchTerm, searchTerm: .constant(""))
 }

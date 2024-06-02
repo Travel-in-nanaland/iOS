@@ -14,6 +14,9 @@ struct HomeMainView: View {
 	@StateObject var viewModel = HomeMainViewModel()
     @State private var isRecommendCalled = false
 	@AppStorage("provider") var provider:String = ""
+	
+	let randomSearchPlaceHolder: LocalizedKey = [.jejuCanolaFestival, .jejuGreenTeaField, .jejuFiveDayMarket, .udoToday, .trendyGujwa, .hallasanTrail, .jejuNightDrive, .nearJejuAirport, .jejuSummerHydrangea, .jejuCharmingHanok].randomElement()!
+	
 	var body: some View {
 		ScrollView {
 			VStack(spacing: 0) {
@@ -28,7 +31,7 @@ struct HomeMainView: View {
 					Spacer()
 					
 					NanaSearchBar(
-						placeHolder: "제주도는 지금 유채꽃 축제🏵️",
+						placeHolder: randomSearchPlaceHolder,
 						searchTerm: .constant(""),
 						showClearButton: false,
 						disabled: true

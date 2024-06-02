@@ -14,6 +14,8 @@ enum Tab {
 
 struct NanaLandTabView: View {
 	@StateObject var appState = AppState.shared
+	@AppStorage("provider") var provider: String = ""
+	
     var body: some View {
 		NavigationStack(path: $appState.navigationPath) {
 			TabView(selection: $appState.currentTab) {
@@ -68,7 +70,7 @@ struct NanaLandTabView: View {
 		}
         .tint(.baseBlack)
 		.fullScreenCover(isPresented: $appState.showTypeTest) {
-			TypeTestNavigationView(nickname: appState.userInfo.nickname)
+			TypeTestNavigationView(nickname: provider == "GUEST" ? "GUEST" : appState.userInfo.nickname)
 		}
         .introspect(.tabView, on: .iOS(.v16, .v17)) { tabView in
             let appearance = UITabBarAppearance()

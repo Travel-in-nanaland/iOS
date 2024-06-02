@@ -16,6 +16,7 @@
 "gotoMainScreen" = "前往主屏幕";
 "no" = "否";
 "yes" = "是";
+"emptyString" = "";
 
 //MARK: - Tab
 "home" = "首页";
@@ -222,6 +223,18 @@
 "thirdAdvertismentSubTitle" = "那些传统市场依然存在呢？";
 "fourthAdvertismentTitle" = "济州岛七月举办的独特节日🎈";
 "fourthAdvertismentSubTitle" = "来看看充满济州岛风情的世界宝藏节日吧";
+// 홈화면 검색 placeholder
+"jejuCanolaFestival" = "济州岛的油菜花节正进行中！🏵️";
+"jejuGreenTeaField" = "一起去济州的绿茶田吧！😎";
+"jejuFiveDayMarket" = "济州五日集什么时候开？❓";
+"udoToday" = "今天在牛岛做什么？🏝️";
+"trendyGujwa" = "探访热门的翰林邑！👒";
+"hallasanTrail" = "征服汉拿山小径！🏔️";
+"jejuNightDrive" = "济州的夜间兜风最浪漫！🌉";
+"nearJejuAirport" = "最后一站，在济州机场附近玩！🛫";
+"jejuSummerHydrangea" = "济州的夏天是绣球花之日！😀";
+"jejuCharmingHanok" = "住在济州充满情调的韩屋！🏠";
+
 
 // MARK: - FilterView
 "count" = "件";

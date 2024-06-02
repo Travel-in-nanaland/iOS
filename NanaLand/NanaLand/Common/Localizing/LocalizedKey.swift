@@ -19,6 +19,7 @@ enum LocalizedKey: String {
 	case gotoMainScreen
 	case no
 	case yes
+	case emptyString
 	
 	//MARK: - Tab
 	case home
@@ -240,6 +241,17 @@ enum LocalizedKey: String {
     case thirdAdvertismentSubTitle
     case fourthAdvertismentTitle
     case fourthAdvertismentSubTitle
+	// 홈화면 검색 placeholder
+	case jejuCanolaFestival
+	case jejuGreenTeaField
+	case jejuFiveDayMarket
+	case udoToday
+	case trendyGujwa
+	case hallasanTrail
+	case jejuNightDrive
+	case nearJejuAirport
+	case jejuSummerHydrangea
+	case jejuCharmingHanok
     
     // MARK: - FilterView(아이템 개수, 지역, 계절, 날짜)
     case count

@@ -16,6 +16,7 @@
 "gotoMainScreen" = "Go to the main screen";
 "no" = "No";
 "yes" = "Yes";
+"emptyString" = "";
 
 //MARK: - Tab
 "home" = "Home";
@@ -231,6 +232,18 @@ the market is the place!";
 "thirdAdvertismentSubTitle" = "Which traditional markets are still around?";
 "fourthAdvertismentTitle" = "Jeju's unique festival in July🎈";
 "fourthAdvertismentSubTitle" = "Let's go see the festival full of the treasures of the world, feeling Jeju Island!";
+// 홈화면 검색 placeholder
+"jejuCanolaFestival" = "Jeju's Canola Festival is on now! 🏵️";
+"jejuGreenTeaField" = "Let's visit Jeju's green tea fields! 😎";
+"jejuFiveDayMarket" = "When is the Jeju 5-day market? ❓";
+"udoToday" = "What to do in Udo today? 🏝️";
+"trendyGujwa" = "Exploring the trendy Gujwa! 👒";
+"hallasanTrail" = "Conquer the Hallasan trails! 🏔️";
+"jejuNightDrive" = "Nothing beats a night drive in Jeju! 🌉";
+"nearJejuAirport" = "Last stop, fun near Jeju Airport! 🛫";
+"jejuSummerHydrangea" = "Summer in Jeju means Hydrangea Day! 😀";
+"jejuCharmingHanok" = "Stay in a charming hanok in Jeju! 🏠";
+
 
 // MARK: - FilterView
 "count" = "Results";
