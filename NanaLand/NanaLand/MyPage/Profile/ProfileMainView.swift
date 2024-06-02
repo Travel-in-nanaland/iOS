@@ -206,7 +206,7 @@ struct ProfileMainView: View {
 			
 			HStack(spacing: 0) {
 				Button(action: {
-					appState.showRegisterInduction = true
+					appState.showTypeTest = true
 				}, label: {
 					HStack(spacing: 4) {
 						Text(AppState.shared.userInfo.hashtags.isEmpty ? .goTest :.retest)

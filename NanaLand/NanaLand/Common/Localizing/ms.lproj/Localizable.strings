@@ -16,6 +16,7 @@
 "gotoMainScreen" = "Terus ke Laman Utama";
 "no" = "Tidak";
 "yes" = "Ya";
+"emptyString" = "";
 
 //MARK: - Tab
 "home" = "Laman Utama";
@@ -224,6 +225,18 @@ ditetapkan sebagai lalai.";
 "thirdAdvertismentSubTitle" = "Pasar tradisional apa yang masih ada?";
 "fourthAdvertismentTitle" = "Festival khas di Jeju pada bulan Julai🎈";
 "fourthAdvertismentSubTitle" = "Mari saksikan festival yang penuh dengan harta karun dunia, rasa Pulau Jeju!";
+// 홈화면 검색 placeholder
+"jejuCanolaFestival" = "Festival Bunga Canola di Jeju sedang berlangsung! 🏵️";
+"jejuGreenTeaField" = "Jom lawati ladang teh hijau Jeju! 😎";
+"jejuFiveDayMarket" = "Bila pasar 5 hari Jeju buka? ❓";
+"udoToday" = "Apa nak buat di Udo hari ini? 🏝️";
+"trendyGujwa" = "Meneroka Gujwa-eup yang trendy! 👒";
+"hallasanTrail" = "Takluki laluan Hallasan! 🏔️";
+"jejuNightDrive" = "Tiada yang lebih romantis dari pemanduan malam di Jeju! 🌉";
+"nearJejuAirport" = "Hentian terakhir, seronok di sekitar Lapangan Terbang Jeju! 🛫";
+"jejuSummerHydrangea" = "Musim panas di Jeju bermaksud Hari Hydrangea! 😀";
+"jejuCharmingHanok" = "Menginap di hanok yang menawan di Jeju! 🏠";
+
 
 // MARK: - FilterView
 "count" = "Results";
