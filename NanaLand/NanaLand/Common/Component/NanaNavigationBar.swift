@@ -33,7 +33,8 @@ struct NanaNavigationBar: View {
 				Spacer()
 				Text(title)
 					.font(.gothicNeo(.bold, size: 20))
-				Spacer()
+					.multilineTextAlignment(.center)
+				Spacer(minLength: 0)
 			}
 			.frame(height: 56)
 			.background(Color.white)

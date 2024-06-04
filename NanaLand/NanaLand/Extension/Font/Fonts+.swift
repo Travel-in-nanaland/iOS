@@ -88,6 +88,10 @@ extension Font {
 		return .gothicNeo(.bold, size: 20)
 	}
 	
+	static var title02: Font {
+		return .gothicNeo(.medium, size: 18)
+	}
+	
 	static var title02_bold: Font {
 		return .gothicNeo(.bold, size: 18)
 	}
