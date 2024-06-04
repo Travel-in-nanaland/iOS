@@ -17,6 +17,8 @@
 "no" = "Tidak";
 "yes" = "Ya";
 "emptyString" = "";
+"beingPrepared" = "Perkhidmatan ini sedang disediakan.\nJumpa lagi!";
+"notification" = "Pemberitahuan";
 
 //MARK: - Tab
 "home" = "Laman Utama";

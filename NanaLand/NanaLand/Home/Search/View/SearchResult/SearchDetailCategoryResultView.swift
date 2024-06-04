@@ -43,7 +43,7 @@ struct SearchDetailCategoryResultView: View {
 						Image(.airplane)
 							.resizable()
 							.frame(width: 100, height: 100)
-						Text("해당 서비스 준비 중입니다.\n다음에 만나요!")
+						Text(.beingPrepared)
 							.font(.body01)
 							.foregroundStyle(Color.gray1)
 							.multilineTextAlignment(.center)
