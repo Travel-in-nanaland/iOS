@@ -13,6 +13,8 @@ struct LoginView: View {
 	@ObservedObject var registerVM: RegisterViewModel
 	let authManager: AuthManager
 	
+	@AppStorage("locale") var locale: String = ""
+	
 	init(registerVM: RegisterViewModel) {
 		self.registerVM = registerVM
 		self.authManager = AuthManager(registerVM: registerVM)
@@ -39,7 +41,7 @@ struct LoginView: View {
 			Spacer()
 			
 			VStack(spacing: 16) {
-				if LocalizationManager.shared.language == .korean {
+				if locale == "KOREAN" {
 					Button(action: {
 						authManager.kakaoLogin()
 					}, label: {
