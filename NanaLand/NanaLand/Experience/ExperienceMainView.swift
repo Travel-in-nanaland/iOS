@@ -14,7 +14,7 @@ struct ExperienceMainView: View {
             Spacer()
             VStack(spacing: 0) {
                 Image("icAirplane")
-                Text("해당 서비스 준비 중입니다. 다음에 만나요!")
+				Text(.beingPrepared)
                     .font(.body01)
                     .foregroundStyle(.gray1)
                     .multilineTextAlignment(.center)

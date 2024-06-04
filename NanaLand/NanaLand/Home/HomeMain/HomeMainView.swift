@@ -43,7 +43,7 @@ struct HomeMainView: View {
 					Spacer()
 					
 					Button(action: {
-						
+						AppState.shared.navigationPath.append(HomeViewType.notification)
 					}) {
 						Image("icBell")
 					}
@@ -246,6 +246,8 @@ struct HomeMainView: View {
 				FestivalDetailView(id: Int64(id))
 			case let .natureDetail(id):
 				NatureDetailView(id: Int64(id))
+			case let .notification:
+				NotificationView()
 			}
 		}
 		.onReceive(NotificationCenter.default.publisher(for: .deeplinkShowMarketDetail)) { notification in

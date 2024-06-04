@@ -18,19 +18,16 @@ struct TypeTestRecommendPlaceView: View {
 			NanaNavigationBar(title: .recommendedTravelPlace, showBackButton: true)
 			
 			ScrollView {
-				HStack(spacing: 0) {
-					VStack(alignment: .leading) {
-						Text(.recommenedeTravelTitleFirstLine, arguments: [nickname])
-							.foregroundStyle(LocalizationManager.shared.language == .malaysia ? .main : .baseBlack)
-						
-						Text(.recommenedeTravelTitleSecondLine)
-							.foregroundStyle(LocalizationManager.shared.language == .malaysia ? .baseBlack : .main)
-					}
-					.font(.largeTitle01)
+				VStack {
+					Text(.recommenedeTravelTitleFirstLine, arguments: [nickname])
+						.font(LocalizationManager.shared.language == .malaysia ? .largeTitle01 : .title02)
+						.foregroundStyle(LocalizationManager.shared.language == .malaysia ? .main : .baseBlack)
 					
-					Spacer(minLength: 0)
+					Text(.recommenedeTravelTitleSecondLine, arguments: [nickname])
+						.font(LocalizationManager.shared.language == .malaysia ? .title02 : .largeTitle01)
+						.foregroundStyle(LocalizationManager.shared.language == .malaysia ? .baseBlack : .main)
 				}
-				.padding(.horizontal, 16)
+				.padding(.bottom, 40)
 				
 				ForEach(typeTestVM.state.recommendPlace, id: \.self) { place in
 					ticketView(place: place)
@@ -68,6 +65,18 @@ struct TypeTestRecommendPlaceView: View {
 				.frame(width: 300, height: 500)
 				.clipped()
 			
+			LinearGradient(
+				gradient: Gradient(stops: [
+					.init(color: Color.black.opacity(0.0), location: 0.0), // 상단
+					.init(color: Color.black.opacity(0.0), location: 0.36), // 위에서 36% 지점
+					.init(color: Color.black.opacity(0.8), location: 0.70), // 위에서 70% 지점
+					.init(color: Color.black.opacity(0.8), location: 1.0) // 하단
+				]),
+				startPoint: .top,
+				endPoint: .bottom
+			)
+			.frame(width: 300, height: 500)
+			
 			Image(.logoStamp)
 				.padding(.top, 16)
 				.padding(.leading, 12)
@@ -87,7 +96,7 @@ struct TypeTestRecommendPlaceView: View {
 				Spacer()
 				
 				Text(place.title)
-					.font(.largeTitle02)
+					.font(.title01_bold)
 					.padding(.bottom, 4)
 				
 				Text(place.introduction)
@@ -102,10 +111,10 @@ struct TypeTestRecommendPlaceView: View {
 			}
 			.foregroundStyle(Color.baseWhite)
 			.padding(.horizontal, 16)
-			.padding(.bottom, 13)
+			.padding(.bottom, 8)
 		}
 		.frame(width: 300, height: 500)
-		.padding(.bottom, 28)
+		.padding(.bottom, 32)
 	}
 }
 

@@ -17,6 +17,8 @@
 "no" = "否";
 "yes" = "是";
 "emptyString" = "";
+"beingPrepared" = "该服务正在准备中。下次见！";
+"notification" = "通知";
 
 //MARK: - Tab
 "home" = "首页";

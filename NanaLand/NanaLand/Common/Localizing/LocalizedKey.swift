@@ -20,6 +20,8 @@ enum LocalizedKey: String {
 	case no
 	case yes
 	case emptyString
+	case beingPrepared
+	case notification
 	
 	//MARK: - Tab
 	case home

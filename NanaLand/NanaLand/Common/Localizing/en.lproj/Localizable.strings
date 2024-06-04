@@ -16,7 +16,9 @@
 "gotoMainScreen" = "Go to the main screen";
 "no" = "No";
 "yes" = "Yes";
-"emptyString" = "";
+"emptyString" = "This service is being prepared.\nSee you next time!";
+"beingPrepared" = "This service is being prepared.\nSee you next time!";
+"notification" = "Notification";
 
 //MARK: - Tab
 "home" = "Home";
