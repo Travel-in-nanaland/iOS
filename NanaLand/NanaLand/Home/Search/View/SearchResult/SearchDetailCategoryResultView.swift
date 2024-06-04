@@ -18,24 +18,27 @@ struct SearchDetailCategoryResultView: View {
     var body: some View {
 		ScrollView(.vertical, showsIndicators: false) {
 			VStack(alignment: .leading, spacing: 17) {
-				Text({
-					switch tab {
-					case .all:
-						return ""
-					case .nature:
-						return "\(searchVM.state.natureCategorySearchResult.totalElements)건"
-					case .festival:
-						return "\(searchVM.state.festivalCategorySearchResult.totalElements)건"
-					case .market:
-						return "\(searchVM.state.marketCategorySearchResult.totalElements)건"
-					case .experience:
-						return "\(searchVM.state.experienceCategorySearchResult.totalElements)건"
-					case .nanaPick:
-						return "\(searchVM.state.nanaCategorySearchResult.totalElements)건"
-					}
-				}() as String)
-					.font(.gothicNeo(.medium, size: 14))
-					.foregroundStyle(Color.gray1)
+				HStack(spacing: 0) {
+					Text({
+						switch tab {
+						case .all:
+							return ""
+						case .nature:
+							return "\(searchVM.state.natureCategorySearchResult.totalElements)"
+						case .festival:
+							return "\(searchVM.state.festivalCategorySearchResult.totalElements)"
+						case .market:
+							return "\(searchVM.state.marketCategorySearchResult.totalElements)"
+						case .experience:
+							return "\(searchVM.state.experienceCategorySearchResult.totalElements)"
+						case .nanaPick:
+							return "\(searchVM.state.nanaCategorySearchResult.totalElements)"
+						}
+					}() as String)
+					Text(.resultCount)
+				}
+				.font(.gothicNeo(.medium, size: 14))
+				.foregroundStyle(Color.gray1)
 				
 //				if searchVM.state.currentSearchTab == .experience || searchVM.state.currentSearchTab == .nanaPick {
 				if false {
@@ -56,7 +59,7 @@ struct SearchDetailCategoryResultView: View {
 						Image(.orange)
 							.resizable()
 							.frame(width: 78, height: 78)
-						Text("해당 검색 결과가 없습니다.")
+						Text(.noResult)
 							.font(.body01)
 							.foregroundStyle(Color.gray1)
 							.multilineTextAlignment(.center)
