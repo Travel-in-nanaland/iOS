@@ -95,7 +95,16 @@ struct RegisterTermsAgreementView: View {
 					}
 				},
 				arrowAction: {
-					safariLink = "https://marbled-melon-1d2.notion.site/1d159953c91a4f25967f5e44e9662d57?pvs=4"
+					if localizaionManager.language == .korean {
+						safariLink = "https://marbled-melon-1d2.notion.site/1d159953c91a4f25967f5e44e9662d57?pvs=4"
+					} else if localizaionManager.language == .english {
+						safariLink = "https://marbled-melon-1d2.notion.site/Terms-of-Service-9b17bdf283ec49bc9ea73436752f479c?pvs=4"
+					} else if localizaionManager.language == .chinese {
+						safariLink = "https://marbled-melon-1d2.notion.site/01403b3a9cc7415e9b4f21c571a586ff?pvs=4"
+					} else if localizaionManager.language == .malaysia {
+						safariLink = "https://marbled-melon-1d2.notion.site/Syarat-Penggunaan-a6766ccb2cec46e8a5116825c2d06f44?pvs=4"
+					}
+					
 					showTermsWithSafari = true
 				}
 			)
@@ -110,7 +119,16 @@ struct RegisterTermsAgreementView: View {
 					}
 				},
 				arrowAction: {
-					safariLink = "https://marbled-melon-1d2.notion.site/a46f94192c5a43269d784b1c940634f7?pvs=4"
+					if localizaionManager.language == .korean {
+						safariLink = "https://marbled-melon-1d2.notion.site/a46f94192c5a43269d784b1c940634f7?pvs=4"
+					} else if localizaionManager.language == .english {
+						safariLink = "https://marbled-melon-1d2.notion.site/Detailed-Explanation-of-Consent-for-Marketing-Use-8fdf8bdefffe4c52a8d3dfe7c32d419a?pvs=4"
+					} else if localizaionManager.language == .chinese {
+						safariLink = "https://marbled-melon-1d2.notion.site/b154c72c16a14129afffcc77f5e2c750?pvs=4"
+					} else if localizaionManager.language == .malaysia {
+						safariLink = "https://marbled-melon-1d2.notion.site/Penjelasan-Terperinci-tentang-Persetujuan-Penggunaan-Data-untuk-Pemasaran-784045112e504087819249b499a935a5?pvs=4"
+					}
+					
 					showTermsWithSafari = true
 				}
 			)
@@ -125,7 +143,16 @@ struct RegisterTermsAgreementView: View {
 					}
 				},
 				arrowAction: {
-					safariLink = "https://marbled-melon-1d2.notion.site/55d9bfc40f6c41728b5b16f79ed9b08d?pvs=4"
+					if localizaionManager.language == .korean {
+						safariLink = "https://marbled-melon-1d2.notion.site/55d9bfc40f6c41728b5b16f79ed9b08d?pvs=4"
+					} else if localizaionManager.language == .english {
+						safariLink = "https://marbled-melon-1d2.notion.site/Terms-and-Conditions-for-Location-Based-Services-Consent-7faa66c1c2f041ff91669fb4737b794a?pvs=4"
+					} else if localizaionManager.language == .chinese {
+						safariLink = "https://marbled-melon-1d2.notion.site/f5b2cefbe29042a9a796f7c1deb32b3d?pvs=4"
+					} else if localizaionManager.language == .malaysia {
+						safariLink = "https://marbled-melon-1d2.notion.site/Syarat-dan-Ketentuan-Layanan-Berbasis-Lokasi-b5638bbd83854c509d32cbeaea205f14?pvs=4"
+					}
+					
 					showTermsWithSafari = true
 				}
 			)
