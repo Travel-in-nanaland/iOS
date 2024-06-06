@@ -462,7 +462,8 @@ extension AuthManager: ASAuthorizationControllerDelegate, ASAuthorizationControl
 		guard let appleIdCredential = authorization.credential as? ASAuthorizationAppleIDCredential else {return}
 		let userId = appleIdCredential.user
 		let email = appleIdCredential.email
-		
+
+		registerVM.state.nickname = appleIdCredential.fullName?.givenName ?? ""
 		if let authorizationCode = String(data: appleIdCredential.authorizationCode ?? Data(), encoding: .utf8) {
 			KeyChainManager.addItem(key: "appleAuthorizationCode", value: authorizationCode)
 			
