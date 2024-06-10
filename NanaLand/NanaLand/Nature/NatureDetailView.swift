@@ -315,7 +315,7 @@ struct NatureDetailView: View {
                                     .background(
                                         RoundedRectangle(cornerRadius: 12.0)
                                             .foregroundStyle(Color.gray2)
-                                            .frame(width: Constants.screenWidth - 40, height: (Constants.screenWidth - 40) * (53 / 358))
+                                            .frame(width: Constants.screenWidth - 40, height: 48)
                                     )
                                     .foregroundStyle(Color.white)
                                     .font(.gothicNeo(.bold, size: 16))
@@ -348,7 +348,7 @@ struct NatureDetailView: View {
                         HStack {
                             Spacer()
                             Button(action: {
-                                print("hello")
+                      
                                   // 10. withAnimation 과함께 함수 작성
                                   withAnimation(.default) {
                                       // ScrollViewReader의 proxyReader을 넣어줌

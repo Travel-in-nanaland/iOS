@@ -264,8 +264,9 @@ struct CalendarFilterView: View {
                     if location == "지역" || location == LocalizedKey.allLocation.localized(for: localizationManager.language) {
                         location = ""
                     }
-                    
-                    await getDateFestivalMainItem(page: 0, size: 18, filterName: [location].joined(separator: ","), start: strStartDate, end: strEndDate)
+                    // 시작날짜~종료날짜 필터링
+                    viewModel.state.getFestivalMainResponse = FestivalModel(totalElements: 0, data: [])
+                    await getDateFestivalMainItem(page: 0, size: 12, filterName: [location].joined(separator: ","), start: strStartDate, end: strEndDate)
                     if location == "" {
                         location = LocalizedKey.allLocation.localized(for: localizationManager.language)
                     }

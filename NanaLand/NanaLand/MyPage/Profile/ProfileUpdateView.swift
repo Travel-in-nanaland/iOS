@@ -126,7 +126,7 @@ struct ProfileUpdateView: View {
                             
                             
                             HStack(spacing: 0) {
-                                if (nickName.count > 8 || viewModel.state.isDuplicate) {
+                                if (nickName.count > 8 || viewModel.state.isDuplicate || nickName.contains("!")) {
                                     Image("icWarningCircle")
                                         .renderingMode(.template)
                                         .resizable()
@@ -137,7 +137,7 @@ struct ProfileUpdateView: View {
                                 }
                                 
                                 Text(
-                                    nickName.count > 8 ? LocalizedKey.nickNameTypingLimitError.localized(for: localizationManager.language) : (viewModel.state.isDuplicate ? LocalizedKey.nickNameDuplicateError.localized(for: localizationManager.language) : " ")
+                                    (nickName.count > 8 || nickName.contains("!")) ? LocalizedKey.nickNameTypingLimitError.localized(for: localizationManager.language) : (viewModel.state.isDuplicate ? LocalizedKey.nickNameDuplicateError.localized(for: localizationManager.language) : " ")
                                     
                                 )
                                     .font(.caption01)
@@ -159,7 +159,7 @@ struct ProfileUpdateView: View {
                     }
                     .padding(.leading, 16)
                     .padding(.bottom, 8)
-                    .padding(.top, 52)
+                    .padding(.top, 80)
                     
                     VStack(spacing: 0) {
                         TextEditor(text: $introduceText)
