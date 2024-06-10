@@ -12,10 +12,6 @@ class RemoteConfigManager {
 	var remoteConfig = RemoteConfig.remoteConfig()
 	var settings = RemoteConfigSettings()
 	
-	init() {
-		setupRemoteConfigListener()
-	}
-	
 	// MARK: - RemoteConfig 리스너 설정
 	func setupRemoteConfigListener() {
 		self.settings.minimumFetchInterval = 0
@@ -29,6 +25,7 @@ class RemoteConfigManager {
 	}
 	
 	func getMinimumVersion() async -> String? {
+		setupRemoteConfigListener()
 		do {
 			try await remoteConfig.fetch()
 			try await remoteConfig.activate()
