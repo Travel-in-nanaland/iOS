@@ -26,7 +26,8 @@ struct NanaHome: View {
 	
 	var body: some View {
 		ZStack {
-			if !isSplashCompleted && !didGetRemoteConfig {
+			// splash가 완료되지 않았거나, 리모트 컨피그를 받아오지 못했거나, (리모트 컨피그를 받아왔는데 업데이트가 필요하거나)
+			if !isSplashCompleted || !didGetRemoteConfig || (didGetRemoteConfig && showUpdateRequired) {
 				SplashView()
 					.onAppear {
 						// 토큰 refresh 성공하면 isLogin true로
@@ -47,7 +48,8 @@ struct NanaHome: View {
 							}
 							
 							if let minimumVersion = await remoteConfigManager.getMinimumVersion() {
-								showUpdateRequired = remoteConfigManager.checkUpdateRequired(minimumVersion: minimumVersion)
+								let updateRequired = remoteConfigManager.checkUpdateRequired(minimumVersion: minimumVersion)
+								showUpdateRequired = updateRequired
 								didGetRemoteConfig = true
 							}
 						}
@@ -82,7 +84,7 @@ struct NanaHome: View {
 			
 			if showUpdateRequired {
 				AlertView(title: .updateRequired, rightButtonTitle: .openAppstore, rightButtonAction: {
-					if let url = URL(string:  "https://apps.apple.com/app/id6502518614") {
+					if let url = URL(string: "https://apps.apple.com/app/id6502518614") {
 						if UIApplication.shared.canOpenURL(url) {
 							UIApplication.shared.open(url, options: [:], completionHandler: nil)
 						}
