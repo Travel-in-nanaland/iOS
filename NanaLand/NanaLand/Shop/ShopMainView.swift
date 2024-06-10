@@ -29,6 +29,7 @@ struct ShopMainView: View {
 struct ShopMainGridView: View {
     @EnvironmentObject var localizationMangaer: LocalizationManager
     @StateObject var viewModel = ShopMainViewModel()
+    @State private var APIFlag = true // onAppear시 한번만 호출 되도록
     @State private var locationModal = false
     @State private var location = LocalizedKey.allLocation.localized(for: LocalizationManager().language)
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
@@ -158,13 +159,16 @@ struct ShopMainGridView: View {
 		}
         .onAppear {
             Task {
-                await getShopMainItem(page: 0, size:12, filterName:"")
-                isAPICalled = true
+                if APIFlag {
+                    viewModel.state.getShopMainResponse = ShopMainModel(totalElements: 0, data: [])
+                    await getShopMainItem(page: 0, size:12, filterName:"")
+                    isAPICalled = true
+                    APIFlag = false
+                }
+              
             }
         }
-			
     }
-    
     
     func getShopMainItem(page: Int64, size: Int64, filterName: String) async {
         await viewModel.action(.getShopMainItem(page: page, size: size, filterName: filterName))

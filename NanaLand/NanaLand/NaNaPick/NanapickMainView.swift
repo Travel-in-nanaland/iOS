@@ -53,7 +53,7 @@ struct NanapickMainView: View {
                             ZStack {
                                 KFImage(URL(string:index.thumbnailUrl))
                                     .resizable()
-                                    .frame(width: Constants.screenWidth, height: Constants.screenWidth * (190 / 390))
+                                    .frame(width: Constants.screenWidth, height: 200)
                                 VStack(spacing: 0) {
                                     HStack(spacing: 0) {
                                         Spacer()
@@ -66,7 +66,7 @@ struct NanapickMainView: View {
                                     HStack(spacing: 0) {
                                         VStack(alignment: .leading, spacing: 2) {
                                             Text(index.subHeading)
-                                                .font(.body_bold)
+                                                .font(.title02_bold)
                                                 .foregroundStyle(.white)
                                             Text(index.heading)
                                                 .font(.largeTitle02)

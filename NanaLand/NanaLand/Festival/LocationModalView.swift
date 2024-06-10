@@ -32,7 +32,7 @@ struct LocationModalView: View {
         VStack(spacing: 0) {
             HStack(spacing: 0) {
                 Text(.location)
-                    .font(.largeTitle02)
+                    .font(.title02_bold)
                     .padding(.leading, 16)
                     .padding(.top, 24)
                 Spacer()
@@ -41,6 +41,8 @@ struct LocationModalView: View {
                     
                 }, label: {
                     Image("icX")
+                        .resizable()
+                        .frame(width: 28, height: 28)
                         .padding(.trailing, 16)
                         .padding(.top, 24)
                 })
@@ -95,7 +97,7 @@ struct LocationModalView: View {
                     HStack(spacing: 0) {
                         Image("icCheck")
                             .resizable()
-                            .frame(width: 24, height: 24)
+                            .frame(width: 20, height: 20)
                         Text(.allSelect)
                             .font(.body01)
                     }
@@ -139,10 +141,12 @@ struct LocationModalView: View {
 
                 Task {
                     if title == "이번달" {
+                        viewModel.state.getFestivalMainResponse = FestivalModel(totalElements: 0, data: [])
                         await getLocationFestivalMainItem(page: 0, size: 18, filterName: selectedLocation.joined(separator: ","), start: startDate, end: endDate)
                     }
                     else if title == "종료된" {
                         viewModel.state.getFestivalMainResponse = FestivalModel(totalElements: 0, data: [])
+                        viewModel.state.page = 0
                         await getPastLocationFestivalMainItem(page: 0, size: 12, filterName: selectedLocation.joined(separator: ","))
                   
                     }
@@ -161,6 +165,7 @@ struct LocationModalView: View {
                     }
                     
                     location = selectedLocation.joined(separator: ",")
+                    viewModel.state.location = location
                     print(location)
                     // 장소 선택 안 할시 전 지역
                     if location == "" {
