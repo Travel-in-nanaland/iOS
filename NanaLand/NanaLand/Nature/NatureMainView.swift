@@ -40,7 +40,7 @@ struct NatureMainGridView: View {
     @State private var filterTitle = "지역"
     @State private var locationModal = false
     @State private var location = LocalizedKey.allLocation.localized(for: LocalizationManager().language)
-    
+    @State private var APIFlag = true // 첫 onAppear시에만 호출
     var body: some View {
         HStack(spacing: 0) {
             Text("\(viewModel.state.getNatureMainResponse.totalElements)" + .count)
@@ -143,51 +143,54 @@ struct NatureMainGridView: View {
                                 }
                                 
                             }
-                            if viewModel.state.page < 40 {
-                                ProgressView()
-                                    .onAppear {
-                                        Task {
-                                            if location == LocalizedKey.allLocation.localized(for: LocalizationManager().language) {
-                                                await getNatureMainItem(page: Int64(viewModel.state.page + 1), size: 12, filterName: "")
-                                            } else {
-                                                await getNatureMainItem(page: Int64(viewModel.state.page + 1), size: 12, filterName: location)
-                                            }
-                                            
-                                            viewModel.state.page += 1
+                        if viewModel.state.page < 40 {
+                            ProgressView()
+                                .onAppear {
+                                    Task {
+                                        if location == LocalizedKey.allLocation.localized(for: LocalizationManager().language) {
+                                            await getNatureMainItem(page: Int64(viewModel.state.page + 1), size: 12, filterName: "")
+                                        } else {
+                                            await getNatureMainItem(page: Int64(viewModel.state.page + 1), size: 12, filterName: location)
                                         }
+                                        
+                                        viewModel.state.page += 1
                                     }
-                            }
-                        
+                                }
+                        }
                     }
                     .padding(.horizontal, 16)
                     .padding(.bottom, UIApplication.shared.windows.first?.safeAreaInsets.bottom ?? 0)
                 }
             }
-           
+            
         }
         .onAppear {
             print(isAdvertisement)
             
             Task {
-                if isAdvertisement {
-                    await getNatureMainItem(page: 0, size: 12, filterName: LocalizedKey.Seongsan.localized(for: localizationManager.language))
-                    location = LocalizedKey.Seongsan.localized(for: localizationManager.language)
-                    isAPICalled = true
-                    isAdvertisement = false
-                    viewModel.state.page = 0
-                    
-                } else {
-                    if location == LocalizedKey.allLocation.localized(for: localizationManager.language) {
-                        await getNatureMainItem(page: 0, size: 12, filterName:"")
+                if APIFlag {
+                    if isAdvertisement {
+                        await getNatureMainItem(page: 0, size: 12, filterName: LocalizedKey.Seongsan.localized(for: localizationManager.language))
+                        location = LocalizedKey.Seongsan.localized(for: localizationManager.language)
                         isAPICalled = true
+                        isAdvertisement = false
                         viewModel.state.page = 0
+                        
                     } else {
-                        await getNatureMainItem(page: 0, size: 12, filterName: location)
-                        isAPICalled = true
-                        viewModel.state.page = 0
+                        if location == LocalizedKey.allLocation.localized(for: localizationManager.language) {
+                            await getNatureMainItem(page: 0, size: 12, filterName:"")
+                            isAPICalled = true
+                            viewModel.state.page = 0
+                        } else {
+                            await getNatureMainItem(page: 0, size: 12, filterName: location)
+                            isAPICalled = true
+                            viewModel.state.page = 0
+                        }
+                        
                     }
-                    
+                    APIFlag = false
                 }
+               
                 
                 
             }

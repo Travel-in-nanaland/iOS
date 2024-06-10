@@ -12,6 +12,7 @@ class FestivalMainViewModel: ObservableObject {
         var getFestivalMainResponse = FestivalModel(totalElements: 0, data: [])
         var title = ""
         var page = 0
+        var location = ""
         
     }
     

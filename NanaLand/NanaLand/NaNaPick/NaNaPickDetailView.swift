@@ -73,7 +73,7 @@ struct NaNaPickDetailView: View {
                                 Spacer()
                             }
                         }
-                        .padding(.bottom, 32)
+                        .padding(.bottom, 48)
                         
                         ForEach(viewModel.state.getNaNaPickDetailResponse.nanaDetails, id: \.number) { index in
                             
@@ -105,20 +105,20 @@ struct NaNaPickDetailView: View {
                                 }
                                 Spacer()
                             }
-                            .padding(.bottom, 8)
+                            .padding(.bottom, 20)
                             
                             KFImage(URL(string: index.imageUrl))
                                 .resizable()
                                 .frame(height: (Constants.screenWidth - 32) * ( 176 / 328))
+                                .clipShape(RoundedRectangle(cornerRadius: 12))
                                 .padding(.leading, 16)
                                 .padding(.trailing, 16)
-                                .padding(.bottom, 8)
+                                .padding(.bottom, 16)
+                                
                             Text("\(index.content)")
                                 .frame(width: (Constants.screenWidth - 32))
                                 .font(.body01)
-                                .padding(.bottom, 8)
-                       
-                            
+                                .padding(.bottom, 24)
                             
                             HStack(spacing: 0) {
                                 if index.additionalInfoList[0].infoEmoji == "ADDRESS" {

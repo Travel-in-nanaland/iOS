@@ -241,14 +241,16 @@ struct FilterView: View {
                     if yearMonthDay == nil {
                         // 첫 화면 일 때
                         LocationModalView(viewModel: viewModel, natureViewModel: NatureMainViewModel(), shopViewModel: ShopMainViewModel(),location: $location, isModalShown: $locationModal, startDate: "", endDate: "", title: title)
-                            .presentationDetents([.height(Constants.screenWidth * (630 / Constants.screenWidth))])
+                            .presentationDetents([.height(200)])
                     } // 종료 날짜를 선택 안했을 때나, 시작 날짜와 종료날짜를 동일하게 선택 => 당일 조회
                     else if endYearMonthDay == yearMonthDay  || endYearMonthDay == nil {
                         
                         LocationModalView(viewModel: viewModel, natureViewModel: NatureMainViewModel(), shopViewModel: ShopMainViewModel(), location: $location, isModalShown: $locationModal, startDate: "\(yearMonthDay!.year)" + "\(formattedNumber(yearMonthDay!.month))" + "\(formattedNumber(yearMonthDay!.day))", endDate: "\(yearMonthDay!.year)" + "\(formattedNumber(yearMonthDay!.month))" + "\(formattedNumber(yearMonthDay!.day))", title: title)
+                            .presentationDetents([.height(200)])
                     } else {
                         // 시작 날짜 종료날짜 다를 때
                         LocationModalView(viewModel: viewModel, natureViewModel: NatureMainViewModel(), shopViewModel: ShopMainViewModel(), location: $location, isModalShown: $locationModal, startDate:  "\(yearMonthDay!.year)" + "\(formattedNumber(yearMonthDay!.month))" + "\(formattedNumber(yearMonthDay!.day))", endDate:  "\(endYearMonthDay!.year)" + "\(formattedNumber(endYearMonthDay!.month))" + "\(formattedNumber(endYearMonthDay!.day))", title: title)
+                            .presentationDetents([.height(200)])
                     }
                                               
                 }
@@ -325,6 +327,8 @@ struct FestivalMainGridView: View {
     var title: String = ""
     var locationTitle = ""
     @State var selectedSeason = ""
+    
+    @State private var APIFlag = true // 첫 onAppear 시에만 호출 하도록
     @EnvironmentObject var localizationManager: LocalizationManager
     var body: some View {
 		VStack(spacing: 0) {
@@ -411,14 +415,15 @@ struct FestivalMainGridView: View {
 							}
                             if title == "종료된" {
                                 if viewModel.state.getFestivalMainResponse.totalElements >= 12 {
-                                    if page < 6 {
+                                    if viewModel.state.page < 6 {
                                         ProgressView()
                                             .onAppear {
                                                 Task {
                                                     
-                                                        await getPastFestivalMainITem(page: Int32(page + 1),size: Int32(size), filterName:[""].joined(separator: ","))
+                                                    await getPastFestivalMainITem(page: Int32(viewModel.state.page
+                                                                                              + 1),size: Int32(size), filterName:viewModel.state.location)
                                                         print(page)
-                                                        page += 1
+                                                    viewModel.state.page += 1
                                                     
                                                     
                                                 }
@@ -528,18 +533,23 @@ struct FestivalMainGridView: View {
 		}
         .onAppear {
             page = 0
-            print("hello")
+            
             Task {
-                if title == "이번달" {
-                    await getThisMonthFestivalMainItem(page: 0, size: 12, filterName: [""].joined(separator: ","), startDate: "", endDate: "")
-                    isAPICalled = true
-                } else if title == "계절별" {
-                    await getSeasonFestivalMainItem(page: 0, size: 12, season: "spring")
-                    isAPICalled = true
-                } else {
-                    await getPastFestivalMainITem(page: Int32(page), size: 12, filterName: [""].joined(separator: ","))
-                    isAPICalled = true
+                if APIFlag {
+                    viewModel.state.getFestivalMainResponse = FestivalModel(totalElements: 0, data: [])
+                    if title == "이번달" {
+                        await getThisMonthFestivalMainItem(page: 0, size: 12, filterName: [""].joined(separator: ","), startDate: "", endDate: "")
+                        isAPICalled = true
+                    } else if title == "계절별" {
+                        await getSeasonFestivalMainItem(page: 0, size: 12, season: "spring")
+                        isAPICalled = true
+                    } else {
+                        await getPastFestivalMainITem(page: Int32(page), size: 12, filterName: [""].joined(separator: ","))
+                        isAPICalled = true
+                    }
+                    APIFlag = false
                 }
+             
                 buttonsToggled = Array(repeating: false, count: viewModel.state.getFestivalMainResponse.data.count)
                 
             }
