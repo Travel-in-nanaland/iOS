@@ -70,6 +70,8 @@ enum LocalizedKey: String {
 	case withdrawAlertMessage
 	case changeLanguageAlertTitle
 	case invalidEmail
+	case updateRequired
+	case openAppstore
 	
 	//MARK: - TypeTest
 	case skipTypeTest

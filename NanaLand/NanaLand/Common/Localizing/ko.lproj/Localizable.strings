@@ -67,6 +67,8 @@
 "withdrawAlertMessage" = "*90일 이내에 재가입 시,\n기존 계정으로 로그인이 됩니다.";
 "changeLanguageAlertTitle" = "해당 언어로\n변경하시겠습니다?";
 "invalidEmail" = "이메일 형식이 잘못 되었습니다. 다시 입력해 주세요!";
+"updateRequired" = "업데이트가 필요합니다";
+"openAppstore" = "앱스토어로 이동";
 
 //MARK: - TypeTest
 "skipTypeTest" = "테스트 건너뛰기";

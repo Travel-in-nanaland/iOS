@@ -67,6 +67,8 @@
 "withdrawAlertMessage" = "*Jika menyertai semula\ndalam masa 90 hari,";
 "changeLanguageAlertTitle" = "Adakah anda ingin menukar kepada bahasa tersebut?";
 "invalidEmail" = "Format e-mel tidak betul. Sila masukkan semula!";
+"updateRequired" = "Memerlukan kemas kini";
+"openAppstore" = "Pindah ke App Store";
 
 //MARK: - TypeTest
 "skipTypeTest" = "Langkau ujian";

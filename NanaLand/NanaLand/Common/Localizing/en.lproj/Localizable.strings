@@ -67,6 +67,8 @@
 "withdrawAlertMessage" = "*If you rejoin within 90 days, you can log in with your existing account.";
 "changeLanguageAlertTitle" = "Do you want to change\nto this language?";
 "invalidEmail" = "The email format is incorrect. Please re-enter!";
+"updateRequired" = "Update is required";
+"openAppstore" = "Move to App Store";
 
 //MARK: - TypeTest
 "skipTypeTest" = "Skip the test";

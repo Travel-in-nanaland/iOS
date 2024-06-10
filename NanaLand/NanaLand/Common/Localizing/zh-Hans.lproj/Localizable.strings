@@ -67,6 +67,8 @@
 "withdrawAlertMessage" = "*90天内重新加入时，\n可以用原账户登录。";
 "changeLanguageAlertTitle" = "您想更改为该语言吗？";
 "invalidEmail" = "电子邮件格式不正确。请重新输入！";
+"updateRequired" = "需要更新";
+"openAppstore" = "前往应用商店";
 
 //MARK: - TypeTest
 "skipTypeTest" = "跳过测试";

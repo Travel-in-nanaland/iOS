@@ -9,6 +9,7 @@ import SwiftUI
 import KakaoSDKCommon
 import KakaoSDKAuth
 import GoogleSignIn
+import Firebase
 
 @main
 struct NanaLandApp: App {
@@ -24,6 +25,8 @@ struct NanaLandApp: App {
 			KeyChainManager.deleteItem(key: "refreshToken")
 			hasRunBefore = true
 		}
+		
+		FirebaseApp.configure()
 	}
 	
     var body: some Scene {
