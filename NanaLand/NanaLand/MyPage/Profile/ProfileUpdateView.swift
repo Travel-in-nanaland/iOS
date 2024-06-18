@@ -21,6 +21,7 @@ struct ProfileUpdateView: View {
     @State private var duplicateText = "해당 닉네임은 다른사용자가 사용 중입니다."
     @StateObject var viewModel = ProfileUpdateViewModel()
     @EnvironmentObject var localizationManager: LocalizationManager
+    let specialCharacters = CharacterSet.punctuationCharacters.union(.symbols).union(.nonBaseCharacters)
     var body: some View {
         
         VStack(spacing: 0) {
@@ -126,7 +127,7 @@ struct ProfileUpdateView: View {
                             
                             
                             HStack(spacing: 0) {
-                                if (nickName.count > 8 || viewModel.state.isDuplicate || nickName.contains("!")) {
+                                if (nickName.count > 8 || viewModel.state.isDuplicate || containsSpecialCharacter(nickName)) {
                                     Image("icWarningCircle")
                                         .renderingMode(.template)
                                         .resizable()
@@ -137,7 +138,7 @@ struct ProfileUpdateView: View {
                                 }
                                 
                                 Text(
-                                    (nickName.count > 8 || nickName.contains("!")) ? LocalizedKey.nickNameTypingLimitError.localized(for: localizationManager.language) : (viewModel.state.isDuplicate ? LocalizedKey.nickNameDuplicateError.localized(for: localizationManager.language) : " ")
+                                    (nickName.count > 8 || containsSpecialCharacter(nickName)) ? LocalizedKey.nickNameTypingLimitError.localized(for: localizationManager.language) : (viewModel.state.isDuplicate ? LocalizedKey.nickNameDuplicateError.localized(for: localizationManager.language) : " ")
                                     
                                 )
                                     .font(.caption01)
@@ -156,8 +157,12 @@ struct ProfileUpdateView: View {
                         Text(.introduction)
                             .font(.body_bold)
                         Spacer()
+                        Text("\(introduceText.count) / 70 " + .charCount)
+                            .font(.caption01)
+                            .foregroundStyle(introduceText.count > 70 ? Color.red : Color.gray1)
                     }
                     .padding(.leading, 16)
+                    .padding(.trailing, 16)
                     .padding(.bottom, 8)
                     .padding(.top, 80)
                     
@@ -168,14 +173,31 @@ struct ProfileUpdateView: View {
                             .font(.body02)
                             .lineSpacing(5) // 줄 간격
                             .frame(width: Constants.screenWidth - 32, height: 80)
-                            .overlay(RoundedRectangle(cornerRadius: 12).stroke(Color.gray2, lineWidth: 1))
+                            .overlay(RoundedRectangle(cornerRadius: 12).stroke(introduceText.count > 70 ? .red : Color.gray2, lineWidth: 1))
                             .padding(.leading, 16)
                             .padding(.trailing, 16)
+                            .padding(.bottom, 8)
+                        if introduceText.count > 70 {
+                            HStack(spacing: 0) {
+                                Image("icWarningCircle")
+                                    .renderingMode(.template)
+                                    .resizable()
+                                    .frame(width: 20, height: 20)
+                                    .foregroundStyle(Color.red)
+                                Text(.introduceTypingLimitError)
+                                    .font(.caption01)
+                                    .foregroundStyle(.red)
+                                    .padding(.leading, 4)
+                                Spacer()
+                            }
+                            .padding(.leading, 16)
+                        }
                         
+                     
                         Spacer()
                     }
                     .ignoresSafeArea(.keyboard)
-                    
+    
                     Spacer()
                     
                     Button(action: {
@@ -202,7 +224,7 @@ struct ProfileUpdateView: View {
                     .background((nickName.count > 8 || nickName.count == 0) ? Color.main10P : Color.main)
                     .clipShape(RoundedRectangle(cornerRadius: 30))
                     .padding(.bottom, 24)
-                    .disabled((nickName.count > 8 || nickName.count == 0) ? true : false)
+                    .disabled((nickName.count > 8 || nickName.count == 0 || introduceText.count > 70) ? true : false)
                 }
                 .frame(height: geometry.size.height)
                 
@@ -210,6 +232,11 @@ struct ProfileUpdateView: View {
         }
        
         
+    }
+    
+    // 문자열에 특수문자가 포함되어 있는지 확인하는 함수
+    func containsSpecialCharacter(_ string: String) -> Bool {
+        return string.rangeOfCharacter(from: specialCharacters) != nil
     }
     
     func updateUserInfo(body: ProfileDTO, multipartFile: [Foundation.Data?]) async {

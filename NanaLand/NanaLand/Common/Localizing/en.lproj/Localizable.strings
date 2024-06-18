@@ -159,6 +159,7 @@
 "complete" = "Update";
 "nickNameTypingLimitError" = "This nickname cannot be used.";
 "nickNameDuplicateError"= "This nickname is already in use by another user.";
+"introduceTypingLimitError" = "The introduction must be within 70 characters.";
 
 // deleteAlert
 "deleteAlertTitle" = "Do you want to delete\nthe changes?";

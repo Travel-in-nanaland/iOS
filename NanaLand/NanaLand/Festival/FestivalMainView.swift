@@ -66,8 +66,6 @@ struct SeasonFilterButtonView: View {
            
             }
             
-            
-            
         }, label: {
             Text("\(title)")
                 .font(.gothicNeo(.medium, size: 12))
@@ -294,11 +292,15 @@ struct TabBarItem: View {
     
     var body: some View {
         Button {
-            currentTab = tab
+            withAnimation(nil) {
+                currentTab = tab
+            }
+ 
         } label: {
             VStack {
                 Spacer()
                 Text(title)
+                    .font(currentTab == tab ? .body02_semibold : .body02)
                 if currentTab == tab {
                     Color.main
                         .frame(height: 2)
