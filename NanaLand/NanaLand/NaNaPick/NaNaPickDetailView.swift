@@ -200,6 +200,7 @@ struct NaNaPickDetailView: View {
         .onAppear {
             Task {
                 await getNaNaDetail(id: id)
+                
                 isAPICalled = true
                 
             }

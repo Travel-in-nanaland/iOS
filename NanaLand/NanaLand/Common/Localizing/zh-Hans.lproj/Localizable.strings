@@ -156,6 +156,7 @@
 "complete" = "修改完成";
 "nickNameTypingLimitError" = "Nama panggilan ini tidak boleh digunakan.";
 "nickNameDuplicateError"= "Nama panggilan ini sudah digunakan oleh pengguna lain.";
+"introduceTypingLimitError" = "介绍必须在70个字符以内。";
 // deleteAlert
 "deleteAlertTitle" = "要删除更改内容吗？";
 "deleteAlertSubTitle" = "现在返回的话更改内容将被删除";
