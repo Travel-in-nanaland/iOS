@@ -58,7 +58,7 @@ struct FavoriteListView: View {
 			}
 		}
 		.padding(.horizontal, 16)
-		.padding(.top, 16)
+		.padding(.top, 0)
 		.task {
 			if !isInit {
 				await favoriteVM.action(.getFavoriteList(category: category))

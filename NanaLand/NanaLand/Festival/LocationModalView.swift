@@ -99,10 +99,10 @@ struct LocationModalView: View {
                             .resizable()
                             .frame(width: 20, height: 20)
                         Text(.allSelect)
-                            .font(.body01)
+                            .font(.body02)
                     }
                 })
-                .frame(height: 40)
+            
                 .padding(.leading, 58)
                 
                 Spacer()
@@ -117,14 +117,15 @@ struct LocationModalView: View {
                     HStack(spacing: 0) {
                         Image("icRe")
                             .resizable()
-                            .frame(width: 24, height: 24)
+                            .frame(width: 20, height: 20)
                         Text(.reset)
-                            .font(.body01)
+                            .font(.body02)
                     }
                 })
-                .frame(height: 40)
+            
                 .padding(.trailing, 58)
             }
+            
             .padding(.bottom, 24)
             Spacer()
             Button(action: {

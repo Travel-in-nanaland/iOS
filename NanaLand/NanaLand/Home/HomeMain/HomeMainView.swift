@@ -157,7 +157,9 @@ struct HomeMainView: View {
                     ForEach(viewModel.state.getRecommendResponse, id: \.id) { article in
                         switch article.category {
                         case "NATURE":
-                            NavigationLink(destination: NatureDetailView(id: Int64(article.id))) {
+                            Button {
+                                AppState.shared.navigationPath.append(HomeViewType.natureDetail(id: article.id))
+                            } label: {
                                 VStack(alignment: .leading, spacing: 8) {
                                     KFImage(URL(string: article.thumbnailUrl)!)
                                         .resizable()
@@ -169,8 +171,11 @@ struct HomeMainView: View {
                                         .multilineTextAlignment(.leading)
                                 }
                             }
+
                         case "FESTIVAL":
-                            NavigationLink(destination: FestivalDetailView(id: Int64(article.id))) {
+                            Button {
+                                AppState.shared.navigationPath.append(HomeViewType.festivalDetail(id: article.id))
+                            } label: {
                                 VStack(alignment: .leading, spacing: 8) {
                                     KFImage(URL(string: article.thumbnailUrl)!)
                                         .resizable()
@@ -181,8 +186,11 @@ struct HomeMainView: View {
                                         .font(.gothicNeo(size: 14, font: "bold"))
                                 }
                             }
+
                         case "MARKET":
-                            NavigationLink(destination: ShopDetailView(id: Int64(article.id))) {
+                            Button {
+                                AppState.shared.navigationPath.append(HomeViewType.shopDetail(id: article.id))
+                            } label: {
                                 VStack(alignment: .leading, spacing: 8) {
                                     KFImage(URL(string: article.thumbnailUrl)!)
                                         .resizable()
@@ -193,8 +201,11 @@ struct HomeMainView: View {
                                         .font(.gothicNeo(size: 14, font: "bold"))
                                 }
                             }
+                            
                         default:
-                            NavigationLink(destination: ShopDetailView(id: Int64(article.id))) {
+                            Button {
+                                AppState.shared.navigationPath.append(HomeViewType.natureDetail(id: article.id))
+                            } label: {
                                 VStack(alignment: .leading, spacing: 8) {
                                     KFImage(URL(string: article.thumbnailUrl)!)
                                         .resizable()
@@ -206,7 +217,6 @@ struct HomeMainView: View {
                                 }
                             }
                         }
-                        
                     }      
 				}
 				.padding(.leading, 16)

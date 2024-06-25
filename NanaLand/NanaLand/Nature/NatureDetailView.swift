@@ -74,7 +74,7 @@ struct NatureDetailView: View {
                                         Spacer()
                                     }
                                     
-                                    .padding(.bottom, 4)
+                                    .padding(.bottom, 8)
                                     
                                     Text(viewModel.state.getNatureDetailResponse.content)
                                         .font(.gothicNeo(.regular, size: 16))
@@ -102,7 +102,7 @@ struct NatureDetailView: View {
                                     
                                     
                                 }
-                                .padding(.top, 28)
+                                .padding(.top, 36)
                             }
                             
                             if isOn { // 더 보기 눌렀을 때
@@ -150,7 +150,7 @@ struct NatureDetailView: View {
                                             .padding(.leading, 16)
                                         Spacer()
                                     }
-                                    .padding(.bottom, 4)
+                                    .padding(.bottom, 8)
                                     Text(viewModel.state.getNatureDetailResponse.content)
                                         .fixedSize(horizontal: false, vertical: true)
                                         .font(.gothicNeo(.regular, size: 16))
@@ -174,24 +174,22 @@ struct NatureDetailView: View {
                                         .padding(.bottom, 16)
                                     }
                                     .padding(.trailing, 16)
-                                    
-                                    
                                 }
-                                .padding(.top, 28)
+                                .padding(.top, 36)
                                 
                             }
                         }
                         .padding(.leading, 20)
                         .padding(.trailing, 20)
                         
-                        VStack(spacing: 16) {
+                        VStack(spacing: 24) {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 12)
                                     .fill(Color.main10P)
                                     .frame(maxWidth: Constants.screenWidth - 40)
                                 VStack(alignment: .leading, spacing: 0) {
                                     HStack(spacing: 0) {
-                                        Image("icWarningCircleMain")
+                                        Image("icNoticeMain")
                                         Text(.introduce)
                                             .font(.gothicNeo(.bold, size: 14))
                                             .foregroundStyle(Color.main)
@@ -207,7 +205,7 @@ struct NatureDetailView: View {
                                         .font(.gothicNeo(.regular, size: 14))
                                     Spacer()
                                 }
-                                .padding(.top, 16)
+                                .padding(.top, 24)
                                 
                             }
                             
@@ -309,20 +307,20 @@ struct NatureDetailView: View {
                             .padding(.bottom, 32)
                             
                             Button {
-								AppState.shared.navigationPath.append(ArticleDetailViewType.reportInfo(id: viewModel.state.getNatureDetailResponse.id, category: .nature))
+                                AppState.shared.navigationPath.append(ArticleDetailViewType.reportInfo(id: viewModel.state.getNatureDetailResponse.id, category: .nature))
                             } label: {
                                 Text(.proposeUpdateInfo)
                                     .background(
                                         RoundedRectangle(cornerRadius: 12.0)
                                             .foregroundStyle(Color.gray2)
-                                            .frame(width: Constants.screenWidth - 40, height: 48)
+                                            .frame(width: 120, height: 40)
                                     )
                                     .foregroundStyle(Color.white)
-                                    .font(.gothicNeo(.bold, size: 16))
+                                    .font(.body02_bold)
                                     .padding(.bottom, 10)
                             }
                         }
-                        .padding(.top, 24)
+                        .padding(.top, 32)
                     }
                     .id("Scroll_To_Top")
                     .onAppear {

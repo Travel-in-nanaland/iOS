@@ -67,7 +67,7 @@ extension Font {
 	/// custom Font.
 	// .font(.gothicNeo(.bold, size: 12))
 	static func gothicNeo(_ weight: GothicNeo = .medium, size: CGFloat) -> Font {
-		return .custom(weight.name, size: size)
+        return .custom(weight.name, size: size)
 	}
 }
 
@@ -117,7 +117,7 @@ extension Font {
 	}
 	
 	static var body02: Font {
-		return .gothicNeo(.medium, size: 14)
+        return .gothicNeo(.medium, size: 14)
 	}
 	
 	static var caption01: Font {

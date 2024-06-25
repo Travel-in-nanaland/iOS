@@ -75,7 +75,7 @@ struct ShopDetailView: View {
                                         .padding(.leading, 16)
                                     Spacer()
                                 }
-                                .padding(.bottom, 4)
+                                .padding(.bottom, 8)
                                 Text(viewModel.state.getShopDetailResponse.content)
                                     .font(.gothicNeo(.regular, size: 16))
                                     .frame(height: roundedHeight * (84 / 224))
@@ -100,7 +100,7 @@ struct ShopDetailView: View {
                                 }
                                 .padding(.trailing, 16)
                             }
-                            .padding(.top, 28)
+                            .padding(.top, 36)
                         }
                        
                         // 더보기 버튼이 눌렸을 때
@@ -149,7 +149,7 @@ struct ShopDetailView: View {
                                         .padding(.leading, 16)
                                     Spacer()
                                 }
-                                .padding(.bottom, 4)
+                                .padding(.bottom, 8)
                                 Text(viewModel.state.getShopDetailResponse.content)
                                     .fixedSize(horizontal: false, vertical: true)
                                     .font(.gothicNeo(.regular, size: 16))
@@ -176,14 +176,14 @@ struct ShopDetailView: View {
                                
                                 
                             }
-                            .padding(.top, 28)
+                            .padding(.top, 36)
                         }
                         
                     }
                     .padding(.leading, 20)
                     .padding(.trailing, 20)
                     
-                    VStack(spacing: 16) {
+                    VStack(spacing: 24) {
                         HStack(spacing: 10) {
                             VStack(spacing: 0) {
                                 Image("icPin")
@@ -277,15 +277,15 @@ struct ShopDetailView: View {
 								.background(
 									RoundedRectangle(cornerRadius: 12.0)
 										.foregroundStyle(Color.gray2)
-										.frame(width: Constants.screenWidth - 40, height: (Constants.screenWidth - 40) * (53 / 358))
+										.frame(width: 120, height: 40)
 								)
 								.foregroundStyle(Color.white)
-								.font(.gothicNeo(.bold, size: 16))
+								.font(.body02_bold)
 								.padding(.bottom, 10)
 						})
                             
                     }
-                    .padding(.top, 24)
+                    .padding(.top, 32)
                    
                 }
                 .onAppear {

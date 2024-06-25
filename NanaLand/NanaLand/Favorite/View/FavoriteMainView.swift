@@ -58,7 +58,7 @@ struct FavoriteMainView: View {
 				}
 			}
 		}
-		.padding(.bottom, 16)
+		.padding(.bottom, 24)
 	}
 	
 	private var contentTab: some View {
