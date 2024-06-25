@@ -77,7 +77,7 @@ struct FestivalDetailView: View {
                                         Spacer()
                                     }
                                     
-                                    .padding(.bottom, 4)
+                                    .padding(.bottom, 8)
                                     
                                     Text(viewModel.state.getFestivalDetailResponse.content)
                                         .font(.gothicNeo(.regular, size: 16))
@@ -105,7 +105,7 @@ struct FestivalDetailView: View {
                                     
                                     
                                 }
-                                .padding(.top, 28)
+                                .padding(.top, 36)
                             }
                             
                             if isOn { // 더 보기 눌렀을 때
@@ -152,7 +152,7 @@ struct FestivalDetailView: View {
                                             .padding(.leading, 16)
                                         Spacer()
                                     }
-                                    .padding(.bottom, 4)
+                                    .padding(.bottom, 8)
                                     Text(viewModel.state.getFestivalDetailResponse.content)
                                         .fixedSize(horizontal: false, vertical: true)
                                         .font(.gothicNeo(.regular, size: 16))
@@ -179,14 +179,14 @@ struct FestivalDetailView: View {
                                     
                                     
                                 }
-                                .padding(.top, 28)
+                                .padding(.top, 36)
                                 
                             }
                         }
                         .padding(.leading, 20)
                         .padding(.trailing, 20)
                         
-                        VStack(spacing: 16) {
+                        VStack(spacing: 24) {
                             
                             HStack(spacing: 10) {
                                 VStack(spacing: 0) {
@@ -287,20 +287,22 @@ struct FestivalDetailView: View {
                             
                             Button {
 								AppState.shared.navigationPath.append(ArticleDetailViewType.reportInfo(id: viewModel.state.getFestivalDetailResponse.id, category: .festival))
+                                print(AppState.shared.navigationPath)
+                                print(AppState.shared.navigationPath.count)
                             } label: {
                                 Text(.proposeUpdateInfo)
                                     .background(
                                         RoundedRectangle(cornerRadius: 12.0)
                                             .foregroundStyle(Color.gray2)
-                                            .frame(width: Constants.screenWidth - 40, height: (Constants.screenWidth - 40) * (53 / 358))
+                                            .frame(width: 120, height: 40)
                                     )
                                     .foregroundStyle(Color.white)
-                                    .font(.gothicNeo(.bold, size: 16))
+                                    .font(.body02_bold)
                                     .padding(.bottom, 10)
                             }
                         }
                         .padding(.bottom, 10)
-                        .padding(.top, 24)
+                        .padding(.top, 32)
                     }
                     .id("Scroll_To_Top")
                     .onAppear {

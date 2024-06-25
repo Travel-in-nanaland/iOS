@@ -52,16 +52,16 @@ struct CalendarFilterView: View {
 	private var titleAndCloseButton: some View {
 		HStack {
             Text(.chooseDate)
-				.font(.gothicNeo(.bold, size: 18))
+				.font(.title02_bold)
 			
 			Spacer()
 			
 			Button(action: {
 				dismiss()
 			}, label: {
-				Image(.icX)
+				Image("icX")
 					.resizable()
-					.frame(width: 32, height: 32)
+					.frame(width: 28, height: 28)
 			})
 		}
 		.padding(.vertical, 24)

@@ -92,7 +92,9 @@ struct NatureMainGridView: View {
                     LazyVGrid(columns: columns, spacing: 16) {
                         
                             ForEach((0...viewModel.state.getNatureMainResponse.data.count-1), id: \.self) { index in
-                                NavigationLink(destination: NatureDetailView(id: viewModel.state.getNatureMainResponse.data[index].id)) {
+                                Button(action: {
+                                    AppState.shared.navigationPath.append(ArticleViewType.detail(id: viewModel.state.getNatureMainResponse.data[index].id))
+                                }, label: {
                                     VStack(alignment: .leading) {
                                         ZStack {
                                             KFImage(URL(string: viewModel.state.getNatureMainResponse.data[index].thumbnailUrl))
@@ -136,11 +138,13 @@ struct NatureMainGridView: View {
                                             .font(.gothicNeo(.regular, size: 12))
                                             .foregroundStyle(Color.main)
                                     }
+                                })
+                                    
                                     
                                     .frame(width: (UIScreen.main.bounds.width - 40) / 2, height: 196)
                                     
                                     .padding(.leading, 0)
-                                }
+                                
                                 
                             }
                         if viewModel.state.page < 40 {
@@ -164,9 +168,13 @@ struct NatureMainGridView: View {
             }
             
         }
+        .navigationDestination(for: ArticleViewType.self) { viewType in
+            switch viewType {
+            case let .detail(id):
+                NatureDetailView(id: id)
+            }
+        }
         .onAppear {
-            print(isAdvertisement)
-            
             Task {
                 if APIFlag {
                     if isAdvertisement {

@@ -25,6 +25,9 @@ struct SeasonModalView: View {
                     isModalShown = false
                 } label: {
                     Image("icX")
+                        .resizable()
+                        .frame(width: 28, height: 28)
+              
                 }
 
             }

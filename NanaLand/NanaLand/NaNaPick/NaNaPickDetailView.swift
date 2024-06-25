@@ -44,36 +44,39 @@ struct NaNaPickDetailView: View {
                             .resizable()
                             .frame(width: Constants.screenWidth, height: Constants.screenWidth * (237 / 360))
                             .padding(.bottom, 16)
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 12)
-                                .fill(Color.main10P)
-                                .frame(maxWidth: Constants.screenWidth - 40)
-                            VStack(alignment: .leading, spacing: 0) {
-                                HStack(alignment: .center, spacing: 0) {
-                                    Image("icWarningCircle")
-                                        .resizable()
-                                        .renderingMode(.template)
-                                        .foregroundStyle(.main)
-                                        .frame(width:24, height: 24)
-                                    Text(.notificate)
-                                        .font(.body02_bold)
-                                        .foregroundStyle(Color.main)
+                        if viewModel.state.getNaNaPickDetailResponse.notice != nil {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 12)
+                                    .fill(Color.main10P)
+                                    .frame(maxWidth: Constants.screenWidth - 40)
+                                VStack(alignment: .leading, spacing: 0) {
+                                    HStack(alignment: .center, spacing: 0) {
+                                        Image("icWarningCircle")
+                                            .resizable()
+                                            .renderingMode(.template)
+                                            .foregroundStyle(.main)
+                                            .frame(width:24, height: 24)
+                                        Text(.notificate)
+                                            .font(.body02_bold)
+                                            .foregroundStyle(Color.main)
+                                        Spacer()
+                                    }
+                                    .padding(.leading, 32)
+                                    .padding(.trailing, 16)
+                                    .padding(.bottom, 4)
+                                    .padding(.top, 16)
+                                
+                                    Text(viewModel.state.getNaNaPickDetailResponse.notice ?? "")
+                                        .padding(.leading, 32)
+                                        .padding(.trailing, 32)
+                                        .padding(.bottom, 16)
+                                        .font(.gothicNeo(.regular, size: 14))
                                     Spacer()
                                 }
-                                .padding(.leading, 32)
-                                .padding(.trailing, 16)
-                                .padding(.bottom, 4)
-                                .padding(.top, 16)
-                            
-                                Text(viewModel.state.getNaNaPickDetailResponse.notice)
-                                    .padding(.leading, 32)
-                                    .padding(.trailing, 32)
-                                    .padding(.bottom, 16)
-                                    .font(.gothicNeo(.regular, size: 14))
-                                Spacer()
                             }
+                            .padding(.bottom, 48)
                         }
-                        .padding(.bottom, 48)
+                        
                         
                         ForEach(viewModel.state.getNaNaPickDetailResponse.nanaDetails, id: \.number) { index in
                             
@@ -132,14 +135,75 @@ struct NaNaPickDetailView: View {
                                         .resizable()
                                         .frame(width: 20, height: 20)
                                         .padding(.trailing, 4)
+                                } else if index.additionalInfoList[0].infoEmoji == "SPECIAL" {
+                                    Image("icSpecial")
+                                        .resizable()
+                                        .frame(width: 20, height: 20)
+                                        .padding(.trailing, 4)
+                                } else if index.additionalInfoList[0].infoEmoji == "AMENITY" {
+                                    Image("icAmenity")
+                                        .resizable()
+                                        .frame(width: 20, height: 20)
+                                        .padding(.trailing, 4)
+                                } else if index.additionalInfoList[0].infoEmoji == "WEBSITE" {
+                                    Image("icHomepage")
+                                        .resizable()
+                                        .frame(width: 20, height: 20)
+                                        .padding(.trailing, 4)
+                                } else if index.additionalInfoList[0].infoEmoji == "RESERVATION_LINK" {
+                                    Image("icReservation")
+                                        .resizable()
+                                        .frame(width: 20, height: 20)
+                                        .padding(.trailing, 4)
+                                } else if index.additionalInfoList[0].infoEmoji == "AGE" {
+                                    Image("icAge")
+                                        .resizable()
+                                        .frame(width: 20, height: 20)
+                                        .padding(.trailing, 4)
+                                } else if index.additionalInfoList[0].infoEmoji == "TIME" {
+                                    Image("icClock")
+                                        .resizable()
+                                        .frame(width: 20, height: 20)
+                                        .padding(.trailing, 4)
+                                } else if index.additionalInfoList[0].infoEmoji == "FEE" {
+                                    Image("icFee")
+                                        .resizable()
+                                        .frame(width: 20, height: 20)
+                                        .padding(.trailing, 4)
+                                } else if index.additionalInfoList[0].infoEmoji == "DATE" {
+                                    Image("icDate")
+                                        .resizable()
+                                        .frame(width: 20, height: 20)
+                                        .padding(.trailing, 4)
+                                } else if index.additionalInfoList[0].infoEmoji == "DESCRIPTION" {
+                                    Image("icDescription")
+                                        .resizable()
+                                        .frame(width: 20, height: 20)
+                                        .padding(.trailing, 4)
+                                } else {
+                                    Image("icPhone")
+                                        .resizable()
+                                        .frame(width: 20, height: 20)
+                                        .padding(.trailing, 4)
                                 }
-                               
-                                Text("\(index.additionalInfoList[0].infoKey): ")
-                                    .font(.body02)
-                                    .foregroundStyle(.gray1)
-                                Text("\(index.additionalInfoList[0].infoValue)")
-                                    .font(.body02)
-                                    .foregroundStyle(.gray1)
+                             
+                                    Text("\(index.additionalInfoList[0].infoKey): ")
+                                        .font(.body02)
+                                        .foregroundStyle(.gray1)
+                                
+                          
+                                if index.additionalInfoList[0].infoKey == "홈페이지" || index.additionalInfoList[0].infoKey == "예약링크" {
+                                    Link(destination: URL(string: "\(index.additionalInfoList[0].infoValue)")!, label: {
+                                        Text("\(index.additionalInfoList[0].infoValue)")
+                                            .font(.body02)
+                                            .foregroundStyle(.gray1)
+                                    })
+                                } else {
+                                    Text("\(index.additionalInfoList[0].infoValue)")
+                                        .font(.body02)
+                                        .foregroundStyle(.gray1)
+                                }
+                             
                                 Spacer()
                             }
                             .padding(.leading, 16)
@@ -149,18 +213,79 @@ struct NaNaPickDetailView: View {
                                         .resizable()
                                         .frame(width: 20, height: 20)
                                         .padding(.trailing, 4)
+                                        
                                 } else if index.additionalInfoList[1].infoEmoji == "PARKING" {
                                     Image("icCar")
                                         .resizable()
                                         .frame(width: 20, height: 20)
                                         .padding(.trailing, 4)
+                                } else if index.additionalInfoList[1].infoEmoji == "SPECIAL" {
+                                    Image("icSpecial")
+                                        .resizable()
+                                        .frame(width: 20, height: 20)
+                                        .padding(.trailing, 4)
+                                } else if index.additionalInfoList[1].infoEmoji == "AMENITY" {
+                                    Image("icAmenity")
+                                        .resizable()
+                                        .frame(width: 20, height: 20)
+                                        .padding(.trailing, 4)
+                                } else if index.additionalInfoList[1].infoEmoji == "WEBSITE" {
+                                    Image("icHomepage")
+                                        .resizable()
+                                        .frame(width: 20, height: 20)
+                                        .padding(.trailing, 4)
+                                } else if index.additionalInfoList[1].infoEmoji == "RESERVATION_LINK" {
+                                    Image("icReservation")
+                                        .resizable()
+                                        .frame(width: 20, height: 20)
+                                        .padding(.trailing, 4)
+                                } else if index.additionalInfoList[1].infoEmoji == "AGE" {
+                                    Image("icAge")
+                                        .resizable()
+                                        .frame(width: 20, height: 20)
+                                        .padding(.trailing, 4)
+                                } else if index.additionalInfoList[1].infoEmoji == "TIME" {
+                                    Image("icClock")
+                                        .resizable()
+                                        .frame(width: 20, height: 20)
+                                        .padding(.trailing, 4)
+                                } else if index.additionalInfoList[1].infoEmoji == "FEE" {
+                                    Image("icFee")
+                                        .resizable()
+                                        .frame(width: 20, height: 20)
+                                        .padding(.trailing, 4)
+                                } else if index.additionalInfoList[1].infoEmoji == "DATE" {
+                                    Image("icDate")
+                                        .resizable()
+                                        .frame(width: 20, height: 20)
+                                        .padding(.trailing, 4)
+                                } else if index.additionalInfoList[1].infoEmoji == "DESCRIPTION" {
+                                    Image("icDescription")
+                                        .resizable()
+                                        .frame(width: 20, height: 20)
+                                        .padding(.trailing, 4)
+                                } else {
+                                    Image("icPhone")
+                                        .resizable()
+                                        .frame(width: 20, height: 20)
+                                        .padding(.trailing, 4)
                                 }
+                                
                                 Text("\(index.additionalInfoList[1].infoKey): ")
                                     .font(.body02)
                                     .foregroundStyle(.gray1)
-                                Text("\(index.additionalInfoList[1].infoValue)")
-                                    .font(.body02)
-                                    .foregroundStyle(.gray1)
+                                if index.additionalInfoList[1].infoKey == "홈페이지" || index.additionalInfoList[1].infoKey == "예약링크" {
+                                    Link(destination: URL(string: "\(index.additionalInfoList[1].infoValue)")!, label: {
+                                        Text("\(index.additionalInfoList[1].infoValue)")
+                                            .font(.body02)
+                                            .foregroundStyle(.gray1)
+                                    })
+                                } else{
+                                    Text("\(index.additionalInfoList[1].infoValue)")
+                                        .font(.body02)
+                                        .foregroundStyle(.gray1)
+                                }
+                              
                                 Spacer()
                             }
                             .padding(.leading, 16)
