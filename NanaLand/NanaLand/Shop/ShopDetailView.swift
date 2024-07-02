@@ -275,7 +275,7 @@ struct ShopDetailView: View {
 						}, label: {
                             Text(.proposeUpdateInfo)
 								.background(
-									RoundedRectangle(cornerRadius: 12.0)
+									RoundedRectangle(cornerRadius: 50.0)
 										.foregroundStyle(Color.gray2)
 										.frame(width: 120, height: 40)
 								)
