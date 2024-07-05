@@ -17,7 +17,7 @@ struct LanguageView: View {
                 .padding(.bottom, 32)
             
             HStack(spacing: 0) {
-                Text(.languageMainDescription)
+                Text(viewModel.mainDescription)
                     .padding(.leading, 16)
                     .font(.title2)
                 Spacer()
@@ -65,7 +65,7 @@ struct LanguageView: View {
 				Text(language.name)
 					.padding(.leading, 16)
 					.font(.body01)
-					.foregroundStyle(.black)
+                    .foregroundStyle(language == viewModel.state.selectedLanguage ? .main : .black)
 				
 				Spacer()
 			}

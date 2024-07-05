@@ -184,91 +184,100 @@ struct ShopDetailView: View {
                     .padding(.trailing, 20)
                     
                     VStack(spacing: 24) {
-                        HStack(spacing: 10) {
-                            VStack(spacing: 0) {
-                                Image("icPin")
-                                Spacer()
-                            }
-                            
-                            VStack(alignment: .leading, spacing: 0) {
-                                Text(.address)
-                                    .font(.gothicNeo(.bold, size: 14))
-                                Text(viewModel.state.getShopDetailResponse.address)
-                                    .font(.gothicNeo(.regular, size: 12))
+                        if viewModel.state.getShopDetailResponse.address != "" {
+                            HStack(spacing: 10) {
+                                VStack(spacing: 0) {
+                                    Image("icDetailPin")
+                                    Spacer()
+                                }
                                 
+                                VStack(alignment: .leading, spacing: 0) {
+                                    Text(.address)
+                                        .font(.gothicNeo(.bold, size: 14))
+                                    Text(viewModel.state.getShopDetailResponse.address)
+                                        .font(.gothicNeo(.regular, size: 12))
+                                    
+                                }
+                                Spacer()
+                               
                             }
-                            Spacer()
-                           
+                            .frame(width: Constants.screenWidth - 40)
                         }
-                        .frame(width: Constants.screenWidth - 40)
                      
-                        HStack(spacing: 10) {
-                            VStack(spacing: 0) {
-                                Image("icPhone")
+                        if viewModel.state.getShopDetailResponse.contact != "" {
+                            HStack(spacing: 10) {
+                                VStack(spacing: 0) {
+                                    Image("icDetailPhone")
+                                    Spacer()
+                                }
+                                
+                                VStack(alignment: .leading, spacing: 0) {
+                                    Text(.phoneNumber)
+                                        .font(.gothicNeo(.bold, size: 14))
+                                    Text(viewModel.state.getShopDetailResponse.contact)
+                                        .font(.gothicNeo(.regular, size: 12))
+                                    
+                                }
                                 Spacer()
                             }
-                            
-                            VStack(alignment: .leading, spacing: 0) {
-                                Text(.phoneNumber)
-                                    .font(.gothicNeo(.bold, size: 14))
-                                Text(viewModel.state.getShopDetailResponse.contact)
-                                    .font(.gothicNeo(.regular, size: 12))
-                                
-                            }
-                            Spacer()
+                            .frame(width: Constants.screenWidth - 40)
                         }
-                        .frame(width: Constants.screenWidth - 40)
-                            
-                        HStack(spacing: 10) {
-                            VStack(spacing: 0) {
-                                Image("icClock")
-                                Spacer()
-                            }
-                            
-                            VStack(alignment: .leading, spacing: 0) {
-                                Text(.time)
-                                    .font(.gothicNeo(.bold, size: 14))
-                                Text(viewModel.state.getShopDetailResponse.time)
-                                    .font(.gothicNeo(.regular, size: 12))
-                                
-                            }
-                            Spacer()
-                        }
-                        .frame(width: Constants.screenWidth - 40)
                         
-                        HStack(spacing: 10) {
-                            VStack(spacing: 0) {
-                                Image("icFacility")
-                                Spacer()
-                            }
-                            
-                            VStack(alignment: .leading, spacing: 0) {
-                                Text(.amenity)
-                                    .font(.gothicNeo(.bold, size: 14))
-                                Text(viewModel.state.getShopDetailResponse.amenity)
-                                    .font(.gothicNeo(.regular, size: 12))
-                            }
-                            Spacer()
-                        }
-                        .frame(width: Constants.screenWidth - 40)
-
-                        HStack(spacing: 10) {
-                            VStack(spacing: 0) {
-                                Image("icHomepage")
-                                Spacer()
-                            }
-                            
-                            VStack(alignment: .leading, spacing: 0) {
-                                Text(.homepage)
-                                    .font(.gothicNeo(.bold, size: 14))
-                                Text(viewModel.state.getShopDetailResponse.homepage)
-                                    .font(.gothicNeo(.regular, size: 12))
+                        if viewModel.state.getShopDetailResponse.time != "" {
+                            HStack(spacing: 10) {
+                                VStack(spacing: 0) {
+                                    Image("icDetailClock")
+                                    Spacer()
+                                }
                                 
+                                VStack(alignment: .leading, spacing: 0) {
+                                    Text(.time)
+                                        .font(.gothicNeo(.bold, size: 14))
+                                    Text(viewModel.state.getShopDetailResponse.time)
+                                        .font(.gothicNeo(.regular, size: 12))
+                                    
+                                }
+                                Spacer()
                             }
-                            Spacer()
+                            .frame(width: Constants.screenWidth - 40)
                         }
-                        .frame(width: Constants.screenWidth - 40, height: (Constants.screenWidth - 40) * ( 42 / 358))
-                        .padding(.bottom, 32)
+                        
+                        if viewModel.state.getShopDetailResponse.amenity != "" {
+                            HStack(spacing: 10) {
+                                VStack(spacing: 0) {
+                                    Image("icDetailFacility")
+                                    Spacer()
+                                }
+                                
+                                VStack(alignment: .leading, spacing: 0) {
+                                    Text(.amenity)
+                                        .font(.gothicNeo(.bold, size: 14))
+                                    Text(viewModel.state.getShopDetailResponse.amenity)
+                                        .font(.gothicNeo(.regular, size: 12))
+                                }
+                                Spacer()
+                            }
+                            .frame(width: Constants.screenWidth - 40)
+                        }
+                        
+                        if viewModel.state.getShopDetailResponse.homepage != "" {
+                            HStack(spacing: 10) {
+                                VStack(spacing: 0) {
+                                    Image("icDetailHomepage")
+                                    Spacer()
+                                }
+                                
+                                VStack(alignment: .leading, spacing: 0) {
+                                    Text(.homepage)
+                                        .font(.gothicNeo(.bold, size: 14))
+                                    Text(viewModel.state.getShopDetailResponse.homepage)
+                                        .font(.gothicNeo(.regular, size: 12))
+                                    
+                                }
+                                Spacer()
+                            }
+                            .frame(width: Constants.screenWidth - 40, height: (Constants.screenWidth - 40) * ( 42 / 358))
+                        }
                         
 						Button(action: {
 							AppState.shared.navigationPath.append(ArticleDetailViewType.reportInfo(id: viewModel.state.getShopDetailResponse.id, category: .market))
@@ -281,7 +290,8 @@ struct ShopDetailView: View {
 								)
 								.foregroundStyle(Color.white)
 								.font(.body02_bold)
-								.padding(.bottom, 10)
+                                .padding(.top, 32)
+                                .padding(.bottom, 10)
 						})
                             
                     }

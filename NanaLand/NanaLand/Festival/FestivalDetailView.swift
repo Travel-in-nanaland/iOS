@@ -188,102 +188,114 @@ struct FestivalDetailView: View {
                         
                         VStack(spacing: 24) {
                             
-                            HStack(spacing: 10) {
-                                VStack(spacing: 0) {
-                                    Image("icPin")
+                            if viewModel.state.getFestivalDetailResponse.address != "" {
+                                HStack(spacing: 10) {
+                                    VStack(spacing: 0) {
+                                        Image("icDetailPin")
+                                        
+                                    }
+                                    
+                                    VStack(alignment: .leading, spacing: 0) {
+                                        Text(.address)
+                                            .font(.gothicNeo(.bold, size: 14))
+                                        Text(viewModel.state.getFestivalDetailResponse.address)
+                                            .font(.gothicNeo(.regular, size: 12))
+                                    }
+                                    Spacer()
                                     
                                 }
-                                
-                                VStack(alignment: .leading, spacing: 0) {
-                                    Text(.address)
-                                        .font(.gothicNeo(.bold, size: 14))
-                                    Text(viewModel.state.getFestivalDetailResponse.address)
-                                        .font(.gothicNeo(.regular, size: 12))
-                                }
-                                Spacer()
-                                
+                                .frame(width: Constants.screenWidth - 40, height: (Constants.screenWidth - 40) * ( 42 / 358))
                             }
-                            .frame(width: Constants.screenWidth - 40, height: (Constants.screenWidth - 40) * ( 42 / 358))
                             
-                            HStack(spacing: 10) {
-                                VStack(spacing: 0) {
-                                    Image("icPhone")
+                            if viewModel.state.getFestivalDetailResponse.contact != "" {
+                                HStack(spacing: 10) {
+                                    VStack(spacing: 0) {
+                                        Image("icDetailPhone")
+                                        
+                                    }
                                     
+                                    VStack(alignment: .leading, spacing: 0) {
+                                        Text(.phoneNumber)
+                                            .font(.gothicNeo(.bold, size: 14))
+                                        Text(viewModel.state.getFestivalDetailResponse.contact)
+                                            .font(.gothicNeo(.regular, size: 12))
+                                    }
+                                    Spacer()
                                 }
-                                
-                                VStack(alignment: .leading, spacing: 0) {
-                                    Text(.phoneNumber)
-                                        .font(.gothicNeo(.bold, size: 14))
-                                    Text(viewModel.state.getFestivalDetailResponse.contact)
-                                        .font(.gothicNeo(.regular, size: 12))
-                                }
-                                Spacer()
+                                .frame(width: Constants.screenWidth - 40, height: (Constants.screenWidth - 40) * ( 42 / 358))
                             }
-                            .frame(width: Constants.screenWidth - 40, height: (Constants.screenWidth - 40) * ( 42 / 358))
                             
-                            HStack(spacing: 10) {
-                                VStack(spacing: 0) {
-                                    Image("icClock")
+                            if viewModel.state.getFestivalDetailResponse.period != "" {
+                                HStack(spacing: 10) {
+                                    VStack(spacing: 0) {
+                                        Image("icDetailClock")
+                                        
+                                    }
                                     
+                                    VStack(alignment: .leading, spacing: 0) {
+                                        Text(.duration)
+                                            .font(.gothicNeo(.bold, size: 14))
+                                        Text(viewModel.state.getFestivalDetailResponse.period)
+                                            .font(.gothicNeo(.regular, size: 12))
+                                        
+                                    }
+                                    Spacer()
                                 }
-                                
-                                VStack(alignment: .leading, spacing: 0) {
-                                    Text(.duration)
-                                        .font(.gothicNeo(.bold, size: 14))
-                                    Text(viewModel.state.getFestivalDetailResponse.period)
-                                        .font(.gothicNeo(.regular, size: 12))
-                                    
-                                }
-                                Spacer()
+                                .frame(width: Constants.screenWidth - 40)
                             }
-                            .frame(width: Constants.screenWidth - 40)
                             
-                            HStack(spacing: 10) {
-                                VStack(spacing: 0) {
-                                    Image("icClock")
-                                   
-                                }
-                                
-                                VStack(alignment: .leading, spacing: 0) {
-                                    Text(.time)
-                                        .font(.gothicNeo(.bold, size: 14))
-                                    Text(viewModel.state.getFestivalDetailResponse.time)
-                                        .font(.gothicNeo(.regular, size: 12))
-                                }
-                                Spacer()
-                            }
-                            .frame(width: Constants.screenWidth - 40)
-                            
-                            HStack(alignment: .top, spacing: 10) {
-                                VStack(spacing: 0) {
-                                    Image("icClock")
+                            if viewModel.state.getFestivalDetailResponse.time != "" {
+                                HStack(spacing: 10) {
+                                    VStack(spacing: 0) {
+                                        Image("icDetailClock")
+                                       
+                                    }
                                     
+                                    VStack(alignment: .leading, spacing: 0) {
+                                        Text(.time)
+                                            .font(.gothicNeo(.bold, size: 14))
+                                        Text(viewModel.state.getFestivalDetailResponse.time)
+                                            .font(.gothicNeo(.regular, size: 12))
+                                    }
+                                    Spacer()
                                 }
-                                
-                                VStack(alignment: .leading, spacing: 0) {
-                                    Text(.fee)
-                                        .font(.gothicNeo(.bold, size: 14))
-                                    Text(viewModel.state.getFestivalDetailResponse.fee)
-                                        .font(.gothicNeo(.regular, size: 12))
-                                }
-                                Spacer()
+                                .frame(width: Constants.screenWidth - 40)
                             }
-                            .frame(width: Constants.screenWidth - 40)
-                            HStack(spacing: 10) {
-                                VStack(spacing: 0) {
-                                    Image("icHomepage")
-                                 
+                            
+                            if viewModel.state.getFestivalDetailResponse.fee != "" {
+                                HStack(alignment: .top, spacing: 10) {
+                                    VStack(spacing: 0) {
+                                        Image("icDetailCharge")
+                                        
+                                    }
+                                    
+                                    VStack(alignment: .leading, spacing: 0) {
+                                        Text(.fee)
+                                            .font(.gothicNeo(.bold, size: 14))
+                                        Text(viewModel.state.getFestivalDetailResponse.fee)
+                                            .font(.gothicNeo(.regular, size: 12))
+                                    }
+                                    Spacer()
                                 }
-                                VStack(alignment: .leading, spacing: 0) {
-                                    Text(.homepage)
-                                        .font(.gothicNeo(.bold, size: 14))
-                                    Text(viewModel.state.getFestivalDetailResponse.homepage)
-                                        .font(.gothicNeo(.regular, size: 12))
-                                }
-                                Spacer()
+                                .frame(width: Constants.screenWidth - 40)
                             }
-                            .frame(width: Constants.screenWidth - 40)
-                            .padding(.bottom, 32)
+                            
+                            if viewModel.state.getFestivalDetailResponse.homepage != "" {
+                                HStack(spacing: 10) {
+                                    VStack(spacing: 0) {
+                                        Image("icDetailHomepage")
+                                     
+                                    }
+                                    VStack(alignment: .leading, spacing: 0) {
+                                        Text(.homepage)
+                                            .font(.gothicNeo(.bold, size: 14))
+                                        Text(viewModel.state.getFestivalDetailResponse.homepage)
+                                            .font(.gothicNeo(.regular, size: 12))
+                                    }
+                                    Spacer()
+                                }
+                                .frame(width: Constants.screenWidth - 40)
+                            }
                             
                             Button {
 								AppState.shared.navigationPath.append(ArticleDetailViewType.reportInfo(id: viewModel.state.getFestivalDetailResponse.id, category: .festival))
@@ -298,6 +310,7 @@ struct FestivalDetailView: View {
                                     )
                                     .foregroundStyle(Color.white)
                                     .font(.body02_bold)
+                                    .padding(.top, 32)
                                     .padding(.bottom, 10)
                             }
                         }

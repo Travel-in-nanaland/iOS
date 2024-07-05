@@ -463,39 +463,41 @@ struct BannerView: View {
             TabView(selection: $index) {
 				ForEach(viewModel.state.getBannerResponse.indices, id: \.self) { index in
 					let banner = viewModel.state.getBannerResponse[index]
-					ZStack {
-						KFImage(URL(string: banner.thumbnailUrl))
-							.resizable()
-							.frame(width: Constants.screenWidth, height: Constants.screenWidth * (220 / 360))
-						
-						VStack(spacing: 0) {
-							HStack(spacing: 0) {
-								Spacer()
-								Text(banner.version)
-									.font(.caption01)
-									.foregroundStyle(.white)
-									.padding(.trailing, 16)
-							}
-							.padding(.top, 8)
-							
-							Spacer()
-                            HStack(spacing: 0) {
-                                VStack(alignment: .leading, spacing: 2) {
-                                    Text(banner.subHeading)
-                                        .foregroundStyle(.white)
-                                        .font(.body_bold)
-                                    Text(banner.heading)
-                                        .foregroundStyle(.white)
-                                        .font(.largeTitle02)
-                                }
-                                Spacer()
-                            }
-                            .padding(.bottom, 16)
-                            .padding(.leading, 16)
+                    NavigationLink(destination: NaNaPickDetailView(id: banner.id), label: {
+                        ZStack {
+                            KFImage(URL(string: banner.thumbnailUrl))
+                                .resizable()
+                                .frame(width: Constants.screenWidth, height: Constants.screenWidth * (220 / 360))
                             
-						}
-					}
-					.frame(width: Constants.screenWidth, height: Constants.screenWidth * (220 / 360))
+                            VStack(spacing: 0) {
+                                HStack(spacing: 0) {
+                                    Spacer()
+                                    Text(banner.version)
+                                        .font(.caption01)
+                                        .foregroundStyle(.white)
+                                        .padding(.trailing, 16)
+                                }
+                                .padding(.top, 8)
+                                
+                                Spacer()
+                                HStack(spacing: 0) {
+                                    VStack(alignment: .leading, spacing: 2) {
+                                        Text(banner.subHeading)
+                                            .foregroundStyle(.white)
+                                            .font(.body_bold)
+                                        Text(banner.heading)
+                                            .foregroundStyle(.white)
+                                            .font(.largeTitle02)
+                                    }
+                                    Spacer()
+                                }
+                                .padding(.bottom, 16)
+                                .padding(.leading, 16)
+                                
+                            }
+                        }
+                        .frame(width: Constants.screenWidth, height: Constants.screenWidth * (220 / 360))
+                    })
 				}
             }
             .tabViewStyle(.page(indexDisplayMode: .never))

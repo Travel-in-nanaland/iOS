@@ -34,7 +34,7 @@
 		2C2D3D512C03898D002A38AA /* LocalizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D3D502C03898D002A38AA /* LocalizationManager.swift */; };
 		2C2D3D532C0389C0002A38AA /* Text+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D3D522C0389C0002A38AA /* Text+.swift */; };
 		2C2D3D552C038A54002A38AA /* LocalizedKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D3D542C038A54002A38AA /* LocalizedKey.swift */; };
-		2C2D3D5E2C0599B6002A38AA /* splash.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2C2D3D5A2C0599B6002A38AA /* splash.gif */; };
+		2C2D3D5E2C0599B6002A38AA /* splash_1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2C2D3D5A2C0599B6002A38AA /* splash_1.gif */; };
 		2C2D3D602C059E16002A38AA /* TypeTestCheckStyleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D3D5F2C059E16002A38AA /* TypeTestCheckStyleView.swift */; };
 		2C2D3D622C059E22002A38AA /* TypeTestLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D3D612C059E22002A38AA /* TypeTestLoadingView.swift */; };
 		2C2D3D642C05B957002A38AA /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D3D632C05B957002A38AA /* LottieView.swift */; };
@@ -118,6 +118,7 @@
 		2C9CF4E62C00701E00A346E8 /* TypeTestNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9CF4E52C00701E00A346E8 /* TypeTestNavigationView.swift */; };
 		2C9CF4E82C00714900A346E8 /* TypeTestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9CF4E72C00714900A346E8 /* TypeTestViewModel.swift */; };
 		2C9CF4EA2C00716B00A346E8 /* RegisterViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9CF4E92C00716B00A346E8 /* RegisterViewType.swift */; };
+		6DC05ACF2C37A38200CE8B67 /* splash.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6DC05ACE2C37A38200CE8B67 /* splash.gif */; };
 		6DF6D09D2C33C00100EA40DB /* AuthKey_9JRUHFTK3L.p8 in Resources */ = {isa = PBXBuildFile; fileRef = 6DF6D09C2C33C00100EA40DB /* AuthKey_9JRUHFTK3L.p8 */; };
 		6DF6D09F2C33C00700EA40DB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6DF6D09E2C33C00700EA40DB /* GoogleService-Info.plist */; };
 		6DF6D0A32C33C01500EA40DB /* secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF6D0A22C33C01500EA40DB /* secret.swift */; };
@@ -249,7 +250,7 @@
 		2C2D3D502C03898D002A38AA /* LocalizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationManager.swift; sourceTree = "<group>"; };
 		2C2D3D522C0389C0002A38AA /* Text+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+.swift"; sourceTree = "<group>"; };
 		2C2D3D542C038A54002A38AA /* LocalizedKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedKey.swift; sourceTree = "<group>"; };
-		2C2D3D5A2C0599B6002A38AA /* splash.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = splash.gif; sourceTree = "<group>"; };
+		2C2D3D5A2C0599B6002A38AA /* splash_1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = splash_1.gif; sourceTree = "<group>"; };
 		2C2D3D5F2C059E16002A38AA /* TypeTestCheckStyleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeTestCheckStyleView.swift; sourceTree = "<group>"; };
 		2C2D3D612C059E22002A38AA /* TypeTestLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeTestLoadingView.swift; sourceTree = "<group>"; };
 		2C2D3D632C05B957002A38AA /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
@@ -332,6 +333,7 @@
 		2C9CF4E52C00701E00A346E8 /* TypeTestNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeTestNavigationView.swift; sourceTree = "<group>"; };
 		2C9CF4E72C00714900A346E8 /* TypeTestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeTestViewModel.swift; sourceTree = "<group>"; };
 		2C9CF4E92C00716B00A346E8 /* RegisterViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewType.swift; sourceTree = "<group>"; };
+		6DC05ACE2C37A38200CE8B67 /* splash.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = splash.gif; path = "../../../../../../../Downloads/스플래시 수정본/splash.gif"; sourceTree = "<group>"; };
 		6DF6D09C2C33C00100EA40DB /* AuthKey_9JRUHFTK3L.p8 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AuthKey_9JRUHFTK3L.p8; sourceTree = "<group>"; };
 		6DF6D09E2C33C00700EA40DB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6DF6D0A02C33C00B00EA40DB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -475,7 +477,8 @@
 				2C2749862C0992AA00ECBA71 /* report_info_star.json */,
 				2C2749882C09950900ECBA71 /* loading_drink.json */,
 				2C2749892C09950900ECBA71 /* loading_tangerine.json */,
-				2C2D3D5A2C0599B6002A38AA /* splash.gif */,
+				6DC05ACE2C37A38200CE8B67 /* splash.gif */,
+				2C2D3D5A2C0599B6002A38AA /* splash_1.gif */,
 			);
 			path = Lottie;
 			sourceTree = "<group>";
@@ -1224,6 +1227,7 @@
 				2C27498B2C09950900ECBA71 /* loading_tangerine.json in Resources */,
 				9C6A9C692BCC22CE000413AD /* AppleSDGothicNeoSB.ttf in Resources */,
 				9C6A9C662BCC22CE000413AD /* AppleSDGothicNeoR.ttf in Resources */,
+				6DC05ACF2C37A38200CE8B67 /* splash.gif in Resources */,
 				2C3C758B2BCA3ADC00312F26 /* Preview Assets.xcassets in Resources */,
 				9C6A9C632BCC22CE000413AD /* AppleSDGothicNeoL.ttf in Resources */,
 				6DF6D09D2C33C00100EA40DB /* AuthKey_9JRUHFTK3L.p8 in Resources */,
@@ -1232,7 +1236,7 @@
 				2C1F31C02BCD01240066819F /* AppleSDGothicNeoEB.ttf in Resources */,
 				6DF6D09F2C33C00700EA40DB /* GoogleService-Info.plist in Resources */,
 				2C1F31C62BCD01390066819F /* AppleSDGothicNeoB.ttf in Resources */,
-				2C2D3D5E2C0599B6002A38AA /* splash.gif in Resources */,
+				2C2D3D5E2C0599B6002A38AA /* splash_1.gif in Resources */,
 				2C1F31C52BCD01390066819F /* AppleSDGothicNeoH.ttf in Resources */,
 				2C2749872C0992AB00ECBA71 /* report_info_star.json in Resources */,
 				2C1F31C42BCD01390066819F /* AppleSDGothicNeoM.ttf in Resources */,
