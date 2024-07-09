@@ -193,4 +193,5 @@ struct ShopMainGridView: View {
 
 #Preview {
     ShopMainView()
+        .environmentObject(LocalizationManager())
 }
