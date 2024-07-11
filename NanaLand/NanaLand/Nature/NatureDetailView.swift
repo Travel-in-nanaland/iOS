@@ -34,14 +34,14 @@ struct NatureDetailView: View {
                                     .frame(maxWidth: Constants.screenWidth - 40, maxHeight: .infinity)
                                     .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
                                 VStack(spacing: 0) {
-                                    HStack(spacing: 0) {
+                                    HStack(spacing: 12) {
                                         Spacer()
                                         Button {
                                             Task {
                                                 await toggleFavorite(body: FavoriteToggleRequest(id: Int(viewModel.state.getNatureDetailResponse.id), category: .nature))
                                             }
                                         } label: {
-                                            viewModel.state.getNatureDetailResponse.favorite ? Image("icHeartFillMain") : Image("icHeart")
+                                            viewModel.state.getNatureDetailResponse.favorite ? Image("icHeartFillMain") : Image("icFavoriteHeart")
                                         }
 										
 										ShareLink(item: DeepLinkManager.shared.makeLink(category: .nature, id: Int(viewModel.state.getNatureDetailResponse.id)), label: {
@@ -80,6 +80,7 @@ struct NatureDetailView: View {
                                         .font(.gothicNeo(.regular, size: 16))
                                         .frame(height: roundedHeight * (84 / 224))
                                         .padding(.leading, 16)
+                                        .lineSpacing(10)
                                         .padding(.trailing, 16)
                                     
                                     
@@ -111,14 +112,14 @@ struct NatureDetailView: View {
                                     .frame(maxWidth: Constants.screenWidth - 40) // 뷰의 크기를 지정합니다.
                                     .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
                                 VStack(spacing: 0) {
-                                    HStack(spacing: 0) {
+                                    HStack(spacing: 12) {
                                         Spacer()
                                         Button {
                                             Task {
                                                 await toggleFavorite(body: FavoriteToggleRequest(id: Int(viewModel.state.getNatureDetailResponse.id), category: .nature))
                                             }
                                         } label: {
-                                            viewModel.state.getNatureDetailResponse.favorite ? Image("icHeartFillMain") : Image("icHeart")
+                                            viewModel.state.getNatureDetailResponse.favorite ? Image("icHeartFillMain") : Image("icFavoriteHeart")
                                         }
 										
 										ShareLink(item: DeepLinkManager.shared.makeLink(category: .nature, id: Int(viewModel.state.getNatureDetailResponse.id)), label: {
@@ -154,6 +155,7 @@ struct NatureDetailView: View {
                                     Text(viewModel.state.getNatureDetailResponse.content)
                                         .fixedSize(horizontal: false, vertical: true)
                                         .font(.gothicNeo(.regular, size: 16))
+                                        .lineSpacing(10)
                                         .padding(.leading, 16)
                                         .padding(.trailing, 16)
                                     
@@ -219,7 +221,7 @@ struct NatureDetailView: View {
                                     Text(.address)
                                         .font(.gothicNeo(.bold, size: 14))
                                     Text(viewModel.state.getNatureDetailResponse.address)
-                                        .font(.gothicNeo(.regular, size: 12))
+                                        .font(.body02)
                                 }
                                 Spacer()
                                 
@@ -236,7 +238,7 @@ struct NatureDetailView: View {
                                     Text(.phoneNumber)
                                         .font(.gothicNeo(.bold, size: 14))
                                     Text(viewModel.state.getNatureDetailResponse.contact)
-                                        .font(.gothicNeo(.regular, size: 12))
+                                        .font(.body02)
                                 }
                                 Spacer()
                             }
@@ -252,7 +254,7 @@ struct NatureDetailView: View {
                                     Text(.time)
                                         .font(.gothicNeo(.bold, size: 14))
                                     Text(viewModel.state.getNatureDetailResponse.time)
-                                        .font(.gothicNeo(.regular, size: 12))
+                                        .font(.body02)
                                     
                                 }
                                 Spacer()
@@ -269,7 +271,7 @@ struct NatureDetailView: View {
                                     Text(.fee)
                                         .font(.gothicNeo(.bold, size: 14))
                                     Text(viewModel.state.getNatureDetailResponse.fee)
-                                        .font(.gothicNeo(.regular, size: 12))
+                                        .font(.body02)
                                 }
                                 Spacer()
                             }
@@ -285,7 +287,7 @@ struct NatureDetailView: View {
                                     Text(.detailInfo)
                                         .font(.gothicNeo(.bold, size: 14))
                                     Text(viewModel.state.getNatureDetailResponse.details)
-                                        .font(.gothicNeo(.regular, size: 12))
+                                        .font(.body02)
                                 }
                                 Spacer()
                             }
@@ -299,7 +301,7 @@ struct NatureDetailView: View {
                                     Text(.amenity)
                                         .font(.gothicNeo(.bold, size: 14))
                                     Text(viewModel.state.getNatureDetailResponse.amenity)
-                                        .font(.gothicNeo(.regular, size: 12))
+                                        .font(.body02)
                                 }
                                 Spacer()
                             }

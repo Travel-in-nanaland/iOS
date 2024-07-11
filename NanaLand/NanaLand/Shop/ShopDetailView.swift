@@ -34,14 +34,14 @@ struct ShopDetailView: View {
                                 .frame(maxWidth: Constants.screenWidth - 40, maxHeight: .infinity) // 뷰의 크기를 지정합니다.
                                               .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
                             VStack(spacing: 0) {
-                                HStack(spacing: 0) {
+                                HStack(spacing: 12) {
                                     Spacer()
                                     Button {
                                         Task {
                                             await toggleFavorite(body: FavoriteToggleRequest(id: Int(viewModel.state.getShopDetailResponse.id), category: .market))
                                         }
                                     } label: {
-                                        viewModel.state.getShopDetailResponse.favorite ? Image("icHeartFillMain") : Image("icHeart")
+                                        viewModel.state.getShopDetailResponse.favorite ? Image("icHeartFillMain") : Image("icFavoriteHeart")
                                     }
 									
 									ShareLink(item: DeepLinkManager.shared.makeLink(category: .market, id: Int(viewModel.state.getShopDetailResponse.id)), label: {
@@ -80,6 +80,7 @@ struct ShopDetailView: View {
                                     .font(.gothicNeo(.regular, size: 16))
                                     .frame(height: roundedHeight * (84 / 224))
                                     .padding(.leading, 16)
+                                    .lineSpacing(10)
                                     .padding(.trailing, 16)
                                 
                                 
@@ -110,14 +111,14 @@ struct ShopDetailView: View {
                                 .frame(width: Constants.screenWidth - 40) // 뷰의 크기를 지정합니다.
                                               .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
                             VStack(spacing: 0) {
-                                HStack(spacing: 0) {
+                                HStack(spacing: 12) {
                                     Spacer()
                                     Button {
                                         Task {
                                             await toggleFavorite(body: FavoriteToggleRequest(id: Int(viewModel.state.getShopDetailResponse.id), category: .market))
                                         }
                                     } label: {
-                                        viewModel.state.getShopDetailResponse.favorite ? Image("icHeartFillMain") : Image("icHeart")
+                                        viewModel.state.getShopDetailResponse.favorite ? Image("icHeartFillMain") : Image("icFavorteHeart")
                                     }
 									
 									ShareLink(item: DeepLinkManager.shared.makeLink(category: .market, id: Int(viewModel.state.getShopDetailResponse.id)), label: {
@@ -155,6 +156,7 @@ struct ShopDetailView: View {
                                     .font(.gothicNeo(.regular, size: 16))
                                     .padding(.leading, 16)
                                     .padding(.trailing, 16)
+                                    .lineSpacing(10)
                                 
                                 
                                 Spacer()
@@ -194,7 +196,7 @@ struct ShopDetailView: View {
                                 Text(.address)
                                     .font(.gothicNeo(.bold, size: 14))
                                 Text(viewModel.state.getShopDetailResponse.address)
-                                    .font(.gothicNeo(.regular, size: 12))
+                                    .font(.body02)
                                 
                             }
                             Spacer()
@@ -212,7 +214,7 @@ struct ShopDetailView: View {
                                 Text(.phoneNumber)
                                     .font(.gothicNeo(.bold, size: 14))
                                 Text(viewModel.state.getShopDetailResponse.contact)
-                                    .font(.gothicNeo(.regular, size: 12))
+                                    .font(.body02)
                                 
                             }
                             Spacer()
@@ -229,7 +231,7 @@ struct ShopDetailView: View {
                                 Text(.time)
                                     .font(.gothicNeo(.bold, size: 14))
                                 Text(viewModel.state.getShopDetailResponse.time)
-                                    .font(.gothicNeo(.regular, size: 12))
+                                    .font(.body02)
                                 
                             }
                             Spacer()
@@ -246,7 +248,7 @@ struct ShopDetailView: View {
                                 Text(.amenity)
                                     .font(.gothicNeo(.bold, size: 14))
                                 Text(viewModel.state.getShopDetailResponse.amenity)
-                                    .font(.gothicNeo(.regular, size: 12))
+                                    .font(.body02)
                             }
                             Spacer()
                         }
@@ -262,7 +264,7 @@ struct ShopDetailView: View {
                                 Text(.homepage)
                                     .font(.gothicNeo(.bold, size: 14))
                                 Text(viewModel.state.getShopDetailResponse.homepage)
-                                    .font(.gothicNeo(.regular, size: 12))
+                                    .font(.body02)
                                 
                             }
                             Spacer()

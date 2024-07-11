@@ -17,6 +17,7 @@ struct NavigationBar: View {
                     presentationMode.wrappedValue.dismiss()
                 }, label: {
                     Image("icLeft")
+                        .padding(.leading, 16)
                 }
                 )
                 Spacer()

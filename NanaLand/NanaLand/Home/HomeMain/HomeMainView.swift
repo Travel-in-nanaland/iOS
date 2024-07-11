@@ -455,7 +455,7 @@ struct BannerView: View {
     private let timer = Timer.publish(every: 3.5, on: .main, in: .common).autoconnect()
 	// tabView에 selection에 바인딩 할 값
     @State private var index = 0
-    private let images: [String] = ["icTabNumber1", "icTabNumber2", "icTabNumber3", "icTabNumber4"]
+    private let images: [String] = ["icTabNumber1", "icTabNumber2", "icTabNumber3"]
     
     var body: some View {
         // selection에 index가 아닌 selectedNum을 바인딩
@@ -464,10 +464,23 @@ struct BannerView: View {
 				ForEach(viewModel.state.getBannerResponse.indices, id: \.self) { index in
 					let banner = viewModel.state.getBannerResponse[index]
 					ZStack {
-						KFImage(URL(string: banner.thumbnailUrl))
-							.resizable()
-							.frame(width: Constants.screenWidth, height: Constants.screenWidth * (220 / 360))
-						
+                        Button {
+                            if index == 0 {
+                                AppState.shared.navigationPath.append(BannerViewType.firstBanner(id: Int(banner.id)))
+                            } else if index == 1{
+                                AppState.shared.navigationPath.append(BannerViewType.secondBanner(id: Int(banner.id)))
+                            } else {
+                                AppState.shared.navigationPath
+                                    .append(BannerViewType.thirdBanner(id: Int(banner.id)))
+                            }
+                        } label: {
+                            
+                            KFImage(URL(string: banner.thumbnailUrl))
+                                .resizable()
+                                .frame(width: Constants.screenWidth, height: Constants.screenWidth * (220 / 360))
+                            
+                        }
+
 						VStack(spacing: 0) {
 							HStack(spacing: 0) {
 								Spacer()
@@ -496,6 +509,16 @@ struct BannerView: View {
 						}
 					}
 					.frame(width: Constants.screenWidth, height: Constants.screenWidth * (220 / 360))
+                    .navigationDestination(for: BannerViewType.self) {viewType in
+                        switch viewType {
+                        case let .firstBanner(id):
+                            NaNaPickDetailView(id: Int64(id))
+                        case let .secondBanner(id):
+                            NaNaPickDetailView(id: Int64(id))
+                        case let .thirdBanner(id):
+                            NaNaPickDetailView(id: Int64(id))
+                        }
+                    }
 				}
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
@@ -509,7 +532,15 @@ struct BannerView: View {
                 Spacer()
                 HStack(spacing: 0) {
                     Spacer()
-                    Image(images[index])
+                    Text("\(index + 1) / \(3)")
+                        .frame(width: 41, height: 20)
+                        .font(.caption02)
+                        .foregroundColor(.white)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 30)
+                                .stroke(Color.white, lineWidth: 1) // 둥근 모서리와 테두리 추가
+                        )
+        
                 }
                 .frame(width: UIScreen.main.bounds.width)
                 .padding(.trailing, 15)
@@ -532,6 +563,12 @@ struct BannerView: View {
     func getBannerData() async {
         return await viewModel.action(.getBannerItem)
     }
+}
+
+enum BannerViewType: Hashable {
+    case firstBanner(id: Int)
+    case secondBanner(id: Int)
+    case thirdBanner(id: Int)
 }
 
 #Preview {

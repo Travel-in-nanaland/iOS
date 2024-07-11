@@ -85,7 +85,7 @@ struct NanapickMainView: View {
                            
                         })
                     }
-                    if page < 5{
+                    if page < 1{
                         ProgressView()
                             .onAppear {
                                     Task {
