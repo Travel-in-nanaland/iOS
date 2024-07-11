@@ -106,7 +106,7 @@ struct SearchResultView: View {
 				ForEach(tabs, id: \.self) { tab in
 					VStack(spacing: 0) {
 						Text(tab.localizedName)
-							.font(tab == searchVM.state.currentSearchTab ? .body02 : .caption01)
+							.font(tab == searchVM.state.currentSearchTab ? .body02 : .body02)
 							.foregroundStyle(Color.baseBlack)
 							.padding(.horizontal, 16)
 							.padding(.vertical, 8)

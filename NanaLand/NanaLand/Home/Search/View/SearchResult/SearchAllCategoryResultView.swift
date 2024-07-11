@@ -107,21 +107,43 @@ struct SearchAllCategoryItem: View {
 					})
 					
 					if articles.count >= 2 {
-						ArticleItem(category: category, article: articles[1], onTapHeart: {
-							if UserDefaults.standard.string(forKey: "provider") == "GUEST" {
-								AppState.shared.showRegisterInduction = true
-								return
-							}
-							Task {
-								await searchVM.action(.didTapHeartInSearchAll(tab: category, article: articles[1]))
-							}
-						})
-						
+                        Button {
+                         
+                            switch articles[1].category {
+                            case .nature:
+                                AppState.shared.navigationPath.append(SearchViewType.natureDetail(id: articles[1].id))
+                            case .market:
+                                AppState.shared.navigationPath.append(SearchViewType.shopDetail(id: articles[1].id))
+                            
+                            case .all:
+                                break
+                            case .festival:
+                                break
+                            case .experience:
+                                break
+                            case .nanaPick:
+                                break
+                            }
+                          
+                        } label: {
+                            ArticleItem(category: category, article: articles[1], onTapHeart: {
+                                if UserDefaults.standard.string(forKey: "provider") == "GUEST" {
+                                    AppState.shared.showRegisterInduction = true
+                                    return
+                                }
+                                Task {
+                                    await searchVM.action(.didTapHeartInSearchAll(tab: category, article: articles[1]))
+                                }
+                            })
+                        }
+                   
+
 					} else {
 						Spacer()
 					}
 				}
 				.padding(.bottom, 12)
+             
 
 			} else {
 				VStack(spacing: 9.3) {
@@ -141,8 +163,16 @@ struct SearchAllCategoryItem: View {
 		}
 		.padding(.horizontal, 16)
 		.padding(.top, 24)
+       
 	}
 }
+
+enum SearchViewType: Hashable {
+    case natureDetail(id: Int)
+    case shopDetail(id: Int)
+    case festivalDetail(id: Int)
+}
+
 
 #Preview {
 	SearchAllCategoryResultView(searchVM: SearchViewModel())

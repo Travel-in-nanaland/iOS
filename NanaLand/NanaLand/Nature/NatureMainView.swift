@@ -111,7 +111,7 @@ struct NatureMainGridView: View {
                                                         }
                                                       
                                                     } label: {
-                                                        viewModel.state.getNatureMainResponse.data[index].favorite ? Image("icHeartFillMain") : Image("icHeart")
+                                                        viewModel.state.getNatureMainResponse.data[index].favorite ? Image("icHeartFillMain") : Image("icHeartDefault")
                                                     }
                                                 }
                                                 .padding(.top, 8)

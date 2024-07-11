@@ -34,7 +34,7 @@ struct FestivalDetailView: View {
                                     .frame(maxWidth: Constants.screenWidth - 40, maxHeight: .infinity)
                                     .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
                                 VStack(spacing: 0) {
-                                    HStack(spacing: 0) {
+                                    HStack(spacing: 12) {
                                         Spacer()
                                         Button {
                                             // 버튼을 누를 경우에 좋아요 API 호출
@@ -43,7 +43,7 @@ struct FestivalDetailView: View {
                                                
                                             }
                                         } label: {
-                                            viewModel.state.getFestivalDetailResponse.favorite ? Image("icHeartFillMain") : Image("icHeart")
+                                            viewModel.state.getFestivalDetailResponse.favorite ? Image("icHeartFillMain") : Image("icFavoriteHeart")
                                        
                                         }
 										
@@ -84,7 +84,7 @@ struct FestivalDetailView: View {
                                         .frame(height: roundedHeight * (84 / 224))
                                         .padding(.leading, 16)
                                         .padding(.trailing, 16)
-                                    
+                                        .lineSpacing(10)
                                     
                                     Spacer()
                                     HStack {
@@ -114,13 +114,13 @@ struct FestivalDetailView: View {
                                     .frame(maxWidth: Constants.screenWidth - 40) // 뷰의 크기를 지정합니다.
                                     .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
                                 VStack(spacing: 0) {
-                                    HStack(spacing: 0) {
+                                    HStack(spacing: 12) {
                                         Spacer()
                                         Button {
                                             
                                         } label: {
                                             viewModel.state.getFestivalDetailResponse.favorite ? Image("icHeartFillMain") :
-                                            Image("icHeart")
+                                            Image("icFavoriteHeart")
                                         }
 										
 										ShareLink(item: DeepLinkManager.shared.makeLink(category: .festival, id: Int(viewModel.state.getFestivalDetailResponse.id)), label: {
@@ -158,6 +158,7 @@ struct FestivalDetailView: View {
                                         .font(.gothicNeo(.regular, size: 16))
                                         .padding(.leading, 16)
                                         .padding(.trailing, 16)
+                                        .lineSpacing(10)
                                     
                                     
                                     Spacer()
@@ -198,7 +199,7 @@ struct FestivalDetailView: View {
                                     Text(.address)
                                         .font(.gothicNeo(.bold, size: 14))
                                     Text(viewModel.state.getFestivalDetailResponse.address)
-                                        .font(.gothicNeo(.regular, size: 12))
+                                        .font(.body02)
                                 }
                                 Spacer()
                                 
@@ -215,7 +216,7 @@ struct FestivalDetailView: View {
                                     Text(.phoneNumber)
                                         .font(.gothicNeo(.bold, size: 14))
                                     Text(viewModel.state.getFestivalDetailResponse.contact)
-                                        .font(.gothicNeo(.regular, size: 12))
+                                        .font(.body02)
                                 }
                                 Spacer()
                             }
@@ -231,7 +232,7 @@ struct FestivalDetailView: View {
                                     Text(.duration)
                                         .font(.gothicNeo(.bold, size: 14))
                                     Text(viewModel.state.getFestivalDetailResponse.period)
-                                        .font(.gothicNeo(.regular, size: 12))
+                                        .font(.body02)
                                     
                                 }
                                 Spacer()
@@ -248,7 +249,7 @@ struct FestivalDetailView: View {
                                     Text(.time)
                                         .font(.gothicNeo(.bold, size: 14))
                                     Text(viewModel.state.getFestivalDetailResponse.time)
-                                        .font(.gothicNeo(.regular, size: 12))
+                                        .font(.body02)
                                 }
                                 Spacer()
                             }
@@ -264,7 +265,7 @@ struct FestivalDetailView: View {
                                     Text(.fee)
                                         .font(.gothicNeo(.bold, size: 14))
                                     Text(viewModel.state.getFestivalDetailResponse.fee)
-                                        .font(.gothicNeo(.regular, size: 12))
+                                        .font(.body02)
                                 }
                                 Spacer()
                             }
@@ -278,7 +279,7 @@ struct FestivalDetailView: View {
                                     Text(.homepage)
                                         .font(.gothicNeo(.bold, size: 14))
                                     Text(viewModel.state.getFestivalDetailResponse.homepage)
-                                        .font(.gothicNeo(.regular, size: 12))
+                                        .font(.body02)
                                 }
                                 Spacer()
                             }

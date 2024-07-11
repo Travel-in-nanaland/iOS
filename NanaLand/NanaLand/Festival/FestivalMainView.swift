@@ -158,7 +158,7 @@ struct FilterView: View {
     var currentDay = Int(dateFormatter.string(from: Date()).suffix(2))
     
     var body: some View{
-       
+        
         HStack(spacing: 0) {
             Text("\(count) " + .count)
                 .padding(.leading, 16)
@@ -182,12 +182,17 @@ struct FilterView: View {
                                 .padding(.leading, 12)
                         } else {
                             // 시작 날짜 종료 날짜 다를 때
+                            let year = String(formattedNumber(endYearMonthDay!.year).dropFirst(2))
+                            let month = String(formattedNumber(endYearMonthDay!.month))
+                            let day = String(formattedNumber(endYearMonthDay!.day))
+                            
                             Text(String(formattedNumber(yearMonthDay!.year).dropFirst(2)) + "." +  formattedNumber(yearMonthDay!.month) + "." +  formattedNumber(yearMonthDay!.day))
                                 .font(.gothicNeo(.medium, size: 12))
                                 .padding(.leading, 12)
                             Text(" ~ ")
-                            Text(String(formattedNumber(endYearMonthDay!.year).dropFirst(2)) + "." +  formattedNumber(endYearMonthDay!.month) + formattedNumber(endYearMonthDay!.day))
+                            Text("\(year).\(month).\(day)")
                                 .font(.gothicNeo(.medium, size: 12))
+
                         }
                         
       
@@ -384,7 +389,7 @@ struct FestivalMainGridView: View {
 														
 													} label: {
 														
-														viewModel.state.getFestivalMainResponse.data[index].favorite ? Image("icHeartFillMain").animation(nil) : Image("icHeart").animation(nil)
+														viewModel.state.getFestivalMainResponse.data[index].favorite ? Image("icHeartFillMain").animation(nil) : Image("icHeartDefault").animation(nil)
 														
 													}
 												}
@@ -402,6 +407,7 @@ struct FestivalMainGridView: View {
 										Text(viewModel.state.getFestivalMainResponse.data[index].period)
 											.font(.caption)
 											.padding(.bottom, 8)
+                                            .foregroundStyle(Color.gray1)
 										
 										Text(viewModel.state.getFestivalMainResponse.data[index].addressTag)
 											.frame(width: 64, height: 20)
@@ -450,7 +456,7 @@ struct FestivalMainGridView: View {
                                 switch selectedSeason {
                                 case LocalizedKey.spring.localized(for: LocalizationManager().language):
                                     
-                                    if viewModel.state.page < 10 {
+                                    if viewModel.state.page < viewModel.state.getFestivalMainResponse.totalElements / 12 {
                                         ProgressView()
                                             .onAppear {
                                                 Task {
@@ -463,7 +469,7 @@ struct FestivalMainGridView: View {
                                     }
                                 case LocalizedKey.summer.localized(for: LocalizationManager().language):
                                     
-                                    if viewModel.state.page < 10 {
+                                    if viewModel.state.page < viewModel.state.getFestivalMainResponse.totalElements / 12  {
                                         ProgressView()
                                             .onAppear {
                                                 Task {
@@ -477,7 +483,7 @@ struct FestivalMainGridView: View {
                                     }
                                 case LocalizedKey.autumn.localized(for: LocalizationManager().language):
                         
-                                    if viewModel.state.page < 10 {
+                                    if viewModel.state.page < viewModel.state.getFestivalMainResponse.totalElements / 12  {
                                         ProgressView()
                                             .onAppear {
                                                 Task {
@@ -492,7 +498,7 @@ struct FestivalMainGridView: View {
                                     }
                                 case LocalizedKey.winter.localized(for: LocalizationManager().language):
                                    
-                                    if viewModel.state.page < 10 {
+                                    if viewModel.state.page < viewModel.state.getFestivalMainResponse.totalElements / 12  {
                                         ProgressView()
                                             .onAppear {
                                                 Task {
@@ -506,7 +512,7 @@ struct FestivalMainGridView: View {
                                     }
                                 default:
                                     
-                                    if page < 10 {
+                                    if page < viewModel.state.getFestivalMainResponse.totalElements / 12 {
                                         ProgressView()
                                             .onAppear {
                                                 Task {

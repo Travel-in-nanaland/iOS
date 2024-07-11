@@ -16,28 +16,31 @@ struct ArticleItem: View {
 	let itemWidth = (Constants.screenWidth-40)/2
 	
 	var body: some View {
-		VStack(alignment: .leading, spacing: 8) {
-			KFImage(URL(string: article.thumbnailUrl))
-				.resizable()
-				.aspectRatio(contentMode: .fill)
-				.frame(width: itemWidth, height: itemWidth*120/175)
-				.clipped()
-				.clipShape(RoundedRectangle(cornerRadius: 12))
-			
-			Text(article.title)
-				.font(.gothicNeo(.bold, size: 14))
-				.foregroundStyle(Color.baseBlack)
-				.lineLimit(1)
-		}
-		.overlay(alignment: .topTrailing) {
-			Button(action: {
-				onTapHeart()
-			}, label: {
-				Image(article.favorite ? .icHeartFillMain : .icHeartDefault)
-					.padding(.top, 4)
-					.padding(.trailing, 4)
-			})
-		}
+		
+        VStack(alignment: .leading, spacing: 8) {
+            KFImage(URL(string: article.thumbnailUrl))
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: itemWidth, height: itemWidth*120/175)
+                .clipped()
+                .clipShape(RoundedRectangle(cornerRadius: 12))
+            
+            Text(article.title)
+                .font(.gothicNeo(.bold, size: 14))
+                .foregroundStyle(Color.baseBlack)
+                .lineLimit(1)
+        }
+        .overlay(alignment: .topTrailing) {
+            Button(action: {
+                onTapHeart()
+            }, label: {
+                Image(article.favorite ? .icHeartFillMain : .icHeartDefault)
+                    .padding(.top, 4)
+                    .padding(.trailing, 4)
+            })
+        }
+          
+           
 	}
 }
 
