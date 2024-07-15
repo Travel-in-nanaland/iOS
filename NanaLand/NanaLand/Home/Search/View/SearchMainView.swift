@@ -212,7 +212,21 @@ struct SearchMainView: View {
                 ) {
                     ForEach(searchVM.state.searchVolumeResult, id: \.self) { article in
                         NavigationLink {
-                            destinationView(for: article)
+                            switch article.category {
+                            case .nature:
+                                NatureDetailView(id: Int64(article.id))
+                            case .festival:
+                                FestivalDetailView(id: Int64(article.id))
+                            case .market:
+                                ShopDetailView(id: Int64(article.id))
+                            case .experience:
+                                Text("Experience Detail View")
+                    //            ExperienceDetailView(id: article.id)
+                            case .nanaPick:
+                                NaNaPickDetailView(id: Int64(article.id))
+                            case .all:
+                                Text("test")
+                            }
                         } label: {
                             VStack(alignment: .leading, spacing: 8) {
                                 KFImage(URL(string: article.thumbnailUrl))
@@ -259,25 +273,6 @@ struct SearchMainView: View {
             showResultView = true
         }
     }
-    
-    @ViewBuilder
-        func destinationView(for article: Article) -> some View {
-            switch article.category {
-            case .nature:
-                NatureDetailView(id: Int64(article.id))
-            case .festival:
-                FestivalDetailView(id: Int64(article.id))
-            case .market:
-                ShopDetailView(id: Int64(article.id))
-            case .experience:
-                Text("Experience Detail View")
-    //            ExperienceDetailView(id: article.id)
-            case .nanaPick:
-                NaNaPickDetailView(id: Int64(article.id))
-            case .all:
-                Text("test")
-            }
-        }
 }
 
 #Preview {

@@ -40,16 +40,14 @@ struct FestivalDetailView: View {
                                             // 버튼을 누를 경우에 좋아요 API 호출
                                             Task {
                                                 await toggleFavorite(body: FavoriteToggleRequest(id: Int(viewModel.state.getFestivalDetailResponse.id), category: .festival))
-                                               
                                             }
                                         } label: {
                                             viewModel.state.getFestivalDetailResponse.favorite ? Image("icHeartFillMain") : Image("icFavoriteHeart")
-                                       
                                         }
-										
-										ShareLink(item: DeepLinkManager.shared.makeLink(category: .festival, id: Int(viewModel.state.getFestivalDetailResponse.id)), label: {
-											Image("icShare2")
-										})
+                                        
+                                        ShareLink(item: DeepLinkManager.shared.makeLink(category: .festival, id: Int(viewModel.state.getFestivalDetailResponse.id)), label: {
+                                            Image("icShare2")
+                                        })
                                     }
                                     .padding(.trailing, 16)
                                     Spacer()
@@ -102,8 +100,6 @@ struct FestivalDetailView: View {
                                         .padding(.bottom, 16)
                                     }
                                     .padding(.trailing, 16)
-                                    
-                                    
                                 }
                                 .padding(.top, 36)
                             }
@@ -117,15 +113,16 @@ struct FestivalDetailView: View {
                                     HStack(spacing: 12) {
                                         Spacer()
                                         Button {
-                                            
+                                            Task {
+                                                await toggleFavorite(body: FavoriteToggleRequest(id: Int(viewModel.state.getFestivalDetailResponse.id), category: .festival))
+                                            }
                                         } label: {
-                                            viewModel.state.getFestivalDetailResponse.favorite ? Image("icHeartFillMain") :
-                                            Image("icFavoriteHeart")
+                                            viewModel.state.getFestivalDetailResponse.favorite ? Image("icHeartFillMain") : Image("icFavoriteHeart")
                                         }
-										
-										ShareLink(item: DeepLinkManager.shared.makeLink(category: .festival, id: Int(viewModel.state.getFestivalDetailResponse.id)), label: {
-											Image("icShare2")
-										})
+                                        
+                                        ShareLink(item: DeepLinkManager.shared.makeLink(category: .festival, id: Int(viewModel.state.getFestivalDetailResponse.id)), label: {
+                                            Image("icShare2")
+                                        })
                                     }
                                     .padding(.trailing, 16)
                                     Spacer()
@@ -160,7 +157,6 @@ struct FestivalDetailView: View {
                                         .padding(.trailing, 16)
                                         .lineSpacing(10)
                                     
-                                    
                                     Spacer()
                                     HStack {
                                         Spacer()
@@ -177,23 +173,18 @@ struct FestivalDetailView: View {
                                         .padding(.bottom, 16)
                                     }
                                     .padding(.trailing, 16)
-                                    
-                                    
                                 }
                                 .padding(.top, 36)
-                                
                             }
                         }
                         .padding(.leading, 20)
                         .padding(.trailing, 20)
                         
                         VStack(spacing: 24) {
-                            
                             if viewModel.state.getFestivalDetailResponse.address != "" {
                                 HStack(spacing: 10) {
                                     VStack(spacing: 0) {
                                         Image("icDetailPin")
-                                        
                                     }
                                     
                                     VStack(alignment: .leading, spacing: 0) {
@@ -203,24 +194,14 @@ struct FestivalDetailView: View {
                                             .font(.gothicNeo(.regular, size: 12))
                                     }
                                     Spacer()
-                                    
                                 }
-                                .frame(width: Constants.screenWidth - 40, height: (Constants.screenWidth - 40) * ( 42 / 358))
-                                
-                                VStack(alignment: .leading, spacing: 0) {
-                                    Text(.address)
-                                        .font(.gothicNeo(.bold, size: 14))
-                                    Text(viewModel.state.getFestivalDetailResponse.address)
-                                        .font(.body02)
-                                }
-                                Spacer()
+                                .frame(width: Constants.screenWidth - 40)
                             }
                             
                             if viewModel.state.getFestivalDetailResponse.contact != "" {
                                 HStack(spacing: 10) {
                                     VStack(spacing: 0) {
                                         Image("icDetailPhone")
-                                        
                                     }
                                     
                                     VStack(alignment: .leading, spacing: 0) {
@@ -231,40 +212,20 @@ struct FestivalDetailView: View {
                                     }
                                     Spacer()
                                 }
-                                .frame(width: Constants.screenWidth - 40, height: (Constants.screenWidth - 40) * ( 42 / 358))
-                                
-                                VStack(alignment: .leading, spacing: 0) {
-                                    Text(.phoneNumber)
-                                        .font(.gothicNeo(.bold, size: 14))
-                                    Text(viewModel.state.getFestivalDetailResponse.contact)
-                                        .font(.body02)
-                                }
-                                Spacer()
+                                .frame(width: Constants.screenWidth - 40, height: (Constants.screenWidth - 40) * (42 / 358))
                             }
                             
                             if viewModel.state.getFestivalDetailResponse.period != "" {
                                 HStack(spacing: 10) {
                                     VStack(spacing: 0) {
-                                        Image("icDetailClock")   
+                                        Image("icDetailClock")
                                     }
-                            HStack(spacing: 10) {
-                                VStack(spacing: 0) {
-                                    Image("icClock")
-                                    
-                                }
-                                
-                                VStack(alignment: .leading, spacing: 0) {
-                                    Text(.duration)
-                                        .font(.gothicNeo(.bold, size: 14))
-                                    Text(viewModel.state.getFestivalDetailResponse.period)
-                                        .font(.body02)
                                     
                                     VStack(alignment: .leading, spacing: 0) {
                                         Text(.duration)
                                             .font(.gothicNeo(.bold, size: 14))
                                         Text(viewModel.state.getFestivalDetailResponse.period)
                                             .font(.gothicNeo(.regular, size: 12))
-                                        
                                     }
                                     Spacer()
                                 }
@@ -275,7 +236,6 @@ struct FestivalDetailView: View {
                                 HStack(spacing: 10) {
                                     VStack(spacing: 0) {
                                         Image("icDetailClock")
-                                       
                                     }
                                     
                                     VStack(alignment: .leading, spacing: 0) {
@@ -285,18 +245,6 @@ struct FestivalDetailView: View {
                                             .font(.gothicNeo(.regular, size: 12))
                                     }
                                     Spacer()
-                                  
-                            HStack(spacing: 10) {
-                                VStack(spacing: 0) {
-                                    Image("icClock")
-                                   
-                                }
-                                
-                                VStack(alignment: .leading, spacing: 0) {
-                                    Text(.time)
-                                        .font(.gothicNeo(.bold, size: 14))
-                                    Text(viewModel.state.getFestivalDetailResponse.time)
-                                        .font(.body02)
                                 }
                                 .frame(width: Constants.screenWidth - 40)
                             }
@@ -305,7 +253,6 @@ struct FestivalDetailView: View {
                                 HStack(alignment: .top, spacing: 10) {
                                     VStack(spacing: 0) {
                                         Image("icDetailCharge")
-                                        
                                     }
                                     
                                     VStack(alignment: .leading, spacing: 0) {
@@ -318,13 +265,12 @@ struct FestivalDetailView: View {
                                 }
                                 .frame(width: Constants.screenWidth - 40)
                             }
-                            
                             if viewModel.state.getFestivalDetailResponse.homepage != "" {
                                 HStack(spacing: 10) {
                                     VStack(spacing: 0) {
                                         Image("icDetailHomepage")
-                                     
                                     }
+                                    
                                     VStack(alignment: .leading, spacing: 0) {
                                         Text(.homepage)
                                             .font(.gothicNeo(.bold, size: 14))
@@ -332,34 +278,12 @@ struct FestivalDetailView: View {
                                             .font(.gothicNeo(.regular, size: 12))
                                     }
                                     Spacer()
-                                
-                                VStack(alignment: .leading, spacing: 0) {
-                                    Text(.fee)
-                                        .font(.gothicNeo(.bold, size: 14))
-                                    Text(viewModel.state.getFestivalDetailResponse.fee)
-                                        .font(.body02)
-                                }
-                                Spacer()
-                            }
-                            .frame(width: Constants.screenWidth - 40)
-                            HStack(spacing: 10) {
-                                VStack(spacing: 0) {
-                                    Image("icHomepage")
-                                 
-                                }
-                                VStack(alignment: .leading, spacing: 0) {
-                                    Text(.homepage)
-                                        .font(.gothicNeo(.bold, size: 14))
-                                    Text(viewModel.state.getFestivalDetailResponse.homepage)
-                                        .font(.body02)
                                 }
                                 .frame(width: Constants.screenWidth - 40)
                             }
                             
                             Button {
-								AppState.shared.navigationPath.append(ArticleDetailViewType.reportInfo(id: viewModel.state.getFestivalDetailResponse.id, category: .festival))
-                                print(AppState.shared.navigationPath)
-                                print(AppState.shared.navigationPath.count)
+                                AppState.shared.navigationPath.append(ArticleDetailViewType.reportInfo(id: viewModel.state.getFestivalDetailResponse.id, category: .festival))
                             } label: {
                                 Text(.proposeUpdateInfo)
                                     .background(
@@ -373,26 +297,15 @@ struct FestivalDetailView: View {
                                     .padding(.bottom, 10)
                             }
                         }
-                        .padding(.bottom, 10)
                         .padding(.top, 32)
+                        .id("Scroll_To_Top")
                     }
-                    .id("Scroll_To_Top")
-                    .onAppear {
-                        Task {
-                            await getFestivalDetail(id: id, isSearch: false)
-       
-                        }
+                }
+                .navigationDestination(for: ArticleDetailViewType.self) { viewType in
+                    switch viewType {
+                    case let .reportInfo(id, category):
+                        ReportInfoMainView(id: id, category: category)
                     }
-                    .toolbar(.hidden)
-                    .overlay(
-                        GeometryReader { proxy -> Color in
-                            let offset = proxy.frame(in: .global).minY
-                            return Color.clear
-                        }
-                            .frame(width: 0, height: 0)
-                        ,alignment: .top
-                        
-                    )
                 }
                 .overlay(
                     VStack {
@@ -400,16 +313,14 @@ struct FestivalDetailView: View {
                         HStack {
                             Spacer()
                             Button(action: {
-                                  // 10. withAnimation 과함께 함수 작성
-                                  withAnimation(.default) {
-                                      // ScrollViewReader의 proxyReader을 넣어줌
-                                      proxyReader.scrollTo("Scroll_To_Top", anchor: .top)
-                                  }
-                                  
-                              }, label: {
-                                   Image("icScrollToTop")
-                                  
-                              })
+                                // 10. withAnimation 과함께 함수 작성
+                                withAnimation(.default) {
+                                    // ScrollViewReader의 proxyReader을 넣어줌
+                                    proxyReader.scrollTo("Scroll_To_Top", anchor: .top)
+                                }
+                            }, label: {
+                                Image("icScrollToTop")
+                            })
                             .frame(width: 80, height: 80)
                             .padding(.trailing)
                             .padding(.bottom, getSafeArea().bottom == 0 ? 15 : 0)
@@ -417,30 +328,28 @@ struct FestivalDetailView: View {
                     }
                 )
             }
-
+            .onAppear {
+                Task {
+                    await getFestivalDetail(id: id, isSearch: false)
+                }
+            }
+            .toolbar(.hidden)
         }
-		.navigationDestination(for: ArticleDetailViewType.self) { viewType in
-			switch viewType {
-			case let .reportInfo(id, category):
-				ReportInfoMainView(id: id, category: category)
-			}
-		}
-     
     }
     
     func getFestivalDetail(id: Int64, isSearch: Bool) async {
         await viewModel.action(.getFestivalDetailItem(id: id, isSearch: isSearch))
     }
     
-    func getSafeArea() ->UIEdgeInsets  {
+    func getSafeArea() -> UIEdgeInsets {
         return UIApplication.shared.windows.first?.safeAreaInsets ?? UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
     func toggleFavorite(body: FavoriteToggleRequest) async {
-		if UserDefaults.standard.string(forKey: "provider") == "GUEST" {
-			AppState.shared.showRegisterInduction = true
-			return
-		}
+        if UserDefaults.standard.string(forKey: "provider") == "GUEST" {
+            AppState.shared.showRegisterInduction = true
+            return
+        }
         await viewModel.action(.toggleFavorite(body: body))
     }
 }
