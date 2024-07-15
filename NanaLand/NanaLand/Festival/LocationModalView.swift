@@ -70,7 +70,7 @@ struct LocationModalView: View {
                     }, label: {
                         Text(locationArray[index])
                             .font(.body02)
-                            .foregroundStyle(Color.gray1)
+                            .foregroundStyle(buttonsToggled[index] ? Color.main : Color.gray1)
                             .padding(.leading, 7)
                             .padding(.trailing, 7)
                     })

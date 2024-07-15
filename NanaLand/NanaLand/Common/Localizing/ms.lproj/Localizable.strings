@@ -158,6 +158,7 @@
 "complete" = "Pembetulan selesai";
 "nickNameTypingLimitError" = "Nama panggilan ini tidak boleh digunakan.";
 "nickNameDuplicateError"= "Nama panggilan ini sudah digunakan oleh pengguna lain.";
+"nickNameContainSpecialCharacterError" = "Nama panggilan hanya boleh mengandungi huruf, ruang, dan nombor.";
 "introduceTypingLimitError" = "Pengenalan mesti dalam 70 aksara.";
 // deleteAlert
 "deleteAlertTitle" = "Adakah anda ingin\nmemadam perubahan?";

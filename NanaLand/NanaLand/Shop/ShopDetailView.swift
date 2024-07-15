@@ -34,14 +34,14 @@ struct ShopDetailView: View {
                                 .frame(maxWidth: Constants.screenWidth - 40, maxHeight: .infinity) // 뷰의 크기를 지정합니다.
                                               .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
                             VStack(spacing: 0) {
-                                HStack(spacing: 0) {
+                                HStack(spacing: 12) {
                                     Spacer()
                                     Button {
                                         Task {
                                             await toggleFavorite(body: FavoriteToggleRequest(id: Int(viewModel.state.getShopDetailResponse.id), category: .market))
                                         }
                                     } label: {
-                                        viewModel.state.getShopDetailResponse.favorite ? Image("icHeartFillMain") : Image("icHeart")
+                                        viewModel.state.getShopDetailResponse.favorite ? Image("icHeartFillMain") : Image("icFavoriteHeart")
                                     }
 									
 									ShareLink(item: DeepLinkManager.shared.makeLink(category: .market, id: Int(viewModel.state.getShopDetailResponse.id)), label: {
@@ -80,6 +80,7 @@ struct ShopDetailView: View {
                                     .font(.gothicNeo(.regular, size: 16))
                                     .frame(height: roundedHeight * (84 / 224))
                                     .padding(.leading, 16)
+                                    .lineSpacing(10)
                                     .padding(.trailing, 16)
                                 
                                 
@@ -110,14 +111,14 @@ struct ShopDetailView: View {
                                 .frame(width: Constants.screenWidth - 40) // 뷰의 크기를 지정합니다.
                                               .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
                             VStack(spacing: 0) {
-                                HStack(spacing: 0) {
+                                HStack(spacing: 12) {
                                     Spacer()
                                     Button {
                                         Task {
                                             await toggleFavorite(body: FavoriteToggleRequest(id: Int(viewModel.state.getShopDetailResponse.id), category: .market))
                                         }
                                     } label: {
-                                        viewModel.state.getShopDetailResponse.favorite ? Image("icHeartFillMain") : Image("icHeart")
+                                        viewModel.state.getShopDetailResponse.favorite ? Image("icHeartFillMain") : Image("icFavorteHeart")
                                     }
 									
 									ShareLink(item: DeepLinkManager.shared.makeLink(category: .market, id: Int(viewModel.state.getShopDetailResponse.id)), label: {
@@ -155,6 +156,7 @@ struct ShopDetailView: View {
                                     .font(.gothicNeo(.regular, size: 16))
                                     .padding(.leading, 16)
                                     .padding(.trailing, 16)
+                                    .lineSpacing(10)
                                 
                                 
                                 Spacer()
@@ -184,114 +186,104 @@ struct ShopDetailView: View {
                     .padding(.trailing, 20)
                     
                     VStack(spacing: 24) {
-                        if viewModel.state.getShopDetailResponse.address != "" {
-                            HStack(spacing: 10) {
-                                VStack(spacing: 0) {
-                                    Image("icDetailPin")
-                                    Spacer()
-                                }
-                                
-                                VStack(alignment: .leading, spacing: 0) {
-                                    Text(.address)
-                                        .font(.gothicNeo(.bold, size: 14))
-                                    Text(viewModel.state.getShopDetailResponse.address)
-                                        .font(.gothicNeo(.regular, size: 12))
-                                    
-                                }
+                        HStack(spacing: 10) {
+                            VStack(spacing: 0) {
+                                Image("icPin")
                                 Spacer()
-                               
                             }
-                            .frame(width: Constants.screenWidth - 40)
+                            
+                            VStack(alignment: .leading, spacing: 0) {
+                                Text(.address)
+                                    .font(.gothicNeo(.bold, size: 14))
+                                Text(viewModel.state.getShopDetailResponse.address)
+                                    .font(.body02)
+                                
+                            }
+                            Spacer()
+                           
                         }
+                        .frame(width: Constants.screenWidth - 40)
                      
-                        if viewModel.state.getShopDetailResponse.contact != "" {
-                            HStack(spacing: 10) {
-                                VStack(spacing: 0) {
-                                    Image("icDetailPhone")
-                                    Spacer()
-                                }
-                                
-                                VStack(alignment: .leading, spacing: 0) {
-                                    Text(.phoneNumber)
-                                        .font(.gothicNeo(.bold, size: 14))
-                                    Text(viewModel.state.getShopDetailResponse.contact)
-                                        .font(.gothicNeo(.regular, size: 12))
-                                    
-                                }
+                        HStack(spacing: 10) {
+                            VStack(spacing: 0) {
+                                Image("icPhone")
                                 Spacer()
                             }
-                            .frame(width: Constants.screenWidth - 40)
+                            
+                            VStack(alignment: .leading, spacing: 0) {
+                                Text(.phoneNumber)
+                                    .font(.gothicNeo(.bold, size: 14))
+                                Text(viewModel.state.getShopDetailResponse.contact)
+                                    .font(.body02)
+                                
+                            }
+                            Spacer()
                         }
+                        .frame(width: Constants.screenWidth - 40)
+                            
+                        HStack(spacing: 10) {
+                            VStack(spacing: 0) {
+                                Image("icClock")
+                                Spacer()
+                            }
+                            
+                            VStack(alignment: .leading, spacing: 0) {
+                                Text(.time)
+                                    .font(.gothicNeo(.bold, size: 14))
+                                Text(viewModel.state.getShopDetailResponse.time)
+                                    .font(.body02)
+                                
+                            }
+                            Spacer()
+                        }
+                        .frame(width: Constants.screenWidth - 40)
                         
-                        if viewModel.state.getShopDetailResponse.time != "" {
-                            HStack(spacing: 10) {
-                                VStack(spacing: 0) {
-                                    Image("icDetailClock")
-                                    Spacer()
-                                }
-                                
-                                VStack(alignment: .leading, spacing: 0) {
-                                    Text(.time)
-                                        .font(.gothicNeo(.bold, size: 14))
-                                    Text(viewModel.state.getShopDetailResponse.time)
-                                        .font(.gothicNeo(.regular, size: 12))
-                                    
-                                }
+                        HStack(spacing: 10) {
+                            VStack(spacing: 0) {
+                                Image("icFacility")
                                 Spacer()
                             }
-                            .frame(width: Constants.screenWidth - 40)
+                            
+                            VStack(alignment: .leading, spacing: 0) {
+                                Text(.amenity)
+                                    .font(.gothicNeo(.bold, size: 14))
+                                Text(viewModel.state.getShopDetailResponse.amenity)
+                                    .font(.body02)
+                            }
+                            Spacer()
                         }
-                        
-                        if viewModel.state.getShopDetailResponse.amenity != "" {
-                            HStack(spacing: 10) {
-                                VStack(spacing: 0) {
-                                    Image("icDetailFacility")
-                                    Spacer()
-                                }
-                                
-                                VStack(alignment: .leading, spacing: 0) {
-                                    Text(.amenity)
-                                        .font(.gothicNeo(.bold, size: 14))
-                                    Text(viewModel.state.getShopDetailResponse.amenity)
-                                        .font(.gothicNeo(.regular, size: 12))
-                                }
+                        .frame(width: Constants.screenWidth - 40)
+
+                        HStack(spacing: 10) {
+                            VStack(spacing: 0) {
+                                Image("icHomepage")
                                 Spacer()
                             }
-                            .frame(width: Constants.screenWidth - 40)
-                        }
-                        
-                        if viewModel.state.getShopDetailResponse.homepage != "" {
-                            HStack(spacing: 10) {
-                                VStack(spacing: 0) {
-                                    Image("icDetailHomepage")
-                                    Spacer()
-                                }
+                            
+                            VStack(alignment: .leading, spacing: 0) {
+                                Text(.homepage)
+                                    .font(.gothicNeo(.bold, size: 14))
+                                Text(viewModel.state.getShopDetailResponse.homepage)
+                                    .font(.body02)
                                 
-                                VStack(alignment: .leading, spacing: 0) {
-                                    Text(.homepage)
-                                        .font(.gothicNeo(.bold, size: 14))
-                                    Text(viewModel.state.getShopDetailResponse.homepage)
-                                        .font(.gothicNeo(.regular, size: 12))
-                                    
-                                }
-                                Spacer()
                             }
-                            .frame(width: Constants.screenWidth - 40, height: (Constants.screenWidth - 40) * ( 42 / 358))
+                            Spacer()
                         }
+                        .frame(width: Constants.screenWidth - 40, height: (Constants.screenWidth - 40) * ( 42 / 358))
+                        .padding(.bottom, 32)
                         
 						Button(action: {
 							AppState.shared.navigationPath.append(ArticleDetailViewType.reportInfo(id: viewModel.state.getShopDetailResponse.id, category: .market))
 						}, label: {
                             Text(.proposeUpdateInfo)
 								.background(
-									RoundedRectangle(cornerRadius: 50.0)
+									RoundedRectangle(cornerRadius: 12.0)
 										.foregroundStyle(Color.gray2)
 										.frame(width: 120, height: 40)
 								)
 								.foregroundStyle(Color.white)
 								.font(.body02_bold)
-                                .padding(.top, 32)
-                                .padding(.bottom, 10)
+								.padding(.bottom, 10)
 						})
                             
                     }

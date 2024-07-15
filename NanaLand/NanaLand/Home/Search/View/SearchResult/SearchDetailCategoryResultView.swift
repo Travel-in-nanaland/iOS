@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct SearchDetailCategoryResultView: View {
-    @ObservedObject var searchVM: SearchViewModel
-    
-    let tab: Category
-    let searchTerm: String
-    
-    @State var isInit: Bool = false
-    
+	@ObservedObject var searchVM: SearchViewModel
+	
+	let tab: Category
+	let searchTerm: String
+	
+	@State var isInit: Bool = false
+	
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack(alignment: .leading, spacing: 17) {
@@ -40,88 +40,103 @@ struct SearchDetailCategoryResultView: View {
                 .font(.gothicNeo(.medium, size: 14))
                 .foregroundStyle(Color.gray1)
                 
-                if searchVM.isSeaechresultIsEmpty() {
-                    VStack(spacing: 15) {
-                        Image(.orange)
-                            .resizable()
-                            .frame(width: 78, height: 78)
-                        Text(.noResult)
-                            .font(.body01)
-                            .foregroundStyle(Color.gray1)
-                            .multilineTextAlignment(.center)
-                    }
-                    .frame(width: Constants.screenWidth - 32)
-                    .padding(.top, 150)
-                } else {
-                    LazyVGrid(
-                        columns: [GridItem(.flexible()), GridItem(.flexible())]
-                    ) {
-                        ForEach(getArticles(for: tab), id: \.id) { article in
-                            NavigationLink(destination: destinationView(for: article)) {
-                                ArticleItem(category: tab, article: article, onTapHeart: {
-                                    if UserDefaults.standard.string(forKey: "provider") == "GUEST" {
-                                        AppState.shared.showRegisterInduction = true
-                                        return
+                if searchVM.state.currentSearchTab == .experience || searchVM.state.currentSearchTab == .nanaPick || searchVM.state.currentSearchTab == .market || searchVM.state.currentSearchTab == .nature || searchVM.state.currentSearchTab == .festival {
+                    if false {
+                        VStack(spacing: 4) {
+                            Image(.airplane)
+                                .resizable()
+                                .frame(width: 100, height: 100)
+                            Text(.beingPrepared)
+                                .font(.body01)
+                                .foregroundStyle(Color.gray1)
+                                .multilineTextAlignment(.center)
+                        }
+                        .frame(width: Constants.screenWidth - 32)
+                        .padding(.top, 150)
+                        
+                    } else if searchVM.isSeaechresultIsEmpty() {
+                        VStack(spacing: 15) {
+                            Image(.orange)
+                                .resizable()
+                                .frame(width: 78, height: 78)
+                            Text(.noResult)
+                                .font(.body01)
+                                .foregroundStyle(Color.gray1)
+                                .multilineTextAlignment(.center)
+                        }
+                        .frame(width: Constants.screenWidth - 32)
+                        .padding(.top, 150)
+                    } else {
+                        LazyVGrid(
+                            columns: [GridItem(.flexible()), GridItem(.flexible())]
+                        ) {
+                            ForEach({ () -> [Article] in
+                                switch tab {
+                                case .all:
+                                    return [] as [Article]
+                                case .nature:
+                                    return searchVM.state.natureCategorySearchResult.data
+                                case .festival:
+                                    return searchVM.state.festivalCategorySearchResult.data
+                                case .market:
+                                    return searchVM.state.marketCategorySearchResult.data
+                                case .experience:
+                                    return searchVM.state.experienceCategorySearchResult.data
+                                case .nanaPick:
+                                    return searchVM.state.nanaCategorySearchResult.data
+                                }
+                            }(),
+                                    id: \.id
+                            ) { article in
+                                Button {
+                                    AppState.shared.navigationPath.append(SearchDetailViewType.detail)
+                                } label: {
+                                    ArticleItem(category: tab, article: article, onTapHeart: {
+                                        if UserDefaults.standard.string(forKey: "provider") == "GUEST" {
+                                            AppState.shared.showRegisterInduction = true
+                                            return
+                                        }
+                                        Task {
+                                            await searchVM.action(.didTapHeartInSearchDetail(category: tab, article: article))
+                                        }
+                                    })
+                                }
+                               
+
+                              
+                            }
+                            
+                            if !searchVM.isLastPage(tab: tab) {
+                                ProgressView()
+                                    .task {
+                                        await searchVM.action(.searchTerm(category: tab, term: searchTerm))
                                     }
-                                    Task {
-                                        await searchVM.action(.didTapHeartInSearchDetail(category: tab, article: article))
-                                    }
-                                })
+                                    .frame(width: 20)
+                                    .position(x: Constants.screenWidth/2 - 20)
                             }
                         }
                     }
                 }
-                if !searchVM.isLastPage(tab: tab) {
-                    ProgressView()
-                        .task {
-                            await searchVM.action(.searchTerm(category: tab, term: searchTerm))
-                        }
-                        .frame(width: 20)
-                        .position(x: Constants.screenWidth / 2 - 20)
-                }
             }
             .padding(.horizontal, 16)
             .padding(.top, 30)
+            .navigationDestination(for: SearchDetailViewType.self) { viewType in
+                switch viewType{
+                case .detail:
+                    NatureDetailView(id: 2)
+                }
+                
+            }
         }
+       
+        
     }
-    
-    @ViewBuilder
-    func destinationView(for article: Article) -> some View {
-        switch article.category {
-        case .nature:
-            NatureDetailView(id: Int64(article.id))
-        case .festival:
-            FestivalDetailView(id: Int64(article.id))
-        case .market:
-            ShopDetailView(id: Int64(article.id))
-        case .experience:
-            Text("경험 상세 보기")
-        case .nanaPick:
-            NaNaPickDetailView(id: Int64(article.id))
-        case .all:
-            Text("테스트")
-        }
-    }
+}
 
-    func getArticles(for tab: Category) -> [Article] {
-        switch tab {
-        case .all:
-            return []
-        case .nature:
-            return searchVM.state.natureCategorySearchResult.data
-        case .festival:
-            return searchVM.state.festivalCategorySearchResult.data
-        case .market:
-            return searchVM.state.marketCategorySearchResult.data
-        case .experience:
-            return searchVM.state.experienceCategorySearchResult.data
-        case .nanaPick:
-            return searchVM.state.nanaCategorySearchResult.data
-        }
-    }
+enum SearchDetailViewType: Hashable {
+    case detail
 }
 
 #Preview {
-    SearchDetailCategoryResultView(searchVM: SearchViewModel(), tab: .experience, searchTerm: "제주시")
+	SearchDetailCategoryResultView(searchVM: SearchViewModel(), tab: .experience, searchTerm: "제주시")
 }
-

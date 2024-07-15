@@ -23,7 +23,15 @@ struct NanaLandTabView: View {
                     .tabItem {
                         Label(
 							title: { Text(.home).font(.gothicNeo(.semibold, size: 10)) },
-							icon: { appState.currentTab == .home ? Image(.icHomeFill) : Image(.icHome) }
+                            icon: {
+                                if appState.currentTab == .home {
+                                    Image("icHomeFill")
+                                } else {
+                                    Image("icHome")
+                                        .renderingMode(.template)
+                                      
+                                }
+                            }
                         )
                     }
                     .tag(Tab.home)
@@ -32,7 +40,15 @@ struct NanaLandTabView: View {
                     .tabItem {
                         Label(
 							title: { Text(.favorite).font(.gothicNeo(.semibold, size: 10)) },
-                            icon: { appState.currentTab == .favorite ? Image(.icHeartFill) : Image(.icHeart) }
+                            icon: {
+                                if appState.currentTab == .favorite {
+                                    Image("icHeartFill")
+                                } else {
+                                    Image("icHeart")
+                                        .renderingMode(.template)
+                                       
+                                }
+                            }
                         )
                     }
                     .tag(Tab.favorite)
@@ -41,7 +57,15 @@ struct NanaLandTabView: View {
                     .tabItem {
                         Label(
 							title: { Text(.jejuStory).font(.gothicNeo(.semibold, size: 10)) },
-                            icon: { appState.currentTab == .story ? Image(.icStoryFill) : Image(.icStory) }
+                            icon: {
+                                if appState.currentTab == .story {
+                                    Image("icStoryFill")
+                                } else {
+                                    Image("icStory")
+                                        .renderingMode(.template)
+                                       
+                                }
+                            }
                         )
                     }
                     .tag(Tab.story)
@@ -50,7 +74,15 @@ struct NanaLandTabView: View {
                     .tabItem {
                         Label(
 							title: { Text(.myNana).font(.gothicNeo(.semibold, size: 10)) },
-                            icon: { appState.currentTab == .profile ? Image(.icMyPageFill) : Image(.icMyPage) }
+                            icon: {
+                                if appState.currentTab == .profile {
+                                    Image("icMyPageFill")
+                                } else {
+                                    Image("icMyPage")
+                                        .renderingMode(.template)
+                                       
+                                }
+                            }
                         )
                     }
                     .tag(Tab.profile)
