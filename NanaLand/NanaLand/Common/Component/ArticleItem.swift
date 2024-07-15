@@ -9,14 +9,13 @@ import SwiftUI
 import Kingfisher
 
 struct ArticleItem: View {
-	let category: Category
-	let article: Article
-	let onTapHeart: () -> Void
-	
-	let itemWidth = (Constants.screenWidth-40)/2
-	
-	var body: some View {
-		
+    let category: Category
+    let article: Article
+    let onTapHeart: () -> Void
+    
+    let itemWidth = (Constants.screenWidth-40)/2
+    
+    var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             KFImage(URL(string: article.thumbnailUrl))
                 .resizable()
@@ -29,6 +28,9 @@ struct ArticleItem: View {
                 .font(.gothicNeo(.bold, size: 14))
                 .foregroundStyle(Color.baseBlack)
                 .lineLimit(1)
+                .truncationMode(.tail) // 글자가 길 경우 ...으로 표시
+                .frame(width: itemWidth, alignment: .leading) // 너비를 지정하고 왼쪽 정렬
+                .multilineTextAlignment(.leading) // 왼쪽 정렬 추가
         }
         .overlay(alignment: .topTrailing) {
             Button(action: {
@@ -39,11 +41,10 @@ struct ArticleItem: View {
                     .padding(.trailing, 4)
             })
         }
-          
-           
+    }
 	}
 }
 
 #Preview {
-	ArticleItem(category: .experience, article: Article(id: 0, thumbnailUrl: "http://tong.visitkorea.or.kr/cms/resource/85/3076985_image3_1.jpg", title: "근하신뇽! 새해도 9.81파크와 함께해용", favorite: true, category: .experience), onTapHeart: {})
+    ArticleItem(category: .experience, article: Article(id: 0, thumbnailUrl: "http://tong.visitkorea.or.kr/cms/resource/85/3076985_image3_1.jpg", title: "근하신뇽! 새해도 9.81파크와 함께해용", favorite: true, category: .experience), onTapHeart: {})
 }

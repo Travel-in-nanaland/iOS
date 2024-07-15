@@ -25,7 +25,7 @@ struct LoginView: View {
 			
 			Spacer()
 			
-			Image(.logo)
+            Image(.logo)
 				.resizable()
 				.frame(width: 172.8, height: 171.3)
 				.padding(.bottom, 32)

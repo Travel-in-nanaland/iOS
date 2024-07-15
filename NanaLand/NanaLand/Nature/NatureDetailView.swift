@@ -211,11 +211,23 @@ struct NatureDetailView: View {
                                 
                             }
                             
-                            HStack(spacing: 10) {
-                                VStack(spacing: 0) {
-                                    Image("icPin")
+                            if viewModel.state.getNatureDetailResponse.address != "" {
+                                HStack(spacing: 10) {
+                                    VStack(spacing: 0) {
+                                        Image("icDetailPin")
+                                        
+                                    }
+                                    
+                                    VStack(alignment: .leading, spacing: 0) {
+                                        Text(.address)
+                                            .font(.gothicNeo(.bold, size: 14))
+                                        Text(viewModel.state.getNatureDetailResponse.address)
+                                            .font(.gothicNeo(.regular, size: 12))
+                                    }
+                                    Spacer()
                                     
                                 }
+                                .frame(width: Constants.screenWidth - 40)
                                 
                                 VStack(alignment: .leading, spacing: 0) {
                                     Text(.address)
@@ -226,13 +238,23 @@ struct NatureDetailView: View {
                                 Spacer()
                                 
                             }
-                            .frame(width: Constants.screenWidth - 40)
                             
-                            HStack(spacing: 10) {
-                                VStack(spacing: 0) {
-                                    Image("icPhone")
+                            if viewModel.state.getNatureDetailResponse.contact != "" {
+                                HStack(spacing: 10) {
+                                    VStack(spacing: 0) {
+                                        Image("icDetailPhone")
+                                        
+                                    }
                                     
+                                    VStack(alignment: .leading, spacing: 0) {
+                                        Text(.phoneNumber)
+                                            .font(.gothicNeo(.bold, size: 14))
+                                        Text(viewModel.state.getNatureDetailResponse.contact)
+                                            .font(.gothicNeo(.regular, size: 12))
+                                    }
+                                    Spacer()
                                 }
+                                .frame(width: Constants.screenWidth - 40, height: (Constants.screenWidth - 40) * ( 42 / 358))
                                 
                                 VStack(alignment: .leading, spacing: 0) {
                                     Text(.phoneNumber)
@@ -242,8 +264,13 @@ struct NatureDetailView: View {
                                 }
                                 Spacer()
                             }
-                            .frame(width: Constants.screenWidth - 40, height: (Constants.screenWidth - 40) * ( 42 / 358))
                             
+                            if viewModel.state.getNatureDetailResponse.time != "" {
+                                HStack(spacing: 10) {
+                                    VStack(spacing: 0) {
+                                        Image("icDetailClock")
+                                        Spacer()
+                                    }
                             HStack(spacing: 10) {
                                 VStack(spacing: 0) {
                                     Image("icClock")
@@ -256,16 +283,34 @@ struct NatureDetailView: View {
                                     Text(viewModel.state.getNatureDetailResponse.time)
                                         .font(.body02)
                                     
-                                }
-                                Spacer()
-                            }
-                            .frame(width: Constants.screenWidth - 40)
-                            
-                            HStack(spacing: 10) {
-                                VStack(spacing: 0) {
-                                    Image("icClock")
+                                    VStack(alignment: .leading, spacing: 0) {
+                                        Text(.time)
+                                            .font(.gothicNeo(.bold, size: 14))
+                                        Text(viewModel.state.getNatureDetailResponse.time)
+                                            .font(.gothicNeo(.regular, size: 12))
+                                        
+                                    }
                                     Spacer()
                                 }
+                                .frame(width: Constants.screenWidth - 40)
+                            }
+                            
+                            if viewModel.state.getNatureDetailResponse.fee != "" {
+                                HStack(spacing: 10) {
+                                    VStack(spacing: 0) {
+                                        Image("icDetailCharge")
+                                        Spacer()
+                                    }
+                                    
+                                    VStack(alignment: .leading, spacing: 0) {
+                                        Text(.fee)
+                                            .font(.gothicNeo(.bold, size: 14))
+                                        Text(viewModel.state.getNatureDetailResponse.fee)
+                                            .font(.gothicNeo(.regular, size: 12))
+                                    }
+                                    Spacer()
+                                }
+                                .frame(width: Constants.screenWidth - 40)
                                 
                                 VStack(alignment: .leading, spacing: 0) {
                                     Text(.fee)
@@ -275,13 +320,23 @@ struct NatureDetailView: View {
                                 }
                                 Spacer()
                             }
-                            .frame(width: Constants.screenWidth - 40)
                             
-                            HStack(spacing: 10) {
-                                VStack(spacing: 0) {
-                                    Image("icClock")
+                            if viewModel.state.getNatureDetailResponse.details != "" {
+                                HStack(spacing: 10) {
+                                    VStack(spacing: 0) {
+                                        Image("icDetailDescription")
+                                        Spacer()
+                                    }
+                                    
+                                    VStack(alignment: .leading, spacing: 0) {
+                                        Text(.detailInfo)
+                                            .font(.gothicNeo(.bold, size: 14))
+                                        Text(viewModel.state.getNatureDetailResponse.details)
+                                            .font(.gothicNeo(.regular, size: 12))
+                                    }
                                     Spacer()
                                 }
+                                .frame(width: Constants.screenWidth - 40)
                                 
                                 VStack(alignment: .leading, spacing: 0) {
                                     Text(.detailInfo)
@@ -291,12 +346,23 @@ struct NatureDetailView: View {
                                 }
                                 Spacer()
                             }
-                            .frame(width: Constants.screenWidth - 40)
-                            HStack(spacing: 10) {
-                                VStack(spacing: 0) {
-                                    Image("icFacility")
+                            
+                            if viewModel.state.getNatureDetailResponse.amenity != "" {
+                                HStack(spacing: 10) {
+                                    VStack(spacing: 0) {
+                                        Image("icDetailFacility")
+                                        Spacer()
+                                    }
+                                    VStack(alignment: .leading, spacing: 0) {
+                                        Text(.amenity)
+                                            .font(.gothicNeo(.bold, size: 14))
+                                        Text(viewModel.state.getNatureDetailResponse.amenity)
+                                            .font(.gothicNeo(.regular, size: 12))
+                                    }
                                     Spacer()
                                 }
+                                .frame(width: Constants.screenWidth - 40)
+
                                 VStack(alignment: .leading, spacing: 0) {
                                     Text(.amenity)
                                         .font(.gothicNeo(.bold, size: 14))
@@ -305,20 +371,19 @@ struct NatureDetailView: View {
                                 }
                                 Spacer()
                             }
-                            .frame(width: Constants.screenWidth - 40)
-                            .padding(.bottom, 32)
                             
                             Button {
                                 AppState.shared.navigationPath.append(ArticleDetailViewType.reportInfo(id: viewModel.state.getNatureDetailResponse.id, category: .nature))
                             } label: {
                                 Text(.proposeUpdateInfo)
                                     .background(
-                                        RoundedRectangle(cornerRadius: 12.0)
+                                        RoundedRectangle(cornerRadius: 50.0)
                                             .foregroundStyle(Color.gray2)
                                             .frame(width: 120, height: 40)
                                     )
                                     .foregroundStyle(Color.white)
                                     .font(.body02_bold)
+                                    .padding(.top, 32)
                                     .padding(.bottom, 10)
                             }
                         }
