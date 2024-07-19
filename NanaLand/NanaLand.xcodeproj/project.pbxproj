@@ -118,6 +118,10 @@
 		2C9CF4E82C00714900A346E8 /* TypeTestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9CF4E72C00714900A346E8 /* TypeTestViewModel.swift */; };
 		2C9CF4EA2C00716B00A346E8 /* RegisterViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9CF4E92C00716B00A346E8 /* RegisterViewType.swift */; };
 		6D1B05552C4973A2001F6DD9 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1B05542C4973A2001F6DD9 /* MapView.swift */; };
+		6D664E632C4A43360083C464 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D664E602C4A43360083C464 /* GoogleService-Info.plist */; };
+		6D664E652C4A43360083C464 /* AuthKey_9JRUHFTK3L.p8 in Resources */ = {isa = PBXBuildFile; fileRef = 6D664E622C4A43360083C464 /* AuthKey_9JRUHFTK3L.p8 */; };
+		6D664E672C4A43410083C464 /* splash.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6D664E662C4A43410083C464 /* splash.gif */; };
+		6D664E692C4A434C0083C464 /* secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D664E682C4A434C0083C464 /* secret.swift */; };
 		9C6A9C3E2BCC1BAE000413AD /* Fonts+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6A9C3D2BCC1BAE000413AD /* Fonts+.swift */; };
 		9C6A9C632BCC22CE000413AD /* AppleSDGothicNeoL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C6A9C5A2BCC22CE000413AD /* AppleSDGothicNeoL.ttf */; };
 		9C6A9C642BCC22CE000413AD /* AppleSDGothicNeoL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C6A9C5A2BCC22CE000413AD /* AppleSDGothicNeoL.ttf */; };
@@ -329,6 +333,11 @@
 		2C9CF4E72C00714900A346E8 /* TypeTestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeTestViewModel.swift; sourceTree = "<group>"; };
 		2C9CF4E92C00716B00A346E8 /* RegisterViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewType.swift; sourceTree = "<group>"; };
 		6D1B05542C4973A2001F6DD9 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		6D664E602C4A43360083C464 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6D664E612C4A43360083C464 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6D664E622C4A43360083C464 /* AuthKey_9JRUHFTK3L.p8 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AuthKey_9JRUHFTK3L.p8; sourceTree = "<group>"; };
+		6D664E662C4A43410083C464 /* splash.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = splash.gif; sourceTree = "<group>"; };
+		6D664E682C4A434C0083C464 /* secret.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = secret.swift; sourceTree = "<group>"; };
 		9C6A9C3D2BCC1BAE000413AD /* Fonts+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fonts+.swift"; sourceTree = "<group>"; };
 		9C6A9C5A2BCC22CE000413AD /* AppleSDGothicNeoL.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoL.ttf; sourceTree = "<group>"; };
 		9C6A9C5B2BCC22CE000413AD /* AppleSDGothicNeoR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoR.ttf; sourceTree = "<group>"; };
@@ -465,7 +474,7 @@
 		2C2D3D562C05993D002A38AA /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
-				6D2681EE2C42F7B800120AA0 /* splash.gif */,
+				6D664E662C4A43410083C464 /* splash.gif */,
 				2C2749862C0992AA00ECBA71 /* report_info_star.json */,
 				2C2749882C09950900ECBA71 /* loading_drink.json */,
 				2C2749892C09950900ECBA71 /* loading_tangerine.json */,
@@ -497,10 +506,10 @@
 		2C3C75822BCA3ADA00312F26 /* NanaLand */ = {
 			isa = PBXGroup;
 			children = (
-				6D3FBDBC2C45454E00F1FA30 /* AuthKey_9JRUHFTK3L.p8 */,
-				6D3FBDBD2C45454E00F1FA30 /* GoogleService-Info.plist */,
-				6D3FBDBB2C45454E00F1FA30 /* Info.plist */,
 				2C5425092BF76D8200B16439 /* NanaLand.entitlements */,
+				6D664E622C4A43360083C464 /* AuthKey_9JRUHFTK3L.p8 */,
+				6D664E602C4A43360083C464 /* GoogleService-Info.plist */,
+				6D664E612C4A43360083C464 /* Info.plist */,
 				BF98341F2BCE71F400A5C289 /* NaNaPick */,
 				BF98341C2BCE71E100A5C289 /* Experience */,
 				BF9834192BCE71D000A5C289 /* Shop */,
@@ -593,9 +602,9 @@
 		2C3C75C22BCA54A200312F26 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				6D3FBDC12C45457200F1FA30 /* secret.swift */,
 				2C40DB8D2BE637DE007A3768 /* AuthManager.swift */,
 				2C40DB942BE63AD2007A3768 /* KeychainManager.swift */,
+				6D664E682C4A434C0083C464 /* secret.swift */,
 				2C1F31D62BCD73C00066819F /* Constants.swift */,
 				2C2749922C0A18BE00ECBA71 /* DeepLinkManager.swift */,
 				2C219B542C16FEE5001F4C28 /* RemoteConfigManager.swift */,
@@ -1223,7 +1232,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D2681EF2C42F7B800120AA0 /* splash.gif in Resources */,
+				6D664E672C4A43410083C464 /* splash.gif in Resources */,
 				2C27498B2C09950900ECBA71 /* loading_tangerine.json in Resources */,
 				9C6A9C692BCC22CE000413AD /* AppleSDGothicNeoSB.ttf in Resources */,
 				9C6A9C662BCC22CE000413AD /* AppleSDGothicNeoR.ttf in Resources */,
@@ -1233,12 +1242,12 @@
 				2C2D3D4C2C0385B3002A38AA /* Localizable.strings in Resources */,
 				2C1F31C02BCD01240066819F /* AppleSDGothicNeoEB.ttf in Resources */,
 				2C1F31C62BCD01390066819F /* AppleSDGothicNeoB.ttf in Resources */,
-				6D3FBDBF2C45454F00F1FA30 /* AuthKey_9JRUHFTK3L.p8 in Resources */,
-				6D3FBDC02C45454F00F1FA30 /* GoogleService-Info.plist in Resources */,
 				2C1F31C52BCD01390066819F /* AppleSDGothicNeoH.ttf in Resources */,
+				6D664E652C4A43360083C464 /* AuthKey_9JRUHFTK3L.p8 in Resources */,
 				2C2749872C0992AB00ECBA71 /* report_info_star.json in Resources */,
 				2C1F31C42BCD01390066819F /* AppleSDGothicNeoM.ttf in Resources */,
 				2C27498A2C09950900ECBA71 /* loading_drink.json in Resources */,
+				6D664E632C4A43360083C464 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1346,9 +1355,9 @@
 				BF7F7F602BE613400000F08A /* NatureDetailEndPoint.swift in Sources */,
 				BF1493712BD1095D00FC626B /* NaNaPickModel.swift in Sources */,
 				BFBB90F62BFF500C00726DED /* WithdrawView.swift in Sources */,
-				6D3FBDC22C45457200F1FA30 /* secret.swift in Sources */,
 				BF794B582BF9AAFA0045FAD2 /* UserInfoEndPoint.swift in Sources */,
 				BF80FDA92BFB539400C5DA2D /* ProfileUpdateViewModel.swift in Sources */,
+				6D664E692C4A434C0083C464 /* secret.swift in Sources */,
 				BF7F7F5F2BE613400000F08A /* NatureEndPoint.swift in Sources */,
 				BF7F7F612BE613400000F08A /* NatureDetailService.swift in Sources */,
 				2C2749912C09E0F700ECBA71 /* UIApplication+.swift in Sources */,

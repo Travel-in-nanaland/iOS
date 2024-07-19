@@ -105,6 +105,7 @@ struct LocationModalView: View {
                             buttonsToggled[index].toggle()
                         }
                     }
+                selectedLocation = [LocalizedKey.Hangyeong,LocalizedKey.Daejeong, LocalizedKey.Hallim, LocalizedKey.Aewol, LocalizedKey.jejuCity, LocalizedKey.Jocheon, LocalizedKey.Gunjwa, LocalizedKey.Andeok, LocalizedKey.SeogwipoCity, LocalizedKey.Namwon, LocalizedKey.Pyoseon, LocalizedKey.Seongsan, LocalizedKey.Chuja, LocalizedKey.Udo]
                 }, label: {
                     HStack(spacing: 0) {
                         Image("icCheck")
@@ -124,6 +125,7 @@ struct LocationModalView: View {
                             buttonsToggled[index].toggle()
                         }
                     }
+                    selectedLocation = []
                 }, label: {
                     HStack(spacing: 0) {
                         Image("icRe")

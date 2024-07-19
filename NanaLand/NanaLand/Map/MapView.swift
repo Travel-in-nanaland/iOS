@@ -26,7 +26,8 @@ struct MapView: View {
                 .Andeok,
                 .Namwon,
                 .Pyoseon,
-                .Seongsan
+                .Seongsan,
+                .Daejeong
             ].filter { !selectedLocation.contains($0) }
             
             let selectedLocations = selectedLocation
@@ -104,6 +105,6 @@ struct MapView: View {
 }
 
 #Preview {
-    MapView(selectedLocation: [LocalizedKey.Hangyeong,LocalizedKey.Daejeong, LocalizedKey.Hallim, LocalizedKey.Aewol, LocalizedKey.jejuCity, LocalizedKey.Jocheon, LocalizedKey.Gunjwa, LocalizedKey.Andeok, LocalizedKey.SeogwipoCity, LocalizedKey.Namwon, LocalizedKey.Pyoseon, LocalizedKey.Seongsan])
+    MapView(selectedLocation: [LocalizedKey.Hangyeong,LocalizedKey.Daejeong, LocalizedKey.Hallim, LocalizedKey.Aewol, LocalizedKey.jejuCity, LocalizedKey.Jocheon, LocalizedKey.Gunjwa, LocalizedKey.Andeok, LocalizedKey.SeogwipoCity, LocalizedKey.Namwon, LocalizedKey.Pyoseon, LocalizedKey.Seongsan, LocalizedKey.Chuja, LocalizedKey.Udo])
         .environmentObject(LocalizationManager())
 }
