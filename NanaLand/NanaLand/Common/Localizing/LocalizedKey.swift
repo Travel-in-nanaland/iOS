@@ -163,6 +163,7 @@ enum LocalizedKey: String {
     case nickNameTypingLimitError
     case nickNameDuplicateError
     case introduceTypingLimitError
+    case nickNameContainSpecialCharacterError
     
     // deleteAlertPage(삭제 확인창)
     case deleteAlertTitle

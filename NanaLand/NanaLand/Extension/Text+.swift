@@ -18,4 +18,5 @@ extension Text {
 		let localizedString = localizedKey.localized(for: LocalizationManager.shared.language, arguments)
 		self.init(localizedString)
 	}
+   
 }

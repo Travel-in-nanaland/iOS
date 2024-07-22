@@ -111,7 +111,7 @@ struct NatureMainGridView: View {
                                                         }
                                                       
                                                     } label: {
-                                                        viewModel.state.getNatureMainResponse.data[index].favorite ? Image("icHeartFillMain") : Image("icHeart")
+                                                        viewModel.state.getNatureMainResponse.data[index].favorite ? Image("icHeartFillMain") : Image("icHeartDefault")
                                                     }
                                                 }
                                                 .padding(.top, 8)
@@ -139,11 +139,11 @@ struct NatureMainGridView: View {
                                             .foregroundStyle(Color.main)
                                     }
                                 })
-                                    
-                                    
-                                    .frame(width: (UIScreen.main.bounds.width - 40) / 2, height: 196)
-                                    
-                                    .padding(.leading, 0)
+                                
+                                
+                                .frame(width: (UIScreen.main.bounds.width - 40) / 2, height: 196)
+                                
+                                .padding(.leading, 0)
                                 
                                 
                             }

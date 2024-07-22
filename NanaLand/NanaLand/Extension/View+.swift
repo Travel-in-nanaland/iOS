@@ -8,7 +8,16 @@
 import SwiftUI
 
 extension View {
-	
+    func font(_ font: UIFont) -> some View {
+        let fontSpacing = font.lineHeight / 100 * 50 / 2
+        return self
+            .font(Font(font))
+            .background(.red)
+            .padding(.vertical, fontSpacing)
+            .background()
+            .lineSpacing(fontSpacing * 2)
+            
+    }
 	func hidden(_ shouldHide: Bool) -> some View {
 		modifier(ViewHiddenModifier(isHidden: shouldHide))
 	}

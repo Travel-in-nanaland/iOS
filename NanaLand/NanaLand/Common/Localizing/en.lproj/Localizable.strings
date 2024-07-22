@@ -1,4 +1,4 @@
-/* 
+/*
   Localizable.strings
   NanaLand
 
@@ -159,6 +159,7 @@
 "complete" = "Update";
 "nickNameTypingLimitError" = "This nickname cannot be used.";
 "nickNameDuplicateError"= "This nickname is already in use by another user.";
+"nickNameContainSpecialCharacterError" = "Nicknames can only contain letters, spaces, and numbers.";
 "introduceTypingLimitError" = "The introduction must be within 70 characters.";
 
 // deleteAlert
@@ -258,7 +259,7 @@ the market is the place!";
 "Aewol" = "Aewol";
 "Jocheon" = "Jocheon";
 "Hangyeong" = "Hangyeong";
-"Gunjwa" = "Gunjwa";
+"Gunjwa" = "Gujwa";
 "Hallim" = "Hallim";
 "Udo" = "Udo";
 "Chuja" = "Chuja";

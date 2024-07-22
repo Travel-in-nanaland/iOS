@@ -13,7 +13,7 @@ struct ShopMainView: View {
     var body: some View {
     
         VStack(spacing: 0) {
-            NavigationBar(title: LocalizedKey.market.localized(for: localizationMangaer.language))
+            NanaNavigationBar(title: .market, showBackButton: true)
                 .frame(height: 56)
                 .padding(.bottom, 24)
             ShopMainGridView()
@@ -21,7 +21,6 @@ struct ShopMainView: View {
             Spacer()
         }
         .toolbar(.hidden)
-
     }
 
 }
@@ -99,7 +98,7 @@ struct ShopMainGridView: View {
                                                         }
                                                         
                                                     } label: {
-                                                        viewModel.state.getShopMainResponse.data[index].favorite ? Image("icHeartFillMain") : Image("icHeart")
+                                                        viewModel.state.getShopMainResponse.data[index].favorite ? Image("icHeartFillMain") : Image("icHeartDefault")
                                                     }
                                                 }
                                                 .padding(.top, 8)
@@ -130,7 +129,7 @@ struct ShopMainGridView: View {
                                     .frame(width: (UIScreen.main.bounds.width - 40) / 2, height: 196)
                                 })
                             }
-                            if viewModel.state.page < 40 {
+                            if viewModel.state.page < viewModel.state.getShopMainResponse.totalElements / 12 {
                                 ProgressView()
                                     .onAppear {
                                         Task {

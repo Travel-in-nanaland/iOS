@@ -34,19 +34,19 @@ struct NatureDetailView: View {
                                     .frame(maxWidth: Constants.screenWidth - 40, maxHeight: .infinity)
                                     .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
                                 VStack(spacing: 0) {
-                                    HStack(spacing: 0) {
+                                    HStack(spacing: 12) {
                                         Spacer()
                                         Button {
                                             Task {
                                                 await toggleFavorite(body: FavoriteToggleRequest(id: Int(viewModel.state.getNatureDetailResponse.id), category: .nature))
                                             }
                                         } label: {
-                                            viewModel.state.getNatureDetailResponse.favorite ? Image("icHeartFillMain") : Image("icHeart")
+                                            viewModel.state.getNatureDetailResponse.favorite ? Image("icHeartFillMain") : Image("icFavoriteHeart")
                                         }
-										
-										ShareLink(item: DeepLinkManager.shared.makeLink(category: .nature, id: Int(viewModel.state.getNatureDetailResponse.id)), label: {
-											Image("icShare2")
-										})
+                                        
+                                        ShareLink(item: DeepLinkManager.shared.makeLink(category: .nature, id: Int(viewModel.state.getNatureDetailResponse.id)), label: {
+                                            Image("icShare2")
+                                        })
                                     }
                                     .padding(.trailing, 16)
                                     Spacer()
@@ -80,6 +80,7 @@ struct NatureDetailView: View {
                                         .font(.gothicNeo(.regular, size: 16))
                                         .frame(height: roundedHeight * (84 / 224))
                                         .padding(.leading, 16)
+                                        .lineSpacing(10)
                                         .padding(.trailing, 16)
                                     
                                     
@@ -99,8 +100,6 @@ struct NatureDetailView: View {
                                         .padding(.bottom, 16)
                                     }
                                     .padding(.trailing, 16)
-                                    
-                                    
                                 }
                                 .padding(.top, 36)
                             }
@@ -111,19 +110,19 @@ struct NatureDetailView: View {
                                     .frame(maxWidth: Constants.screenWidth - 40) // 뷰의 크기를 지정합니다.
                                     .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
                                 VStack(spacing: 0) {
-                                    HStack(spacing: 0) {
+                                    HStack(spacing: 12) {
                                         Spacer()
                                         Button {
                                             Task {
                                                 await toggleFavorite(body: FavoriteToggleRequest(id: Int(viewModel.state.getNatureDetailResponse.id), category: .nature))
                                             }
                                         } label: {
-                                            viewModel.state.getNatureDetailResponse.favorite ? Image("icHeartFillMain") : Image("icHeart")
+                                            viewModel.state.getNatureDetailResponse.favorite ? Image("icHeartFillMain") : Image("icFavoriteHeart")
                                         }
-										
-										ShareLink(item: DeepLinkManager.shared.makeLink(category: .nature, id: Int(viewModel.state.getNatureDetailResponse.id)), label: {
-											Image("icShare2")
-										})
+                                        
+                                        ShareLink(item: DeepLinkManager.shared.makeLink(category: .nature, id: Int(viewModel.state.getNatureDetailResponse.id)), label: {
+                                            Image("icShare2")
+                                        })
                                     }
                                     .padding(.trailing, 16)
                                     Spacer()
@@ -154,6 +153,7 @@ struct NatureDetailView: View {
                                     Text(viewModel.state.getNatureDetailResponse.content)
                                         .fixedSize(horizontal: false, vertical: true)
                                         .font(.gothicNeo(.regular, size: 16))
+                                        .lineSpacing(10)
                                         .padding(.leading, 16)
                                         .padding(.trailing, 16)
                                     
@@ -176,7 +176,6 @@ struct NatureDetailView: View {
                                     .padding(.trailing, 16)
                                 }
                                 .padding(.top, 36)
-                                
                             }
                         }
                         .padding(.leading, 20)
@@ -206,139 +205,137 @@ struct NatureDetailView: View {
                                     Spacer()
                                 }
                                 .padding(.top, 24)
-                                
                             }
                             
-                            HStack(spacing: 10) {
-                                VStack(spacing: 0) {
-                                    Image("icPin")
+                            if viewModel.state.getNatureDetailResponse.address != "" {
+                                HStack(spacing: 10) {
+                                    VStack(spacing: 0) {
+                                        Image("icDetailPin")
+                                    }
                                     
+                                    VStack(alignment: .leading, spacing: 0) {
+                                        Text(.address)
+                                            .font(.gothicNeo(.bold, size: 14))
+                                        Text(viewModel.state.getNatureDetailResponse.address)
+                                            .font(.gothicNeo(.regular, size: 12))
+                                    }
+                                    Spacer()
                                 }
-                                
-                                VStack(alignment: .leading, spacing: 0) {
-                                    Text(.address)
-                                        .font(.gothicNeo(.bold, size: 14))
-                                    Text(viewModel.state.getNatureDetailResponse.address)
-                                        .font(.gothicNeo(.regular, size: 12))
-                                }
-                                Spacer()
-                                
+                                .frame(width: Constants.screenWidth - 40)
                             }
-                            .frame(width: Constants.screenWidth - 40)
                             
-                            HStack(spacing: 10) {
-                                VStack(spacing: 0) {
-                                    Image("icPhone")
+                            if viewModel.state.getNatureDetailResponse.contact != "" {
+                                HStack(spacing: 10) {
+                                    VStack(spacing: 0) {
+                                        Image("icDetailPhone")
+                                    }
                                     
-                                }
-                                
-                                VStack(alignment: .leading, spacing: 0) {
-                                    Text(.phoneNumber)
-                                        .font(.gothicNeo(.bold, size: 14))
-                                    Text(viewModel.state.getNatureDetailResponse.contact)
-                                        .font(.gothicNeo(.regular, size: 12))
-                                }
-                                Spacer()
-                            }
-                            .frame(width: Constants.screenWidth - 40, height: (Constants.screenWidth - 40) * ( 42 / 358))
-                            
-                            HStack(spacing: 10) {
-                                VStack(spacing: 0) {
-                                    Image("icClock")
+                                    VStack(alignment: .leading, spacing: 0) {
+                                        Text(.phoneNumber)
+                                            .font(.gothicNeo(.bold, size: 14))
+                                        Text(viewModel.state.getNatureDetailResponse.contact)
+                                            .font(.gothicNeo(.regular, size: 12))
+                                    }
                                     Spacer()
                                 }
-                                
-                                VStack(alignment: .leading, spacing: 0) {
-                                    Text(.time)
-                                        .font(.gothicNeo(.bold, size: 14))
-                                    Text(viewModel.state.getNatureDetailResponse.time)
-                                        .font(.gothicNeo(.regular, size: 12))
+                                .frame(width: Constants.screenWidth - 40, height: (Constants.screenWidth - 40) * (42 / 358))
+                            }
+                            
+                            if viewModel.state.getNatureDetailResponse.time != "" {
+                                HStack(spacing: 10) {
+                                    VStack(spacing: 0) {
+                                        Image("icDetailClock")
+                                        Spacer()
+                                    }
                                     
+                                    VStack(alignment: .leading, spacing: 0) {
+                                        Text(.time)
+                                            .font(.gothicNeo(.bold, size: 14))
+                                        Text(viewModel.state.getNatureDetailResponse.time)
+                                            .font(.gothicNeo(.regular, size: 12))
+                                    }
+                                    Spacer()
                                 }
-                                Spacer()
+                                .frame(width: Constants.screenWidth - 40)
                             }
-                            .frame(width: Constants.screenWidth - 40)
+                            if viewModel.state.getNatureDetailResponse.fee != "" {
+                                HStack(spacing: 10) {
+                                    VStack(spacing: 0) {
+                                        Image("icDetailCharge")
+                                        Spacer()
+                                    }
+                                    
+                                    VStack(alignment: .leading, spacing: 0) {
+                                        Text(.fee)
+                                            .font(.gothicNeo(.bold, size: 14))
+                                        Text(viewModel.state.getNatureDetailResponse.fee)
+                                            .font(.gothicNeo(.regular, size: 12))
+                                    }
+                                    Spacer()
+                                }
+                                .frame(width: Constants.screenWidth - 40)
+                            }
                             
-                            HStack(spacing: 10) {
-                                VStack(spacing: 0) {
-                                    Image("icClock")
+                            if viewModel.state.getNatureDetailResponse.details != "" {
+                                HStack(spacing: 10) {
+                                    VStack(spacing: 0) {
+                                        Image("icDetailDescription")
+                                        Spacer()
+                                    }
+                                    
+                                    VStack(alignment: .leading, spacing: 0) {
+                                        Text(.detailInfo)
+                                            .font(.gothicNeo(.bold, size: 14))
+                                        Text(viewModel.state.getNatureDetailResponse.details)
+                                            .font(.gothicNeo(.regular, size: 12))
+                                    }
                                     Spacer()
                                 }
-                                
-                                VStack(alignment: .leading, spacing: 0) {
-                                    Text(.fee)
-                                        .font(.gothicNeo(.bold, size: 14))
-                                    Text(viewModel.state.getNatureDetailResponse.fee)
-                                        .font(.gothicNeo(.regular, size: 12))
-                                }
-                                Spacer()
+                                .frame(width: Constants.screenWidth - 40)
                             }
-                            .frame(width: Constants.screenWidth - 40)
                             
-                            HStack(spacing: 10) {
-                                VStack(spacing: 0) {
-                                    Image("icClock")
+                            if viewModel.state.getNatureDetailResponse.amenity != "" {
+                                HStack(spacing: 10) {
+                                    VStack(spacing: 0) {
+                                        Image("icDetailFacility")
+                                        Spacer()
+                                    }
+                                    
+                                    VStack(alignment: .leading, spacing: 0) {
+                                        Text(.amenity)
+                                            .font(.gothicNeo(.bold, size: 14))
+                                        Text(viewModel.state.getNatureDetailResponse.amenity)
+                                            .font(.gothicNeo(.regular, size: 12))
+                                    }
                                     Spacer()
                                 }
-                                
-                                VStack(alignment: .leading, spacing: 0) {
-                                    Text(.detailInfo)
-                                        .font(.gothicNeo(.bold, size: 14))
-                                    Text(viewModel.state.getNatureDetailResponse.details)
-                                        .font(.gothicNeo(.regular, size: 12))
-                                }
-                                Spacer()
+                                .frame(width: Constants.screenWidth - 40)
                             }
-                            .frame(width: Constants.screenWidth - 40)
-                            HStack(spacing: 10) {
-                                VStack(spacing: 0) {
-                                    Image("icFacility")
-                                    Spacer()
-                                }
-                                VStack(alignment: .leading, spacing: 0) {
-                                    Text(.amenity)
-                                        .font(.gothicNeo(.bold, size: 14))
-                                    Text(viewModel.state.getNatureDetailResponse.amenity)
-                                        .font(.gothicNeo(.regular, size: 12))
-                                }
-                                Spacer()
-                            }
-                            .frame(width: Constants.screenWidth - 40)
-                            .padding(.bottom, 32)
                             
                             Button {
                                 AppState.shared.navigationPath.append(ArticleDetailViewType.reportInfo(id: viewModel.state.getNatureDetailResponse.id, category: .nature))
                             } label: {
                                 Text(.proposeUpdateInfo)
                                     .background(
-                                        RoundedRectangle(cornerRadius: 12.0)
+                                        RoundedRectangle(cornerRadius: 50.0)
                                             .foregroundStyle(Color.gray2)
                                             .frame(width: 120, height: 40)
                                     )
                                     .foregroundStyle(Color.white)
                                     .font(.body02_bold)
+                                    .padding(.top, 32)
                                     .padding(.bottom, 10)
                             }
                         }
                         .padding(.top, 32)
+                        .id("Scroll_To_Top")
                     }
-                    .id("Scroll_To_Top")
-                    .onAppear {
-                        Task {
-                            await getNatureDetail(id: id)
-       
-                        }
+                }
+                .navigationDestination(for: ArticleDetailViewType.self) { viewType in
+                    switch viewType {
+                    case let .reportInfo(id, category):
+                        ReportInfoMainView(id: id, category: category)
                     }
-                    .toolbar(.hidden)
-                    .overlay(
-                        GeometryReader { proxy -> Color in
-                            let offset = proxy.frame(in: .global).minY
-                            return Color.clear
-                        }
-                            .frame(width: 0, height: 0)
-                        ,alignment: .top
-                        
-                    )
                 }
                 .overlay(
                     VStack {
@@ -346,17 +343,14 @@ struct NatureDetailView: View {
                         HStack {
                             Spacer()
                             Button(action: {
-                      
-                                  // 10. withAnimation 과함께 함수 작성
-                                  withAnimation(.default) {
-                                      // ScrollViewReader의 proxyReader을 넣어줌
-                                      proxyReader.scrollTo("Scroll_To_Top", anchor: .top)
-                                  }
-                                  
-                              }, label: {
-                                   Image("icScrollToTop")
-                                  
-                              })
+                                // 10. withAnimation 과함께 함수 작성
+                                withAnimation(.default) {
+                                    // ScrollViewReader의 proxyReader을 넣어줌
+                                    proxyReader.scrollTo("Scroll_To_Top", anchor: .top)
+                                }
+                            }, label: {
+                                Image("icScrollToTop")
+                            })
                             .frame(width: 80, height: 80)
                             .padding(.trailing)
                             .padding(.bottom, getSafeArea().bottom == 0 ? 15 : 0)
@@ -364,30 +358,28 @@ struct NatureDetailView: View {
                     }
                 )
             }
-
+            .onAppear {
+                Task {
+                    await getNatureDetail(id: id)
+                }
+            }
+            .toolbar(.hidden)
         }
-		.navigationDestination(for: ArticleDetailViewType.self) { viewType in
-			switch viewType {
-			case let .reportInfo(id, category):
-				ReportInfoMainView(id: id, category: category)
-			}
-		}
-     
     }
     
     func getNatureDetail(id: Int64) async {
         await viewModel.action(.getNatureDetailItem(id: id))
     }
     
-    func getSafeArea() ->UIEdgeInsets  {
+    func getSafeArea() -> UIEdgeInsets {
         return UIApplication.shared.windows.first?.safeAreaInsets ?? UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
     func toggleFavorite(body: FavoriteToggleRequest) async {
-		if UserDefaults.standard.string(forKey: "provider") == "GUEST" {
-			AppState.shared.showRegisterInduction = true
-			return
-		}
+        if UserDefaults.standard.string(forKey: "provider") == "GUEST" {
+            AppState.shared.showRegisterInduction = true
+            return
+        }
         await viewModel.action(.toggleFavorite(body: body))
     }
 }
