@@ -13,7 +13,7 @@ struct ShopMainView: View {
     var body: some View {
     
         VStack(spacing: 0) {
-            NavigationBar(title: LocalizedKey.market.localized(for: localizationMangaer.language))
+            NanaNavigationBar(title: .market, showBackButton: true)
                 .frame(height: 56)
                 .padding(.bottom, 24)
             ShopMainGridView()
@@ -21,7 +21,6 @@ struct ShopMainView: View {
             Spacer()
         }
         .toolbar(.hidden)
-
     }
 
 }
