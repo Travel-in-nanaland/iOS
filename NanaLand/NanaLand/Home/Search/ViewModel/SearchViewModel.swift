@@ -226,7 +226,9 @@ final class SearchViewModel: ObservableObject {
 				print("searchNanaCategory Error")
 				state.isLoading = false
 			}
-		}
+        case .restaurant:
+            print("restaurant")
+        }
 
 	}
 	
@@ -252,7 +254,9 @@ final class SearchViewModel: ObservableObject {
 			return state.experienceCategorySearchResult.totalElements == state.experienceCategorySearchResult.data.count
 		case .nanaPick:
 			return state.nanaCategorySearchResult.totalElements == state.nanaCategorySearchResult.data.count
-		}
+        case .restaurant:
+            return state.nanaCategorySearchResult.totalElements == state.nanaCategorySearchResult.data.count
+        }
 	}
 	
 	private func didTapHeartInSearchAll(tab: Category, article: Article) async {
@@ -289,7 +293,11 @@ final class SearchViewModel: ObservableObject {
 			if let index = state.allCategorySearchResult.nana.data.firstIndex(where: {$0 == article}) {
 				state.allCategorySearchResult.nana.data[index].favorite = result.data.favorite
 			}
-		}
+        case .restaurant:
+            if let index = state.allCategorySearchResult.nana.data.firstIndex(where: {$0 == article}) {
+                state.allCategorySearchResult.nana.data[index].favorite = result.data.favorite
+            }
+        }
 	}
 	
 	private func didTapHeartInSearchDetail(category: Category, article: Article) async {
@@ -324,7 +332,11 @@ final class SearchViewModel: ObservableObject {
 			if let index = state.nanaCategorySearchResult.data.firstIndex(where: {$0 == article}) {
 				state.nanaCategorySearchResult.data[index].favorite = result.data.favorite
 			}
-		}
+        case .restaurant:
+            if let index = state.nanaCategorySearchResult.data.firstIndex(where: {$0 == article}) {
+                state.nanaCategorySearchResult.data[index].favorite = result.data.favorite
+            }
+        }
 	}
 	
 	private func didTapHeartInVolumeUp(article: Article) async {
@@ -349,6 +361,7 @@ final class SearchViewModel: ObservableObject {
 			return state.experienceCategorySearchResult.data.isEmpty
 		case .nanaPick:
 			return state.nanaCategorySearchResult.data.isEmpty
-		}
+        case .restaurant:
+            return state.nanaCategorySearchResult.data.isEmpty        }
 	}
 }

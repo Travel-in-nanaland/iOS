@@ -226,6 +226,8 @@ struct SearchMainView: View {
                                 NaNaPickDetailView(id: Int64(article.id))
                             case .all:
                                 Text("test")
+                            case .restaurant:
+                                Text("test")
                             }
                         } label: {
                             VStack(alignment: .leading, spacing: 8) {
