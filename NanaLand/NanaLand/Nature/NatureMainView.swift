@@ -214,6 +214,6 @@ struct NatureMainGridView: View {
     }
 }
 
-#Preview {
-    NatureMainView()
-}
+//#Preview {
+//    NatureMainView()
+//}
