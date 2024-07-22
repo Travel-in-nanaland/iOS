@@ -242,6 +242,8 @@ struct FestivalDetailView: View {
                             HStack(spacing: 10) {
                                 VStack(spacing: 0) {
                                     Image("icClock")
+                                        .renderingMode(.template)
+                                        .foregroundStyle(Color.main)
                                    
                                 }
                                 

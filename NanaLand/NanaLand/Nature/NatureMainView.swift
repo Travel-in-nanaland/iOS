@@ -139,11 +139,11 @@ struct NatureMainGridView: View {
                                             .foregroundStyle(Color.main)
                                     }
                                 })
-                                    
-                                    
-                                    .frame(width: (UIScreen.main.bounds.width - 40) / 2, height: 196)
-                                    
-                                    .padding(.leading, 0)
+                                
+                                
+                                .frame(width: (UIScreen.main.bounds.width - 40) / 2, height: 196)
+                                
+                                .padding(.leading, 0)
                                 
                                 
                             }

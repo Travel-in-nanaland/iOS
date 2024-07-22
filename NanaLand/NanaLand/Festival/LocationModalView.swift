@@ -102,7 +102,6 @@ struct LocationModalView: View {
                             .font(.body02)
                     }
                 })
-            
                 .padding(.leading, 58)
                 
                 Spacer()
@@ -149,16 +148,13 @@ struct LocationModalView: View {
                         viewModel.state.getFestivalMainResponse = FestivalModel(totalElements: 0, data: [])
                         viewModel.state.page = 0
                         await getPastLocationFestivalMainItem(page: 0, size: 12, filterName: selectedLocation.joined(separator: ","))
-                  
                     }
                     else if title == "7대자연" {
                         natureViewModel.state.getNatureMainResponse = NatureMainModel(totalElements: 0, data: [])
-                        
                         print(selectedLocation)
                         await getLocationNatureMainItem(filterName: selectedLocation.joined(separator: ","), page: 0, size: 12)
                         natureViewModel.state.location = selectedLocation.joined(separator: ",")
                         natureViewModel.state.page = 0
-                        
                     } else { // 전통시장
                         shopViewModel.state.getShopMainResponse = ShopMainModel(totalElements: 0, data: [])
                         await getLocationShopMainItem(filterName: selectedLocation.joined(separator: ","), page: 0, size: 18)
