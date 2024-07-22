@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct SearchDetailCategoryResultView: View {
-	@ObservedObject var searchVM: SearchViewModel
-	
-	let tab: Category
-	let searchTerm: String
-	
-	@State var isInit: Bool = false
-	
+    @ObservedObject var searchVM: SearchViewModel
+    
+    let tab: Category
+    let searchTerm: String
+    
+    @State var isInit: Bool = false
+    
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack(alignment: .leading, spacing: 17) {
@@ -86,11 +86,10 @@ struct SearchDetailCategoryResultView: View {
                                     return searchVM.state.nanaCategorySearchResult.data
                                 }
                             }(),
-                                    id: \.id
-                            ) { article in
-                                Button {
-                                    AppState.shared.navigationPath.append(SearchDetailViewType.detail)
-                                } label: {
+                            id: \.self) { article in
+                                NavigationLink(destination: {
+                                    destinationView(for: article)
+                                }) {
                                     ArticleItem(category: tab, article: article, onTapHeart: {
                                         if UserDefaults.standard.string(forKey: "provider") == "GUEST" {
                                             AppState.shared.showRegisterInduction = true
@@ -101,11 +100,7 @@ struct SearchDetailCategoryResultView: View {
                                         }
                                     })
                                 }
-                               
-
-                              
                             }
-                            
                             if !searchVM.isLastPage(tab: tab) {
                                 ProgressView()
                                     .task {
@@ -120,17 +115,34 @@ struct SearchDetailCategoryResultView: View {
             }
             .padding(.horizontal, 16)
             .padding(.top, 30)
-            .navigationDestination(for: SearchDetailViewType.self) { viewType in
-                switch viewType{
-                case .detail:
-                    NatureDetailView(id: 2)
-                }
-                
+        }
+//        .navigationDestination(for: SearchDetailViewType.self) { viewType in
+//            switch viewType {
+//            case .detail:
+//                NatureDetailView(id: 2)
+//            }
+//        }
+    }
+    
+    
+    @ViewBuilder
+        func destinationView(for article: Article) -> some View {
+            switch article.category {
+            case .nature:
+                NatureDetailView(id: Int64(article.id))
+            case .festival:
+                FestivalDetailView(id: Int64(article.id))
+            case .market:
+                ShopDetailView(id: Int64(article.id))
+            case .experience:
+                Text("Experience Detail View")
+    //            ExperienceDetailView(id: article.id)
+            case .nanaPick:
+                NaNaPickDetailView(id: Int64(article.id))
+            case .all:
+                Text("test")
             }
         }
-       
-        
-    }
 }
 
 enum SearchDetailViewType: Hashable {
@@ -138,5 +150,5 @@ enum SearchDetailViewType: Hashable {
 }
 
 #Preview {
-	SearchDetailCategoryResultView(searchVM: SearchViewModel(), tab: .experience, searchTerm: "제주시")
+    SearchDetailCategoryResultView(searchVM: SearchViewModel(), tab: .experience, searchTerm: "제주시")
 }

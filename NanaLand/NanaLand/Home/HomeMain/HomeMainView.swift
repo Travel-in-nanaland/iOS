@@ -11,148 +11,148 @@ import SwiftUIIntrospect
 
 struct HomeMainView: View {
     @EnvironmentObject var localizationManager: LocalizationManager
-	@StateObject var viewModel = HomeMainViewModel()
+    @StateObject var viewModel = HomeMainViewModel()
     @State private var isRecommendCalled = false
-	@AppStorage("provider") var provider:String = ""
-	
-	let randomSearchPlaceHolder: LocalizedKey = [.jejuCanolaFestival, .jejuGreenTeaField, .jejuFiveDayMarket, .udoToday, .trendyGujwa, .hallasanTrail, .jejuNightDrive, .nearJejuAirport, .jejuSummerHydrangea, .jejuCharmingHanok].randomElement()!
-	
-	var body: some View {
-		ScrollView {
-			VStack(spacing: 0) {
-				HStack(spacing: 0) {
-					Button(action: {
-						
-					}) {
-						Image("icLogo")
-						
-					}
-					.padding(.leading, 16)
-					Spacer()
-					
-					NanaSearchBar(
-						placeHolder: randomSearchPlaceHolder,
-						searchTerm: .constant(""),
-						showClearButton: false,
-						disabled: true
-					)
-					.simultaneousGesture(TapGesture().onEnded {
-						AppState.shared.navigationPath.append(HomeViewType.search)
-					})
-					
-					Spacer()
-					
-					Button(action: {
-						AppState.shared.navigationPath.append(HomeViewType.notification)
-					}) {
-						Image("icBell")
-					}
-					.padding(.trailing, 16)
-					
-				}
-				.padding(.bottom, 8)
-				// banner View
-				BannerView()
-					.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width * (220 / 360))
-					.padding(.bottom, 16)
-				
-				/// category View
-                HStack(alignment: .top, spacing: 0) {
-					// 7대자연 link
-					Button(action: {
-						AppState.shared.navigationPath.append(HomeViewType.nature)
-					}, label: {
-						VStack(spacing: 0) {
-							Image("icNature")
-								.frame(width: 62, height: 48)
-							
-                            Text(.nature)
-								.font(.gothicNeo(size: 12, font: "semibold"))
-								.tint(.black)
-						}
-					})
-					.frame(minHeight: 65)
-             
-					Spacer()
-					// 축제 link
-					Button(action: {
-						AppState.shared.navigationPath.append(HomeViewType.festival)
-					}, label: {
-						VStack(spacing: 0) {
-							Image("icFestival")
-								.frame(width: 62, height: 48)
-							
-                            Text(.festival)
-								.font(.gothicNeo(size: 12, font: "semibold"))
-								.tint(.black)
-						}
-					})
-					.frame(minHeight: 65)
-					Spacer()
-					// 전통시장 link
-					Button(action: {
-						AppState.shared.navigationPath.append(HomeViewType.shop)
-					}, label: {
-						VStack(spacing: 0) {
-							Image("icShop")
-								.frame(width: 62, height: 48)
-							
-                            Text(.market)
-								.font(.gothicNeo(size: 12, font: "semibold"))
-								.tint(.black)
-						}
-					})
-					.frame(minHeight: 65)
-					Spacer()
-					// 이색체험 link
-					Button(action: {
-						AppState.shared.navigationPath.append(HomeViewType.experience)
-					}, label: {
-						VStack(spacing: 0) {
-							Image("icExp")
-								.frame(width: 62, height: 48)
-                            Text(.experience)
-								.font(.gothicNeo(size: 12, font: "semibold"))
-								.tint(.black)
-						}
-					})
-					.frame(minHeight: 65)
-					Spacer()
-					// 나나 Pick link
-					Button(action: {
-						AppState.shared.navigationPath.append(HomeViewType.nanapick)
-					}, label: {
-						VStack(spacing: 0) {
-							Image("icNana")
-								.frame(width: 62, height: 48)
-							
-                            Text(.nanaPick)
-								.font(.gothicNeo(size: 12, font: "semibold"))
-								.tint(.black)
-						}
-					})
-					.frame(minHeight: 65)
-				}
-                .frame(width: UIScreen.main.bounds.width - 32)
-				.padding(.bottom, 32)
-                
-				/// 광고 뷰
+    @AppStorage("provider") var provider:String = ""
+    
+    let randomSearchPlaceHolder: LocalizedKey = [.jejuCanolaFestival, .jejuGreenTeaField, .jejuFiveDayMarket, .udoToday, .trendyGujwa, .hallasanTrail, .jejuNightDrive, .nearJejuAirport, .jejuSummerHydrangea, .jejuCharmingHanok].randomElement()!
+    
+    var body: some View {
+        ScrollView {
+            VStack(spacing: 0) {
                 HStack(spacing: 0) {
-					AdvertisementView()
-                        .frame(width: Constants.screenWidth, height: (UIScreen.main.bounds.width - 40.0) * (80.0 / 328.0))
-						.padding(.bottom, 40)
-                       
-				}
-				HStack {
-					let nickname: String = provider == "GUEST" ? LocalizedKey.ourNana.localized(for: LocalizationManager.shared.language) : AppState.shared.userInfo.nickname
-					Text(.recommendTitle, arguments: [nickname])
-						.font(.gothicNeo(size: 18, font: "bold"))
+                    Button(action: {
+                        
+                    }) {
+                        Image("icLogo")
+                        
+                    }
+                    .padding(.leading, 16)
+                    Spacer()
                     
-					Spacer()
-				}
-				.padding(.leading, 16)
-				.padding(.bottom, 8)
-				
+                    NanaSearchBar(
+                        placeHolder: randomSearchPlaceHolder,
+                        searchTerm: .constant(""),
+                        showClearButton: false,
+                        disabled: true
+                    )
+                    .simultaneousGesture(TapGesture().onEnded {
+                        AppState.shared.navigationPath.append(HomeViewType.search)
+                    })
+                    
+                    Spacer()
+                    
+                    Button(action: {
+                        AppState.shared.navigationPath.append(HomeViewType.notification)
+                    }) {
+                        Image("icBell")
+                    }
+                    .padding(.trailing, 16)
+                    
+                }
+                .padding(.bottom, 8)
+                // banner View
+                BannerView()
+                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width * (220 / 360))
+                    .padding(.bottom, 16)
+                
+                /// category View
+                HStack(alignment: .top, spacing: 0) {
+                    // 7대자연 link
+                    Button(action: {
+                        AppState.shared.navigationPath.append(HomeViewType.nature)
+                    }, label: {
+                        VStack(spacing: 0) {
+                            Image("icNature")
+                                .frame(width: 62, height: 48)
+                            
+                            Text(.nature)
+                                .font(.gothicNeo(size: 12, font: "semibold"))
+                                .tint(.black)
+                        }
+                    })
+                    .frame(minHeight: 65)
+             
+                    Spacer()
+                    // 축제 link
+                    Button(action: {
+                        AppState.shared.navigationPath.append(HomeViewType.festival)
+                    }, label: {
+                        VStack(spacing: 0) {
+                            Image("icFestival")
+                                .frame(width: 62, height: 48)
+                            
+                            Text(.festival)
+                                .font(.gothicNeo(size: 12, font: "semibold"))
+                                .tint(.black)
+                        }
+                    })
+                    .frame(minHeight: 65)
+                    Spacer()
+                    // 전통시장 link
+                    Button(action: {
+                        AppState.shared.navigationPath.append(HomeViewType.shop)
+                    }, label: {
+                        VStack(spacing: 0) {
+                            Image("icShop")
+                                .frame(width: 62, height: 48)
+                            
+                            Text(.market)
+                                .font(.gothicNeo(size: 12, font: "semibold"))
+                                .tint(.black)
+                        }
+                    })
+                    .frame(minHeight: 65)
+                    Spacer()
+                    // 이색체험 link
+                    Button(action: {
+                        AppState.shared.navigationPath.append(HomeViewType.experience)
+                    }, label: {
+                        VStack(spacing: 0) {
+                            Image("icExp")
+                                .frame(width: 62, height: 48)
+                            Text(.experience)
+                                .font(.gothicNeo(size: 12, font: "semibold"))
+                                .tint(.black)
+                        }
+                    })
+                    .frame(minHeight: 65)
+                    Spacer()
+                    // 나나 Pick link
+                    Button(action: {
+                        AppState.shared.navigationPath.append(HomeViewType.nanapick)
+                    }, label: {
+                        VStack(spacing: 0) {
+                            Image("icNana")
+                                .frame(width: 62, height: 48)
+                            
+                            Text(.nanaPick)
+                                .font(.gothicNeo(size: 12, font: "semibold"))
+                                .tint(.black)
+                        }
+                    })
+                    .frame(minHeight: 65)
+                }
+                .frame(width: UIScreen.main.bounds.width - 32)
+                .padding(.bottom, 32)
+                
+                /// 광고 뷰
+                HStack(spacing: 0) {
+                    AdvertisementView()
+                        .frame(width: Constants.screenWidth, height: (UIScreen.main.bounds.width - 40.0) * (80.0 / 328.0))
+                        .padding(.bottom, 40)
+                       
+                }
+                HStack {
+                    let nickname: String = provider == "GUEST" ? LocalizedKey.ourNana.localized(for: LocalizationManager.shared.language) : AppState.shared.userInfo.nickname
+                    Text(.recommendTitle, arguments: [nickname])
+                        .font(.gothicNeo(size: 18, font: "bold"))
+                    
+                    Spacer()
+                }
+                .padding(.leading, 16)
+                .padding(.bottom, 8)
+                
                 HStack(alignment: .top, spacing: 8) {
                     ForEach(viewModel.state.getRecommendResponse, id: \.id) { article in
                         switch article.category {
@@ -217,66 +217,66 @@ struct HomeMainView: View {
                                 }
                             }
                         }
-                    }      
-				}
-				.padding(.leading, 16)
-				.padding(.trailing, 16)
-				
-				Spacer()
-					.frame(height: 50)
-			}
-		}
-		.scrollIndicators(.hidden)
+                    }
+                }
+                .padding(.leading, 16)
+                .padding(.trailing, 16)
+                
+                Spacer()
+                    .frame(height: 50)
+            }
+        }
+        .scrollIndicators(.hidden)
         //safeArea 크기 가져아서 넣기
         .padding(.top, 1)
-		.onAppear {
+        .onAppear {
             Task {
                 await getRecommendData()
                 isRecommendCalled = true
             }
-		}
-		.navigationDestination(for: HomeViewType.self) { viewType in
-			switch viewType {
-			case .search:
-				SearchMainView()
-			case .nature:
+        }
+        .navigationDestination(for: HomeViewType.self) { viewType in
+            switch viewType {
+            case .search:
+                SearchMainView()
+            case .nature:
                 // 광고 클릭으로 들어간게 아닐경우
-				NatureMainView(isAdvertisement: false)
-			case .festival:
-				FestivalMainView()
-			case .shop:
-				ShopMainView()
-			case .experience:
-				ExperienceMainView()
-			case .nanapick:
-				NanapickMainView()
-			case let .shopDetail(id):
-				ShopDetailView(id: Int64(id))
-			case let .festivalDetail(id):
-				FestivalDetailView(id: Int64(id))
-			case let .natureDetail(id):
-				NatureDetailView(id: Int64(id))
-			case let .notification:
-				NotificationView()
-			}
-		}
-		.onReceive(NotificationCenter.default.publisher(for: .deeplinkShowMarketDetail)) { notification in
-			if let userInfo = notification.userInfo, let id = userInfo["id"] as? Int {
-				AppState.shared.navigationPath.append(HomeViewType.shopDetail(id: id))
-			}
-		}
-		.onReceive(NotificationCenter.default.publisher(for: .deeplinkShowFestivalDetail)) { notification in
-			if let userInfo = notification.userInfo, let id = userInfo["id"] as? Int {
-				AppState.shared.navigationPath.append(HomeViewType.festivalDetail(id: id))
-			}
-		}
-		.onReceive(NotificationCenter.default.publisher(for: .deeplinkShowNatureDetail)) { notification in
-			if let userInfo = notification.userInfo, let id = userInfo["id"] as? Int {
-				AppState.shared.navigationPath.append(HomeViewType.natureDetail(id: id))
-			}
-		}
-		
-	}
+                NatureMainView(isAdvertisement: false)
+            case .festival:
+                FestivalMainView()
+            case .shop:
+                ShopMainView()
+            case .experience:
+                ExperienceMainView()
+            case .nanapick:
+                NanapickMainView()
+            case let .shopDetail(id):
+                ShopDetailView(id: Int64(id))
+            case let .festivalDetail(id):
+                FestivalDetailView(id: Int64(id))
+            case let .natureDetail(id):
+                NatureDetailView(id: Int64(id))
+            case let .notification:
+                NotificationView()
+            }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .deeplinkShowMarketDetail)) { notification in
+            if let userInfo = notification.userInfo, let id = userInfo["id"] as? Int {
+                AppState.shared.navigationPath.append(HomeViewType.shopDetail(id: id))
+            }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .deeplinkShowFestivalDetail)) { notification in
+            if let userInfo = notification.userInfo, let id = userInfo["id"] as? Int {
+                AppState.shared.navigationPath.append(HomeViewType.festivalDetail(id: id))
+            }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .deeplinkShowNatureDetail)) { notification in
+            if let userInfo = notification.userInfo, let id = userInfo["id"] as? Int {
+                AppState.shared.navigationPath.append(HomeViewType.natureDetail(id: id))
+            }
+        }
+        
+    }
     
     func getRecommendData() async {
         await viewModel.action(.getRecommendItem)
@@ -453,7 +453,7 @@ struct BannerView: View {
     
     var message = ""
     private let timer = Timer.publish(every: 3.5, on: .main, in: .common).autoconnect()
-	// tabView에 selection에 바인딩 할 값
+    // tabView에 selection에 바인딩 할 값
     @State private var index = 0
     private let images: [String] = ["icTabNumber1", "icTabNumber2", "icTabNumber3"]
     
@@ -461,9 +461,9 @@ struct BannerView: View {
         // selection에 index가 아닌 selectedNum을 바인딩
         ZStack {
             TabView(selection: $index) {
-				ForEach(viewModel.state.getBannerResponse.indices, id: \.self) { index in
-					let banner = viewModel.state.getBannerResponse[index]
-					ZStack {
+                ForEach(viewModel.state.getBannerResponse.indices, id: \.self) { index in
+                    let banner = viewModel.state.getBannerResponse[index]
+                    ZStack {
                         Button {
                             if index == 0 {
                                 AppState.shared.navigationPath.append(BannerViewType.firstBanner(id: Int(banner.id)))
@@ -481,17 +481,17 @@ struct BannerView: View {
                             
                         }
 
-						VStack(spacing: 0) {
-							HStack(spacing: 0) {
-								Spacer()
-								Text(banner.version)
-									.font(.caption01)
-									.foregroundStyle(.white)
-									.padding(.trailing, 16)
-							}
-							.padding(.top, 8)
-							
-							Spacer()
+                        VStack(spacing: 0) {
+                            HStack(spacing: 0) {
+                                Spacer()
+                                Text(banner.version)
+                                    .font(.caption01)
+                                    .foregroundStyle(.white)
+                                    .padding(.trailing, 16)
+                            }
+                            .padding(.top, 8)
+                            
+                            Spacer()
                             HStack(spacing: 0) {
                                 VStack(alignment: .leading, spacing: 2) {
                                     Text(banner.subHeading)
@@ -506,9 +506,9 @@ struct BannerView: View {
                             .padding(.bottom, 16)
                             .padding(.leading, 16)
                             
-						}
-					}
-					.frame(width: Constants.screenWidth, height: Constants.screenWidth * (220 / 360))
+                        }
+                    }
+                    .frame(width: Constants.screenWidth, height: Constants.screenWidth * (220 / 360))
                     .navigationDestination(for: BannerViewType.self) {viewType in
                         switch viewType {
                         case let .firstBanner(id):
@@ -519,7 +519,7 @@ struct BannerView: View {
                             NaNaPickDetailView(id: Int64(id))
                         }
                     }
-				}
+                }
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
             .onReceive(timer, perform: { _ in
