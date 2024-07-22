@@ -117,13 +117,6 @@
 		2C9CF4E62C00701E00A346E8 /* TypeTestNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9CF4E52C00701E00A346E8 /* TypeTestNavigationView.swift */; };
 		2C9CF4E82C00714900A346E8 /* TypeTestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9CF4E72C00714900A346E8 /* TypeTestViewModel.swift */; };
 		2C9CF4EA2C00716B00A346E8 /* RegisterViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9CF4E92C00716B00A346E8 /* RegisterViewType.swift */; };
-		6D35E9BC2C39AA7400A7A44A /* secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D35E9BB2C39AA7400A7A44A /* secret.swift */; };
-		6D35E9BF2C39AAD900A7A44A /* ReviewWriteMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D35E9BE2C39AAD900A7A44A /* ReviewWriteMain.swift */; };
-		6D35E9C52C39BF4000A7A44A /* ReviewWriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D35E9C42C39BF4000A7A44A /* ReviewWriteModel.swift */; };
-		6D35E9C72C39BFB700A7A44A /* ReviewWriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D35E9C62C39BFB700A7A44A /* ReviewWriteViewModel.swift */; };
-		6DC69A582C3C326B0000F8D0 /* ReviewKeywordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC69A572C3C326B0000F8D0 /* ReviewKeywordView.swift */; };
-		6DC69A5A2C3C45D80000F8D0 /* ReviewKeywordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC69A592C3C45D80000F8D0 /* ReviewKeywordModel.swift */; };
-		6DC69A5C2C3C45EF0000F8D0 /* ReviewKeywordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC69A5B2C3C45EF0000F8D0 /* ReviewKeywordViewModel.swift */; };
 		6D1B05552C4973A2001F6DD9 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1B05542C4973A2001F6DD9 /* MapView.swift */; };
 		6D664E632C4A43360083C464 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D664E602C4A43360083C464 /* GoogleService-Info.plist */; };
 		6D664E652C4A43360083C464 /* AuthKey_9JRUHFTK3L.p8 in Resources */ = {isa = PBXBuildFile; fileRef = 6D664E622C4A43360083C464 /* AuthKey_9JRUHFTK3L.p8 */; };
@@ -351,13 +344,6 @@
 		2C9CF4E52C00701E00A346E8 /* TypeTestNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeTestNavigationView.swift; sourceTree = "<group>"; };
 		2C9CF4E72C00714900A346E8 /* TypeTestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeTestViewModel.swift; sourceTree = "<group>"; };
 		2C9CF4E92C00716B00A346E8 /* RegisterViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewType.swift; sourceTree = "<group>"; };
-		6D35E9BB2C39AA7400A7A44A /* secret.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = secret.swift; path = NanaLand/secret.swift; sourceTree = SOURCE_ROOT; };
-		6D35E9BE2C39AAD900A7A44A /* ReviewWriteMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewWriteMain.swift; sourceTree = "<group>"; };
-		6D35E9C42C39BF4000A7A44A /* ReviewWriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewWriteModel.swift; sourceTree = "<group>"; };
-		6D35E9C62C39BFB700A7A44A /* ReviewWriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewWriteViewModel.swift; sourceTree = "<group>"; };
-		6DC69A572C3C326B0000F8D0 /* ReviewKeywordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewKeywordView.swift; sourceTree = "<group>"; };
-		6DC69A592C3C45D80000F8D0 /* ReviewKeywordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewKeywordModel.swift; sourceTree = "<group>"; };
-		6DC69A5B2C3C45EF0000F8D0 /* ReviewKeywordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewKeywordViewModel.swift; sourceTree = "<group>"; };
 		6D1B05542C4973A2001F6DD9 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		6D664E602C4A43360083C464 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6D664E612C4A43360083C464 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -546,10 +532,10 @@
 			children = (
 				2C5425092BF76D8200B16439 /* NanaLand.entitlements */,
 				BF77145B2BF99BCF0020C8F0 /* Info.plist */,
-				6D35E9BD2C39AAC300A7A44A /* Review */,
 				BF2F8D802C4685F900C0F943 /* Restaurant */,
 				6D664E622C4A43360083C464 /* AuthKey_9JRUHFTK3L.p8 */,
 				6D664E602C4A43360083C464 /* GoogleService-Info.plist */,
+				6D664E612C4A43360083C464 /* Info.plist */,
 				BF98341F2BCE71F400A5C289 /* NaNaPick */,
 				BF98341C2BCE71E100A5C289 /* Experience */,
 				BF9834192BCE71D000A5C289 /* Shop */,
@@ -645,7 +631,7 @@
 			children = (
 				2C40DB8D2BE637DE007A3768 /* AuthManager.swift */,
 				2C40DB942BE63AD2007A3768 /* KeychainManager.swift */,
-				6D35E9BB2C39AA7400A7A44A /* secret.swift */,
+				6D664E682C4A434C0083C464 /* secret.swift */,
 				2C1F31D62BCD73C00066819F /* Constants.swift */,
 				2C2749922C0A18BE00ECBA71 /* DeepLinkManager.swift */,
 				2C219B542C16FEE5001F4C28 /* RemoteConfigManager.swift */,
@@ -923,17 +909,6 @@
 			path = ViewType;
 			sourceTree = "<group>";
 		};
-		6D35E9BD2C39AAC300A7A44A /* Review */ = {
-			isa = PBXGroup;
-			children = (
-				6D35E9BE2C39AAD900A7A44A /* ReviewWriteMain.swift */,
-				6D35E9C42C39BF4000A7A44A /* ReviewWriteModel.swift */,
-				6D35E9C62C39BFB700A7A44A /* ReviewWriteViewModel.swift */,
-				6DC69A572C3C326B0000F8D0 /* ReviewKeywordView.swift */,
-				6DC69A592C3C45D80000F8D0 /* ReviewKeywordModel.swift */,
-				6DC69A5B2C3C45EF0000F8D0 /* ReviewKeywordViewModel.swift */,
-			);
-			path = Review;
 		6D1B05532C497362001F6DD9 /* Map */ = {
 			isa = PBXGroup;
 			children = (
@@ -1371,7 +1346,6 @@
 				2C2D3D552C038A54002A38AA /* LocalizedKey.swift in Sources */,
 				BF22B8032C460F7D0059B380 /* ExperienceService.swift in Sources */,
 				2C2749952C0A2C5400ECBA71 /* NotificationName+.swift in Sources */,
-				6DC69A5A2C3C45D80000F8D0 /* ReviewKeywordModel.swift in Sources */,
 				2C3C75D52BCAB01500312F26 /* ProfileMainView.swift in Sources */,
 				BF16114B2BDB7881000340F2 /* ShopEndPoint.swift in Sources */,
 				2C1F31D92BCD7DC90066819F /* SearchResultView.swift in Sources */,
@@ -1412,7 +1386,6 @@
 				2C40DBB62BECEE2A007A3768 /* UITabBarController+.swift in Sources */,
 				BF9842F12BCE897C00D6A60C /* BannerModel.swift in Sources */,
 				BF794B632BF9ADC50045FAD2 /* ProfileMainViewModel.swift in Sources */,
-				6D35E9C72C39BFB700A7A44A /* ReviewWriteViewModel.swift in Sources */,
 				BF7F7F592BE612240000F08A /* NatureDetailModel.swift in Sources */,
 				2C9CF4CF2BFDC4AF00A346E8 /* ReportInfoMainView.swift in Sources */,
 				2C9CF4CA2BFC404900A346E8 /* RegisterInductionView.swift in Sources */,
@@ -1443,8 +1416,6 @@
 				BF7F7F602BE613400000F08A /* NatureDetailEndPoint.swift in Sources */,
 				BF1493712BD1095D00FC626B /* NaNaPickModel.swift in Sources */,
 				BFBB90F62BFF500C00726DED /* WithdrawView.swift in Sources */,
-				6D35E9BC2C39AA7400A7A44A /* secret.swift in Sources */,
-				6D35E9BF2C39AAD900A7A44A /* ReviewWriteMain.swift in Sources */,
 				BF794B582BF9AAFA0045FAD2 /* UserInfoEndPoint.swift in Sources */,
 				BF80FDA92BFB539400C5DA2D /* ProfileUpdateViewModel.swift in Sources */,
 				6D664E692C4A434C0083C464 /* secret.swift in Sources */,
@@ -1484,7 +1455,6 @@
 				2C80ECAA2BCF5DB8002F38A7 /* SearchDetailCategoryResultView.swift in Sources */,
 				BF794B9B2BFB1E9A0045FAD2 /* ImagePicker.swift in Sources */,
 				2C40DB8E2BE637DE007A3768 /* AuthManager.swift in Sources */,
-				6DC69A582C3C326B0000F8D0 /* ReviewKeywordView.swift in Sources */,
 				2C1F31D72BCD73C00066819F /* Constants.swift in Sources */,
 				2C40DBC02BF1ED8A007A3768 /* RegisterTermsAgreementView.swift in Sources */,
 				2C40DB872BE630EC007A3768 /* LoginView.swift in Sources */,
@@ -1496,7 +1466,6 @@
 				2C3C75CC2BCAA93D00312F26 /* NanaLandTabView.swift in Sources */,
 				2C80ECDE2BD7E63E002F38A7 /* FavoriteDTO.swift in Sources */,
 				2C2749A62C0EEF6C00ECBA71 /* NotificationView.swift in Sources */,
-				6D35E9C52C39BF4000A7A44A /* ReviewWriteModel.swift in Sources */,
 				9C6A9C3E2BCC1BAE000413AD /* Fonts+.swift in Sources */,
 				2C27498F2C09B3D700ECBA71 /* TypeTestRecommendPlaceView.swift in Sources */,
 				BF4F6C6A2BD54CB0009F070F /* NaNaPickDetailEndPoint.swift in Sources */,
@@ -1515,7 +1484,6 @@
 				2C3C75842BCA3ADA00312F26 /* NanaLandApp.swift in Sources */,
 				2C9CF4D82BFDF45D00A346E8 /* ReportInfoDTO.swift in Sources */,
 				BFC671EA2BF7191500D1A2FD /* NatureDetailViewModel.swift in Sources */,
-				6DC69A5C2C3C45EF0000F8D0 /* ReviewKeywordViewModel.swift in Sources */,
 				2C40DB912BE6383B007A3768 /* AuthService.swift in Sources */,
 				2C80ECEE2BDBE0CE002F38A7 /* CalendarItem.swift in Sources */,
 				BF1493732BD1097100FC626B /* NaNaPickService.swift in Sources */,

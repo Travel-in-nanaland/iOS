@@ -364,43 +364,8 @@ enum LocalizedKey: String {
 	case thxForReportInfoTitle
 	case thxForReportInfoDescription
 	case showContentAgain
-	case reportAgain  
+	case reportAgain    
     
-    // MARK: - 후기
-    case blank
-    case review
-    case write
-    case keyword
-    case selectRating
-    case visitReview
-    case writeContent
-    case addKeyword
-    case upload
-    case keywordDescription
-    
-    // MARK: - 키워드 내용
-    case mood
-    case anniversary
-    case cute
-    case luxurious
-    case beautiful
-    case kind
-    case companion
-    case descendant
-    case friend
-    case parent
-    case alone
-    case spouse
-    case relative
-    case animal
-    case amenities
-    case socket
-    case largeSpace
-    case parking
-    case cleanBathroom
-    case warning
-    case warningDescription
-    case check
     
 	//MARK: - localized()
 	func localized(for language: Language) -> String {
