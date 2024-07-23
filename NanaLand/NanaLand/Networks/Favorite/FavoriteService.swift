@@ -50,6 +50,12 @@ struct FavoriteService {
 		return mapFavoriteArticleToArticle(response)
 	}
 	
+    static func getRestaurantFavoriteList(page: Int) async -> OldBaseResponse<ArticleResponse>? {
+        let response: OldBaseResponse<FavoriteListResponse>? = await NetworkManager.shared.request(FavoriteEndPoint.getRestaurantFavoriteList(page: page))
+        
+        return mapFavoriteArticleToArticle(response)
+    }
+    
 	// MARK: -  private func
 	static private func mapFavoriteArticleToArticle(_ response: OldBaseResponse<FavoriteListResponse>?) -> OldBaseResponse<ArticleResponse>? {
 		guard let response = response else {return nil}
