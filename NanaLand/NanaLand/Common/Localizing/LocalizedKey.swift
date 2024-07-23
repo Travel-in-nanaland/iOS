@@ -403,6 +403,26 @@ enum LocalizedKey: String {
     case check
     
     
+    // MARK: - 제주 맛집
+    case restaurant
+    case keyword
+    case meatblackpork
+    case seaFood
+    case koreanFood
+    case chineseFood
+    case japaneseFood
+    case westernFood
+    case vegan
+    case halalFood
+    case snacks
+    case southAmericanFood
+    case southeastAsianFood
+    case chickenBurger
+    case cafeDessert
+    case pubRestaurant
+    case menu
+    case writeReview
+    
 	//MARK: - localized()
 	func localized(for language: Language) -> String {
 		guard let path = Bundle.main.path(forResource: language.localizedName, ofType: "lproj"),
