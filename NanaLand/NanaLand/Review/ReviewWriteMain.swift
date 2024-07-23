@@ -26,8 +26,8 @@ struct ReviewWriteMain: View {
                     
                     ReviewMainGridView(viewModel: viewModel)
                 }
-                .toolbar(.hidden)
             }
+            .toolbar(.hidden)
         }
     }
 }

@@ -18,6 +18,7 @@ enum SearchEndPoint {
 	case getSearchFestivalCategory(term: String, page: Int)
 	case getSearchExperienceCategory(term: String, page: Int)
 	case getSearchNanaCategory(term: String, page: Int)
+    case getSearchRestaurantCategory(term: String, page: Int)
 	
 	// 인기 검색어 조회
 	case getPopularKeyword
@@ -45,6 +46,8 @@ extension SearchEndPoint: EndPoint {
 			return "/experience"
 		case .getSearchNanaCategory:
 			return "/nana"
+        case .getSearchRestaurantCategory:
+            return ""
 		case .getPopularKeyword:
 			return "/popular"
 		case .getVolumeUp:
@@ -66,6 +69,8 @@ extension SearchEndPoint: EndPoint {
 			return .get
 		case .getSearchNanaCategory:
 			return .get
+        case .getSearchRestaurantCategory:
+            return .get
 		case .getPopularKeyword:
 			return .get
 		case .getVolumeUp:
@@ -108,6 +113,12 @@ extension SearchEndPoint: EndPoint {
 				"page": page
 			]
 			return .requestParameters(parameters: param)
+        case let .getSearchRestaurantCategory(term: term, page: page):
+            let param: [String: Any] = [
+                "keyword": term,
+                "page": page
+            ]
+            return .requestParameters(parameters: param)
 		case .getPopularKeyword:
 			return .requestPlain
 		case .getVolumeUp:

@@ -33,6 +33,8 @@ struct SearchDetailCategoryResultView: View {
                             return "\(searchVM.state.experienceCategorySearchResult.totalElements)"
                         case .nanaPick:
                             return "\(searchVM.state.nanaCategorySearchResult.totalElements)"
+                        case .restaurant:
+                            return "\(searchVM.state.restaurantCategorySearchResult.totalElements)"
                         }
                     }() as String)
                     Text(.resultCount)
@@ -84,6 +86,8 @@ struct SearchDetailCategoryResultView: View {
                                     return searchVM.state.experienceCategorySearchResult.data
                                 case .nanaPick:
                                     return searchVM.state.nanaCategorySearchResult.data
+                                case .restaurant:
+                                    return searchVM.state.restaurantCategorySearchResult.data
                                 }
                             }(),
                             id: \.self) { article in
@@ -140,6 +144,8 @@ struct SearchDetailCategoryResultView: View {
             case .nanaPick:
                 NaNaPickDetailView(id: Int64(article.id))
             case .all:
+                Text("test")
+            case .restaurant:
                 Text("test")
             }
         }

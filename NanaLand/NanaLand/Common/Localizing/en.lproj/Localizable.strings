@@ -391,3 +391,22 @@ the market is the place!";
 "warning" = "경고";
 "warningDescription" = "최대 6개까지 선택 가능합니다";
 "check" = "확인";
+
+// MARK: - 제주 맛집(테스트)
+"restaurant" = "제주 맛집";
+"meatblackpork" = "육류/흑돼지";
+"seaFood" = "해산물";
+"koreanFood" = "한식";
+"chineseFood" = "중식";
+"japaneseFood" = "일식";
+"westernFood" = "양식";
+"vegan" = "비건푸드";
+"halalFood" = "할랄푸드";
+"snacks" = "분식";
+"southAmericanFood" = "남미 음식";
+"southeastAsianFood" = "동남아 음식";
+"chickenBurger" = "치킨/버거";
+"cafeDessert" = "카페/디저트";
+"pubRestaurant" = "펍/요리주점";
+"menu" = "대표 메뉴";
+"writeReview" = "리뷰 작성하기";
