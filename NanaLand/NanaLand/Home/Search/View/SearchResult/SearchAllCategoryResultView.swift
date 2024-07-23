@@ -163,8 +163,6 @@ struct SearchAllCategoryItem: View {
             NaNaPickDetailView(id: Int64(article.id))
         case .all:
             Text("test")
-        case .restaurant:
-            Text("test")
         }
     }
 }
