@@ -69,9 +69,7 @@ class FavoriteViewModel: ObservableObject {
 			await getExperienceFavoriteList()
 		case .nanaPick:
 			await getNanaFavoriteList()
-        case .restaurant:
-            await getNanaFavoriteList()
-        }
+		}
 	}
 	
 	private func getAllFavoriteList() async {
@@ -231,10 +229,7 @@ class FavoriteViewModel: ObservableObject {
 		case .nanaPick:
 			state.allFavoriteArticles.data.removeAll(where: {$0 == article})
 			state.allFavoriteArticles.totalElements -= 1
-        case .restaurant:
-            state.allFavoriteArticles.data.removeAll(where: {$0 == article})
-            state.allFavoriteArticles.totalElements -= 1
-        }
+		}
 	}
 	
 	private func refreshData(category: Category) async {
@@ -263,10 +258,7 @@ class FavoriteViewModel: ObservableObject {
 		case .nanaPick:
 			state.allFavoriteArticlePage = 0
 			state.allFavoriteArticles = .init()
-        case .restaurant:
-            state.allFavoriteArticlePage = 0
-            state.allFavoriteArticles = .init()
-        }
+		}
 	}
 	
 	func isLastPage(tab: Category) -> Bool {
@@ -283,8 +275,6 @@ class FavoriteViewModel: ObservableObject {
 			return state.experienceFavoriteArticles.totalElements == state.experienceFavoriteArticles.data.count
 		case .nanaPick:
 			return true
-        case .restaurant:
-            return true
-        }
+		}
 	}
 }
