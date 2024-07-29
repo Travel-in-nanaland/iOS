@@ -51,6 +51,7 @@ struct HomeMainView: View {
                     
                 }
                 .padding(.bottom, 8)
+                .padding(.top, 1)
                 // banner View
                 BannerView()
                     .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width * (220 / 360))

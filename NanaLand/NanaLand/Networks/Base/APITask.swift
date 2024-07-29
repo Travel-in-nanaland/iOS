@@ -16,4 +16,5 @@ enum APITask {
 	/// 이미지와 함께 body 전송
 	/// Interceptor 사용하려면 true로, 미사용이라면 false
 	case requestJSONWithImage(multipartFile: [Foundation.Data?], body: Encodable, withInterceptor: Bool = true)
+    case requestJSONWithImageWithParam(multipartFile: [Foundation.Data?], body: Encodable, withInterceptor: Bool = true, parameters: Parameters)
 }

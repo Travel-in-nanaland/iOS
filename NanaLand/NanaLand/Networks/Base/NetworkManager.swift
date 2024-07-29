@@ -37,7 +37,8 @@ class NetworkManager {
 		let result = await request.serializingData().result
 		var data = Foundation.Data()
 		do {
-            print("request: " + "\(endPoint.headers)")
+            print("endPoint: \(endPoint)")
+            print("request: " + "\(request)\(result)")
 			data = try result.get()
 		} catch {
 			print("data fetch error")
@@ -109,7 +110,31 @@ class NetworkManager {
 					multipartFormData.append(jsonData, withName: "reqDto", mimeType: "application/json")
 				}
 			}, to: URL(string: "\(endPoint.baseURL)\(endPoint.path)")!, method: endPoint.method, headers: endPoint.headers, interceptor: withInterceptor ? Interceptor() : nil)
-			
+        // 리뷰 요청 보내기 위해서 만든 케이스(body, imageFile, parameter 까지)
+        case let .requestJSONWithImageWithParam(multipartFile, body, withInterceptor, parameters):
+            var urlComponents = URLComponents(string: "\(endPoint.baseURL)\(endPoint.path)")!
+            urlComponents.queryItems = parameters.map { URLQueryItem(name: $0.key, value: "\($0.value)")}
+            guard let urlWithQuery = urlComponents.url else {
+                fatalError("Invalid URL")
+            }
+            
+            return AF.upload(multipartFormData: { multipartFormData in
+                for image in multipartFile {
+                    if let image = image {
+                        multipartFormData.append(image, withName: "imageList", fileName: "\(image).jpeg", mimeType: "image/jpeg")
+                    }
+                }
+                if let jsonData = try? JSONEncoder().encode(body) {
+                    multipartFormData.append(jsonData, withName: "createReviewDto", mimeType: "application/json")
+                }
+            }, to: urlWithQuery, method: endPoint.method, headers: endPoint.headers, interceptor: withInterceptor ? Interceptor() : nil)
+            
+        
+            
 		}
+        
+        
+        
+        
 	}
 }
