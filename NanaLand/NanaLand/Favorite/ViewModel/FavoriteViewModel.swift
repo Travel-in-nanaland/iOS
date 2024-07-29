@@ -18,6 +18,7 @@ class FavoriteViewModel: ObservableObject {
 		var festivalFavoriteArticles: ArticleResponse = .init()
 		var experienceFavoriteArticles: ArticleResponse = .init()
 		var nanaFavoriteArticles: ArticleResponse = .init()
+        var restaurantFavoriteArticles: ArticleResponse = .init()
 		
 		var allFavoriteArticlePage: Int = 0
 		var natureFavoriteArticlePage: Int = 0
@@ -25,6 +26,7 @@ class FavoriteViewModel: ObservableObject {
 		var festivalFavoriteArticlePage: Int = 0
 		var experienceFavoriteArticlePage: Int = 0
 		var nanaFavoriteArticlePage: Int = 0
+        var restaurantFavoriteArticlePage: Int = 0
 	}
 	
 	enum Action {
@@ -69,6 +71,8 @@ class FavoriteViewModel: ObservableObject {
 			await getExperienceFavoriteList()
 		case .nanaPick:
 			await getNanaFavoriteList()
+        case .restaurant:
+            await getRestaurantFavoriteList()
 		}
 	}
 	
@@ -203,6 +207,28 @@ class FavoriteViewModel: ObservableObject {
 			state.isLoading = false
 		}
 	}
+    
+    private func getRestaurantFavoriteList() async {
+        if state.restaurantFavoriteArticlePage == 0 {
+            state.restaurantFavoriteArticles.data.removeAll()
+        }
+        
+        state.isLoading = true
+        
+        if let data = await FavoriteService.getRestaurantFavoriteList(page: state.nanaFavoriteArticlePage) {
+            if state.restaurantFavoriteArticlePage == 0 {
+                state.restaurantFavoriteArticles = data.data
+            } else {
+                state.restaurantFavoriteArticles.data.append(contentsOf: data.data.data)
+            }
+            
+            state.restaurantFavoriteArticlePage += 1
+            state.isLoading = false
+        } else {
+            print("getRestaurantFavoriteList Error")
+            state.isLoading = false
+        }
+    }
 	
 	private func deleteFavoriteArticle(article: Article, tab: Category) async {
 		let result = await FavoriteService.toggleFavorite(id: article.id, category: article.category)
@@ -229,6 +255,9 @@ class FavoriteViewModel: ObservableObject {
 		case .nanaPick:
 			state.allFavoriteArticles.data.removeAll(where: {$0 == article})
 			state.allFavoriteArticles.totalElements -= 1
+        case .restaurant:
+            state.allFavoriteArticles.data.removeAll(where: {$0 == article})
+            state.allFavoriteArticles.totalElements -= 1
 		}
 	}
 	
@@ -258,6 +287,9 @@ class FavoriteViewModel: ObservableObject {
 		case .nanaPick:
 			state.allFavoriteArticlePage = 0
 			state.allFavoriteArticles = .init()
+        case .restaurant:
+            state.allFavoriteArticlePage = 0
+            state.allFavoriteArticles = .init()
 		}
 	}
 	
@@ -275,6 +307,8 @@ class FavoriteViewModel: ObservableObject {
 			return state.experienceFavoriteArticles.totalElements == state.experienceFavoriteArticles.data.count
 		case .nanaPick:
 			return true
+        case .restaurant:
+            return state.restaurantFavoriteArticles.totalElements == state.restaurantFavoriteArticles.data.count
 		}
 	}
 }

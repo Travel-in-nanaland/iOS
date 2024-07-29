@@ -1,8 +1,20 @@
 //
-//  RestaurantMainModel.swift
+//  RestaurantModel.swift
 //  NanaLand
 //
-//  Created by juni on 7/16/24.
+//  Created by wodnd on 7/21/24.
 //
 
 import Foundation
+struct RestaurantMainModel: Codable {
+    var totalElements: Int64
+    var data: [RestaurantModelInfo]
+}
+
+struct RestaurantModelInfo: Codable {
+    let id: Int64
+    let title: String
+    let thumbnailUrl: String
+    let addressTag: String
+    var favorite: Bool
+}

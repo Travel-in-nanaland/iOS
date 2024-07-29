@@ -28,6 +28,7 @@ struct ReviewWriteMain: View {
                     .padding(.bottom, 10)
                 ReviewMainGridView(viewModel: viewModel, reviewItemAddress: reviewAddress, reviewItemImageUrl: reviewImageUrl, reviewTitle: reviewTitle, reviewId: reviewId)
             }
+            .toolbar(.hidden)
         }
         .toolbar(.hidden)
     }

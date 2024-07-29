@@ -21,12 +21,14 @@ final class SearchViewModel: ObservableObject {
 		var festivalCategorySearchResult = ArticleResponse()
 		var experienceCategorySearchResult = ArticleResponse()
 		var nanaCategorySearchResult = ArticleResponse()
+        var restaurantCategorySearchResult = ArticleResponse()
 		
 		var naturePage: Int = 0
 		var marketPage: Int = 0
 		var festivalPage: Int = 0
 		var experiencePage: Int = 0
 		var nanaPage: Int = 0
+        var restaurantPage: Int = 0
 		
 		var searchVolumeResult: [Article] = []
 		
@@ -75,6 +77,7 @@ final class SearchViewModel: ObservableObject {
 		state.marketCategorySearchResult = .init()
 		state.experienceCategorySearchResult = .init()
 		state.nanaCategorySearchResult = .init()
+        state.restaurantCategorySearchResult = .init()
 		state.naturePage = 0
 		state.marketPage = 0
 		state.festivalPage = 0
@@ -226,6 +229,28 @@ final class SearchViewModel: ObservableObject {
 				print("searchNanaCategory Error")
 				state.isLoading = false
 			}
+            
+        case .restaurant:
+            if state.restaurantPage == 0 {
+                state.restaurantCategorySearchResult = .init()
+            }
+            
+            state.isLoading = true
+            
+            if let data = await SearchService.searchExperienceCategory(term: term, page: state.experiencePage) {
+                if state.experiencePage == 0 {
+                    state.experienceCategorySearchResult = data.data
+                } else {
+                    state.experienceCategorySearchResult.data.append(contentsOf: data.data.data)
+                }
+                
+                state.experiencePage += 1
+                state.isLoading = false
+            } else {
+                print("searchExperienceCategory Error")
+                state.isLoading = false
+            }
+
 		}
 
 	}
@@ -252,6 +277,8 @@ final class SearchViewModel: ObservableObject {
 			return state.experienceCategorySearchResult.totalElements == state.experienceCategorySearchResult.data.count
 		case .nanaPick:
 			return state.nanaCategorySearchResult.totalElements == state.nanaCategorySearchResult.data.count
+        case .restaurant:
+            return state.restaurantCategorySearchResult.totalElements == state.restaurantCategorySearchResult.data.count
 		}
 	}
 	
@@ -289,6 +316,10 @@ final class SearchViewModel: ObservableObject {
 			if let index = state.allCategorySearchResult.nana.data.firstIndex(where: {$0 == article}) {
 				state.allCategorySearchResult.nana.data[index].favorite = result.data.favorite
 			}
+        case .restaurant:
+            if let index = state.allCategorySearchResult.restaurant.data.firstIndex(where: {$0 == article}) {
+                state.allCategorySearchResult.restaurant.data[index].favorite = result.data.favorite
+            }
 		}
 	}
 	
@@ -324,6 +355,10 @@ final class SearchViewModel: ObservableObject {
 			if let index = state.nanaCategorySearchResult.data.firstIndex(where: {$0 == article}) {
 				state.nanaCategorySearchResult.data[index].favorite = result.data.favorite
 			}
+        case .restaurant:
+            if let index = state.restaurantCategorySearchResult.data.firstIndex(where: {$0 == article}) {
+                state.restaurantCategorySearchResult.data[index].favorite = result.data.favorite
+            }
 		}
 	}
 	
@@ -349,6 +384,8 @@ final class SearchViewModel: ObservableObject {
 			return state.experienceCategorySearchResult.data.isEmpty
 		case .nanaPick:
 			return state.nanaCategorySearchResult.data.isEmpty
+        case .restaurant:
+            return state.restaurantCategorySearchResult.data.isEmpty
 		}
 	}
 }
