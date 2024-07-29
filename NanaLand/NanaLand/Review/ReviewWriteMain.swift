@@ -7,28 +7,29 @@
 
 import SwiftUI
 import PhotosUI
+import Kingfisher
+import UIKit
 
 struct ReviewWriteMain: View {
     
     @EnvironmentObject var localizationManager: LocalizationManager
     @StateObject var viewModel = ReviewWriteViewModel()
-    
+    var reviewAddress: String = ""
+    var reviewImageUrl: String = ""
+    var reviewTitle: String = ""
+    var reviewId: Int64 = 0
     var body: some View {
         
         ZStack{
-            NavigationView {
-                VStack(spacing: 0) {
-                    NavigationBar(title: LocalizedKey.write.localized(for: localizationManager.language))
-                        .frame(height: 56)
-                        .background(Color.white)
-                        .shadow(color: Color.black.opacity(0.2), radius: 4, x: 0, y: 2)
-                        .padding(.bottom, 10)
-                    
-                    ReviewMainGridView(viewModel: viewModel)
-                }
-                .toolbar(.hidden)
+            VStack(spacing: 0) {
+                NanaNavigationBar(title: .write, showBackButton: true)
+                    .frame(height: 56)
+                    .background(Color.white)
+                    .padding(.bottom, 10)
+                ReviewMainGridView(viewModel: viewModel, reviewItemAddress: reviewAddress, reviewItemImageUrl: reviewImageUrl, reviewTitle: reviewTitle, reviewId: reviewId)
             }
         }
+        .toolbar(.hidden)
     }
 }
 
@@ -39,21 +40,26 @@ struct ReviewMainGridView: View {
     @State private var selectedImageData: [Data] = []
     @State private var reviewContent: String = ""
     @EnvironmentObject var localizationManager: LocalizationManager
-    
+    @State private var showToast = false
+    @State private var toastMessage = ""
+    var reviewItemAddress: String = ""
+    var reviewItemImageUrl: String = ""
+    var reviewTitle: String = ""
+    var reviewId: Int64 = 0
     var body: some View {
         ScrollView {
             VStack {
-                Image("img")
+                KFImage(URL(string: reviewItemImageUrl))
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 80, height: 80)
                     .cornerRadius(8)
                     .padding()
                 
-                Text(viewModel.state.getReviewWriteResponse.title)
+                Text(reviewTitle)
                     .font(.body_bold)
                     .padding(.bottom, 5)
-                Text(viewModel.state.getReviewWriteResponse.address)
+                Text(reviewItemAddress)
                     .font(.body02)
                     .padding(.bottom, 24)
                 
@@ -75,6 +81,7 @@ struct ReviewMainGridView: View {
                             .foregroundColor(number <= viewModel.state.getReviewWriteResponse.rating ? .yellow : .gray2)
                             .onTapGesture {
                                 viewModel.updateRating(number)
+                                viewModel.state.reviewDTO.rating = number
                             }
                     }
                 }
@@ -102,15 +109,33 @@ struct ReviewMainGridView: View {
                             matching: .images,
                             photoLibrary: .shared()
                         ) {
-                            VStack {
-                                Image(systemName: "camera")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 26)
-                                Text("\(viewModel.state.getReviewWriteResponse.imgCnt) / 5")
-                                    .font(.gothicNeo(.light, size: 15))
+                            if viewModel.state.getReviewWriteResponse.imgCnt == 5{
+                                Button { // 사진이 5장인 상태(최대상태) 에서 또 클릭 할 시 토스트 메시지 띄우기
+                                    toastMessage = "사진은 최대 5장까지 선택 가능합니다"
+                                    showToast = true
+                                } label: {
+                                    VStack {
+                                        Image(systemName: "camera")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 26)
+                                        Text("\(viewModel.state.getReviewWriteResponse.imgCnt) / 5")
+                                            .font(.gothicNeo(.light, size: 15))
+                                    }
+                                    .foregroundColor(.white)
+                                }
                             }
-                            .foregroundColor(.white)
+                            else {
+                                VStack {
+                                    Image(systemName: "camera")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 26)
+                                    Text("\(viewModel.state.getReviewWriteResponse.imgCnt) / 5")
+                                        .font(.gothicNeo(.light, size: 15))
+                                }
+                                .foregroundColor(.white)
+                            }
                         }
                     }
                     
@@ -157,6 +182,20 @@ struct ReviewMainGridView: View {
                                 .stroke(Color.gray, lineWidth: 1)
                         )
                         .frame(height: 190)
+                        .onChange(of: reviewContent) { newValue in
+                            viewModel.state.reviewDTO.content = newValue
+                            print("\(newValue)")
+                            for i in 0..<viewModel.selectedKeyword.count {
+                                print(viewModel.selectedKeyword[i].tag)
+                            }
+                            if newValue.count > 200 {
+                                
+                                reviewContent = String(newValue.prefix(200))
+                                toastMessage = "내용은 200자 이내로 작성 가능합니다"
+                                showToast = true
+                                print("200자 초과")
+                            }
+                        }
                         .padding(.horizontal)
                 }
                 
@@ -198,26 +237,57 @@ struct ReviewMainGridView: View {
                     RoundedRectangle(cornerRadius: 50)
                         .foregroundColor(.main)
                         .frame(width: 370, height: 50)
-                    Text(.upload)
-                        .font(.body_bold)
-                        .foregroundStyle(.white)
+                    Button {
+                        Task {
+                            for i in 0..<viewModel.selectedKeyword.count {
+                                viewModel.state.reviewDTO.reviewKeywords.append(viewModel.selectedKeyword[i].tag)
+                            }
+                            await postReview(id: reviewId, category: "EXPERIENCE", body: viewModel.state.reviewDTO, multipartFile: selectedImageData)
+                            AppState.shared.navigationPath.append(ReviewViewType.complete)
+                        }
+                        
+                      
+                    } label: {
+                        Text(.upload)
+                            .font(.body_bold)
+                            .foregroundStyle(.white)
+                    }
                 }
             }
         }
         .onChange(of: selectedItems) { newItems in
             Task {
+                
                 selectedImageData.removeAll()
                 for newItem in newItems {
                     if let data = try? await newItem.loadTransferable(type: Data.self) {
                         if selectedImageData.count < 5 {
-                            selectedImageData.append(data)
+                            selectedImageData.append(data) // 선택된 이미지 추가
                         }
                     }
+        
                 }
                 viewModel.updateImageCount(selectedImageData.count)
             }
         }
+        .overlay(
+            Toast(message: toastMessage, isShowing: $showToast, isAnimating: true)
+        )
+        .navigationDestination(for: ReviewViewType.self) { viewType in
+            switch viewType {
+            case .complete:
+                ReviewCompleteView(title: "EXPERIENCE")
+            }
+        }
     }
+    
+    func postReview(id: Int64, category: String, body: ReviewDTO, multipartFile: [Foundation.Data?]) async {
+        await viewModel.action(.postReview(id: id, category: category, body: body, multipartFile: multipartFile))
+    }
+}
+
+enum ReviewViewType {
+    case complete
 }
 
 struct MainTagView: View {

@@ -62,7 +62,6 @@ struct LoginView: View {
 					})
 				}
 				
-				
 				Button(action: {
 					authManager.appleLogin()
 				}, label: {
@@ -74,7 +73,6 @@ struct LoginView: View {
 						Text(.appleLogin)
 							.font(.gothicNeo(.medium, size: 14))
 							.foregroundStyle(Color.white)
-						
 					}
 					.frame(width: Constants.screenWidth-32, height: 48)
 					.background {

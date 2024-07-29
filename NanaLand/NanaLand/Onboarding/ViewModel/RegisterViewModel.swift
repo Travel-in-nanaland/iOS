@@ -124,7 +124,7 @@ final class RegisterViewModel: ObservableObject {
 		}
 		
 		let result = await AuthService.registerServer(body: state.registerRequest, image: [state.pickedImage])
-		
+	
 		if let tokens = result?.data {
 			KeyChainManager.addItem(key: "accessToken", value: tokens.accessToken)
 			KeyChainManager.addItem(key: "refreshToken", value: tokens.refreshToken)
