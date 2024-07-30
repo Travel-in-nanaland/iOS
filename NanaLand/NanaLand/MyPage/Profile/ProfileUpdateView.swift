@@ -137,15 +137,32 @@ struct ProfileUpdateView: View {
                                         .padding(.top, 8)
                                 }
                                 
-                                Text(
-                                    (nickName.count > 8 || containsSpecialCharacter(nickName)) ? LocalizedKey.nickNameTypingLimitError.localized(for: localizationManager.language) : (viewModel.state.isDuplicate ? LocalizedKey.nickNameDuplicateError.localized(for: localizationManager.language) : " ")
-                                    
-                                )
+                                if nickName.count > 8 {
+                                    Text(
+                                        (LocalizedKey.nickNameTypingLimitError.localized(for: localizationManager.language)))
                                     .font(.caption01)
                                     .foregroundStyle(.red)
                                     .padding(.leading, 4)
                                     .padding(.top, 8)
                                     .frame(height: 30)
+                                } else if containsSpecialCharacter(nickName){
+                                    Text(LocalizedKey.nickNameContainSpecialCharacterError.localized(for: localizationManager.language))
+                                        .font(.caption01)
+                                        .foregroundStyle(.red)
+                                        .padding(.leading, 4)
+                                        .padding(.top, 8)
+                                        .frame(height: 30)
+                                } else if viewModel.state.isDuplicate {
+                                    Text(LocalizedKey.nickNameDuplicateError.localized(for: localizationManager.language))
+                                        .font(.caption01)
+                                        .foregroundStyle(.red)
+                                        .padding(.leading, 4)
+                                        .padding(.top, 8)
+                                        .frame(height: 30)
+                                } else {
+                                    Text(" ")
+                                }
+                                    
                                 Spacer()
                             }
                         }
@@ -246,4 +263,5 @@ struct ProfileUpdateView: View {
 
 #Preview {
     ProfileUpdateView()
+        .environmentObject(LocalizationManager())
 }

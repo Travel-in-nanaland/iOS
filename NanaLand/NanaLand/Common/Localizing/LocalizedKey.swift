@@ -402,6 +402,13 @@ enum LocalizedKey: String {
     case warningDescription
     case check
     
+    // MARK: - 마이페이지
+    case notice
+    case testAgain
+    case noNickname
+    case noReview
+    case noDescription
+    case noNotice
     
 	//MARK: - localized()
 	func localized(for language: Language) -> String {
