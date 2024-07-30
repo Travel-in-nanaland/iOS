@@ -402,6 +402,14 @@ enum LocalizedKey: String {
     case warningDescription
     case check
     
+    // MARK: - 마이페이지
+    case notice
+    case testAgain
+    case noNickname
+    case noReview
+    case noDescription
+    case noNotice
+
     // MARK: - 제주 맛집
     case restaurant
     case meatblackpork

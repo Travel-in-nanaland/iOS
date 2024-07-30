@@ -69,4 +69,23 @@ enum TripType: String {
 			return .GAMGYUL_BUBBLE_TEA
 		}
 	}
+    
+    static let localizedKeyMapping: [String: TripType] = [
+            "감귤아이스크림": .GAMGYUL_ICECREAM,
+            "감귤 찹쌀떡": .GAMGYUL_RICECAKE,
+            "감귤": .GAMGYUL,
+            "감귤사이다": .GAMGYUL_CIDER,
+            "감귤 아포카토": .GAMGYUL_AFFOKATO,
+            "감귤한과": .GAMGYUL_HANGWA,
+            "감귤주스": .GAMGYUL_JUICE,
+            "감귤 초콜릿": .GAMGYUL_CHOCOLATE,
+            "감귤 칵테일": .GAMGYUL_COCKTAIL,
+            "귤피차": .TANGERINE_PEEL_TEA,
+            "감귤 요거트": .GAMGYUL_YOGURT,
+            "감귤 플랫치노": .GAMGYUL_FLATCCINO,
+            "감귤 라떼": .GAMGYUL_LATTE,
+            "감귤식혜": .GAMGYUL_SIKHYE,
+            "감귤에이드": .GAMGYUL_ADE,
+            "감귤 버블티": .GAMGYUL_BUBBLE_TEA
+        ]
 }

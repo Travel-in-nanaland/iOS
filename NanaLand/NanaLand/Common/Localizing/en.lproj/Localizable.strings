@@ -360,7 +360,7 @@ the market is the place!";
 "reportAgain" = "Add Another Item";
 
 "blank" = "";
-"review" = "후기";
+"review" = "Review";
 "write" = "후기 작성";
 "keyword" = "키워드";
 "selectRating" = "별점을 선택해주세요!";
@@ -391,6 +391,13 @@ the market is the place!";
 "warning" = "경고";
 "warningDescription" = "최대 6개까지 선택 가능합니다";
 "check" = "확인";
+
+"notice" = "Notice";
+"testAgain" = "To Test Again";
+"noNickname" = "No Nickname";
+"noReview" = "후기를 남겨 나만의 경험을 기록하세요!";
+"noDescription" = "나를 한 줄로 표현해보세요!";
+"noNotice" = "공지사항이 존재하지 않습니다";
 
 // MARK: - 제주 맛집(테스트)
 "restaurant" = "제주 맛집";
