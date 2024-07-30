@@ -17,8 +17,22 @@ struct ExperienceDetailView: View {
     
     var body: some View {
         VStack {
-            NanaNavigationBar(title: .experience, showBackButton: true)
-                .frame(height: 56)
+            ZStack {
+                NanaNavigationBar(title: .experience, showBackButton: true)
+                    .frame(height: 56)
+                HStack(spacing: 0) {
+                    Spacer()
+                    Button {
+                        
+                    } label: {
+                        Image("icShare2")
+                            .padding(.trailing, 16)
+                    }
+                    
+                    
+                }
+            }
+            
             ZStack {
                 ScrollViewReader { proxyReader in
                     
@@ -73,7 +87,7 @@ struct ExperienceDetailView: View {
                                             
                                             Text(viewModel.state.getExperienceDetailResponse.content ?? "")
                                                 .font(.body01)
-                                                .frame(height: roundedHeight * (84 / 224))
+                                                .frame(height: roundedHeight * (140 / 224))
                                                 .padding(.leading, 16)
                                                 .padding(.trailing, 16)
                                                 .lineSpacing(10)
@@ -161,67 +175,81 @@ struct ExperienceDetailView: View {
                                 .padding(.trailing, 20)
                                 
                                 VStack(spacing: 24) {
-                                    HStack(spacing: 10) {
-                                        VStack(spacing: 0) {
-                                            Image("icPin")
-                                                .renderingMode(.template)
-                                                .foregroundStyle(Color.main)
+                                    if viewModel.state.getExperienceDetailResponse.content != "" {
+                                        HStack(spacing: 10) {
+                                            VStack(spacing: 0) {
+                                                Image("icPin")
+                                                    .renderingMode(.template)
+                                                    .foregroundStyle(Color.main)
+                                            }
+                                            VStack(alignment: .leading, spacing: 0) {
+                                                Text(.address)
+                                                    .font(.body02_bold)
+                                                Text(viewModel.state.getExperienceDetailResponse.address ?? "")
+                                                    .font(.body02)
+                                            }
+                                            Spacer()
                                         }
-                                        VStack(alignment: .leading, spacing: 0) {
-                                            Text(.address)
-                                                .font(.body02_bold)
-                                            Text(viewModel.state.getExperienceDetailResponse.address ?? "")
-                                                .font(.body02)
-                                        }
-                                        Spacer()
+                                        .frame(width: Constants.screenWidth - 40, height: (Constants.screenWidth - 40) * (42 / 358))
                                     }
-                                    .frame(width: Constants.screenWidth - 40, height: (Constants.screenWidth - 40) * (42 / 358))
-                                    HStack(spacing: 10) {
-                                        VStack(spacing: 0) {
-                                            Image("icPhone")
-                                                .renderingMode(.template)
-                                                .foregroundStyle(Color.main)
+                                  
+                                    if viewModel.state.getExperienceDetailResponse.content != "" {
+                                        HStack(spacing: 10) {
+                                            VStack(spacing: 0) {
+                                                Image("icPhone")
+                                                    .renderingMode(.template)
+                                                    .foregroundStyle(Color.main)
+                                            }
+                                            VStack(alignment: .leading, spacing: 0) {
+                                                Text(.phoneNumber)
+                                                    .font(.body02_bold)
+                                                Text(viewModel.state.getExperienceDetailResponse.contact ?? "")
+                                                    .font(.body02)
+                                            }
+                                            Spacer()
                                         }
-                                        VStack(alignment: .leading, spacing: 0) {
-                                            Text(.phoneNumber)
-                                                .font(.body02_bold)
-                                            Text(viewModel.state.getExperienceDetailResponse.contact ?? "")
-                                                .font(.body02)
-                                        }
-                                        Spacer()
-                                    }
-                                    .frame(width: Constants.screenWidth - 40 , height: (Constants.screenWidth - 40) * (42 / 358))
-                                    
-                                    HStack(spacing: 10) {
-                                        VStack(spacing: 0) {
-                                            Image("icClock")
-                                                .renderingMode(.template)
-                                                .foregroundStyle(Color.main)
-                                        }
+                                        .frame(width: Constants.screenWidth - 40 , height: (Constants.screenWidth - 40) * (42 / 358))
                                         
-                                        VStack(alignment: .leading, spacing: 0) {
-                                            Text(.time)
-                                                .font(.body02_bold)
-                                            Text(viewModel.state.getExperienceDetailResponse.time ?? "")
-                                                .font(.body02)
-                                        }
-                                        Spacer()
                                     }
-                                    .frame(width: Constants.screenWidth - 40)
-                                    
-                                    HStack(spacing: 10) {
-                                        VStack(spacing: 0) {
-                                            Image("icFeeMain")
-                                        }
-                                        VStack(alignment: .leading, spacing: 0) {
-                                            Text(.fee)
-                                                .font(.body02_bold)
+                                    if viewModel.state.getExperienceDetailResponse.time != "" {
+                                        HStack(spacing: 10) {
+                                            VStack(spacing: 0) {
+                                                Image("icClock")
+                                                    .renderingMode(.template)
+                                                    .foregroundStyle(Color.main)
+                                            }
                                             
+                                            VStack(alignment: .leading, spacing: 0) {
+                                                Text(.time)
+                                                    .font(.body02_bold)
+                                                Text(viewModel.state.getExperienceDetailResponse.time ?? "")
+                                                    .font(.body02)
+                                            }
+                                            Spacer()
                                         }
-                                        Spacer()
+                                        .frame(width: Constants.screenWidth - 40)
                                     }
-                                    .frame(width: Constants.screenWidth - 40, height: (Constants.screenWidth - 40) * (42 / 358))
-                                    .padding(.bottom, 32)
+                              
+                                    if viewModel.state.getExperienceDetailResponse.homepage != "" {
+                                        HStack(spacing: 10) {
+                                            VStack(spacing: 0) {
+                                                Image("icHomepage")
+                                                    .renderingMode(.template)
+                                                    .foregroundStyle(Color.main)
+                                            }
+                                            VStack(alignment: .leading, spacing: 0) {
+                                                Text(.homepage)
+                                                    .font(.body02_bold)
+                                                Text(viewModel.state.getExperienceDetailResponse.homepage ?? "")
+                                                    .font(.body02)
+                                            }
+                                            Spacer()
+                                        }
+                                        .frame(width: Constants.screenWidth - 40)
+                                        .padding(.bottom, 32)
+                                    }
+                                    
+                            
                                     
                                     Button {
                                         print(viewModel.state.getExperienceDetailResponse.id!)
@@ -319,6 +347,9 @@ struct ExperienceDetailView: View {
                         Spacer()
                         Button {
                             // Todo - 리뷰 작성
+                            print(viewModel.state.getExperienceDetailResponse.address ?? "")
+                         
+                            AppState.shared.navigationPath.append(ExperienceViewType.writeReview)
                         } label: {
                             Text("리뷰 작성하기")
                                 .padding(.leading, (Constants.screenWidth) * (96 / 360))
@@ -337,7 +368,15 @@ struct ExperienceDetailView: View {
                     .background(Color.white)
                 }
                
+               
             }
+            .navigationDestination(for: ExperienceViewType.self) { viewType in
+                switch viewType {
+                case let .writeReview:
+                    ReviewWriteMain(reviewAddress: viewModel.state.getExperienceDetailResponse.address ?? "", reviewImageUrl: viewModel.state.getExperienceDetailResponse.images![0].originUrl ?? "", reviewTitle: viewModel.state.getExperienceDetailResponse.title ?? "", reviewId: viewModel.state.getExperienceDetailResponse.id ?? 0)
+                }
+            }
+           
         }
         .toolbar(.hidden)
     }
@@ -360,6 +399,10 @@ struct ExperienceDetailView: View {
     }
 }
 
-#Preview {
-    ExperienceDetailView(id: 1)
+enum ExperienceViewType {
+    case writeReview
 }
+
+//#Preview {
+//    ExperienceDetailView(id: 1)
+//}

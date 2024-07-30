@@ -461,24 +461,32 @@ extension AuthManager: ASAuthorizationControllerDelegate, ASAuthorizationControl
 	func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
 		guard let appleIdCredential = authorization.credential as? ASAuthorizationAppleIDCredential else {return}
 		let userId = appleIdCredential.user
-		let email = appleIdCredential.email
-
+		var email = appleIdCredential.email ?? ""
+        
+        // email이 비어있을 때 (2번째 로그인 부터는 email이 identityToken에 들어있음.
+        if email.isEmpty {
+            if let tokenString = String(data: appleIdCredential.identityToken ?? Data(), encoding: .utf8) {
+                email = decode(jwtToken: tokenString)["email"] as? String ?? ""
+            }
+        }
+        
 		registerVM.state.nickname = appleIdCredential.fullName?.givenName ?? ""
 		if let authorizationCode = String(data: appleIdCredential.authorizationCode ?? Data(), encoding: .utf8) {
 			KeyChainManager.addItem(key: "appleAuthorizationCode", value: authorizationCode)
 			
 			let loginRequest = LoginRequest(locale: self.locale, provider: "APPLE", providerId: userId)
-			
+            print("email:\(email)")
 			Task {
 				await self.loginToServer(
 					request: loginRequest,
-					email: email ?? "",
+					email: email,
 					gender: "",
 					birthDate: ""
 				)
 			}
 		} else {
 			// TODO: 토큰 못 가져오는 경우 ErrorHandler처리
+            print("토큰 못 가져옴")
 		}
 		
 	}
@@ -511,8 +519,4 @@ extension AuthManager: ASAuthorizationControllerDelegate, ASAuthorizationControl
 		let segments = jwt.components(separatedBy: ".")
 		return decodeJWTPart(segments[1]) ?? [:]
 	}
-
-
-	
-	
 }

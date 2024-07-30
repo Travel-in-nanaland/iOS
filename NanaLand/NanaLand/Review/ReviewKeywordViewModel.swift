@@ -9,22 +9,22 @@ import Foundation
 
 class ReviewKeywordViewModel: ObservableObject {
     @Published var keywords: [ReviewKeywordModel] = [
-        ReviewKeywordModel(text: .anniversary),
-        ReviewKeywordModel(text: .cute),
-        ReviewKeywordModel(text: .luxurious),
-        ReviewKeywordModel(text: .beautiful),
-        ReviewKeywordModel(text: .kind),
-        ReviewKeywordModel(text: .descendant),
-        ReviewKeywordModel(text: .friend),
-        ReviewKeywordModel(text: .parent),
-        ReviewKeywordModel(text: .alone),
-        ReviewKeywordModel(text: .spouse),
-        ReviewKeywordModel(text: .relative),
-        ReviewKeywordModel(text: .animal),
-        ReviewKeywordModel(text: .socket),
-        ReviewKeywordModel(text: .largeSpace),
-        ReviewKeywordModel(text: .parking),
-        ReviewKeywordModel(text: .cleanBathroom)
+        ReviewKeywordModel(text: .anniversary, tag: "ANNIVERSARY"),
+        ReviewKeywordModel(text: .cute, tag: "CUTE"),
+        ReviewKeywordModel(text: .luxurious, tag: "LUXURY"),
+        ReviewKeywordModel(text: .beautiful, tag: "SCENERY"),
+        ReviewKeywordModel(text: .kind, tag: "KIND"),
+        ReviewKeywordModel(text: .descendant, tag: "CHILDREN"),
+        ReviewKeywordModel(text: .friend, tag: "FRIEND"),
+        ReviewKeywordModel(text: .parent, tag: "PARENTS"),
+        ReviewKeywordModel(text: .alone, tag: "ALONE"),
+        ReviewKeywordModel(text: .spouse, tag: "HALF"),
+        ReviewKeywordModel(text: .relative, tag: "RELATIVE"),
+        ReviewKeywordModel(text: .animal, tag: "PET"),
+        ReviewKeywordModel(text: .socket, tag: "OUTLET"),
+        ReviewKeywordModel(text: .largeSpace, tag: "LARGE"),
+        ReviewKeywordModel(text: .parking, tag: "PARK"),
+        ReviewKeywordModel(text: .cleanBathroom, tag: "BATHROOM")
     ]
     
     @Published var selectKeywords: Set<ReviewKeywordModel> = []

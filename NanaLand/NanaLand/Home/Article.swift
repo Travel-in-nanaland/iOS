@@ -86,18 +86,21 @@ struct SearchAllArticleResponse: Codable {
 	var experience: ArticleResponse
 	var market: ArticleResponse
 	var nana: ArticleResponse
+    var restaurant: ArticleResponse
 	
 	init(
 		festival: ArticleResponse = ArticleResponse(),
 		nature: ArticleResponse = ArticleResponse(),
 		experience: ArticleResponse = ArticleResponse(),
 		market: ArticleResponse = ArticleResponse(),
-		nana: ArticleResponse = ArticleResponse()
+		nana: ArticleResponse = ArticleResponse(),
+        restaurant: ArticleResponse = ArticleResponse()
 	) {
 		self.festival = festival
 		self.nature = nature
 		self.experience = experience
 		self.market = market
 		self.nana = nana
+        self.restaurant = restaurant
 	}
 }

@@ -11,12 +11,12 @@ struct ReviewKeywordView: View {
     @EnvironmentObject var localizationManager: LocalizationManager
     @ObservedObject var viewModel: ReviewWriteViewModel
     @Environment(\.dismiss) private var dismiss
-
+    @State private var showToast = false
+    @State private var toastMessage = ""
     var body: some View {
         NavigationBar(title: LocalizedKey.keyword.localized(for: localizationManager.language))
             .frame(height: 56)
             .background(Color.white)
-            .shadow(color: Color.black.opacity(0.2), radius: 4, x: 0, y: 2)
             .padding(.bottom, 10)
 
         
@@ -50,9 +50,15 @@ struct ReviewKeywordView: View {
                     Spacer()
 
                     Button(action: {
-                        dismiss()
+                        // 만약 3개이하로 선택했다면 토스트 메시지 띄우기
+                        if viewModel.selectedKeyword.count < 3 {
+                            showToast = true
+                            toastMessage = "최소 3개이상 선택해야 합니다."
+                        } else {
+                            dismiss()
+                        }
                     }) {
-                        Text(.apply)
+                        Text(.apply) // 적용하기 버튼
                             .font(.body_bold)
                             .frame(maxWidth: .infinity)
                             .padding()
@@ -69,6 +75,9 @@ struct ReviewKeywordView: View {
                     Alert(title: Text(.warning), message: Text(.warningDescription), dismissButton: .default(Text(.check)))
                 }
             }
+            .overlay(
+                Toast(message: toastMessage, isShowing: $showToast, isAnimating: true)
+            )
             .toolbar(.hidden)
         }
 

@@ -409,6 +409,25 @@ enum LocalizedKey: String {
     case noReview
     case noDescription
     case noNotice
+
+    // MARK: - 제주 맛집
+    case restaurant
+    case meatblackpork
+    case seaFood
+    case koreanFood
+    case chineseFood
+    case japaneseFood
+    case westernFood
+    case vegan
+    case halalFood
+    case snacks
+    case southAmericanFood
+    case southeastAsianFood
+    case chickenBurger
+    case cafeDessert
+    case pubRestaurant
+    case menu
+    case writeReview
     
 	//MARK: - localized()
 	func localized(for language: Language) -> String {

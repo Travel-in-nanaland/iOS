@@ -10,4 +10,5 @@ import Foundation
 struct ReviewKeywordModel: Identifiable, Hashable {
     let id = UUID()
     let text: LocalizedKey
+    let tag: String
 }

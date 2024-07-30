@@ -26,6 +26,8 @@ struct FavoriteListView: View {
                             return favoriteVM.state.experienceFavoriteArticles.data
                         case .nanaPick:
                             return favoriteVM.state.nanaFavoriteArticles.data
+                        case .restaurant:
+                            return favoriteVM.state.restaurantFavoriteArticles.data
                         }
                     }() as [Article],
                         id: \.self
@@ -78,6 +80,8 @@ struct FavoriteListView: View {
             case .nanaPick:
                 NaNaPickDetailView(id: Int64(article.id))
             case .all:
+                Text("test")
+            case .restaurant:
                 Text("test")
             }
         }
