@@ -75,10 +75,10 @@ struct RestaurantMainGridView: View {
                     
             )
             .padding(.trailing, 16)
-            .sheet(isPresented: $keywordModal) {
-                RestaurantKeywordView(viewModel: RestaurantMainViewModel(), keyword: $keyword, isModalShown: $keywordModal, title: "제주 맛집")
-                    .presentationDetents([.height(Constants.screenWidth * (63 / 50))])
-            }
+//            .sheet(isPresented: $keywordModal) {
+//                RestaurantKeywordView(viewModel: RestaurantMainViewModel(), keyword: $keyword, isModalShown: $keywordModal, title: "제주 맛집")
+//                    .presentationDetents([.height(Constants.screenWidth * (63 / 50))])
+//            }
             
             Button {
                 self.locationModal = true
@@ -107,7 +107,7 @@ struct RestaurantMainGridView: View {
             )
             .padding(.trailing, 16)
             .sheet(isPresented: $locationModal) {
-                LocationModalView(viewModel: FestivalMainViewModel(), natureViewModel: NatureMainViewModel(), shopViewModel: ShopMainViewModel(),restaurantModel: viewModel, location: $location, isModalShown: $locationModal, startDate: "", endDate: "", title: "제주 맛집")
+                LocationModalView(viewModel: FestivalMainViewModel(), natureViewModel: NatureMainViewModel(), shopViewModel: ShopMainViewModel(),restaurantModel: viewModel, experienceViewModel: ExperienceMainViewModel(), location: $location, isModalShown: $locationModal, startDate: "", endDate: "", title: "제주 맛집")
                     .presentationDetents([.height(Constants.screenWidth * (63 / 36))])
             }
 

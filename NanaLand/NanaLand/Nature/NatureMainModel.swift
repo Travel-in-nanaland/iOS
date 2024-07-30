@@ -15,7 +15,7 @@ struct NatureMainModel: Codable {
 struct NatureModelInfo: Codable {
     let id: Int64
     let title: String
-    let thumbnailUrl: String
+    let firstImage: ImageList
     let addressTag: String
     var favorite: Bool
 }

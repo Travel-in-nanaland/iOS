@@ -243,16 +243,16 @@ struct FilterView: View {
                 .sheet(isPresented: $locationModal) {
                     if yearMonthDay == nil {
                         // 첫 화면 일 때
-                        LocationModalView(viewModel: viewModel, natureViewModel: NatureMainViewModel(), shopViewModel: ShopMainViewModel(), restaurantModel: RestaurantMainViewModel(),location: $location, isModalShown: $locationModal, startDate: "", endDate: "", title: title)
+                        LocationModalView(viewModel: viewModel, natureViewModel: NatureMainViewModel(), shopViewModel: ShopMainViewModel(), restaurantModel: RestaurantMainViewModel(), experienceViewModel: ExperienceMainViewModel(), location: $location, isModalShown: $locationModal, startDate: "", endDate: "", title: title)
                             .presentationDetents([.height(Constants.screenWidth * (630 / Constants.screenWidth))])
                     } // 종료 날짜를 선택 안했을 때나, 시작 날짜와 종료날짜를 동일하게 선택 => 당일 조회
                     else if endYearMonthDay == yearMonthDay  || endYearMonthDay == nil {
                         
-                        LocationModalView(viewModel: viewModel, natureViewModel: NatureMainViewModel(), shopViewModel: ShopMainViewModel(), restaurantModel: RestaurantMainViewModel(),location: $location, isModalShown: $locationModal, startDate: "\(yearMonthDay!.year)" + "\(formattedNumber(yearMonthDay!.month))" + "\(formattedNumber(yearMonthDay!.day))", endDate: "\(yearMonthDay!.year)" + "\(formattedNumber(yearMonthDay!.month))" + "\(formattedNumber(yearMonthDay!.day))", title: title)
+                        LocationModalView(viewModel: viewModel, natureViewModel: NatureMainViewModel(), shopViewModel: ShopMainViewModel(), restaurantModel: RestaurantMainViewModel(), experienceViewModel: ExperienceMainViewModel(), location: $location, isModalShown: $locationModal, startDate: "\(yearMonthDay!.year)" + "\(formattedNumber(yearMonthDay!.month))" + "\(formattedNumber(yearMonthDay!.day))", endDate: "\(yearMonthDay!.year)" + "\(formattedNumber(yearMonthDay!.month))" + "\(formattedNumber(yearMonthDay!.day))", title: title)
                             .presentationDetents([.height(Constants.screenWidth * (630 / Constants.screenWidth))])
                     } else {
                         // 시작 날짜 종료날짜 다를 때
-                        LocationModalView(viewModel: viewModel, natureViewModel: NatureMainViewModel(), shopViewModel: ShopMainViewModel(), restaurantModel: RestaurantMainViewModel(),location: $location, isModalShown: $locationModal, startDate:  "\(yearMonthDay!.year)" + "\(formattedNumber(yearMonthDay!.month))" + "\(formattedNumber(yearMonthDay!.day))", endDate:  "\(endYearMonthDay!.year)" + "\(formattedNumber(endYearMonthDay!.month))" + "\(formattedNumber(endYearMonthDay!.day))", title: title)
+                        LocationModalView(viewModel: viewModel, natureViewModel: NatureMainViewModel(), shopViewModel: ShopMainViewModel(), restaurantModel: RestaurantMainViewModel(), experienceViewModel: ExperienceMainViewModel(), location: $location, isModalShown: $locationModal, startDate:  "\(yearMonthDay!.year)" + "\(formattedNumber(yearMonthDay!.month))" + "\(formattedNumber(yearMonthDay!.day))", endDate:  "\(endYearMonthDay!.year)" + "\(formattedNumber(endYearMonthDay!.month))" + "\(formattedNumber(endYearMonthDay!.day))", title: title)
                             .presentationDetents([.height(Constants.screenWidth * (630 / Constants.screenWidth))])
                     }
                                               
@@ -370,7 +370,7 @@ struct FestivalMainGridView: View {
 								}, label: {
 									VStack(alignment: .leading, spacing: 0) {
 										ZStack {
-											KFImage(URL(string: viewModel.state.getFestivalMainResponse.data[index].thumbnailUrl))
+                                            KFImage(URL(string: viewModel.state.getFestivalMainResponse.data[index].firstImage.thumbnailUrl))
 											
 												.resizable()
 												.frame(width: (Constants.screenWidth - 40) / 2, height: ((Constants.screenWidth - 40) / 2) * (12 / 16))

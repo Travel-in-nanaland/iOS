@@ -22,7 +22,7 @@ struct ShopDetailView: View {
         ZStack {
             ScrollView {
                 VStack(spacing: 0) {
-                    KFImage(URL(string: viewModel.state.getShopDetailResponse.originUrl))
+                    KFImage(URL(string: viewModel.state.getShopDetailResponse.images[0].originUrl! ?? ""))
                         .resizable()
                         .frame(width: Constants.screenWidth, height: Constants.screenWidth * (26 / 39))
                         .padding(.bottom, 24)
