@@ -75,7 +75,7 @@ struct NatureMainGridView: View {
             )
             .padding(.trailing, 16)
             .sheet(isPresented: $locationModal) {
-                LocationModalView(viewModel: FestivalMainViewModel(), natureViewModel: viewModel, shopViewModel: ShopMainViewModel(), restaurantModel: RestaurantMainViewModel(), location: $location, isModalShown: $locationModal, startDate: "", endDate: "", title: "7대자연")
+                LocationModalView(viewModel: FestivalMainViewModel(), natureViewModel: viewModel, shopViewModel: ShopMainViewModel(), restaurantModel: RestaurantMainViewModel(), experienceViewModel: ExperienceMainViewModel(), location: $location, isModalShown: $locationModal, startDate: "", endDate: "", title: "7대자연")
                     .presentationDetents([.height(Constants.screenWidth * (63 / 36))])
             }
 
@@ -97,7 +97,7 @@ struct NatureMainGridView: View {
                                 }, label: {
                                     VStack(alignment: .leading) {
                                         ZStack {
-                                            KFImage(URL(string: viewModel.state.getNatureMainResponse.data[index].thumbnailUrl))
+                                            KFImage(URL(string: viewModel.state.getNatureMainResponse.data[index].firstImage.thumbnailUrl))
                                                 .resizable()
                                                 .frame(width: (UIScreen.main.bounds.width - 40) / 2, height: ((UIScreen.main.bounds.width - 40) / 2) * (12 / 16))
                                                 .clipShape(RoundedRectangle(cornerRadius: 12))
@@ -175,6 +175,7 @@ struct NatureMainGridView: View {
             }
         }
         .onAppear {
+           
             Task {
                 if APIFlag {
                     if isAdvertisement {

@@ -10,11 +10,14 @@ import SwiftUI
 struct ActivityKeywordView: View {
     @Environment(\.dismiss) var dismiss
     @Binding var keyword: String
+    var address: String
+    @ObservedObject var viewModel: ExperienceMainViewModel
     @State private var selectedKeywordItem = 0
     @State var selectedKeyword: [String] = [] // 선택된 키워드 이름 담을 배열
     // 눌려진 키워드 버튼 담을 배열(눌렸는지 안 눌렸는지)
     @State var buttonsToggled = Array(repeating: false, count: 6)
-    var ActivityKeywordArray = ["지상레저", "수상레저", "항공레저", "해양체험", "농촌체험", "힐링테라피"]
+    var ActivityKeywordArray = ["LAND_LEISURE", "WATER_LEISURE", "AIR_LEISURE", "MARINE_EXPERIENCE", "RURAL_EXPERIENCE", "HEALING_THERAPY"]
+    var ActivityKeywordButtonNameArray = ["지상레저", "수상레저", "항공레저", "해양체험", "농촌체험", "힐링테라피"]
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
     
     var body: some View {
@@ -83,7 +86,12 @@ struct ActivityKeywordView: View {
                     selectedKeyword = [""]
                 }
                 keyword = selectedKeyword.joined(separator: ",")
+                Task {
+                    viewModel.state.getExperienceMainResponse = ExperienceMainModel(totalElements: 0, data: [])
+                    await getKeywordExperienceMainItem(keyword: keyword, address: address == LocalizedKey.allLocation.localized(for: LocalizationManager().language) ? "" : address, page: 0, size: 12)
+                }
                 dismiss()
+                print("\(keyword)")
             } label: {
                 Text(.apply)
                     .font(.body_bold)
@@ -126,7 +134,7 @@ struct ActivityKeywordView: View {
                     toggleButton(index)
            
                 } label: {
-                    Text(ActivityKeywordArray[index])
+                    Text(ActivityKeywordButtonNameArray[index])
                         .font(.body02)
                         .foregroundStyle(buttonsToggled[index] ? Color.main : Color.gray1)
                 }
@@ -142,5 +150,9 @@ struct ActivityKeywordView: View {
     
     func toggleButton(_ index: Int) {
         buttonsToggled[index].toggle()
+    }
+    
+    func getKeywordExperienceMainItem(keyword: String, address: String, page: Int, size: Int) async {
+        await viewModel.action(.getExperienceMainItem(experienceType: "ACTIVITY", keyword: keyword, address: address, page: 0, size: 12))
     }
 }

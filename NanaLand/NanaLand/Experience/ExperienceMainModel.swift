@@ -17,7 +17,7 @@ struct ExperienceData: Codable {
     let firstImage: ImageList
     let title: String
     let addressTag: String
-    let ratingAvg: Int64
+    let ratingAvg: Double
     var favorite: Bool
 }
 

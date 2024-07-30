@@ -9,7 +9,7 @@ import Foundation
 
 class NatureDetailViewModel: ObservableObject {
     struct State {
-        var getNatureDetailResponse = NatureDetailModel(id: 0, title: "", originUrl: "", content: "", address: "", addressTag: "", contact: "", time: "", fee: "", details: "", amenity: "", favorite: false, intro: "")
+        var getNatureDetailResponse = NatureDetailModel(id: 0, title: "", images: [DetailImagesList(originUrl: "", thumbnailUrl: "")], content: "", address: "", addressTag: "", contact: "", time: "", fee: "", details: "", amenity: "", favorite: false, intro: "")
     }
     
     enum Action {
