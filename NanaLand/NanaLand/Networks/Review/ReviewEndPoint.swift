@@ -10,6 +10,7 @@ import Alamofire
 
 enum ReviewEndPoint {
     case createReview(id: Int64, category: String, body: ReviewDTO, multipartFile: [Foundation.Data?])
+    case getReviewData(id: Int64, category: String, page: Int, size: Int) // 후기 조회
 }
 
 extension ReviewEndPoint: EndPoint {
@@ -21,6 +22,8 @@ extension ReviewEndPoint: EndPoint {
         switch self {
         case .createReview(let id, let category, let body, let multipartFile):
             return "/\(id)"
+        case .getReviewData(let id, let category, let page, let size):
+            return "/list/\(id)"
         }
     }
     
@@ -28,11 +31,19 @@ extension ReviewEndPoint: EndPoint {
         switch self {
         case .createReview:
             return .post
+        case .getReviewData:
+            return .get
         }
     }
     
     var headers: HTTPHeaders? {
-        return ["Content-Type": "multipart/form-data"]
+        switch self {
+        case .createReview:
+            return ["Content-Type": "multipart/form-data"]
+        case .getReviewData:
+            return ["Content-Type": "application/json"]
+        }
+       
     }
     
     var task: APITask {
@@ -40,7 +51,9 @@ extension ReviewEndPoint: EndPoint {
         case let .createReview(id, category, body, multipartFile):
             let param = ["category": category]
             return .requestJSONWithImageWithParam(multipartFile: multipartFile, body: body, parameters: param)
-            
+        case let .getReviewData(id, category, page, size):
+            let param = ["category": category, "page": page, "size": size] as [String : Any]
+            return .requestParameters(parameters: param)
         }
     }
 }

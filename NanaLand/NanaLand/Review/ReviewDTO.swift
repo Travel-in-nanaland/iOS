@@ -12,3 +12,4 @@ struct ReviewDTO: Codable {
     var content: String
     var reviewKeywords: [String]
 }
+

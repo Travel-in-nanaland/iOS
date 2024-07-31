@@ -11,6 +11,7 @@ import Alamofire
 enum ExperienceEndPoint {
     case getExperienceMainItem(experienceType: String, keyword: String, address: String, page: Int, size: Int) // 메인 아이템 조회
     case getExperienceDetailItem(id: Int64, isSearch: Bool) // 상세 조회
+
 }
 
 extension ExperienceEndPoint: EndPoint {
@@ -25,6 +26,7 @@ extension ExperienceEndPoint: EndPoint {
             return "/list"
         case .getExperienceDetailItem(let id, _):
             return "/\(id)"
+      
         }
     }
     

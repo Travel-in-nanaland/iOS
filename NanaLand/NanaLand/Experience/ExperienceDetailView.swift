@@ -266,9 +266,21 @@ struct ExperienceDetailView: View {
                                             .font(.body02_bold)
                                             .padding(.bottom, 10)
                                     }
+                                    VStack(spacing: 0) {
+                                        HStack(spacing: 0) {
+                                            KFImage(URL(string: viewModel.state.getReviewDataResponse.data[0].profileImage?.originUrl ?? ""))
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fit)
+                                                .frame(width: 42, height: 42)
+                                                .clipShape(Circle())
+                                                .padding(.bottom, 24)
+                                            Spacer()
+                                        }
+                                    }
                                 }
                                 .padding(.bottom, 66)
                                 .padding(.top, 32)
+                                
                             }
                             
                         }
@@ -277,6 +289,7 @@ struct ExperienceDetailView: View {
                         .onAppear {
                             Task {
                                 await getExperienceDetail(id: id, isSearch: false)
+                                await getReviewData(id: 1, category: "EXPERIENCE", page: 0, size: 12)
                                 isAPICall = true // 이미지 불러오는 데 시간이 걸림
                             }
                         }
@@ -384,6 +397,10 @@ struct ExperienceDetailView: View {
     func getExperienceDetail(id: Int64, isSearch: Bool) async {
         await viewModel.action(.getExperienceDetailItem(id: id, isSearch: isSearch))
         
+    }
+    
+    func getReviewData(id: Int64, category: String, page: Int, size: Int) async {
+        await viewModel.action(.getReviewData(id: id, category: category, page: page, size: size))
     }
     
     func toggleFavorite(body: FavoriteToggleRequest) async {
