@@ -121,7 +121,7 @@ class NetworkManager {
             return AF.upload(multipartFormData: { multipartFormData in
                 for image in multipartFile {
                     if let image = image {
-                        multipartFormData.append(image, withName: "imageList", fileName: "\(image).jpeg", mimeType: "image/jpeg")
+                        multipartFormData.append(image, withName: "multipartFileList", fileName: "\(image).jpeg", mimeType: "image/jpeg")
                     }
                 }
                 if let jsonData = try? JSONEncoder().encode(body) {

@@ -11,8 +11,11 @@ import Kingfisher
 struct ExperienceDetailView: View {
     @StateObject var viewModel = ExperienceDetailViewModel()
     @State private var isOn = false // 더보기 버튼 클릭 여부
+    @State private var contentIsOn = [false, false, false] // 댓글 더보기 버튼 클릭 여부(더 보기 클릭한 댓글만 라인 제한 풀기)
     @State private var isAPICall = false
     @State private var roundedHeight: CGFloat = (Constants.screenWidth - 40) * (224.0 / 358.0)
+    @State private var keywordString = [""]
+
     var id: Int64
     
     var body: some View {
@@ -57,20 +60,22 @@ struct ExperienceDetailView: View {
                                                     .background(RoundedRectangle(cornerRadius: 30)
                                                         .foregroundStyle(Color.main10P)
                                                         .frame(width: 64, height: 20)
-                                                        
                                                     )
+                                                    .frame(width: 64, height: 20)
                                                     .font(.gothicNeo(.regular, size: 12))
-                                                    .padding(.leading, 32)
+                                                    .padding(.leading, 16)
                                                     .foregroundStyle(Color.main)
                                                 ForEach(0...viewModel.state.getExperienceDetailResponse.keywords!.count - 1, id: \.self) { index in
                                                     Text(viewModel.state.getExperienceDetailResponse.keywords![index])
                                                         .background(RoundedRectangle(cornerRadius: 30)
                                                             .foregroundStyle(Color.main10P)
                                                             .frame(width: 64, height: 20)
+                                                            
                                                         )
+                                                        .frame(width: 64, height: 20)
                                                         .font(.gothicNeo(.regular, size: 12))
-                                                        .padding(.leading, 32)
                                                         .foregroundStyle(Color.main)
+                                                        .padding(.leading, 12)
                                                 }
                                                 Spacer()
                                                     
@@ -268,28 +273,139 @@ struct ExperienceDetailView: View {
                                     }
                                     VStack(spacing: 0) {
                                         HStack(spacing: 0) {
-                                            KFImage(URL(string: viewModel.state.getReviewDataResponse.data[0].profileImage?.originUrl ?? ""))
-                                                .resizable()
-                                                .aspectRatio(contentMode: .fit)
-                                                .frame(width: 42, height: 42)
-                                                .clipShape(Circle())
-                                                .padding(.bottom, 24)
+                                            Text("후기")
+                                                .font(.title01_bold)
+                                                .padding(.trailing, 2)
+                                            Text("\(viewModel.state.getReviewDataResponse.totalElements)")
+                                                .font(.title02_bold)
+                                                .foregroundStyle(Color.main)
                                             Spacer()
+                                            ForEach(1...5, id: \.self) { number in
+                                                Image(systemName: "star.fill")
+                                                    .resizable()
+                                                    .aspectRatio(contentMode: .fit)
+                                                    .frame(width: 24)
+                                                    .foregroundColor((Double(number) - viewModel.state.getReviewDataResponse.totalAvgRating) < 0 || (Double(number) - viewModel.state.getReviewDataResponse.totalAvgRating <= 0.5 && Double(number) - viewModel.state.getReviewDataResponse.totalAvgRating >= 0) ? .yellow : .gray2)
+                                            }
+                                            Text("\(String(format: "%.1f" , viewModel.state.getReviewDataResponse.totalAvgRating))")
+                                                .font(.body02_bold)
+                                        }
+                                        .padding(.bottom, 24)
+                                    }
+                                    .padding(.leading, 16)
+                                    .padding(.trailing, 16)
+                                    if viewModel.state.getReviewDataResponse.totalElements >= 1 { // 최소 리뷰가 1개이상 있다면
+                                        ForEach(0...viewModel.state.getReviewDataResponse.totalElements - 1, id: \.self) { index in
+                                            if index < 3 {
+                                                VStack(alignment: .leading, spacing: 0) {
+                                                    HStack(spacing: 0) {
+                                                        KFImage(URL(string: viewModel.state.getReviewDataResponse.data[index].profileImage?.originUrl ?? ""))
+                                                            .resizable()
+                                                            .aspectRatio(contentMode: .fit)
+                                                            .frame(width: 42, height: 42)
+                                                            .clipShape(Circle())
+                                                            .padding(.leading, 16)
+                                                            .padding(.trailing, 8)
+                                                        VStack(alignment: .leading, spacing: 0) {
+                                                            Text(viewModel.state.getReviewDataResponse.data[index].nickname ?? "")
+                                                                .font(.body02_bold)
+                                                            HStack(spacing: 0) {
+                                                                Text("리뷰 \(viewModel.state.getReviewDataResponse.data[index].memberReviewCount ?? 0)")
+                                                                    .font(.caption01)
+                                                                Image("icRatingStar")
+                                                                Text("\(String(format: "%.1f", viewModel.state.getReviewDataResponse.data[index].rating ?? 0))")
+                                                                    .font(.caption01)
+                                                            }
+                                                            
+                                                        }
+                                                        Spacer()
+                                                    }
+                                                    .padding(.top, 16)
+                                                    .padding(.bottom, 12)
+                                                    HStack(spacing: 0) {
+                                                        if viewModel.state.getReviewDataResponse.data[index].images!.count != 0 {
+                                                            ForEach(0..<viewModel.state.getReviewDataResponse.data[index].images!.count) { idx in
+                                                                KFImage(URL(string: viewModel.state.getReviewDataResponse.data[index].images![idx].originUrl))
+                                                                    .resizable()
+                                                                    .frame(width: 70, height: 70)
+                                                            }
+                                                            
+                                                        }
+                                                       
+                                                       
+                                                    }
+                                                   
+                                                    HStack(alignment: .bottom, spacing: 0) {
+                                                        Text("\(viewModel.state.getReviewDataResponse.data[index].content ?? "")")
+                                                            .lineLimit(contentIsOn[index] ? nil : 2)
+                                                            .padding(.leading, 16)
+                                                            .padding(.trailing, 2)
+                                                     
+                                                        Button {
+                                                            contentIsOn[index].toggle()
+                                                        } label: {
+                                                            Text(contentIsOn[index] ? "접기" : "더 보기")
+                                                                .foregroundStyle(Color.gray1)
+                                                                .font(.caption01)
+                                                        }
+                                                        .padding(.trailing, 16)
+                                                    }
+                                                    
+                                                    
+                                                    Spacer()
+                                                    HStack(spacing: 0) {
+                                                        Text("\(((viewModel.state.getReviewDataResponse.data[index].reviewTypeKeywords ?? [""]).map {"#\($0) "}).joined(separator: ", "))")
+                                                            .font(.caption01)
+                                                            .foregroundStyle(Color.main)
+                                                        
+                                                    }
+                                                    .padding(.leading, 16)
+                                                    .padding(.trailing, 16)
+                                                    .multilineTextAlignment(.leading)
+                                                    .padding(.bottom, 4)
+                                                    HStack(spacing: 0) {
+                                                        Spacer()
+                                                        Text("\(viewModel.state.getReviewDataResponse.data[index].createdAt ?? "")")
+                                                            .font(.caption01)
+                                                            .foregroundStyle(Color.gray1)
+                                                            .padding(.trailing, 16)
+                                                            .padding(.bottom, 16)
+
+                                                    }
+                                                }
+                                               
+                                                .clipShape(RoundedRectangle(cornerRadius: 12))
+                                                .overlay(
+                                                           RoundedRectangle(cornerRadius: 12) // 모서리가 둥근 테두리
+                                                               .stroke(Color.gray1, lineWidth: 1) // 테두리 색상과 두께
+                                                       )
+                                                .padding(.leading, 16)
+                                                .padding(.trailing, 16)
+                                            }
+                                            
                                         }
                                     }
+                                    Button {
+                                        
+                                    } label: {
+                                        Text("후기 더보기")
+                                            .foregroundStyle(Color.white)
+                                            .font(.body_bold)
+                                    }
+                                    .frame(width: Constants.screenWidth - 32, height: 48)
+                                    .background(RoundedRectangle(cornerRadius: 50).foregroundStyle(Color.main))
+                                    
                                 }
                                 .padding(.bottom, 66)
                                 .padding(.top, 32)
-                                
                             }
-                            
                         }
                         .id("Scroll_To_Top")
                         
                         .onAppear {
                             Task {
                                 await getExperienceDetail(id: id, isSearch: false)
-                                await getReviewData(id: 1, category: "EXPERIENCE", page: 0, size: 12)
+                                await getReviewData(id: id, category: "EXPERIENCE", page: 0, size: 12)
                                 isAPICall = true // 이미지 불러오는 데 시간이 걸림
                             }
                         }
@@ -360,8 +476,6 @@ struct ExperienceDetailView: View {
                         Spacer()
                         Button {
                             // Todo - 리뷰 작성
-                            print(viewModel.state.getExperienceDetailResponse.address ?? "")
-                         
                             AppState.shared.navigationPath.append(ExperienceViewType.writeReview)
                         } label: {
                             Text("리뷰 작성하기")

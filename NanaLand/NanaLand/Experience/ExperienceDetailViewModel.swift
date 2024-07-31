@@ -10,7 +10,7 @@ import Foundation
 class ExperienceDetailViewModel: ObservableObject {
     struct State {
         var getExperienceDetailResponse = ExperienceDetailModel(id: 0, title: "", content: "", address: "", addressTag: "", contact: "", homepage: "", time: "", amenity: "", details: "", keywords: [""], images: [], favorite: false)
-        var getReviewDataResponse = ReviewModel(totalElements: 0, totalAvgRating: 0.0, data: [ReviewData(id: 0, memberId: 0, nickname: "", profileImage: ImageList(originUrl: "", thumbnailUrl: ""), memberReviewCount: 0, rating: 0, content: "", createdAt: "", heartCount: 0, images: [], reviewTypeKeyword: [], reviewHeart: false)])
+        var getReviewDataResponse = ReviewModel(totalElements: 0, totalAvgRating: 0.0, data: [ReviewData(id: 0, memberId: 0, nickname: "", profileImage: ImageList(originUrl: "", thumbnailUrl: ""), memberReviewCount: 0, rating: 0, content: "", createdAt: "", heartCount: 0, images: [], reviewTypeKeywords: [], reviewHeart: false)])
     }
     
     enum Action {
@@ -34,8 +34,7 @@ class ExperienceDetailViewModel: ObservableObject {
             if response != nil {
                 await MainActor.run {
                     state.getExperienceDetailResponse = response!.data!
-                    print(response!.data!)
-                    print(response!.data!.images![1].thumbnailUrl)
+              
                 }
             } else {
                 print("Error")
