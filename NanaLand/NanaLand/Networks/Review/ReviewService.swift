@@ -12,4 +12,9 @@ struct ReviewService {
     static func getReviewItem(id: Int64, category: String, body: ReviewDTO, multipartFile: [Foundation.Data?]) async -> BaseResponse<EmptyResponseModel>? {
         return await NetworkManager.shared.request(ReviewEndPoint.createReview(id: id, category: category, body: body, multipartFile: multipartFile))
     }
+    
+    // 상세 아이템 후기 조회
+    static func getReviewData(id: Int64, category: String, page: Int, size: Int) async -> BaseResponse<ReviewModel>? {
+        return await NetworkManager.shared.request(ReviewEndPoint.getReviewData(id: id, category: category, page: page, size: size))
+    }
 }

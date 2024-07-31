@@ -411,6 +411,7 @@ enum LocalizedKey: String {
     case noNotice
 
     // MARK: - 제주 맛집
+    case type
     case restaurant
     case meatblackpork
     case seaFood
@@ -428,6 +429,8 @@ enum LocalizedKey: String {
     case pubRestaurant
     case menu
     case writeReview
+    case service
+    case instagram
     
 	//MARK: - localized()
 	func localized(for language: Language) -> String {

@@ -11,7 +11,6 @@ struct LocationModalView: View {
     @ObservedObject var viewModel: FestivalMainViewModel
     @ObservedObject var natureViewModel: NatureMainViewModel
     @ObservedObject var shopViewModel: ShopMainViewModel
-    @ObservedObject var restaurantModel: RestaurantMainViewModel
     @EnvironmentObject var localizationManager: LocalizationManager
     
     @Binding var location: String
@@ -172,9 +171,6 @@ struct LocationModalView: View {
                         shopViewModel.state.getShopMainResponse = ShopMainModel(totalElements: 0, data: [])
                         await getLocationShopMainItem(filterName: selectedLocationStrings.joined(separator: ","), page: 0, size: 18)
                         shopViewModel.state.page = 0
-                    } else {
-                        restaurantModel.state.getRestaurantMainResponse = RestaurantMainModel(totalElements: 0, data: [])
-                        await getLocationRestaurantItem(filterName: selectedLocationStrings.joined(separator: ", "), page: 0, size: 12)
                     }
                     
                     location = selectedLocationStrings.joined(separator: ",")
@@ -221,9 +217,6 @@ struct LocationModalView: View {
         await shopViewModel.action(.getShopMainItem(page: page, size: size, filterName: filterName))
     }
     
-    func getLocationRestaurantItem(filterName: String, page: Int64, size: Int64) async {
-        await restaurantModel.action(.getRestaurantMainItem(page: page, size: size, filterName: filterName))
-    }
     func toggleButton(_ index: Int) {
         buttonsToggled[index].toggle()
         if buttonsToggled[index] {
@@ -240,8 +233,7 @@ struct LocationModalView: View {
     LocationModalView(
         viewModel: FestivalMainViewModel(), // Assuming FestivalMainViewModel() has an init method
         natureViewModel: NatureMainViewModel(), // Assuming NatureMainViewModel() has an init method
-        shopViewModel: ShopMainViewModel(),
-        restaurantModel: RestaurantMainViewModel(),// Assuming ShopMainViewModel() has an init method
+        shopViewModel: ShopMainViewModel(),// Assuming ShopMainViewModel() has an init method
         location: .constant(""),
         isModalShown: .constant(true),
         startDate: "2024-05-01",
