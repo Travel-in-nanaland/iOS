@@ -19,11 +19,11 @@ struct ReviewData: Codable {
     let nickname: String?
     let profileImage: ImageList?
     let memberReviewCount: Int?
-    let rating: Int?
+    let rating: Double?
     let content: String?
     let createdAt: String?
     let heartCount: Int?
     let images: [ImageList]?
-    let reviewTypeKeyword: [String]?
+    let reviewTypeKeywords: [String]?
     let reviewHeart: Bool?
 }
