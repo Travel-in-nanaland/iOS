@@ -54,6 +54,8 @@ struct FavoriteArticle: Codable, Hashable {
 				return .festival
 			case "MARKET":
 				return .market
+            case "RESTAURANT":
+                return .restaurant
 			default:
 				print("error in FavoriteArticle category mapping")
 				return .nature

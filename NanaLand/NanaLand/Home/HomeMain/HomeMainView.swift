@@ -121,13 +121,13 @@ struct HomeMainView: View {
                     Spacer()
                     // 나나 Pick link
                     Button(action: {
-                        AppState.shared.navigationPath.append(HomeViewType.nanapick)
+                        AppState.shared.navigationPath.append(HomeViewType.restaurant)
                     }, label: {
                         VStack(spacing: 0) {
-                            Image("icNana")
+                            Image("icRestaurant")
                                 .frame(width: 62, height: 48)
                             
-                            Text(.nanaPick)
+                            Text(.restaurant)
                                 .font(.gothicNeo(size: 12, font: "semibold"))
                                 .tint(.black)
                         }
@@ -251,6 +251,8 @@ struct HomeMainView: View {
                 ExperienceMainView()
             case .nanapick:
                 NanapickMainView()
+            case .restaurant:
+                RestaurantMainView()
             case let .shopDetail(id):
                 ShopDetailView(id: Int64(id))
             case let .festivalDetail(id):

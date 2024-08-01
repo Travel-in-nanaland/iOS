@@ -12,7 +12,7 @@ struct ExperienceMainView: View {
     @State private var tabIndex = 0
     var body: some View {
         VStack {
-			NanaNavigationBar(title: .experience, showBackButton: true)
+            NanaNavigationBar(title: .experience, showBackButton: true)
                 .frame(height: 56)
                 .padding(.bottom, 24)
             
