@@ -27,4 +27,3 @@ struct ReviewData: Codable {
     let reviewTypeKeywords: [String]?
     let reviewHeart: Bool?
 }
-
