@@ -13,6 +13,7 @@ enum ReviewEndPoint {
     case getReviewData(id: Int64, category: String, page: Int, size: Int) // 후기 조회
     case getMyReviewData // 마이페이지 리뷰
     case getAllReviewData(page: Int, size: Int) // 마이페이지 리뷰
+    case getPreviewData(memberId: Int64) // 다른 유저 프로필 후기 프리뷰 조회
 }
 
 extension ReviewEndPoint: EndPoint {
@@ -30,6 +31,8 @@ extension ReviewEndPoint: EndPoint {
             return "/preview"
         case .getAllReviewData(let page, let size):
             return "/list"
+        case .getPreviewData:
+            return "/preview"
         }
     }
     
@@ -43,6 +46,8 @@ extension ReviewEndPoint: EndPoint {
             return .get
         case .getAllReviewData:
             return .get
+        case .getPreviewData:
+            return .get
         }
     }
     
@@ -55,6 +60,8 @@ extension ReviewEndPoint: EndPoint {
         case .getMyReviewData:
             return ["Content-Type": "application/json"]
         case .getAllReviewData:
+            return ["Content-Type": "application/json"]
+        case .getPreviewData:
             return ["Content-Type": "application/json"]
         }
     }
@@ -71,6 +78,8 @@ extension ReviewEndPoint: EndPoint {
             return .requestPlain
         case let .getAllReviewData(page, size):
             let param = ["page": page, "size": size] as [String : Any]
+        case let .getPreviewData(memberId):
+            let param = ["memberId": memberId]
             return .requestParameters(parameters: param)
         }
     }

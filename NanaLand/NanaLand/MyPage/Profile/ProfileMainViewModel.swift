@@ -10,7 +10,7 @@ import Foundation
 class ProfileMainViewModel: ObservableObject {
     struct State {
         var getProfileMainResponse = ProfileMainModel(consentItems: [], email: "", provider: "", profileImage: ProfileDetailImagesList(originUrl: "", thumbnailUrl: ""), nickname: "", description: "", travelType: "", hashtags: [""], myProfile: true)
-        
+
     }
     
     enum Action {
