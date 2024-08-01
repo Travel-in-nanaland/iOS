@@ -51,7 +51,7 @@ enum Category: String, CaseIterable, Codable {
         case .nanaPick:
             return "NANA"
         case .restaurant:
-            return "RESTAURANTs"
+            return "RESTAURANT"
         }
     }
 }
@@ -66,6 +66,7 @@ struct SearchResultView: View {
     @State var isMarketSearchIsDone: Bool = false
     @State var isFestivalSearchIsDone: Bool = false
     @State var isExperienceSearchIsDone: Bool = false
+    @State var isRestaurantSearchIsDone: Bool = false
     @State var isNanaSearchIsDone: Bool = false
     
     let tabs: [Category] = Category.allCases
@@ -97,6 +98,7 @@ struct SearchResultView: View {
                     isMarketSearchIsDone = false
                     isFestivalSearchIsDone = false
                     isExperienceSearchIsDone = false
+                    isRestaurantSearchIsDone = false
                 }
             )
         }
@@ -177,6 +179,17 @@ struct SearchResultView: View {
                         isExperienceSearchIsDone = true
                     }
                 }
+            SearchDetailCategoryResultView(searchVM: searchVM, tab: .restaurant, searchTerm: searchTerm)
+                .tag(Category.restaurant)
+                .onAppear {
+                    if !isRestaurantSearchIsDone {
+                        Task {
+                            await searchVM.action(.searchTerm(category: .restaurant, term: searchTerm))
+                        }
+                        isRestaurantSearchIsDone = true
+                    }
+                }
+            
             
             SearchDetailCategoryResultView(searchVM: searchVM, tab: .nanaPick, searchTerm: searchTerm)
                 .tag(Category.nanaPick)

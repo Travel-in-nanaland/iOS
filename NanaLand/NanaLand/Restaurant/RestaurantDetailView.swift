@@ -59,14 +59,13 @@ struct RestaurantDetailView: View {
                                         Spacer()
                                     }
                                     .padding(.bottom, 8)
-                                    HStack{
-                                        Text(viewModel.state.getRestaurantDetailResponse.content)
-                                            .font(.body01)
-                                            .padding(.leading, 40)
-                                            .padding(.bottom, 20)
-                                        
-                                        Spacer()
-                                    }
+                                    
+                                    Text(viewModel.state.getRestaurantDetailResponse.content)
+                                        .font(.body01)
+                                        .padding(.leading, 20)
+                                        .padding(.trailing, 20)
+                                        .padding(.bottom, 20)
+                                    
                                     Spacer()
                                 }
                                 .padding(.top, 36)
@@ -201,19 +200,19 @@ struct RestaurantDetailView: View {
                                     .padding(.bottom, 32)
                                 }
                                 
-                                Button(action: {
+                                Button {
                                     AppState.shared.navigationPath.append(ArticleDetailViewType.reportInfo(id: viewModel.state.getRestaurantDetailResponse.id, category: .restaurant))
-                                }, label: {
+                                } label: {
                                     Text(.proposeUpdateInfo)
                                         .background(
-                                            RoundedRectangle(cornerRadius: 12.0)
+                                            RoundedRectangle(cornerRadius: 50.0)
                                                 .foregroundStyle(Color.gray2)
                                                 .frame(width: 120, height: 40)
                                         )
                                         .foregroundStyle(Color.white)
                                         .font(.body02_bold)
                                         .padding(.bottom, 10)
-                                })
+                                }
                                 
                                 VStack(spacing: 0) {
                                     HStack(spacing: 0) {
@@ -390,6 +389,12 @@ struct RestaurantDetailView: View {
                 switch viewType {
                 case let .review:
                     ReviewWriteMain(reviewAddress: viewModel.state.getRestaurantDetailResponse.address ?? "", reviewImageUrl: viewModel.state.getRestaurantDetailResponse.images[0].originUrl ?? "", reviewTitle: viewModel.state.getRestaurantDetailResponse.title ?? "", reviewId: viewModel.state.getRestaurantDetailResponse.id ?? 0)
+                }
+            }
+            .navigationDestination(for: ArticleDetailViewType.self) { viewType in
+                switch viewType {
+                case let .reportInfo(id, category):
+                    ReportInfoMainView(id: id, category: category)
                 }
             }
             .toolbar(.hidden)

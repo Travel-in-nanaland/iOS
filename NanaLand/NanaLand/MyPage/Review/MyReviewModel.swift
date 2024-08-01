@@ -6,26 +6,23 @@
 //
 
 import Foundation
+
 struct MyReviewModel: Codable {
-    let reviews: [Review]
-    
-    init(
-        reviews: [Review] = [Review(id: 1, postId: 1, category: "NaNa", placeName: "연돈", rating: 3, content: "테스트입니다.", createdAt: "2024-06-12", heartCount: 3, images: ["" : ""], reviewTypeKeywords: [])]
-    ) {
-        self.reviews = reviews
-    }
-    
-    
-    struct Review: Codable {
-        let id: Int64
-        let postId: Int64
-        let category: String
-        let placeName: String
-        let rating: Int
-        let content: String
-        let createdAt: String
-        let heartCount: Int
-        let images: [String: String]
-        let reviewTypeKeywords: [String]
-    }
+    var totalElements: Int64
+    var data: [myReivew]?
+}
+
+struct myReivew: Codable {
+    let id: Int64
+    let postId: Int64
+    let category: String
+    let placeName: String
+    let createdAt: String
+    let heartCount: Int64
+    let imageFileDto: ReviewDetailImagesList?
+}
+
+struct ReviewDetailImagesList: Codable {
+    let originUrl: String
+    let thumbnailUrl: String
 }

@@ -11,6 +11,8 @@ import Alamofire
 enum ReviewEndPoint {
     case createReview(id: Int64, category: String, body: ReviewDTO, multipartFile: [Foundation.Data?])
     case getReviewData(id: Int64, category: String, page: Int, size: Int) // 후기 조회
+    case getMyReviewData // 마이페이지 리뷰
+    case getAllReviewData(page: Int, size: Int) // 마이페이지 리뷰
 }
 
 extension ReviewEndPoint: EndPoint {
@@ -24,6 +26,10 @@ extension ReviewEndPoint: EndPoint {
             return "/\(id)"
         case .getReviewData(let id, let category, let page, let size):
             return "/list/\(id)"
+        case .getMyReviewData:
+            return "/preview"
+        case .getAllReviewData(let page, let size):
+            return "/list"
         }
     }
     
@@ -32,6 +38,10 @@ extension ReviewEndPoint: EndPoint {
         case .createReview:
             return .post
         case .getReviewData:
+            return .get
+        case .getMyReviewData:
+            return .get
+        case .getAllReviewData:
             return .get
         }
     }
@@ -42,8 +52,11 @@ extension ReviewEndPoint: EndPoint {
             return ["Content-Type": "multipart/form-data"]
         case .getReviewData:
             return ["Content-Type": "application/json"]
+        case .getMyReviewData:
+            return ["Content-Type": "application/json"]
+        case .getAllReviewData:
+            return ["Content-Type": "application/json"]
         }
-       
     }
     
     var task: APITask {
@@ -53,6 +66,11 @@ extension ReviewEndPoint: EndPoint {
             return .requestJSONWithImageWithParam(multipartFile: multipartFile, body: body, parameters: param)
         case let .getReviewData(id, category, page, size):
             let param = ["category": category, "page": page, "size": size] as [String : Any]
+            return .requestParameters(parameters: param)
+        case let .getMyReviewData:
+            return .requestPlain
+        case let .getAllReviewData(page, size):
+            let param = ["page": page, "size": size] as [String : Any]
             return .requestParameters(parameters: param)
         }
     }

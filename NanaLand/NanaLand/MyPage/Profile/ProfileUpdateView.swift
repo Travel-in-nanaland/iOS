@@ -12,7 +12,7 @@ import Kingfisher
 struct ProfileUpdateView: View {
     @EnvironmentObject var appState: AppState
     @State private var nickName: String = AppState.shared.userInfo.nickname
-	@State private var introduceText: String = AppState.shared.userInfo.description
+    @State private var introduceText: String = AppState.shared.userInfo.description
     @State private var showAlert = false
     @State private var warningLabel = ""
     @Environment(\.dismiss) private var dismiss
@@ -59,13 +59,14 @@ struct ProfileUpdateView: View {
                                     .aspectRatio(contentMode: .fill)
                                     .frame(width: 100, height: 100)
                                     .clipShape(Circle())
-                                    
+                                
                             } else {
-                                KFImage(URL(string:"\(AppState.shared.userInfo.profileImageUrl)"))
+                                KFImage(URL(string: AppState.shared.userInfo.profileImage.originUrl))
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
                                     .frame(width: 100, height: 100)
                                     .clipShape(Circle())
+                                
                             }
                         }
                         .frame(width: 100, height: 100)
@@ -103,7 +104,7 @@ struct ProfileUpdateView: View {
                             Text(.nickName)
                                 .font(.body_bold)
                             Spacer()
-							Text("\(nickName.count) / 8 " + .charCount)
+                            Text("\(nickName.count) / 8 " + .charCount)
                                 .font(.caption01)
                                 .foregroundStyle(nickName.count > 8 ? Color.red : Color.gray1)
                             
@@ -162,14 +163,14 @@ struct ProfileUpdateView: View {
                                 } else {
                                     Text(" ")
                                 }
-                                    
+                                
                                 Spacer()
                             }
                         }
-                       
+                        
                     }
                     .ignoresSafeArea(.keyboard)
-
+                    
                     HStack(spacing: 0) {
                         Text(.introduction)
                             .font(.body_bold)
@@ -210,11 +211,11 @@ struct ProfileUpdateView: View {
                             .padding(.leading, 16)
                         }
                         
-                     
+                        
                         Spacer()
                     }
                     .ignoresSafeArea(.keyboard)
-    
+                    
                     Spacer()
                     
                     Button(action: {
@@ -222,8 +223,9 @@ struct ProfileUpdateView: View {
                             await updateUserInfo(body: ProfileDTO(nickname: nickName, description: introduceText), multipartFile: [selectedImage?.jpegData(compressionQuality: 0.8)])
                             AppState.shared.userInfo.nickname = viewModel.state.updatedNickName
                             AppState.shared.userInfo.description = viewModel.state.updatedDescription
-                            AppState.shared.userInfo.profileImageUrl = viewModel.state.updatedProfilImage
-                          // 닉네임 중복이 아니면
+                            // 배열의 첫 번째 요소에 접근하고 설정하는 부분을 안전하게 처리합니다.
+                            AppState.shared.userInfo.profileImage.originUrl = viewModel.state.updatedProfilImage
+                            // 닉네임 중복이 아니면
                             if (!viewModel.state.isDuplicate) {
                                 dismiss()
                             } else {
@@ -247,7 +249,7 @@ struct ProfileUpdateView: View {
                 
             }
         }
-       
+        
         
     }
     

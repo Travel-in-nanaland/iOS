@@ -237,17 +237,17 @@ final class SearchViewModel: ObservableObject {
             
             state.isLoading = true
             
-            if let data = await SearchService.searchExperienceCategory(term: term, page: state.experiencePage) {
-                if state.experiencePage == 0 {
-                    state.experienceCategorySearchResult = data.data
+            if let data = await SearchService.searchExperienceCategory(term: term, page: state.restaurantPage) {
+                if state.restaurantPage == 0 {
+                    state.restaurantCategorySearchResult = data.data
                 } else {
-                    state.experienceCategorySearchResult.data.append(contentsOf: data.data.data)
+                    state.restaurantCategorySearchResult.data.append(contentsOf: data.data.data)
                 }
                 
-                state.experiencePage += 1
+                state.restaurantPage += 1
                 state.isLoading = false
             } else {
-                print("searchExperienceCategory Error")
+                print("searchRestaurantCategory Error")
                 state.isLoading = false
             }
 
