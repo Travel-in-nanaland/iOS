@@ -9,12 +9,13 @@ import Foundation
 
 class RestaurantDetailViewModel: ObservableObject {
     struct State {
-        var getRestaurantDetailResponse = RestaurantDetailModel(id: 0, title: "", originUrl: "", content: "", address: "", addressTag: "", contact: "", homepage: "", time: "", amenity: "", favorite: false, menu: [RestaurantDetailModel.Menu(name: "돈까스", price: "1000원", imageUrl: ""), RestaurantDetailModel.Menu(name: "돈까스", price: "1000원", imageUrl: ""), RestaurantDetailModel.Menu(name: "돈까스", price: "1000원", imageUrl: "")])
+        var getRestaurantDetailResponse = RestaurantDetailModel(id: 1, title: "", content: "", address: "", addressTag: "", contact: "", homepage: "", instagram: "", time: "", service: "", menus: [Menu(menuName: "", price: "", firstImage: RestaurantDetailImagesList(originUrl: "", thumbnailUrl: ""))], keywords: [""], images: [RestaurantDetailImagesList(originUrl: "", thumbnailUrl: "")], favorite: false)
+        var getReviewDataResponse = ReviewModel(totalElements: 0, totalAvgRating: 0.0, data: [ReviewData(id: 0, memberId: 0, nickname: "", profileImage: ImageList(originUrl: "", thumbnailUrl: ""), memberReviewCount: 0, rating: 0, content: "", createdAt: "", heartCount: 0, images: [], reviewTypeKeywords: [], reviewHeart: false)])
     }
     
     enum Action {
-        case getRestaurantDetailItem(id: Int64)
-        
+        case getRestaurantDetailItem(id: Int64, isSearch: Bool)
+        case getReviewData(id: Int64, category: String, page: Int, size: Int)
         case toggleFavorite(body: FavoriteToggleRequest)
     }
     
@@ -27,25 +28,37 @@ class RestaurantDetailViewModel: ObservableObject {
     }
     
     func action(_ action: Action) async {
-        switch action {
-        case let .getRestaurantDetailItem(id):
-            let response = await RestaurantDetailService.getRestaurantDetailItem(id: id)
-            
-            if response != nil {
-                await MainActor.run {
-                    state.getRestaurantDetailResponse = response!.data
+            switch action {
+            case let .getRestaurantDetailItem(id, isSearch):
+                if let response = await RestaurantService.getRestaurantDetailItem(id: id, isSearch: isSearch) {
+                    if let data = response.data {
+                        await MainActor.run {
+                            state.getRestaurantDetailResponse = data
+                            print(data)
+                        }
+                    } else {
+                        print("Data is nil")
+                    }
+                } else {
+                    print("Error: response is nil")
                 }
-            } else {
-                print("Error")
-            }
-        case .toggleFavorite(body: let body):
-            let response = await FavoriteService.toggleFavorite(id: body.id, category: .market)
-            if response != nil {
-                await MainActor.run {
-                    state.getRestaurantDetailResponse.favorite =
-                    response!.data.favorite
+            case let .getReviewData(id, category, page, size):
+                        let response = await ReviewService.getReviewData(id: id, category: category, page: page, size: size)
+                        if response != nil {
+                            await MainActor.run {
+                                state.getReviewDataResponse = response!.data!
+                                print(response!.data!)
+                            }
+                        }
+            case .toggleFavorite(body: let body):
+                if let response = await FavoriteService.toggleFavorite(id: body.id, category: .restaurant) {
+                    await MainActor.run {
+                        state.getRestaurantDetailResponse.favorite = response.data.favorite
+                    }
+                } else {
+                    print("Eror: response is nil")
                 }
             }
         }
-    }
 }
+

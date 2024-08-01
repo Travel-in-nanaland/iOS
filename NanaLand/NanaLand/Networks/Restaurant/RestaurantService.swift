@@ -8,7 +8,13 @@
 import Foundation
 
 struct RestaurantService {
-    static func getRestaurantMainItem(page: Int64, size: Int64, filterName: String) async -> OldBaseResponse<RestaurantMainModel>? {
-        return await NetworkManager.shared.request(RestaurantEndPoint.getRestaurantMainItem(page: page, size: size, filterName: filterName))
+    static func getRestaurantMainItem(keyword: String, address: String, page: Int, size: Int) async -> BaseResponse<RestaurantMainModel>? {
+        return await NetworkManager.shared.request(RestaurantEndPoint.getRestaurantMainItem(keyword: keyword, address: address, page: page, size: size))
+    }
+    
+    static func getRestaurantDetailItem(id: Int64, isSearch: Bool) async -> BaseResponse<RestaurantDetailModel>? {
+        return await
+        NetworkManager.shared.request(RestaurantEndPoint.getRestaurantDetailItem(id: id, isSearch: isSearch))
     }
 }
+

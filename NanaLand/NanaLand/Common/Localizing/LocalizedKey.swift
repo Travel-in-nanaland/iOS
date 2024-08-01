@@ -8,153 +8,153 @@
 import Foundation
 
 enum LocalizedKey: String {
-	//MARK: - Common
-	case resultCount
-	case charCount
-	case confirm
-	case next
-	case requiredWithBracket
-	case optionalWithBracket
-	case destination
-	case gotoMainScreen
-	case no
-	case yes
-	case emptyString
-	case beingPrepared
-	case notification
-	
-	//MARK: - Tab
-	case home
-	case favorite
-	case jejuStory
-	case myNana
-	
-	//MARK: - Category
-	case all
-	case nature
-	case festival
-	case market
-	case experience
-	case nanaPick
-	
-	
-	//MARK: - Search
-	case inputSearchTerm
-	case recentSearchTerm
-	case noRecentSearchTerm
-	case removeAll
-	case popularSearchTerm
-	case searchVolumeUp
-	case noResult
-	
-	//MARK: - Login/Register
-	case appleLogin
-	case googleLogin
-	case nonMemeberLogin
-	case welcomeToNanaLand
-	case enterNicknameAndProfile
-	case nicknameTextFieldPlaceHolder
-	
-	//MARK: - Terms
-	case allAgree
-	case termsOfUseAgree
-	case marketingAgree
-	case locationAgree
-	
-	//MARK: - Error/Alert
-	case duplicatedNickname
-	case invalidNickname
-	case onlyCharSpaceNumberNickname
-	case logoutAlertTitle
-	case withdrawAlertTitle
-	case withdrawAlertMessage
-	case changeLanguageAlertTitle
-	case invalidEmail
-	case updateRequired
-	case openAppstore
-	
-	//MARK: - TypeTest
-	case skipTypeTest
-	// Question
-	// First Question, First Line
-	case typeTest1Q1L
-	case typeTest1Q2L
-	case typeTest2Q1L
-	case typeTest2Q2L
-	case typeTest3Q1L
-	case typeTest3Q2L
-	case typeTest4Q1L
-	case typeTest4Q2L
-	case typeTest5Q1L
-	case typeTest5Q2L
-	// Answer
-	case touristSpot
-	case localSpot
-	case flexible
-	case organized
-	case budgetTravel
-	case luxuryTravel
-	case photoRemain
-	case captureWithEyes
-	case sentimentalPlace
-	case traditionalCulture
-	case naturalScenery
-	case themePark
-	// Result
-	case your
-	case yourPreference
-	case yourTravelStyle
-	case tangerineJuiced
-	case juiceCommingSoon
-	case yourTravelStyleIs
-	// Type
-	case GAMGYUL_ICECREAM
-	case GAMGYUL_ICECREAM_DESCRIPTION
-	case GAMGYUL_RICECAKE
-	case GAMGYUL_RICECAKE_DESCRIPTION
-	case GAMGYUL
-	case GAMGYUL_DESCRIPTION
-	case GAMGYUL_CIDER
-	case GAMGYUL_CIDER_DESCRIPTION
-	case GAMGYUL_AFFOKATO
-	case GAMGYUL_AFFOKATO_DESCRIPTION
-	case GAMGYUL_HANGWA
-	case GAMGYUL_HANGWA_DESCRIPTION
-	case GAMGYUL_JUICE
-	case GAMGYUL_JUICE_DESCRIPTION
-	case GAMGYUL_CHOCOLATE
-	case GAMGYUL_CHOCOLATE_DESCRIPTION
-	case GAMGYUL_COCKTAIL
-	case GAMGYUL_COCKTAIL_DESCRIPTION
-	case TANGERINE_PEEL_TEA
-	case TANGERINE_PEEL_TEA_DESCRIPTION
-	case GAMGYUL_YOGURT
-	case GAMGYUL_YOGURT_DESCRIPTION
-	case GAMGYUL_FLATCCINO
-	case GAMGYUL_FLATCCINO_DESCRIPTION
-	case GAMGYUL_LATTE
-	case GAMGYUL_LATTE_DESCRIPTION
-	case GAMGYUL_SIKHYE
-	case GAMGYUL_SIKHYE_DESCRIPTION
-	case GAMGYUL_ADE
-	case GAMGYUL_ADE_DESCRIPTION
-	case GAMGYUL_BUBBLE_TEA
-	case GAMGYUL_BUBBLE_TEA_DESCRIPTION
-	case nanalandMadeYouJuice
-	// 결과 값 추천 여행지
-	case recommendedTravelPlace
-	case recommenedeTravelTitleFirstLine
-	case recommenedeTravelTitleSecondLine
-	
+    //MARK: - Common
+    case resultCount
+    case charCount
+    case confirm
+    case next
+    case requiredWithBracket
+    case optionalWithBracket
+    case destination
+    case gotoMainScreen
+    case no
+    case yes
+    case emptyString
+    case beingPrepared
+    case notification
+    
+    //MARK: - Tab
+    case home
+    case favorite
+    case jejuStory
+    case myNana
+    
+    //MARK: - Category
+    case all
+    case nature
+    case festival
+    case market
+    case experience
+    case nanaPick
+    
+    
+    //MARK: - Search
+    case inputSearchTerm
+    case recentSearchTerm
+    case noRecentSearchTerm
+    case removeAll
+    case popularSearchTerm
+    case searchVolumeUp
+    case noResult
+    
+    //MARK: - Login/Register
+    case appleLogin
+    case googleLogin
+    case nonMemeberLogin
+    case welcomeToNanaLand
+    case enterNicknameAndProfile
+    case nicknameTextFieldPlaceHolder
+    
+    //MARK: - Terms
+    case allAgree
+    case termsOfUseAgree
+    case marketingAgree
+    case locationAgree
+    
+    //MARK: - Error/Alert
+    case duplicatedNickname
+    case invalidNickname
+    case onlyCharSpaceNumberNickname
+    case logoutAlertTitle
+    case withdrawAlertTitle
+    case withdrawAlertMessage
+    case changeLanguageAlertTitle
+    case invalidEmail
+    case updateRequired
+    case openAppstore
+    
+    //MARK: - TypeTest
+    case skipTypeTest
+    // Question
+    // First Question, First Line
+    case typeTest1Q1L
+    case typeTest1Q2L
+    case typeTest2Q1L
+    case typeTest2Q2L
+    case typeTest3Q1L
+    case typeTest3Q2L
+    case typeTest4Q1L
+    case typeTest4Q2L
+    case typeTest5Q1L
+    case typeTest5Q2L
+    // Answer
+    case touristSpot
+    case localSpot
+    case flexible
+    case organized
+    case budgetTravel
+    case luxuryTravel
+    case photoRemain
+    case captureWithEyes
+    case sentimentalPlace
+    case traditionalCulture
+    case naturalScenery
+    case themePark
+    // Result
+    case your
+    case yourPreference
+    case yourTravelStyle
+    case tangerineJuiced
+    case juiceCommingSoon
+    case yourTravelStyleIs
+    // Type
+    case GAMGYUL_ICECREAM
+    case GAMGYUL_ICECREAM_DESCRIPTION
+    case GAMGYUL_RICECAKE
+    case GAMGYUL_RICECAKE_DESCRIPTION
+    case GAMGYUL
+    case GAMGYUL_DESCRIPTION
+    case GAMGYUL_CIDER
+    case GAMGYUL_CIDER_DESCRIPTION
+    case GAMGYUL_AFFOKATO
+    case GAMGYUL_AFFOKATO_DESCRIPTION
+    case GAMGYUL_HANGWA
+    case GAMGYUL_HANGWA_DESCRIPTION
+    case GAMGYUL_JUICE
+    case GAMGYUL_JUICE_DESCRIPTION
+    case GAMGYUL_CHOCOLATE
+    case GAMGYUL_CHOCOLATE_DESCRIPTION
+    case GAMGYUL_COCKTAIL
+    case GAMGYUL_COCKTAIL_DESCRIPTION
+    case TANGERINE_PEEL_TEA
+    case TANGERINE_PEEL_TEA_DESCRIPTION
+    case GAMGYUL_YOGURT
+    case GAMGYUL_YOGURT_DESCRIPTION
+    case GAMGYUL_FLATCCINO
+    case GAMGYUL_FLATCCINO_DESCRIPTION
+    case GAMGYUL_LATTE
+    case GAMGYUL_LATTE_DESCRIPTION
+    case GAMGYUL_SIKHYE
+    case GAMGYUL_SIKHYE_DESCRIPTION
+    case GAMGYUL_ADE
+    case GAMGYUL_ADE_DESCRIPTION
+    case GAMGYUL_BUBBLE_TEA
+    case GAMGYUL_BUBBLE_TEA_DESCRIPTION
+    case nanalandMadeYouJuice
+    // 결과 값 추천 여행지
+    case recommendedTravelPlace
+    case recommenedeTravelTitleFirstLine
+    case recommenedeTravelTitleSecondLine
+    
     //MARK: - MyPage
     // main
     case mynana
-	case loginRequired
-	case none
+    case loginRequired
+    case none
     case editProfile
     case travelType
-	case goTest
-	case retest
+    case goTest
+    case retest
     case introduction
     
     // editPage
@@ -211,13 +211,13 @@ enum LocalizedKey: String {
     // 선택 접근권한 알림
     case optionalNotification
     case notificate
-	
-	// withdrawType(서비스 탈퇴 사유)
-	case INSUFFICIENT_CONTENT
-	case INCONVENIENT_SERVICE
+    
+    // withdrawType(서비스 탈퇴 사유)
+    case INSUFFICIENT_CONTENT
+    case INCONVENIENT_SERVICE
     case INCONVENIENT_COMMUNITY
-	case RARE_VISITS
-	
+    case RARE_VISITS
+    
     // languageSettingPage(언어 설정 페이지)
     case languageMainDescription
     // withDrawMembershipPage(회원 탈퇴 페이지)
@@ -231,14 +231,14 @@ enum LocalizedKey: String {
     case withDrawReason
     case withdraw
     case accountDeletion
-	
-	// MARK: - 비회원
-	case nonMemeberAlertDescription
-	case nonMemeberAlertGoRegister
+    
+    // MARK: - 비회원
+    case nonMemeberAlertDescription
+    case nonMemeberAlertGoRegister
     
     // MARK: - Home
     case recommendTitle
-	case ourNana
+    case ourNana
     case firstAdvertismentTitle
     case firstAdvertismentSubTitle
     case secondAdvertismentTitle
@@ -247,17 +247,17 @@ enum LocalizedKey: String {
     case thirdAdvertismentSubTitle
     case fourthAdvertismentTitle
     case fourthAdvertismentSubTitle
-	// 홈화면 검색 placeholder
-	case jejuCanolaFestival
-	case jejuGreenTeaField
-	case jejuFiveDayMarket
-	case udoToday
-	case trendyGujwa
-	case hallasanTrail
-	case jejuNightDrive
-	case nearJejuAirport
-	case jejuSummerHydrangea
-	case jejuCharmingHanok
+    // 홈화면 검색 placeholder
+    case jejuCanolaFestival
+    case jejuGreenTeaField
+    case jejuFiveDayMarket
+    case udoToday
+    case trendyGujwa
+    case hallasanTrail
+    case jejuNightDrive
+    case nearJejuAirport
+    case jejuSummerHydrangea
+    case jejuCharmingHanok
     
     // MARK: - FilterView(아이템 개수, 지역, 계절, 날짜)
     case count
@@ -344,27 +344,27 @@ enum LocalizedKey: String {
     case year
     
     // MARK: - 정보 수정 제안
-	case reportInfo
-	case reportInfoTitle
-	case reportInfoDescription
-	case numberAndHomepage
-	case oprationTime
-	case placeNameAndLocation
-	case priceInfo
-	case deletePlace
-	case etcReportInfoTitle
-	case provideService
-	case addPhoto
-	case addPhotoDescription
-	case reportInfoContentTitle
-	case reportInfoContentPlaceHolder
-	case email
-	case reportInfoEmailDescription
-	case send
-	case thxForReportInfoTitle
-	case thxForReportInfoDescription
-	case showContentAgain
-	case reportAgain    
+    case reportInfo
+    case reportInfoTitle
+    case reportInfoDescription
+    case numberAndHomepage
+    case oprationTime
+    case placeNameAndLocation
+    case priceInfo
+    case deletePlace
+    case etcReportInfoTitle
+    case provideService
+    case addPhoto
+    case addPhotoDescription
+    case reportInfoContentTitle
+    case reportInfoContentPlaceHolder
+    case email
+    case reportInfoEmailDescription
+    case send
+    case thxForReportInfoTitle
+    case thxForReportInfoDescription
+    case showContentAgain
+    case reportAgain
     
     // MARK: - 후기
     case blank
@@ -411,6 +411,7 @@ enum LocalizedKey: String {
     case noNotice
 
     // MARK: - 제주 맛집
+    case type
     case restaurant
     case meatblackpork
     case seaFood
@@ -428,34 +429,37 @@ enum LocalizedKey: String {
     case pubRestaurant
     case menu
     case writeReview
+    case service
+    case instagram
     
-	//MARK: - localized()
-	func localized(for language: Language) -> String {
-		guard let path = Bundle.main.path(forResource: language.localizedName, ofType: "lproj"),
-			  let bundle = Bundle(path: path) else {
-			return NSLocalizedString(self.rawValue, comment: "")
-		}
-		return NSLocalizedString(self.rawValue, bundle: bundle, comment: "")
-	}
+    //MARK: - localized()
+    func localized(for language: Language) -> String {
+        guard let path = Bundle.main.path(forResource: language.localizedName, ofType: "lproj"),
+              let bundle = Bundle(path: path) else {
+            return NSLocalizedString(self.rawValue, comment: "")
+        }
+        return NSLocalizedString(self.rawValue, bundle: bundle, comment: "")
+    }
 
-	func localized(for language: Language, _ arguments: [CVarArg]) -> String {
-			let format = localized(for: language)
-			return String(format: format, arguments: arguments)
-		}
-	
-	static func + (lhs: LocalizedKey, rhs: LocalizedKey) -> String {
-		let leftLocalizedString = lhs.localized(for: LocalizationManager.shared.language)
-		let rightLocalizedString = rhs.localized(for: LocalizationManager.shared.language)
-		return leftLocalizedString + rightLocalizedString
-	}
+    func localized(for language: Language, _ arguments: [CVarArg]) -> String {
+            let format = localized(for: language)
+            return String(format: format, arguments: arguments)
+        }
+    
+    static func + (lhs: LocalizedKey, rhs: LocalizedKey) -> String {
+        let leftLocalizedString = lhs.localized(for: LocalizationManager.shared.language)
+        let rightLocalizedString = rhs.localized(for: LocalizationManager.shared.language)
+        return leftLocalizedString + rightLocalizedString
+    }
 
-	static func + (lhs: String, rhs: LocalizedKey) -> String {
-		let localizedString = rhs.localized(for: LocalizationManager.shared.language)
-		return lhs + localizedString
-	}
+    static func + (lhs: String, rhs: LocalizedKey) -> String {
+        let localizedString = rhs.localized(for: LocalizationManager.shared.language)
+        return lhs + localizedString
+    }
 
-	static func + (lhs: LocalizedKey, rhs: String) -> String {
-		let localizedString = lhs.localized(for: LocalizationManager.shared.language)
-		return localizedString + rhs
-	}
+    static func + (lhs: LocalizedKey, rhs: String) -> String {
+        let localizedString = lhs.localized(for: LocalizationManager.shared.language)
+        return localizedString + rhs
+    }
 }
+
