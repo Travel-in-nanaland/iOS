@@ -503,6 +503,7 @@ struct ExperienceDetailView: View {
                     ReviewWriteMain(reviewAddress: viewModel.state.getExperienceDetailResponse.address ?? "", reviewImageUrl: viewModel.state.getExperienceDetailResponse.images![0].originUrl ?? "", reviewTitle: viewModel.state.getExperienceDetailResponse.title ?? "", reviewId: viewModel.state.getExperienceDetailResponse.id ?? 0)
                 }
             }
+           
         }
         .toolbar(.hidden)
     }

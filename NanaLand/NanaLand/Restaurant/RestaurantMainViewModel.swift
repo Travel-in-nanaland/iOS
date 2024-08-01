@@ -6,16 +6,16 @@
 //
 
 import Foundation
-
 class RestaurantMainViewModel: ObservableObject {
     struct State {
         var getRestaurantMainResponse = RestaurantMainModel(totalElements: 0, data: [])
-        var page = 0
         var location = ""
+        var keyword = ""
+        var page = 0
     }
     
     enum Action {
-        case getRestaurantMainItem(keyword: String, address: String, page: Int, size: Int)
+        case getRestaurantMainItem(page: Int64, size: Int64, filterName: String)
         case toggleFavorite(body: FavoriteToggleRequest, index: Int)
     }
     
@@ -29,21 +29,21 @@ class RestaurantMainViewModel: ObservableObject {
     
     func action(_ action: Action) async {
         switch action {
-        case let .getRestaurantMainItem(keyword, address, page, size):
-            // TODO - 이색체험 API 호출
-            let response = await RestaurantService.getRestaurantMainItem(keyword: "", address: "", page: 0, size: 12)
+        case let .getRestaurantMainItem(page, size, filterName):
+            
+            let response = await RestaurantService.getRestaurantMainItem(page: page, size: size, filterName: filterName)
+            
             if response != nil {
                 await MainActor.run {
-                    print(response)
-                    state.getRestaurantMainResponse.totalElements = response!.data?.totalElements ?? 0
-                    state.getRestaurantMainResponse.data = response!.data!.data
-                    print(state.getRestaurantMainResponse.totalElements)
+                    print(filterName)
+                    state.getRestaurantMainResponse.totalElements = response!.data.totalElements
+                    state.getRestaurantMainResponse.data.append(contentsOf: response!.data.data)
                 }
             } else {
-                print("Error")
+                print("Erorr")
             }
         case .toggleFavorite(body: let body, index: let index):
-            let response = await FavoriteService.toggleFavorite(id: body.id, category: .experience)
+            let response = await FavoriteService.toggleFavorite(id: body.id, category: .nature)
             if response != nil {
                 await MainActor.run {
                     state.getRestaurantMainResponse.data[index].favorite = response!.data.favorite

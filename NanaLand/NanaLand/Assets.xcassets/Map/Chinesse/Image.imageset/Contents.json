@@ -1,9 +1,6 @@
 {
   "images" : [
-    {
-      "filename" : "icInsta.svg",
-      "idiom" : "universal"
-    }
+
   ],
   "info" : {
     "author" : "xcode",
