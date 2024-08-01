@@ -78,6 +78,7 @@ extension ReviewEndPoint: EndPoint {
             return .requestPlain
         case let .getAllReviewData(page, size):
             let param = ["page": page, "size": size] as [String : Any]
+            return .requestParameters(parameters: param)
         case let .getPreviewData(memberId):
             let param = ["memberId": memberId]
             return .requestParameters(parameters: param)

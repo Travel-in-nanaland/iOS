@@ -161,7 +161,7 @@ struct UserProfileMainView: View {
                         .padding(.bottom, 16)
                         .padding(.leading, 15)
                 } else {
-                    KFImage(URL(string: (AppState.shared.userInfo.profileImageUrl)))
+                    KFImage(URL(string: (AppState.shared.userInfo.profileImage.originUrl)))
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 100, height: 100)
