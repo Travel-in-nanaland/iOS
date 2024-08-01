@@ -21,9 +21,12 @@ struct LocationModalView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State var selectedLocation: [LocalizedKey] = []
     @State var buttonsToggled = Array(repeating: false, count: 14)
+    @State var localizedLocationArray: [String] = []
     var startDate: String
     var endDate: String
     var title: String // 이번달 축제인지, 종료된 축제인지
+    var type = "" // 이색체험 액티비티인지 문화예술인지
+    var keyword = "" // 키워드 필터링
     
     var locationArray: [LocalizedKey] = [
         .jejuCity,

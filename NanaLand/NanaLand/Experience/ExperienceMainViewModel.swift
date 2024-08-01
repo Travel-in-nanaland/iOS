@@ -30,8 +30,8 @@ class ExperienceMainViewModel: ObservableObject {
     func action(_ action: Action) async {
         switch action {
         case let .getExperienceMainItem(experienceType, keyword, address, page, size):
-            // TODO - 이색체험 API 호출
-            let response = await ExperienceService.getExperienceMainItem(experienceType: experienceType, keyword: "", address: "", page: 0, size: 12)
+            // TODO: - 이색체험 API 호출
+            let response = await ExperienceService.getExperienceMainItem(experienceType: experienceType, keyword: keyword, address: address, page: 0, size: 12)
             if response != nil {
                 await MainActor.run {
                     print(response)

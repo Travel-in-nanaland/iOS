@@ -141,10 +141,10 @@
 		6D56BDB02C58CD3D001BE19C /* RestaurantMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D56BDAF2C58CD3D001BE19C /* RestaurantMainView.swift */; };
 		6D664E672C4A43410083C464 /* splash.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6D664E662C4A43410083C464 /* splash.gif */; };
 		6D6D56B92C58AF6F00D23533 /* secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6D56B82C58AF6F00D23533 /* secret.swift */; };
-		6D6D56BB2C58AF7900D23533 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D6D56BA2C58AF7800D23533 /* GoogleService-Info.plist */; };
-		6D6D56BD2C58AF8400D23533 /* AuthKey_9JRUHFTK3L.p8 in Resources */ = {isa = PBXBuildFile; fileRef = 6D6D56BC2C58AF8400D23533 /* AuthKey_9JRUHFTK3L.p8 */; };
 		6D6D56C12C58B67900D23533 /* RestaurantKeywordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6D56C02C58B67900D23533 /* RestaurantKeywordView.swift */; };
 		6D78C7FB2C5A5E2700A4CBB4 /* ReviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D78C7FA2C5A5E2700A4CBB4 /* ReviewModel.swift */; };
+		6D9EDAC82C5B3FBF003A8DE5 /* AuthKey_9JRUHFTK3L.p8 in Resources */ = {isa = PBXBuildFile; fileRef = 6D9EDAC52C5B3FBF003A8DE5 /* AuthKey_9JRUHFTK3L.p8 */; };
+		6D9EDAC92C5B3FBF003A8DE5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D9EDAC62C5B3FBF003A8DE5 /* GoogleService-Info.plist */; };
 		6DC8205F2C57703800A15A07 /* MyReviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC8205E2C57703800A15A07 /* MyReviewModel.swift */; };
 		6DC820612C57708E00A15A07 /* MyReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC820602C57708E00A15A07 /* MyReviewViewModel.swift */; };
 		6DD11F422C51545C00363B08 /* TypeTestProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD11F412C51545C00363B08 /* TypeTestProfileView.swift */; };
@@ -398,11 +398,11 @@
 		6D56BDAF2C58CD3D001BE19C /* RestaurantMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantMainView.swift; sourceTree = "<group>"; };
 		6D664E662C4A43410083C464 /* splash.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = splash.gif; sourceTree = "<group>"; };
 		6D6D56B82C58AF6F00D23533 /* secret.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = secret.swift; sourceTree = "<group>"; };
-		6D6D56BA2C58AF7800D23533 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "NanaLand/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
-		6D6D56BC2C58AF8400D23533 /* AuthKey_9JRUHFTK3L.p8 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AuthKey_9JRUHFTK3L.p8; sourceTree = "<group>"; };
-		6D6D56BE2C58AF9200D23533 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D6D56C02C58B67900D23533 /* RestaurantKeywordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantKeywordView.swift; sourceTree = "<group>"; };
 		6D78C7FA2C5A5E2700A4CBB4 /* ReviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewModel.swift; sourceTree = "<group>"; };
+		6D9EDAC42C5B3FBF003A8DE5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6D9EDAC52C5B3FBF003A8DE5 /* AuthKey_9JRUHFTK3L.p8 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AuthKey_9JRUHFTK3L.p8; sourceTree = "<group>"; };
+		6D9EDAC62C5B3FBF003A8DE5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6DC8205E2C57703800A15A07 /* MyReviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReviewModel.swift; sourceTree = "<group>"; };
 		6DC820602C57708E00A15A07 /* MyReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReviewViewModel.swift; sourceTree = "<group>"; };
 		6DD11F412C51545C00363B08 /* TypeTestProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeTestProfileView.swift; sourceTree = "<group>"; };
@@ -592,10 +592,10 @@
 		2C3C75822BCA3ADA00312F26 /* NanaLand */ = {
 			isa = PBXGroup;
 			children = (
-				6D6D56BE2C58AF9200D23533 /* Info.plist */,
-				6D6D56BC2C58AF8400D23533 /* AuthKey_9JRUHFTK3L.p8 */,
 				2C5425092BF76D8200B16439 /* NanaLand.entitlements */,
-				6D6D56BA2C58AF7800D23533 /* GoogleService-Info.plist */,
+				6D9EDAC52C5B3FBF003A8DE5 /* AuthKey_9JRUHFTK3L.p8 */,
+				6D9EDAC62C5B3FBF003A8DE5 /* GoogleService-Info.plist */,
+				6D9EDAC42C5B3FBF003A8DE5 /* Info.plist */,
 				6D541A512C4E444A0095BB77 /* Review */,
 				BF2F8D802C4685F900C0F943 /* Restaurant */,
 				BF98341F2BCE71F400A5C289 /* NaNaPick */,
@@ -1428,7 +1428,6 @@
 			files = (
 				6D664E672C4A43410083C464 /* splash.gif in Resources */,
 				2C27498B2C09950900ECBA71 /* loading_tangerine.json in Resources */,
-				6D6D56BB2C58AF7900D23533 /* GoogleService-Info.plist in Resources */,
 				9C6A9C692BCC22CE000413AD /* AppleSDGothicNeoSB.ttf in Resources */,
 				9C6A9C662BCC22CE000413AD /* AppleSDGothicNeoR.ttf in Resources */,
 				2C3C758B2BCA3ADC00312F26 /* Preview Assets.xcassets in Resources */,
@@ -1437,7 +1436,8 @@
 				2C2D3D4C2C0385B3002A38AA /* Localizable.strings in Resources */,
 				2C1F31C02BCD01240066819F /* AppleSDGothicNeoEB.ttf in Resources */,
 				2C1F31C62BCD01390066819F /* AppleSDGothicNeoB.ttf in Resources */,
-				6D6D56BD2C58AF8400D23533 /* AuthKey_9JRUHFTK3L.p8 in Resources */,
+				6D9EDAC82C5B3FBF003A8DE5 /* AuthKey_9JRUHFTK3L.p8 in Resources */,
+				6D9EDAC92C5B3FBF003A8DE5 /* GoogleService-Info.plist in Resources */,
 				2C1F31C52BCD01390066819F /* AppleSDGothicNeoH.ttf in Resources */,
 				2C2749872C0992AB00ECBA71 /* report_info_star.json in Resources */,
 				2C1F31C42BCD01390066819F /* AppleSDGothicNeoM.ttf in Resources */,
