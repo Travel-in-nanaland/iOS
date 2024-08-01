@@ -21,19 +21,20 @@ struct RestaurantMenuView: View {
                 Text(title)
                     .font(.body_bold)
                     .foregroundColor(.black)
+                    .padding(.bottom, 5)
                 Text(price)
                     .font(.body02)
                     .foregroundColor(.black)
-                    .padding(.bottom, 10)
+                    .padding(.bottom, 20)
             }
             
             Spacer()
             
             KFImage(URL(string: imageUrl))
                 .resizable()
-                .frame(width: 56, height: 56)
+                .frame(width: Constants.screenWidth * (26 / 120), height: Constants.screenWidth * (26 / 120))
                 .cornerRadius(8)
-                .padding(.bottom, 10)
+                .padding(.bottom, 24)
         }
         .padding(EdgeInsets(top: 10, leading: 20, bottom: 0, trailing: 20))
     }

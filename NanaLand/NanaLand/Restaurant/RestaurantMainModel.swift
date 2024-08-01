@@ -6,24 +6,15 @@
 //
 
 import Foundation
-
 struct RestaurantMainModel: Codable {
     var totalElements: Int64
-    var data: [RestaurantData]
+    var data: [RestaurantModelInfo]
 }
 
-struct RestaurantData: Codable {
+struct RestaurantModelInfo: Codable {
     let id: Int64
-    let firstImage: RestaurantImageList
     let title: String
+    let thumbnailUrl: String
     let addressTag: String
-    let ratingAvg: Int64
     var favorite: Bool
 }
-
-struct RestaurantImageList: Codable {
-    let originUrl: String
-    let thumbnailUrl: String
-}
-
-

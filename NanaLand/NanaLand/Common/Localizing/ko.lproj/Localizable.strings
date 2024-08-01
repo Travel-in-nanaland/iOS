@@ -390,7 +390,6 @@
 "noNotice" = "공지사항이 존재하지 않습니다";
 
 // MARK: - 제주 맛집(테스트)
-"type" = "종류";
 "restaurant" = "제주 맛집";
 "meatblackpork" = "육류/흑돼지";
 "seaFood" = "해산물";
@@ -408,5 +407,3 @@
 "pubRestaurant" = "펍/요리주점";
 "menu" = "대표 메뉴";
 "writeReview" = "리뷰 작성하기";
-"service" = "제공 서비스";
-"instagram" = "인스타그램";
