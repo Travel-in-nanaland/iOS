@@ -47,7 +47,7 @@ class ProfileUpdateViewModel: ObservableObject {
                     if let updateUserInfo = updateUserInfo {
                         state.updatedNickName = updateUserInfo.data.nickname
                         state.updatedDescription = updateUserInfo.data.description
-                        state.updatedProfilImage = updateUserInfo.data.profileImageUrl
+                        state.updatedProfilImage = updateUserInfo.data.profileImage.originUrl
                     }
                  
                     

@@ -16,6 +16,15 @@ struct ReviewService {
     static func getReviewData(id: Int64, category: String, page: Int, size: Int) async -> BaseResponse<ReviewModel>? {
         return await NetworkManager.shared.request(ReviewEndPoint.getReviewData(id: id, category: category, page: page, size: size))
     }
+    
+    static func getMyReviewItem() async -> BaseResponse<MyReviewModel>? {
+        return await NetworkManager.shared.request(ReviewEndPoint.getMyReviewData)
+    }
+    
+    static func getMyAllReviewItem(page: Int, size: Int) async -> BaseResponse<MyAllReviewModel>? {
+        return await NetworkManager.shared.request(ReviewEndPoint.getAllReviewData(page: page, size: size))
+    }
+  
     // 다른 유저 프로필 후기 프리뷰 조회
     static func getPreviewData(memberId: Int64) async -> BaseResponse<PreviewReviewModel>? {
         return await NetworkManager.shared.request(ReviewEndPoint.getPreviewData(memberId: memberId))

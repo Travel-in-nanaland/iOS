@@ -9,81 +9,88 @@ import SwiftUI
 
 struct NoticeMainView: View {
     @EnvironmentObject var localizationManager: LocalizationManager
-    @StateObject var viewModel: ProfileMainViewModel
-    
+    @StateObject var viewModel: NoticeMainViewModel
     
     var layout: [GridItem] = [GridItem(.flexible())]
-    @State private var selectedNotice: ProfileMainModel.Notice? = nil
+    @State private var isAPICalled = false
     
     var body: some View {
         ScrollViewReader{ scroll in
-            ZStack{
-                VStack{
-                    NavigationBar(title: LocalizedKey.notice.localized(for: localizationManager.language))
-                        .frame(height: 56)
-                        .background(Color.white)
-                        .shadow(color: Color.black.opacity(0.2), radius: 4, x: 0, y: 2)
-                        .padding(.bottom, 10)
-                    
-                    ScrollView {
-                        LazyVGrid(columns: layout) {
-                            ForEach(viewModel.state.getProfileMainResponse.notices, id: \.id) { notice in
-                                
-                                Button(action: {
-                                    selectedNotice = notice
+            if isAPICalled {
+                ZStack{
+                    VStack{
+                        NavigationBar(title: LocalizedKey.notice.localized(for: localizationManager.language))
+                            .frame(height: 56)
+                            .background(Color.white)
+                            .shadow(color: Color.black.opacity(0.2), radius: 4, x: 0, y: 2)
+                            .padding(.bottom, 10)
+                        
+                        ScrollView {
+                            LazyVGrid(columns: layout) {
+                                ForEach(viewModel.state.getNoticeMainResponse.data, id: \.id) { notice in
                                     
-                                    AppState.shared.navigationPath.append(noticeType.detail)
-                                }, label: {
-                                    NoticeArticleItemView(title: notice.title, type: notice.type, date: notice.date)
-                                        .padding(EdgeInsets(top: 10, leading: 15, bottom: 0, trailing: 15))
-                                })
+                                    Button(action: {
+                                        AppState.shared.navigationPath.append(noticeType.detail(id: notice.id))
+                                    }, label: {
+                                        NoticeArticleItemView(title: notice.title, type: notice.noticeCategory, date: notice.createdAt)
+                                            .padding(EdgeInsets(top: 10, leading: 15, bottom: 0, trailing: 15))
+                                    })
+                                }
                             }
+                            .padding(.bottom, 10)
                         }
-                        .padding(.bottom, 10)
+                        
+                        Spacer()
                     }
                     
-                    Spacer()
-                }
-                
-                VStack{
-                    Spacer()
-                    
-                    HStack{
+                    VStack{
                         Spacer()
                         
-                        Button(action: {
-                            withAnimation(.default) {
-                                scroll.scrollTo("scrollToTop", anchor: .top)
-                            }
-                        }, label: {
-                            Image(systemName: "chevron.up.circle.fill")
-                                .resizable()
-                                .foregroundColor(.main)
-                                .frame(width: 36, height: 36)
-                                .padding()
-                        })
+                        HStack{
+                            Spacer()
+                            
+                            Button(action: {
+                                withAnimation(.default) {
+                                    scroll.scrollTo("scrollToTop", anchor: .top)
+                                }
+                            }, label: {
+                                Image(systemName: "chevron.up.circle.fill")
+                                    .resizable()
+                                    .foregroundColor(.main)
+                                    .frame(width: 36, height: 36)
+                                    .padding()
+                            })
+                        }
                     }
                 }
+                .toolbar(.hidden)
             }
-            .toolbar(.hidden)
         }
         .navigationDestination(for: noticeType.self) { type in
             switch type{
-            case .detail:
-                if let selectedNotice = selectedNotice {
-                    NoticeDetailView(notice: selectedNotice)
-                        .environmentObject(localizationManager)
-                }
+            case let .detail(id):
+                NoticeDetailView(id: id)
+            }
+        }
+        .onAppear {
+            Task {
+                await getNoticeMainItem(page: 0, size: 12)
+                isAPICalled = true
             }
         }
     }
+    
+    func getNoticeMainItem(page: Int, size: Int) async {
+        await viewModel.action(.getNoticeMainItem(page: page, size: size))
+    }
+    
 }
 
-enum noticeType{
-    case detail
+enum noticeType: Hashable{
+    case detail(id: Int64)
 }
 
 #Preview {
-    NoticeMainView(viewModel: ProfileMainViewModel())
+    NoticeMainView(viewModel: NoticeMainViewModel())
         .environmentObject(LocalizationManager())
 }

@@ -11,12 +11,15 @@ import Kingfisher
 
 struct ReviewArticleItemView: View {
     
-    var review: ProfileMainModel.Review
+    var placeName: String
+    var createdAt: String
+    var heartCount: Int64
+    var imageFileDto: String
     
     var body: some View {
         VStack{
             ZStack{
-                if !review.images.isEmpty {
+                if imageFileDto != "" {
                     Rectangle()
                         .frame(width: 160, height: 220)
                         .foregroundColor(.white)
@@ -31,7 +34,7 @@ struct ReviewArticleItemView: View {
                         .shadow(radius: 1)
                         .overlay(
                             VStack{
-                                KFImage(URL(string: ("")))
+                                KFImage(URL(string: imageFileDto))
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
                                     .frame(width: 160, height: 160)
@@ -40,7 +43,7 @@ struct ReviewArticleItemView: View {
                                 
                                 VStack{
                                     HStack{
-                                        Text(review.placeName)
+                                        Text(placeName)
                                             .font(.body02_bold)
                                             .foregroundColor(.black)
                                         
@@ -50,7 +53,7 @@ struct ReviewArticleItemView: View {
                                     .padding(.leading, 15)
                                     
                                     HStack{
-                                        Text(review.createdAt)
+                                        Text(createdAt)
                                             .font(.caption01)
                                             .foregroundColor(.black)
                                             .padding(.leading, 15)
@@ -60,7 +63,7 @@ struct ReviewArticleItemView: View {
                                         Image(systemName: "heart.fill")
                                             .foregroundColor(.main)
                                         
-                                        Text("\(review.heartCount)")
+                                        Text("\(heartCount)")
                                             .font(.caption01)
                                             .foregroundColor(.black)
                                             .padding(.leading, -5)
@@ -79,7 +82,7 @@ struct ReviewArticleItemView: View {
                         .overlay(
                             VStack{
                                 HStack{
-                                    Text(review.placeName)
+                                    Text(placeName)
                                         .font(.body02_bold)
                                         .foregroundColor(.black)
                                     
@@ -89,7 +92,7 @@ struct ReviewArticleItemView: View {
                                 Spacer()
                                 
                                 HStack{
-                                    Text(review.content)
+                                    Text(createdAt)
                                         .font(.caption01)
                                         .foregroundColor(.black)
                                     
@@ -98,7 +101,7 @@ struct ReviewArticleItemView: View {
                                     Image(systemName: "heart.fill")
                                         .foregroundColor(.main)
                                     
-                                    Text("\(review.heartCount)")
+                                    Text("\(heartCount)")
                                         .font(.caption01)
                                         .foregroundColor(.black)
                                         .padding(.leading, -5)
@@ -112,5 +115,5 @@ struct ReviewArticleItemView: View {
 }
 
 #Preview {
-    ReviewArticleItemView(review: ProfileMainModel.Review(id: 1, postId: 1, category: "", placeName: "", rating: 3, content: "", createdAt: "", heartCount: 2, images: ["" : ""], reviewTypeKeywords: [""]))
+    ReviewArticleItemView(placeName: "", createdAt: "", heartCount: 3, imageFileDto: "")
 }

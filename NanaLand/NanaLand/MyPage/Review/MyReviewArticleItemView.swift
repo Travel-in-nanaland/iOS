@@ -10,14 +10,19 @@ import SwiftUI
 import Kingfisher
 
 struct MyReviewArticleItemView: View {
-    
-    var review: ProfileMainModel.Review
+    var placeName: String
+    var rating: Int
+    var images: [AllReviewDetailImagesList]
+    var content: String
+    var reviewTypeKeywords: [String]
+    var heartCount: Int
+    var createdAt: String
 
     var body: some View {
         ZStack {
             VStack(alignment: .leading) {
                 HStack {
-                    Text(review.placeName)
+                    Text(placeName)
                         .font(.body02_bold)
                         .foregroundColor(.black)
 
@@ -59,7 +64,7 @@ struct MyReviewArticleItemView: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 15)
-                            .foregroundColor(number <= review.rating ? .yellow : .gray)
+                            .foregroundColor(number <= rating ? .yellow : .gray)
                     }
 
                     Spacer()
@@ -67,7 +72,7 @@ struct MyReviewArticleItemView: View {
                 .padding(.top, -20)
                 .padding(.leading, 15)
 
-                if !review.images.isEmpty {
+                if !images.isEmpty {
                     KFImage(URL(string: ("")))
                         .resizable()
                         .frame(width: 70, height: 70)
@@ -77,7 +82,7 @@ struct MyReviewArticleItemView: View {
                 }
 
                 HStack {
-                    Text(review.content)
+                    Text(content)
                         .font(.body02)
                         .foregroundColor(.black)
                         .lineLimit(2)
@@ -89,7 +94,7 @@ struct MyReviewArticleItemView: View {
                 .padding(.trailing, 15)
                 .padding(.top, -10)
 
-                TagsCloudView(tags: review.reviewTypeKeywords)
+                TagsCloudView(tags: reviewTypeKeywords)
                     .padding(.leading, 15)
                     .padding(.trailing, 15)
                 
@@ -97,13 +102,13 @@ struct MyReviewArticleItemView: View {
                     Image(systemName: "heart.fill")
                         .foregroundColor(.main)
                     
-                    Text("\(review.heartCount)")
+                    Text("\(heartCount)")
                         .font(.body02)
                         .foregroundColor(.black)
                     
                     Spacer()
                     
-                    Text(review.createdAt)
+                    Text(createdAt)
                         .font(.caption01)
                         .foregroundColor(.gray1)
                 }
@@ -185,5 +190,5 @@ struct TagsCloudView: View {
 }
 
 #Preview {
-    MyReviewArticleItemView(review: ProfileMainModel.Review(id: 1, postId: 1, category: "NaNa", placeName: "연돈", rating: 3, content: "테스트입니다.", createdAt: "2024-06-12", heartCount: 3, images: ["" : ""], reviewTypeKeywords: [""]))
+    MyReviewArticleItemView(placeName: "", rating: 1, images: [AllReviewDetailImagesList(originUrl: "", thumbnailUrl: "")], content: "", reviewTypeKeywords: [""], heartCount: 2, createdAt: "")
 }

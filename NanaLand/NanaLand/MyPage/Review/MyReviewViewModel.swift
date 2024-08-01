@@ -4,16 +4,16 @@
 //
 //  Created by wodnd on 7/29/24.
 //
-
 import Foundation
-class MyReviewViewModel: ObservableObject{
+
+class MyReviewViewModel: ObservableObject {
     struct State {
-        var getMyReviewResponse = MyReviewModel(reviews: [MyReviewModel.Review(id: 1, postId: 1, category: "", placeName: "", rating: 3, content: "", createdAt: "", heartCount: 1, images: ["" : ""], reviewTypeKeywords: [""])])
-        
+        var getMyReviewResponse = MyReviewModel(totalElements: 0, data: [])
+        var memberId = 0
     }
     
     enum Action {
-        case getUserInfo
+        case getMyReviewItem
     }
     
     @Published var state: State
@@ -26,12 +26,18 @@ class MyReviewViewModel: ObservableObject{
     
     func action(_ action: Action) async {
         switch action {
-        case .getUserInfo:
-            let response = await UserInfoService.getUserInfo()
+        case let .getMyReviewItem:
+            // TODO - 공지사항 API 호출
+            let response = await ReviewService.getMyReviewItem()
             if response != nil {
                 await MainActor.run {
-//                    state.getProfileMainResponse = response!.data
+                    print(response)
+                    state.getMyReviewResponse.totalElements = response!.data?.totalElements ?? 0
+                    state.getMyReviewResponse.data = response!.data?.data
+                    print(state.getMyReviewResponse.totalElements)
                 }
+            } else {
+                print("Error")
             }
         }
     }

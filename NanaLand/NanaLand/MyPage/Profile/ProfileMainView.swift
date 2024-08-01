@@ -11,9 +11,9 @@ import MasonryStack
 
 struct ProfileMainView: View {
     @StateObject var viewModel = ProfileMainViewModel()
+    @StateObject var noticeViewModel = NoticeMainViewModel()
     @StateObject var appState = AppState.shared
     @AppStorage("provider") var provider: String = ""
-    @State private var selectedNotice: ProfileMainModel.Notice? = nil
     
     var body: some View {
         
@@ -25,7 +25,7 @@ struct ProfileMainView: View {
                         profileAndNickname
                             .padding(.bottom, 24)
                         
-                        ProfileList(selectedNotice: $selectedNotice)
+                        ProfileList()
                             .frame(minHeight: geo.size.height)
                     }
                 }
@@ -33,7 +33,7 @@ struct ProfileMainView: View {
         }
         .onAppear {
             viewModel.state.getProfileMainResponse.nickname = AppState.shared.userInfo.nickname
-            viewModel.state.getProfileMainResponse.profileImageUrl = AppState.shared.userInfo.profileImageUrl
+            viewModel.state.getProfileMainResponse.profileImage = AppState.shared.userInfo.profileImage
             viewModel.state.getProfileMainResponse.description = AppState.shared.userInfo.description
         }
         .navigationDestination(for: MyPageViewType.self) { viewType in
@@ -47,18 +47,17 @@ struct ProfileMainView: View {
                 TypeTestProfileView(nickname: AppState.shared.userInfo.nickname)
                     .environmentObject(TypeTestViewModel())
             case .allReview:
-                MyReviewView(viewModel: viewModel)
+                MyReviewView(viewModel: MyAllReviewViewModel())
                     .environmentObject(LocalizationManager())
+                Text("")
             case .allNotice:
-                NoticeMainView(viewModel: viewModel)
+                NoticeMainView(viewModel: noticeViewModel)
                     .environmentObject(LocalizationManager())
             case .detailReview:
                 Text("test")
-            case .detailNotice:
-                if let selectedNotice = selectedNotice {
-                    NoticeDetailView(notice: selectedNotice)
-                        .environmentObject(LocalizationManager())
-                }
+            case let .detailNotice(id):
+                NoticeDetailView(id: id)
+                    .environmentObject(LocalizationManager())
             }
         }
         .edgesIgnoringSafeArea(.bottom)
@@ -96,7 +95,7 @@ struct ProfileMainView: View {
                         .padding(.bottom, 16)
                         .padding(.leading, 15)
                 } else {
-                    KFImage(URL(string: (AppState.shared.userInfo.profileImageUrl)))
+                    KFImage(URL(string: AppState.shared.userInfo.profileImage.originUrl))
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 100, height: 100)
@@ -279,7 +278,6 @@ struct ProfileMainView: View {
 }
 
 struct ProfileList: View {
-    @Binding var selectedNotice: ProfileMainModel.Notice?
     @State var tabIndex = 0
     
     var body: some View {
@@ -291,7 +289,7 @@ struct ProfileList: View {
             case 0:
                 reviewTabView()
             case 1:
-                noticeTabView(selectedNotice: $selectedNotice)
+                noticeTabView()
             default:
                 reviewTabView()
             }
@@ -356,134 +354,163 @@ struct ProfileTabBarItem: View {
 }
 
 struct reviewTabView: View {
-    @StateObject var viewModel = ProfileMainViewModel()
+    @StateObject var viewModel = MyReviewViewModel()
+    @State private var isAPICalled = false
     
     var layout: [GridItem] = [GridItem(.flexible()), GridItem(.flexible())]
     var body: some View {
-        ZStack {
-            VStack{
-                HStack{
-                    
-                    Button(action: {
-                        AppState.shared.navigationPath.append(MyPageViewType.allReview)
-                    }, label: {
-                        
-                        Text("\(viewModel.state.getProfileMainResponse.reviews.count)")
-                            .font(.body02_semibold)
-                            .foregroundColor(.main)
-                        
-                        +
-                        Text(" 모두 보기 >")
-                            .font(.body02_semibold)
-                            .foregroundColor(.black)
-                    })
-                    
-                    
-                    Spacer()
-                    
-                    Button(action: {
-                        
-                    }, label: {
+        ScrollView {
+            if isAPICalled {
+                ZStack {
+                    VStack{
                         HStack{
-                            Image("icPencilMain")
                             
-                            Text("리뷰 작성하기")
-                                .font(.caption01_semibold)
-                                .foregroundColor(.black)
-                                .padding(EdgeInsets(top: 0, leading: -3, bottom: 0, trailing: 3))
-                        }
-                        .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 50)
-                                .stroke(Color.main.opacity(0.9), lineWidth: 1)
-                                .foregroundColor(Color.main.opacity(0.1))
-                        )
-                    })
-                }
-                .padding()
-                
-                if viewModel.state.getProfileMainResponse.reviews.count != 0 {
-                    MasonryVStack(columns: 2) {
-                        ForEach(viewModel.state.getProfileMainResponse.reviews, id: \.id) { review in
+                            Button(action: {
+                                AppState.shared.navigationPath.append(MyPageViewType.allReview)
+                            }, label: {
+                                
+                                Text("\(viewModel.state.getMyReviewResponse.totalElements)")
+                                    .font(.body02_semibold)
+                                    .foregroundColor(.main)
+                                
+                                +
+                                
+                                Text(" 모두 보기 >")
+                                    .font(.body02_semibold)
+                                    .foregroundColor(.black)
+                            })
+                            
+                            
+                            Spacer()
+                            
                             Button(action: {
                                 
                             }, label: {
-                                ReviewArticleItemView(review: review)
-                                .padding(.top, 17)
+                                HStack{
+                                    Image("icPencilMain")
+                                    
+                                    Text("리뷰 작성하기")
+                                        .font(.caption01_semibold)
+                                        .foregroundColor(.black)
+                                        .padding(EdgeInsets(top: 0, leading: -3, bottom: 0, trailing: 3))
+                                }
+                                .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 50)
+                                        .stroke(Color.main.opacity(0.9), lineWidth: 1)
+                                        .foregroundColor(Color.main.opacity(0.1))
+                                )
                             })
                         }
+                        .padding()
+                        
+                        if let data = viewModel.state.getMyReviewResponse.data {
+                            if data.count != 0 {
+                                MasonryVStack(columns: 2) {
+                                    ForEach(data, id: \.id) { review in
+                                        Button(action: {
+                                            
+                                        }, label: {
+                                            ReviewArticleItemView(placeName: review.placeName, createdAt: review.createdAt, heartCount: review.heartCount, imageFileDto: review.imageFileDto?.originUrl ?? "")
+                                            .padding(.top, 17)
+                                        })
+                                    }
+                                }
+                                .padding(.leading, 20)
+                                .padding(.top, -20)
+                            } else {
+                                Text(.noReview)
+                                    .font(.body01)
+                                    .foregroundColor(.gray1)
+                                    .padding(.top, 100)
+                            }
+                        }
+                        Spacer()
                     }
-                    .padding(.leading, 20)
-                    .padding(.top, -20)
-                } else {
-                    Text(.noReview)
-                        .font(.body01)
-                        .foregroundColor(.gray1)
-                        .padding(.top, 100)
+                    
                 }
-                
-                Spacer()
             }
-            
         }
+        .onAppear {
+            Task {
+                await getMyReviewItem()
+                isAPICalled = true
+            }
+        }
+    }
+    func getMyReviewItem() async {
+        await viewModel.action(.getMyReviewItem)
     }
 }
 
 struct noticeTabView: View {
-    @StateObject var viewModel = ProfileMainViewModel()
-    @Binding var selectedNotice: ProfileMainModel.Notice?
+    @StateObject var viewModel = NoticeMainViewModel()
+    @State private var isAPICalled = false
     
     let layout: [GridItem] = [GridItem(.flexible())]
     
     var body: some View {
-        ZStack {
-            VStack{
-                
-                HStack{
-                    
-                    Button(action: {
-                        AppState.shared.navigationPath.append(MyPageViewType.allNotice)
-                    }, label: {
+        ScrollView {
+            if isAPICalled {
+                ZStack {
+                    VStack{
                         
-                        Text("\(viewModel.state.getProfileMainResponse.notices.count)")
-                            .font(.body02_semibold)
-                            .foregroundColor(.main)
-                        
-                        +
-                        Text(" 모두 보기 >")
-                            .font(.body02_semibold)
-                            .foregroundColor(.black)
-                    })
-                    
-                    Spacer()
-                }
-                .padding(.top, 9)
-                .padding()
-                
-                if viewModel.state.getProfileMainResponse.notices.count != 0 {
-                    LazyVGrid(columns: layout, content: {
-                        ForEach(viewModel.state.getProfileMainResponse.notices, id: \.id) { notice in
+                        HStack{
+                            
                             Button(action: {
-                                selectedNotice = notice
-                                AppState.shared.navigationPath.append(MyPageViewType.detailNotice)
+                                AppState.shared.navigationPath.append(MyPageViewType.allNotice)
                             }, label: {
-                                NoticeArticleItemView(title: notice.title, type: notice.type, date: notice.date)
-                                    .padding(.bottom, 10)
+                                
+                                Text("\(viewModel.state.getNoticeMainResponse.totalElements)")
+                                    .font(.body02_semibold)
+                                    .foregroundColor(.main)
+                                
+                                +
+                                Text(" 모두 보기 >")
+                                    .font(.body02_semibold)
+                                    .foregroundColor(.black)
                             })
+                            
+                            Spacer()
                         }
-                    })
-                    .padding(EdgeInsets(top: 5, leading: 15, bottom: 0, trailing: 15))
-                } else {
-                    Text(.noNotice)
-                        .font(.body01)
-                        .foregroundColor(.gray1)
-                        .padding(.top, 100)
+                        .padding(.top, 9)
+                        .padding()
+                        
+                        if viewModel.state.getNoticeMainResponse.data.count != 0 {
+                            LazyVGrid(columns: layout, content: {
+                                ForEach(viewModel.state.getNoticeMainResponse.data, id: \.id) { notice in
+                                    Button(action: {
+
+                                        AppState.shared.navigationPath.append(MyPageViewType.detailNotice(id: notice.id))
+                                    }, label: {
+                                        NoticeArticleItemView(title: notice.title, type: notice.noticeCategory, date: notice.createdAt)
+                                            .padding(.bottom, 10)
+                                    })
+                                }
+                            })
+                            .padding(EdgeInsets(top: 5, leading: 15, bottom: 0, trailing: 15))
+                        } else {
+                            Text(.noNotice)
+                                .font(.body01)
+                                .foregroundColor(.gray1)
+                                .padding(.top, 100)
+                        }
+                        
+                        Spacer()
+                    }
                 }
-                
-                Spacer()
             }
         }
-        
+        .onAppear {
+            Task {
+                await getNoticeMainItem(page: 0, size: 12)
+                isAPICalled = true
+            }
+        }
+    }
+    
+    func getNoticeMainItem(page: Int, size: Int) async {
+        await viewModel.action(.getNoticeMainItem(page: page, size: size))
     }
 }
 
@@ -518,14 +545,14 @@ extension View {
     }
 }
 
-enum MyPageViewType {
+enum MyPageViewType: Hashable {
     case setting
     case update
     case test
     case allReview
     case allNotice
     case detailReview
-    case detailNotice
+    case detailNotice(id: Int64)
 }
 
 #Preview {
