@@ -54,6 +54,9 @@ struct ReviewCompleteView: View {
            
         }
         .toolbar(.hidden)
+        .onAppear {
+            print("\(AppState.shared.navigationPath)")
+        }
     }
 }
 

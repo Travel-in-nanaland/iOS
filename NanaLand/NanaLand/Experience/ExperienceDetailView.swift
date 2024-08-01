@@ -10,6 +10,7 @@ import Kingfisher
 
 struct ExperienceDetailView: View {
     @StateObject var viewModel = ExperienceDetailViewModel()
+    @StateObject var userProfileViewModel = UserProfileMainViewModel()
     @State private var isOn = false // 더보기 버튼 클릭 여부
     @State private var contentIsOn = [false, false, false] // 댓글 더보기 버튼 클릭 여부(더 보기 클릭한 댓글만 라인 제한 풀기)
     @State private var isAPICall = false
@@ -128,8 +129,9 @@ struct ExperienceDetailView: View {
                                                         RoundedRectangle(cornerRadius: 30).foregroundStyle(Color.main10P)
                                                             .frame(width: 64, height: 20)
                                                     )
+                                                    .frame(width: 64, height: 20)
                                                     .font(.caption01)
-                                                    .padding(.leading, 32)
+                                                    .padding(.leading, 16)
                                                     .foregroundStyle(Color.main)
                                                 ForEach(0...viewModel.state.getExperienceDetailResponse.keywords!.count - 1, id: \.self) { index in
                                                     Text(viewModel.state.getExperienceDetailResponse.keywords![index])
@@ -306,9 +308,16 @@ struct ExperienceDetailView: View {
                                                             .clipShape(Circle())
                                                             .padding(.leading, 16)
                                                             .padding(.trailing, 8)
+                                                        
+
                                                         VStack(alignment: .leading, spacing: 0) {
-                                                            Text(viewModel.state.getReviewDataResponse.data[index].nickname ?? "")
-                                                                .font(.body02_bold)
+                                                            Button {
+                                                                AppState.shared.navigationPath.append(ExperienceViewType.userProfile(id: Int64(viewModel.state.getReviewDataResponse.data[index].memberId!)))
+                                                            } label: {
+                                                                Text(viewModel.state.getReviewDataResponse.data[index].nickname ?? "")
+                                                                    .font(.body02_bold)
+                                                            }
+                                                           
                                                             HStack(spacing: 0) {
                                                                 Text("리뷰 \(viewModel.state.getReviewDataResponse.data[index].memberReviewCount ?? 0)")
                                                                     .font(.caption01)
@@ -324,15 +333,21 @@ struct ExperienceDetailView: View {
                                                     .padding(.bottom, 12)
                                                     HStack(spacing: 0) {
                                                         if viewModel.state.getReviewDataResponse.data[index].images!.count != 0 {
-                                                            ForEach(0..<viewModel.state.getReviewDataResponse.data[index].images!.count) { idx in
-                                                                KFImage(URL(string: viewModel.state.getReviewDataResponse.data[index].images![idx].originUrl))
-                                                                    .resizable()
-                                                                    .frame(width: 70, height: 70)
-                                                            }
                                                             
+                                                            ScrollView(.horizontal, showsIndicators: false) {
+                                                                HStack(spacing: 16) {
+                                                                    ForEach(0..<viewModel.state.getReviewDataResponse.data[index].images!.count, id: \.self) { idx in
+                                                                        KFImage(URL(string: viewModel.state.getReviewDataResponse.data[index].images![idx].originUrl))
+                                                                            .resizable()
+                                                                            .frame(width: 70, height: 70)
+                                                                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                                                                    }
+                                                                }
+                                                            }
+                                                            .padding(.leading, 16)
+                                                            .padding(.trailing, 16)
                                                         }
-                                                       
-                                                       
+                                                        
                                                     }
                                                    
                                                     HStack(alignment: .bottom, spacing: 0) {
@@ -487,12 +502,14 @@ struct ExperienceDetailView: View {
                               
                                 
                         }
+                        .frame(width: Constants.screenWidth * (28 / 36), height: 40)
                         .padding(.trailing, 16)
                         
 
                     }
                     .frame(width: Constants.screenWidth, height: 56)
                     .background(Color.white)
+                    .shadow(color: Color.gray.opacity(0.7), radius: 10, x: 0, y: 10)
                 }
                
                
@@ -501,6 +518,8 @@ struct ExperienceDetailView: View {
                 switch viewType {
                 case let .writeReview:
                     ReviewWriteMain(reviewAddress: viewModel.state.getExperienceDetailResponse.address ?? "", reviewImageUrl: viewModel.state.getExperienceDetailResponse.images![0].originUrl ?? "", reviewTitle: viewModel.state.getExperienceDetailResponse.title ?? "", reviewId: viewModel.state.getExperienceDetailResponse.id ?? 0)
+                case let .userProfile(id):
+                    UserProfileMainView(memberId: id)
                 }
             }
            
@@ -530,8 +549,9 @@ struct ExperienceDetailView: View {
     }
 }
 
-enum ExperienceViewType {
+enum ExperienceViewType: Hashable {
     case writeReview
+    case userProfile(id: Int64)
 }
 
 //#Preview {
