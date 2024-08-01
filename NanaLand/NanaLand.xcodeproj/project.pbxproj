@@ -142,6 +142,8 @@
 		6D541A7E2C4F40DC0095BB77 /* RestaurantDetailEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D541A7D2C4F40DC0095BB77 /* RestaurantDetailEndPoint.swift */; };
 		6D6162682C4FA2AD00E97C0F /* RestaurantMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6162672C4FA2AD00E97C0F /* RestaurantMainView.swift */; };
 		6D664E672C4A43410083C464 /* splash.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6D664E662C4A43410083C464 /* splash.gif */; };
+    6D6D56C12C58B67900D23533 /* RestaurantKeywordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6D56C02C58B67900D23533 /* RestaurantKeywordView.swift */; };
+		6D78C7FB2C5A5E2700A4CBB4 /* ReviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D78C7FA2C5A5E2700A4CBB4 /* ReviewModel.swift */; };
 		6DC8205F2C57703800A15A07 /* MyReviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC8205E2C57703800A15A07 /* MyReviewModel.swift */; };
 		6DC820612C57708E00A15A07 /* MyReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC820602C57708E00A15A07 /* MyReviewViewModel.swift */; };
 		6DD11F422C51545C00363B08 /* TypeTestProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD11F412C51545C00363B08 /* TypeTestProfileView.swift */; };
@@ -399,6 +401,8 @@
 		6D541A7D2C4F40DC0095BB77 /* RestaurantDetailEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailEndPoint.swift; sourceTree = "<group>"; };
 		6D6162672C4FA2AD00E97C0F /* RestaurantMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantMainView.swift; sourceTree = "<group>"; };
 		6D664E662C4A43410083C464 /* splash.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = splash.gif; sourceTree = "<group>"; };
+    6D6D56C02C58B67900D23533 /* RestaurantKeywordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantKeywordView.swift; sourceTree = "<group>"; };
+		6D78C7FA2C5A5E2700A4CBB4 /* ReviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewModel.swift; sourceTree = "<group>"; };
 		6DC8205E2C57703800A15A07 /* MyReviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReviewModel.swift; sourceTree = "<group>"; };
 		6DC820602C57708E00A15A07 /* MyReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReviewViewModel.swift; sourceTree = "<group>"; };
 		6DD11F412C51545C00363B08 /* TypeTestProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeTestProfileView.swift; sourceTree = "<group>"; };
@@ -1426,7 +1430,6 @@
 			files = (
 				6D664E672C4A43410083C464 /* splash.gif in Resources */,
 				2C27498B2C09950900ECBA71 /* loading_tangerine.json in Resources */,
-				BFE60DE72C590385009FBA59 /* GoogleService-Info.plist in Resources */,
 				9C6A9C692BCC22CE000413AD /* AppleSDGothicNeoSB.ttf in Resources */,
 				9C6A9C662BCC22CE000413AD /* AppleSDGothicNeoR.ttf in Resources */,
 				2C3C758B2BCA3ADC00312F26 /* Preview Assets.xcassets in Resources */,
