@@ -9,7 +9,7 @@ import Foundation
 
 struct FestivalDetailModel: Codable {
     let id: Int64
-    let originUrl: String
+    let images: [DetailImagesList]
     let addressTag: String
     let title: String
     let content: String

@@ -242,6 +242,9 @@
 		BFCDBE0E2C4E5CC400A50113 /* ReviewEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCDBE0D2C4E5CC400A50113 /* ReviewEndPoint.swift */; };
 		BFCDBE102C4E5CCE00A50113 /* ReviewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCDBE0F2C4E5CCE00A50113 /* ReviewService.swift */; };
 		BFE00CEC2C53BD3300F4C80C /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE00CEB2C53BD3300F4C80C /* Toast.swift */; };
+		BFE60DE32C58FE5A009FBA59 /* ReviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE60DE22C58FE5A009FBA59 /* ReviewModel.swift */; };
+		BFE60DE52C590112009FBA59 /* secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE60DE42C590112009FBA59 /* secret.swift */; };
+		BFE60DE72C590385009FBA59 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BFE60DE62C590385009FBA59 /* GoogleService-Info.plist */; };
 		BFF5DA912BE809D100FD8764 /* LocationModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF5DA902BE809D100FD8764 /* LocationModalView.swift */; };
 		BFF646682C00DDE300BCC41F /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF646672C00DDE300BCC41F /* HomeService.swift */; };
 		BFF6466A2C00DDEA00BCC41F /* HomeEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF646692C00DDEA00BCC41F /* HomeEndPoint.swift */; };
@@ -493,6 +496,9 @@
 		BFCDBE0D2C4E5CC400A50113 /* ReviewEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewEndPoint.swift; sourceTree = "<group>"; };
 		BFCDBE0F2C4E5CCE00A50113 /* ReviewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewService.swift; sourceTree = "<group>"; };
 		BFE00CEB2C53BD3300F4C80C /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		BFE60DE22C58FE5A009FBA59 /* ReviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewModel.swift; sourceTree = "<group>"; };
+		BFE60DE42C590112009FBA59 /* secret.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = secret.swift; sourceTree = "<group>"; };
+		BFE60DE62C590385009FBA59 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BFF5DA902BE809D100FD8764 /* LocationModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModalView.swift; sourceTree = "<group>"; };
 		BFF646672C00DDE300BCC41F /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
 		BFF646692C00DDEA00BCC41F /* HomeEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEndPoint.swift; sourceTree = "<group>"; };
@@ -571,6 +577,7 @@
 		2C3C75772BCA3ADA00312F26 = {
 			isa = PBXGroup;
 			children = (
+				BFE60DE62C590385009FBA59 /* GoogleService-Info.plist */,
 				2C3C75822BCA3ADA00312F26 /* NanaLand */,
 				2C3C75932BCA3ADD00312F26 /* NanaLandTests */,
 				2C3C759D2BCA3ADD00312F26 /* NanaLandUITests */,
@@ -592,8 +599,6 @@
 		2C3C75822BCA3ADA00312F26 /* NanaLand */ = {
 			isa = PBXGroup;
 			children = (
-				6D6D56BE2C58AF9200D23533 /* Info.plist */,
-				6D6D56BC2C58AF8400D23533 /* AuthKey_9JRUHFTK3L.p8 */,
 				2C5425092BF76D8200B16439 /* NanaLand.entitlements */,
 				6D6D56BA2C58AF7800D23533 /* GoogleService-Info.plist */,
 				6D541A512C4E444A0095BB77 /* Review */,
@@ -693,7 +698,7 @@
 		2C3C75C22BCA54A200312F26 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				6D6D56B82C58AF6F00D23533 /* secret.swift */,
+				BFE60DE42C590112009FBA59 /* secret.swift */,
 				2C40DB8D2BE637DE007A3768 /* AuthManager.swift */,
 				2C40DB942BE63AD2007A3768 /* KeychainManager.swift */,
 				2C1F31D62BCD73C00066819F /* Constants.swift */,
@@ -1027,7 +1032,7 @@
 				6D541A642C4E45D50095BB77 /* ReviewWriteMain.swift */,
 				BF4CB7022C5255DC0019AF48 /* ReviewDTO.swift */,
 				BFB977A72C561F3000516ADA /* ReviewCompleteView.swift */,
-				6D78C7FA2C5A5E2700A4CBB4 /* ReviewModel.swift */,
+				BFE60DE22C58FE5A009FBA59 /* ReviewModel.swift */,
 			);
 			path = Review;
 			sourceTree = "<group>";
@@ -1428,7 +1433,7 @@
 			files = (
 				6D664E672C4A43410083C464 /* splash.gif in Resources */,
 				2C27498B2C09950900ECBA71 /* loading_tangerine.json in Resources */,
-				6D6D56BB2C58AF7900D23533 /* GoogleService-Info.plist in Resources */,
+				BFE60DE72C590385009FBA59 /* GoogleService-Info.plist in Resources */,
 				9C6A9C692BCC22CE000413AD /* AppleSDGothicNeoSB.ttf in Resources */,
 				9C6A9C662BCC22CE000413AD /* AppleSDGothicNeoR.ttf in Resources */,
 				2C3C758B2BCA3ADC00312F26 /* Preview Assets.xcassets in Resources */,
@@ -1437,7 +1442,6 @@
 				2C2D3D4C2C0385B3002A38AA /* Localizable.strings in Resources */,
 				2C1F31C02BCD01240066819F /* AppleSDGothicNeoEB.ttf in Resources */,
 				2C1F31C62BCD01390066819F /* AppleSDGothicNeoB.ttf in Resources */,
-				6D6D56BD2C58AF8400D23533 /* AuthKey_9JRUHFTK3L.p8 in Resources */,
 				2C1F31C52BCD01390066819F /* AppleSDGothicNeoH.ttf in Resources */,
 				2C2749872C0992AB00ECBA71 /* report_info_star.json in Resources */,
 				2C1F31C42BCD01390066819F /* AppleSDGothicNeoM.ttf in Resources */,
@@ -1632,6 +1636,7 @@
 				BF0997982BD1FFF900563E9A /* NaNaPickDetailView.swift in Sources */,
 				6D6D56B92C58AF6F00D23533 /* secret.swift in Sources */,
 				2C9CF4DA2BFDF5D300A346E8 /* ReportInfoService.swift in Sources */,
+				BFE60DE52C590112009FBA59 /* secret.swift in Sources */,
 				2C40DB9E2BE87C61007A3768 /* Color+.swift in Sources */,
 				BF9F02992BD8DFC0003E72E6 /* FestivalMainViewModel.swift in Sources */,
 				BF794B612BF9AD9F0045FAD2 /* ProfileMainModel.swift in Sources */,
@@ -1674,7 +1679,7 @@
 				BFCDBE102C4E5CCE00A50113 /* ReviewService.swift in Sources */,
 				2C2D3D512C03898D002A38AA /* LocalizationManager.swift in Sources */,
 				6D29952A2C5596DF006AA447 /* NoticeMainView.swift in Sources */,
-				6D78C7FB2C5A5E2700A4CBB4 /* ReviewModel.swift in Sources */,
+				BFE60DE32C58FE5A009FBA59 /* ReviewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

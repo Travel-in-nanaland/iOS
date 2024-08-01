@@ -370,7 +370,7 @@ struct FestivalMainGridView: View {
 								}, label: {
 									VStack(alignment: .leading, spacing: 0) {
 										ZStack {
-											KFImage(URL(string: viewModel.state.getFestivalMainResponse.data[index].thumbnailUrl))
+                                            KFImage(URL(string: viewModel.state.getFestivalMainResponse.data[index].firstImage.thumbnailUrl))
 											
 												.resizable()
 												.frame(width: (Constants.screenWidth - 40) / 2, height: ((Constants.screenWidth - 40) / 2) * (12 / 16))

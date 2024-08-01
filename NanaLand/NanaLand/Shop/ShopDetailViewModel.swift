@@ -9,7 +9,7 @@ import Foundation
 
 class ShopDetailViewModel: ObservableObject {
     struct State {
-        var getShopDetailResponse = ShopDetailModel(id: 0, title: "", originUrl: "", content: "", address: "", addressTag: "", contact: "", homepage: "", time: "", amenity: "", favorite: false)
+        var getShopDetailResponse = ShopDetailModel(id: 0, title: "", images: [DetailImagesList(originUrl: "", thumbnailUrl: "")], content: "", address: "", addressTag: "", contact: "", homepage: "", time: "", amenity: "", favorite: false)
     }
     
     enum Action {

@@ -9,7 +9,7 @@ import Foundation
 
 class FestivalDetailViewModel: ObservableObject {
     struct State {
-        var getFestivalDetailResponse = FestivalDetailModel(id: 0, originUrl: "", addressTag: "", title: "", content: "", address: "", contact: "", time: "", fee: "", homepage: "", period: "", favorite: false)
+        var getFestivalDetailResponse = FestivalDetailModel(id: 0, images: [DetailImagesList(originUrl: "", thumbnailUrl: "")], addressTag: "", title: "", content: "", address: "", contact: "", time: "", fee: "", homepage: "", period: "", favorite: false)
     }
     
     enum Action {

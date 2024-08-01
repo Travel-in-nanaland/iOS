@@ -21,10 +21,12 @@ struct LocationModalView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State var selectedLocation: [LocalizedKey] = []
     @State var buttonsToggled = Array(repeating: false, count: 14)
+    @State var localizedLocationArray: [String] = []
     var startDate: String
     var endDate: String
     var title: String // 이번달 축제인지, 종료된 축제인지
-    
+    var type = "" // 이색체험 액티비티인지 문화예술인지
+    var keyword = "" // 키워드 필터링
     var locationArray: [LocalizedKey] = [
         .jejuCity,
         .Aewol,
@@ -149,6 +151,7 @@ struct LocationModalView: View {
                 for index in 0..<buttonsToggled.count {
                     if buttonsToggled[index] {
                         selectedLocation.append(locationArray[index])
+                        localizedLocationArray.append(locationArray[index].localized(for: localizationManager.language))
                     }
                 }
                 if selectedLocation.isEmpty {
@@ -159,19 +162,19 @@ struct LocationModalView: View {
                     let selectedLocationStrings = selectedLocation.map { $0.rawValue }
                     if title == "이번달" {
                         viewModel.state.getFestivalMainResponse = FestivalModel(totalElements: 0, data: [])
-                        await getLocationFestivalMainItem(page: 0, size: 18, filterName: selectedLocationStrings.joined(separator: ","), start: startDate, end: endDate)
+                        await getLocationFestivalMainItem(page: 0, size: 18, filterName: localizedLocationArray.joined(separator: ","), start: startDate, end: endDate)
                     } else if title == "종료된" {
                         viewModel.state.getFestivalMainResponse = FestivalModel(totalElements: 0, data: [])
                         viewModel.state.page = 0
-                        await getPastLocationFestivalMainItem(page: 0, size: 12, filterName: selectedLocationStrings.joined(separator: ","))
+                        await getPastLocationFestivalMainItem(page: 0, size: 12, filterName: localizedLocationArray.joined(separator: ","))
                     } else if title == "7대자연" {
                         natureViewModel.state.getNatureMainResponse = NatureMainModel(totalElements: 0, data: [])
-                        await getLocationNatureMainItem(filterName: selectedLocationStrings.joined(separator: ","), page: 0, size: 12)
-                        natureViewModel.state.location = selectedLocationStrings.joined(separator: ",")
+                        await getLocationNatureMainItem(filterName: localizedLocationArray.joined(separator: ","), page: 0, size: 12)
+                        natureViewModel.state.location = localizedLocationArray.joined(separator: ",")
                         natureViewModel.state.page = 0
                     } else if title == "전통시장"{ // 전통시장
                         shopViewModel.state.getShopMainResponse = ShopMainModel(totalElements: 0, data: [])
-                        await getLocationShopMainItem(filterName: selectedLocationStrings.joined(separator: ","), page: 0, size: 18)
+                        await getLocationShopMainItem(filterName: localizedLocationArray.joined(separator: ","), page: 0, size: 18)
                         shopViewModel.state.page = 0
                     } else if title == "이색 체험" {
                         experienceViewModel.state.getExperienceMainResponse = ExperienceMainModel(totalElements: 0, data: []) // 초기화
@@ -181,7 +184,7 @@ struct LocationModalView: View {
                         await getLocationRestaurantMainItem(filterName: localizedLocationArray.joined(separator: ","), page: 0, size: 18, type: type, keyword: keyword == "키워드" ? "" : keyword)
                     }
                     
-                    location = selectedLocationStrings.joined(separator: ",")
+                    location = localizedLocationArray.joined(separator: ",")
                     viewModel.state.location = location
                     print(location)
                     // 장소 선택 안 할시 전 지역
@@ -258,7 +261,8 @@ struct LocationModalView: View {
         isModalShown: .constant(true),
         startDate: "2024-05-01",
         endDate: "2024-05-31",
-        title: "이번달 축제"
+        title: "이번달 축제",
+        type: "ACTIVITY"
     )
     .environmentObject(LocalizationManager()) // Providing an environment object if required
 }

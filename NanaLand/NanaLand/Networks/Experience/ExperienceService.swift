@@ -17,4 +17,5 @@ struct ExperienceService {
         return await
         NetworkManager.shared.request(ExperienceEndPoint.getExperienceDetailItem(id: id, isSearch: isSearch))
     }
+    
 }

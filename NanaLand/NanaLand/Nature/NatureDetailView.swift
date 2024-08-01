@@ -22,7 +22,7 @@ struct NatureDetailView: View {
             ScrollViewReader { proxyReader in
                 ScrollView {
                     VStack(spacing: 0) {
-                        KFImage(URL(string: viewModel.state.getNatureDetailResponse.originUrl))
+                        KFImage(URL(string: viewModel.state.getNatureDetailResponse.images[0].originUrl ?? ""))
                             .resizable()
                             .frame(width: Constants.screenWidth, height: Constants.screenWidth * (26 / 39))
                             .padding(.bottom, 24)

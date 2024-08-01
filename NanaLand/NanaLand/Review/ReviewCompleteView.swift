@@ -13,12 +13,11 @@ struct ReviewCompleteView: View {
     var body: some View {
         VStack(spacing: 0) {
             ScrollView {
-                MainView()
+                MainView(title: title)
                     .padding(.bottom, 70)
                 Spacer()
                 Button {
-                    dismiss()
-                    dismiss()
+                    
                 } label: {
                     Text("콘텐츠 다시 보러 가기")
                         
@@ -34,7 +33,7 @@ struct ReviewCompleteView: View {
                 .padding(.bottom, 16)
                 
                 Button(action: {
-                    
+                    dismiss()
                 }, label: {
                     Text("다른 리뷰 추가하기")
                         
@@ -59,8 +58,9 @@ struct ReviewCompleteView: View {
 }
 
 struct MainView: View {
+    var title = ""
     var body: some View {
-        Image("ic_reviewComplete")
+        Image(title == "EXPERIENCE" ? "ic_reviewComplete" : "ic_reviewComplete")
             .resizable()
             .frame(height: 231)
             .padding(.leading, 55)
