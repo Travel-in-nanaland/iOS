@@ -55,6 +55,7 @@ struct ReviewKeywordView: View {
                             showToast = true
                             toastMessage = "최소 3개이상 선택해야 합니다."
                         } else {
+                            
                             dismiss()
                         }
                     }) {

@@ -14,18 +14,40 @@ struct ReviewWriteMain: View {
     
     @EnvironmentObject var localizationManager: LocalizationManager
     @StateObject var viewModel = ReviewWriteViewModel()
+    @State var showAlert = false //뒤로가기 alert 여부
     var reviewAddress: String = ""
     var reviewImageUrl: String = ""
+    @Environment(\.dismiss) private var dismiss
     var reviewTitle: String = ""
     var reviewId: Int64 = 0
     var body: some View {
         
         ZStack{
             VStack(spacing: 0) {
-                NanaNavigationBar(title: .write, showBackButton: true)
-                    .frame(height: 56)
-                    .background(Color.white)
-                    .padding(.bottom, 10)
+                ZStack {
+                    NanaNavigationBar(title: .write, showBackButton: false)
+                        .padding(.bottom, 16)
+                    HStack(spacing: 0) {
+                        Button(action: {
+                            showAlert = true
+                        }, label: {
+                            Image("icLeft")
+                                .renderingMode(.template)
+                                .foregroundStyle(Color.black)
+                        })
+                        .alert(isPresented: $showAlert) {
+                            Alert(title: Text("정말 나가시겠습니까?"), message: Text("지금 나가시면\n작성중인 내용이 삭제됩니다"), primaryButton: .cancel(Text(.cancel), action: {
+                                
+                            }), secondaryButton: .default(Text("네"), action: {
+                                dismiss()
+                            }))
+                        }
+                        .padding(.leading, 16)
+                        Spacer()
+                    }
+                    .padding(.bottom, 12)
+                }
+               
                 ReviewMainGridView(viewModel: viewModel, reviewItemAddress: reviewAddress, reviewItemImageUrl: reviewImageUrl, reviewTitle: reviewTitle, reviewId: reviewId)
             }
             .toolbar(.hidden)
@@ -244,7 +266,13 @@ struct ReviewMainGridView: View {
                                 viewModel.state.reviewDTO.reviewKeywords.append(viewModel.selectedKeyword[i].tag)
                             }
                             await postReview(id: reviewId, category: "EXPERIENCE", body: viewModel.state.reviewDTO, multipartFile: selectedImageData)
-                            AppState.shared.navigationPath.append(ReviewViewType.complete)
+                            if viewModel.state.getReviewPostResponse.status == 200 {
+                                AppState.shared.navigationPath.append(ReviewViewType.complete)
+                            } else {
+                                toastMessage = "알맞은 데이터를 넣어주세요."
+                                showToast = true
+                            }
+                    
                         }
                         
                       
@@ -253,7 +281,9 @@ struct ReviewMainGridView: View {
                             .font(.body_bold)
                             .foregroundStyle(.white)
                     }
+                    
                 }
+                .padding(.bottom, 20)
             }
         }
         .onChange(of: selectedItems) { newItems in

@@ -22,6 +22,6 @@ struct ExperienceData: Codable {
 }
 
 struct ImageList: Codable {
-    let originUrl: String
+    var originUrl: String
     let thumbnailUrl: String
 }
