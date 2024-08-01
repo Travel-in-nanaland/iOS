@@ -75,7 +75,7 @@ struct NatureMainGridView: View {
             )
             .padding(.trailing, 16)
             .sheet(isPresented: $locationModal) {
-                LocationModalView(viewModel: FestivalMainViewModel(), natureViewModel: viewModel, shopViewModel: ShopMainViewModel(), location: $location, isModalShown: $locationModal, startDate: "", endDate: "", title: "7대자연")
+                LocationModalView(viewModel: FestivalMainViewModel(), natureViewModel: viewModel, shopViewModel: ShopMainViewModel(), restaurantModel: RestaurantMainViewModel(), experienceViewModel: ExperienceMainViewModel(), location: $location, isModalShown: $locationModal, startDate: "", endDate: "", title: "7대자연")
                     .presentationDetents([.height(Constants.screenWidth * (63 / 36))])
             }
 

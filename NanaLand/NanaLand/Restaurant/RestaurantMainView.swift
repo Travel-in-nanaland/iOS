@@ -58,7 +58,7 @@ struct RestaurantMainGridView: View {
                 filterButton(text: $location, modal: $locationModal, placeholder: LocalizedKey.allLocation.localized(for: LocalizationManager().language))
                     .sheet(isPresented: $locationModal) {
                         
-                        LocationModalView(viewModel: FestivalMainViewModel(), natureViewModel: NatureMainViewModel(), shopViewModel: ShopMainViewModel(), location: $location, isModalShown: $locationModal, startDate: "", endDate: "", title: LocalizedKey.restaurant.localized(for: localizationManager.language))
+                        LocationModalView(viewModel: FestivalMainViewModel(), natureViewModel: NatureMainViewModel(), shopViewModel: ShopMainViewModel(), restaurantModel: viewModel, experienceViewModel: ExperienceMainViewModel(), location: $location, isModalShown: $locationModal, startDate: "", endDate: "", title: LocalizedKey.restaurant.localized(for: localizationManager.language))
                             .presentationDetents([.height(Constants.screenWidth * (63 / 36))])
                     }
             }

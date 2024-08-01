@@ -12,7 +12,7 @@ struct ExperienceMainView: View {
     @State private var tabIndex = 0
     var body: some View {
         VStack {
-			NanaNavigationBar(title: .experience, showBackButton: true)
+            NanaNavigationBar(title: .experience, showBackButton: true)
                 .frame(height: 56)
                 .padding(.bottom, 24)
             
@@ -77,11 +77,11 @@ struct ExperienceMainGridView: View {
                 .sheet(isPresented: $keywordModal) {
                     if experienceType == "Activity" {
                         // 액티비티 키워드 모달 창
-                        ActivityKeywordView(keyword: $keyword)
+                        ActivityKeywordView(keyword: $keyword, address: location, viewModel: viewModel)
                             .presentationDetents([.height(Constants.screenWidth * (328 / 360))]) // 팝업 뷰 height 조절
                     } else {
                         // 문화예술 키워드 모달 창
-                        CultureAndArtsKeywordView(keyword: $keyword, viewModel: viewModel)
+                        CultureAndArtsKeywordView(keyword: $keyword, address: location, viewModel: viewModel)
                             .presentationDetents([.height(Constants.screenWidth * (376 / 360))]) // 팝업 뷰 height 조절
                     }
                     
@@ -108,8 +108,8 @@ struct ExperienceMainGridView: View {
                         .strokeBorder(Color.gray1, lineWidth: 1)
                 )
                 .padding(.trailing, 16)
-                .sheet(isPresented: $locationModal) {
-                    LocationModalView(viewModel: FestivalMainViewModel(), natureViewModel: NatureMainViewModel(), shopViewModel: ShopMainViewModel(), location: $location, isModalShown: $locationModal, startDate: "", endDate: "", title: LocalizedKey.market.localized(for: localizationMangaer.language))
+                .sheet(isPresented: $locationModal) { // 지역 필터링 뷰
+                    LocationModalView(viewModel: FestivalMainViewModel(), natureViewModel: NatureMainViewModel(), shopViewModel: ShopMainViewModel(), restaurantModel: RestaurantMainViewModel(), experienceViewModel: viewModel,location: $location, isModalShown: $locationModal, startDate: "", endDate: "", title: LocalizedKey.experience.localized(for: localizationMangaer.language), type: experienceType == "Activity" ? "ACTIVITY" : "CULTURE_AND_ARTS", keyword: keyword)
                         .presentationDetents([.height(Constants.screenWidth * (63 / 36))])
                 }
             }
@@ -163,7 +163,7 @@ struct ExperienceMainGridView: View {
                                             Spacer()
                                             Image("icRatingStar")
                                             
-                                            Text("\(viewModel.state.getExperienceMainResponse.data[index].ratingAvg)")
+                                            Text(String(format: "%.1f", viewModel.state.getExperienceMainResponse.data[index].ratingAvg))
                                                 .font(.caption01_semibold)
                                                 .foregroundStyle(Color.main)
                                         }
@@ -188,8 +188,16 @@ struct ExperienceMainGridView: View {
             }
         }
         .onAppear {
+            print("onAppear")
+            print("\(location)")
+            print("\(keyword)")
             Task {
-                experienceType == "Activity" ? await getExperienceMainItem(experienceType: "ACTIVITY", keyword: "", address: "", page: 0, size: 12) : await getExperienceMainItem(experienceType: "CULTURE_AND_ARTS", keyword: "", address: "", page: 0, size: 12)
+                if location == LocalizedKey.allLocation.localized(for: LocalizationManager().language) { // 지역 필터링
+                    experienceType == "Activity" ? await getExperienceMainItem(experienceType: "ACTIVITY", keyword: keyword == "키워드" ? "" : keyword, address: "", page: 0, size: 12) : await getExperienceMainItem(experienceType: "CULTURE_AND_ARTS", keyword: keyword == "키워드" ? "" : keyword, address: "", page: 0, size: 12)
+                } else {
+                    experienceType == "Activity" ? await getExperienceMainItem(experienceType: "ACTIVITY", keyword: keyword == "키워드" ? "" : keyword, address: location, page: 0, size: 12) : await getExperienceMainItem(experienceType: "CULTURE_AND_ARTS", keyword: keyword == "키워드" ? "" : keyword, address: location, page: 0, size: 12)
+                }
+               
                 
                 isAPICalled = true
             }

@@ -11,11 +11,13 @@ struct LocationModalView: View {
     @ObservedObject var viewModel: FestivalMainViewModel
     @ObservedObject var natureViewModel: NatureMainViewModel
     @ObservedObject var shopViewModel: ShopMainViewModel
+    @ObservedObject var restaurantModel: RestaurantMainViewModel
+    @ObservedObject var experienceViewModel: ExperienceMainViewModel
     @EnvironmentObject var localizationManager: LocalizationManager
     
     @Binding var location: String
     @Binding var isModalShown: Bool
-
+    
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State var selectedLocation: [LocalizedKey] = []
     @State var buttonsToggled = Array(repeating: false, count: 14)
@@ -105,7 +107,7 @@ struct LocationModalView: View {
                             buttonsToggled[index].toggle()
                         }
                     }
-                selectedLocation = [LocalizedKey.Hangyeong,LocalizedKey.Daejeong, LocalizedKey.Hallim, LocalizedKey.Aewol, LocalizedKey.jejuCity, LocalizedKey.Jocheon, LocalizedKey.Gunjwa, LocalizedKey.Andeok, LocalizedKey.SeogwipoCity, LocalizedKey.Namwon, LocalizedKey.Pyoseon, LocalizedKey.Seongsan, LocalizedKey.Chuja, LocalizedKey.Udo]
+                    selectedLocation = [LocalizedKey.Hangyeong,LocalizedKey.Daejeong, LocalizedKey.Hallim, LocalizedKey.Aewol, LocalizedKey.jejuCity, LocalizedKey.Jocheon, LocalizedKey.Gunjwa, LocalizedKey.Andeok, LocalizedKey.SeogwipoCity, LocalizedKey.Namwon, LocalizedKey.Pyoseon, LocalizedKey.Seongsan, LocalizedKey.Chuja, LocalizedKey.Udo]
                 }, label: {
                     HStack(spacing: 0) {
                         Image("icCheck")
@@ -152,7 +154,7 @@ struct LocationModalView: View {
                 if selectedLocation.isEmpty {
                     selectedLocation = []
                 }
-
+                
                 Task {
                     let selectedLocationStrings = selectedLocation.map { $0.rawValue }
                     if title == "이번달" {
@@ -181,7 +183,7 @@ struct LocationModalView: View {
                         location = LocalizedKey.allLocation.localized(for: localizationManager.language)
                     }
                 }
-
+                
                 isModalShown = false
             }, label: {
                 Text(.apply)
@@ -217,6 +219,16 @@ struct LocationModalView: View {
         await shopViewModel.action(.getShopMainItem(page: page, size: size, filterName: filterName))
     }
     
+    // 이색 체험에서 지역 선택 시
+    func getLocationExperienceMainItem(filterName: String, page: Int, size: Int, type: String, keyword: String) async {
+        await experienceViewModel.action(.getExperienceMainItem(experienceType: type, keyword: keyword, address: filterName, page: page, size: size))
+    }
+    
+    // 제주 맛집에서 지역 선택 시
+    func getLocationRestaurantMainItem(filterName: String, page: Int, size: Int, type: String, keyword: String) async {
+        await restaurantModel.action(.getRestaurantMainItem(keyword: keyword, address: filterName, page: page, size: size))
+    }
+    
     func toggleButton(_ index: Int) {
         buttonsToggled[index].toggle()
         if buttonsToggled[index] {
@@ -234,6 +246,8 @@ struct LocationModalView: View {
         viewModel: FestivalMainViewModel(), // Assuming FestivalMainViewModel() has an init method
         natureViewModel: NatureMainViewModel(), // Assuming NatureMainViewModel() has an init method
         shopViewModel: ShopMainViewModel(),// Assuming ShopMainViewModel() has an init method
+        restaurantModel: RestaurantMainViewModel(),
+        experienceViewModel: ExperienceMainViewModel(),
         location: .constant(""),
         isModalShown: .constant(true),
         startDate: "2024-05-01",
