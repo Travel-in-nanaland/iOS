@@ -11,7 +11,7 @@ struct ShopDetailModel: Codable {
     
     let id: Int64
     let title: String
-    let originUrl: String
+    let images: [DetailImagesList]
     let content: String
     let address: String
     let addressTag: String

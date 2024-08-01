@@ -15,7 +15,7 @@ struct FestivalModel: Codable {
 struct FestivalData: Codable {
     let id: Int64
     let title: String
-    let thumbnailUrl: String
+    let firstImage: ImageList
     let addressTag: String
     let period: String
     var favorite: Bool

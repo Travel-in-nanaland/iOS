@@ -63,7 +63,7 @@ struct ShopMainGridView: View {
 				)
 				.padding(.trailing, 16)
                     .sheet(isPresented: $locationModal) {
-                        LocationModalView(viewModel: FestivalMainViewModel(), natureViewModel: NatureMainViewModel(), shopViewModel: viewModel, restaurantModel: RestaurantMainViewModel(), experienceViewModel: ExperienceMainViewModel(), location: $location, isModalShown: $locationModal, startDate: "", endDate: "", title: LocalizedKey.market.localized(for: localizationMangaer.language))
+                        LocationModalView(viewModel: FestivalMainViewModel(), natureViewModel: NatureMainViewModel(), shopViewModel: viewModel, restaurantModel: RestaurantMainViewModel(), experienceViewModel: ExperienceMainViewModel(),location: $location, isModalShown: $locationModal, startDate: "", endDate: "", title: LocalizedKey.market.localized(for: localizationMangaer.language))
                         .presentationDetents([.height(Constants.screenWidth * (63 / 36))])
                 }
 			}
@@ -84,7 +84,7 @@ struct ShopMainGridView: View {
                                 }, label: {
                                     VStack(alignment: .leading) {
                                         ZStack {
-                                            KFImage(URL(string: viewModel.state.getShopMainResponse.data[index].thumbnailUrl))
+                                            KFImage(URL(string: viewModel.state.getShopMainResponse.data[index].firstImage.thumbnailUrl))
                                                 .resizable()
                                                 .frame(width: (UIScreen.main.bounds.width - 40) / 2, height: ((UIScreen.main.bounds.width - 40) / 2) * (12 / 16))
                                                 .clipShape(RoundedRectangle(cornerRadius: 12))

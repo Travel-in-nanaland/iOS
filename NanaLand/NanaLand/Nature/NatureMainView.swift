@@ -97,7 +97,7 @@ struct NatureMainGridView: View {
                                 }, label: {
                                     VStack(alignment: .leading) {
                                         ZStack {
-                                            KFImage(URL(string: viewModel.state.getNatureMainResponse.data[index].thumbnailUrl))
+                                            KFImage(URL(string: viewModel.state.getNatureMainResponse.data[index].firstImage.thumbnailUrl))
                                                 .resizable()
                                                 .frame(width: (UIScreen.main.bounds.width - 40) / 2, height: ((UIScreen.main.bounds.width - 40) / 2) * (12 / 16))
                                                 .clipShape(RoundedRectangle(cornerRadius: 12))
@@ -175,6 +175,7 @@ struct NatureMainGridView: View {
             }
         }
         .onAppear {
+           
             Task {
                 if APIFlag {
                     if isAdvertisement {
