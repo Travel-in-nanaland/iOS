@@ -293,31 +293,31 @@ final class SearchViewModel: ObservableObject {
 		case .all:
 			print("didTapHeartInSearchAll - all은 허용되지 않음")
 		case .nature:
-			if let index = state.allCategorySearchResult.nature.data.firstIndex(where: {$0 == article}) {
+            if let index = state.allCategorySearchResult.nature.data.firstIndex(where: {$0.id == article.id}) {
 				state.allCategorySearchResult.nature.data[index].favorite = result.data.favorite
 			}
 			
 		case .festival:
-			if let index = state.allCategorySearchResult.festival.data.firstIndex(where: {$0 == article}) {
+            if let index = state.allCategorySearchResult.festival.data.firstIndex(where: {$0.id == article.id}) {
 				state.allCategorySearchResult.festival.data[index].favorite = result.data.favorite
 			}
 			
 		case .market:
-			if let index = state.allCategorySearchResult.market.data.firstIndex(where: {$0 == article}) {
+			if let index = state.allCategorySearchResult.market.data.firstIndex(where: {$0.id == article.id}) {
 				state.allCategorySearchResult.market.data[index].favorite = result.data.favorite
 			}
 			
 		case .experience:
-			if let index = state.allCategorySearchResult.experience.data.firstIndex(where: {$0 == article}) {
+			if let index = state.allCategorySearchResult.experience.data.firstIndex(where: {$0.id == article.id}) {
 				state.allCategorySearchResult.experience.data[index].favorite = result.data.favorite
 			}
 			
 		case .nanaPick:
-			if let index = state.allCategorySearchResult.nana.data.firstIndex(where: {$0 == article}) {
+			if let index = state.allCategorySearchResult.nana.data.firstIndex(where: {$0.id == article.id}) {
 				state.allCategorySearchResult.nana.data[index].favorite = result.data.favorite
 			}
         case .restaurant:
-            if let index = state.allCategorySearchResult.restaurant.data.firstIndex(where: {$0 == article}) {
+            if let index = state.allCategorySearchResult.restaurant.data.firstIndex(where: {$0.id == article.id}) {
                 state.allCategorySearchResult.restaurant.data[index].favorite = result.data.favorite
             }
 		}
@@ -332,31 +332,31 @@ final class SearchViewModel: ObservableObject {
 		case .all:
 			print("didTapHeartInSearchDetail - all은 허용되지 않음")
 		case .nature:
-			if let index = state.natureCategorySearchResult.data.firstIndex(where: {$0 == article}) {
+			if let index = state.natureCategorySearchResult.data.firstIndex(where: {$0.id == article.id}) {
 				state.natureCategorySearchResult.data[index].favorite = result.data.favorite
 			}
 			
 		case .festival:
-			if let index = state.festivalCategorySearchResult.data.firstIndex(where: {$0 == article}) {
+			if let index = state.festivalCategorySearchResult.data.firstIndex(where: {$0.id == article.id}) {
 				state.festivalCategorySearchResult.data[index].favorite = result.data.favorite
 			}
 			
 		case .market:
-			if let index = state.marketCategorySearchResult.data.firstIndex(where: {$0 == article}) {
+			if let index = state.marketCategorySearchResult.data.firstIndex(where: {$0.id == article.id}) {
 				state.marketCategorySearchResult.data[index].favorite = result.data.favorite
 			}
 			
 		case .experience:
-			if let index = state.experienceCategorySearchResult.data.firstIndex(where: {$0 == article}) {
+			if let index = state.experienceCategorySearchResult.data.firstIndex(where: {$0.id == article.id}) {
 				state.experienceCategorySearchResult.data[index].favorite = result.data.favorite
 			}
 			
 		case .nanaPick:
-			if let index = state.nanaCategorySearchResult.data.firstIndex(where: {$0 == article}) {
+			if let index = state.nanaCategorySearchResult.data.firstIndex(where: {$0.id == article.id}) {
 				state.nanaCategorySearchResult.data[index].favorite = result.data.favorite
 			}
         case .restaurant:
-            if let index = state.restaurantCategorySearchResult.data.firstIndex(where: {$0 == article}) {
+            if let index = state.restaurantCategorySearchResult.data.firstIndex(where: {$0.id == article.id}) {
                 state.restaurantCategorySearchResult.data[index].favorite = result.data.favorite
             }
 		}
@@ -365,7 +365,7 @@ final class SearchViewModel: ObservableObject {
 	private func didTapHeartInVolumeUp(article: Article) async {
 		guard let result = await FavoriteService.toggleFavorite(id: article.id, category: article.category) else {return}
 		
-		if let index = state.searchVolumeResult.firstIndex(where: {$0 == article}) {
+		if let index = state.searchVolumeResult.firstIndex(where: {$0.id == article.id}) {
 			state.searchVolumeResult[index].favorite = result.data.favorite
 		}
 	}

@@ -238,25 +238,25 @@ class FavoriteViewModel: ObservableObject {
 		
 		switch tab {
 		case .all:
-			state.allFavoriteArticles.data.removeAll(where: {$0 == article})
+            state.allFavoriteArticles.data.removeAll(where: {$0.id == article.id})
 			state.allFavoriteArticles.totalElements -= 1
 		case .nature:
-			state.natureFavoriteArticles.data.removeAll(where: {$0 == article})
+			state.natureFavoriteArticles.data.removeAll(where: {$0.id == article.id})
 			state.natureFavoriteArticles.totalElements -= 1
 		case .festival:
-			state.festivalFavoriteArticles.data.removeAll(where: {$0 == article})
+			state.festivalFavoriteArticles.data.removeAll(where: {$0.id == article.id})
 			state.festivalFavoriteArticles.totalElements -= 1
 		case .market:
-			state.marketFavoriteArticles.data.removeAll(where: {$0 == article})
+			state.marketFavoriteArticles.data.removeAll(where: {$0.id == article.id})
 			state.marketFavoriteArticles.totalElements -= 1
 		case .experience:
-			state.experienceFavoriteArticles.data.removeAll(where: {$0 == article})
+            state.experienceFavoriteArticles.data.removeAll(where: {$0.id == article.id})
 			state.experienceFavoriteArticles.totalElements -= 1
 		case .nanaPick:
-			state.allFavoriteArticles.data.removeAll(where: {$0 == article})
+            state.allFavoriteArticles.data.removeAll(where: {$0.id == article.id})
 			state.allFavoriteArticles.totalElements -= 1
         case .restaurant:
-            state.allFavoriteArticles.data.removeAll(where: {$0 == article})
+            state.allFavoriteArticles.data.removeAll(where: {$0.id == article.id})
             state.allFavoriteArticles.totalElements -= 1
 		}
 	}

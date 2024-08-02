@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftUIIntrospect
 
 enum Tab {
-    case home, favorite, story, profile
+    case home, favorite, nanaPick, profile
 }
 
 struct NanaLandTabView: View {
@@ -53,22 +53,22 @@ struct NanaLandTabView: View {
                     }
                     .tag(Tab.favorite)
                 
-                StoryMainView()
+                NanapickMainView()
                     .tabItem {
                         Label(
-							title: { Text(.jejuStory).font(.gothicNeo(.semibold, size: 10)) },
+                            title: { Text(.nanaPick).font(.gothicNeo(.semibold, size: 10)) },
                             icon: {
-                                if appState.currentTab == .story {
-                                    Image("icStoryFill")
+                                if appState.currentTab == .nanaPick {
+                                    Image("icNanaPickFill")
                                 } else {
-                                    Image("icStory")
+                                    Image("icNanaPick")
                                         .renderingMode(.template)
                                        
                                 }
                             }
                         )
                     }
-                    .tag(Tab.story)
+                    .tag(Tab.nanaPick)
                 
                 ProfileMainView()
                     .tabItem {

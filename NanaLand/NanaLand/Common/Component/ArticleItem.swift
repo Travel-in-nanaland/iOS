@@ -17,7 +17,7 @@ struct ArticleItem: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            KFImage(URL(string: article.thumbnailUrl))
+            KFImage(URL(string: article.firstImage.originUrl))
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(width: itemWidth, height: itemWidth*120/175)
@@ -44,5 +44,5 @@ struct ArticleItem: View {
     }
 }
 #Preview {
-    ArticleItem(category: .experience, article: Article(id: 0, thumbnailUrl: "http://tong.visitkorea.or.kr/cms/resource/85/3076985_image3_1.jpg", title: "근하신뇽! 새해도 9.81파크와 함께해용", favorite: true, category: .experience), onTapHeart: {})
+    ArticleItem(category: .experience, article: Article(id: 0, firstImage: ArticleImageList(originUrl: "http://tong.visitkorea.or.kr/cms/resource/85/3076985_image3_1.jpg", thumbnailUrl: "http://tong.visitkorea.or.kr/cms/resource/85/3076985_image3_1.jpg"), title: "근하신뇽! 새해도 9.81파크와 함께해용", favorite: true, category: .experience), onTapHeart: {})
 }

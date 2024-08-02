@@ -12,10 +12,16 @@ struct NaNaPickModel: Codable {
     var data: [ImageInfo]
 }
 
-struct ImageInfo: Codable, Hashable, Identifiable{
+struct ImageInfo: Codable{
     let id: Int64
-    let thumbnailUrl: String
+    let firstImage: NanaPickImageList
     let version: String
     let subHeading: String
-    let heading: String 
+    let heading: String
+    let newest: Bool
+}
+
+struct NanaPickImageList: Codable {
+    let originUrl: String
+    let thumbnailUrl: String
 }

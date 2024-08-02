@@ -32,6 +32,7 @@ class NaNaPickMainViewModel: ObservableObject {
            
             if data != nil {
                 await MainActor.run {
+                    print("api 연결 성공: \(data!.data.data)")
                     state.getNaNaPickResponse.data.append(contentsOf: data!.data.data)
                 }
             } else {

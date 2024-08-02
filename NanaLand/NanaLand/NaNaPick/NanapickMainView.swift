@@ -40,7 +40,7 @@ struct NanapickMainView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            NanaNavigationBar(title: .nanaPick, showBackButton: true)
+            NanaNavigationBar(title: .nanaPick, showBackButton: false)
                 .frame(height: 56)
    
             
@@ -51,7 +51,7 @@ struct NanapickMainView: View {
                         NavigationLink(destination: NaNaPickDetailView(id: index.id), label: {
                             //id 값을 넘겨줘서 어떤 id 값을 가진 디테일뷰를 불러올 지 결정
                             ZStack {
-                                KFImage(URL(string:index.thumbnailUrl))
+                                KFImage(URL(string:index.firstImage.originUrl))
                                     .resizable()
                                     .frame(width: Constants.screenWidth, height: 200)
                                 VStack(spacing: 0) {

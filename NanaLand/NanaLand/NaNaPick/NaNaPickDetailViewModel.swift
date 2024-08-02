@@ -9,7 +9,7 @@ import Foundation
 
 class NaNaPickDetailViewModel: ObservableObject {
     struct State {
-        var getNaNaPickDetailResponse = NaNaPickDetailModel(originUrl: "https://nanaland-image-bucket.s3.ap-northeast-2.amazonaws.com/images/4.png", notice: "", nanaDetails: [DetailInfo(number: 1, subTitle: "sub1", title: "title12345", imageUrl: "https://nanaland-image-bucket.s3.ap-northeast-2.amazonaws.com/images/1.png", content: "content1", additionalInfoList: [AdditionalInfo(infoEmoji: "", infoKey: "주차", infoValue: "없음"), AdditionalInfo(infoEmoji: "",infoKey: "주소", infoValue: "제주도")], hashtags: ["ex1", "ex2"])])
+        var getNaNaPickDetailResponse = NaNaPickDetailModel(subHeading: "", heading: "", version: "", firstImage: NanaPickDetailImageList(originUrl: "", thumbnailUrl: ""), notice: "", nanaDetails: [DetailInfo(number: 3, subTitle: "", title: "", images: [NanaPickDetailImageList(originUrl: "", thumbnailUrl: "")], content: "", additionalInfoList: [AdditionalInfo(infoEmoji: "", infoKey: "", infoValue: "")], hashtags: [""])], favorite: true)
     }
     
     enum Action {
@@ -31,6 +31,7 @@ class NaNaPickDetailViewModel: ObservableObject {
             
             if data != nil {
                 await MainActor.run {
+                    print("api 연결 성공: \(data!.data)")
                     state.getNaNaPickDetailResponse = data!.data
                 }
             } else {

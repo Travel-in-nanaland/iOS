@@ -31,17 +31,17 @@ struct FavoriteToggleRequest: Codable {
 	}
 }
 
-struct FavoriteArticle: Codable, Hashable {
+struct FavoriteArticle: Codable {
 	let id: Int
 	let title: String
-	let thumbnailUrl: String
+	let firstImage: ArticleImageList
 	let category: Category
 	
 	init(from decoder: any Decoder) throws {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
 		self.id = try container.decode(Int.self, forKey: .id)
 		self.title = try container.decode(String.self, forKey: .title)
-		self.thumbnailUrl = try container.decode(String.self, forKey: .thumbnailUrl)
+		self.firstImage = try container.decode(ArticleImageList.self, forKey: .firstImage)
 		
 		let categoryString = try container.decode(String.self, forKey: .category)
 		self.category =  {

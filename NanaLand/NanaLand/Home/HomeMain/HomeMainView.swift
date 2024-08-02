@@ -119,7 +119,7 @@ struct HomeMainView: View {
                     })
                     .frame(minHeight: 65)
                     Spacer()
-                    // 나나 Pick link
+                    // 제주 맛집 link
                     Button(action: {
                         AppState.shared.navigationPath.append(HomeViewType.restaurant)
                     }, label: {
