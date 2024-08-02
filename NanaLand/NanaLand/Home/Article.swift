@@ -7,22 +7,23 @@
 
 import Foundation
 
-struct Article: Codable, Hashable {
+struct Article: Codable {
+    
 	let id: Int
-	let thumbnailUrl: String
+	let firstImage: ArticleImageList
 	let title: String
 	var favorite: Bool
 	let category: Category
 	
 	init(
 		id: Int,
-		thumbnailUrl: String,
+        firstImage: ArticleImageList,
 		title: String,
 		favorite: Bool,
 		category: Category
 	) {
 		self.id = id
-		self.thumbnailUrl = thumbnailUrl
+		self.firstImage = firstImage
 		self.title = title
 		self.favorite = favorite
 		self.category = category
@@ -30,7 +31,7 @@ struct Article: Codable, Hashable {
 	
 	init(from favoriteArticle: FavoriteArticle) {
 		self.id = favoriteArticle.id
-		self.thumbnailUrl = favoriteArticle.thumbnailUrl
+        self.firstImage = favoriteArticle.firstImage
 		self.title = favoriteArticle.title
 		self.favorite = true
 		self.category = favoriteArticle.category
@@ -38,7 +39,7 @@ struct Article: Codable, Hashable {
 	
 	init(from searchArticle: SearchArticle, category: Category) {
 		self.id = searchArticle.id
-		self.thumbnailUrl = searchArticle.thumbnailUrl
+        self.firstImage = searchArticle.firstImage
 		self.title = searchArticle.title
 		self.favorite = searchArticle.favorite
 		self.category = category
@@ -48,7 +49,7 @@ struct Article: Codable, Hashable {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
 		self.id = try container.decode(Int.self, forKey: .id)
 		self.title = try container.decode(String.self, forKey: .title)
-		self.thumbnailUrl = try container.decode(String.self, forKey: .thumbnailUrl)
+        self.firstImage = try container.decode(ArticleImageList.self, forKey: .firstImage)
 		self.favorite = try container.decode(Bool.self, forKey: .favorite)
 		
 		let categoryString = try container.decode(String.self, forKey: .category)
@@ -105,4 +106,9 @@ struct SearchAllArticleResponse: Codable {
 		self.nana = nana
         self.restaurant = restaurant
 	}
+}
+
+struct ArticleImageList: Codable {
+    let originUrl: String
+    let thumbnailUrl: String
 }

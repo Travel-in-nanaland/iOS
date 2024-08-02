@@ -90,7 +90,7 @@ struct SearchDetailCategoryResultView: View {
                                     return searchVM.state.restaurantCategorySearchResult.data
                                 }
                             }(),
-                            id: \.self) { article in
+                            id: \.id) { article in
                                 NavigationLink(destination: {
                                     destinationView(for: article)
                                 }) {

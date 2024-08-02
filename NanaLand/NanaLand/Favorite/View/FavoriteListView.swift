@@ -30,7 +30,7 @@ struct FavoriteListView: View {
                             return favoriteVM.state.restaurantFavoriteArticles.data
                         }
                     }() as [Article],
-                        id: \.self
+                            id: \.id
                     ) { article in
                         NavigationLink {
                             destinationView(for: article)

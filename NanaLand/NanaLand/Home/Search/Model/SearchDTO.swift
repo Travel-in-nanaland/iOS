@@ -19,10 +19,11 @@ struct SearchDetailCategoryResponse: Codable {
 
 struct SearchArticle: Codable {
 	let id: Int
-	let thumbnailUrl: String
+	let firstImage: ArticleImageList
 	let title: String
 	var favorite: Bool
 }
+
 
 struct SearchAllCategoryResponse: Codable {
 	var festival: SearchDetailCategoryResponse

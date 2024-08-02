@@ -210,7 +210,7 @@ struct SearchMainView: View {
                 LazyVGrid(
                     columns: [GridItem(.flexible()), GridItem(.flexible())]
                 ) {
-                    ForEach(searchVM.state.searchVolumeResult, id: \.self) { article in
+                    ForEach(searchVM.state.searchVolumeResult, id: \.id) { article in
                         NavigationLink {
                             switch article.category {
                             case .nature:
@@ -231,7 +231,7 @@ struct SearchMainView: View {
                             }
                         } label: {
                             VStack(alignment: .leading, spacing: 8) {
-                                KFImage(URL(string: article.thumbnailUrl))
+                                KFImage(URL(string: article.firstImage.thumbnailUrl))
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
                                     .frame(width: itemWidth, height: itemWidth*120/175)
