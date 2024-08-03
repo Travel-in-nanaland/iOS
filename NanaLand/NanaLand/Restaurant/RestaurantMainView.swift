@@ -73,9 +73,53 @@ struct RestaurantMainGridView: View {
                     } else {
                         LazyVGrid(columns: columns, spacing: 16) {
                             ForEach(viewModel.state.getRestaurantMainResponse.data.indices, id: \.self) { index in
-                                RestaurantItemButton(index: index, viewModel: viewModel)
-                                    .frame(width: (UIScreen.main.bounds.width - 40) / 2, height: 196)
-                                    .padding(.leading, 0)
+                                Button(action: {
+                                    AppState.shared.navigationPath.append(ArticleViewType.detail(id: viewModel.state.getRestaurantMainResponse.data[index].id))
+                                }) {
+                                    VStack(alignment: .leading) {
+                                        ZStack {
+                                            KFImage(URL(string: viewModel.state.getRestaurantMainResponse.data[index].firstImage.thumbnailUrl))
+                                                .resizable()
+                                                .frame(width: (UIScreen.main.bounds.width - 40) / 2, height: ((UIScreen.main.bounds.width - 40) / 2) * (12 / 16))
+                                                .clipShape(RoundedRectangle(cornerRadius: 12))
+                                            
+                                            VStack {
+                                                HStack {
+                                                    Spacer()
+                                                    
+                                                    Button {
+                                                        Task {
+                                                            await toggleFavorite(body: FavoriteToggleRequest(id: Int(viewModel.state.getRestaurantMainResponse.data[index].id), category: .restaurant), index: index)
+                                                        }
+                                                    } label: {
+                                                        viewModel.state.getRestaurantMainResponse.data[index].favorite ? Image("icHeartFillMain") : Image("icHeartDefault")
+                                                    }
+                                                }
+                                                .padding(.top, 8)
+                                                Spacer()
+                                            }
+                                            .padding(.trailing, 8)
+                                        }
+                                        
+                                        Spacer()
+                                        
+                                        Text(viewModel.state.getRestaurantMainResponse.data[index].title)
+                                            .font(.gothicNeo(.bold, size: 14))
+                                            .foregroundStyle(.black)
+                                            .lineLimit(1)
+                                        
+                                        Spacer()
+                                        
+                                        Text(viewModel.state.getRestaurantMainResponse.data[index].addressTag)
+                                            .frame(width: 64, height: 20)
+                                            .background(
+                                                RoundedRectangle(cornerRadius: 30)
+                                                    .foregroundStyle(Color.main10P)
+                                            )
+                                            .font(.gothicNeo(.regular, size: 12))
+                                            .foregroundStyle(Color.main)
+                                    }
+                                }
                             }
                         }
                         .padding(.horizontal, 16)
@@ -128,61 +172,6 @@ struct RestaurantMainGridView: View {
     
     func getRestaurantMainItem(keyword: String, address: String, page: Int, size: Int) async {
         await viewModel.action(.getRestaurantMainItem(keyword: keyword, address: address, page: page, size: size))
-    }
-}
-
-struct RestaurantItemButton: View {
-    let index: Int
-    @ObservedObject var viewModel: RestaurantMainViewModel
-    
-    var body: some View {
-        Button(action: {
-            AppState.shared.navigationPath.append(ArticleViewType.detail(id: viewModel.state.getRestaurantMainResponse.data[index].id))
-        }) {
-            VStack(alignment: .leading) {
-                ZStack {
-                    KFImage(URL(string: viewModel.state.getRestaurantMainResponse.data[index].firstImage.thumbnailUrl))
-                        .resizable()
-                        .frame(width: (UIScreen.main.bounds.width - 40) / 2, height: ((UIScreen.main.bounds.width - 40) / 2) * (12 / 16))
-                        .clipShape(RoundedRectangle(cornerRadius: 12))
-                    
-                    VStack {
-                        HStack {
-                            Spacer()
-                            
-                            Button {
-                                Task {
-                                    await toggleFavorite(body: FavoriteToggleRequest(id: Int(viewModel.state.getRestaurantMainResponse.data[index].id), category: .restaurant), index: index)
-                                }
-                            } label: {
-                                viewModel.state.getRestaurantMainResponse.data[index].favorite ? Image("icHeartFillMain") : Image("icHeartDefault")
-                            }
-                        }
-                        .padding(.top, 8)
-                        Spacer()
-                    }
-                    .padding(.trailing, 8)
-                }
-                
-                Spacer()
-                
-                Text(viewModel.state.getRestaurantMainResponse.data[index].title)
-                    .font(.gothicNeo(.bold, size: 14))
-                    .foregroundStyle(.black)
-                    .lineLimit(1)
-                
-                Spacer()
-                
-                Text(viewModel.state.getRestaurantMainResponse.data[index].addressTag)
-                    .frame(width: 64, height: 20)
-                    .background(
-                        RoundedRectangle(cornerRadius: 30)
-                            .foregroundStyle(Color.main10P)
-                    )
-                    .font(.gothicNeo(.regular, size: 12))
-                    .foregroundStyle(Color.main)
-            }
-        }
     }
     
     func toggleFavorite(body: FavoriteToggleRequest, index: Int) async {

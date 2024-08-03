@@ -159,7 +159,7 @@ struct LocationModalView: View {
                 }
                 
                 Task {
-                    let selectedLocationStrings = selectedLocation.map { $0.rawValue }
+                    let selectedLocationStrings = selectedLocation.map { $0.localized(for: localizationManager.language) }
                     if title == "이번달" {
                         viewModel.state.getFestivalMainResponse = FestivalModel(totalElements: 0, data: [])
                         await getLocationFestivalMainItem(page: 0, size: 18, filterName: selectedLocationStrings.joined(separator: ","), start: startDate, end: endDate)
