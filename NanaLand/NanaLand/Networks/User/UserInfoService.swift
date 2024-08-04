@@ -15,4 +15,7 @@ struct UserInfoService {
 	static func patchUserLanguage(body: PatchUserLanguageRequest) async -> BaseResponse<EmptyResponseModel>? {
 		return await NetworkManager.shared.request(UserInfoEndPoint.patchUserLanguage(locale: body))
 	}
+    static func getUserProfileInto(id: Int64) async -> BaseResponse<ProfileMainModel>? {
+        return await NetworkManager.shared.request(UserInfoEndPoint.getUserProfileInfo(id: id))
+    }
 }

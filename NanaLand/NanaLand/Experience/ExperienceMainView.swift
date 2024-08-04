@@ -188,9 +188,6 @@ struct ExperienceMainGridView: View {
             }
         }
         .onAppear {
-            print("onAppear")
-            print("\(location)")
-            print("\(keyword)")
             Task {
                 if location == LocalizedKey.allLocation.localized(for: LocalizationManager().language) { // 지역 필터링
                     experienceType == "Activity" ? await getExperienceMainItem(experienceType: "ACTIVITY", keyword: keyword == "키워드" ? "" : keyword, address: "", page: 0, size: 12) : await getExperienceMainItem(experienceType: "CULTURE_AND_ARTS", keyword: keyword == "키워드" ? "" : keyword, address: "", page: 0, size: 12)
@@ -200,6 +197,7 @@ struct ExperienceMainGridView: View {
                
                 
                 isAPICalled = true
+            
             }
         }
     }
