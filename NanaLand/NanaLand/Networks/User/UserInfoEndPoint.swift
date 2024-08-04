@@ -11,6 +11,7 @@ import Alamofire
 enum UserInfoEndPoint {
     case getUserInfo
 	case patchUserLanguage(locale: PatchUserLanguageRequest)
+    case getUserProfileInfo(id: Int64) // 다른 유저 프로필 조회
 }
 
 extension UserInfoEndPoint: EndPoint {
@@ -24,6 +25,8 @@ extension UserInfoEndPoint: EndPoint {
             return "/profile"
 		case .patchUserLanguage:
 			return "/language"
+        case .getUserProfileInfo:
+            return "/profile"
         }
     }
     
@@ -33,6 +36,8 @@ extension UserInfoEndPoint: EndPoint {
             return .get
 		case .patchUserLanguage:
 			return .post
+        case .getUserProfileInfo:
+            return .get
         }
     }
     
@@ -42,6 +47,9 @@ extension UserInfoEndPoint: EndPoint {
             return .requestPlain
 		case let .patchUserLanguage(locale):
 			return .requestJSONEncodable(body: locale)
+        case let .getUserProfileInfo(id):
+            let param = ["id": id]
+            return .requestParameters(parameters: param)
         }
     }
     

@@ -90,6 +90,7 @@ struct ActivityKeywordView: View {
                     viewModel.state.getExperienceMainResponse = ExperienceMainModel(totalElements: 0, data: [])
                     await getKeywordExperienceMainItem(keyword: keyword, address: address == LocalizedKey.allLocation.localized(for: LocalizationManager().language) ? "" : address, page: 0, size: 12)
                 }
+               
                 dismiss()
                 print("\(keyword)")
             } label: {

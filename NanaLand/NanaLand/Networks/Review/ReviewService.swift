@@ -29,4 +29,8 @@ struct ReviewService {
     static func getPreviewData(memberId: Int64) async -> BaseResponse<PreviewReviewModel>? {
         return await NetworkManager.shared.request(ReviewEndPoint.getPreviewData(memberId: memberId))
     }
+    // 타 유저 모든 리뷰 조회
+    static func getUserAllReviewData(memberId: Int64, page: Int, size: Int) async -> BaseResponse<MyAllReviewModel>? {
+        return await NetworkManager.shared.request(ReviewEndPoint.getUserAllReviewData(memberId: memberId, page: page, size: size))
+    }
 }
