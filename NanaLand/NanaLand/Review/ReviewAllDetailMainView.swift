@@ -12,6 +12,7 @@ struct ReviewAllDetailMainView: View {
     @StateObject var viewModel = ReviewAllDetailMainViewModel()
     @State private var isAPICalled = false
     @State private var contentIsOn: [Bool] = []
+    @State private var reportModal = false
     var id: Int64
     var reviewCategory: String = ""
     var body: some View {
@@ -65,6 +66,8 @@ struct ReviewAllDetailMainView: View {
                                             HStack(spacing: 0) {
                                                 Text("리뷰 \(viewModel.state.getReviewDataResponse.data[index].memberReviewCount ?? 0)")
                                                     .font(.caption01)
+                                                Text(" | ")
+                                                    .font(.caption01)
                                                 Image("icRatingStar")
                                                 Text("\(String(format: "%.1f", viewModel.state.getReviewDataResponse.data[index].rating ?? 0))")
                                                     .font(.caption01)
@@ -92,23 +95,27 @@ struct ReviewAllDetailMainView: View {
                                         }
                                     }
                                     HStack(alignment: .bottom, spacing: 0) {
-                                        Text("\(viewModel.state.getReviewDataResponse.data[index].content ?? "")")
-                                            .lineLimit(contentIsOn[index] ? nil : 2)
+//                                        Text("\(viewModel.state.getReviewDataResponse.data[index].content ?? "")")
+//                                            .lineLimit(contentIsOn[index] ? nil : 2)
+//                                            .padding(.leading, 16)
+//                                        Button {
+//                                            withAnimation(nil) {
+//                                                contentIsOn[index].toggle()
+//                                            }
+//                                        } label: {
+//                                            Text(contentIsOn[index] ? "접기" : "더 보기")
+//                                                .font(.caption01)
+//                                                .foregroundStyle(Color.gray1)
+//                                                .padding(.leading, 2)
+//                                        }
+                                        ExpandableText("\(viewModel.state.getReviewDataResponse.data[index].content ?? "")", lineLimit: 2)
+                                            .font(.body02)
                                             .padding(.leading, 16)
-                                        Button {
-                                            withAnimation(nil) {
-                                                contentIsOn[index].toggle()
-                                            }
-                                        } label: {
-                                            Text(contentIsOn[index] ? "접기" : "더 보기")
-                                                .font(.caption01)
-                                                .foregroundStyle(Color.gray1)
-                                                .padding(.leading, 2)
-                                        }
+                                            .padding(.trailing, 16)
                                     }
                                     
                                     HStack(spacing: 0) {
-                                        Text("\((viewModel.state.getReviewDataResponse.data[index].reviewTypeKeywords ?? [""]).map {"#\($0)"}.joined(separator: ","))")
+                                        Text("\((viewModel.state.getReviewDataResponse.data[index].reviewTypeKeywords ?? [""]).map {"#\($0)"}.joined(separator: " "))")
                                             .font(.caption01)
                                             .foregroundStyle(Color.main)
                                     }
@@ -123,14 +130,29 @@ struct ReviewAllDetailMainView: View {
                                         Text("\(viewModel.state.getReviewDataResponse.data[index].createdAt ?? "")")
                                             .font(.caption01)
                                             .foregroundStyle(Color.gray1)
-                                            .padding(.trailing, 16)
-                                            .padding(.bottom, 16)
+                                        Button {
+                                            reportModal = true
+                                        } label: {
+                                            Image("icPointBtn")
+                                                .resizable()
+                                                .renderingMode(.template)
+                                                .frame(width: 20, height: 20)
+                                                .foregroundStyle(Color.gray1)
+                                        }
+
                                     }
+                                    .padding(.trailing, 16)
+                                    .padding(.bottom, 16)
+                                }
+                                .sheet(isPresented: $reportModal) {
+                                    ReportModalView()
+                                        .presentationDetents([.height(Constants.screenWidth * (103 / Constants.screenWidth))])
                                 }
                                 .clipShape(RoundedRectangle(cornerRadius: 12))
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 12)
-                                        .stroke(Color.gray1, lineWidth: 1)
+                                        .stroke(Color.gray.opacity(0.1), lineWidth: 1)
+                                        .shadow(color: .gray.opacity(0.3), radius: 1, x: 0, y: 0)
                                 )
                                 .padding(.leading, 16)
                                 .padding(.trailing, 16)
@@ -147,8 +169,10 @@ struct ReviewAllDetailMainView: View {
         .onAppear {
             Task {
                 await getReviewData(id: id, category: reviewCategory, page: 0, size: 100)
-                for i in 0...Int(viewModel.state.getReviewDataResponse.totalElements - 1) {
-                    contentIsOn.append(false)
+                if viewModel.state.getReviewDataResponse.totalElements >= 1 {
+                    for i in 0...Int(viewModel.state.getReviewDataResponse.totalElements - 1) {
+                        contentIsOn.append(false)
+                    }
                 }
                 isAPICalled = true
             }

@@ -14,6 +14,7 @@ struct ActivityKeywordView: View {
     @ObservedObject var viewModel: ExperienceMainViewModel
     @State private var selectedKeywordItem = 0
     @State var selectedKeyword: [String] = [] // 선택된 키워드 이름 담을 배열
+    @State var selectedAPIKeyword: [String] = []
     // 눌려진 키워드 버튼 담을 배열(눌렸는지 안 눌렸는지)
     @State var buttonsToggled = Array(repeating: false, count: 6)
     var ActivityKeywordArray = ["LAND_LEISURE", "WATER_LEISURE", "AIR_LEISURE", "MARINE_EXPERIENCE", "RURAL_EXPERIENCE", "HEALING_THERAPY"]
@@ -80,15 +81,17 @@ struct ActivityKeywordView: View {
                 for index in 0..<buttonsToggled.count {
                     if buttonsToggled[index] == true {
                         selectedKeyword.append(ActivityKeywordArray[index])
+                        selectedAPIKeyword.append(ActivityKeywordButtonNameArray[index])
+                        
                     }
                 }
                 if selectedKeyword.count == 0 {
                     selectedKeyword = [""]
                 }
-                keyword = selectedKeyword.joined(separator: ",")
+                keyword = selectedAPIKeyword.joined(separator: ",")
                 Task {
                     viewModel.state.getExperienceMainResponse = ExperienceMainModel(totalElements: 0, data: [])
-                    await getKeywordExperienceMainItem(keyword: keyword, address: address == LocalizedKey.allLocation.localized(for: LocalizationManager().language) ? "" : address, page: 0, size: 12)
+                    await getKeywordExperienceMainItem(keyword: selectedKeyword.joined(separator: ","), address: address == LocalizedKey.allLocation.localized(for: LocalizationManager().language) ? "" : address, page: 0, size: 12)
                 }
                
                 dismiss()

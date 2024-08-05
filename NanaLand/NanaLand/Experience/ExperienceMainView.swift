@@ -42,6 +42,7 @@ struct ExperienceMainGridView: View {
     @StateObject var viewModel = ExperienceMainViewModel()
     @State private var location = LocalizedKey.allLocation.localized(for: LocalizationManager().language)
     @State private var keyword = "키워드"
+    @State private var APIKeyword = ""
     @State private var isAPICalled = false
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
     var experienceType = "Activity"
@@ -190,9 +191,16 @@ struct ExperienceMainGridView: View {
         .onAppear {
             Task {
                 if location == LocalizedKey.allLocation.localized(for: LocalizationManager().language) { // 지역 필터링
-                    experienceType == "Activity" ? await getExperienceMainItem(experienceType: "ACTIVITY", keyword: keyword == "키워드" ? "" : keyword, address: "", page: 0, size: 12) : await getExperienceMainItem(experienceType: "CULTURE_AND_ARTS", keyword: keyword == "키워드" ? "" : keyword, address: "", page: 0, size: 12)
+                    APIKeyword = keyword.replacingOccurrences(of: "수상레저", with: "WATER_LEISURE")
+                    APIKeyword = keyword.replacingOccurrences(of: "지상레저", with: "LAND_LEISURE")
+                    APIKeyword = keyword.replacingOccurrences(of: "항공레저", with: "AIR_LEISURE")
+                    APIKeyword = keyword.replacingOccurrences(of: "해양레저", with: "MARINE_LEISURE")
+                    APIKeyword = keyword.replacingOccurrences(of: "농촌체험", with: "RURAL_EXPERIENCE")
+                    APIKeyword = keyword.replacingOccurrences(of: "힐링테라피", with: "HEALING_THERAPY")
+                   
+                    experienceType == "Activity" ? await getExperienceMainItem(experienceType: "ACTIVITY", keyword: keyword == "키워드" ? "" : APIKeyword, address: "", page: 0, size: 12) : await getExperienceMainItem(experienceType: "CULTURE_AND_ARTS", keyword: keyword == "키워드" ? "" : APIKeyword, address: "", page: 0, size: 12)
                 } else {
-                    experienceType == "Activity" ? await getExperienceMainItem(experienceType: "ACTIVITY", keyword: keyword == "키워드" ? "" : keyword, address: location, page: 0, size: 12) : await getExperienceMainItem(experienceType: "CULTURE_AND_ARTS", keyword: keyword == "키워드" ? "" : keyword, address: location, page: 0, size: 12)
+                    experienceType == "Activity" ? await getExperienceMainItem(experienceType: "ACTIVITY", keyword: keyword == "키워드" ? "" : APIKeyword, address: location, page: 0, size: 12) : await getExperienceMainItem(experienceType: "CULTURE_AND_ARTS", keyword: keyword == "키워드" ? "" : APIKeyword, address: location, page: 0, size: 12)
                 }
                
                 
