@@ -75,14 +75,13 @@ struct FavoriteListView: View {
             case .market:
                 ShopDetailView(id: Int64(article.id))
             case .experience:
-                Text("Experience Detail View")
-    //            ExperienceDetailView(id: article.id)
+                ExperienceDetailView(id: Int64(article.id))
             case .nanaPick:
                 NaNaPickDetailView(id: Int64(article.id))
             case .all:
                 Text("test")
             case .restaurant:
-                Text("test")
+                RestaurantDetailView(id: Int64(article.id))
             }
         }
 }

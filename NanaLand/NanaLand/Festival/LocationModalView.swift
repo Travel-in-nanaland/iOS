@@ -179,9 +179,9 @@ struct LocationModalView: View {
                     } else if title == "이색 체험" {
                         experienceViewModel.state.getExperienceMainResponse = ExperienceMainModel(totalElements: 0, data: []) // 초기화
                         await getLocationExperienceMainItem(filterName: selectedLocationStrings.joined(separator: ","), page: 0, size: 18, type: type, keyword: keyword == "키워드" ? "" : keyword)
-                    } else {
+                    } else if title == "제주 맛집" {
                         restaurantModel.state.getRestaurantMainResponse = RestaurantMainModel(totalElements: 0, data: []) // 초기화
-                        await getLocationRestaurantMainItem(filterName: localizedLocationArray.joined(separator: ","), page: 0, size: 18, type: type, keyword: keyword == "키워드" ? "" : keyword)
+                        await getLocationRestaurantMainItem(filterName: selectedLocationStrings.joined(separator: ","), page: 0, size: 12, keyword: keyword)
                     }
                     
                     location = selectedLocationStrings.joined(separator: ",")
@@ -234,7 +234,7 @@ struct LocationModalView: View {
     }
     
     // 제주 맛집에서 지역 선택 시
-    func getLocationRestaurantMainItem(filterName: String, page: Int, size: Int, type: String, keyword: String) async {
+    func getLocationRestaurantMainItem(filterName: String, page: Int, size: Int, keyword: String) async {
         await restaurantModel.action(.getRestaurantMainItem(keyword: keyword, address: filterName, page: page, size: size))
     }
     

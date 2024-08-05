@@ -41,7 +41,7 @@ extension FavoriteEndPoint: EndPoint {
 		case .getNanaFavoriteList:
 			return "/nana/list"
         case .getRestaurantFavoriteList:
-            return ""
+            return "/restaurant/list"
 		}
 	}
 	

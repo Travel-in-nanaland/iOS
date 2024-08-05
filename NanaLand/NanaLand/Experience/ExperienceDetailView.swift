@@ -511,11 +511,11 @@ struct ExperienceDetailView: View {
             .navigationDestination(for: ExperienceViewType.self) { viewType in
                 switch viewType {
                 case let .writeReview:
-                    ReviewWriteMain(reviewAddress: viewModel.state.getExperienceDetailResponse.address ?? "", reviewImageUrl: viewModel.state.getExperienceDetailResponse.images![0].originUrl ?? "", reviewTitle: viewModel.state.getExperienceDetailResponse.title ?? "", reviewId: viewModel.state.getExperienceDetailResponse.id ?? 0)
+                    ReviewWriteMain(reviewAddress: viewModel.state.getExperienceDetailResponse.address ?? "", reviewImageUrl: viewModel.state.getExperienceDetailResponse.images![0].originUrl ?? "", reviewTitle: viewModel.state.getExperienceDetailResponse.title ?? "", reviewId: viewModel.state.getExperienceDetailResponse.id ?? 0, reviewCategory: "EXPERIENCE")
                 case let .userProfile(id):
                     UserProfileMainView(memberId: id)
                 case let .reviewAll(id):
-                    ReviewAllDetailMainView(id: id)
+                    ReviewAllDetailMainView(id: id, reviewCategory: "EXPERIENCE")
                 }
             }
            

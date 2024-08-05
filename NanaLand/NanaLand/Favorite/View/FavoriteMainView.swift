@@ -80,6 +80,9 @@ struct FavoriteMainView: View {
             
             FavoriteListView(category: .nanaPick)
                 .tag(Category.nanaPick)
+            
+            FavoriteListView(category: .restaurant)
+                .tag(Category.restaurant)
         }
         .environmentObject(favoriteVM)
         .tabViewStyle(.page(indexDisplayMode: .never))

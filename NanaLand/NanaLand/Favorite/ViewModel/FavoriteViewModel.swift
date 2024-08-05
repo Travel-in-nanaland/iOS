@@ -215,7 +215,7 @@ class FavoriteViewModel: ObservableObject {
         
         state.isLoading = true
         
-        if let data = await FavoriteService.getRestaurantFavoriteList(page: state.nanaFavoriteArticlePage) {
+        if let data = await FavoriteService.getRestaurantFavoriteList(page: state.restaurantFavoriteArticlePage) {
             if state.restaurantFavoriteArticlePage == 0 {
                 state.restaurantFavoriteArticles = data.data
             } else {
@@ -253,11 +253,11 @@ class FavoriteViewModel: ObservableObject {
             state.experienceFavoriteArticles.data.removeAll(where: {$0.id == article.id})
 			state.experienceFavoriteArticles.totalElements -= 1
 		case .nanaPick:
-            state.allFavoriteArticles.data.removeAll(where: {$0.id == article.id})
-			state.allFavoriteArticles.totalElements -= 1
+            state.nanaFavoriteArticles.data.removeAll(where: {$0.id == article.id})
+			state.nanaFavoriteArticles.totalElements -= 1
         case .restaurant:
-            state.allFavoriteArticles.data.removeAll(where: {$0.id == article.id})
-            state.allFavoriteArticles.totalElements -= 1
+            state.restaurantFavoriteArticles.data.removeAll(where: {$0.id == article.id})
+            state.restaurantFavoriteArticles.totalElements -= 1
 		}
 	}
 	
@@ -285,11 +285,11 @@ class FavoriteViewModel: ObservableObject {
 			state.experienceFavoriteArticlePage = 0
 			state.experienceFavoriteArticles = .init()
 		case .nanaPick:
-			state.allFavoriteArticlePage = 0
-			state.allFavoriteArticles = .init()
+			state.nanaFavoriteArticlePage = 0
+			state.nanaFavoriteArticles = .init()
         case .restaurant:
-            state.allFavoriteArticlePage = 0
-            state.allFavoriteArticles = .init()
+            state.restaurantFavoriteArticlePage = 0
+            state.restaurantFavoriteArticles = .init()
 		}
 	}
 	
