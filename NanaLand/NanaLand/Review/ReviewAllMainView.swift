@@ -77,21 +77,29 @@ struct ReviewAllMainView: View {
                                     }
                                     
                                     HStack(alignment: .bottom, spacing: 0) {
-                                        Text("\(viewModel.state.getReviewAllMainResponse.data![Int(index)].content)")
-                                            .lineLimit(contentIsOn[index] ? nil : 2)
+                                        //                                        Text("\(viewModel.state.getReviewAllMainResponse.data![Int(index)].content)")
+                                        //                                            .lineLimit(contentIsOn[index] ? nil : 2)
+                                        //                                            .padding(.leading, 16)
+                                        //                                        Button {
+                                        //                                            withAnimation(nil) {
+                                        //                                                contentIsOn[index].toggle()
+                                        //                                            }
+                                        //                                        } label: {
+                                        //                                            Text(contentIsOn[index] ? "접기" : "더 보기")
+                                        //                                                .font(.caption01)
+                                        //                                                .foregroundStyle(Color.gray1)
+                                        //                                        }
+                                        
+                                        ExpandableText("\(viewModel.state.getReviewAllMainResponse.data![Int(index)].content)", lineLimit: 2)
+                                            .font(.body02)
                                             .padding(.leading, 16)
-                                        Button {
-                                            withAnimation(nil) {
-                                                contentIsOn[index].toggle()
-                                            }
-                                        } label: {
-                                            Text(contentIsOn[index] ? "접기" : "더 보기")
-                                                .font(.caption01)
-                                                .foregroundStyle(Color.gray1)
-                                        }
+                                            .padding(.trailing, 16)
+                                        
+                                        
+                                        
                                     }
                                     HStack(spacing: 0) {
-                                        Text("\(viewModel.state.getReviewAllMainResponse.data![Int(index)].reviewTypeKeywords.map {"#\($0)"}.joined(separator: ","))")
+                                        Text("\(viewModel.state.getReviewAllMainResponse.data![Int(index)].reviewTypeKeywords.map {"#\($0)"}.joined(separator: " "))")
                                             .font(.caption01)
                                             .foregroundStyle(Color.main)
                                     }
@@ -113,18 +121,18 @@ struct ReviewAllMainView: View {
                                 .clipShape(RoundedRectangle(cornerRadius: 12))
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 12)
-                                        .stroke(Color.gray1, lineWidth: 1)
+                                        .stroke(Color.gray.opacity(0.1), lineWidth: 1)
+                                        .shadow(color: .gray.opacity(0.3), radius: 1, x: 0, y: 0)
                                     )
                                 .padding(.leading, 16)
                                 .padding(.trailing, 16)
-                                
+                                .padding(.bottom, 16)
                             }
                         }
                         
                     }
                     Spacer()
                 }
-               
             }
        
         }
@@ -132,11 +140,11 @@ struct ReviewAllMainView: View {
         .onAppear {
             Task {
                 await getUserAllReviewItem(memberId: memberId, page: page, size: size)
-                
-                for i in 0...Int(viewModel.state.getReviewAllMainResponse.totalElements - 1) {
-                    contentIsOn.append(false)
+                if viewModel.state.getReviewAllMainResponse.totalElements >= 1{
+                    for i in 0...Int(viewModel.state.getReviewAllMainResponse.totalElements - 1) {
+                        contentIsOn.append(false)
+                    }
                 }
-                print("\(contentIsOn)")
                 isAPICalled = true
             }
         }
@@ -147,6 +155,8 @@ struct ReviewAllMainView: View {
         await viewModel.action(.getUserAllReviewItem(memberId: memberId, page: page, size: size))
     }
 }
+
+
 
 #Preview {
     ReviewAllMainView()
