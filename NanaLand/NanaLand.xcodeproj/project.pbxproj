@@ -171,6 +171,7 @@
 		BF06B36E2C4AADAE000E43ED /* ExperienceDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF06B36D2C4AADAE000E43ED /* ExperienceDetailModel.swift */; };
 		BF0997982BD1FFF900563E9A /* NaNaPickDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0997972BD1FFF900563E9A /* NaNaPickDetailView.swift */; };
 		BF0997B62BD4E38500563E9A /* NaNaPickDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0997B52BD4E38500563E9A /* NaNaPickDetailModel.swift */; };
+		BF0D58972C60DAE20042D6BC /* ExpandableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0D58962C60DAE20042D6BC /* ExpandableText.swift */; };
 		BF1493712BD1095D00FC626B /* NaNaPickModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1493702BD1095D00FC626B /* NaNaPickModel.swift */; };
 		BF1493732BD1097100FC626B /* NaNaPickService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1493722BD1097100FC626B /* NaNaPickService.swift */; };
 		BF1493752BD10A4100FC626B /* NaNaPickEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1493742BD10A4100FC626B /* NaNaPickEndPoint.swift */; };
@@ -438,6 +439,7 @@
 		BF06B36D2C4AADAE000E43ED /* ExperienceDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceDetailModel.swift; sourceTree = "<group>"; };
 		BF0997972BD1FFF900563E9A /* NaNaPickDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaNaPickDetailView.swift; sourceTree = "<group>"; };
 		BF0997B52BD4E38500563E9A /* NaNaPickDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaNaPickDetailModel.swift; sourceTree = "<group>"; };
+		BF0D58962C60DAE20042D6BC /* ExpandableText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableText.swift; sourceTree = "<group>"; };
 		BF1493702BD1095D00FC626B /* NaNaPickModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaNaPickModel.swift; sourceTree = "<group>"; };
 		BF1493722BD1097100FC626B /* NaNaPickService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaNaPickService.swift; sourceTree = "<group>"; };
 		BF1493742BD10A4100FC626B /* NaNaPickEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaNaPickEndPoint.swift; sourceTree = "<group>"; };
@@ -753,6 +755,7 @@
 				BF22B8062C4633B30059B380 /* CultureAndArtsKeywordView.swift */,
 				BF2F8D7E2C467C0E00C0F943 /* ActivityKeywordView.swift */,
 				BFBC51402C5BC7E00076FE57 /* ReportModalView.swift */,
+				BF0D58962C60DAE20042D6BC /* ExpandableText.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -1725,6 +1728,7 @@
 				BF607F152BF5A15E00770CE7 /* FestivalDetailModel.swift in Sources */,
 				6D541A6D2C4F3FC10095BB77 /* RestaurantDetailView.swift in Sources */,
 				6D541A5D2C4E44F10095BB77 /* ReviewKeywordViewModel.swift in Sources */,
+				BF0D58972C60DAE20042D6BC /* ExpandableText.swift in Sources */,
 				6D1B05552C4973A2001F6DD9 /* MapView.swift in Sources */,
 				BFC671F52BF7198800D1A2FD /* ShopDetailView.swift in Sources */,
 				BF98341E2BCE71F000A5C289 /* ExperienceMainView.swift in Sources */,

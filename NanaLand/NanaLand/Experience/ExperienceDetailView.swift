@@ -16,7 +16,7 @@ struct ExperienceDetailView: View {
     @State private var isAPICall = false
     @State private var roundedHeight: CGFloat = (Constants.screenWidth - 40) * (224.0 / 358.0)
     @State private var keywordString = [""]
-
+    @State private var reportModal = false
     var id: Int64
     
     var body: some View {
@@ -317,6 +317,8 @@ struct ExperienceDetailView: View {
                                                             HStack(spacing: 0) {
                                                                 Text("리뷰 \(viewModel.state.getReviewDataResponse.data[index].memberReviewCount ?? 0)")
                                                                     .font(.caption01)
+                                                                Text(" | ")
+                                                                    .font(.caption01)
                                                                 Image("icRatingStar")
                                                                 Text("\(String(format: "%.1f", viewModel.state.getReviewDataResponse.data[index].rating ?? 0))")
                                                                     .font(.caption01)
@@ -347,25 +349,29 @@ struct ExperienceDetailView: View {
                                                     }
                                                    
                                                     HStack(alignment: .bottom, spacing: 0) {
-                                                        Text("\(viewModel.state.getReviewDataResponse.data[index].content ?? "")")
-                                                            .lineLimit(contentIsOn[index] ? nil : 2)
+//                                                        Text("\(viewModel.state.getReviewDataResponse.data[index].content ?? "")")
+//                                                            .lineLimit(contentIsOn[index] ? nil : 2)
+//                                                            .padding(.leading, 16)
+//                                                            .padding(.trailing, 2)
+//                                                     
+//                                                        Button {
+//                                                            contentIsOn[index].toggle()
+//                                                        } label: {
+//                                                            Text(contentIsOn[index] ? "접기" : "더 보기")
+//                                                                .foregroundStyle(Color.gray1)
+//                                                                .font(.caption01)
+//                                                        }
+//                                                        .padding(.trailing, 16)
+                                                        ExpandableText("\(viewModel.state.getReviewDataResponse.data[index].content ?? "")", lineLimit: 2)
+                                                            .font(.body02)
                                                             .padding(.leading, 16)
-                                                            .padding(.trailing, 2)
-                                                     
-                                                        Button {
-                                                            contentIsOn[index].toggle()
-                                                        } label: {
-                                                            Text(contentIsOn[index] ? "접기" : "더 보기")
-                                                                .foregroundStyle(Color.gray1)
-                                                                .font(.caption01)
-                                                        }
-                                                        .padding(.trailing, 16)
+                                                            .padding(.trailing, 16)
                                                     }
                                                     
                                                     
                                                     Spacer()
                                                     HStack(spacing: 0) {
-                                                        Text("\(((viewModel.state.getReviewDataResponse.data[index].reviewTypeKeywords ?? [""]).map {"#\($0) "}).joined(separator: ", "))")
+                                                        Text("\(((viewModel.state.getReviewDataResponse.data[index].reviewTypeKeywords ?? [""]).map {"#\($0) "}).joined(separator: " "))")
                                                             .font(.caption01)
                                                             .foregroundStyle(Color.main)
                                                         
@@ -379,17 +385,29 @@ struct ExperienceDetailView: View {
                                                         Text("\(viewModel.state.getReviewDataResponse.data[index].createdAt ?? "")")
                                                             .font(.caption01)
                                                             .foregroundStyle(Color.gray1)
-                                                            .padding(.trailing, 16)
-                                                            .padding(.bottom, 16)
-
+                                                        Button {
+                                                            reportModal = true
+                                                        } label: {
+                                                            Image("icPointBtn")
+                                                                .resizable()
+                                                                .renderingMode(.template)
+                                                                .frame(width: 20, height: 20)
+                                                                .foregroundStyle(Color.gray1)
+                                                        }
                                                     }
+                                                    .padding(.trailing, 16)
+                                                    .padding(.bottom, 16)
                                                 }
-                                               
+                                                .sheet(isPresented: $reportModal) {
+                                                    ReportModalView()
+                                                        .presentationDetents([.height(Constants.screenWidth * (103 / Constants.screenWidth))])
+                                                }
                                                 .clipShape(RoundedRectangle(cornerRadius: 12))
                                                 .overlay(
-                                                           RoundedRectangle(cornerRadius: 12) // 모서리가 둥근 테두리
-                                                               .stroke(Color.gray1, lineWidth: 1) // 테두리 색상과 두께
-                                                       )
+                                                    RoundedRectangle(cornerRadius: 12) // 모서리가 둥근 테두리
+                                                        .stroke(Color.gray.opacity(0.1), lineWidth: 1) // 테두리 색상과 두께
+                                                        .shadow(color: .gray.opacity(0.3), radius: 1, x: 0, y: 0)
+                                                )
                                                 .padding(.leading, 16)
                                                 .padding(.trailing, 16)
                                             }
