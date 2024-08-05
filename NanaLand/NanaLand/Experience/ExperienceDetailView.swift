@@ -26,14 +26,10 @@ struct ExperienceDetailView: View {
                     .frame(height: 56)
                 HStack(spacing: 0) {
                     Spacer()
-                    Button {
-                        
-                    } label: {
+                    ShareLink(item: DeepLinkManager.shared.makeLink(category: .experience, id: Int(viewModel.state.getExperienceDetailResponse.id ?? 0)), label: {
                         Image("icShare2")
                             .padding(.trailing, 16)
-                    }
-                    
-                    
+                    })
                 }
             }
             
@@ -401,7 +397,8 @@ struct ExperienceDetailView: View {
                                         }
                                     }
                                     Button {
-                                        
+                                        // TODO: - 후기 모두 보기(각 컨텐츠 별)
+                                        AppState.shared.navigationPath.append(ExperienceViewType.reviewAll(id: id))
                                     } label: {
                                         Text("후기 더보기")
                                             .foregroundStyle(Color.white)
@@ -456,13 +453,12 @@ struct ExperienceDetailView: View {
                             }
                         }
                     )
-                    
-                    
                 }
                 .navigationDestination(for: ArticleDetailViewType.self) { viewType in
                     switch viewType {
                     case let .reportInfo(id, category):
                         ReportInfoMainView(id: id, category: category)
+                    
                     }
                 }
                 VStack(spacing: 0) {
@@ -486,8 +482,6 @@ struct ExperienceDetailView: View {
                                 .foregroundStyle(Color.main)
                                 .padding(.leading, 16)
                         }
-
-                      
                         Spacer()
                         Button {
                             // Todo - 리뷰 작성
@@ -520,6 +514,8 @@ struct ExperienceDetailView: View {
                     ReviewWriteMain(reviewAddress: viewModel.state.getExperienceDetailResponse.address ?? "", reviewImageUrl: viewModel.state.getExperienceDetailResponse.images![0].originUrl ?? "", reviewTitle: viewModel.state.getExperienceDetailResponse.title ?? "", reviewId: viewModel.state.getExperienceDetailResponse.id ?? 0)
                 case let .userProfile(id):
                     UserProfileMainView(memberId: id)
+                case let .reviewAll(id):
+                    ReviewAllDetailMainView(id: id)
                 }
             }
            
@@ -552,6 +548,7 @@ struct ExperienceDetailView: View {
 enum ExperienceViewType: Hashable {
     case writeReview
     case userProfile(id: Int64)
+    case reviewAll(id: Int64)
 }
 
 //#Preview {

@@ -7,7 +7,7 @@
 
 import SwiftUI
 import Kingfisher
-// 모든 리뷰 보기 뷰(회원별)
+// 모든 리뷰 보기 뷰(타 유저 프로필 리뷰 or 마이페이지에서 자신의 리뷰 볼 때)
 struct ReviewAllMainView: View {
     @StateObject var viewModel = ReviewAllMainViewModel()
     @State private var isOn = false
@@ -15,7 +15,7 @@ struct ReviewAllMainView: View {
     @State private var isAPICalled = false
     var memberId: Int64 = 11
     var page: Int = 0
-    var size: Int = 12
+    var size: Int = 30
     var body: some View {
         ZStack() {
             VStack(spacing: 0) {
@@ -61,8 +61,6 @@ struct ReviewAllMainView: View {
                                                 .frame(width: 16)
                                                 .foregroundStyle(number <= viewModel.state.getReviewAllMainResponse.data![Int(index)].rating ? .yellow : .gray2)
                                         }
-                                            
-                                        
                                     }
                                     .padding(.top, 4)
                                     .padding(.leading, 16)
