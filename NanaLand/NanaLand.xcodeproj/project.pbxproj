@@ -1912,7 +1912,7 @@
 				CODE_SIGN_ENTITLEMENTS = NanaLand/NanaLand.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"NanaLand/Preview Content\"";
 				DEVELOPMENT_TEAM = UM6P9H795G;
 				ENABLE_PREVIEWS = YES;
@@ -1951,7 +1951,7 @@
 				CODE_SIGN_ENTITLEMENTS = NanaLand/NanaLand.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"NanaLand/Preview Content\"";
 				DEVELOPMENT_TEAM = UM6P9H795G;
 				ENABLE_PREVIEWS = YES;

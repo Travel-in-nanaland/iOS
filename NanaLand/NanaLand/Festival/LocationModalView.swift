@@ -178,7 +178,7 @@ struct LocationModalView: View {
                         shopViewModel.state.page = 0
                     } else if title == "이색 체험" {
                         experienceViewModel.state.getExperienceMainResponse = ExperienceMainModel(totalElements: 0, data: []) // 초기화
-                        await getLocationExperienceMainItem(filterName: localizedLocationArray.joined(separator: ","), page: 0, size: 18, type: type, keyword: keyword == "키워드" ? "" : keyword)
+                        await getLocationExperienceMainItem(filterName: selectedLocationStrings.joined(separator: ","), page: 0, size: 18, type: type, keyword: keyword == "키워드" ? "" : keyword)
                     } else {
                         restaurantModel.state.getRestaurantMainResponse = RestaurantMainModel(totalElements: 0, data: []) // 초기화
                         await getLocationRestaurantMainItem(filterName: localizedLocationArray.joined(separator: ","), page: 0, size: 18, type: type, keyword: keyword == "키워드" ? "" : keyword)
