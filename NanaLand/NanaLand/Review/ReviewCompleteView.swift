@@ -17,6 +17,9 @@ struct ReviewCompleteView: View {
                     .padding(.bottom, 70)
                 Spacer()
                 Button {
+                    AppState.shared.navigationPath.removeLast()
+                    AppState.shared.navigationPath.removeLast()
+                    // 네비게이션 path 맨 위 2개 제거 해서 detail view로 돌아가기
                     
                 } label: {
                     Text("콘텐츠 다시 보러 가기")
@@ -51,7 +54,6 @@ struct ReviewCompleteView: View {
                 .font(.body_bold)
                 .padding(.bottom, 24)
             }
-           
         }
         .toolbar(.hidden)
         .onAppear {
