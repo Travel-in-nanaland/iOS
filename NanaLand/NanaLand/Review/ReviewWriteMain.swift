@@ -65,6 +65,7 @@ struct ReviewMainGridView: View {
     @EnvironmentObject var localizationManager: LocalizationManager
     @State private var showToast = false
     @State private var toastMessage = ""
+    @State private var uploadButtonFlag = false
     var reviewItemAddress: String = ""
     var reviewItemImageUrl: String = ""
     var reviewTitle: String = ""
@@ -258,7 +259,7 @@ struct ReviewMainGridView: View {
                 
                 ZStack {
                     RoundedRectangle(cornerRadius: 50)
-                        .foregroundColor(.main)
+                        .foregroundColor((viewModel.selectedKeyword.count < 3 || reviewContent.count == 0 || viewModel.state.getReviewWriteResponse.rating == 0) ? .main10P : .main)
                         .frame(width: 370, height: 50)
                     Button {
                         Task {
@@ -266,21 +267,18 @@ struct ReviewMainGridView: View {
                                 viewModel.state.reviewDTO.reviewKeywords.append(viewModel.selectedKeyword[i].tag)
                             }
                             await postReview(id: reviewId, category: "EXPERIENCE", body: viewModel.state.reviewDTO, multipartFile: selectedImageData)
-                            if viewModel.state.getReviewPostResponse.status == 200 {
-                                AppState.shared.navigationPath.append(ReviewViewType.complete)
-                            } else {
-                                toastMessage = "알맞은 데이터를 넣어주세요."
-                                showToast = true
-                            }
-                    
+                            
+                            AppState.shared.navigationPath.append(ReviewViewType.complete)
                         }
                         
-                      
+                        
                     } label: {
                         Text(.upload)
                             .font(.body_bold)
                             .foregroundStyle(.white)
                     }
+                    .disabled((viewModel.selectedKeyword.count < 3 || reviewContent.count == 0 || viewModel.state.getReviewWriteResponse.rating == 0) ? true : false)
+                    
                     
                 }
                 .padding(.bottom, 20)
