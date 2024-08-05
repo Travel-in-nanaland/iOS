@@ -20,6 +20,8 @@ struct ReviewWriteMain: View {
     @Environment(\.dismiss) private var dismiss
     var reviewTitle: String = ""
     var reviewId: Int64 = 0
+    var reviewCategory: String = ""
+    
     var body: some View {
         
         ZStack{
@@ -48,7 +50,7 @@ struct ReviewWriteMain: View {
                     .padding(.bottom, 12)
                 }
                
-                ReviewMainGridView(viewModel: viewModel, reviewItemAddress: reviewAddress, reviewItemImageUrl: reviewImageUrl, reviewTitle: reviewTitle, reviewId: reviewId)
+                ReviewMainGridView(viewModel: viewModel, reviewItemAddress: reviewAddress, reviewItemImageUrl: reviewImageUrl, reviewTitle: reviewTitle, reviewId: reviewId, reviewCategory: reviewCategory)
             }
             .toolbar(.hidden)
         }
@@ -70,6 +72,7 @@ struct ReviewMainGridView: View {
     var reviewItemImageUrl: String = ""
     var reviewTitle: String = ""
     var reviewId: Int64 = 0
+    var reviewCategory: String = ""
     var body: some View {
         ScrollView {
             VStack {
@@ -266,7 +269,7 @@ struct ReviewMainGridView: View {
                             for i in 0..<viewModel.selectedKeyword.count {
                                 viewModel.state.reviewDTO.reviewKeywords.append(viewModel.selectedKeyword[i].tag)
                             }
-                            await postReview(id: reviewId, category: "EXPERIENCE", body: viewModel.state.reviewDTO, multipartFile: selectedImageData)
+                            await postReview(id: reviewId, category: reviewCategory, body: viewModel.state.reviewDTO, multipartFile: selectedImageData)
                             
                             AppState.shared.navigationPath.append(ReviewViewType.complete)
                         }
@@ -305,7 +308,7 @@ struct ReviewMainGridView: View {
         .navigationDestination(for: ReviewViewType.self) { viewType in
             switch viewType {
             case .complete:
-                ReviewCompleteView(title: "EXPERIENCE")
+                ReviewCompleteView(title: reviewCategory)
             }
         }
     }

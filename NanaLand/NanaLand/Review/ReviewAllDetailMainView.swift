@@ -14,6 +14,7 @@ struct ReviewAllDetailMainView: View {
     @State private var contentIsOn: [Bool] = []
     @State private var reportModal = false
     var id: Int64
+    var reviewCategory: String = ""
     var body: some View {
         VStack(spacing: 0) {
             NanaNavigationBar(title: .review, showBackButton: true)
@@ -167,7 +168,7 @@ struct ReviewAllDetailMainView: View {
         .toolbar(.hidden)
         .onAppear {
             Task {
-                await getReviewData(id: id, category: "EXPERIENCE", page: 0, size: 100)
+                await getReviewData(id: id, category: reviewCategory, page: 0, size: 100)
                 if viewModel.state.getReviewDataResponse.totalElements >= 1 {
                     for i in 0...Int(viewModel.state.getReviewDataResponse.totalElements - 1) {
                         contentIsOn.append(false)
