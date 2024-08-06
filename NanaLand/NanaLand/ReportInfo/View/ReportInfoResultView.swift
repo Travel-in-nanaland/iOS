@@ -15,7 +15,7 @@ struct ReportInfoResultView: View {
 		VStack(spacing: 0) {
 			Spacer()
 			
-			LottieView(jsonName: "report_info_star")
+			LottieView(jsonName: "report_complete")
 				.frame(width: itemSize, height: itemSize)
 				.padding(.leading, 59)
 				.padding(.trailing, 49)
