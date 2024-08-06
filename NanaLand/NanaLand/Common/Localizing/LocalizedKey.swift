@@ -377,6 +377,8 @@ enum LocalizedKey: String {
     case addKeyword
     case upload
     case keywordDescription
+    case reviewBackAlertTitle
+    case reviewBackAlertMessage
     
     // MARK: - 키워드 내용
     case mood

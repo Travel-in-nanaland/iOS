@@ -178,7 +178,24 @@ struct ExperienceDetailView: View {
                                 .padding(.trailing, 20)
                                 
                                 VStack(spacing: 24) {
-                                    if viewModel.state.getExperienceDetailResponse.content != "" {
+                                    if viewModel.state.getExperienceDetailResponse.details != "" {
+                                        
+                                        VStack(spacing: 0) {
+                                            HStack(spacing: 0) {
+                                                Image("icWarningCircle")
+                                                    .renderingMode(.template)
+                                                    .foregroundStyle(Color.main)
+                                                Text("간단 설명")
+                                                    .foregroundStyle(Color.main)
+                                                    .font(.body02_bold)
+                                            }
+                                            Text(viewModel.state.getExperienceDetailResponse.details ?? "")
+                                                .font(.body02)
+                                            
+                                        }
+                                        
+                                    }
+                                    if viewModel.state.getExperienceDetailResponse.address != "" {
                                         HStack(spacing: 10) {
                                             VStack(spacing: 0) {
                                                 Image("icPin")
@@ -196,7 +213,7 @@ struct ExperienceDetailView: View {
                                         .frame(width: Constants.screenWidth - 40, height: (Constants.screenWidth - 40) * (42 / 358))
                                     }
                                   
-                                    if viewModel.state.getExperienceDetailResponse.content != "" {
+                                    if viewModel.state.getExperienceDetailResponse.contact != "" {
                                         HStack(spacing: 10) {
                                             VStack(spacing: 0) {
                                                 Image("icPhone")

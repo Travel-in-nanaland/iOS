@@ -381,6 +381,8 @@
 "warning" = "경고";
 "warningDescription" = "최대 6개까지 선택 가능합니다";
 "check" = "확인";
+"reviewBackAlertTitle" = "정말 나가시겠습니까?";
+"reviewBackAlertMessage" = "지금 나가시면,\n작성 중인 내용이 삭제됩니다.";
 
 "notice" = "공지사항";
 "testAgain" = "테스트 다시하기";

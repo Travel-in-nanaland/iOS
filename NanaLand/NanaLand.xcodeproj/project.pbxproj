@@ -175,6 +175,7 @@
 		BF0997982BD1FFF900563E9A /* NaNaPickDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0997972BD1FFF900563E9A /* NaNaPickDetailView.swift */; };
 		BF0997B62BD4E38500563E9A /* NaNaPickDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0997B52BD4E38500563E9A /* NaNaPickDetailModel.swift */; };
 		BF0D58972C60DAE20042D6BC /* ExpandableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0D58962C60DAE20042D6BC /* ExpandableText.swift */; };
+		BF0D589A2C61D81F0042D6BC /* CustomAlert in Frameworks */ = {isa = PBXBuildFile; productRef = BF0D58992C61D81F0042D6BC /* CustomAlert */; };
 		BF1493712BD1095D00FC626B /* NaNaPickModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1493702BD1095D00FC626B /* NaNaPickModel.swift */; };
 		BF1493732BD1097100FC626B /* NaNaPickService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1493722BD1097100FC626B /* NaNaPickService.swift */; };
 		BF1493752BD10A4100FC626B /* NaNaPickEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1493742BD10A4100FC626B /* NaNaPickEndPoint.swift */; };
@@ -548,6 +549,7 @@
 				2C219B532C16FE53001F4C28 /* FirebaseRemoteConfig in Frameworks */,
 				BFB73BB72C05BA6A00A9A10E /* SDWebImageSwiftUI in Frameworks */,
 				2C3C75AF2BCA3C5000312F26 /* Alamofire in Frameworks */,
+				BF0D589A2C61D81F0042D6BC /* CustomAlert in Frameworks */,
 				2C40DBBB2BEDFBC3007A3768 /* GoogleSignInSwift in Frameworks */,
 				2C219B512C16FE53001F4C28 /* FirebaseAnalytics in Frameworks */,
 				2C80ECCD2BD2C27D002F38A7 /* SwiftUIIntrospect in Frameworks */,
@@ -1386,6 +1388,7 @@
 				2C219B502C16FE53001F4C28 /* FirebaseAnalytics */,
 				2C219B522C16FE53001F4C28 /* FirebaseRemoteConfig */,
 				6D0E90D72C54659900F8D686 /* MasonryStack */,
+				BF0D58992C61D81F0042D6BC /* CustomAlert */,
 			);
 			productName = NanaLand;
 			productReference = 2C3C75802BCA3ADA00312F26 /* NanaLand.app */;
@@ -1474,6 +1477,7 @@
 				2C2749792C08ADC600ECBA71 /* XCRemoteSwiftPackageReference "Swift-JWT" */,
 				2C219B4F2C16FE53001F4C28 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				6D0E90D62C54659900F8D686 /* XCRemoteSwiftPackageReference "MasonryStack" */,
+				BF0D58982C61D81F0042D6BC /* XCRemoteSwiftPackageReference "CustomAlert" */,
 			);
 			productRefGroup = 2C3C75812BCA3ADA00312F26 /* Products */;
 			projectDirPath = "";
@@ -2204,6 +2208,14 @@
 				minimumVersion = 0.1.0;
 			};
 		};
+		BF0D58982C61D81F0042D6BC /* XCRemoteSwiftPackageReference "CustomAlert" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/divadretlaw/CustomAlert.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.7.1;
+			};
+		};
 		BFB73BB52C05BA6A00A9A10E /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
@@ -2274,6 +2286,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6D0E90D62C54659900F8D686 /* XCRemoteSwiftPackageReference "MasonryStack" */;
 			productName = MasonryStack;
+		};
+		BF0D58992C61D81F0042D6BC /* CustomAlert */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF0D58982C61D81F0042D6BC /* XCRemoteSwiftPackageReference "CustomAlert" */;
+			productName = CustomAlert;
 		};
 		BFB73BB62C05BA6A00A9A10E /* SDWebImageSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;

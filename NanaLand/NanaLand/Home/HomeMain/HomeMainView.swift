@@ -294,151 +294,162 @@ struct AdvertisementView: View {
     // (images가 ForEach문에서 돌면서 나오는 element 값이 String이므로 타입을 String으로 해준다.)
     @State private var selectedNum: String = ""
     private let images: [String] = ["ad1", "ad2", "ad3", "ad4"]
-    
+    @State private var currentPage = 0
     
     
     var body: some View {
         // selection에 index가 아닌 selectedNum을 바인딩
-        TabView(selection: $selectedNum) {
-           ForEach(images, id: \.self) { image in
-                // image는 String이자, default tag로 붙는 값
-               HStack(spacing: 0) {
-                   Button(action: {
-                       switch image {
-                       case "ad1":
-                           AppState.shared.navigationPath.append(AdvertisementViewType.ad1)
-                       case "ad2":
-                           AppState.shared.navigationPath.append(AdvertisementViewType.ad2)
-                       case "ad3":
-                           AppState.shared.navigationPath.append(AdvertisementViewType.ad3)
-                       case "ad4":
-                           AppState.shared.navigationPath.append(AdvertisementViewType.ad4)
-                       default:
-                           break
-                       }
-                   }, label: {
-                       VStack(alignment: .leading, spacing: 0) {
-                           switch image {
-                           case "ad1":
-                               HStack(spacing: 0){
-                                   VStack(alignment: .leading, spacing: 0) {
-                                       Text(.firstAdvertismentTitle)
-                                           .font(.gothicNeo(.bold, size: 16))
-                                           .padding(.leading, 16)
-                                           .multilineTextAlignment(.leading)
-                                       Text(.firstAdvertismentSubTitle)
-                                           .font(.gothicNeo(.medium, size: 12))
-                                           .padding(.leading, 16)
-                                           .multilineTextAlignment(.leading)
-                                   }
-                                   Spacer()
-                                   Image(image)
-                                       .padding(.trailing, 15)
-                               }
-                               .frame(width: Constants.screenWidth, height: 80)
-                               .background(.skyBlue)
-                           case "ad2":
-                               HStack(spacing: 0) {
-                                   VStack(alignment: .leading, spacing: 0) {
-                                       Text(.secondAdvertismentTitle)
-                                           .font(.gothicNeo(.bold, size: 16))
-                                           .padding(.leading, 16)
-                                           .multilineTextAlignment(.leading)
-                                       Text(.secondAdvertismentSubTitle)
-                                           .font(.gothicNeo(.medium, size: 12))
-                                           .padding(.leading, 16)
-                                           .multilineTextAlignment(.leading)
-                                   }
-                                   Spacer()
-                                   Image(image)
-                                       .padding(.trailing, 15)
-                               }
-                               .frame(width: Constants.screenWidth, height: 80)
-                               .background(.main50P)
-                               
-                               
-                           case "ad3":
-                               HStack(spacing: 0) {
-                                   VStack(alignment: .leading, spacing: 0) {
-                                       Text(.thirdAdvertismentTitle)
-                                           .font(.gothicNeo(.bold, size: 16))
-                                           .padding(.leading, 16)
-                                           .multilineTextAlignment(.leading)
-                                       Text(.thirdAdvertismentSubTitle)
-                                           .font(.gothicNeo(.medium, size: 12))
-                                           .padding(.leading, 16)
-                                           .multilineTextAlignment(.leading)
-                                   }
-                                   Spacer()
-                                   Image(image)
-                                       .padding(.trailing, 15)
-                               }
-                               .frame(width: Constants.screenWidth, height: 80)
-                               .background(Color.init(hex: 0xF7C2BC))
-                               
-                               
-                               
-                           case "ad4":
-                               HStack(spacing: 0){
-                                   VStack(alignment: .leading, spacing: 0) {
-                                       Text(.fourthAdvertismentTitle)
-                                           .font(.gothicNeo(.bold, size: 16))
-                                           .padding(.leading, 16)
-                                           .multilineTextAlignment(.leading)
-                                       Text(.fourthAdvertismentSubTitle)
-                                           .font(.gothicNeo(.medium, size: 12))
-                                           .padding(.leading, 16)
-                                           .multilineTextAlignment(.leading)
-                                   }
-                                   Spacer()
-                                   Image(image)
-                                       .padding(.trailing, 15)
-                               }
-                               .frame(width: Constants.screenWidth, height: 80)
-                               .background(Color.init(hex: 0xFFBC11))
-                               
-                              
-                           default:
-                               Text(.firstAdvertismentTitle)
-                                   .font(.gothicNeo(.bold, size: 16))
-                               Text(.firstAdvertismentSubTitle)
-                                   .font(.gothicNeo(.medium, size: 12))
-                           }
-                           
-                       }
-                       .frame(width: Constants.screenWidth)
-                       
-                   })
-                   
-               }
-               .frame(width: Constants.screenWidth, height: 80)
-               
-                   
-           }
-        }
-        .navigationDestination(for: AdvertisementViewType.self) { viewType in
-            switch viewType {
-            case .ad1:
-                // 광고 클릭으로 들어간 경우
-                NatureMainView(isAdvertisement: true)
-            case .ad2:
-                NatureMainView()
-            case .ad3:
-                ShopMainView()
-            case .ad4:
-                FestivalMainView()
+        ZStack() {
+            TabView(selection: $selectedNum) {
+                ForEach(images, id: \.self) { image in
+                    // image는 String이자, default tag로 붙는 값
+                    VStack(spacing: 2) {
+                        HStack(spacing: 0) {
+                            Button(action: {
+                                switch image {
+                                case "ad1":
+                                    AppState.shared.navigationPath.append(AdvertisementViewType.ad1)
+                                case "ad2":
+                                    AppState.shared.navigationPath.append(AdvertisementViewType.ad2)
+                                case "ad3":
+                                    AppState.shared.navigationPath.append(AdvertisementViewType.ad3)
+                                case "ad4":
+                                    AppState.shared.navigationPath.append(AdvertisementViewType.ad4)
+                                default:
+                                    break
+                                }
+                            }, label: {
+                                VStack(alignment: .leading, spacing: 0) {
+                                    switch image {
+                                    case "ad1":
+                                        HStack(spacing: 0){
+                                            VStack(alignment: .leading, spacing: 0) {
+                                                Text(.firstAdvertismentTitle)
+                                                    .font(.gothicNeo(.bold, size: 16))
+                                                    .padding(.leading, 16)
+                                                    .multilineTextAlignment(.leading)
+                                                Text(.firstAdvertismentSubTitle)
+                                                    .font(.gothicNeo(.medium, size: 12))
+                                                    .padding(.leading, 16)
+                                                    .multilineTextAlignment(.leading)
+                                            }
+                                            Spacer()
+                                            Image(image)
+                                                .padding(.trailing, 15)
+                                        }
+                                        .frame(width: Constants.screenWidth, height: 80)
+                                        .background(.skyBlue)
+                                        
+                                    case "ad2":
+                                        HStack(spacing: 0) {
+                                            VStack(alignment: .leading, spacing: 0) {
+                                                Text(.secondAdvertismentTitle)
+                                                    .font(.gothicNeo(.bold, size: 16))
+                                                    .padding(.leading, 16)
+                                                    .multilineTextAlignment(.leading)
+                                                Text(.secondAdvertismentSubTitle)
+                                                    .font(.gothicNeo(.medium, size: 12))
+                                                    .padding(.leading, 16)
+                                                    .multilineTextAlignment(.leading)
+                                            }
+                                            Spacer()
+                                            Image(image)
+                                                .padding(.trailing, 15)
+                                        }
+                                        .frame(width: Constants.screenWidth, height: 80)
+                                        .background(.main50P)
+                                        
+                                    case "ad3":
+                                        HStack(spacing: 0) {
+                                            VStack(alignment: .leading, spacing: 0) {
+                                                Text(.thirdAdvertismentTitle)
+                                                    .font(.gothicNeo(.bold, size: 16))
+                                                    .padding(.leading, 16)
+                                                    .multilineTextAlignment(.leading)
+                                                Text(.thirdAdvertismentSubTitle)
+                                                    .font(.gothicNeo(.medium, size: 12))
+                                                    .padding(.leading, 16)
+                                                    .multilineTextAlignment(.leading)
+                                            }
+                                            Spacer()
+                                            Image(image)
+                                                .padding(.trailing, 15)
+                                        }
+                                        .frame(width: Constants.screenWidth, height: 80)
+                                        .background(Color.init(hex: 0xF7C2BC))
+                                        
+                                        
+                                    case "ad4":
+                                        HStack(spacing: 0){
+                                            VStack(alignment: .leading, spacing: 0) {
+                                                Text(.fourthAdvertismentTitle)
+                                                    .font(.gothicNeo(.bold, size: 16))
+                                                    .padding(.leading, 16)
+                                                    .multilineTextAlignment(.leading)
+                                                Text(.fourthAdvertismentSubTitle)
+                                                    .font(.gothicNeo(.medium, size: 12))
+                                                    .padding(.leading, 16)
+                                                    .multilineTextAlignment(.leading)
+                                            }
+                                            Spacer()
+                                            Image(image)
+                                                .padding(.trailing, 15)
+                                        }
+                                        .frame(width: Constants.screenWidth, height: 80)
+                                        .background(Color.init(hex: 0xFFBC11))
+                                        
+                                        
+                                        
+                                    default:
+                                        Text(.firstAdvertismentTitle)
+                                            .font(.gothicNeo(.bold, size: 16))
+                                        Text(.firstAdvertismentSubTitle)
+                                            .font(.gothicNeo(.medium, size: 12))
+                                    }
+                                    
+                                }
+                                .frame(width: Constants.screenWidth)
+                                
+                            })
+                            
+                        }
+                        .frame(width: Constants.screenWidth, height: 80)
+                        
+                    }
+                    
+                }
             }
-        }
-        .tabViewStyle(.page)
-        .onReceive(timer, perform: { _ in
-            withAnimation {
-                // index값을 증가, 아니면 1
-                // (selectedNum의 값을 변경해주기 위함)
-                index = index < images.count ? index + 1 : 1
-                // selectedNum 값은 images 배열의 element 값
-                selectedNum = images[index - 1]
+            .navigationDestination(for: AdvertisementViewType.self) { viewType in
+                switch viewType {
+                case .ad1:
+                    // 광고 클릭으로 들어간 경우
+                    NatureMainView(isAdvertisement: true)
+                case .ad2:
+                    NatureMainView()
+                case .ad3:
+                    ShopMainView()
+                case .ad4:
+                    FestivalMainView()
+                }
             }
-        })
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+            .onReceive(timer, perform: { _ in
+                withAnimation {
+                    // index값을 증가, 아니면 1
+                    // (selectedNum의 값을 변경해주기 위함)
+                    index = index < images.count ? index + 1 : 1
+                    // selectedNum 값은 images 배열의 element 값
+                    selectedNum = images[index - 1]
+                    currentPage = index - 1
+                }
+            })
+            VStack(spacing: 0) {
+                Spacer()
+                CustomPageIndicator(count: images.count, currentPage: $currentPage)
+            }
+            .frame(height: 90)
+          
+        }
     }
 }
 
@@ -565,6 +576,22 @@ struct BannerView: View {
     
     func getBannerData() async {
         return await viewModel.action(.getBannerItem)
+    }
+}
+
+struct CustomPageIndicator: View {
+    var count: Int
+    @Binding var currentPage: Int
+    var body: some View {
+        HStack(spacing: 8) {
+            ForEach(0..<count) { index in
+                Circle()
+                    .fill(currentPage == index ? Color.blue : Color.gray)
+                    .frame(width: 8, height: 8)
+                    .animation(.easeInOut, value: currentPage)
+            }
+        }
+        .padding(.bottom, -12)
     }
 }
 
