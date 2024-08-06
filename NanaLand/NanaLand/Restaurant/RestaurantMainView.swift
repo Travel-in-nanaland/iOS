@@ -49,18 +49,59 @@ struct RestaurantMainGridView: View {
                 
                 Spacer()
                 
-                filterButton(text: $keyword, modal: $keywordModal, placeholder: LocalizedKey.type.localized(for: LocalizationManager().language))
+                HStack(spacing: 0) {
+                    Button {
+                        self.keywordModal = true
+                    } label: {
+                        HStack(spacing: 0) {
+                            Text(keyword.split(separator: ",").count >= 3 ? "\(keyword.split(separator: ",").prefix(2).joined(separator: ","))" + ".." : keyword.split(separator: ",").prefix(2).joined(separator: ","))
+                                .font(.gothicNeo(.medium, size: 12))
+                                .lineLimit(1)
+                                .padding(.leading, 12)
+                                .truncationMode(.tail)
+                            
+                            Image("icDownSmall")
+                                .padding(.trailing, 12)
+                        }
+                        .frame(height: 40)
+                    }
+                    .foregroundStyle(Color.gray1)
+                    .background(
+                        RoundedRectangle(cornerRadius: 30)
+                            .strokeBorder(Color.gray1, lineWidth: 1)
+                    )
+                    .padding(.trailing, 8)
                     .sheet(isPresented: $keywordModal) {
-                        RestaurantKeywordView(keyword: $keyword)
+                        RestaurantKeywordView(keyword: $keyword, address: location, viewModel: viewModel)
                             .presentationDetents([.height(Constants.screenWidth * (448 / 360))]) // 팝업 뷰 height 조절
                     }
-                
-                filterButton(text: $location, modal: $locationModal, placeholder: LocalizedKey.allLocation.localized(for: LocalizationManager().language))
-                    .sheet(isPresented: $locationModal) {
-                        
-                        LocationModalView(viewModel: FestivalMainViewModel(), natureViewModel: NatureMainViewModel(), shopViewModel: ShopMainViewModel(), restaurantModel: viewModel, experienceViewModel: ExperienceMainViewModel(), location: $location, isModalShown: $locationModal, startDate: "", endDate: "", title: LocalizedKey.restaurant.localized(for: localizationManager.language))
+                    
+                    
+                    Button {
+                        self.locationModal = true
+                    } label: {
+                        HStack(spacing: 0) {
+                            Text(location.split(separator: ",").count >= 3 ? "\(location.split(separator: ",").prefix(2).joined(separator: ","))" + ".." : location.split(separator: ",").prefix(2).joined(separator: ","))
+                                .font(.gothicNeo(.medium, size: 12))
+                                .lineLimit(1)
+                                .padding(.leading, 12)
+                                .truncationMode(.tail)
+                            Image("icDownSmall")
+                                .padding(.trailing, 12)
+                        }
+                        .frame(height: 40)
+                    }
+                    .foregroundStyle(Color.gray1)
+                    .background(
+                        RoundedRectangle(cornerRadius: 30)
+                            .strokeBorder(Color.gray1, lineWidth: 1)
+                    )
+                    .padding(.trailing, 16)
+                    .sheet(isPresented: $locationModal) { // 지역 필터링 뷰
+                        LocationModalView(viewModel: FestivalMainViewModel(), natureViewModel: NatureMainViewModel(), shopViewModel: ShopMainViewModel(), restaurantModel: viewModel, experienceViewModel: ExperienceMainViewModel(), location: $location, isModalShown: $locationModal, startDate: "", endDate: "", title: "제주 맛집", keyword: keyword)
                             .presentationDetents([.height(Constants.screenWidth * (63 / 36))])
                     }
+                }
             }
                 .padding(.bottom, 16)
             
@@ -72,27 +113,26 @@ struct RestaurantMainGridView: View {
                             .padding(.top, (Constants.screenHeight - 208) * (179 / 636))
                     } else {
                         LazyVGrid(columns: columns, spacing: 16) {
-                            ForEach(viewModel.state.getRestaurantMainResponse.data.indices, id: \.self) { index in
+                            ForEach((0...viewModel.state.getRestaurantMainResponse.data.count - 1), id: \.self) { index in
                                 Button(action: {
                                     AppState.shared.navigationPath.append(ArticleViewType.detail(id: viewModel.state.getRestaurantMainResponse.data[index].id))
-                                }) {
-                                    VStack(alignment: .leading) {
+                                }, label: {
+                                    VStack(alignment: .leading, spacing: 0){
                                         ZStack {
                                             KFImage(URL(string: viewModel.state.getRestaurantMainResponse.data[index].firstImage.thumbnailUrl))
                                                 .resizable()
-                                                .frame(width: (UIScreen.main.bounds.width - 40) / 2, height: ((UIScreen.main.bounds.width - 40) / 2) * (12 / 16))
+                                                .frame(width: (Constants.screenWidth - 40) / 2, height: ((Constants.screenWidth - 40) / 2) * (12 / 16))
                                                 .clipShape(RoundedRectangle(cornerRadius: 12))
                                             
-                                            VStack {
-                                                HStack {
+                                            VStack(spacing: 0) {
+                                                HStack(spacing: 0) {
                                                     Spacer()
-                                                    
                                                     Button {
                                                         Task {
                                                             await toggleFavorite(body: FavoriteToggleRequest(id: Int(viewModel.state.getRestaurantMainResponse.data[index].id), category: .restaurant), index: index)
                                                         }
                                                     } label: {
-                                                        viewModel.state.getRestaurantMainResponse.data[index].favorite ? Image("icHeartFillMain") : Image("icHeartDefault")
+                                                        viewModel.state.getRestaurantMainResponse.data[index].favorite ? Image("icHeartFillMain").animation(nil) : Image("icHeartDefault").animation(nil)
                                                     }
                                                 }
                                                 .padding(.top, 8)
@@ -104,33 +144,48 @@ struct RestaurantMainGridView: View {
                                         Spacer()
                                         
                                         Text(viewModel.state.getRestaurantMainResponse.data[index].title)
-                                            .font(.gothicNeo(.bold, size: 14))
-                                            .foregroundStyle(.black)
                                             .lineLimit(1)
+                                            .font(.body02_semibold)
+                                            .padding(.bottom, 4)
+                                        HStack(spacing: 0){
+                                            Text(viewModel.state.getRestaurantMainResponse.data[index].addressTag)
+                                                .font(.caption01)
+                                                .foregroundStyle(Color.gray1)
+                                            Spacer()
+                                            Image("icRatingStar")
+                                            
+                                            // ratingAvg가 Int
+                                            let rating = viewModel.state.getRestaurantMainResponse.data[index].ratingAvg
+
+                                            // Double로 변환하여 소수점 한 자리로 변환
+                                            let formattedRating = String(format: "%.1f", Double(rating))
+                                            
+                                            Text(formattedRating)
+                                                .font(.caption01_semibold)
+                                                .foregroundStyle(Color.main)
+                                        }
                                         
-                                        Spacer()
-                                        
-                                        Text(viewModel.state.getRestaurantMainResponse.data[index].addressTag)
-                                            .frame(width: 64, height: 20)
-                                            .background(
-                                                RoundedRectangle(cornerRadius: 30)
-                                                    .foregroundStyle(Color.main10P)
-                                            )
-                                            .font(.gothicNeo(.regular, size: 12))
-                                            .foregroundStyle(Color.main)
+                                        .padding(.trailing, 8)
                                     }
-                                }
+                                })
+                                
+                                .frame(width: (UIScreen.main.bounds.width - 40) / 2, height: 196)
+                                
                             }
                         }
                         .padding(.horizontal, 16)
-                        .padding(.bottom, UIApplication.shared.windows.first?.safeAreaInsets.bottom ?? 0)
                     }
                 }
             }
             .onAppear {
                 Task {
-                    await getRestaurantMainItem(keyword: "", address: "", page: 0, size: 12)
+                    if location == LocalizedKey.allLocation.localized(for: LocalizationManager().language) {
+                        await getRestaurantMainItem(keyword: "", address: "", page: 0, size: 12)
+                    } else {
+                        await getRestaurantMainItem(keyword: "", address: "", page: 0, size: 12)
+                    }
                     isAPICalled = true
+                    
                 }
             }
             .navigationDestination(for: ArticleViewType.self) { viewType in
@@ -140,34 +195,6 @@ struct RestaurantMainGridView: View {
                 }
             }
         }
-    }
-    
-    @ViewBuilder
-    private func filterButton(text: Binding<String>, modal: Binding<Bool>, placeholder: String) -> some View {
-        Button {
-            modal.wrappedValue = true
-        } label: {
-            HStack(spacing: 0) {
-                Text(text.wrappedValue.split(separator: ",").count >= 3 ? "\(text.wrappedValue.split(separator: ",").prefix(2).joined(separator: ","))" + ".." : text.wrappedValue.split(separator: ",").prefix(2).joined(separator: ","))
-                    .font(.gothicNeo(.medium, size: 12))
-                    .lineLimit(1)
-                    .padding(.leading, 12)
-                    .truncationMode(.tail)
-                
-                Image("icDownSmall")
-                    .resizable()
-                    .frame(width: 16, height: 16)
-                    .padding(.trailing, 12)
-            }
-            .frame(height: 40)
-        }
-        .foregroundStyle(Color.gray1)
-        .frame(maxHeight: 40)
-        .background(
-            RoundedRectangle(cornerRadius: 30)
-                .strokeBorder(Color.gray1, lineWidth: 1)
-        )
-        .padding(.trailing, 16)
     }
     
     func getRestaurantMainItem(keyword: String, address: String, page: Int, size: Int) async {

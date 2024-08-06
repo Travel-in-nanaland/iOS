@@ -15,7 +15,7 @@ enum Category: String, CaseIterable, Codable {
     case market  // 전통시장
     case experience  // 이색 체험
     case nanaPick  // 나나 Pick
-    case restaurant
+    case restaurant //제주맛집
     
     var localizedName: LocalizedKey {
         switch self {

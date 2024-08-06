@@ -17,7 +17,7 @@ struct RestaurantMenuView: View {
     
     var body: some View {
         HStack{
-            VStack{
+            VStack(alignment: .leading){
                 Text(title)
                     .font(.body_bold)
                     .foregroundColor(.black)

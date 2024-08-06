@@ -186,16 +186,10 @@ struct LocationModalView: View {
                         APIKeyword = keyword.replacingOccurrences(of: "농촌체험", with: "RURAL_EXPERIENCE")
                         APIKeyword = keyword.replacingOccurrences(of: "힐링테라피", with: "HEALING_THERAPY")
                         await getLocationExperienceMainItem(filterName: selectedLocationStrings.joined(separator: ","), page: 0, size: 18, type: type, keyword: keyword == "키워드" ? "" : APIKeyword)
-                    } else {
+                    } else if title == "제주 맛집" {
                         restaurantModel.state.getRestaurantMainResponse = RestaurantMainModel(totalElements: 0, data: []) // 초기화
-                        APIKeyword = keyword.replacingOccurrences(of: "수상레저", with: "WATER_LEISURE")
-                        APIKeyword = keyword.replacingOccurrences(of: "지상레저", with: "LAND_LEISURE")
-                        APIKeyword = keyword.replacingOccurrences(of: "항공레저", with: "AIR_LEISURE")
-                        APIKeyword = keyword.replacingOccurrences(of: "해양레저", with: "MARINE_LEISURE")
-                        APIKeyword = keyword.replacingOccurrences(of: "농촌체험", with: "RURAL_EXPERIENCE")
-                        APIKeyword = keyword.replacingOccurrences(of: "힐링테라피", with: "HEALING_THERAPY")
-                        await getLocationRestaurantMainItem(filterName: localizedLocationArray.joined(separator: ","), page: 0, size: 18, type: type, keyword: keyword == "키워드" ? "" : APIKeyword)
-                    }
+                        await getLocationRestaurantMainItem(filterName: selectedLocationStrings.joined(separator: ","), page: 0, size: 12, keyword: keyword)
+                    } 
                     
                     location = selectedLocationStrings.joined(separator: ",")
                     viewModel.state.location = location
@@ -247,7 +241,7 @@ struct LocationModalView: View {
     }
     
     // 제주 맛집에서 지역 선택 시
-    func getLocationRestaurantMainItem(filterName: String, page: Int, size: Int, type: String, keyword: String) async {
+    func getLocationRestaurantMainItem(filterName: String, page: Int, size: Int, keyword: String) async {
         await restaurantModel.action(.getRestaurantMainItem(keyword: keyword, address: filterName, page: page, size: size))
     }
     

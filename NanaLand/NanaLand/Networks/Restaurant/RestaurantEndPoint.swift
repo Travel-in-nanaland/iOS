@@ -40,7 +40,7 @@ extension RestaurantEndPoint: EndPoint {
     var task: APITask {
         switch self {
         case let .getRestaurantMainItem(keyword, address, page, size):
-            let param = ["keywordFilterList": keyword, "addressFilterList": address, "page": page, "size": size] as [String: Any]
+            let param = ["keywordFilter": keyword, "addressFilterList": address, "page": page, "size": size] as [String: Any]
             return .requestParameters(parameters: param)
             
         case let .getRestaurantDetailItem(_, isSearch):
@@ -49,4 +49,3 @@ extension RestaurantEndPoint: EndPoint {
         }
     }
 }
-
