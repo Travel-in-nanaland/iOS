@@ -39,9 +39,9 @@ class LocalizationManager: ObservableObject {
 
 enum Language: String, CaseIterable {
 	case english = "ENGLISH"
-	case korean = "KOREAN"
-	case chinese = "CHINESE"
+    case chinese = "CHINESE"
 	case malaysia = "MALAYSIA"
+    case korean = "KOREAN"
 	
 	init?(deeplinkName: String) {
 		switch deeplinkName {
