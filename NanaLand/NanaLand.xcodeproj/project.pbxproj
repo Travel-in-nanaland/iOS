@@ -139,6 +139,9 @@
 		6D541A7A2C4F40C00095BB77 /* RestaurantEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D541A792C4F40C00095BB77 /* RestaurantEndPoint.swift */; };
 		6D6162682C4FA2AD00E97C0F /* RestaurantMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6162672C4FA2AD00E97C0F /* RestaurantMainView.swift */; };
 		6D664E672C4A43410083C464 /* splash.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6D664E662C4A43410083C464 /* splash.gif */; };
+		6D6D308F2C61FAAF00002F77 /* review_restaurant.json in Resources */ = {isa = PBXBuildFile; fileRef = 6D6D308C2C61FAAF00002F77 /* review_restaurant.json */; };
+		6D6D30902C61FAAF00002F77 /* report_complete.json in Resources */ = {isa = PBXBuildFile; fileRef = 6D6D308D2C61FAAF00002F77 /* report_complete.json */; };
+		6D6D30912C61FAAF00002F77 /* review_experience.json in Resources */ = {isa = PBXBuildFile; fileRef = 6D6D308E2C61FAAF00002F77 /* review_experience.json */; };
 		6D9EDACD2C5B4567003A8DE5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D9EDACA2C5B4567003A8DE5 /* GoogleService-Info.plist */; };
 		6D9EDACF2C5B4567003A8DE5 /* AuthKey_9JRUHFTK3L.p8 in Resources */ = {isa = PBXBuildFile; fileRef = 6D9EDACC2C5B4567003A8DE5 /* AuthKey_9JRUHFTK3L.p8 */; };
 		6D9EDAD12C5B459A003A8DE5 /* secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9EDAD02C5B459A003A8DE5 /* secret.swift */; };
@@ -412,6 +415,9 @@
 		6D541A792C4F40C00095BB77 /* RestaurantEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantEndPoint.swift; sourceTree = "<group>"; };
 		6D6162672C4FA2AD00E97C0F /* RestaurantMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantMainView.swift; sourceTree = "<group>"; };
 		6D664E662C4A43410083C464 /* splash.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = splash.gif; sourceTree = "<group>"; };
+		6D6D308C2C61FAAF00002F77 /* review_restaurant.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = review_restaurant.json; sourceTree = "<group>"; };
+		6D6D308D2C61FAAF00002F77 /* report_complete.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = report_complete.json; sourceTree = "<group>"; };
+		6D6D308E2C61FAAF00002F77 /* review_experience.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = review_experience.json; sourceTree = "<group>"; };
 		6D9EDACA2C5B4567003A8DE5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6D9EDACB2C5B4567003A8DE5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D9EDACC2C5B4567003A8DE5 /* AuthKey_9JRUHFTK3L.p8 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AuthKey_9JRUHFTK3L.p8; sourceTree = "<group>"; };
@@ -592,6 +598,9 @@
 		2C2D3D562C05993D002A38AA /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
+				6D6D308D2C61FAAF00002F77 /* report_complete.json */,
+				6D6D308E2C61FAAF00002F77 /* review_experience.json */,
+				6D6D308C2C61FAAF00002F77 /* review_restaurant.json */,
 				6D664E662C4A43410083C464 /* splash.gif */,
 				2C2749862C0992AA00ECBA71 /* report_info_star.json */,
 				2C2749882C09950900ECBA71 /* loading_drink.json */,
@@ -1490,13 +1499,16 @@
 				9C6A9C662BCC22CE000413AD /* AppleSDGothicNeoR.ttf in Resources */,
 				2C3C758B2BCA3ADC00312F26 /* Preview Assets.xcassets in Resources */,
 				9C6A9C632BCC22CE000413AD /* AppleSDGothicNeoL.ttf in Resources */,
+				6D6D30902C61FAAF00002F77 /* report_complete.json in Resources */,
 				2C3C75882BCA3ADC00312F26 /* Assets.xcassets in Resources */,
 				2C2D3D4C2C0385B3002A38AA /* Localizable.strings in Resources */,
+				6D6D308F2C61FAAF00002F77 /* review_restaurant.json in Resources */,
 				2C1F31C02BCD01240066819F /* AppleSDGothicNeoEB.ttf in Resources */,
 				2C1F31C62BCD01390066819F /* AppleSDGothicNeoB.ttf in Resources */,
 				2C1F31C52BCD01390066819F /* AppleSDGothicNeoH.ttf in Resources */,
 				2C2749872C0992AB00ECBA71 /* report_info_star.json in Resources */,
 				2C1F31C42BCD01390066819F /* AppleSDGothicNeoM.ttf in Resources */,
+				6D6D30912C61FAAF00002F77 /* review_experience.json in Resources */,
 				2C27498A2C09950900ECBA71 /* loading_drink.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
