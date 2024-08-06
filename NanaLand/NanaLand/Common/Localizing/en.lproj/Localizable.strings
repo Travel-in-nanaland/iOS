@@ -420,3 +420,6 @@ the market is the place!";
 "writeReview" = "리뷰 작성하기";
 "service" = "제공 서비스";
 "instagram" = "인스타그램";
+
+//MARK: - 언어 설정
+"greeting" = "Hello!\nNice to meet you 👋";

@@ -8,62 +8,78 @@
 import SwiftUI
 
 struct LanguageSelectView: View {
-	@AppStorage("locale") var locale: String = ""
-	
+    @AppStorage("locale") var locale: String = ""
+    var layout: [GridItem] = [GridItem(.flexible()), GridItem(.flexible())]
+    
     var body: some View {
-		VStack(spacing: 120) {
-			VStack(spacing: 4) {
-				Text("안녕하세요!")
-					.font(.gothicNeo(.regular, size: 22))
-				
-				Text("언어를 선택해주세요")
-					.font(.largeTitle01)
-			}
-			
-			VStack(spacing: 32) {
-				languageButton(title: Language.english.name, callback: {
-					locale = Language.english.rawValue
-					LocalizationManager.shared.language = .english
-				})
-				
-				languageButton(title: Language.chinese.name, callback: {
-					locale = Language.chinese.rawValue
-					LocalizationManager.shared.language = .chinese
-				})
-				
-				languageButton(title: Language.malaysia.name, callback: {
-					locale = Language.malaysia.rawValue
-					LocalizationManager.shared.language = .malaysia
-				})
-				languageButton(title: Language.korean.name, callback: {
-					locale = Language.korean.rawValue
-					LocalizationManager.shared.language = .korean
-				})
-			}
-			
-			Spacer()
-		}
-		.padding(.top, 60)
-		
-		
-		
+        ZStack {
+            VStack(spacing: 20) {
+                HStack{
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("안녕하세요!")
+                            .font(.gothicNeo(.regular, size: 22))
+                            .foregroundColor(.white)
+
+                        Text("언어를 선택해주세요")
+                            .font(.largeTitle01)
+                            .foregroundColor(.white)
+                    }
+                    Spacer()
+                }
+                .padding()
+                
+                LazyVGrid(columns: layout) {
+                    ForEach(Language.allCases, id: \.self) { language in
+                        languageButton(
+                            title: language.name,
+                            greeting: LocalizedKey.greeting.localized(for: language),
+                            callback: {
+                                locale = language.rawValue
+                                LocalizationManager.shared.language = language
+                            }
+                        )
+                        .padding(.bottom, 10)
+                    }
+                }
+                .padding()
+                Spacer()
+                
+                Image("logoInCircle")
+            }
+            .padding(.top, 60)
+        }
+        .background(Color.main)
     }
-	
-	
-	private func languageButton(title: String, callback: @escaping () -> Void) -> some View {
-		RoundedRectangle(cornerRadius: 30)
-			.fill(Color.main)
-			.frame(width: 260, height: 48)
-			.overlay {
-				Text(title)
-					.foregroundStyle(Color.baseWhite)
-					.font(.body01)
-			}
-			.onTapGesture {
-				callback()
-			}
-	}
-	
+    
+    private func languageButton(title: String, greeting: String, callback: @escaping () -> Void) -> some View {
+        RoundedRectangle(cornerRadius: 12)
+            .fill(Color.white)
+            .frame(width: 170, height: 115)
+            .overlay {
+                VStack {
+                    HStack {
+                        Text(greeting)
+                            .font(.body02_bold)
+                            .foregroundColor(.black)
+                        
+                        Spacer()
+                    }
+                    
+                    HStack {
+                        Spacer()
+                        
+                        Text(title)
+                            .font(.caption01)
+                            .foregroundColor(.black)
+                        Image("icArrow")
+                    }
+                }
+                .padding()
+            }
+            .onTapGesture {
+                callback()
+            }
+    }
 }
 
 #Preview {
