@@ -34,7 +34,7 @@ class ExperienceDetailViewModel: ObservableObject {
             if response != nil {
                 await MainActor.run {
                     state.getExperienceDetailResponse = response!.data!
-              
+                    print("\(state.getExperienceDetailResponse)")
                 }
             } else {
                 print("Error")

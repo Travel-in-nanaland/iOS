@@ -9,9 +9,9 @@ import SwiftUI
 import PhotosUI
 import Kingfisher
 import UIKit
+import CustomAlert
 
 struct ReviewWriteMain: View {
-    
     @EnvironmentObject var localizationManager: LocalizationManager
     @StateObject var viewModel = ReviewWriteViewModel()
     @State var showAlert = false //뒤로가기 alert 여부
@@ -29,25 +29,49 @@ struct ReviewWriteMain: View {
                         .padding(.bottom, 16)
                     HStack(spacing: 0) {
                         Button(action: {
-                            showAlert = true
+                            withAnimation(nil) {
+                                showAlert = true
+                            }
+                 
                         }, label: {
                             Image("icLeft")
                                 .renderingMode(.template)
                                 .foregroundStyle(Color.black)
                         })
-                        .alert(isPresented: $showAlert) {
-                            Alert(title: Text("정말 나가시겠습니까?"), message: Text("지금 나가시면\n작성중인 내용이 삭제됩니다"), primaryButton: .cancel(Text(.cancel), action: {
-                                
-                            }), secondaryButton: .default(Text("네"), action: {
-                                dismiss()
-                            }))
+                        .customAlert("정말 나가시겠습니까?", isPresented: $showAlert) {
+                            Text("지금 나가시면,\n작성 중인 내용이 삭제됩니다.")
+                                .font(.body01)
+                                .foregroundStyle(Color.gray1)
+                                .padding(.top, 5)
+                        } actions: {
+                            MultiButton {
+                                Button {
+                                    withAnimation(nil) {
+                                        showAlert = false
+                                        dismiss()
+                                    }
+                                   
+                                } label: {
+                                    Text("네")
+                                        .font(.title02_bold)
+                                        .foregroundStyle(Color.black)
+                                }
+                                Button {
+                                    withAnimation(nil) {
+                                        showAlert = false
+                                    }
+                                } label: {
+                                    Text("아니오")
+                                        .font(.title02_bold)
+                                        .foregroundStyle(Color.main)
+                                }
+                            }
                         }
                         .padding(.leading, 16)
                         Spacer()
                     }
                     .padding(.bottom, 12)
                 }
-               
                 ReviewMainGridView(viewModel: viewModel, reviewItemAddress: reviewAddress, reviewItemImageUrl: reviewImageUrl, reviewTitle: reviewTitle, reviewId: reviewId)
             }
             .toolbar(.hidden)

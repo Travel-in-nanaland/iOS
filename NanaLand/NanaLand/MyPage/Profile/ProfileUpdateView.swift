@@ -8,7 +8,7 @@
 import SwiftUI
 import UIKit
 import Kingfisher
-
+import CustomAlert
 struct ProfileUpdateView: View {
     @EnvironmentObject var appState: AppState
     @State private var nickName: String = AppState.shared.userInfo.nickname
@@ -36,10 +36,33 @@ struct ProfileUpdateView: View {
                             .renderingMode(.template)
                             .foregroundStyle(Color.black)
                     })
-                    .alert(isPresented: $showAlert) {
-                        Alert(title: Text(.deleteAlertTitle), message: Text(.deleteAlertSubTitle), primaryButton: .default(Text(.delete), action: {
-                            dismiss()
-                        }), secondaryButton: .cancel(Text(.cancel)))
+                    .customAlert("정말 나가시겠습니까?", isPresented: $showAlert) {
+                        Text("지금 나가시면,\n작성 중인 내용이 삭제됩니다.")
+                            .font(.body01)
+                            .foregroundStyle(Color.gray1)
+                            .padding(.top, 5)
+                    } actions: {
+                        MultiButton {
+                            Button {
+                                withAnimation(nil) {
+                                    showAlert = false
+                                    dismiss()
+                                }
+                            } label: {
+                                Text("네")
+                                    .font(.title02_bold)
+                                    .foregroundStyle(Color.black)
+                            }
+                            Button {
+                                withAnimation(nil) {
+                                    showAlert = false
+                                }
+                            } label: {
+                                Text("아니오")
+                                    .font(.title02_bold)
+                                    .foregroundStyle(Color.main)
+                            }
+                        }
                     }
                     .padding(.leading, 16)
                     Spacer()
@@ -125,7 +148,6 @@ struct ProfileUpdateView: View {
                                     // 텍스트가 변경될 때마다 실행되는 코드
                                     viewModel.state.isDuplicate = false
                                 }
-                            
                             
                             HStack(spacing: 0) {
                                 if (nickName.count > 8 || viewModel.state.isDuplicate || containsSpecialCharacter(nickName)) {

@@ -233,6 +233,7 @@ struct UserProfileMainView: View {
                             })
                             
                         } else {
+                            
                             Text("\(viewModel.state.getUserProfileInfoResponse.description)")
                                 .font(.caption01)
                                 .foregroundStyle(Color.main)
@@ -281,9 +282,9 @@ struct UserProfileMainView: View {
             if AppState.shared.userInfo.description.isEmpty {
                 HStack(spacing: 0) {
                     VStack{
-                        Text(.noDescription)
+                        Text("안녕하세요! 반가워요✋\n함께 제주 여행을 즐겨봐요 :D")
                             .font(.body02)
-                            .foregroundColor(.gray2)
+                            .foregroundColor(.black)
                             .padding()
                         Spacer()
                     }

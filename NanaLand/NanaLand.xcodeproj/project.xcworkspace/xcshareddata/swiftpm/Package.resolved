@@ -64,6 +64,15 @@
       }
     },
     {
+      "identity" : "customalert",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/divadretlaw/CustomAlert.git",
+      "state" : {
+        "revision" : "2261709b0e3482e1a7f2631f0cf012808f2e9fea",
+        "version" : "3.7.1"
+      }
+    },
+    {
       "identity" : "firebase-ios-sdk",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/firebase-ios-sdk",
@@ -286,6 +295,33 @@
       "state" : {
         "revision" : "7ecd220909bc25529e35e2addb513a20abbfec82",
         "version" : "0.1.14"
+      }
+    },
+    {
+      "identity" : "windowkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/divadretlaw/WindowKit",
+      "state" : {
+        "revision" : "e466ce3fe49c7d5190f2d4403cc14607a0501a22",
+        "version" : "2.3.1"
+      }
+    },
+    {
+      "identity" : "windowreader",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/divadretlaw/WindowReader",
+      "state" : {
+        "revision" : "295d4e6c1aacd3c6a79e47c70f7b2745b8e0399e",
+        "version" : "2.0.1"
+      }
+    },
+    {
+      "identity" : "windowscenereader",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/divadretlaw/WindowSceneReader",
+      "state" : {
+        "revision" : "09ab0e20e48b707d72a4c3c00ceba3c10323ccd5",
+        "version" : "3.1.0"
       }
     }
   ],
