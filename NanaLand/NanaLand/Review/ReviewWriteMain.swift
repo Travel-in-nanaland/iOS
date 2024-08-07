@@ -98,6 +98,7 @@ struct ReviewMainGridView: View {
     var reviewTitle: String = ""
     var reviewId: Int64 = 0
     var reviewCategory: String = ""
+    
     var body: some View {
         ScrollView {
             VStack {
@@ -120,9 +121,13 @@ struct ReviewMainGridView: View {
                     .frame(width: 64, height: 1)
                     .padding(.bottom, 26)
                 
-                Text(.selectRating)
-                    .font(.body_bold)
-                    .padding(.bottom, 15)
+                let selectRating1 = Text(.selectRating1).font(.body_bold).foregroundColor(.main)
+                let selectRating2 = Text(.selectRating2).font(.body_bold).foregroundColor(.black)
+                let selectRating3 = Text(.selectRating3).font(.body_bold).foregroundColor(.main)
+                let selectRating4 = Text(.selectRating4).font(.body_bold).foregroundColor(.black)
+                let selectRating = selectRating1 + selectRating2 + selectRating3 + selectRating4
+                
+                selectRating
                 
                 HStack {
                     ForEach(1...5, id: \.self) { number in
@@ -144,9 +149,13 @@ struct ReviewMainGridView: View {
                     .frame(width: 64, height: 1)
                     .padding(.bottom, 26)
                 
-                Text(.visitReview)
-                    .font(.body_bold)
-                    .padding(.bottom, 15)
+                let visitReview1 = Text(.visitReview1).font(.body_bold).foregroundColor(.main)
+                let visitReview2 = Text(.visitReview2).font(.body_bold).foregroundColor(.black)
+                let visitReview3 = Text(.visitReview3).font(.body_bold).foregroundColor(.main)
+                let visitReview4 = Text(.visitReview4).font(.body_bold).foregroundColor(.black)
+                let visitReview = visitReview1 + visitReview2 + visitReview3 + visitReview4
+                
+                visitReview
                 
                 HStack {
                     ZStack {
@@ -206,9 +215,9 @@ struct ReviewMainGridView: View {
                                             selectedItems.remove(at: index)
                                             viewModel.updateImageCount(selectedImageData.count)
                                         }) {
-                                            Image(systemName: "xmark.circle.fill")
-                                                .foregroundColor(.white)
-                                                .background(Circle().fill(Color.black.opacity(0.6)))
+                                            Image("icRemovePhoto")
+                                                .padding(.trailing, 2)
+                                                .padding(.top, 2)
                                         }
                                     }
                                 }

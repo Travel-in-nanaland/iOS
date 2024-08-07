@@ -303,7 +303,7 @@ struct RestaurantDetailView: View {
                                                                 HStack(spacing: 0) {
                                                                     Text("리뷰 \(viewModel.state.getReviewDataResponse.data[index].memberReviewCount ?? 0)")
                                                                         .font(.caption01)
-                                                                    Text(" ㅣ ")
+                                                                    Text("ㅣ")
                                                                     Image("icRatingStar")
                                                                     Text("\(String(format: "%.1f", viewModel.state.getReviewDataResponse.data[index].rating ?? 0))")
                                                                         .font(.caption01)
