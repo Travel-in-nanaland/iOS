@@ -15,7 +15,11 @@ struct RestaurantDetailView: View {
     @State private var roundedHeight: CGFloat = (Constants.screenWidth - 40) * (224.0 / 358.0)
     var id: Int64
     @State private var contentIsOn = [false, false, false] // 댓글 더보기 버튼 클릭 여부(더 보기 클릭한 댓글만 라인 제한 풀기)
+    @State private var isExpanded = false
+    
     @State private var isAPICalled = false
+    
+    var layout: [GridItem] = [GridItem(.flexible())]
     
     var body: some View {
         VStack{
@@ -36,26 +40,41 @@ struct RestaurantDetailView: View {
                                         .padding(.bottom, 24)
                                     
                                     ZStack{
-                                        RoundedRectangle(cornerRadius: 30)
+                                        RoundedRectangle(cornerRadius: 12)
                                             .fill(Color.white) // 빈 뷰를 하얀색으로 채웁니다.
                                             .frame(maxWidth: Constants.screenWidth - 40, maxHeight: .infinity) // 뷰의 크기를 지정합니다.
-                                            .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
+                                            .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 0)
                                         
-                                        VStack {
+                                        VStack(){
                                             HStack(spacing: 0) {
                                                 
                                                 Text(viewModel.state.getRestaurantDetailResponse.addressTag)
+                                                    .padding(EdgeInsets(top: 4, leading: 12, bottom: 4, trailing: 12))
                                                     .background(
                                                         RoundedRectangle(cornerRadius: 30)
                                                             .foregroundStyle(Color.main10P)
-                                                            .frame(width: 64, height: 20)
                                                     )
                                                     .font(.gothicNeo(.regular, size: 12))
-                                                    .padding(.leading, 45)
+                                                    .padding(.leading, 40)
+                                                    .padding(.trailing, 10)
                                                     .foregroundStyle(Color.main)
+                                                
+                                                LazyHGrid(rows: layout) {
+                                                    ForEach(viewModel.state.getRestaurantDetailResponse.keywords!, id: \.self) { keyword in
+                                                        Text(keyword)
+                                                            .padding(EdgeInsets(top: 4, leading: 12, bottom: 4, trailing: 12))
+                                                            .background(
+                                                                RoundedRectangle(cornerRadius: 30)
+                                                                    .foregroundStyle(Color.main10P)
+                                                            )
+                                                            .font(.gothicNeo(.regular, size: 12))
+                                                            .foregroundStyle(Color.main)
+                                                    }
+                                                }
+                                                
                                                 Spacer()
                                             }
-                                            .padding(.bottom, 14)
+                                            .padding(.bottom, 10)
                                             HStack(spacing: 0) {
                                                 Text(viewModel.state.getRestaurantDetailResponse.title)
                                                     .font(.gothicNeo(.bold, size: 20))
@@ -63,17 +82,33 @@ struct RestaurantDetailView: View {
                                                 Spacer()
                                             }
                                             .padding(.bottom, 8)
-                                            
                                             Text(viewModel.state.getRestaurantDetailResponse.content)
-                                                .font(.body01)
-                                                .padding(.leading, 20)
-                                                .padding(.trailing, 20)
+                                                .fixedSize(horizontal: false, vertical: true) // 세로 방향으로 확장 허용
+                                                .lineLimit(isExpanded ? nil : 5)
+                                                .padding(.leading, 35)
+                                                .padding(.trailing, 30)
                                                 .padding(.bottom, 20)
+                                            
+                                            if viewModel.state.getRestaurantDetailResponse.content.count > 90 {
+                                                HStack{
+                                                    Spacer()
+                                                    Button(action: {
+                                                        isExpanded.toggle()
+                                                    }, label: {
+                                                        Text(isExpanded ? "접기" : "더 보기")
+                                                            .font(.caption01)
+                                                            .foregroundColor(.gray1)
+                                                    })
+                                                }
+                                                .padding(.trailing, 30)
+                                                .padding(.bottom, 20)
+                                            }
                                             
                                             Spacer()
                                         }
-                                        .padding(.top, 36)
+                                        .padding(.top, 16)
                                     }
+                                    .padding(.bottom, 20)
                                     
                                     VStack{
                                         
@@ -87,11 +122,14 @@ struct RestaurantDetailView: View {
                                         
                                         ForEach(viewModel.state.getRestaurantDetailResponse.menus, id: \.menuName) { menuItem in
                                             RestaurantMenuView(title: menuItem.menuName, price: menuItem.price, imageUrl: menuItem.firstImage.originUrl)
+                                                .environmentObject(LocalizationManager())
                                             Rectangle()
                                                 .frame(width: Constants.screenWidth, height: 1)
                                                 .foregroundColor(.gray3)
                                         }
+                                        .padding(.leading, 5)
                                     }
+                                    .padding(.bottom, 10)
                                     
                                     VStack(spacing: 24) {
                                         if viewModel.state.getRestaurantDetailResponse.address != "" {
@@ -261,7 +299,7 @@ struct RestaurantDetailView: View {
                                                                     Text(viewModel.state.getReviewDataResponse.data[index].nickname ?? "")
                                                                         .font(.body02_bold)
                                                                 }
-
+                                                                
                                                                 HStack(spacing: 0) {
                                                                     Text("리뷰 \(viewModel.state.getReviewDataResponse.data[index].memberReviewCount ?? 0)")
                                                                         .font(.caption01)
@@ -422,13 +460,13 @@ struct RestaurantDetailView: View {
                                 .font(.body_bold)
                                 .foregroundStyle(Color.white)
                                 .background(RoundedRectangle(cornerRadius: 50).foregroundStyle(Color.main).frame(width: Constants.screenWidth * (28 / 36), height: 40))
-                              
-                                
+                            
+                            
                         }
                         .frame(width: Constants.screenWidth * (28 / 36), height: 40)
                         .padding(.trailing, 16)
                         
-
+                        
                     }
                     .frame(width: Constants.screenWidth, height: 56)
                     .background(Color.white)
@@ -456,8 +494,8 @@ struct RestaurantDetailView: View {
     }
     
     func getReviewData(id: Int64, category: String, page: Int, size: Int) async {
-            await viewModel.action(.getReviewData(id: id, category: category, page: page, size: size))
-        }
+        await viewModel.action(.getReviewData(id: id, category: category, page: page, size: size))
+    }
     
     func toggleFavorite(body: FavoriteToggleRequest) async {
         if UserDefaults.standard.string(forKey: "provider") == "GUEST" {
