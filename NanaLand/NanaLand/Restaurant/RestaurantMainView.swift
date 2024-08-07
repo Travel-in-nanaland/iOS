@@ -15,9 +15,9 @@ struct RestaurantMainView: View {
     
     var body: some View {
         VStack{
-            NavigationBar(title: LocalizedKey.restaurant.localized(for: localizationManager.language))
+            NanaNavigationBar(title: .restaurant, showBackButton: true)
                 .frame(height: 56)
-                .padding(.bottom, 16)
+                .padding(.bottom, 24)
             
             RestaurantMainGridView()
             

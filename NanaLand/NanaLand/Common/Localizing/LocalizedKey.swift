@@ -433,9 +433,11 @@ enum LocalizedKey: String {
     case writeReview
     case service
     case instagram
+    case currency
     
     //MARK: - 언어 설정
     case greeting
+    
     
     //MARK: - localized()
     func localized(for language: Language) -> String {
