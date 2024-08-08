@@ -36,9 +36,10 @@ struct CalendarFilterView: View {
 			.shadow(color: .baseBlack.opacity(0.1), radius: 10, x: 0, y: -4)
 		
 		.onAppear {
-			currentStartDate = startDate
-			currentEndDate = endDate
-			
+//			currentStartDate = startDate
+//			currentEndDate = endDate
+            currentStartDate = viewModel.state.selectedStartDate ?? startDate
+            currentEndDate = viewModel.state.selectedEndDate ?? endDate
 			if currentStartDate != nil {
 				calendarController.setYearMonth(year: currentStartDate!.year, month: currentStartDate!.month)
 			}
@@ -267,6 +268,8 @@ struct CalendarFilterView: View {
                     // 시작날짜~종료날짜 필터링
                     viewModel.state.getFestivalMainResponse = FestivalModel(totalElements: 0, data: [])
                     await getDateFestivalMainItem(page: 0, size: 12, filterName: [location].joined(separator: ","), start: strStartDate, end: strEndDate)
+                    viewModel.state.selectedStartDate = currentStartDate
+                    viewModel.state.selectedEndDate = currentEndDate
                     if location == "" {
                         location = LocalizedKey.allLocation.localized(for: localizationManager.language)
                     }

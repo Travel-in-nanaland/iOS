@@ -12,6 +12,7 @@ class ShopMainViewModel: ObservableObject {
         var getShopMainResponse = ShopMainModel(totalElements: 0, data: [])
         var location = ""
         var page = 0
+        var selectedLocation: [LocalizedKey] = []
     }
     
     enum Action {

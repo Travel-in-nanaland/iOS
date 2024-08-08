@@ -72,7 +72,7 @@ struct RestaurantMainGridView: View {
                     )
                     .padding(.trailing, 8)
                     .sheet(isPresented: $keywordModal) {
-                        RestaurantKeywordView(keyword: $keyword, address: location, viewModel: viewModel)
+                        RestaurantKeywordView(keyword: $keyword, address: location, viewModel: viewModel, selectedKeyword: viewModel.state.selectedKeyword)
                             .presentationDetents([.height(Constants.screenWidth * (448 / 360))]) // 팝업 뷰 height 조절
                     }
                     
@@ -98,7 +98,7 @@ struct RestaurantMainGridView: View {
                     )
                     .padding(.trailing, 16)
                     .sheet(isPresented: $locationModal) { // 지역 필터링 뷰
-                        LocationModalView(viewModel: FestivalMainViewModel(), natureViewModel: NatureMainViewModel(), shopViewModel: ShopMainViewModel(), restaurantModel: viewModel, experienceViewModel: ExperienceMainViewModel(), location: $location, isModalShown: $locationModal, startDate: "", endDate: "", title: "제주 맛집", keyword: keyword)
+                        LocationModalView(viewModel: FestivalMainViewModel(), natureViewModel: NatureMainViewModel(), shopViewModel: ShopMainViewModel(), restaurantModel: viewModel, experienceViewModel: ExperienceMainViewModel(), location: $location, isModalShown: $locationModal, selectedLocation: viewModel.state.selectedLocation, startDate: "", endDate: "", title: "제주 맛집", keyword: keyword)
                             .presentationDetents([.height(Constants.screenWidth * (63 / 36))])
                     }
                 }
@@ -180,9 +180,9 @@ struct RestaurantMainGridView: View {
             .onAppear {
                 Task {
                     if location == LocalizedKey.allLocation.localized(for: LocalizationManager().language) {
-                        await getRestaurantMainItem(keyword: "", address: "", page: 0, size: 12)
+                        await getRestaurantMainItem(keyword: keyword == LocalizedKey.type.localized(for: LocalizationManager().language) ? "" : keyword, address: "", page: 0, size: 12)
                     } else {
-                        await getRestaurantMainItem(keyword: "", address: "", page: 0, size: 12)
+                        await getRestaurantMainItem(keyword: keyword == LocalizedKey.type.localized(for: LocalizationManager().language) ? "" : keyword, address: "", page: 0, size: 12)
                     }
                     isAPICalled = true
                     

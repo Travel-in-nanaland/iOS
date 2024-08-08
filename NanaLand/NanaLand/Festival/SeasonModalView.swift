@@ -13,7 +13,7 @@ struct SeasonModalView: View {
     
     @Binding var season: String
     @Binding var isModalShown: Bool
-    @State var selectedSeason = ""
+    @State var selectedSeason: String
     
     var body: some View {
         VStack(spacing: 0) {
@@ -44,6 +44,7 @@ struct SeasonModalView: View {
                                 selectedSeason = LocalizedKey.spring.localized(for: localizationManager.language)
                                 viewModel.state.page = 0
                                 season = selectedSeason
+                                viewModel.state.selectedSeason = selectedSeason
                             }
                            
                         
@@ -82,6 +83,7 @@ struct SeasonModalView: View {
                                 viewModel.state.page = 0
                                 await getSeasonFestivalMainItem(page: 0, size: 12, season: "summer")
                                 season = selectedSeason
+                                viewModel.state.selectedSeason = selectedSeason
                             }
                            
                         
@@ -119,6 +121,7 @@ struct SeasonModalView: View {
                                 viewModel.state.page = 0
                                 await getSeasonFestivalMainItem(page: 0, size: 12, season: "autumn")
                                 season = selectedSeason
+                                viewModel.state.selectedSeason = selectedSeason
                             }
                             
                         
@@ -157,6 +160,7 @@ struct SeasonModalView: View {
                                 viewModel.state.page = 0
                                 await getSeasonFestivalMainItem(page: 0, size: 12, season: "winter")
                                 season = selectedSeason
+                                viewModel.state.selectedSeason = selectedSeason
                             }
                         
                         

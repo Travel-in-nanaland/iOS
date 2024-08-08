@@ -71,33 +71,33 @@ struct MapView: View {
     func position(for location: LocalizedKey) -> CGPoint {
         switch location {
         case .jejuCity:
-            return CGPoint(x: 179.3, y: 201)
+            return CGPoint(x: 176.3, y: 201)
         case .Aewol:
-            return CGPoint(x: 145.9, y: 211)
+            return CGPoint(x: 142.9, y: 211)
         case .Jocheon:
-            return CGPoint(x: 216.3, y: 194.2)
+            return CGPoint(x: 213.3, y: 194.2)
         case .Hangyeong:
-            return CGPoint(x: 63, y: 245)
+            return CGPoint(x: 60, y: 245)
         case .Gunjwa:
-            return CGPoint(x: 290.9, y: 184.5)
+            return CGPoint(x: 287.9, y: 184.5)
         case .Hallim:
-            return CGPoint(x: 105.8, y: 221.5)
+            return CGPoint(x: 102.8, y: 221.5)
         case .Udo:
-            return CGPoint(x: 363, y: 171)
+            return CGPoint(x: 360, y: 171)
         case .Chuja:
-            return CGPoint(x: 125, y: 150)
+            return CGPoint(x: 122, y: 150)
         case .SeogwipoCity:
-            return CGPoint(x: 164.1, y: 268.8)
+            return CGPoint(x: 161.1, y: 268.8)
         case .Daejeong:
-            return CGPoint(x: 61.7, y: 282.7)
+            return CGPoint(x: 58.7, y: 282.7)
         case .Andeok:
-            return CGPoint(x: 113.4, y: 271.4)
+            return CGPoint(x: 110.4, y: 271.4)
         case .Namwon:
-            return CGPoint(x: 226.9, y: 262.7)
+            return CGPoint(x: 223.9, y: 262.7)
         case .Pyoseon:
-            return CGPoint(x: 260.5, y: 240.1)
+            return CGPoint(x: 257.5, y: 240.1)
         case .Seongsan:
-            return CGPoint(x: 311.8, y: 221.7)
+            return CGPoint(x: 308.8, y: 221.7)
         default:
             return CGPoint(x: 0, y: 0)
         }

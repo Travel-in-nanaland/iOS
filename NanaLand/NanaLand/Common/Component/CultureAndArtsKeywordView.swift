@@ -13,7 +13,7 @@ struct CultureAndArtsKeywordView: View {
     var address: String
     @ObservedObject var viewModel: ExperienceMainViewModel
     @State private var selectedKeywordItem = 0
-    @State var selectedKeyword: [String] = [] // 선택된 키워드 이름 담을 배열
+    @State var selectedKeyword: [String] // 선택된 키워드 이름 담을 배열
     // 눌려진 키워드 버튼 담을 배열(눌렸는지 안 눌렸는지)
     @State var buttonsToggled = Array(repeating: false, count: 9)
     var CultureAndArtsKeywordButtonArray = ["역사", "전시회", "공방", "미술관", "박물관", "공연", "공원", "종교시설", "테마파크"]
@@ -65,6 +65,7 @@ struct CultureAndArtsKeywordView: View {
                             buttonsToggled[index].toggle()
                         }
                     }
+                    selectedKeyword = []
                 } label: {
                     HStack(spacing: 0) {
                         Image("icRe")
@@ -93,6 +94,9 @@ struct CultureAndArtsKeywordView: View {
                 Task {
                     viewModel.state.getExperienceMainResponse = ExperienceMainModel(totalElements: 0, data: [])
                     await getKeywordExperienceMainItem(keyword: keyword, address: address == LocalizedKey.allLocation.localized(for: LocalizationManager().language) ? "" : address, page: 0, size: 12)
+                    if keyword.isEmpty {
+                        keyword = "키워드"
+                    }
                 }
                 print("\(keyword)")
                 dismiss()
@@ -109,6 +113,9 @@ struct CultureAndArtsKeywordView: View {
             .padding(.bottom, 24)
 
             Spacer()
+        }
+        .onAppear(){
+            updateButtonsToggled()
         }
     }
     // title, 닫기 버튼 뷰
@@ -161,6 +168,13 @@ struct CultureAndArtsKeywordView: View {
     
     func getKeywordExperienceMainItem(keyword: String, address: String, page: Int, size: Int) async {
         await viewModel.action(.getExperienceMainItem(experienceType: "CULTURE_AND_ARTS", keyword: keyword, address: address, page: 0, size: 12))
+        viewModel.state.selectedKeyword = selectedKeyword
+    }
+    
+    func updateButtonsToggled() {
+        for (index, category) in CultureAndArtsKeywordArray.enumerated() {
+            buttonsToggled[index] = selectedKeyword.contains(category)
+        }
     }
 }
 

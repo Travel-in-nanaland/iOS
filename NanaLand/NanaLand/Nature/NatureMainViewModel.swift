@@ -11,6 +11,7 @@ class NatureMainViewModel: ObservableObject {
         var getNatureMainResponse = NatureMainModel(totalElements: 0, data: [])
         var location = ""
         var page = 0
+        var selectedLocation: [LocalizedKey] = []
     }
     
     enum Action {

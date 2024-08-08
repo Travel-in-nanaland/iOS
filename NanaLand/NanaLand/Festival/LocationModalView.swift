@@ -19,7 +19,7 @@ struct LocationModalView: View {
     @Binding var isModalShown: Bool
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @State var selectedLocation: [LocalizedKey] = []
+    @State var selectedLocation: [LocalizedKey]
     @State var buttonsToggled = Array(repeating: false, count: 14)
     @State var localizedLocationArray: [String] = []
     var startDate: String
@@ -45,6 +45,7 @@ struct LocationModalView: View {
         .Pyoseon,
         .Seongsan
     ]
+
     
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 4)
     
@@ -164,19 +165,23 @@ struct LocationModalView: View {
                     if title == "이번달" {
                         viewModel.state.getFestivalMainResponse = FestivalModel(totalElements: 0, data: [])
                         await getLocationFestivalMainItem(page: 0, size: 18, filterName: selectedLocationStrings.joined(separator: ","), start: startDate, end: endDate)
+                        viewModel.state.selectedLocation = selectedLocation
                     } else if title == "종료된" {
                         viewModel.state.getFestivalMainResponse = FestivalModel(totalElements: 0, data: [])
                         viewModel.state.page = 0
                         await getPastLocationFestivalMainItem(page: 0, size: 12, filterName: selectedLocationStrings.joined(separator: ","))
+                        viewModel.state.selectedLocation = selectedLocation
                     } else if title == "7대자연" {
                         natureViewModel.state.getNatureMainResponse = NatureMainModel(totalElements: 0, data: [])
                         await getLocationNatureMainItem(filterName: selectedLocationStrings.joined(separator: ","), page: 0, size: 12)
                         natureViewModel.state.location = selectedLocationStrings.joined(separator: ",")
                         natureViewModel.state.page = 0
+                        natureViewModel.state.selectedLocation = selectedLocation
                     } else if title == "전통시장"{ // 전통시장
                         shopViewModel.state.getShopMainResponse = ShopMainModel(totalElements: 0, data: [])
                         await getLocationShopMainItem(filterName: selectedLocationStrings.joined(separator: ","), page: 0, size: 18)
                         shopViewModel.state.page = 0
+                        shopViewModel.state.selectedLocation = selectedLocation
                     } else if title == "이색 체험" {
                         experienceViewModel.state.getExperienceMainResponse = ExperienceMainModel(totalElements: 0, data: []) // 초기화
                         APIKeyword = keyword.replacingOccurrences(of: "수상레저", with: "WATER_LEISURE")
@@ -186,10 +191,12 @@ struct LocationModalView: View {
                         APIKeyword = keyword.replacingOccurrences(of: "농촌체험", with: "RURAL_EXPERIENCE")
                         APIKeyword = keyword.replacingOccurrences(of: "힐링테라피", with: "HEALING_THERAPY")
                         await getLocationExperienceMainItem(filterName: selectedLocationStrings.joined(separator: ","), page: 0, size: 18, type: type, keyword: keyword == "키워드" ? "" : APIKeyword)
+                        experienceViewModel.state.selectedLocation = selectedLocation
                     } else if title == "제주 맛집" {
                         restaurantModel.state.getRestaurantMainResponse = RestaurantMainModel(totalElements: 0, data: []) // 초기화
                         await getLocationRestaurantMainItem(filterName: selectedLocationStrings.joined(separator: ","), page: 0, size: 12, keyword: keyword)
-                    } 
+                        restaurantModel.state.selectedLocation = selectedLocation
+                    }
                     
                     location = selectedLocationStrings.joined(separator: ",")
                     viewModel.state.location = location
@@ -212,6 +219,9 @@ struct LocationModalView: View {
                     .fill(Color.main)
             )
             .padding(.bottom, 24)
+        }
+        .onAppear(){
+            updateButtonsToggled()
         }
     }
     
@@ -242,7 +252,7 @@ struct LocationModalView: View {
     
     // 제주 맛집에서 지역 선택 시
     func getLocationRestaurantMainItem(filterName: String, page: Int, size: Int, keyword: String) async {
-        await restaurantModel.action(.getRestaurantMainItem(keyword: keyword, address: filterName, page: page, size: size))
+        await restaurantModel.action(.getRestaurantMainItem(keyword: keyword == LocalizedKey.type.localized(for: LocalizationManager().language) ? "" : keyword, address: filterName, page: page, size: size))
     }
     
     func toggleButton(_ index: Int) {
@@ -253,6 +263,13 @@ struct LocationModalView: View {
             if let selectedIndex = selectedLocation.firstIndex(of: locationArray[index]) {
                 selectedLocation.remove(at: selectedIndex)
             }
+        }
+    }
+    
+    // 버튼 상태 업데이트
+    func updateButtonsToggled() {
+        for (index, location) in locationArray.enumerated() {
+            buttonsToggled[index] = selectedLocation.contains(location)
         }
     }
 }
@@ -266,7 +283,7 @@ struct LocationModalView: View {
         experienceViewModel: ExperienceMainViewModel(),
         location: .constant(""),
         isModalShown: .constant(true),
-        startDate: "2024-05-01",
+        selectedLocation: [], startDate: "2024-05-01",
         endDate: "2024-05-31",
         title: "이번달 축제"
     )
