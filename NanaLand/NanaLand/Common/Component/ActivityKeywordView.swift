@@ -13,7 +13,7 @@ struct ActivityKeywordView: View {
     var address: String
     @ObservedObject var viewModel: ExperienceMainViewModel
     @State private var selectedKeywordItem = 0
-    @State var selectedKeyword: [String] = [] // 선택된 키워드 이름 담을 배열
+    @State var selectedKeyword: [String] // 선택된 키워드 이름 담을 배열
     @State var selectedAPIKeyword: [String] = []
     // 눌려진 키워드 버튼 담을 배열(눌렸는지 안 눌렸는지)
     @State var buttonsToggled = Array(repeating: false, count: 6)
@@ -64,6 +64,7 @@ struct ActivityKeywordView: View {
                             buttonsToggled[index].toggle()
                         }
                     }
+                    selectedKeyword = []
                 } label: {
                     HStack(spacing: 0) {
                         Image("icRe")
@@ -92,6 +93,9 @@ struct ActivityKeywordView: View {
                 Task {
                     viewModel.state.getExperienceMainResponse = ExperienceMainModel(totalElements: 0, data: [])
                     await getKeywordExperienceMainItem(keyword: selectedKeyword.joined(separator: ","), address: address == LocalizedKey.allLocation.localized(for: LocalizationManager().language) ? "" : address, page: 0, size: 12)
+                    if keyword.isEmpty {
+                        keyword = "키워드"
+                    }
                 }
                
                 dismiss()
@@ -108,6 +112,9 @@ struct ActivityKeywordView: View {
             )
             .padding(.bottom, 24)
             Spacer()
+        }
+        .onAppear(){
+            updateButtonsToggled()
         }
     }
     
@@ -158,5 +165,12 @@ struct ActivityKeywordView: View {
     
     func getKeywordExperienceMainItem(keyword: String, address: String, page: Int, size: Int) async {
         await viewModel.action(.getExperienceMainItem(experienceType: "ACTIVITY", keyword: keyword, address: address, page: 0, size: 12))
+        viewModel.state.selectedKeyword = selectedKeyword
+    }
+    
+    func updateButtonsToggled() {
+        for (index, category) in ActivityKeywordArray.enumerated() {
+            buttonsToggled[index] = selectedKeyword.contains(category)
+        }
     }
 }

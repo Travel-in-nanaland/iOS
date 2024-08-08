@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUICalendar
 
 class FestivalMainViewModel: ObservableObject {
     struct State {
@@ -13,6 +14,10 @@ class FestivalMainViewModel: ObservableObject {
         var title = ""
         var page = 0
         var location = ""
+        var selectedLocation: [LocalizedKey] = []
+        var selectedSeason = ""
+        var selectedStartDate: YearMonthDay? = .current
+        var selectedEndDate: YearMonthDay? = .current
         
     }
     

@@ -12,6 +12,8 @@ class ExperienceMainViewModel: ObservableObject {
         var getExperienceMainResponse = ExperienceMainModel(totalElements: 0, data: [])
         var page = 0
         var location = ""
+        var selectedKeyword: [String] = []
+        var selectedLocation: [LocalizedKey] = []
     }
     
     enum Action {
@@ -31,17 +33,19 @@ class ExperienceMainViewModel: ObservableObject {
         switch action {
         case let .getExperienceMainItem(experienceType, keyword, address, page, size):
             // TODO: - 이색체험 API 호출
+            
             let response = await ExperienceService.getExperienceMainItem(experienceType: experienceType, keyword: keyword, address: address, page: 0, size: 12)
-            if response != nil {
+               if let responseData = response!.data {
                 await MainActor.run {
                     print(response)
-                    state.getExperienceMainResponse.totalElements = response!.data?.totalElements ?? 0
-                    state.getExperienceMainResponse.data = response!.data!.data
+                    state.getExperienceMainResponse.totalElements = responseData.totalElements
+                    state.getExperienceMainResponse.data = responseData.data
                     print(state.getExperienceMainResponse.totalElements)
                 }
             } else {
                 print("Error")
             }
+            
         case .toggleFavorite(body: let body, index: let index):
             let response = await FavoriteService.toggleFavorite(id: body.id, category: .experience)
             if response != nil {

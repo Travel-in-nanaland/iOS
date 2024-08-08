@@ -14,8 +14,7 @@ struct RestaurantKeywordView: View {
     var address: String
     @ObservedObject var viewModel: RestaurantMainViewModel
     @EnvironmentObject var localizationManager: LocalizationManager
-    @State private var selectedKeywordItem = 0
-    @State var selectedKeyword: [String] = [] // 선택된 키워드 이름 담을 배열
+    @State var selectedKeyword: [String] // 선택된 키워드 이름 담을 배열
     // 눌려진 키워드 버튼 담을 배열(눌렸는지 안 눌렸는지)
     @State var buttonsToggled = Array(repeating: false, count: 14)
     var RestaurantKeyword = ["KOREAN", "CHINESE", "JAPANESE", "WETERN", "SNACK", "SOUTH_AMERICAN", "SOUTHEAST_ASIAN", "VEGAN", "HALAL", "MEAT_BLACK_PORK", "SEAFOOD", "CHICKEN_BURGER", "CAFE_DESSERT", "PUB_FOOD_PUB"]
@@ -57,6 +56,7 @@ struct RestaurantKeywordView: View {
                         if buttonsToggled[index] == true {
                             buttonsToggled[index].toggle()
                         }
+                        selectedKeyword = []
                     }
                 } label: {
                     HStack(spacing: 0) {
@@ -83,7 +83,7 @@ struct RestaurantKeywordView: View {
                 keyword = selectedKeyword.joined(separator: ",")
                 Task {
                     viewModel.state.getRestaurantMainResponse = RestaurantMainModel(totalElements: 0, data: [])
-                    await getKeywordRestaurantMainItem(keyword: keyword, address: address == LocalizedKey.allLocation.localized(for: LocalizationManager().language) ? "" : address, page: 0, size: 12)
+                    await getKeywordRestaurantMainItem(keyword: keyword == LocalizedKey.type.localized(for: LocalizationManager().language) ? "" : keyword, address: address == LocalizedKey.allLocation.localized(for: LocalizationManager().language) ? "" : address, page: 0, size: 12)
                     if keyword.isEmpty {
                         keyword = LocalizedKey.type.localized(for: localizationManager.language)
                     }
@@ -103,6 +103,9 @@ struct RestaurantKeywordView: View {
             )
             .padding(.bottom, 24)
             Spacer()
+        }
+        .onAppear(){
+            updateButtonsToggled()
         }
     }
     
@@ -151,8 +154,16 @@ struct RestaurantKeywordView: View {
         buttonsToggled[index].toggle()
     }
     
+    // 버튼 상태 업데이트
+    func updateButtonsToggled() {
+        for (index, category) in RestaurantKeyword.enumerated() {
+            buttonsToggled[index] = selectedKeyword.contains(category)
+        }
+    }
+    
     func getKeywordRestaurantMainItem(keyword: String, address: String, page: Int, size: Int) async {
         await viewModel.action(.getRestaurantMainItem(keyword: keyword, address: address, page: 0, size: 12))
+        viewModel.state.selectedKeyword = selectedKeyword
     }
 }
 

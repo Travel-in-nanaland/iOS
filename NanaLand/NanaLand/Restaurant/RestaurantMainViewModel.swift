@@ -12,6 +12,8 @@ class RestaurantMainViewModel: ObservableObject {
         var getRestaurantMainResponse = RestaurantMainModel(totalElements: 0, data: [])
         var page = 0
         var location = ""
+        var selectedKeyword: [String] = []
+        var selectedLocation: [LocalizedKey] = []
     }
     
     enum Action {
@@ -31,12 +33,12 @@ class RestaurantMainViewModel: ObservableObject {
         switch action {
         case let .getRestaurantMainItem(keyword, address, page, size):
             // TODO - 제주맛집 API 호출
-            let response = await RestaurantService.getRestaurantMainItem(keyword: keyword, address: address, page: page, size: size)
-            if response != nil {
+            if let response = await RestaurantService.getRestaurantMainItem(keyword: keyword, address: address, page: page, size: size),
+               let responseData = response.data {
                 await MainActor.run {
                     print(response)
-                    state.getRestaurantMainResponse.totalElements = response!.data?.totalElements ?? 0
-                    state.getRestaurantMainResponse.data = response!.data!.data
+                    state.getRestaurantMainResponse.totalElements = responseData.totalElements
+                    state.getRestaurantMainResponse.data = responseData.data
                     print(state.getRestaurantMainResponse.totalElements)
                 }
             } else {
