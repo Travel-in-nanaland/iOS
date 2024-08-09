@@ -17,3 +17,4 @@ struct ReviewWriteModel: Codable {
     var imgCnt: Int
     //이미지 데이터 추가
 }
+

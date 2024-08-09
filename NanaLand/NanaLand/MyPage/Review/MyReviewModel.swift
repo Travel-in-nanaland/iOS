@@ -26,3 +26,4 @@ struct ReviewDetailImagesList: Codable {
     let originUrl: String
     let thumbnailUrl: String
 }
+

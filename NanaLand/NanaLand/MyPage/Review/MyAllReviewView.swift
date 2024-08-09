@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MyReviewView: View {
+struct MyAllReviewView: View {
     @EnvironmentObject var localizationManager: LocalizationManager
     @StateObject var viewModel: MyAllReviewViewModel
     @State private var isAPICalled = false
@@ -29,15 +29,11 @@ struct MyReviewView: View {
                             LazyVGrid(columns: layout) {
                                 if let data = viewModel.state.getMyAllReviewResponse.data {
                                     ForEach(data, id: \.id) { review in
-                                        Button {
-                                            AppState.shared.navigationPath.append(reviewType.detail)
-                                        } label: {
-                                            MyReviewArticleItemView(placeName: review.placeName, rating: Int(review.rating), images: review.images!, content: review.content, reviewTypeKeywords: review.reviewTypeKeywords, heartCount: Int(review.heartCount), createdAt: review.createdAt)
-                                                .padding(.top, 10)
-                                                .padding(.trailing, 15)
-                                                .padding(.leading, 15)
-                                        }
-
+                                        
+                                        MyReviewArticleItemView(viewModel: viewModel, placeName: review.placeName, rating: Int(review.rating), images: review.images!, content: review.content, reviewTypeKeywords: review.reviewTypeKeywords, heartCount: Int(review.heartCount), createdAt: review.createdAt, postId: review.postId, category: review.category, id: review.id)
+                                            .padding(.top, 10)
+                                            .padding(.trailing, 15)
+                                            .padding(.leading, 15)
                                     }
                                 }
                                 
@@ -71,13 +67,6 @@ struct MyReviewView: View {
             }
         }
         .toolbar(.hidden)
-        .navigationDestination(for: reviewType.self) { review in
-            switch review {
-            case .detail:
-                ReviewWriteMain()
-                    .environmentObject(LocalizationManager())
-            }
-        }
         .onAppear {
             Task {
                 await getAllReviewItem(page: 0, size: 12)
@@ -93,11 +82,7 @@ struct MyReviewView: View {
     
 }
 
-enum reviewType {
-    case detail
-}
-
 #Preview {
-    MyReviewView(viewModel: MyAllReviewViewModel())
+    MyAllReviewView(viewModel: MyAllReviewViewModel())
         .environmentObject(LocalizationManager())
 }

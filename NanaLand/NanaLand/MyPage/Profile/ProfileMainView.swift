@@ -47,7 +47,7 @@ struct ProfileMainView: View {
                 TypeTestProfileView(nickname: AppState.shared.userInfo.nickname)
                     .environmentObject(TypeTestViewModel())
             case .allReview:
-                MyReviewView(viewModel: MyAllReviewViewModel())
+                MyAllReviewView(viewModel: MyAllReviewViewModel())
                     .environmentObject(LocalizationManager())
                 Text("")
             case .allNotice:
@@ -98,7 +98,7 @@ struct ProfileMainView: View {
                     KFImage(URL(string: AppState.shared.userInfo.profileImage.originUrl))
                         .resizable()
                         .aspectRatio(contentMode: .fill)
-                        .frame(width: 100, height: 100)
+                        .frame(width: 80, height: 80)
                         .background(.blue)
                         .clipShape(Circle())
                         .padding(.bottom, 16)
@@ -125,10 +125,10 @@ struct ProfileMainView: View {
                         } else {
                             if AppState.shared.userInfo.nickname == "" {
                                 Text("닉네임 없음")
-                                    .font(.largeTitle02)
+                                    .font(.title02_bold)
                             } else {
                                 Text("\(AppState.shared.userInfo.nickname)")
-                                    .font(.largeTitle02)
+                                    .font(.title02_bold)
                             }
                         }
                         
@@ -157,7 +157,7 @@ struct ProfileMainView: View {
                                             .foregroundColor(.white)
                                             .overlay(
                                                 RoundedRectangle(cornerRadius: 30)
-                                                    .stroke(Color.main, lineWidth: 2.0)
+                                                    .stroke(Color.main, lineWidth: 1.0)
                                             )
                                     }
                             })
@@ -318,7 +318,7 @@ struct ProfileTabBarView: View {
             }
         }
         .frame(height: 32)
-        .padding(.horizontal)
+//        .padding(.horizontal)
     }
 }
 
@@ -344,7 +344,7 @@ struct ProfileTabBarItem: View {
                         .matchedGeometryEffect(id: "underline",
                                                in: namespace.self)
                 } else {
-                    Color.clear.frame(height: 2)
+                    Color.gray2.frame(height: 2)
                 }
             }
             .animation(.spring(), value: currentTab)
@@ -352,6 +352,7 @@ struct ProfileTabBarItem: View {
         .buttonStyle(.plain)
     }
 }
+
 
 struct reviewTabView: View {
     @StateObject var viewModel = MyReviewViewModel()

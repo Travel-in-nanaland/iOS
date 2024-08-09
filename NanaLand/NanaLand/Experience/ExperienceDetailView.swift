@@ -431,17 +431,21 @@ struct ExperienceDetailView: View {
                                             
                                         }
                                     }
-                                    Button {
-                                        // TODO: - 후기 모두 보기(각 컨텐츠 별)
-                                        AppState.shared.navigationPath.append(ExperienceViewType.reviewAll(id: id))
-                                    } label: {
-                                        Text("후기 더보기")
-                                            .foregroundStyle(Color.white)
-                                            .font(.body_bold)
+                                    if viewModel.state.getReviewDataResponse.totalElements > 3 {
+                                        Button {
+                                            // TODO: - 후기 모두 보기(각 컨텐츠 별)
+                                            AppState.shared.navigationPath.append(ExperienceViewType.reviewAll(id: id))
+                                        } label: {
+                                            Text("후기 더보기")
+                                                .foregroundStyle(Color.gray1)
+                                                .font(.body_bold)
+                                        }
+                                        .frame(width: Constants.screenWidth - 32, height: 48)
+                                        .background(){
+                                            RoundedRectangle(cornerRadius: 50).stroke(lineWidth: 1).foregroundStyle(.gray2).background(.clear
+                                            )
+                                        }
                                     }
-                                    .frame(width: Constants.screenWidth - 32, height: 48)
-                                    .background(RoundedRectangle(cornerRadius: 50).foregroundStyle(Color.main))
-                                    
                                 }
                                 .padding(.bottom, 66)
                                 .padding(.top, 32)
@@ -522,7 +526,7 @@ struct ExperienceDetailView: View {
                             // Todo - 리뷰 작성
                             AppState.shared.navigationPath.append(ExperienceViewType.writeReview)
                         } label: {
-                            Text("리뷰 작성하기")
+                            Text("후기 작성하기")
                                 .padding(.leading, (Constants.screenWidth) * (96 / 360))
                                 .padding(.trailing, (Constants.screenWidth) * (96 / 360))
                                 .font(.body_bold)

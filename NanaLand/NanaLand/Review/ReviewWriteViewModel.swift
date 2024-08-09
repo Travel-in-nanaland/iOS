@@ -58,7 +58,7 @@ class ReviewWriteViewModel: ObservableObject {
                 await MainActor.run {
                     state.getReviewPostResponse.status = response!.status
                 }
-  
+                
             }
         }
     }
