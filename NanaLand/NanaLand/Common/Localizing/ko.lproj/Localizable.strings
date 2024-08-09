@@ -13,7 +13,7 @@
 "requiredWithBracket" = "(필수)";
 "optionalWithBracket" = "(선택)";
 "destination" = "여행지";
-"gotoMainScreen" = "메인 화면 바로가기";
+"gotoMainScreen" = "홈화면 바로가기";
 "no" = "아니오";
 "yes" = "네";
 "emptyString" = "";

@@ -35,3 +35,19 @@ struct BaseResponse<T: Codable>: Codable {
 		data = try container.decodeIfPresent(T.self, forKey: .data)
 	}
 }
+
+struct DeleteResponse: Codable {
+    let status: Int
+    let message: String
+
+    enum CodingKeys: String, CodingKey {
+        case status
+        case message
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        status = try container.decode(Int.self, forKey: .status)
+        message = try container.decode(String.self, forKey: .message)
+    }
+}

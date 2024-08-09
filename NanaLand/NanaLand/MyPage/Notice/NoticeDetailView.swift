@@ -38,37 +38,44 @@ struct NoticeDetailView: View {
                                 .padding(.top, 1)
                         }
                         .padding()
+                        .padding(.leading, 5)
                         
                         Rectangle()
                             .frame(height: 1)
                             .foregroundColor(.gray2)
                             .padding(.top, 1)
                         
-                        LazyVGrid(columns: layout) {
-                            if let contents = viewModel.state.getNoticeDetailResponse.noticeContents {
-                                ForEach(contents.indices, id: \.self) { index in
-                                    let notice = contents[index]
-                                    
-                                    // 이미지와 내용 출력
-                                    if let image = notice.image?.originUrl, !image.isEmpty {
-                                        KFImage(URL(string: image))
-                                            .resizable()
-                                            .frame(width: Constants.screenWidth * 0.9, height: Constants.screenHeight * 0.3)
-                                            .cornerRadius(8)
-                                            .padding()
-                                    }
-                                    
-                                    if let content = notice.content, !content.isEmpty {
-                                        Text(content)
-                                            .font(.body02)
-                                            .foregroundColor(.black)
-                                            .padding(.leading, 15)
-                                            .padding(.trailing, 15)
+                        VStack(alignment: .leading){
+                            LazyVGrid(columns: layout) {
+                                if let contents = viewModel.state.getNoticeDetailResponse.noticeContents {
+                                    ForEach(contents.indices, id: \.self) { index in
+                                        let notice = contents[index]
+                                        
+                                        // 이미지와 내용 출력
+                                        if let image = notice.image?.originUrl, !image.isEmpty {
+                                            KFImage(URL(string: image))
+                                                .resizable()
+                                                .frame(width: Constants.screenWidth * 0.9, height: Constants.screenHeight * 0.3)
+                                                .cornerRadius(8)
+                                                .padding()
+                                        }
+                                        
+                                        HStack{
+                                            if let content = notice.content, !content.isEmpty {
+                                                Text(content)
+                                                    .font(.body02)
+                                                    .foregroundColor(.black)
+                                                    .padding(.leading, 20)
+                                                    .padding(.trailing, 10)
+                                            }
+                                            
+                                            Spacer()
+                                        }
                                     }
                                 }
                             }
+                            .padding(.top, 20)
                         }
-                        .padding(.top, 20)
                         
                         Spacer()
                     }

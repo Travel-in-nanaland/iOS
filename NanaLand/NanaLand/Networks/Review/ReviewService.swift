@@ -17,10 +17,12 @@ struct ReviewService {
         return await NetworkManager.shared.request(ReviewEndPoint.getReviewData(id: id, category: category, page: page, size: size))
     }
     
+    // 마이페이지 후기 프리뷰 조회
     static func getMyReviewItem() async -> BaseResponse<MyReviewModel>? {
         return await NetworkManager.shared.request(ReviewEndPoint.getMyReviewData)
     }
     
+    // 마이페이지 모두 보기 리뷰 조회
     static func getMyAllReviewItem(page: Int, size: Int) async -> BaseResponse<MyAllReviewModel>? {
         return await NetworkManager.shared.request(ReviewEndPoint.getAllReviewData(page: page, size: size))
     }
@@ -32,5 +34,10 @@ struct ReviewService {
     // 타 유저 모든 리뷰 조회
     static func getUserAllReviewData(memberId: Int64, page: Int, size: Int) async -> BaseResponse<MyAllReviewModel>? {
         return await NetworkManager.shared.request(ReviewEndPoint.getUserAllReviewData(memberId: memberId, page: page, size: size))
+    }
+    
+    // 내가 작성한 후기 삭제
+    static func deleteMyReview(id: Int64) async -> BaseResponse<EmptyResponseModel>? {
+        return await NetworkManager.shared.request(ReviewEndPoint.deleteMyReview(id: id))
     }
 }

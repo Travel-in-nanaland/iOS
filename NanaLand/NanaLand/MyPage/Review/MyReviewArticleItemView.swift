@@ -10,6 +10,7 @@ import SwiftUI
 import Kingfisher
 
 struct MyReviewArticleItemView: View {
+    @StateObject var viewModel: MyAllReviewViewModel
     var placeName: String
     var rating: Int
     var images: [AllReviewDetailImagesList]
@@ -17,25 +18,47 @@ struct MyReviewArticleItemView: View {
     var reviewTypeKeywords: [String]
     var heartCount: Int
     var createdAt: String
+    var postId: Int64
+    var category: String
+    var id: Int64
 
     var body: some View {
         ZStack {
             VStack(alignment: .leading) {
                 HStack {
-                    Text(placeName)
-                        .font(.body02_bold)
-                        .foregroundColor(.black)
+                    Button {
+                        if category == "EXPERIENCE" {
+                            AppState.shared.navigationPath.append(reviewType.experience(id: postId))
+                        } else if category == "RESTAURANT" {
+                            AppState.shared.navigationPath.append(reviewType.restaurant(id: postId))
+                        }
+                    } label: {
+                        Text(placeName)
+                            .font(.body02_bold)
+                            .foregroundColor(.black)
 
-                    Image(systemName: "chevron.right")
-                        .resizable()
-                        .frame(width: 3, height: 11)
-
+                        Image(systemName: "chevron.right")
+                            .resizable()
+                            .frame(width: 3, height: 11)
+                    }
+                    .navigationDestination(for: reviewType.self) { review in
+                        switch review {
+                        case let .experience(id):
+                            ExperienceDetailView(id: id)
+                                .environmentObject(LocalizationManager())
+                        case let .restaurant(id):
+                            RestaurantDetailView(id: id)
+                                .environmentObject(LocalizationManager())
+                        }
+                    }
+                    
                     Spacer()
 
                     Button(action: {
-
+                        
                     }, label: {
                         Text("수정")
+                            .font(.caption01)
                             .foregroundColor(.gray1)
                             .padding(EdgeInsets(top: 4, leading: 12, bottom: 4, trailing: 12))
                             .background {
@@ -45,9 +68,13 @@ struct MyReviewArticleItemView: View {
                     })
 
                     Button(action: {
-
+                        Task {
+                                await deleteMyReview(id: id)
+                                await getAllReviewItem(page: 0, size: 12)
+                            }
                     }, label: {
                         Text("삭제")
+                            .font(.caption01)
                             .foregroundColor(.gray1)
                             .padding(EdgeInsets(top: 4, leading: 12, bottom: 4, trailing: 12))
                             .background {
@@ -123,6 +150,13 @@ struct MyReviewArticleItemView: View {
             }
         }
     }
+    
+    func deleteMyReview(id: Int64) async {
+        await viewModel.action(.deleteMyReview(id: id))
+    }
+    func getAllReviewItem(page: Int, size: Int) async {
+        await viewModel.action(.getMyAllReviewItem(page: page, size: size))
+    }
 }
 
 struct TagsCloudView: View {
@@ -189,6 +223,11 @@ struct TagsCloudView: View {
     }
 }
 
+enum reviewType: Hashable {
+    case experience(id: Int64)
+    case restaurant(id: Int64)
+}
+
 #Preview {
-    MyReviewArticleItemView(placeName: "", rating: 1, images: [AllReviewDetailImagesList(originUrl: "", thumbnailUrl: "")], content: "", reviewTypeKeywords: [""], heartCount: 2, createdAt: "")
+    MyReviewArticleItemView(viewModel: MyAllReviewViewModel(), placeName: "", rating: 1, images: [AllReviewDetailImagesList(originUrl: "", thumbnailUrl: "")], content: "", reviewTypeKeywords: [""], heartCount: 2, createdAt: "", postId: 0, category: "RESTAURANT", id: 0)
 }
