@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 struct LocationModalView: View {
     @ObservedObject var viewModel: FestivalMainViewModel
     @ObservedObject var natureViewModel: NatureMainViewModel
@@ -28,7 +29,14 @@ struct LocationModalView: View {
     var type = "" // 이색체험 액티비티인지 문화예술인지
     var keyword = "" // 키워드 필터링
     @State var APIKeyword = ""
-    
+    let translations = [
+        "지상레저": "LAND_LEISURE",
+        "수상레저": "WATER_LEISURE",
+        "항공레저": "AIR_LEISURE",
+        "해양체험": "MARINE_EXPERIENCE",
+        "농촌체험": "RURAL_EXPERIENCE",
+        "힐링테라피": "HEALING_THERAPHY"
+    ]
     var locationArray: [LocalizedKey] = [
         .jejuCity,
         .Aewol,
@@ -184,14 +192,17 @@ struct LocationModalView: View {
                         shopViewModel.state.selectedLocation = selectedLocation
                     } else if title == "이색 체험" {
                         experienceViewModel.state.getExperienceMainResponse = ExperienceMainModel(totalElements: 0, data: []) // 초기화
-                        APIKeyword = keyword.replacingOccurrences(of: "수상레저", with: "WATER_LEISURE")
-                        APIKeyword = keyword.replacingOccurrences(of: "지상레저", with: "LAND_LEISURE")
-                        APIKeyword = keyword.replacingOccurrences(of: "항공레저", with: "AIR_LEISURE")
-                        APIKeyword = keyword.replacingOccurrences(of: "해양레저", with: "MARINE_LEISURE")
-                        APIKeyword = keyword.replacingOccurrences(of: "농촌체험", with: "RURAL_EXPERIENCE")
-                        APIKeyword = keyword.replacingOccurrences(of: "힐링테라피", with: "HEALING_THERAPY")
-                        await getLocationExperienceMainItem(filterName: selectedLocationStrings.joined(separator: ","), page: 0, size: 18, type: type, keyword: keyword == "키워드" ? "" : APIKeyword)
+                        APIKeyword = keyword
+                        for (key, value) in translations {
+                            APIKeyword = APIKeyword.replacingOccurrences(of: key, with: value)
+                        }
+                        print(APIKeyword)
+                        await getLocationExperienceMainItem(filterName: selectedLocationStrings.joined(separator: ","), page: 0, size: 12, type: type, keyword: keyword == "키워드" ? "" : APIKeyword)
+                        print("APIKeyword: \(APIKeyword)")
+                        print("Keyword: \(keyword)")
+                        experienceViewModel.state.page = 0
                         experienceViewModel.state.selectedLocation = selectedLocation
+                        
                     } else if title == "제주 맛집" {
                         restaurantModel.state.getRestaurantMainResponse = RestaurantMainModel(totalElements: 0, data: []) // 초기화
                         await getLocationRestaurantMainItem(filterName: selectedLocationStrings.joined(separator: ","), page: 0, size: 12, keyword: keyword)
@@ -200,7 +211,7 @@ struct LocationModalView: View {
                     
                     location = selectedLocationStrings.joined(separator: ",")
                     viewModel.state.location = location
-                    print(location)
+
                     // 장소 선택 안 할시 전 지역
                     if location.isEmpty {
                         location = LocalizedKey.allLocation.localized(for: localizationManager.language)

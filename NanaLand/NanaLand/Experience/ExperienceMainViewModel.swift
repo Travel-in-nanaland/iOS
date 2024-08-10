@@ -34,12 +34,12 @@ class ExperienceMainViewModel: ObservableObject {
         case let .getExperienceMainItem(experienceType, keyword, address, page, size):
             // TODO: - 이색체험 API 호출
             
-            let response = await ExperienceService.getExperienceMainItem(experienceType: experienceType, keyword: keyword, address: address, page: 0, size: 12)
+            let response = await ExperienceService.getExperienceMainItem(experienceType: experienceType, keyword: keyword, address: address, page: page, size: size)
                if let responseData = response!.data {
                 await MainActor.run {
                     print(response)
                     state.getExperienceMainResponse.totalElements = responseData.totalElements
-                    state.getExperienceMainResponse.data = responseData.data
+                    state.getExperienceMainResponse.data.append(contentsOf: response!.data?.data ?? [])
                     print(state.getExperienceMainResponse.totalElements)
                 }
             } else {
