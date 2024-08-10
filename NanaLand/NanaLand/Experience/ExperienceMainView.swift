@@ -44,6 +44,14 @@ struct ExperienceMainGridView: View {
     @State private var keyword = "키워드"
     @State private var APIKeyword = ""
     @State private var isAPICalled = false
+    let translations = [
+        "지상레저": "LAND_LEISURE",
+        "수상레저": "WATER_LEISURE",
+        "항공레저": "AIR_LEISURE",
+        "해양체험": "MARINE_EXPERIENCE",
+        "농촌체험": "RURAL_EXPERIENCE",
+        "힐링테라피": "HEALING_THERAPHY"
+    ]
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
     var experienceType = "Activity"
     
@@ -168,13 +176,33 @@ struct ExperienceMainGridView: View {
                                                 .font(.caption01_semibold)
                                                 .foregroundStyle(Color.main)
                                         }
-                                        
                                         .padding(.trailing, 8)
                                     }
                                 })
-                                
                                 .frame(width: (UIScreen.main.bounds.width - 40) / 2, height: 196)
-                                
+                            }
+                            if viewModel.state.page < viewModel.state.getExperienceMainResponse.totalElements / 12 {
+                                ProgressView()
+                                    .onAppear {
+                                        print("\(viewModel.state.page)")
+                                        Task {
+                                            if location == LocalizedKey.allLocation.localized(for: LocalizationManager().language) {
+                                                APIKeyword = keyword
+                                                for (key, value) in translations {
+                                                    APIKeyword = APIKeyword.replacingOccurrences(of: key, with: value)
+                                                }
+                                                experienceType == "Activity" ? await getExperienceMainItem(experienceType: "ACTIVITY", keyword: keyword == "키워드" ? "" : APIKeyword, address: "", page: viewModel.state.page + 1, size: 12) : await getExperienceMainItem(experienceType: "CULTURE_AND_ARTS", keyword: keyword == "키워드" ? "" : APIKeyword, address: "", page: viewModel.state.page + 1, size: 12)
+                                            } else {
+                                                APIKeyword = keyword
+                                                for (key, value) in translations {
+                                                    APIKeyword = APIKeyword.replacingOccurrences(of: key, with: value)
+                                                }
+                                                experienceType == "Activity" ? await getExperienceMainItem(experienceType: "ACTIVITY", keyword: keyword == "키워드" ? "" : APIKeyword, address: location, page: viewModel.state.page + 1, size: 12) : await getExperienceMainItem(experienceType: "CULTURE_AND_ARTS", keyword: keyword == "키워드" ? "" : APIKeyword, address: location, page: viewModel.state.page + 1, size: 12)
+                                            }
+                                            
+                                            viewModel.state.page += 1
+                                        }
+                                    }
                             }
                         }
                         .padding(.horizontal, 16)
