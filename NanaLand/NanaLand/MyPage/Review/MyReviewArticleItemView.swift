@@ -13,7 +13,7 @@ struct MyReviewArticleItemView: View {
     @StateObject var viewModel: MyAllReviewViewModel
     var placeName: String
     var rating: Int
-    var images: [AllReviewDetailImagesList]
+    var images: [AllReviewDetailImagesList]?
     var content: String
     var reviewTypeKeywords: [String]
     var heartCount: Int
@@ -41,21 +41,11 @@ struct MyReviewArticleItemView: View {
                             .resizable()
                             .frame(width: 3, height: 11)
                     }
-                    .navigationDestination(for: reviewType.self) { review in
-                        switch review {
-                        case let .experience(id):
-                            ExperienceDetailView(id: id)
-                                .environmentObject(LocalizationManager())
-                        case let .restaurant(id):
-                            RestaurantDetailView(id: id)
-                                .environmentObject(LocalizationManager())
-                        }
-                    }
                     
                     Spacer()
 
                     Button(action: {
-                        
+                        AppState.shared.navigationPath.append(reviewType.detailReivew(id: id, category: category))
                     }, label: {
                         Text("수정")
                             .font(.caption01)
@@ -99,15 +89,23 @@ struct MyReviewArticleItemView: View {
                 .padding(.top, -20)
                 .padding(.leading, 15)
 
-                if !images.isEmpty {
-                    KFImage(URL(string: ("")))
-                        .resizable()
-                        .frame(width: 70, height: 70)
-                        .cornerRadius(8)
-                        .padding()
-                        .padding(.top, -20)
+                if let images = images, !images.isEmpty {
+                    ScrollView(.horizontal) {
+                        HStack {
+                            ForEach(images, id: \.originUrl) { imageDetail in
+                                KFImage(URL(string: imageDetail.originUrl))
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 70, height: 70)
+                                    .cornerRadius(8)
+                                    .clipped()
+                            }
+                        }
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 10)
+                    }
                 }
-
+                
                 HStack {
                     Text(content)
                         .font(.body02)
@@ -147,6 +145,19 @@ struct MyReviewArticleItemView: View {
                 RoundedRectangle(cornerRadius: 12)
                     .fill(Color.white)
                     .shadow(radius: 1)
+            }
+        }
+        .navigationDestination(for: reviewType.self) { review in
+            switch review {
+            case let .experience(id):
+                ExperienceDetailView(id: id)
+                    .environmentObject(LocalizationManager())
+            case let .restaurant(id):
+                RestaurantDetailView(id: id)
+                    .environmentObject(LocalizationManager())
+            case let .detailReivew(id, category):
+                MyReviewDetailView(reviewId: id, reviewCategory: category)
+                    .environmentObject(LocalizationManager())
             }
         }
     }
@@ -226,6 +237,7 @@ struct TagsCloudView: View {
 enum reviewType: Hashable {
     case experience(id: Int64)
     case restaurant(id: Int64)
+    case detailReivew(id: Int64, category: String)
 }
 
 #Preview {

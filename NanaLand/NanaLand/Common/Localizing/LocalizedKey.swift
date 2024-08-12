@@ -385,27 +385,28 @@ enum LocalizedKey: String {
     case keywordDescription
     case reviewBackAlertTitle
     case reviewBackAlertMessage
+    case modify
     
     // MARK: - 키워드 내용
     case mood
-    case anniversary
-    case cute
-    case luxurious
-    case beautiful
-    case kind
+    case ANNIVERSARY
+    case CUTE
+    case LUXURY
+    case SCENERY
+    case KIND
     case companion
-    case descendant
-    case friend
-    case parent
-    case alone
-    case spouse
-    case relative
-    case animal
+    case CHILDREN
+    case FRIEND
+    case PARENTS
+    case ALONE
+    case HALF
+    case RELATIVE
+    case PET
     case amenities
-    case socket
-    case largeSpace
-    case parking
-    case cleanBathroom
+    case OUTLET
+    case LARGE
+    case PARK
+    case BATHROOM
     case warning
     case warningDescription
     case check

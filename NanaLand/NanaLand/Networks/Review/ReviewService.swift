@@ -40,4 +40,14 @@ struct ReviewService {
     static func deleteMyReview(id: Int64) async -> BaseResponse<EmptyResponseModel>? {
         return await NetworkManager.shared.request(ReviewEndPoint.deleteMyReview(id: id))
     }
+    
+    //내가 작성한 후기 상세 조회
+    static func getMyReviewDetail(id: Int64) async -> BaseResponse<MyReviewDetailModel>? {
+        return await NetworkManager.shared.request(ReviewEndPoint.getMyReviewDetail(id: id))
+    }
+    
+    //내가 작성한 후기 수정
+    static func modifyMyReview(id: Int64, body: EditReviewDto, multipartFile: [Foundation.Data?]) async -> BaseResponse<ReviewModifyModel>? {
+        return await NetworkManager.shared.request(ReviewEndPoint.modifyMyReview(id: id, body: body, multipartFile: multipartFile))
+    }
 }

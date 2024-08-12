@@ -30,7 +30,7 @@ struct MyAllReviewView: View {
                                 if let data = viewModel.state.getMyAllReviewResponse.data {
                                     ForEach(data, id: \.id) { review in
                                         
-                                        MyReviewArticleItemView(viewModel: viewModel, placeName: review.placeName, rating: Int(review.rating), images: review.images!, content: review.content, reviewTypeKeywords: review.reviewTypeKeywords, heartCount: Int(review.heartCount), createdAt: review.createdAt, postId: review.postId, category: review.category, id: review.id)
+                                        MyReviewArticleItemView(viewModel: viewModel, placeName: review.placeName, rating: Int(review.rating), images: review.images, content: review.content, reviewTypeKeywords: review.reviewTypeKeywords, heartCount: Int(review.heartCount), createdAt: review.createdAt, postId: review.postId, category: review.category, id: review.id)
                                             .padding(.top, 10)
                                             .padding(.trailing, 15)
                                             .padding(.leading, 15)
