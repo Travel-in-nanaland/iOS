@@ -18,6 +18,7 @@ struct ReviewPostModel: Codable {
     var message: String?
     var data: ReviewPostData?
 }
+
 struct ReviewPostData: Codable {
     var reviewKeywords: String?
     var rating: String?
