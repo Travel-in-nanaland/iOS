@@ -11,6 +11,7 @@ struct SettingView: View {
     @State private var showAlert = false
     @State var alertResult = false
     @EnvironmentObject var localizationManager: LocalizationManager
+    @AppStorage("provider") var provider: String = ""
     
     var body: some View {
         
@@ -31,37 +32,55 @@ struct SettingView: View {
                 SettingItemButtonView(title: LocalizedKey.languageSetting.localized(for: localizationManager.language))
                 SettingItemButtonView(title: LocalizedKey.versionInfomation.localized(for: localizationManager.language))
                 Divider()
-                // 로그아웃 alert창 띄울 버튼
-                Button {
-                    showAlert = true
-                } label: {
-                    HStack(spacing: 0) {
-                        Text(.logout)
-                            .font(.body01)
-                            .padding(.leading, 16)
-                        Spacer()
+                
+                if provider == "GUEST" {
+                    
+                    Button {
+                        AppState.shared.navigationPath.removeLast()
+                        UserDefaults.standard.setValue(false, forKey: "isLogin")
+                    } label: {
+                        HStack(spacing: 0) {
+                            Text(.join)
+                                .font(.body01)
+                                .padding(.leading, 16)
+                                .padding(.top, 20)
+                            Spacer()
+                        }
                     }
-                }
-                .frame(width: Constants.screenWidth, height: 48)
-                .fullScreenCover(isPresented: $showAlert) {
-					AlertView(
-						title: .logoutAlertTitle,
-						leftButtonTitle: .yes,
-						rightButtonTitle: .no,
-						leftButtonAction: {
-							// 로그아웃
-							AuthManager(registerVM: RegisterViewModel()).logout()
-						},
-						rightButtonAction: {
-							showAlert = false
-						}
-					)
-                }
-                .transaction { transaction in
-                    transaction.disablesAnimations = true
-                }
+                    
+                } else {
+                    // 로그아웃 alert창 띄울 버튼
+                    Button {
+                        showAlert = true
+                    } label: {
+                        HStack(spacing: 0) {
+                            Text(.logout)
+                                .font(.body01)
+                                .padding(.leading, 16)
+                            Spacer()
+                        }
+                    }
+                    .frame(width: Constants.screenWidth, height: 48)
+                    .fullScreenCover(isPresented: $showAlert) {
+                        AlertView(
+                            title: .logoutAlertTitle,
+                            leftButtonTitle: .yes,
+                            rightButtonTitle: .no,
+                            leftButtonAction: {
+                                // 로그아웃
+                                AuthManager(registerVM: RegisterViewModel()).logout()
+                            },
+                            rightButtonAction: {
+                                showAlert = false
+                            }
+                        )
+                    }
+                    .transaction { transaction in
+                        transaction.disablesAnimations = true
+                    }
 
-                SettingItemButtonView(title: LocalizedKey.memberWithdraw.localized(for: localizationManager.language))
+                    SettingItemButtonView(title: LocalizedKey.memberWithdraw.localized(for: localizationManager.language))
+                }
             }
             Spacer()
         }
@@ -152,4 +171,5 @@ enum SettingViewType {
 
 #Preview {
     SettingView()
+        .environmentObject(LocalizationManager())
 }

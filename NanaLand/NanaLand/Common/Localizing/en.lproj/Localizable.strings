@@ -177,6 +177,7 @@
 "versionInfomation" = "Version Information";
 "logout" = "Log out";
 "memberWithdraw" = "Withdraw membership";
+"join" = "회원가입";
 
 // termsAndPoliciesPage
 "notificate" = "Notice";

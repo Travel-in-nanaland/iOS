@@ -17,7 +17,7 @@ struct NoticeArticleItemView: View {
             HStack{
                 Image("icNotice")
                     .padding(.bottom, 30)
-                    .padding()
+                    .padding(.leading, 12)
                 
                 VStack(alignment: .leading){
                     Text(type)

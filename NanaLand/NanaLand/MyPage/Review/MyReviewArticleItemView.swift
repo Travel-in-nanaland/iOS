@@ -36,6 +36,8 @@ struct MyReviewArticleItemView: View {
                         Text(placeName)
                             .font(.body02_bold)
                             .foregroundColor(.black)
+                            .multilineTextAlignment(.leading)
+
 
                         Image(systemName: "chevron.right")
                             .resizable()
@@ -77,11 +79,10 @@ struct MyReviewArticleItemView: View {
 
                 HStack {
                     ForEach(1...5, id: \.self) { number in
-                        Image(systemName: "star.fill")
+                        Image(number <= rating ? "icStarFill" : "icStar")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 15)
-                            .foregroundColor(number <= rating ? .yellow : .gray)
                     }
 
                     Spacer()
@@ -92,8 +93,8 @@ struct MyReviewArticleItemView: View {
                 if let images = images, !images.isEmpty {
                     ScrollView(.horizontal) {
                         HStack {
-                            ForEach(images, id: \.originUrl) { imageDetail in
-                                KFImage(URL(string: imageDetail.originUrl))
+                            ForEach(images, id: \.thumbnailUrl) { imageDetail in
+                                KFImage(URL(string: imageDetail.thumbnailUrl))
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
                                     .frame(width: 70, height: 70)
@@ -104,6 +105,8 @@ struct MyReviewArticleItemView: View {
                         .padding(.horizontal, 10)
                         .padding(.vertical, 10)
                     }
+                    .padding(.top, -10)
+                    .padding(.leading, 5)
                 }
                 
                 HStack {
@@ -117,11 +120,11 @@ struct MyReviewArticleItemView: View {
                 }
                 .padding(.leading, 15)
                 .padding(.trailing, 15)
-                .padding(.top, -10)
 
                 TagsCloudView(tags: reviewTypeKeywords)
-                    .padding(.leading, 15)
+                    .padding(.leading, 10)
                     .padding(.trailing, 15)
+                    .padding(.top, -5)
                 
                 HStack{
                     Image(systemName: "heart.fill")
