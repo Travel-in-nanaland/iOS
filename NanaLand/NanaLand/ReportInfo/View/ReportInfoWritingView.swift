@@ -7,6 +7,9 @@
 
 import SwiftUI
 import PhotosUI
+import Kingfisher
+import UIKit
+import CustomAlert
 
 struct ReportInfoWritingView: View {
 	@ObservedObject var reportInfoVM: ReportInfoViewModel
@@ -14,13 +17,16 @@ struct ReportInfoWritingView: View {
 	@State var content: String = ""
 	@State var email: String = ""
 	
-	@State var pickedItem: PhotosPickerItem?
-	@State var pickedImage: Foundation.Data?
-	
+    @State private var selectedItems: [PhotosPickerItem] = []
+    @State private var selectedImageData: [Data] = []
+    @State private var showToast = false
+    @State private var toastMessage = ""
+    
 	enum FocusField {
 		case content
 		case email
 	}
+    
 	@FocusState var focusedField: FocusField?
 	
 	
@@ -30,62 +36,6 @@ struct ReportInfoWritingView: View {
 			
 			ScrollView(.vertical, showsIndicators: false) {
 				VStack(alignment: .leading, spacing: 0) {
-					// TODO: 커스텀 앨범으로 변경
-					PhotosPicker(selection: $pickedItem, matching: .images, label: {
-						if let imageData = pickedImage,
-						   let uiImage = UIImage(data: imageData) {
-							Image(uiImage: uiImage)
-								.resizable()
-								.aspectRatio(contentMode: .fill)
-								.overlay {
-									Image(.icCamera)
-										.resizable()
-										.frame(width: 56, height: 56)
-										.foregroundStyle(Color.baseWhite)
-
-								}
-							
-						} else {
-							ZStack(alignment: .center) {
-								Rectangle()
-									.fill(Color(hex: 0xC9C9C9))
-									.frame(width: Constants.screenWidth, height: Constants.screenWidth / 9 * 5)
-								
-								VStack(spacing: 0) {
-									Image(.icCamera)
-										.resizable()
-										.frame(width: 56, height: 56)
-										.foregroundStyle(Color.baseWhite)
-									
-									Text(.addPhoto)
-										.font(.body_bold)
-										.foregroundStyle(Color.baseWhite)
-										.padding(.bottom, 4)
-									
-									Text(.addPhotoDescription)
-										.multilineTextAlignment(.center)
-										.font(.caption)
-										.foregroundStyle(Color.baseWhite)
-								}
-							}
-						}
-					})
-					.tint(.main)
-					.frame(width: Constants.screenWidth, height: Constants.screenWidth / 9 * 5)
-					.clipped()
-					.padding(.bottom, 24)
-					.onChange(of: pickedItem) { item in
-						if item == nil {return}
-						
-						Task {
-							if let image = try? await item?.loadTransferable(type: Foundation.Data.self) {
-								let compressedImage = UIImage(data: image)?.jpegData(compressionQuality: 0.2)
-								pickedImage = compressedImage
-							} else {
-								print("image load failed")
-							}
-						}
-					}
 					
 					VStack(alignment: .leading, spacing: 0) {
 						Text(.reportInfoContentTitle)
@@ -146,9 +96,104 @@ struct ReportInfoWritingView: View {
 						}
 						.frame(height: 48)
 						
+                        Text(.addPhoto)
+                            .font(.title02_bold)
+                            .foregroundColor(.black)
+                            .padding(.top, 50)
+                        
+                        HStack {
+                            ZStack {
+                                Rectangle()
+                                    .fill(Color.gray2)
+                                    .frame(width: 80, height: 80)
+                                    .cornerRadius(8)
+                                    .padding(.leading, -5)
+                                
+                                PhotosPicker(
+                                    selection: $selectedItems,
+                                    maxSelectionCount: 5,
+                                    matching: .images,
+                                    photoLibrary: .shared()
+                                ) {
+                                    if reportInfoVM.imageCnt == 5{
+                                        Button { // 사진이 5장인 상태(최대상태) 에서 또 클릭 할 시 토스트 메시지 띄우기
+                                            toastMessage = "사진은 최대 5장까지 선택 가능합니다"
+                                            showToast = true
+                                        } label: {
+                                            VStack {
+                                                Image(systemName: "camera")
+                                                    .resizable()
+                                                    .aspectRatio(contentMode: .fit)
+                                                    .frame(width: 26)
+                                                Text("\(reportInfoVM.imageCnt) / 5")
+                                                    .font(.gothicNeo(.light, size: 15))
+                                            }
+                                            .foregroundColor(.white)
+                                        }
+                                    }
+                                    else {
+                                        VStack {
+                                            Image(systemName: "camera")
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fit)
+                                                .frame(width: 26)
+                                            Text("\(reportInfoVM.imageCnt) / 5")
+                                                .font(.gothicNeo(.light, size: 15))
+                                        }
+                                        .foregroundColor(.white)
+                                    }
+                                }
+                                .padding(.leading, -5)
+                            }
+                            
+                            ScrollView(.horizontal) {
+                                HStack {
+                                    ForEach(Array(selectedImageData.enumerated()), id: \.element) { index, imageData in
+                                        if let uiImage = UIImage(data: imageData) {
+                                            ZStack(alignment: .topTrailing) {
+                                                Image(uiImage: uiImage)
+                                                    .resizable()
+                                                    .frame(width: 80, height: 80)
+                                                    .cornerRadius(8)
+                                                
+                                                Button {
+                                                    selectedImageData.remove(at: index)
+                                                    selectedItems.remove(at: index)
+                                                    reportInfoVM.updateImageCount(selectedImageData.count)
+                                                } label: {
+                                                    Image("icRemovePhoto")
+                                                        .padding(.trailing, 2)
+                                                        .padding(.top, 2)
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .padding(EdgeInsets(top: 10, leading: 5, bottom: 5, trailing: 20))
 					}
 					.padding(.horizontal, 16)
+                    .padding(.top, 20)
 					.padding(.bottom, 8)
+                    .onChange(of: selectedItems) { newItems in
+                        Task {
+                            
+                            selectedImageData.removeAll()
+                            for newItem in newItems {
+                                if let data = try? await newItem.loadTransferable(type: Data.self) {
+                                    if selectedImageData.count < 5 {
+                                        selectedImageData.append(data) // 선택된 이미지 추가
+                                    }
+                                }
+                    
+                            }
+                            reportInfoVM.updateImageCount(selectedImageData.count)
+                        }
+                    }
+                    .overlay(
+                        Toast(message: toastMessage, isShowing: $showToast, isAnimating: true)
+                    )
 					
 					if reportInfoVM.state.showEmailErrorMessage {
 						HStack(spacing: 4) {
@@ -173,7 +218,7 @@ struct ReportInfoWritingView: View {
 			
 			Button(action: {
 				Task {
-					await reportInfoVM.action(.onTapSendButton(image: [pickedImage], content: content, email: email))
+					await reportInfoVM.action(.onTapSendButton(image: selectedImageData, content: content, email: email))
 				}
 			}, label: {
 				RoundedRectangle(cornerRadius: 12)
