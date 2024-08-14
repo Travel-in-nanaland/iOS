@@ -13,6 +13,7 @@ struct MyReviewDetailKeywordView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var showToast = false
     @State private var toastMessage = ""
+    @State private var toastMaxMessage = "최대 6개까지 선택 가능합니다"
     var body: some View {
         NavigationBar(title: LocalizedKey.keyword.localized(for: localizationManager.language))
             .frame(height: 56)
@@ -72,12 +73,12 @@ struct MyReviewDetailKeywordView: View {
                     Spacer()
                 }
                 .toolbar(.hidden)
-                .alert(isPresented: $viewModel.keywordViewModel.showAlert) {
-                    Alert(title: Text(.warning), message: Text(.warningDescription), dismissButton: .default(Text(.check)))
-                }
             }
             .overlay(
                 Toast(message: toastMessage, isShowing: $showToast, isAnimating: true)
+            )
+            .overlay(
+                Toast(message: toastMaxMessage, isShowing:  $viewModel.keywordViewModel.showAlert, isAnimating: true)
             )
             .toolbar(.hidden)
             .onAppear(){
@@ -140,13 +141,12 @@ struct DetailTagCloudView: View {
             .padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
             .font(.body02)
             .background(
-                keywordViewModel.selectKeywords.contains(tag) ?
                 RoundedRectangle(cornerRadius: 50)
-                    .stroke(Color.main.opacity(0.9), lineWidth: 1)
-                    .foregroundColor(Color.main.opacity(0.1))
-                :  RoundedRectangle(cornerRadius: 50)
-                    .stroke(Color.gray2, lineWidth: 1)
-                    .foregroundColor(Color.clear)
+                    .fill(keywordViewModel.selectKeywords.contains(tag) ? Color.main.opacity(0.1) : Color.clear)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 50)
+                            .stroke(keywordViewModel.selectKeywords.contains(tag) ? Color.main.opacity(0.9) : Color.gray2, lineWidth: 1)
+                    )
             )
             .foregroundColor(keywordViewModel.selectKeywords.contains(tag) ? .main : .gray)
             .onTapGesture {

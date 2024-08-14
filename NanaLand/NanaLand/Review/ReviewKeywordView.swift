@@ -13,42 +13,43 @@ struct ReviewKeywordView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var showToast = false
     @State private var toastMessage = ""
+    @State private var toastMaxMessage = "최대 6개까지 선택 가능합니다"
     var body: some View {
         NavigationBar(title: LocalizedKey.keyword.localized(for: localizationManager.language))
             .frame(height: 56)
             .background(Color.white)
             .padding(.bottom, 10)
-
+        
         
         ZStack{
             NavigationView {
                 VStack(spacing: 0) {
-    
+                    
                     HStack {
                         Text(.keywordDescription)
                             .font(.caption01)
                             .foregroundColor(.main)
                             .padding()
-
+                        
                         Spacer()
                     }
                     VStack(alignment: .leading, spacing: 20) {
                         Text(.mood)
                             .font(.body_bold)
                         TagCloudView(tags: Array(viewModel.keywordViewModel.keywords.prefix(5)), keywordViewModel: viewModel.keywordViewModel, localizationManager: _localizationManager)
-
+                        
                         Text(.companion)
                             .font(.body_bold)
                         TagCloudView(tags: Array(viewModel.keywordViewModel.keywords[5..<11]), keywordViewModel: viewModel.keywordViewModel, localizationManager: _localizationManager)
-
+                        
                         Text(.amenities)
                             .font(.body_bold)
                         TagCloudView(tags: Array(viewModel.keywordViewModel.keywords[11...]), keywordViewModel: viewModel.keywordViewModel, localizationManager: _localizationManager)
                     }
                     .padding()
-
+                    
                     Spacer()
-
+                    
                     Button(action: {
                         // 만약 3개이하로 선택했다면 토스트 메시지 띄우기
                         if viewModel.selectedKeyword.count < 3 {
@@ -68,20 +69,23 @@ struct ReviewKeywordView: View {
                             .cornerRadius(50)
                     }
                     .padding(.horizontal)
-
+                    
                     Spacer()
                 }
                 .toolbar(.hidden)
-                .alert(isPresented: $viewModel.keywordViewModel.showAlert) {
-                    Alert(title: Text(.warning), message: Text(.warningDescription), dismissButton: .default(Text(.check)))
-                }
+//                .alert(isPresented: $viewModel.keywordViewModel.showAlert) {
+//                    Alert(title: Text(.warning), message: Text(.warningDescription), dismissButton: .default(Text(.check)))
+//                }
             }
             .overlay(
                 Toast(message: toastMessage, isShowing: $showToast, isAnimating: true)
             )
+            .overlay(
+                Toast(message: toastMaxMessage, isShowing:  $viewModel.keywordViewModel.showAlert, isAnimating: true)
+            )
             .toolbar(.hidden)
         }
-
+        
     }
 }
 
@@ -89,9 +93,9 @@ struct TagCloudView: View {
     var tags: [ReviewKeywordModel]
     @ObservedObject var keywordViewModel: ReviewKeywordViewModel
     @EnvironmentObject var localizationManager: LocalizationManager
-
+    
     @State private var totalHeight = CGFloat.zero
-
+    
     var body: some View {
         VStack {
             GeometryReader { geometry in
@@ -100,11 +104,11 @@ struct TagCloudView: View {
         }
         .frame(height: totalHeight)
     }
-
+    
     private func generateContent(in g: GeometryProxy) -> some View {
         var width = CGFloat.zero
         var height = CGFloat.zero
-
+        
         return ZStack(alignment: .topLeading) {
             ForEach(tags, id: \.self) { tag in
                 self.item(for: tag)
@@ -132,26 +136,25 @@ struct TagCloudView: View {
             }
         }.background(viewHeightReader($totalHeight))
     }
-
+    
     private func item(for tag: ReviewKeywordModel) -> some View {
         Text(tag.text.localized(for: localizationManager.language))
             .padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
             .font(.body02)
             .background(
-                keywordViewModel.selectKeywords.contains(tag) ?
                 RoundedRectangle(cornerRadius: 50)
-                    .stroke(Color.main.opacity(0.9), lineWidth: 1)
-                    .foregroundColor(Color.main.opacity(0.1))
-                :  RoundedRectangle(cornerRadius: 50)
-                    .stroke(Color.gray2, lineWidth: 1)
-                    .foregroundColor(Color.clear)
+                    .fill(keywordViewModel.selectKeywords.contains(tag) ? Color.main.opacity(0.1) : Color.clear)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 50)
+                            .stroke(keywordViewModel.selectKeywords.contains(tag) ? Color.main.opacity(0.9) : Color.gray2, lineWidth: 1)
+                    )
             )
             .foregroundColor(keywordViewModel.selectKeywords.contains(tag) ? .main : .gray)
             .onTapGesture {
                 keywordViewModel.toggleKeywordSelection(tag)
             }
     }
-
+    
     private func viewHeightReader(_ binding: Binding<CGFloat>) -> some View {
         return GeometryReader { geometry -> Color in
             let rect = geometry.frame(in: .local)

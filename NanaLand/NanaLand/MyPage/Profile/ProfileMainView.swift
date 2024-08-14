@@ -453,6 +453,7 @@ struct reviewTabView: View {
                                 .frame(width: Constants.screenWidth * 0.93)
                                 .padding(.leading, 5)
                                 .padding(.top, -20)
+                                .padding(.bottom, 100)
                             } else {
                                 Text(.noReview)
                                     .font(.body01)
