@@ -14,8 +14,8 @@ enum Category: String, CaseIterable, Codable {
     case festival  // 축제
     case market  // 전통시장
     case experience  // 이색 체험
-    case nanaPick  // 나나 Pick
     case restaurant //제주맛집
+    case nanaPick  // 나나 Pick
     
     var localizedName: LocalizedKey {
         switch self {
@@ -29,10 +29,10 @@ enum Category: String, CaseIterable, Codable {
             return .market
         case .experience:
             return .experience
-        case .nanaPick:
-            return .nanaPick
         case .restaurant:
             return .restaurant
+        case .nanaPick:
+            return .nanaPick
         }
     }
     

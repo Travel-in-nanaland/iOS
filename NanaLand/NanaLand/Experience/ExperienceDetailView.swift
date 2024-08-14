@@ -18,13 +18,20 @@ struct ExperienceDetailView: View {
     @State private var keywordString = [""]
     @State private var reportModal = false
     var id: Int64
-    
+    var experienceType = "k"
     var body: some View {
         VStack {
             ZStack {
-                NanaNavigationBar(title: .experience, showBackButton: true)
-                    .frame(height: 56)
+                if (experienceType == "CultureArts") {
+                    NanaNavigationBar(title: .CultureArts, showBackButton: true)
+                        .frame(height: 56)
+                } else {
+                    NanaNavigationBar(title: .Activity, showBackButton: true)
+                        .frame(height: 56)
+                }
+               
                 HStack(spacing: 0) {
+    
                     Spacer()
                     ShareLink(item: DeepLinkManager.shared.makeLink(category: .experience, id: Int(viewModel.state.getExperienceDetailResponse.id ?? 0)), label: {
                         Image("icShare2")
@@ -87,28 +94,12 @@ struct ExperienceDetailView: View {
                                             }
                                             .padding(.bottom, 8)
                                             
-                                            Text(viewModel.state.getExperienceDetailResponse.content ?? "")
-                                                .font(.body01)
-                                                .frame(height: roundedHeight * (140 / 224))
+                                            ExpandableText(viewModel.state.getExperienceDetailResponse.content ?? "", lineLimit: 4)
                                                 .padding(.leading, 16)
                                                 .padding(.trailing, 16)
                                                 .lineSpacing(10)
                                             Spacer()
-                                            HStack(spacing: 0) {
-                                                Spacer()
-                                                VStack(spacing: 0) {
-                                                    Button {
-                                                        isOn.toggle()
-                                                    } label: {
-                                                        Text(.unfoldView)
-                                                            .foregroundStyle(Color.gray1)
-                                                            .font(.caption01)
-                                                        
-                                                    }
-                                                }
-                                                .padding(.bottom, 17)
-                                            }
-                                            .padding(.trailing, 16)
+                                            
                                         }
                                         .padding(.top, 36)
                                     }
@@ -149,27 +140,12 @@ struct ExperienceDetailView: View {
                                                 Spacer()
                                             }
                                             .padding(.bottom, 8)
-                                            Text(viewModel.state.getExperienceDetailResponse.content ?? "")
-                                                .fixedSize(horizontal: false, vertical: true)
-                                                .font(.body01)
+                                            ExpandableText(viewModel.state.getExperienceDetailResponse.content ?? "", lineLimit: 4)
                                                 .padding(.leading, 16)
                                                 .padding(.trailing, 16)
                                                 .lineSpacing(10)
+                                           
                                             Spacer()
-                                            HStack(spacing: 0) {
-                                                Spacer()
-                                                VStack(spacing: 0) {
-                                                    Button {
-                                                        isOn.toggle()
-                                                    } label: {
-                                                        Text(.foldView)
-                                                            .foregroundStyle(Color.gray1)
-                                                            .font(.caption01)
-                                                    }
-                                                }
-                                                .padding(.bottom, 16)
-                                            }
-                                            .padding(.trailing, 16)
                                         }
                                         .padding(.top, 30)
                                     }
@@ -538,14 +514,30 @@ struct ExperienceDetailView: View {
                         .frame(width: Constants.screenWidth * (28 / 36), height: 40)
                         .padding(.trailing, 16)
                         
-
+                        
                     }
                     .frame(width: Constants.screenWidth, height: 56)
                     .background(Color.white)
-                    .shadow(color: Color.gray.opacity(0.7), radius: 10, x: 0, y: 10)
+                    .overlay(
+                        VStack {
+                            // Top border shadow
+                            Rectangle()
+                                .fill(Color.clear)
+                                .frame(height: 3) // Adjust the height as needed
+                                .background(
+                                    LinearGradient(gradient: Gradient(colors: [Color.black.opacity(0.2), Color.clear]),
+                                                   startPoint: .bottom,
+                                                   endPoint: .top)
+                                )
+                                .shadow(color: Color.black.opacity(0.2), radius: 4, x: 0, y: 5)
+                            Spacer()
+                        }
+                            .padding(.top, -1) // Adjust to align with the HStack top
+                    )
+                    
                 }
-               
-               
+                
+                
             }
             .navigationDestination(for: ExperienceViewType.self) { viewType in
                 switch viewType {

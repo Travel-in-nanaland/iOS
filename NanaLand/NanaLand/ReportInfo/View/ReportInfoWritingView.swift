@@ -143,13 +143,20 @@ struct ReportInfoWritingView: View {
 								.lineLimit(1)
 								.scrollContentBackground(.hidden)
 								.font(.body02)
+                                .onChange(of: email) { newValue in
+                                    if newValue.isValidEmail() {
+                                        reportInfoVM.state.showEmailErrorMessage = false
+                                    } else {
+                                        reportInfoVM.state.showEmailErrorMessage = true
+                                    }
+                                }
 						}
 						.frame(height: 48)
 						
 					}
 					.padding(.horizontal, 16)
 					.padding(.bottom, 8)
-					
+        
 					if reportInfoVM.state.showEmailErrorMessage {
 						HStack(spacing: 4) {
 							Image(.icWarningCircle)

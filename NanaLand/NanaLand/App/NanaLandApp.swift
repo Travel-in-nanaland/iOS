@@ -10,6 +10,7 @@ import KakaoSDKCommon
 import KakaoSDKAuth
 import GoogleSignIn
 import Firebase
+import UserNotifications
 
 @main
 struct NanaLandApp: App {
@@ -45,4 +46,26 @@ struct NanaLandApp: App {
 				.onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
 		}
 	}
+}
+
+class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        // 파이어 베이스 설정
+        FirebaseApp.configure()
+        // 앱 실행시 유저에게 알림 허용 권한을 받음
+        UNUserNotificationCenter.current().delegate = self
+        
+        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound] // 필요한 알림 권한을 설정
+        UNUserNotificationCenter.current().requestAuthorization(
+            options: authOptions,
+            completionHandler: { _, _ in }
+        )
+        // UNUserNotificationCenterDelegate를 구현한 메서드를 실행시킴
+        application.registerForRemoteNotifications()
+        
+        // 파이어베이스 Meesaging 설정
+        // Messaging.messaging().delegate = self
+        
+        return true
+    }
 }

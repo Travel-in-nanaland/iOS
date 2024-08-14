@@ -489,7 +489,7 @@ struct BannerView: View {
                             }
                         } label: {
                             
-                            KFImage(URL(string: banner.thumbnailUrl))
+                            KFImage(URL(string: banner.firstImage.originUrl))
                                 .resizable()
                                 .frame(width: Constants.screenWidth, height: Constants.screenWidth * (220 / 360))
                             
@@ -546,7 +546,7 @@ struct BannerView: View {
                 Spacer()
                 HStack(spacing: 0) {
                     Spacer()
-                    Text("\(index + 1) / \(3)")
+                    Text("\(index + 1) / \(viewModel.state.getBannerResponse.count)")
                         .frame(width: 41, height: 20)
                         .font(.caption02)
                         .foregroundColor(.white)
@@ -586,7 +586,7 @@ struct CustomPageIndicator: View {
         HStack(spacing: 8) {
             ForEach(0..<count) { index in
                 Circle()
-                    .fill(currentPage == index ? Color.blue : Color.gray)
+                    .fill(currentPage == index ? Color.black : Color.gray)
                     .frame(width: 8, height: 8)
                     .animation(.easeInOut, value: currentPage)
             }

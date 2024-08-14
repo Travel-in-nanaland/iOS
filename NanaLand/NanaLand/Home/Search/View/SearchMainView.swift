@@ -198,6 +198,7 @@ struct SearchMainView: View {
         }
         .padding(.horizontal, 16)
         .padding(.bottom, 34)
+       
     }
     
     private var recommendContents: some View {
@@ -264,6 +265,7 @@ struct SearchMainView: View {
                 }
             }
             .padding(.horizontal, 16)
+            
         }
     }
     
