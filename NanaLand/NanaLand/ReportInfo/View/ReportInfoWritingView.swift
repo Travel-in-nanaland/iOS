@@ -93,6 +93,13 @@ struct ReportInfoWritingView: View {
 								.lineLimit(1)
 								.scrollContentBackground(.hidden)
 								.font(.body02)
+                                .onChange(of: email) { newValue in
+                                    if newValue.isValidEmail() {
+                                        reportInfoVM.state.showEmailErrorMessage = false
+                                    } else {
+                                        reportInfoVM.state.showEmailErrorMessage = true
+                                    }
+                                }
 						}
 						.frame(height: 48)
 						

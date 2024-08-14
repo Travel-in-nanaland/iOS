@@ -30,16 +30,22 @@ struct SearchAllCategoryResponse: Codable {
 	var nature: SearchDetailCategoryResponse
 	var experience: SearchDetailCategoryResponse
 	var market: SearchDetailCategoryResponse
+    var restaurant: SearchDetailCategoryResponse
+    var nana: SearchDetailCategoryResponse
 	
 	init(
 		festival: SearchDetailCategoryResponse = SearchDetailCategoryResponse(),
 		nature: SearchDetailCategoryResponse = SearchDetailCategoryResponse(),
 		experience: SearchDetailCategoryResponse = SearchDetailCategoryResponse(),
-		market: SearchDetailCategoryResponse = SearchDetailCategoryResponse()
+		market: SearchDetailCategoryResponse = SearchDetailCategoryResponse(),
+        restaurant: SearchDetailCategoryResponse = SearchDetailCategoryResponse(),
+        nana: SearchDetailCategoryResponse = SearchDetailCategoryResponse()
 	) {
 		self.festival = festival
 		self.nature = nature
 		self.experience = experience
 		self.market = market
+        self.restaurant = restaurant
+        self.nana = nana
 	}
 }

@@ -61,9 +61,7 @@ struct UserProfileMainView: View {
                                                     .resizable()
                                                     .frame(width: 12, height: 12)
                                             }
-                                       
                                         }
-
                                     }
                                     .padding(.top, 18)
                                     .padding(.leading, 16)

@@ -81,7 +81,15 @@ struct SearchService {
 		let marketArticles = response.data.market.data.map({
 			return Article(from: $0, category: .market)
 		})
-		
+        
+        let restaurantArticles = response.data.restaurant.data.map({
+            return Article(from: $0, category: .restaurant)
+        })
+        
+        let nanaArticles = response.data.nana.data.map({
+            return Article(from: $0, category: .nanaPick)
+        })
+        
 		let articleResponse = SearchAllArticleResponse(
 			festival: ArticleResponse(
 				totalElements: response.data.festival.totalElements,
@@ -98,7 +106,15 @@ struct SearchService {
 			market: ArticleResponse(
 				totalElements: response.data.market.totalElements,
 				data: marketArticles
-			)
+			),
+            nana: ArticleResponse (
+                totalElements: response.data.nana.totalElements,
+                data: nanaArticles
+            ),
+            restaurant: ArticleResponse(
+                totalElements: response.data.restaurant.totalElements,
+                data: restaurantArticles
+            )
 		)
 		
 		return OldBaseResponse(status: response.status, message: response.message, data: articleResponse)

@@ -210,7 +210,9 @@ struct NatureDetailView: View {
                             if viewModel.state.getNatureDetailResponse.address != "" {
                                 HStack(spacing: 10) {
                                     VStack(spacing: 0) {
-                                        Image("icDetailPin")
+                                        Image("icPin")
+                                            .renderingMode(.template)
+                                            .foregroundStyle(Color.main)
                                     }
                                     
                                     VStack(alignment: .leading, spacing: 0) {
@@ -227,7 +229,9 @@ struct NatureDetailView: View {
                             if viewModel.state.getNatureDetailResponse.contact != "" {
                                 HStack(spacing: 10) {
                                     VStack(spacing: 0) {
-                                        Image("icDetailPhone")
+                                        Image("icPhone")
+                                            .renderingMode(.template)
+                                            .foregroundStyle(Color.main)
                                     }
                                     
                                     VStack(alignment: .leading, spacing: 0) {
@@ -244,7 +248,9 @@ struct NatureDetailView: View {
                             if viewModel.state.getNatureDetailResponse.time != "" {
                                 HStack(spacing: 10) {
                                     VStack(spacing: 0) {
-                                        Image("icDetailClock")
+                                        Image("icClock")
+                                            .renderingMode(.template)
+                                            .foregroundStyle(Color.main)
                                         Spacer()
                                     }
                                     
@@ -261,7 +267,9 @@ struct NatureDetailView: View {
                             if viewModel.state.getNatureDetailResponse.fee != "" {
                                 HStack(spacing: 10) {
                                     VStack(spacing: 0) {
-                                        Image("icDetailCharge")
+                                        Image("icFeeMain")
+                                            .renderingMode(.template)
+                                            .foregroundStyle(Color.main)
                                         Spacer()
                                     }
                                     
@@ -279,7 +287,9 @@ struct NatureDetailView: View {
                             if viewModel.state.getNatureDetailResponse.details != "" {
                                 HStack(spacing: 10) {
                                     VStack(spacing: 0) {
-                                        Image("icDetailDescription")
+                                        Image("icInfo")
+                                            .renderingMode(.template)
+                                            .foregroundStyle(Color.main)
                                         Spacer()
                                     }
                                     
@@ -297,7 +307,9 @@ struct NatureDetailView: View {
                             if viewModel.state.getNatureDetailResponse.amenity != "" {
                                 HStack(spacing: 10) {
                                     VStack(spacing: 0) {
-                                        Image("icDetailFacility")
+                                        Image("icFacility")
+                                            .renderingMode(.template)
+                                            .foregroundStyle(Color.main)
                                         Spacer()
                                     }
                                     

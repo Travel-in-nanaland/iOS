@@ -17,7 +17,7 @@ struct NanaSearchBar: View {
 	let disabled: Bool
 	
 	init(
-		placeHolder: LocalizedKey = .emptyString,
+		placeHolder: LocalizedKey = .inputSearchTerm,
 		searchTerm: Binding<String>,
 		searchAction: @escaping () async -> Void = {},
 		showClearButton: Bool = true,

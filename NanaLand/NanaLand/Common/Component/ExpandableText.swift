@@ -46,17 +46,22 @@ struct ExpandableText: View {
                         })
                         .hidden() //keep hidden
             )
-            if truncated {
-                Button(action: {
-                    withAnimation {
-                        expanded.toggle()
-                    }
-                }, label: {
-                    Text(moreLessText)
-                        .font(.caption01)
-                        .foregroundStyle(Color.gray1)
-                })
+            HStack(spacing: 0) {
+                Spacer()
+                if truncated {
+                    Button(action: {
+                        withAnimation(nil) {
+                            expanded.toggle()
+                        }
+                    }, label: {
+                        Text(moreLessText)
+                            .font(.caption01)
+                            .foregroundStyle(Color.gray1)
+                    })
+                    
+                }
             }
+            
         }
     }
 }
