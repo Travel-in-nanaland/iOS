@@ -72,7 +72,7 @@ struct SeasonModalView: View {
                        
                         
                     }
-                    .frame(width: Constants.screenWidth, height: 48)
+                    .frame(width: Constants.screenWidth, height: 64)
                     .background(selectedSeason == LocalizedKey.spring.localized(for: localizationManager.language) ? .main10P : .white)
                 
                     Button {
@@ -110,7 +110,7 @@ struct SeasonModalView: View {
                        
                 
                     }
-                    .frame(width: Constants.screenWidth, height: 48)
+                    .frame(width: Constants.screenWidth, height: 64)
                     .background(selectedSeason == LocalizedKey.summer.localized(for: localizationManager.language) ? .main10P : .white)
                     
                     Button {
@@ -149,7 +149,7 @@ struct SeasonModalView: View {
                         
                         
                     }
-                    .frame(width: Constants.screenWidth, height: 48)
+                    .frame(width: Constants.screenWidth, height: 64)
                     .background(selectedSeason == LocalizedKey.autumn.localized(for: localizationManager.language) ? .main10P : .white)
                     
                     Button {
@@ -187,7 +187,7 @@ struct SeasonModalView: View {
                        
                        
                     }
-                    .frame(width: Constants.screenWidth, height: 48)
+                    .frame(width: Constants.screenWidth, height: 64)
                     .background(selectedSeason == LocalizedKey.winter.localized(for: localizationManager.language) ? .main10P : .white)
                 }
                 .padding(.leading, 17)

@@ -196,12 +196,14 @@ final class AuthManager: NSObject {
 		let result = await AuthService.loginServer(body: request)
 		if let tokens = result?.data {
 			// 로그인 성공 토큰 저장하고 홈 화면으로
+            print("비회원 로그인 성공: 토큰 획득")
 			KeyChainManager.addItem(key: "accessToken", value: tokens.accessToken)
 			KeyChainManager.addItem(key: "refreshToken", value: tokens.refreshToken)
 			self.isLogin = true
 			self.provider = "GUEST"
 		} else if result?.status == 404 {
 			// 로그인 실패(404)인 경우 회원가입 필요
+            print("비회원 로그인 실패: 회원가입 진행")
 			let registerRequest = RegisterRequest(
 				locale: request.locale,
 				email: "GUEST@nanaland.com",
@@ -213,6 +215,7 @@ final class AuthManager: NSObject {
 			let registerResult = await AuthService.registerServer(body: registerRequest, image: [])
 			
 			if let tokens = registerResult?.data {
+                print("비회원 회원가입 성공: 토큰 획득")
 				KeyChainManager.addItem(key: "accessToken", value: tokens.accessToken)
 				KeyChainManager.addItem(key: "refreshToken", value: tokens.refreshToken)
 				self.isLogin = true

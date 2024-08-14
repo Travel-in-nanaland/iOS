@@ -106,6 +106,7 @@ struct LoginView: View {
 			Button(action: {
 				Task {
 					await authManager.nonMemeberLogin()
+
 				}
 			}, label: {
 				Text(.nonMemeberLogin)
@@ -114,6 +115,7 @@ struct LoginView: View {
 			})
 			.padding(.bottom, 40)
 		}
+        .toolbar(.hidden)
     }
 }
 

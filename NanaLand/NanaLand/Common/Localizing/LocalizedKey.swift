@@ -180,6 +180,7 @@ enum LocalizedKey: String {
     case versionInfomation
     case logout
     case memberWithdraw
+    case join
     
     // termsAndPoliciesPage(약관 및 정책 페이지)
     case marketingConsent

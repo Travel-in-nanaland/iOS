@@ -107,7 +107,7 @@ struct MyReviewDetailView: View {
             reviewContent = detailViewModel.state.getReviewDetailResponse.content
             if let images = detailViewModel.state.getReviewDetailResponse.images {
                 // 서버에서 받은 이미지 데이터를 서버 이미지 데이터 배열에 추가
-                serverImageData = images.compactMap { try? Data(contentsOf: URL(string: $0.originUrl)!) }
+                serverImageData = images.compactMap { try? Data(contentsOf: URL(string: $0.thumbnailUrl)!) }
             }
             apiCall += 1
         }
@@ -126,6 +126,7 @@ struct MyDetailReviewMainGridView: View {
     @State private var showToast = false
     @State private var toastMessage = ""
     @State private var uploadButtonFlag = false
+    @FocusState private var isTextEditorFocused: Bool
     var reviewItemAddress: String = ""
     var reviewItemImageUrl: String = ""
     var reviewTitle: String = ""
@@ -164,11 +165,10 @@ struct MyDetailReviewMainGridView: View {
                 
                 HStack {
                     ForEach(1...5, id: \.self) { number in
-                        Image(systemName: "star.fill")
+                        Image(number <= detailViewModel.state.editReviewDto.rating ? "icStarFill" : "icStar")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 36)
-                            .foregroundColor(number <= detailViewModel.state.editReviewDto.rating ? .yellow : .gray2)
                             .onTapGesture {
                                 detailViewModel.state.editReviewDto.rating = number
                             }
@@ -283,6 +283,8 @@ struct MyDetailReviewMainGridView: View {
                 ZStack(alignment: .topLeading) {
                     
                     TextEditor(text: $reviewContent)
+                        .font(.body02)
+                        .foregroundColor(.gray1)
                         .padding(4)
                         .background(Color.white)
                         .cornerRadius(8)
@@ -302,6 +304,18 @@ struct MyDetailReviewMainGridView: View {
                             }
                         }
                         .padding(.horizontal)
+                        .focused($isTextEditorFocused)
+                    
+                    if reviewContent == "" {
+                        Text(.writeContent)
+                            .font(.body02)
+                            .foregroundColor(.gray1)
+                            .padding(4)
+                            .padding(EdgeInsets(top: 8, leading: 20, bottom: 0, trailing: 0))
+                            .onTapGesture {
+                                isTextEditorFocused = true
+                            }
+                    }
                 }
                 
                 HStack {
@@ -352,7 +366,7 @@ struct MyDetailReviewMainGridView: View {
                             
                             await modifyReview(id: reviewId, body: detailViewModel.state.editReviewDto, multipartFile: selectedImageData)
                             
-                            AppState.shared.navigationPath.append(ReviewViewType.complete)
+                            AppState.shared.navigationPath.removeLast()
                         }
                         
                         
@@ -386,12 +400,6 @@ struct MyDetailReviewMainGridView: View {
         .overlay(
             Toast(message: toastMessage, isShowing: $showToast, isAnimating: true)
         )
-        .navigationDestination(for: ReviewViewType.self) { viewType in
-            switch viewType {
-            case .complete:
-                ReviewCompleteView(title: reviewCategory)
-            }
-        }
     }
     
     // editImageInfoList 준비 함수
@@ -418,9 +426,6 @@ struct MyDetailReviewMainGridView: View {
     }
 }
 
-enum ReviewDetailViewType {
-    case complete
-}
 
 struct ReviewDetailTagView: View {
     var tags: [ReviewKeywordModel]
@@ -496,8 +501,8 @@ struct ReviewDetailTagView: View {
         }
     }
 }
-
-#Preview {
-    MyReviewDetailView(reviewId: 0, reviewCategory: "")
-        .environmentObject(LocalizationManager())
-}
+//
+//#Preview {
+//    MyReviewDetailView()
+//        .environmentObject(LocalizationManager())
+//}

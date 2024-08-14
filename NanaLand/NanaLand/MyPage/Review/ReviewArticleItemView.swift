@@ -21,7 +21,7 @@ struct ReviewArticleItemView: View {
             ZStack{
                 if imageFileDto != "" {
                     Rectangle()
-                        .frame(width: 160, height: 220)
+                        .frame(width: 170, height: 220)
                         .foregroundColor(.white)
                         .clipShape(
                             .rect(
@@ -37,9 +37,15 @@ struct ReviewArticleItemView: View {
                                 KFImage(URL(string: imageFileDto))
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
-                                    .frame(width: 160, height: 160)
-                                    .background(.blue)
-                                    .cornerRadius(8)
+                                    .frame(width: 170, height: 160)
+                                    .clipShape(
+                                        .rect(
+                                            topLeadingRadius: 8,
+                                            bottomLeadingRadius: 0,
+                                            bottomTrailingRadius: 0,
+                                            topTrailingRadius: 8
+                                        )
+                                    )
                                 
                                 VStack{
                                     HStack{
@@ -76,7 +82,7 @@ struct ReviewArticleItemView: View {
                         )
                 } else {
                     RoundedRectangle(cornerRadius: 8)
-                        .frame(width: 160, height: 90)
+                        .frame(width: 170, height: 90)
                         .foregroundColor(.white)
                         .shadow(radius: 1)
                         .overlay(

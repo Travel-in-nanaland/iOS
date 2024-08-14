@@ -93,6 +93,7 @@ struct ReviewMainGridView: View {
     @State private var showToast = false
     @State private var toastMessage = ""
     @State private var uploadButtonFlag = false
+    @FocusState private var isTextEditorFocused: Bool
     var reviewItemAddress: String = ""
     var reviewItemImageUrl: String = ""
     var reviewTitle: String = ""
@@ -131,11 +132,10 @@ struct ReviewMainGridView: View {
                 
                 HStack {
                     ForEach(1...5, id: \.self) { number in
-                        Image(systemName: "star.fill")
+                        Image(number <= viewModel.state.getReviewWriteResponse.rating ? "icStarFill" : "icStar")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 36)
-                            .foregroundColor(number <= viewModel.state.getReviewWriteResponse.rating ? .yellow : .gray2)
                             .onTapGesture {
                                 viewModel.updateRating(number)
                                 viewModel.state.reviewDTO.rating = number
@@ -163,6 +163,7 @@ struct ReviewMainGridView: View {
                             .fill(Color.gray2)
                             .frame(width: 80, height: 80)
                             .cornerRadius(8)
+                            .padding(.leading, -5)
                         
                         PhotosPicker(
                             selection: $selectedItems,
@@ -198,6 +199,7 @@ struct ReviewMainGridView: View {
                                 .foregroundColor(.white)
                             }
                         }
+                        .padding(.leading, -5)
                     }
                     
                     ScrollView(.horizontal) {
@@ -228,19 +230,16 @@ struct ReviewMainGridView: View {
                 .padding(EdgeInsets(top: 0, leading: 20, bottom: 5, trailing: 20))
                 
                 ZStack(alignment: .topLeading) {
-                    if reviewContent.isEmpty {
-                        Text(.writeContent)
-                            .foregroundColor(.gray)
-                            .padding(EdgeInsets(top: 15, leading: 20, bottom: 0, trailing: 0))
-                    }
                     
                     TextEditor(text: $reviewContent)
+                        .font(.body02)
+                        .foregroundColor(.gray1)
                         .padding(4)
                         .background(Color.white)
                         .cornerRadius(8)
                         .overlay(
                             RoundedRectangle(cornerRadius: 8)
-                                .stroke(Color.gray, lineWidth: 1)
+                                .stroke(Color.gray2, lineWidth: 1)
                         )
                         .frame(height: 190)
                         .onChange(of: reviewContent) { newValue in
@@ -258,6 +257,18 @@ struct ReviewMainGridView: View {
                             }
                         }
                         .padding(.horizontal)
+                        .focused($isTextEditorFocused)
+                    
+                    if reviewContent == "" {
+                        Text(.writeContent)
+                            .font(.body02)
+                            .foregroundColor(.gray1)
+                            .padding(4)
+                            .padding(EdgeInsets(top: 8, leading: 20, bottom: 0, trailing: 0))
+                            .onTapGesture {
+                                isTextEditorFocused = true
+                            }
+                    }
                 }
                 
                 HStack {
@@ -265,7 +276,8 @@ struct ReviewMainGridView: View {
                     Text("(\(reviewContent.count) / 200)")
                         .font(.body02)
                         .foregroundColor(.gray)
-                        .padding(.trailing, 16)
+                        .padding(.top, -40)
+                        .padding(.trailing, 30)
                 }
                 
                 VStack(alignment: .leading, spacing: 4) {

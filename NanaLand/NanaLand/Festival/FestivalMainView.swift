@@ -126,6 +126,26 @@ struct SeasonFilterView: View {
             }
         }
         .padding(.bottom, 16)
+        .onAppear(){
+            let formatterMonth = DateFormatter()
+            formatterMonth.dateFormat = "MM"
+            let currentMonth = formatterMonth.string(from: Date())
+            
+            switch Int(currentMonth) {
+            case 3, 4:
+                season = LocalizedKey.spring.localized(for: LocalizationManager().language)
+            case 5, 6, 7, 8:
+                season = LocalizedKey.summer.localized(for: LocalizationManager().language)
+            case 9, 10:
+                season = LocalizedKey.autumn.localized(for: LocalizationManager().language)
+            case 11, 12, 1, 2:
+                season = LocalizedKey.winter.localized(for: LocalizationManager().language)
+            case .none:
+                print("SeasonModal Error")
+            case .some(_):
+                print("SeasonModal Error")
+            }
+        }
     }
 }
 struct FilterView: View {
@@ -540,6 +560,7 @@ struct FestivalMainGridView: View {
 			}
 		}
         .onAppear {
+            
             page = 0
             
             Task {
@@ -549,7 +570,24 @@ struct FestivalMainGridView: View {
                         await getThisMonthFestivalMainItem(page: 0, size: 12, filterName: [""].joined(separator: ","), startDate: "", endDate: "")
                         isAPICalled = true
                     } else if title == "계절별" {
-                        await getSeasonFestivalMainItem(page: 0, size: 12, season: "spring")
+                        let formatterMonth = DateFormatter()
+                        formatterMonth.dateFormat = "MM"
+                        let currentMonth = formatterMonth.string(from: Date())
+                        
+                        switch Int(currentMonth) {
+                        case 3, 4:
+                            await getSeasonFestivalMainItem(page: 0, size: 12, season: "spring")
+                        case 5, 6, 7, 8:
+                            await getSeasonFestivalMainItem(page: 0, size: 12, season: "summer")
+                        case 9, 10:
+                            await getSeasonFestivalMainItem(page: 0, size: 12, season: "autum")
+                        case 11, 12, 1, 2:
+                            await getSeasonFestivalMainItem(page: 0, size: 12, season: "winter")
+                        case .none:
+                            print("SeasonModal Error")
+                        case .some(_):
+                            print("SeasonModal Error")
+                        }
                         isAPICalled = true
                     } else {
                         await getPastFestivalMainITem(page: Int32(page), size: 12, filterName: [""].joined(separator: ","))

@@ -32,6 +32,12 @@ struct ProfileMainView: View {
             }
         }
         .onAppear {
+            Task {
+                await getUserInfo()
+                
+                AppState.shared.userInfo = viewModel.state.getProfileMainResponse
+            }
+            
             viewModel.state.getProfileMainResponse.nickname = AppState.shared.userInfo.nickname
             viewModel.state.getProfileMainResponse.profileImage = AppState.shared.userInfo.profileImage
             viewModel.state.getProfileMainResponse.description = AppState.shared.userInfo.description
@@ -62,6 +68,10 @@ struct ProfileMainView: View {
         }
         .edgesIgnoringSafeArea(.bottom)
         
+    }
+    
+    func getUserInfo() async {
+        await viewModel.action(.getUserInfo)
     }
     
     private var navigationBar: some View {
@@ -230,7 +240,7 @@ struct ProfileMainView: View {
                         Text(.noDescription)
                             .font(.body02)
                             .foregroundColor(.gray2)
-                            .padding()
+                            .padding(EdgeInsets(top: 0, leading: 20, bottom: 30, trailing: 20))
                         Spacer()
                     }
                     Spacer()
@@ -279,25 +289,31 @@ struct ProfileMainView: View {
 
 struct ProfileList: View {
     @State var tabIndex = 0
+    @AppStorage("provider") var provider: String = ""
     
     var body: some View {
         VStack {
             ProfileTabBarView(currentTab: $tabIndex)
                 .padding(.top, 20)
             
-            switch tabIndex {
-            case 0:
-                reviewTabView()
-            case 1:
-                noticeTabView()
-            default:
-                reviewTabView()
+            if provider == "GUEST" {
+                guestTabView()
+            } else {            
+                switch tabIndex {
+                case 0:
+                    reviewTabView()
+                case 1:
+                    noticeTabView()
+                default:
+                    reviewTabView()
+                }
             }
+            
         }
         .background(
             Rectangle()
                 .fill(Color.white)
-                .cornerRadius(50, corners: [.topLeft, .topRight])
+                .cornerRadius(30, corners: [.topLeft, .topRight])
                 .shadow(radius: 1)
         )
     }
@@ -306,6 +322,7 @@ struct ProfileList: View {
 struct ProfileTabBarView: View {
     @Binding var currentTab: Int
     var tabBarOptions: [String] = [LocalizedKey.review.localized(for: LocalizationManager().language), LocalizedKey.notice.localized(for: LocalizationManager().language)]
+    
     @Namespace var namespace
     var body: some View {
         HStack {
@@ -353,6 +370,22 @@ struct ProfileTabBarItem: View {
     }
 }
 
+struct guestTabView: View {
+    
+    var body: some View {
+        ZStack{
+            VStack{
+                
+                Text("로그인하여 나만의 경험을 기록해보세요!")
+                    .font(.body01)
+                    .foregroundColor(.gray1)
+                    .padding(.top, 100)
+                
+                Spacer()
+            }
+        }
+    }
+}
 
 struct reviewTabView: View {
     @StateObject var viewModel = MyReviewViewModel()
@@ -417,7 +450,8 @@ struct reviewTabView: View {
                                         })
                                     }
                                 }
-                                .padding(.leading, 20)
+                                .frame(width: Constants.screenWidth * 0.93)
+                                .padding(.leading, 5)
                                 .padding(.top, -20)
                             } else {
                                 Text(.noReview)
@@ -485,7 +519,7 @@ struct noticeTabView: View {
                                         AppState.shared.navigationPath.append(MyPageViewType.detailNotice(id: notice.id))
                                     }, label: {
                                         NoticeArticleItemView(title: notice.title, type: notice.noticeCategory, date: notice.createdAt)
-                                            .padding(.bottom, 10)
+                                            .padding(.bottom, 35)
                                     })
                                 }
                             })
