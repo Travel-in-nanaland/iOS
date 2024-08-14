@@ -39,6 +39,13 @@ struct SearchAllCategoryResultView: View {
                 count: searchVM.state.allCategorySearchResult.experience.totalElements,
                 articles: searchVM.state.allCategorySearchResult.experience.data
             )
+            
+            SearchAllCategoryItem(
+                searchVM: searchVM,
+                category: .restaurant,
+                count: searchVM.state.allCategorySearchResult.restaurant.totalElements,
+                articles: searchVM.state.allCategorySearchResult.restaurant.data
+            )
 
             SearchAllCategoryItem(
                 searchVM: searchVM,
@@ -46,6 +53,8 @@ struct SearchAllCategoryResultView: View {
                 count: searchVM.state.allCategorySearchResult.nana.totalElements,
                 articles: searchVM.state.allCategorySearchResult.nana.data
             )
+            
+            
 
             Spacer()
                 .frame(height: 100)
@@ -109,7 +118,6 @@ struct SearchAllCategoryItem: View {
                             }
                         })
                     }
-
                     if articles.count >= 2 {
                         NavigationLink(destination: {
                             destinationView(for: articles[1])

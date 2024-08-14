@@ -118,6 +118,7 @@ final class SearchViewModel: ObservableObject {
 			
 			if let data = await SearchService.searchAllCategory(term: term) {
 				state.allCategorySearchResult = data.data
+                print("\(data.data)")
 				state.isLoading = false
 			} else {
 				print("searchAllCategory Error")
@@ -243,7 +244,6 @@ final class SearchViewModel: ObservableObject {
                 } else {
                     state.restaurantCategorySearchResult.data.append(contentsOf: data.data.data)
                 }
-                
                 state.restaurantPage += 1
                 state.isLoading = false
             } else {

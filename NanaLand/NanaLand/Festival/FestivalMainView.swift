@@ -17,9 +17,9 @@ struct FestivalMainView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            NavigationBar(title: LocalizedKey.festival.localized(for: localizationManager.language))
+            NanaNavigationBar(title: .festival, showBackButton: true)
                 .frame(height: 56)
-                .padding(.bottom, 16)
+                .padding(.bottom, 24)
             
             TabBarView(currentTab: $tabIndex)
                 .padding(.bottom, 12)
@@ -373,7 +373,7 @@ struct FestivalMainGridView: View {
                                             KFImage(URL(string: viewModel.state.getFestivalMainResponse.data[index].firstImage.thumbnailUrl))
 											
 												.resizable()
-												.frame(width: (Constants.screenWidth - 40) / 2, height: ((Constants.screenWidth - 40) / 2) * (12 / 16))
+												.frame(width: (Constants.screenWidth - 40) / 2, height: ((UIScreen.main.bounds.width - 40) / 2) * (12 / 16))
 												.clipShape(RoundedRectangle(cornerRadius: 12))
 												.padding(.bottom, 8)
 											VStack {
@@ -418,7 +418,7 @@ struct FestivalMainGridView: View {
 											)
 											.foregroundStyle(Color.main)
 									}
-									.frame(width: (Constants.screenWidth - 40) / 2)
+                                    .frame(width: (Constants.screenWidth - 40) / 2, height: 196)
 								})
 							}
                             if title == "종료된" {

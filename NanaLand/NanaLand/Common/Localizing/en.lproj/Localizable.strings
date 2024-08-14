@@ -309,6 +309,10 @@ the market is the place!";
 // MARK: - FestivalDetailView
 "duration" = "Duration";
 
+// MARK: - ExperienceDetailView
+"Activity" = "Activity";
+"CultureArts" = "CultureArts";
+
 // MARK: - CalendarView
 "chooseDate" = "ChooseDate";
 "calendarMonth" = "";

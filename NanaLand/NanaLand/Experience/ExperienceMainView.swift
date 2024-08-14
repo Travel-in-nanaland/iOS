@@ -80,7 +80,7 @@ struct ExperienceMainGridView: View {
                 .foregroundStyle(Color.gray1)
                 .background(
                     RoundedRectangle(cornerRadius: 30)
-                        .strokeBorder(Color.gray1, lineWidth: 1)
+                        .strokeBorder(Color.gray2, lineWidth: 1)
                 )
                 .padding(.trailing, 8)
                 .sheet(isPresented: $keywordModal) {
@@ -114,7 +114,7 @@ struct ExperienceMainGridView: View {
                 .foregroundStyle(Color.gray1)
                 .background(
                     RoundedRectangle(cornerRadius: 30)
-                        .strokeBorder(Color.gray1, lineWidth: 1)
+                        .strokeBorder(Color.gray2, lineWidth: 1)
                 )
                 .padding(.trailing, 16)
                 .sheet(isPresented: $locationModal) { // 지역 필터링 뷰
@@ -212,7 +212,7 @@ struct ExperienceMainGridView: View {
             .navigationDestination(for: ArticleViewType.self) { viewType in
                 switch viewType {
                 case let .detail(id):
-                    ExperienceDetailView(id: id)
+                    ExperienceDetailView(id: id, experienceType: experienceType)
                 }
             }
         }
@@ -237,7 +237,6 @@ struct ExperienceMainGridView: View {
             }
         }
     }
-    
 
     func getExperienceMainItem(experienceType: String, keyword: String, address: String, page: Int, size: Int) async {
         await viewModel.action(.getExperienceMainItem(experienceType: experienceType, keyword: keyword, address: address, page: page, size: size))

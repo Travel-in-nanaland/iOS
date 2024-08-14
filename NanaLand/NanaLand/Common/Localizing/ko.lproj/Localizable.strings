@@ -282,6 +282,10 @@
 "pastFestival" = "종료된 축제";
 "seasonFestival" = "계절별 축제";
 
+// MARK: - ExperienceDetailView
+"Activity" = "액티비티";
+"CultureArts" = "문화예술";
+
 // MARK: - SeasonModalView
 "selectSeason" = "계절 선택";
 "spring" = "봄";

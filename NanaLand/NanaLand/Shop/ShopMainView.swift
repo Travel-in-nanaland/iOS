@@ -59,7 +59,7 @@ struct ShopMainGridView: View {
 				.foregroundStyle(Color.gray1)
 				.background(
 					RoundedRectangle(cornerRadius: 30)
-						.strokeBorder(Color.gray1, lineWidth: 1)
+						.strokeBorder(Color.gray2, lineWidth: 1)
 				)
 				.padding(.trailing, 16)
                     .sheet(isPresented: $locationModal) {

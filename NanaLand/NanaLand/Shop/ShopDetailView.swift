@@ -189,6 +189,8 @@ struct ShopDetailView: View {
                         HStack(spacing: 10) {
                             VStack(spacing: 0) {
                                 Image("icPin")
+                                    .renderingMode(.template)
+                                    .foregroundStyle(Color.main)
                                 Spacer()
                             }
                             
@@ -207,6 +209,8 @@ struct ShopDetailView: View {
                         HStack(spacing: 10) {
                             VStack(spacing: 0) {
                                 Image("icPhone")
+                                    .renderingMode(.template)
+                                    .foregroundStyle(Color.main)
                                 Spacer()
                             }
                             
@@ -224,6 +228,8 @@ struct ShopDetailView: View {
                         HStack(spacing: 10) {
                             VStack(spacing: 0) {
                                 Image("icClock")
+                                    .renderingMode(.template)
+                                    .foregroundStyle(Color.main)
                                 Spacer()
                             }
                             
@@ -241,6 +247,8 @@ struct ShopDetailView: View {
                         HStack(spacing: 10) {
                             VStack(spacing: 0) {
                                 Image("icFacility")
+                                    .renderingMode(.template)
+                                    .foregroundStyle(Color.main)
                                 Spacer()
                             }
                             
@@ -257,6 +265,8 @@ struct ShopDetailView: View {
                         HStack(spacing: 10) {
                             VStack(spacing: 0) {
                                 Image("icHomepage")
+                                    .renderingMode(.template)
+                                    .foregroundStyle(Color.main)
                                 Spacer()
                             }
                             
@@ -277,7 +287,7 @@ struct ShopDetailView: View {
 						}, label: {
                             Text(.proposeUpdateInfo)
 								.background(
-									RoundedRectangle(cornerRadius: 12.0)
+									RoundedRectangle(cornerRadius: 50.0)
 										.foregroundStyle(Color.gray2)
 										.frame(width: 120, height: 40)
 								)

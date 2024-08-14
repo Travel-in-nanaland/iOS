@@ -17,10 +17,9 @@ struct NatureMainView: View {
     var body: some View {
         
         VStack(spacing: 0) {
-            NavigationBar(title: LocalizedKey.nature.localized(for: localizationManager.language))
+            NanaNavigationBar(title: .nature, showBackButton: true)
                 .frame(height: 56)
                 .padding(.bottom, 24)
-
             NatureMainGridView(isAdvertisement: isAdvertisement)
             
             Spacer()
@@ -70,7 +69,7 @@ struct NatureMainGridView: View {
             .frame(maxHeight: 40)
             .background(
                 RoundedRectangle(cornerRadius: 30)
-                    .strokeBorder(Color.gray1, lineWidth: 1)
+                    .strokeBorder(Color.gray2, lineWidth: 1)
                     
             )
             .padding(.trailing, 16)
@@ -119,7 +118,6 @@ struct NatureMainGridView: View {
                                             }
                                             .padding(.trailing, 8)
                                         }
-                                        
                                         
                                         Spacer()
                                         

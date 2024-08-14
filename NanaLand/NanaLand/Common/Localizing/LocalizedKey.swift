@@ -317,6 +317,10 @@ enum LocalizedKey: String {
     // MARK: - FestivalDetailView
     case duration
     
+    // MARK: - ExperienceDetailView
+    case Activity
+    case CultureArts
+    
     // MARK: - CalendarView
     case chooseDate
     case calendarMonth
