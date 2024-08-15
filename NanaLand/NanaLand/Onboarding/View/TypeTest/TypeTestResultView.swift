@@ -32,35 +32,45 @@ struct TypeTestResultView: View {
 	}
 	
 	private var header: some View {
-		VStack(spacing: 8) {
-			Text(.yourTravelStyleIs, arguments: [nickname])
-				.font(.body01)
-				.foregroundStyle(Color.baseBlack)
-			
-			Text(typeTestVM.state.userType?.localizedKey ?? .GAMGYUL)
-				.font(.largeTitle01)
-				.foregroundStyle(Color.main)
-		}
+        ZStack{
+            Circle()
+                .frame(width: 85, height: 85)
+                .padding(.trailing, 150)
+                .padding(.bottom, 20)
+                .foregroundColor(.main10P)
+            
+            VStack(spacing: 8) {
+                Text(.yourTravelStyleIs, arguments: [nickname])
+                    .font(.body01)
+                    .foregroundStyle(Color.baseBlack)
+                
+                Text(typeTestVM.state.userType?.localizedKey ?? .GAMGYUL)
+                    .font(.largeTitle01)
+                    .foregroundStyle(Color.main)
+            }
+        }
 	}
 	
 	private var contentsPart: some View {
-		VStack(spacing: 32) {
-			Image(typeTestVM.state.userType?.image ?? .GAMGYUL_ICECREAM)
-				.resizable()
-				.frame(width: imageSize, height: imageSize)
-				.clipShape(Circle())
-			
-			Text(typeTestVM.state.userType?.descriptionLocalizedKey ?? .GAMGYUL_DESCRIPTION)
-				.foregroundColor(Color.main)
-			+
-			Text("\n\n")
-			+
-			Text(.nanalandMadeYouJuice)
-				.foregroundColor(Color.baseBlack)
-			
-		}
-		.font(.body01)
-		.multilineTextAlignment(.center)
+        VStack(spacing: 32) {
+            Image(typeTestVM.state.userType?.image ?? .GAMGYUL_ICECREAM)
+                .resizable()
+                .frame(width: imageSize, height: imageSize)
+                .clipShape(Circle())
+            
+            Text(typeTestVM.state.userType?.descriptionLocalizedKey ?? .GAMGYUL_DESCRIPTION)
+                .foregroundColor(Color.main)
+                .multilineTextAlignment(.center)
+                .frame(width: Constants.screenWidth * 0.8)
+
+            Text(.nanalandMadeYouJuice)
+                .foregroundColor(Color.black)
+                .multilineTextAlignment(.center)
+                .frame(width: Constants.screenWidth * 0.8)
+            
+        }
+        .font(.body01)
+        .multilineTextAlignment(.center)
 	}
 	
 	private var bottomButtons: some View {

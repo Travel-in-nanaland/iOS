@@ -18,12 +18,9 @@ struct TypeTestProfileView: View {
             
             NavigationBar(title: "")
                 .frame(height: 56)
-                .background(Color.white)
-                .padding(.bottom, 10)
             
             ScrollView {
                 header
-                    .padding(.top, 40)
                     .padding(.bottom, 32)
                 
                 contentsPart
@@ -50,14 +47,22 @@ struct TypeTestProfileView: View {
     }
     
     private var header: some View {
-        VStack(spacing: 8) {
-            Text(.yourTravelStyleIs, arguments: [nickname])
-                .font(.body01)
-                .foregroundStyle(Color.baseBlack)
+        ZStack{
+            Circle()
+                .frame(width: 85, height: 85)
+                .padding(.trailing, 150)
+                .padding(.bottom, 20)
+                .foregroundColor(.main10P)
             
-            Text(typeTestVM.state.userType?.localizedKey ?? .GAMGYUL)
-                .font(.largeTitle01)
-                .foregroundStyle(Color.main)
+            VStack(spacing: 8) {
+                Text(.yourTravelStyleIs, arguments: [nickname])
+                    .font(.body01)
+                    .foregroundStyle(Color.baseBlack)
+                
+                Text(typeTestVM.state.userType?.localizedKey ?? .GAMGYUL)
+                    .font(.largeTitle01)
+                    .foregroundStyle(Color.main)
+            }
         }
     }
     
@@ -70,11 +75,13 @@ struct TypeTestProfileView: View {
             
             Text(typeTestVM.state.userType?.descriptionLocalizedKey ?? .GAMGYUL_DESCRIPTION)
                 .foregroundColor(Color.main)
-            +
-            Text("\n\n")
-            +
+                .multilineTextAlignment(.center)
+                .frame(width: Constants.screenWidth * 0.8)
+
             Text(.nanalandMadeYouJuice)
-                .foregroundColor(Color.baseBlack)
+                .foregroundColor(Color.black)
+                .multilineTextAlignment(.center)
+                .frame(width: Constants.screenWidth * 0.8)
             
         }
         .font(.body01)
@@ -128,3 +135,4 @@ struct TypeTestProfileView: View {
         .environmentObject(lm)
         .environmentObject(vm)
 }
+
