@@ -163,6 +163,7 @@
 		6DCE99912C610E4C0080A1C6 /* ReviewWriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCE99902C610E4C0080A1C6 /* ReviewWriteModel.swift */; };
 		6DD11F422C51545C00363B08 /* TypeTestProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD11F412C51545C00363B08 /* TypeTestProfileView.swift */; };
 		6DD11F442C5161E500363B08 /* ReviewArticleItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD11F432C5161E500363B08 /* ReviewArticleItemView.swift */; };
+		6DF18F082C6E25130021ED5B /* TestLoading.json in Resources */ = {isa = PBXBuildFile; fileRef = 6DF18F072C6E25120021ED5B /* TestLoading.json */; };
 		9C6A9C3E2BCC1BAE000413AD /* Fonts+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6A9C3D2BCC1BAE000413AD /* Fonts+.swift */; };
 		9C6A9C632BCC22CE000413AD /* AppleSDGothicNeoL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C6A9C5A2BCC22CE000413AD /* AppleSDGothicNeoL.ttf */; };
 		9C6A9C642BCC22CE000413AD /* AppleSDGothicNeoL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C6A9C5A2BCC22CE000413AD /* AppleSDGothicNeoL.ttf */; };
@@ -445,6 +446,7 @@
 		6DCE99902C610E4C0080A1C6 /* ReviewWriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewWriteModel.swift; sourceTree = "<group>"; };
 		6DD11F412C51545C00363B08 /* TypeTestProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeTestProfileView.swift; sourceTree = "<group>"; };
 		6DD11F432C5161E500363B08 /* ReviewArticleItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewArticleItemView.swift; sourceTree = "<group>"; };
+		6DF18F072C6E25120021ED5B /* TestLoading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TestLoading.json; sourceTree = "<group>"; };
 		9C6A9C3D2BCC1BAE000413AD /* Fonts+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fonts+.swift"; sourceTree = "<group>"; };
 		9C6A9C5A2BCC22CE000413AD /* AppleSDGothicNeoL.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoL.ttf; sourceTree = "<group>"; };
 		9C6A9C5B2BCC22CE000413AD /* AppleSDGothicNeoR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoR.ttf; sourceTree = "<group>"; };
@@ -608,6 +610,7 @@
 		2C2D3D562C05993D002A38AA /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
+				6DF18F072C6E25120021ED5B /* TestLoading.json */,
 				6D6D308D2C61FAAF00002F77 /* report_complete.json */,
 				6D6D308E2C61FAAF00002F77 /* review_experience.json */,
 				6D6D308C2C61FAAF00002F77 /* review_restaurant.json */,
@@ -1521,6 +1524,7 @@
 				6D9EDACD2C5B4567003A8DE5 /* GoogleService-Info.plist in Resources */,
 				9C6A9C692BCC22CE000413AD /* AppleSDGothicNeoSB.ttf in Resources */,
 				9C6A9C662BCC22CE000413AD /* AppleSDGothicNeoR.ttf in Resources */,
+				6DF18F082C6E25130021ED5B /* TestLoading.json in Resources */,
 				2C3C758B2BCA3ADC00312F26 /* Preview Assets.xcassets in Resources */,
 				9C6A9C632BCC22CE000413AD /* AppleSDGothicNeoL.ttf in Resources */,
 				6D6D30902C61FAAF00002F77 /* report_complete.json in Resources */,
