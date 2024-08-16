@@ -236,6 +236,21 @@ struct HomeMainView: View {
                 isRecommendCalled = true
             }
         }
+        .onReceive(NotificationCenter.default.publisher(for: .deeplinkShowMarketDetail)) { notification in
+            if let userInfo = notification.userInfo, let id = userInfo["id"] as? Int {
+                AppState.shared.navigationPath.append(HomeViewType.shopDetail(id: id))
+            }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .deeplinkShowFestivalDetail)) { notification in
+            if let userInfo = notification.userInfo, let id = userInfo["id"] as? Int {
+                AppState.shared.navigationPath.append(HomeViewType.festivalDetail(id: id))
+            }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .deeplinkShowNatureDetail)) { notification in
+            if let userInfo = notification.userInfo, let id = userInfo["id"] as? Int {
+                AppState.shared.navigationPath.append(HomeViewType.natureDetail(id: id))
+            }
+        }
         .navigationDestination(for: HomeViewType.self) { viewType in
             switch viewType {
             case .search:
@@ -263,22 +278,6 @@ struct HomeMainView: View {
                 NotificationView()
             }
         }
-        .onReceive(NotificationCenter.default.publisher(for: .deeplinkShowMarketDetail)) { notification in
-            if let userInfo = notification.userInfo, let id = userInfo["id"] as? Int {
-                AppState.shared.navigationPath.append(HomeViewType.shopDetail(id: id))
-            }
-        }
-        .onReceive(NotificationCenter.default.publisher(for: .deeplinkShowFestivalDetail)) { notification in
-            if let userInfo = notification.userInfo, let id = userInfo["id"] as? Int {
-                AppState.shared.navigationPath.append(HomeViewType.festivalDetail(id: id))
-            }
-        }
-        .onReceive(NotificationCenter.default.publisher(for: .deeplinkShowNatureDetail)) { notification in
-            if let userInfo = notification.userInfo, let id = userInfo["id"] as? Int {
-                AppState.shared.navigationPath.append(HomeViewType.natureDetail(id: id))
-            }
-        }
-        
     }
     
     func getRecommendData() async {
@@ -419,19 +418,6 @@ struct AdvertisementView: View {
                     
                 }
             }
-            .navigationDestination(for: AdvertisementViewType.self) { viewType in
-                switch viewType {
-                case .ad1:
-                    // 광고 클릭으로 들어간 경우
-                    NatureMainView(isAdvertisement: true)
-                case .ad2:
-                    NatureMainView()
-                case .ad3:
-                    ShopMainView()
-                case .ad4:
-                    FestivalMainView()
-                }
-            }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
             .onReceive(timer, perform: { _ in
                 withAnimation {
@@ -449,6 +435,19 @@ struct AdvertisementView: View {
             }
             .frame(height: 90)
           
+        }
+        .navigationDestination(for: AdvertisementViewType.self) { viewType in
+            switch viewType {
+            case .ad1:
+                // 광고 클릭으로 들어간 경우
+                NatureMainView(isAdvertisement: true)
+            case .ad2:
+                NatureMainView()
+            case .ad3:
+                ShopMainView()
+            case .ad4:
+                FestivalMainView()
+            }
         }
     }
 }
@@ -523,16 +522,6 @@ struct BannerView: View {
                         }
                     }
                     .frame(width: Constants.screenWidth, height: Constants.screenWidth * (220 / 360))
-                    .navigationDestination(for: BannerViewType.self) {viewType in
-                        switch viewType {
-                        case let .firstBanner(id):
-                            NaNaPickDetailView(id: Int64(id))
-                        case let .secondBanner(id):
-                            NaNaPickDetailView(id: Int64(id))
-                        case let .thirdBanner(id):
-                            NaNaPickDetailView(id: Int64(id))
-                        }
-                    }
                 }
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
@@ -569,6 +558,16 @@ struct BannerView: View {
                 await getBannerData()
                 isBannerCalled = true
                 
+            }
+        }
+        .navigationDestination(for: BannerViewType.self) {viewType in
+            switch viewType {
+            case let .firstBanner(id):
+                NaNaPickDetailView(id: Int64(id))
+            case let .secondBanner(id):
+                NaNaPickDetailView(id: Int64(id))
+            case let .thirdBanner(id):
+                NaNaPickDetailView(id: Int64(id))
             }
         }
         

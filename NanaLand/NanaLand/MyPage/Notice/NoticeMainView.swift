@@ -26,18 +26,36 @@ struct NoticeMainView: View {
                             .padding(.bottom, 10)
                         
                         ScrollView {
-                            LazyVGrid(columns: layout) {
-                                ForEach(viewModel.state.getNoticeMainResponse.data, id: \.id) { notice in
-                                    
-                                    Button(action: {
-                                        AppState.shared.navigationPath.append(noticeType.detail(id: notice.id))
-                                    }, label: {
-                                        NoticeArticleItemView(title: notice.title, type: notice.noticeCategory, date: notice.createdAt)
-                                            .padding(EdgeInsets(top: 10, leading: 15, bottom: 0, trailing: 15))
-                                    })
+                            if viewModel.state.getNoticeMainResponse.totalElements == 0 {
+                                NoResultView()
+                                    .frame(height: 70)
+                                    .padding(.top, (Constants.screenHeight - 208) * (179 / 636))
+                            } else {
+                                LazyVGrid(columns: layout) {
+                                    ForEach(viewModel.state.getNoticeMainResponse.data, id: \.id) { notice in
+                                        
+                                        Button(action: {
+                                            AppState.shared.navigationPath.append(noticeType.detail(id: notice.id))
+                                        }, label: {
+                                            NoticeArticleItemView(title: notice.title, type: notice.noticeCategory, date: notice.createdAt)
+                                                .padding(EdgeInsets(top: 15, leading: 15, bottom: 10, trailing: 15))
+                                        })
+                                    }
+                                }
+                                .padding(.bottom, 10)
+                                
+                                if viewModel.state.page < viewModel.state.getNoticeMainResponse.totalElements / 12 {
+                                    ProgressView()
+                                        .onAppear {
+                                            print("\(viewModel.state.page)")
+                                            Task {
+                                                await getNoticeMainItem(page: viewModel.state.page + 1, size: 12)
+                                            }
+                                            
+                                            viewModel.state.page += 1
+                                        }
                                 }
                             }
-                            .padding(.bottom, 10)
                         }
                         
                         Spacer()

@@ -10,6 +10,7 @@ class MyAllReviewViewModel: ObservableObject {
     struct State {
         var getMyAllReviewResponse = MyAllReviewModel(totalElements: 0, data: [])
         var deleteMyReviewResponse = EmptyResponseModel()
+        var page = 0
     }
     
     enum Action {

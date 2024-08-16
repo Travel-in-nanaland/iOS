@@ -170,7 +170,11 @@ struct ExperienceMainGridView: View {
                                                 .font(.caption01)
                                                 .foregroundStyle(Color.gray1)
                                             Spacer()
-                                            Image("icRatingStar")
+                                            
+                                            Image("icStarFill")
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fit)
+                                                .frame(width: 11)
                                             
                                             Text(String(format: "%.1f", viewModel.state.getExperienceMainResponse.data[index].ratingAvg))
                                                 .font(.caption01_semibold)

@@ -272,11 +272,9 @@ struct ExperienceDetailView: View {
                                                 .foregroundStyle(Color.main)
                                             Spacer()
                                             ForEach(1...5, id: \.self) { number in
-                                                Image(systemName: "star.fill")
+                                                Image((Double(number) - viewModel.state.getReviewDataResponse.totalAvgRating) < 0 || (Double(number) - viewModel.state.getReviewDataResponse.totalAvgRating <= 0.5 && Double(number) - viewModel.state.getReviewDataResponse.totalAvgRating >= 0) ? "icStarFill" : "icStar")
                                                     .resizable()
-                                                    .aspectRatio(contentMode: .fit)
-                                                    .frame(width: 24)
-                                                    .foregroundColor((Double(number) - viewModel.state.getReviewDataResponse.totalAvgRating) < 0 || (Double(number) - viewModel.state.getReviewDataResponse.totalAvgRating <= 0.5 && Double(number) - viewModel.state.getReviewDataResponse.totalAvgRating >= 0) ? .yellow : .gray2)
+                                                    .frame(width: 17, height: 17)
                                             }
                                             Text("\(String(format: "%.1f" , viewModel.state.getReviewDataResponse.totalAvgRating))")
                                                 .font(.body02_bold)
@@ -312,7 +310,9 @@ struct ExperienceDetailView: View {
                                                                     .font(.caption01)
                                                                 Text(" | ")
                                                                     .font(.caption01)
-                                                                Image("icRatingStar")
+                                                                Image("icStarFill")
+                                                                    .resizable()
+                                                                    .frame(width: 11, height: 11)
                                                                 Text("\(String(format: "%.1f", viewModel.state.getReviewDataResponse.data[index].rating ?? 0))")
                                                                     .font(.caption01)
                                                             }
