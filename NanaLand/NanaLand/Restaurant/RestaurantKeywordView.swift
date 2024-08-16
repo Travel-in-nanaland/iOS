@@ -15,6 +15,7 @@ struct RestaurantKeywordView: View {
     @ObservedObject var viewModel: RestaurantMainViewModel
     @EnvironmentObject var localizationManager: LocalizationManager
     @State var selectedKeyword: [String] // 선택된 키워드 이름 담을 배열
+    @State var selectedKeywordName: [String] = []
     // 눌려진 키워드 버튼 담을 배열(눌렸는지 안 눌렸는지)
     @State var buttonsToggled = Array(repeating: false, count: 14)
     var RestaurantKeyword = ["KOREAN", "CHINESE", "JAPANESE", "WETERN", "SNACK", "SOUTH_AMERICAN", "SOUTHEAST_ASIAN", "VEGAN", "HALAL", "MEAT_BLACK_PORK", "SEAFOOD", "CHICKEN_BURGER", "CAFE_DESSERT", "PUB_FOOD_PUB"]
@@ -75,15 +76,16 @@ struct RestaurantKeywordView: View {
                 for index in 0..<buttonsToggled.count {
                     if buttonsToggled[index] == true {
                         selectedKeyword.append(RestaurantKeyword[index])
+                        selectedKeywordName.append(RestaurantKeywordArray[index])
                     }
                 }
                 if selectedKeyword.count == 0 {
                     selectedKeyword = [""]
                 }
-                keyword = selectedKeyword.joined(separator: ",")
+                keyword = selectedKeywordName.joined(separator: ",")
                 Task {
                     viewModel.state.getRestaurantMainResponse = RestaurantMainModel(totalElements: 0, data: [])
-                    await getKeywordRestaurantMainItem(keyword: keyword == LocalizedKey.type.localized(for: LocalizationManager().language) ? "" : keyword, address: address == LocalizedKey.allLocation.localized(for: LocalizationManager().language) ? "" : address, page: 0, size: 12)
+                    await getKeywordRestaurantMainItem(keyword: selectedKeyword.joined(separator: ","), address: address == LocalizedKey.allLocation.localized(for: LocalizationManager().language) ? "" : address, page: 0, size: 12)
                     if keyword.isEmpty {
                         keyword = LocalizedKey.type.localized(for: localizationManager.language)
                     }

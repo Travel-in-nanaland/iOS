@@ -38,6 +38,23 @@ struct RestaurantMainGridView: View {
     @State private var locationModal = false
     @State private var keyword = LocalizedKey.type.localized(for: LocalizationManager().language)
     @State private var location = LocalizedKey.allLocation.localized(for: LocalizationManager().language)
+    @State private var APIKeyword = ""
+    let translations = [
+        "한식": "KOREAN",
+        "중식": "CHINESE",
+        "일식": "JAPANESE",
+        "양식": "WETERN",
+        "분식": "SNACK",
+        "남미 음식": "SOUTH_AMERICAN",
+        "동남아 음식": "SOUTHEAST_ASIAN",
+        "비건푸드": "VEGAN",
+        "할랄푸드": "HALAL",
+        "육류/흑돼지": "MEAT_BLACK_PORK",
+        "해산물": "SEAFOOD",
+        "치킨/버거": "CHICKEN_BURGER",
+        "카페/디저트": "CAFE_DESSERT",
+        "펍/요리주점": "PUB_FOOD_PUB"
+    ]
     
     var body: some View {
         
@@ -152,7 +169,10 @@ struct RestaurantMainGridView: View {
                                                 .font(.caption01)
                                                 .foregroundStyle(Color.gray1)
                                             Spacer()
-                                            Image("icRatingStar")
+                                            Image("icStarFill")
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fit)
+                                                .frame(width: 11)
                                             
                                             // ratingAvg가 Int
                                             let rating = viewModel.state.getRestaurantMainResponse.data[index].ratingAvg
@@ -170,7 +190,29 @@ struct RestaurantMainGridView: View {
                                 })
                                 
                                 .frame(width: (UIScreen.main.bounds.width - 40) / 2, height: 196)
-                                
+                            }
+                            if viewModel.state.page < viewModel.state.getRestaurantMainResponse.totalElements / 12 {
+                                ProgressView()
+                                    .onAppear {
+                                        print("\(viewModel.state.page)")
+                                        Task {
+                                            if location == LocalizedKey.allLocation.localized(for: LocalizationManager().language) {
+                                                APIKeyword = keyword
+                                                for (key, value) in translations {
+                                                    APIKeyword = APIKeyword.replacingOccurrences(of: key, with: value)
+                                                }
+                                                await getRestaurantMainItem(keyword: keyword == LocalizedKey.type.localized(for: localizationManager.language) ? "" : APIKeyword, address: "", page: viewModel.state.page + 1, size: 12)
+                                            } else {
+                                                APIKeyword = keyword
+                                                for (key, value) in translations {
+                                                    APIKeyword = APIKeyword.replacingOccurrences(of: key, with: value)
+                                                }
+                                                await getRestaurantMainItem(keyword: keyword == LocalizedKey.type.localized(for: localizationManager.language) ? "" : APIKeyword, address: location, page: viewModel.state.page + 1, size: 12)
+                                            }
+                                            
+                                            viewModel.state.page += 1
+                                        }
+                                    }
                             }
                         }
                         .padding(.horizontal, 16)
@@ -180,6 +222,20 @@ struct RestaurantMainGridView: View {
             .onAppear {
                 Task {
                     if location == LocalizedKey.allLocation.localized(for: LocalizationManager().language) {
+                        APIKeyword = keyword.replacingOccurrences(of: "한식", with: "KOREAN")
+                        APIKeyword = keyword.replacingOccurrences(of: "중식", with: "CHINESE")
+                        APIKeyword = keyword.replacingOccurrences(of: "일식", with: "JAPANESE")
+                        APIKeyword = keyword.replacingOccurrences(of: "양식", with: "WETERN")
+                        APIKeyword = keyword.replacingOccurrences(of: "분식", with: "SNACK")
+                        APIKeyword = keyword.replacingOccurrences(of: "남미 음식", with: "SOUTH_AMERICAN")
+                        APIKeyword = keyword.replacingOccurrences(of: "동남아 음식", with: "SOUTHEAST_ASIAN")
+                        APIKeyword = keyword.replacingOccurrences(of: "비건푸드", with: "VEGAN")
+                        APIKeyword = keyword.replacingOccurrences(of: "할랄푸드", with: "HALAL")
+                        APIKeyword = keyword.replacingOccurrences(of: "육류/흑돼지", with: "MEAT_BLACK_PORK")
+                        APIKeyword = keyword.replacingOccurrences(of: "치킨/버거", with: "CHICKEN_BURGER")
+                        APIKeyword = keyword.replacingOccurrences(of: "카페/디저트", with: "CAFE_DESSERT")
+                        APIKeyword = keyword.replacingOccurrences(of: "펍/요리주점", with: "PUB_FOOD_PUB")
+                        
                         await getRestaurantMainItem(keyword: keyword == LocalizedKey.type.localized(for: LocalizationManager().language) ? "" : keyword, address: "", page: 0, size: 12)
                     } else {
                         await getRestaurantMainItem(keyword: keyword == LocalizedKey.type.localized(for: LocalizationManager().language) ? "" : keyword, address: "", page: 0, size: 12)
