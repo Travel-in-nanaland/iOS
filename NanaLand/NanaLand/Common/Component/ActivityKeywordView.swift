@@ -65,6 +65,8 @@ struct ActivityKeywordView: View {
                         }
                     }
                     selectedKeyword = []
+                    selectedAPIKeyword = []
+                    
                 } label: {
                     HStack(spacing: 0) {
                         Image("icRe")
@@ -79,6 +81,9 @@ struct ActivityKeywordView: View {
             }
             .padding(.bottom, 24)
             Button {
+                selectedKeyword = []
+                selectedAPIKeyword = []
+                
                 for index in 0..<buttonsToggled.count {
                     if buttonsToggled[index] == true {
                         selectedKeyword.append(ActivityKeywordArray[index])
