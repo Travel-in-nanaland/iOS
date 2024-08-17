@@ -15,6 +15,7 @@ struct CultureAndArtsKeywordView: View {
     @State private var selectedKeywordItem = 0
     @State var selectedKeyword: [String] // 선택된 키워드 이름 담을 배열
     // 눌려진 키워드 버튼 담을 배열(눌렸는지 안 눌렸는지)
+    @State var selectedAPIKeyword: [String] = []
     @State var buttonsToggled = Array(repeating: false, count: 9)
     var CultureAndArtsKeywordButtonArray = ["역사", "전시회", "공방", "미술관", "박물관", "공연", "공원", "종교시설", "테마파크"]
     var CultureAndArtsKeywordArray = ["HISTORY", "EXHIBITION", "WORKSHOP", "ART_MUSEUM", "MUSEUM", "PARK", "PERFORMANCE", "RELIGIOUS_FACILITY", "THEME_PARK"]
@@ -66,6 +67,8 @@ struct CultureAndArtsKeywordView: View {
                         }
                     }
                     selectedKeyword = []
+                    selectedAPIKeyword = []
+                    
                 } label: {
                     HStack(spacing: 0) {
                         Image("icRe")
@@ -82,18 +85,22 @@ struct CultureAndArtsKeywordView: View {
             .padding(.bottom, 24)
             // 적용하기 버튼
             Button {
+                selectedKeyword = []
+                selectedAPIKeyword = []
+                
                 for index in 0..<buttonsToggled.count {
                     if buttonsToggled[index] == true {
                         selectedKeyword.append(CultureAndArtsKeywordArray[index])
+                        selectedAPIKeyword.append(CultureAndArtsKeywordButtonArray[index])
                     }
                 }
                 if selectedKeyword.count == 0 {
                     selectedKeyword = [""]
                 }
-                keyword = selectedKeyword.joined(separator: ",")
+                keyword = selectedAPIKeyword.joined(separator: ",")
                 Task {
                     viewModel.state.getExperienceMainResponse = ExperienceMainModel(totalElements: 0, data: [])
-                    await getKeywordExperienceMainItem(keyword: keyword, address: address == LocalizedKey.allLocation.localized(for: LocalizationManager().language) ? "" : address, page: 0, size: 12)
+                    await getKeywordExperienceMainItem(keyword: selectedKeyword.joined(separator: ","), address: address == LocalizedKey.allLocation.localized(for: LocalizationManager().language) ? "" : address, page: 0, size: 12)
                     if keyword.isEmpty {
                         keyword = "키워드"
                     }

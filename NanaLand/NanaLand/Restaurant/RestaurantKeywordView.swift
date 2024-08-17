@@ -18,7 +18,7 @@ struct RestaurantKeywordView: View {
     @State var selectedKeywordName: [String] = []
     // 눌려진 키워드 버튼 담을 배열(눌렸는지 안 눌렸는지)
     @State var buttonsToggled = Array(repeating: false, count: 14)
-    var RestaurantKeyword = ["KOREAN", "CHINESE", "JAPANESE", "WETERN", "SNACK", "SOUTH_AMERICAN", "SOUTHEAST_ASIAN", "VEGAN", "HALAL", "MEAT_BLACK_PORK", "SEAFOOD", "CHICKEN_BURGER", "CAFE_DESSERT", "PUB_FOOD_PUB"]
+    var RestaurantKeyword = ["KOREAN", "CHINESE", "JAPANESE", "WESTERN", "SNACK", "SOUTH_AMERICAN", "SOUTHEAST_ASIAN", "VEGAN", "HALAL", "MEAT_BLACK_PORK", "SEAFOOD", "CHICKEN_BURGER", "CAFE_DESSERT", "PUB_FOOD_PUB"]
     var RestaurantKeywordArray = ["한식", "중식", "일식", "양식", "분식", "남미 음식", "동남아 음식", "비건푸드", "할랄푸드", "육류/흑돼지", "해산물", "치킨/버거", "카페/디저트", "펍/요리주점"]
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
     
@@ -58,6 +58,7 @@ struct RestaurantKeywordView: View {
                             buttonsToggled[index].toggle()
                         }
                         selectedKeyword = []
+                        selectedKeywordName = []
                     }
                 } label: {
                     HStack(spacing: 0) {
@@ -73,6 +74,9 @@ struct RestaurantKeywordView: View {
             }
             .padding(.bottom, 24)
             Button {
+                selectedKeyword = []
+                selectedKeywordName = []
+                
                 for index in 0..<buttonsToggled.count {
                     if buttonsToggled[index] == true {
                         selectedKeyword.append(RestaurantKeyword[index])
@@ -81,6 +85,7 @@ struct RestaurantKeywordView: View {
                 }
                 if selectedKeyword.count == 0 {
                     selectedKeyword = [""]
+                    selectedKeywordName = [""]
                 }
                 keyword = selectedKeywordName.joined(separator: ",")
                 Task {

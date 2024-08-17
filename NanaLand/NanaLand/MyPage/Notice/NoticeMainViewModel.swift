@@ -30,11 +30,11 @@ class NoticeMainViewModel: ObservableObject {
         case let .getNoticeMainItem(page, size):
             // TODO - 공지사항 API 호출
             let response = await NoticeService.getNoticeMainItem(page: 0, size: 12)
-            if response != nil {
+            if let responseData = response!.data {
                 await MainActor.run {
                     print(response)
-                    state.getNoticeMainResponse.totalElements = response!.data?.totalElements ?? 0
-                    state.getNoticeMainResponse.data = response!.data!.data
+                    state.getNoticeMainResponse.totalElements = responseData.totalElements
+                    state.getNoticeMainResponse.data.append(contentsOf: response!.data?.data ?? [])
                     print(state.getNoticeMainResponse.totalElements)
                 }
             } else {

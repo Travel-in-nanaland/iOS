@@ -43,7 +43,7 @@ struct RestaurantMainGridView: View {
         "한식": "KOREAN",
         "중식": "CHINESE",
         "일식": "JAPANESE",
-        "양식": "WETERN",
+        "양식": "WESTERN",
         "분식": "SNACK",
         "남미 음식": "SOUTH_AMERICAN",
         "동남아 음식": "SOUTHEAST_ASIAN",
@@ -201,13 +201,13 @@ struct RestaurantMainGridView: View {
                                                 for (key, value) in translations {
                                                     APIKeyword = APIKeyword.replacingOccurrences(of: key, with: value)
                                                 }
-                                                await getRestaurantMainItem(keyword: keyword == LocalizedKey.type.localized(for: localizationManager.language) ? "" : APIKeyword, address: "", page: viewModel.state.page + 1, size: 12)
+                                                await getRestaurantMainItem(keyword: keyword == "종류" ? "" : APIKeyword, address: "", page: viewModel.state.page + 1, size: 12)
                                             } else {
                                                 APIKeyword = keyword
                                                 for (key, value) in translations {
                                                     APIKeyword = APIKeyword.replacingOccurrences(of: key, with: value)
                                                 }
-                                                await getRestaurantMainItem(keyword: keyword == LocalizedKey.type.localized(for: localizationManager.language) ? "" : APIKeyword, address: location, page: viewModel.state.page + 1, size: 12)
+                                                await getRestaurantMainItem(keyword: keyword == "종류" ? "" : APIKeyword, address: location, page: viewModel.state.page + 1, size: 12)
                                             }
                                             
                                             viewModel.state.page += 1
@@ -225,7 +225,7 @@ struct RestaurantMainGridView: View {
                         APIKeyword = keyword.replacingOccurrences(of: "한식", with: "KOREAN")
                         APIKeyword = keyword.replacingOccurrences(of: "중식", with: "CHINESE")
                         APIKeyword = keyword.replacingOccurrences(of: "일식", with: "JAPANESE")
-                        APIKeyword = keyword.replacingOccurrences(of: "양식", with: "WETERN")
+                        APIKeyword = keyword.replacingOccurrences(of: "양식", with: "WESTERN")
                         APIKeyword = keyword.replacingOccurrences(of: "분식", with: "SNACK")
                         APIKeyword = keyword.replacingOccurrences(of: "남미 음식", with: "SOUTH_AMERICAN")
                         APIKeyword = keyword.replacingOccurrences(of: "동남아 음식", with: "SOUTHEAST_ASIAN")
@@ -236,9 +236,9 @@ struct RestaurantMainGridView: View {
                         APIKeyword = keyword.replacingOccurrences(of: "카페/디저트", with: "CAFE_DESSERT")
                         APIKeyword = keyword.replacingOccurrences(of: "펍/요리주점", with: "PUB_FOOD_PUB")
                         
-                        await getRestaurantMainItem(keyword: keyword == LocalizedKey.type.localized(for: LocalizationManager().language) ? "" : keyword, address: "", page: 0, size: 12)
+                        await getRestaurantMainItem(keyword: keyword == "종류" ? "" : keyword, address: "", page: 0, size: 12)
                     } else {
-                        await getRestaurantMainItem(keyword: keyword == LocalizedKey.type.localized(for: LocalizationManager().language) ? "" : keyword, address: "", page: 0, size: 12)
+                        await getRestaurantMainItem(keyword: keyword == "종류" ? "" : keyword, address: "", page: 0, size: 12)
                     }
                     isAPICalled = true
                     
