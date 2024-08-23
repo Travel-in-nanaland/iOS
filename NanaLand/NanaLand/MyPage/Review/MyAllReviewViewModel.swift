@@ -47,7 +47,10 @@ class MyAllReviewViewModel: ObservableObject {
             let response = await ReviewService.deleteMyReview(id: id)
             if response != nil {
                 await MainActor.run {
-                    print(response)
+                    if let index = state.getMyAllReviewResponse.data?.firstIndex(where: { $0.id == id }) {
+                        state.getMyAllReviewResponse.data?.remove(at: index)
+                        state.getMyAllReviewResponse.totalElements -= 1
+                    }
                 }
             } else {
                 print("Error")

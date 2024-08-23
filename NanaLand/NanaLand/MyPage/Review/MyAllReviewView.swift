@@ -14,8 +14,9 @@ struct MyAllReviewView: View {
     @StateObject var viewModel: MyAllReviewViewModel
     @State private var isAPICalled = false
     var layout: [GridItem] = [GridItem(.flexible())]
+    @State var selectedReviewId: Int64?
     var body: some View {
-    
+        
         ScrollViewReader{ scroll in
             if isAPICalled {
                 ZStack{
@@ -25,7 +26,7 @@ struct MyAllReviewView: View {
                             .background(Color.white)
                             .shadow(color: Color.black.opacity(0.2), radius: 4, x: 0, y: 2)
                             .padding(.bottom, 10)
-
+                        
                         
                         ScrollView {
                             if viewModel.state.getMyAllReviewResponse.totalElements == 0 {
@@ -41,6 +42,7 @@ struct MyAllReviewView: View {
                                                 .padding(.top, 10)
                                                 .padding(.trailing, 15)
                                                 .padding(.leading, 15)
+                                                .id(review.id)
                                         }
                                     }
                                 }
@@ -95,6 +97,18 @@ struct MyAllReviewView: View {
                     case let .detailReivew(id, category):
                         MyReviewDetailView(reviewId: id, reviewCategory: category)
                             .environmentObject(LocalizationManager())
+                    }
+                }
+                .onAppear {
+                    if let selectedReviewId = selectedReviewId {
+                        scroll.scrollTo(selectedReviewId, anchor: .top) // 선택된 리뷰 ID로 스크롤
+                    }
+                }
+                .onChange(of: selectedReviewId) { id in
+                    if let id = id {
+                        withAnimation {
+                            scroll.scrollTo(id, anchor: .top) // 선택된 리뷰 ID로 스크롤
+                        }
                     }
                 }
             }
@@ -360,7 +374,7 @@ enum reviewType: Hashable {
     case detailReivew(id: Int64, category: String)
 }
 
-#Preview {
-    MyAllReviewView(viewModel: MyAllReviewViewModel())
-        .environmentObject(LocalizationManager())
-}
+//#Preview {
+//    MyAllReviewView(viewModel: MyAllReviewViewModel())
+//        .environmentObject(LocalizationManager())
+//}

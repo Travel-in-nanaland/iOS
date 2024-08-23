@@ -10,7 +10,7 @@ import Kingfisher
 
 struct NewNanaPickDetailView: View {
     
-    @State var viewModel = NewNanaPickDetailViewModel()
+    @StateObject var viewModel = NewNanaPickDetailViewModel()
     var id: Int64
     @State var isAPICalled = false
     
@@ -21,12 +21,12 @@ struct NewNanaPickDetailView: View {
             
             ZStack{
                 if isAPICalled {
-                    NanaPickDetailMainView(viewModel: $viewModel, id: id, size: size, safeArea: safeArea)
+                    NanaPickDetailMainView(viewModel: viewModel, id: id, size: size, safeArea: safeArea)
                         .ignoresSafeArea(.all, edges: .top)
                     
                     VStack(spacing: 0){
                         
-                        NavigationHeartDeepLinkBar(viewModel: $viewModel)
+                        NavigationHeartDeepLinkBar(viewModel: viewModel)
                             .frame(height: 56)
                         
                         Spacer()
@@ -49,7 +49,7 @@ struct NewNanaPickDetailView: View {
 }
 
 struct NanaPickDetailMainView: View {
-    @Binding var viewModel: NewNanaPickDetailViewModel
+    @StateObject var viewModel: NewNanaPickDetailViewModel
     var isAPICalled: Bool = false
     var id: Int64
     var size: CGSize
@@ -64,7 +64,7 @@ struct NanaPickDetailMainView: View {
                         NanaPickHeader()
                             .zIndex(1000)
                         
-                        NewNaNaPickDetailMainView(viewModel: $viewModel)
+                        NewNaNaPickDetailMainView(viewModel: viewModel)
                     }
                     .background(){
                         ScrollDetector { offset in
@@ -171,7 +171,7 @@ struct NanaPickHeader: View {
 
 
 struct NewNaNaPickDetailMainView: View {
-    @Binding var viewModel: NewNanaPickDetailViewModel
+    @StateObject var viewModel: NewNanaPickDetailViewModel
     
     var body: some View {
         VStack(spacing: 0) {

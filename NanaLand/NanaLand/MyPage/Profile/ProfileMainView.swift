@@ -64,10 +64,11 @@ struct ProfileMainView: View {
             case let .detailNotice(id):
                 NoticeDetailView(id: id)
                     .environmentObject(LocalizationManager())
+            case let .selectReview(id):
+                MyAllReviewView(viewModel: MyAllReviewViewModel(), selectedReviewId: id)
             }
         }
         .edgesIgnoringSafeArea(.bottom)
-        
     }
     
     func getUserInfo() async {
@@ -443,7 +444,7 @@ struct reviewTabView: View {
                                 MasonryVStack(columns: 2) {
                                     ForEach(data, id: \.id) { review in
                                         Button(action: {
-                                            
+                                            AppState.shared.navigationPath.append(MyPageViewType.selectReview(id: review.id))
                                         }, label: {
                                             ReviewArticleItemView(placeName: review.placeName, createdAt: review.createdAt, heartCount: review.heartCount, imageFileDto: review.imageFileDto?.originUrl ?? "")
                                             .padding(.top, 17)
@@ -586,6 +587,7 @@ enum MyPageViewType: Hashable {
     case update
     case test
     case allReview
+    case selectReview(id: Int64)
     case allNotice
     case detailReview
     case detailNotice(id: Int64)
