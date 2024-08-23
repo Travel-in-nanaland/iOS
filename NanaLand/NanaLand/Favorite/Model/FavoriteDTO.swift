@@ -56,6 +56,8 @@ struct FavoriteArticle: Codable {
 				return .market
             case "RESTAURANT":
                 return .restaurant
+            case "NANA":
+                return .nanaPick
 			default:
 				print("error in FavoriteArticle category mapping")
 				return .nature
