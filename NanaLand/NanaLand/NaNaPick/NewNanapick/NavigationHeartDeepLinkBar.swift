@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct NavigationHeartDeepLinkBar: View {
-    @Binding var viewModel: NewNanaPickDetailViewModel
+    @StateObject var viewModel: NewNanaPickDetailViewModel
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
         ZStack {
@@ -26,7 +26,9 @@ struct NavigationHeartDeepLinkBar: View {
                 
                 Button {
                     Task {
+                        print(viewModel.state.getNanaPickDetailResponse.favorite)
                         await toggleFavorite(body: FavoriteToggleRequest(id: Int(viewModel.state.getNanaPickDetailResponse.id), category: .nanaPick))
+                        print(viewModel.state.getNanaPickDetailResponse.favorite)
                     }
                 } label: {
                     Image(viewModel.state.getNanaPickDetailResponse.favorite == true ? "icHeartFillMain" : "icHeartWhite")
@@ -49,10 +51,9 @@ struct NavigationHeartDeepLinkBar: View {
             return
         }
         await viewModel.action(.toggleFavorite(body: body))
-        
     }
     
 }
 #Preview {
-    NavigationHeartDeepLinkBar(viewModel: .constant(NewNanaPickDetailViewModel()))
+    NavigationHeartDeepLinkBar(viewModel: NewNanaPickDetailViewModel())
 }

@@ -563,11 +563,11 @@ struct BannerView: View {
         .navigationDestination(for: BannerViewType.self) {viewType in
             switch viewType {
             case let .firstBanner(id):
-                NaNaPickDetailView(id: Int64(id))
+                NewNanaPickDetailView(id: Int64(id))
             case let .secondBanner(id):
-                NaNaPickDetailView(id: Int64(id))
+                NewNanaPickDetailView(id: Int64(id))
             case let .thirdBanner(id):
-                NaNaPickDetailView(id: Int64(id))
+                NewNanaPickDetailView(id: Int64(id))
             }
         }
         
