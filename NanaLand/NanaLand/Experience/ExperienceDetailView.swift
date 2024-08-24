@@ -319,8 +319,32 @@ struct ExperienceDetailView: View {
                                                             
                                                         }
                                                         Spacer()
+                                                        
+                                                        RoundedRectangle(cornerRadius: 30)
+                                                            .stroke(lineWidth: 1)
+                                                            .frame(width: 48, height: 28)
+                                                            .foregroundColor(viewModel.state.getReviewDataResponse.data[index].reviewHeart == true ? .main : .gray2)
+                                                            .overlay(){
+                                                                HStack(spacing: 0){
+                                                                    
+                                                                    Button {
+                                                                        Task{
+                                                                            await reviewFavorite(id: viewModel.state.getReviewDataResponse.data[index].id)
+                                                                        }
+                                                                    } label: {
+                                                                        Image(viewModel.state.getReviewDataResponse.data[index].reviewHeart == true ? "icReviewHeartMain" : "icReviewHeart")
+                                                                    }
+
+                                                                    
+                                                                    Text("\(viewModel.state.getReviewDataResponse.data[index].heartCount)")
+                                                                        .font(.caption01)
+                                                                        .foregroundColor(.black)
+                                                                        .padding(.bottom, 2)
+                                                                }
+                                                            }
+                                                            .padding()
                                                     }
-                                                    .padding(.top, 16)
+                                                    .padding(.top, 10)
                                                     .padding(.bottom, 12)
                                                     HStack(spacing: 0) {
                                                         if viewModel.state.getReviewDataResponse.data[index].images!.count != 0 {
@@ -569,6 +593,10 @@ struct ExperienceDetailView: View {
             return
         }
         await viewModel.action(.toggleFavorite(body: body))
+    }
+    
+    func reviewFavorite(id: Int64) async {
+        await viewModel.action(.reviewFavorite(id: id))
     }
     
     func getSafeArea() ->UIEdgeInsets  {

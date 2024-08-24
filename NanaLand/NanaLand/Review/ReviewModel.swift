@@ -10,11 +10,11 @@ import Foundation
 struct ReviewModel: Codable {
     let totalElements: Int
     let totalAvgRating: Double
-    let data: [ReviewData]
+    var data: [ReviewData]
 }
 
 struct ReviewData: Codable {
-    let id: Int?
+    let id: Int64
     let memberId: Int?
     let nickname: String?
     let profileImage: ImageList?
@@ -22,8 +22,8 @@ struct ReviewData: Codable {
     let rating: Double?
     let content: String?
     let createdAt: String?
-    let heartCount: Int?
+    var heartCount: Int
     let images: [ImageList]?
     let reviewTypeKeywords: [String]?
-    let reviewHeart: Bool?
+    var reviewHeart: Bool
 }

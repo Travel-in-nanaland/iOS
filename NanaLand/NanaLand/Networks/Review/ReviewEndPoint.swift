@@ -18,6 +18,7 @@ enum ReviewEndPoint {
     case deleteMyReview(id: Int64) // 나의 리뷰 삭제
     case getMyReviewDetail(id: Int64) //나의 리뷰 디테일
     case modifyMyReview(id: Int64, body: EditReviewDto, multipartFile: [Foundation.Data?])
+    case reviewFavorite(id: Int64)
 }
 
 extension ReviewEndPoint: EndPoint {
@@ -45,6 +46,8 @@ extension ReviewEndPoint: EndPoint {
             return "/my/\(id)"
         case .modifyMyReview(let id, let body, let multipartFile):
             return "/my/\(id)"
+        case .reviewFavorite(let id):
+            return "/heart/\(id)"
         }
     }
     
@@ -68,6 +71,8 @@ extension ReviewEndPoint: EndPoint {
             return .get
         case .modifyMyReview:
             return .put
+        case .reviewFavorite:
+            return .post
         }
     }
     
@@ -91,6 +96,8 @@ extension ReviewEndPoint: EndPoint {
             return ["Content-Type": "application/json"]
         case .modifyMyReview:
             return ["Content-Type": "multipart/form-data"]
+        case .reviewFavorite:
+            return ["Content-Type": "application/json"]
         }
     }
     
@@ -119,6 +126,8 @@ extension ReviewEndPoint: EndPoint {
             return .requestPlain
         case let .modifyMyReview(id, body, multipartFile):
             return .requestModifyJSONWithImage(multipartFile: multipartFile, body: body)
+        case let .reviewFavorite(id):
+            return .requestPlain
         }
     }
 }
