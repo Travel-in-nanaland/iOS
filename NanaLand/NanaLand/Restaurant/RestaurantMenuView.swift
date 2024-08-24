@@ -12,6 +12,7 @@ struct RestaurantMenuView: View {
     
     @StateObject var viewModel = RestaurantDetailViewModel()
     @EnvironmentObject var localizationManager: LocalizationManager
+    @State private var menuModal = false
     
     let title: String
     let price: String
@@ -33,13 +34,22 @@ struct RestaurantMenuView: View {
             
             Spacer()
             
-            KFImage(URL(string: imageUrl))
-                .resizable()
-                .frame(width: 56, height: 56)
-                .cornerRadius(8)
-                .padding(.bottom, 10)
+            Button {
+                menuModal = true
+            } label: {
+                KFImage(URL(string: imageUrl))
+                    .resizable()
+                    .frame(width: 56, height: 56)
+                    .cornerRadius(8)
+                    .padding(.bottom, 10)
+            }
+
         }
         .padding(EdgeInsets(top: 10, leading: 20, bottom: 0, trailing: 20))
+        .fullScreenCover(isPresented: $menuModal) {
+            MenuModalView(imageUrl: imageUrl)
+                .background(ClearBackgroundView())
+        }
     }
     
     // 가격을 포맷팅하는 함수
@@ -55,6 +65,32 @@ struct RestaurantMenuView: View {
                return priceString
            }
        }
+}
+
+struct ClearBackgroundView: UIViewRepresentable {
+    func makeUIView(context: Context) -> some UIView {
+        let view = UIView()
+        DispatchQueue.main.async {
+            view.superview?.superview?.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        }
+        return view
+    }
+    func updateUIView(_ uiView: UIViewType, context: Context) {
+    }
+}
+
+struct ClearBackgroundViewModifier: ViewModifier {
+    
+    func body(content: Content) -> some View {
+        content
+            .background(ClearBackgroundView())
+    }
+}
+
+extension View {
+    func clearModalBackground()->some View {
+        self.modifier(ClearBackgroundViewModifier())
+    }
 }
 
 #Preview {

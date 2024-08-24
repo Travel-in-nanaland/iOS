@@ -16,7 +16,6 @@ struct RestaurantDetailView: View {
     var id: Int64
     @State private var contentIsOn = [false, false, false] // 댓글 더보기 버튼 클릭 여부(더 보기 클릭한 댓글만 라인 제한 풀기)
     @State private var isExpanded = false
-    
     @State private var isAPICalled = false
     
     var layout: [GridItem] = [GridItem(.flexible())]
@@ -306,7 +305,8 @@ struct RestaurantDetailView: View {
                                                                 HStack(spacing: 0) {
                                                                     Text("리뷰 \(viewModel.state.getReviewDataResponse.data[index].memberReviewCount ?? 0)")
                                                                         .font(.caption01)
-                                                                    Text("ㅣ")
+                                                                    Text(" | ")
+                                                                        .font(.caption01)
                                                                     Image("icStarFill")
                                                                         .resizable()
                                                                         .frame(width: 11, height: 11)
@@ -316,8 +316,32 @@ struct RestaurantDetailView: View {
                                                                 
                                                             }
                                                             Spacer()
+                                                            
+                                                            RoundedRectangle(cornerRadius: 30)
+                                                                .stroke(lineWidth: 1)
+                                                                .frame(width: 48, height: 28)
+                                                                .foregroundColor(viewModel.state.getReviewDataResponse.data[index].reviewHeart == true ? .main : .gray2)
+                                                                .overlay(){
+                                                                    HStack(spacing: 0){
+                                                                        
+                                                                        Button {
+                                                                            Task{
+                                                                                await reviewFavorite(id: viewModel.state.getReviewDataResponse.data[index].id)
+                                                                            }
+                                                                        } label: {
+                                                                            Image(viewModel.state.getReviewDataResponse.data[index].reviewHeart == true ? "icReviewHeartMain" : "icReviewHeart")
+                                                                        }
+
+                                                                        
+                                                                        Text("\(viewModel.state.getReviewDataResponse.data[index].heartCount)")
+                                                                            .font(.caption01)
+                                                                            .foregroundColor(.black)
+                                                                            .padding(.bottom, 2)
+                                                                    }
+                                                                }
+                                                                .padding()
                                                         }
-                                                        .padding(.top, 16)
+                                                        .padding(.top, 10)
                                                         .padding(.bottom, 12)
                                                         HStack(spacing: 0) {
                                                             if viewModel.state.getReviewDataResponse.data[index].images!.count != 0 {
@@ -373,7 +397,8 @@ struct RestaurantDetailView: View {
                                                     .clipShape(RoundedRectangle(cornerRadius: 12))
                                                     .overlay(
                                                         RoundedRectangle(cornerRadius: 12) // 모서리가 둥근 테두리
-                                                            .stroke(Color.gray1, lineWidth: 1) // 테두리 색상과 두께
+                                                            .stroke(Color.gray.opacity(0.1), lineWidth: 1) // 테두리 색상과 두께
+                                                            .shadow(color: .gray.opacity(0.3), radius: 1, x: 0, y: 0)
                                                     )
                                                     .padding(.leading, 16)
                                                     .padding(.trailing, 16)
@@ -514,6 +539,10 @@ struct RestaurantDetailView: View {
             return
         }
         await viewModel.action(.toggleFavorite(body: body))
+    }
+    
+    func reviewFavorite(id: Int64) async {
+        await viewModel.action(.reviewFavorite(id: id))
     }
     
     func getSafeArea() ->UIEdgeInsets  {

@@ -50,4 +50,9 @@ struct ReviewService {
     static func modifyMyReview(id: Int64, body: EditReviewDto, multipartFile: [Foundation.Data?]) async -> BaseResponse<ReviewModifyModel>? {
         return await NetworkManager.shared.request(ReviewEndPoint.modifyMyReview(id: id, body: body, multipartFile: multipartFile))
     }
+    
+    //후기 좋아요
+    static func reviewFavorite(id: Int64) async -> BaseResponse<ReviewFavoriteResponse>? {
+        return await NetworkManager.shared.request(ReviewEndPoint.reviewFavorite(id: id))
+    }
 }
