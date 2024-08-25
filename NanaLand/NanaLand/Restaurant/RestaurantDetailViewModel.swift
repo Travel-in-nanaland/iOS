@@ -17,6 +17,7 @@ class RestaurantDetailViewModel: ObservableObject {
         case getRestaurantDetailItem(id: Int64, isSearch: Bool)
         case getReviewData(id: Int64, category: String, page: Int, size: Int)
         case toggleFavorite(body: FavoriteToggleRequest)
+        case reviewFavorite(id: Int64)
     }
     
     @Published var state: State
@@ -57,6 +58,26 @@ class RestaurantDetailViewModel: ObservableObject {
                     }
                 } else {
                     print("Eror: response is nil")
+                }
+                
+            case let .reviewFavorite(id):
+                let response = await ReviewService.reviewFavorite(id: id)
+                if let responseData = response?.data {
+                    await MainActor.run {
+                        if let index = state.getReviewDataResponse.data.firstIndex(where: { $0.id == id }) {
+                            state.getReviewDataResponse.data[index].reviewHeart = responseData.reviewHeart
+                            if responseData.reviewHeart {
+                                state.getReviewDataResponse.data[index].heartCount += 1
+                            } else {
+                                state.getReviewDataResponse.data[index].heartCount -= 1
+                            }
+                            print("Updated reviewHeart for review with id: \(id)")
+                        } else {
+                            print("Review with id: \(id) not found")
+                        }
+                    }
+                } else {
+                    print("Response data is nil")
                 }
             }
         }

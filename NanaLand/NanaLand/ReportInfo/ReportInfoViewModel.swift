@@ -27,6 +27,7 @@ class ReportInfoViewModel: ObservableObject {
 	}
 	
 	@Published var state: State
+    @Published var imageCnt: Int = 0
 	
 	init(
 		state: State = .init()
@@ -34,6 +35,10 @@ class ReportInfoViewModel: ObservableObject {
 		self.state = state
 	}
 	
+    func updateImageCount(_ count: Int) {
+        imageCnt = count
+    }
+    
 	func action(_ action: Action) async {
 		switch action {
 		case .onTapReportItem(let type):

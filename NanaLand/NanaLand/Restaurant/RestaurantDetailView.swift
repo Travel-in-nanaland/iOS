@@ -16,7 +16,6 @@ struct RestaurantDetailView: View {
     var id: Int64
     @State private var contentIsOn = [false, false, false] // 댓글 더보기 버튼 클릭 여부(더 보기 클릭한 댓글만 라인 제한 풀기)
     @State private var isExpanded = false
-    
     @State private var isAPICalled = false
     
     var layout: [GridItem] = [GridItem(.flexible())]
@@ -34,7 +33,7 @@ struct RestaurantDetailView: View {
                         VStack{
                             if isAPICalled {
                                 VStack{
-                                    KFImage(URL(string: viewModel.state.getRestaurantDetailResponse.images.first!.originUrl))
+                                    KFImage(URL(string: viewModel.state.getRestaurantDetailResponse.images?.first!.originUrl ?? ""))
                                         .resizable()
                                         .frame(width: Constants.screenWidth, height: Constants.screenWidth * (26 / 39))
                                         .padding(.bottom, 24)
@@ -45,7 +44,7 @@ struct RestaurantDetailView: View {
                                             .frame(maxWidth: Constants.screenWidth - 40, maxHeight: .infinity) // 뷰의 크기를 지정합니다.
                                             .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 0)
                                         
-                                        VStack(){
+                                        VStack(spacing: 0){
                                             HStack(spacing: 0) {
                                                 
                                                 Text(viewModel.state.getRestaurantDetailResponse.addressTag)
@@ -82,12 +81,17 @@ struct RestaurantDetailView: View {
                                                 Spacer()
                                             }
                                             .padding(.bottom, 8)
-                                            Text(viewModel.state.getRestaurantDetailResponse.content)
-                                                .fixedSize(horizontal: false, vertical: true) // 세로 방향으로 확장 허용
-                                                .lineLimit(isExpanded ? nil : 5)
-                                                .padding(.leading, 35)
-                                                .padding(.trailing, 30)
-                                                .padding(.bottom, 20)
+                                            
+                                            HStack{
+                                                Text(viewModel.state.getRestaurantDetailResponse.content)
+                                                    .fixedSize(horizontal: false, vertical: true) // 세로 방향으로 확장 허용
+                                                    .lineLimit(isExpanded ? nil : 5)
+                                                    .padding(.leading, 40)
+                                                    .padding(.trailing, 30)
+                                                    .padding(.bottom, 20)
+                                                
+                                                Spacer()
+                                            }
                                             
                                             if viewModel.state.getRestaurantDetailResponse.content.count > 90 {
                                                 HStack{
@@ -121,7 +125,7 @@ struct RestaurantDetailView: View {
                                         .padding(EdgeInsets(top: 20, leading: 25, bottom: 0, trailing: 0))
                                         
                                         ForEach(viewModel.state.getRestaurantDetailResponse.menus, id: \.menuName) { menuItem in
-                                            RestaurantMenuView(title: menuItem.menuName, price: menuItem.price, imageUrl: menuItem.firstImage.originUrl)
+                                            RestaurantMenuView(title: menuItem.menuName, price: menuItem.price, imageUrl: menuItem.firstImage.originUrl ?? "")
                                                 .environmentObject(LocalizationManager())
                                             Rectangle()
                                                 .frame(width: Constants.screenWidth, height: 1)
@@ -266,11 +270,9 @@ struct RestaurantDetailView: View {
                                                     .foregroundStyle(Color.main)
                                                 Spacer()
                                                 ForEach(1...5, id: \.self) { number in
-                                                    Image(systemName: "star.fill")
+                                                    Image((Double(number) - viewModel.state.getReviewDataResponse.totalAvgRating) < 0 || (Double(number) - viewModel.state.getReviewDataResponse.totalAvgRating <= 0.5 && Double(number) - viewModel.state.getReviewDataResponse.totalAvgRating >= 0) ? "icStarFill" : "icStar")
                                                         .resizable()
-                                                        .aspectRatio(contentMode: .fit)
-                                                        .frame(width: 24)
-                                                        .foregroundColor((Double(number) - viewModel.state.getReviewDataResponse.totalAvgRating) < 0 || (Double(number) - viewModel.state.getReviewDataResponse.totalAvgRating <= 0.5 && Double(number) - viewModel.state.getReviewDataResponse.totalAvgRating >= 0) ? .yellow : .gray2)
+                                                        .frame(width: 17, height: 17)
                                                 }
                                                 Text("\(String(format: "%.1f" , viewModel.state.getReviewDataResponse.totalAvgRating))")
                                                     .font(.body02_bold)
@@ -303,16 +305,43 @@ struct RestaurantDetailView: View {
                                                                 HStack(spacing: 0) {
                                                                     Text("리뷰 \(viewModel.state.getReviewDataResponse.data[index].memberReviewCount ?? 0)")
                                                                         .font(.caption01)
-                                                                    Text("ㅣ")
-                                                                    Image("icRatingStar")
+                                                                    Text(" | ")
+                                                                        .font(.caption01)
+                                                                    Image("icStarFill")
+                                                                        .resizable()
+                                                                        .frame(width: 11, height: 11)
                                                                     Text("\(String(format: "%.1f", viewModel.state.getReviewDataResponse.data[index].rating ?? 0))")
                                                                         .font(.caption01)
                                                                 }
                                                                 
                                                             }
                                                             Spacer()
+                                                            
+                                                            RoundedRectangle(cornerRadius: 30)
+                                                                .stroke(lineWidth: 1)
+                                                                .frame(width: 48, height: 28)
+                                                                .foregroundColor(viewModel.state.getReviewDataResponse.data[index].reviewHeart == true ? .main : .gray2)
+                                                                .overlay(){
+                                                                    HStack(spacing: 0){
+                                                                        
+                                                                        Button {
+                                                                            Task{
+                                                                                await reviewFavorite(id: viewModel.state.getReviewDataResponse.data[index].id)
+                                                                            }
+                                                                        } label: {
+                                                                            Image(viewModel.state.getReviewDataResponse.data[index].reviewHeart == true ? "icReviewHeartMain" : "icReviewHeart")
+                                                                        }
+
+                                                                        
+                                                                        Text("\(viewModel.state.getReviewDataResponse.data[index].heartCount)")
+                                                                            .font(.caption01)
+                                                                            .foregroundColor(.black)
+                                                                            .padding(.bottom, 2)
+                                                                    }
+                                                                }
+                                                                .padding()
                                                         }
-                                                        .padding(.top, 16)
+                                                        .padding(.top, 10)
                                                         .padding(.bottom, 12)
                                                         HStack(spacing: 0) {
                                                             if viewModel.state.getReviewDataResponse.data[index].images!.count != 0 {
@@ -368,7 +397,8 @@ struct RestaurantDetailView: View {
                                                     .clipShape(RoundedRectangle(cornerRadius: 12))
                                                     .overlay(
                                                         RoundedRectangle(cornerRadius: 12) // 모서리가 둥근 테두리
-                                                            .stroke(Color.gray1, lineWidth: 1) // 테두리 색상과 두께
+                                                            .stroke(Color.gray.opacity(0.1), lineWidth: 1) // 테두리 색상과 두께
+                                                            .shadow(color: .gray.opacity(0.3), radius: 1, x: 0, y: 0)
                                                     )
                                                     .padding(.leading, 16)
                                                     .padding(.trailing, 16)
@@ -482,7 +512,7 @@ struct RestaurantDetailView: View {
             .navigationDestination(for: ReviewType.self) { viewType in
                 switch viewType {
                 case let .review:
-                    ReviewWriteMain(reviewAddress: viewModel.state.getRestaurantDetailResponse.address ?? "", reviewImageUrl: viewModel.state.getRestaurantDetailResponse.images[0].originUrl ?? "", reviewTitle: viewModel.state.getRestaurantDetailResponse.title ?? "", reviewId: viewModel.state.getRestaurantDetailResponse.id ?? 0, reviewCategory: "RESTAURANT")
+                    ReviewWriteMain(reviewAddress: viewModel.state.getRestaurantDetailResponse.address ?? "", reviewImageUrl: viewModel.state.getRestaurantDetailResponse.images?[0].originUrl ?? "", reviewTitle: viewModel.state.getRestaurantDetailResponse.title ?? "", reviewId: viewModel.state.getRestaurantDetailResponse.id ?? 0, reviewCategory: "RESTAURANT")
                 case let .allReview(id):
                     ReviewAllDetailMainView(id: id, reviewCategory: "RESTAURANT")
                 case let .userProfile(id):
@@ -509,6 +539,10 @@ struct RestaurantDetailView: View {
             return
         }
         await viewModel.action(.toggleFavorite(body: body))
+    }
+    
+    func reviewFavorite(id: Int64) async {
+        await viewModel.action(.reviewFavorite(id: id))
     }
     
     func getSafeArea() ->UIEdgeInsets  {

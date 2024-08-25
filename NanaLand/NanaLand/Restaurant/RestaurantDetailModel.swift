@@ -19,13 +19,13 @@ struct RestaurantDetailModel: Codable {
     let service: String?
     let menus: [Menu]
     let keywords: [String]?
-    let images: [RestaurantDetailImagesList]
+    let images: [RestaurantDetailImagesList]?
     var favorite: Bool
 }
 
 struct RestaurantDetailImagesList: Codable {
-    let originUrl: String
-    let thumbnailUrl: String
+    let originUrl: String?
+    let thumbnailUrl: String?
 }
 
 struct Menu: Codable {

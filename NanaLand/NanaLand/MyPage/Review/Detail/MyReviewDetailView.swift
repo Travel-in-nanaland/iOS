@@ -501,8 +501,8 @@ struct ReviewDetailTagView: View {
         }
     }
 }
-//
-//#Preview {
-//    MyReviewDetailView()
-//        .environmentObject(LocalizationManager())
-//}
+
+#Preview {
+    MyReviewDetailView()
+        .environmentObject(LocalizationManager())
+}

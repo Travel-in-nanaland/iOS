@@ -37,6 +37,24 @@ struct LocationModalView: View {
         "농촌체험": "RURAL_EXPERIENCE",
         "힐링테라피": "HEALING_THERAPHY"
     ]
+    
+    let restaurantTranslations = [
+        "한식": "KOREAN",
+        "중식": "CHINESE",
+        "일식": "JAPANESE",
+        "양식": "WESTERN",
+        "분식": "SNACK",
+        "남미 음식": "SOUTH_AMERICAN",
+        "동남아 음식": "SOUTHEAST_ASIAN",
+        "비건푸드": "VEGAN",
+        "할랄푸드": "HALAL",
+        "육류/흑돼지": "MEAT_BLACK_PORK",
+        "해산물": "SEAFOOD",
+        "치킨/버거": "CHICKEN_BURGER",
+        "카페/디저트": "CAFE_DESSERT",
+        "펍/요리주점": "PUB_FOOD_PUB"
+    ]
+    
     var locationArray: [LocalizedKey] = [
         .jejuCity,
         .Aewol,
@@ -205,7 +223,11 @@ struct LocationModalView: View {
                         
                     } else if title == "제주 맛집" {
                         restaurantModel.state.getRestaurantMainResponse = RestaurantMainModel(totalElements: 0, data: []) // 초기화
-                        await getLocationRestaurantMainItem(filterName: selectedLocationStrings.joined(separator: ","), page: 0, size: 12, keyword: keyword)
+                        APIKeyword = keyword
+                        for (key, value) in restaurantTranslations {
+                            APIKeyword = APIKeyword.replacingOccurrences(of: key, with: value)
+                        }
+                        await getLocationRestaurantMainItem(filterName: selectedLocationStrings.joined(separator: ","), page: 0, size: 12, keyword: keyword == "종류" ? "" : APIKeyword)
                         restaurantModel.state.selectedLocation = selectedLocation
                     }
                     

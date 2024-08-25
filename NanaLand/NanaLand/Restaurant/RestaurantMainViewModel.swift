@@ -38,12 +38,13 @@ class RestaurantMainViewModel: ObservableObject {
                 await MainActor.run {
                     print(response)
                     state.getRestaurantMainResponse.totalElements = responseData.totalElements
-                    state.getRestaurantMainResponse.data = responseData.data
+                    state.getRestaurantMainResponse.data.append(contentsOf: response.data?.data ?? [])
                     print(state.getRestaurantMainResponse.totalElements)
                 }
             } else {
                 print("Error")
             }
+            
         case .toggleFavorite(body: let body, index: let index):
             let response = await FavoriteService.toggleFavorite(id: body.id, category: .restaurant)
             if response != nil {

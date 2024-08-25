@@ -39,3 +39,7 @@ struct PreviewData: Codable {
     let heartCount: Int
     let imageFileDto: ImageList?
 }
+
+struct ReviewFavoriteResponse: Codable {
+    let reviewHeart: Bool
+}

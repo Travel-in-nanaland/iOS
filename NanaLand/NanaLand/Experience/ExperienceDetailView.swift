@@ -291,11 +291,9 @@ struct ExperienceDetailView: View {
                                                 .foregroundStyle(Color.main)
                                             Spacer()
                                             ForEach(1...5, id: \.self) { number in
-                                                Image(systemName: "star.fill")
+                                                Image((Double(number) - viewModel.state.getReviewDataResponse.totalAvgRating) < 0 || (Double(number) - viewModel.state.getReviewDataResponse.totalAvgRating <= 0.5 && Double(number) - viewModel.state.getReviewDataResponse.totalAvgRating >= 0) ? "icStarFill" : "icStar")
                                                     .resizable()
-                                                    .aspectRatio(contentMode: .fit)
-                                                    .frame(width: 24)
-                                                    .foregroundColor((Double(number) - viewModel.state.getReviewDataResponse.totalAvgRating) < 0 || (Double(number) - viewModel.state.getReviewDataResponse.totalAvgRating <= 0.5 && Double(number) - viewModel.state.getReviewDataResponse.totalAvgRating >= 0) ? .yellow : .gray2)
+                                                    .frame(width: 17, height: 17)
                                             }
                                             Text("\(String(format: "%.1f" , viewModel.state.getReviewDataResponse.totalAvgRating))")
                                                 .font(.body02_bold)
@@ -331,15 +329,41 @@ struct ExperienceDetailView: View {
                                                                     .font(.caption01)
                                                                 Text(" | ")
                                                                     .font(.caption01)
-                                                                Image("icRatingStar")
+                                                                Image("icStarFill")
+                                                                    .resizable()
+                                                                    .frame(width: 11, height: 11)
                                                                 Text("\(String(format: "%.1f", viewModel.state.getReviewDataResponse.data[index].rating ?? 0))")
                                                                     .font(.caption01)
                                                             }
                                                             
                                                         }
                                                         Spacer()
+                                                        
+                                                        RoundedRectangle(cornerRadius: 30)
+                                                            .stroke(lineWidth: 1)
+                                                            .frame(width: 48, height: 28)
+                                                            .foregroundColor(viewModel.state.getReviewDataResponse.data[index].reviewHeart == true ? .main : .gray2)
+                                                            .overlay(){
+                                                                HStack(spacing: 0){
+                                                                    
+                                                                    Button {
+                                                                        Task{
+                                                                            await reviewFavorite(id: viewModel.state.getReviewDataResponse.data[index].id)
+                                                                        }
+                                                                    } label: {
+                                                                        Image(viewModel.state.getReviewDataResponse.data[index].reviewHeart == true ? "icReviewHeartMain" : "icReviewHeart")
+                                                                    }
+
+                                                                    
+                                                                    Text("\(viewModel.state.getReviewDataResponse.data[index].heartCount)")
+                                                                        .font(.caption01)
+                                                                        .foregroundColor(.black)
+                                                                        .padding(.bottom, 2)
+                                                                }
+                                                            }
+                                                            .padding()
                                                     }
-                                                    .padding(.top, 16)
+                                                    .padding(.top, 10)
                                                     .padding(.bottom, 12)
                                                     HStack(spacing: 0) {
                                                         if viewModel.state.getReviewDataResponse.data[index].images!.count != 0 {
@@ -594,6 +618,10 @@ struct ExperienceDetailView: View {
             return
         }
         await viewModel.action(.toggleFavorite(body: body))
+    }
+    
+    func reviewFavorite(id: Int64) async {
+        await viewModel.action(.reviewFavorite(id: id))
     }
     
     func getSafeArea() ->UIEdgeInsets  {

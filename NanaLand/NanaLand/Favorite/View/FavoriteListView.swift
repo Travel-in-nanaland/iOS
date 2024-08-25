@@ -77,7 +77,7 @@ struct FavoriteListView: View {
             case .experience:
                 ExperienceDetailView(id: Int64(article.id))
             case .nanaPick:
-                NaNaPickDetailView(id: Int64(article.id))
+                NewNanaPickDetailView(id: Int64(article.id))
             case .all:
                 Text("test")
             case .restaurant:

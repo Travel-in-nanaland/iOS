@@ -53,7 +53,8 @@ struct NanaLandTabView: View {
                     }
                     .tag(Tab.favorite)
                 
-                NanapickMainView()
+                NewNanaPickMainView()
+                    .environmentObject(LocalizationManager())
                     .tabItem {
                         Label(
                             title: { Text(.nanaPick).font(.gothicNeo(.semibold, size: 10)) },

@@ -26,5 +26,3 @@ struct RestaurantImageList: Codable {
     let thumbnailUrl: String
 }
 
-
-
