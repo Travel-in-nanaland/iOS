@@ -13,7 +13,7 @@ struct CalendarItem: View {
 	let date: YearMonthDay
 	@Binding var currentStartDate: YearMonthDay?
 	@Binding var currentEndDate: YearMonthDay?
-	
+    
     var body: some View {
 		VStack(alignment: .center) {
 			Text("\(date.day)")

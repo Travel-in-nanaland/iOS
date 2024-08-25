@@ -34,7 +34,7 @@ struct ReviewWriteMain: View {
                             withAnimation(nil) {
                                 showAlert = true
                             }
-                 
+                            
                         }, label: {
                             Image("icLeft")
                                 .renderingMode(.template)
@@ -52,7 +52,7 @@ struct ReviewWriteMain: View {
                                         showAlert = false
                                         dismiss()
                                     }
-                                   
+                                    
                                 } label: {
                                     Text("네")
                                         .font(.title02_bold)
@@ -74,7 +74,7 @@ struct ReviewWriteMain: View {
                     }
                     .padding(.bottom, 12)
                 }
-               
+                
                 ReviewMainGridView(viewModel: viewModel, reviewItemAddress: reviewAddress, reviewItemImageUrl: reviewImageUrl, reviewTitle: reviewTitle, reviewId: reviewId, reviewCategory: reviewCategory)
             }
             .toolbar(.hidden)
@@ -343,7 +343,7 @@ struct ReviewMainGridView: View {
                             selectedImageData.append(data) // 선택된 이미지 추가
                         }
                     }
-        
+                    
                 }
                 viewModel.updateImageCount(selectedImageData.count)
             }

@@ -326,7 +326,7 @@ struct ProfileTabBarView: View {
     
     @Namespace var namespace
     var body: some View {
-        HStack {
+        HStack(spacing: 0) {
             ForEach(tabBarOptions.indices, id: \.self) { index in
                 let title = tabBarOptions[index]
                 ProfileTabBarItem(currentTab: $currentTab, namespace: namespace,
@@ -355,17 +355,19 @@ struct ProfileTabBarItem: View {
             VStack {
                 Spacer()
                 Text(title)
-                    .font(currentTab == tab ? .body02_semibold : .body02)
+                    .font(currentTab == tab ? .body02 : .body02)
                 if currentTab == tab {
                     Color.main
                         .frame(height: 2)
                         .matchedGeometryEffect(id: "underline",
-                                               in: namespace.self)
+                                              in: namespace.self)
                 } else {
-                    Color.gray2.frame(height: 2)
+                    Color.gray.frame(height: 2)
+                       
+                    
                 }
             }
-            .animation(.spring(), value: currentTab)
+            .animation(.default, value: currentTab)
         }
         .buttonStyle(.plain)
     }
@@ -376,7 +378,6 @@ struct guestTabView: View {
     var body: some View {
         ZStack{
             VStack{
-                
                 Text("로그인하여 나만의 경험을 기록해보세요!")
                     .font(.body01)
                     .foregroundColor(.gray1)

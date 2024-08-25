@@ -21,6 +21,7 @@ struct ExperienceDetailModel: Codable {
     let keywords: [String]?
     let images: [DetailImagesList]?
     var favorite: Bool?
+    var intro: String?
 }
 
 struct DetailImagesList: Codable {

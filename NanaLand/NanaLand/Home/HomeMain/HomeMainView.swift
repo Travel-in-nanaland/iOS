@@ -226,6 +226,33 @@ struct HomeMainView: View {
                 Spacer()
                     .frame(height: 50)
             }
+            .navigationDestination(for: HomeViewType.self) { viewType in
+                switch viewType {
+                case .search:
+                    SearchMainView()
+                case .nature:
+                    // 광고 클릭으로 들어간게 아닐경우
+                    NatureMainView(isAdvertisement: false)
+                case .festival:
+                    FestivalMainView()
+                case .shop:
+                    ShopMainView()
+                case .experience:
+                    ExperienceMainView()
+                case .nanapick:
+                    NanapickMainView()
+                case .restaurant:
+                    RestaurantMainView()
+                case let .shopDetail(id):
+                    ShopDetailView(id: Int64(id))
+                case let .festivalDetail(id):
+                    FestivalDetailView(id: Int64(id))
+                case let .natureDetail(id):
+                    NatureDetailView(id: Int64(id))
+                case let .notification:
+                    NotificationView()
+                }
+            }
         }
         .scrollIndicators(.hidden)
         //safeArea 크기 가져아서 넣기
@@ -415,7 +442,6 @@ struct AdvertisementView: View {
                         .frame(width: Constants.screenWidth, height: 80)
                         
                     }
-                    
                 }
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
@@ -434,7 +460,6 @@ struct AdvertisementView: View {
                 CustomPageIndicator(count: images.count, currentPage: $currentPage)
             }
             .frame(height: 90)
-          
         }
         .navigationDestination(for: AdvertisementViewType.self) { viewType in
             switch viewType {
@@ -468,7 +493,7 @@ struct BannerView: View {
     private let timer = Timer.publish(every: 3.5, on: .main, in: .common).autoconnect()
     // tabView에 selection에 바인딩 할 값
     @State private var index = 0
-    private let images: [String] = ["icTabNumber1", "icTabNumber2", "icTabNumber3"]
+    private let images: [String] = ["icTabNumber1", "icTabNumber2", "icTabNumber3", "icTabNumber3"]
     
     var body: some View {
         // selection에 index가 아닌 selectedNum을 바인딩

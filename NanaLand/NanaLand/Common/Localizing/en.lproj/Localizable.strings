@@ -436,3 +436,6 @@ the market is the place!";
 
 //MARK: - 언어 설정
 "greeting" = "Hello!\nNice to meet you 👋";
+
+//MARK: - 신고하기
+"report" = "Report";
