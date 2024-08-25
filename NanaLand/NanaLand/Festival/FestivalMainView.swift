@@ -438,7 +438,7 @@ struct FestivalMainGridView: View {
 											)
 											.foregroundStyle(Color.main)
 									}
-                                    .frame(width: (Constants.screenWidth - 40) / 2, height: 196)
+                                    .frame(width: (Constants.screenWidth - 40) / 2, height: 216)
 								})
 							}
                             if title == "종료된" {

@@ -139,7 +139,7 @@ struct ExperienceMainGridView: View {
                                         ZStack {
                                             KFImage(URL(string: viewModel.state.getExperienceMainResponse.data[index].firstImage.thumbnailUrl))
                                                 .resizable()
-                                                .frame(width: (Constants.screenWidth - 40) / 2, height: ((Constants.screenWidth - 40) / 2) * (12 / 16))
+                                                .frame(width: (Constants.screenWidth - 40) / 2, height: ((Constants.screenWidth - 40) / 2.0) * (12.0 / 16.0))
                                                 .clipShape(RoundedRectangle(cornerRadius: 12))
                                             
                                             VStack(spacing: 0) {
@@ -179,7 +179,7 @@ struct ExperienceMainGridView: View {
                                         .padding(.trailing, 8)
                                     }
                                 })
-                                .frame(width: (UIScreen.main.bounds.width - 40) / 2, height: 196)
+                                .frame(width: (UIScreen.main.bounds.width - 40) / 2, height: ((Constants.screenWidth - 40) / 2) * (164 / 160))
                             }
                             if viewModel.state.page < viewModel.state.getExperienceMainResponse.totalElements / 12 {
                                 ProgressView()

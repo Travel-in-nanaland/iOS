@@ -18,4 +18,5 @@ enum APITask {
     case requestJSONWithImage(multipartFile: [Foundation.Data?], body: Encodable, withInterceptor: Bool = true)
     case requestJSONWithImageWithParam(multipartFile: [Foundation.Data?], body: Encodable, withInterceptor: Bool = true, parameters: Parameters)
     case requestModifyJSONWithImage(multipartFile: [Foundation.Data?], body: Encodable, withInterceptor: Bool = true)
+    case requestJSONWithImageList(multipartFile: [Foundation.Data?], body: Encodable, withInterceptor: Bool = true)
 }
