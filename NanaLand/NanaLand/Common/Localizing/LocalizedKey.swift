@@ -450,8 +450,6 @@ enum LocalizedKey: String {
     //MARK: - 언어 설정
     case greeting
     
-    //MARK: - 신고하기
-    case report
     
     //MARK: - localized()
     func localized(for language: Language) -> String {
