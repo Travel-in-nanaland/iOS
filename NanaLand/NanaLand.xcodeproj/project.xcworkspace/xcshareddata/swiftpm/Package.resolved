@@ -68,8 +68,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/divadretlaw/CustomAlert.git",
       "state" : {
-        "revision" : "2261709b0e3482e1a7f2631f0cf012808f2e9fea",
-        "version" : "3.7.1"
+        "revision" : "eee95709dcb68c7def06b4ab2bf28517ce598295",
+        "version" : "3.7.2"
       }
     },
     {
@@ -239,8 +239,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SDWebImage/SDWebImage.git",
       "state" : {
-        "revision" : "5191b801aca999b704eb93f118f91468b4570571",
-        "version" : "5.19.6"
+        "revision" : "8a1be70a625683bc04d6903e2935bf23f3c6d609",
+        "version" : "5.19.7"
       }
     },
     {
@@ -302,8 +302,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/divadretlaw/WindowKit",
       "state" : {
-        "revision" : "e466ce3fe49c7d5190f2d4403cc14607a0501a22",
-        "version" : "2.3.1"
+        "revision" : "4a02f62860d84be31376d2457d80c631ab923dd6",
+        "version" : "2.4.0"
       }
     },
     {
@@ -320,8 +320,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/divadretlaw/WindowSceneReader",
       "state" : {
-        "revision" : "09ab0e20e48b707d72a4c3c00ceba3c10323ccd5",
-        "version" : "3.1.0"
+        "revision" : "c6e9e9ce20683a7d310d0ec1812ae999845ecd6b",
+        "version" : "3.1.1"
       }
     }
   ],

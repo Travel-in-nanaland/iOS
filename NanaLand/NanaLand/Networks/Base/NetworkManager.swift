@@ -142,19 +142,17 @@ class NetworkManager {
                     multipartFormData.append(jsonData, withName: "editReviewDto", mimeType: "application/json")
                 }
             }, to: URL(string: "\(endPoint.baseURL)\(endPoint.path)")!, method: endPoint.method, headers: endPoint.headers, interceptor: withInterceptor ? Interceptor() : nil)
-            
         case let .requestJSONWithImageList(multipartFile, body, withInterceptor):
-            return AF.upload(multipartFormData: { multipartFormData in
-                for image in multipartFile {
-                    if let image = image {
-                        multipartFormData.append(image, withName: "multipartFileList", fileName: "\(image).jpeg", mimeType: "image/jpeg")
-                    }
-                }
-                if let jsonData = try? JSONEncoder().encode(body) {
-                    multipartFormData.append(jsonData, withName: "reqDto", mimeType: "application/json")
-                }
-            }, to: URL(string: "\(endPoint.baseURL)\(endPoint.path)")!, method: endPoint.method, headers: endPoint.headers, interceptor: withInterceptor ? Interceptor() : nil)
+                    return AF.upload(multipartFormData: { multipartFormData in
+                        for image in multipartFile {
+                            if let image = image {
+                                multipartFormData.append(image, withName: "multipartFileList", fileName: "\(image).jpeg", mimeType: "image/jpeg")
+                            }
+                        }
+                        if let jsonData = try? JSONEncoder().encode(body) {
+                            multipartFormData.append(jsonData, withName: "reqDto", mimeType: "application/json")
+                        }
+                    }, to: URL(string: "\(endPoint.baseURL)\(endPoint.path)")!, method: endPoint.method, headers: endPoint.headers, interceptor: withInterceptor ? Interceptor() : nil)
         }
-        
     }
 }

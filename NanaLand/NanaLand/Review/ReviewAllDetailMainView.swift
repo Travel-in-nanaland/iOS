@@ -13,7 +13,6 @@ struct ReviewAllDetailMainView: View {
     @State private var isAPICalled = false
     @State private var contentIsOn: [Bool] = []
     @State private var reportModal = false
-    @State var reportReasonViewFlag = false
     var id: Int64
     var reviewCategory: String = ""
     var body: some View {
@@ -146,7 +145,7 @@ struct ReviewAllDetailMainView: View {
                                     .padding(.bottom, 16)
                                 }
                                 .sheet(isPresented: $reportModal) {
-                                    ReportModalView(reportReasonViewFlag: $reportReasonViewFlag)
+                                    ReportModalView()
                                         .presentationDetents([.height(Constants.screenWidth * (103 / Constants.screenWidth))])
                                 }
                                 .clipShape(RoundedRectangle(cornerRadius: 12))

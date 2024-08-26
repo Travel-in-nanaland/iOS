@@ -16,7 +16,6 @@ import FirebaseMessaging
 @main
 struct NanaLandApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-
 	@StateObject var localizationdManager = LocalizationManager.shared
 	@StateObject var appState = AppState.shared
 	@AppStorage("hasRunBefore") var hasRunBefore: Bool = false
@@ -29,7 +28,6 @@ struct NanaLandApp: App {
 			KeyChainManager.deleteItem(key: "refreshToken")
 			hasRunBefore = true
 		}
-		
 		
 	}
 	
@@ -59,25 +57,24 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         FirebaseApp.configure()
         // 앱 실행시 유저에게 알림 허용 권한을 받음
         if #available(iOS 10.0, *) {
-            // For iOS 10 display notification (sent via APNS)
-            UNUserNotificationCenter.current().delegate = self
-            
-            let authOption: UNAuthorizationOptions = [.alert, .badge, .sound]
-            UNUserNotificationCenter.current().requestAuthorization(
-                options: authOption,
-                completionHandler: {_, _ in })
-        } else {
-            let settings: UIUserNotificationSettings =
-            UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
-            application.registerUserNotificationSettings(settings)
-        }
-        
-        application.registerForRemoteNotifications()
+                  // For iOS 10 display notification (sent via APNS)
+                  UNUserNotificationCenter.current().delegate = self
+
+                  let authOption: UNAuthorizationOptions = [.alert, .badge, .sound]
+                  UNUserNotificationCenter.current().requestAuthorization(
+                      options: authOption,
+                      completionHandler: {_, _ in })
+              } else {
+                  let settings: UIUserNotificationSettings =
+                  UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+                  application.registerUserNotificationSettings(settings)
+              }
         // UNUserNotificationCenterDelegate를 구현한 메서드를 실행시킴
+        application.registerForRemoteNotifications()
         
-        //파이어베이스 Meesaging 설정
-        Messaging.messaging().delegate = self
-        UNUserNotificationCenter.current().delegate = self
+        // 파이어베이스 Meesaging 설정
+         Messaging.messaging().delegate = self
+        
         return true
     }
     
@@ -91,27 +88,27 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         print("토큰을 받았다")
         // Store this token to firebase and retrieve when to send message to someone...
         let dataDict: [String: String] = ["token": fcmToken ?? ""]
-        
+
         // Store token in Firestore For Sending Notifications From Server in Future...
-        
+
         print(dataDict)
-     
+
     }
     // 푸시 메세지가 앱이 켜져있을 때 나올떄
       func userNotificationCenter(_ center: UNUserNotificationCenter,
                                   willPresent notification: UNNotification,
                                   withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions)
                                     -> Void) {
-          
+
         let userInfo = notification.request.content.userInfo
 
-        
+
         // Do Something With MSG Data...
         if let messageID = userInfo[gcmMessageIDKey] {
             print("Message ID: \(messageID)")
         }
-        
-        
+
+
         print(userInfo)
 
         completionHandler([[.banner, .badge, .sound]])
@@ -127,12 +124,9 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         if let messageID = userInfo[gcmMessageIDKey] {
             print("Message ID: \(messageID)")
         }
-          
+
         print(userInfo)
 
         completionHandler()
       }
 }
-
-
-

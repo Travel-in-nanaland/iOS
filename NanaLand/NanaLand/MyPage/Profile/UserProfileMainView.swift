@@ -32,7 +32,10 @@ struct UserProfileMainView: View {
                     }
                 }
             }
-            
+            .sheet(isPresented: $reportModal) {
+                ReportModalView()
+                    .presentationDetents([.height(Constants.screenWidth * (103 / Constants.screenWidth))])
+            }
             if isAPICalled {
                 GeometryReader { geo in
                     ScrollView {

@@ -15,7 +15,7 @@ struct ReportInfoResultView: View {
 		VStack(spacing: 0) {
 			Spacer()
 			
-            LottieView(jsonName: ["report_complete_megaphone", "report_complete_comment"].randomElement()!)
+			LottieView(jsonName: "report_complete")
 				.frame(width: itemSize, height: itemSize)
 				.padding(.leading, 59)
 				.padding(.trailing, 49)

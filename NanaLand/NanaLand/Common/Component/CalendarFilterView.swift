@@ -289,8 +289,8 @@ struct CalendarFilterView: View {
 		.padding(.bottom, 36)
 	}
 }
-//
+
 //#Preview {
-//    CalendarFilterView(viewModel: FestivalMainViewModel(), startDate: .constant(nil), endDate: .constant(nil), location: .constant("전 지역"))
+//	CalendarFilterView(startDate: .constant(nil), endDate: .constant(nil))
 //		.background(HomeMainView())
 //}
