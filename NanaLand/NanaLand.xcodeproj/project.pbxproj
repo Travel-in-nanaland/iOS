@@ -194,7 +194,6 @@
 		BF0997982BD1FFF900563E9A /* NaNaPickDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0997972BD1FFF900563E9A /* NaNaPickDetailView.swift */; };
 		BF0997B62BD4E38500563E9A /* NaNaPickDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0997B52BD4E38500563E9A /* NaNaPickDetailModel.swift */; };
 		BF0D58972C60DAE20042D6BC /* ExpandableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0D58962C60DAE20042D6BC /* ExpandableText.swift */; };
-		BF0D589A2C61D81F0042D6BC /* CustomAlert in Frameworks */ = {isa = PBXBuildFile; productRef = BF0D58992C61D81F0042D6BC /* CustomAlert */; };
 		BF1493712BD1095D00FC626B /* NaNaPickModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1493702BD1095D00FC626B /* NaNaPickModel.swift */; };
 		BF1493732BD1097100FC626B /* NaNaPickService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1493722BD1097100FC626B /* NaNaPickService.swift */; };
 		BF1493752BD10A4100FC626B /* NaNaPickEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1493742BD10A4100FC626B /* NaNaPickEndPoint.swift */; };
@@ -288,6 +287,7 @@
 		BFDCE69B2C6C7403002748B4 /* report_complete_comment.json in Resources */ = {isa = PBXBuildFile; fileRef = BFDCE6992C6C7403002748B4 /* report_complete_comment.json */; };
 		BFDCE69C2C6C7403002748B4 /* report_complete_megaphone.json in Resources */ = {isa = PBXBuildFile; fileRef = BFDCE69A2C6C7403002748B4 /* report_complete_megaphone.json */; };
 		BFE00CEC2C53BD3300F4C80C /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE00CEB2C53BD3300F4C80C /* Toast.swift */; };
+		BFE5EE742C7CBB7A0057626A /* CustomAlert in Frameworks */ = {isa = PBXBuildFile; productRef = BFE5EE732C7CBB7A0057626A /* CustomAlert */; };
 		BFE60DE32C58FE5A009FBA59 /* ReviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE60DE22C58FE5A009FBA59 /* ReviewModel.swift */; };
 		BFF5DA912BE809D100FD8764 /* LocationModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF5DA902BE809D100FD8764 /* LocationModalView.swift */; };
 		BFF646682C00DDE300BCC41F /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF646672C00DDE300BCC41F /* HomeService.swift */; };
@@ -602,12 +602,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C3C75B22BCA3C6B00312F26 /* Kingfisher in Frameworks */,
+				BFE5EE742C7CBB7A0057626A /* CustomAlert in Frameworks */,
 				2C40DB982BE644BE007A3768 /* KakaoSDK in Frameworks */,
 				2C80ECEA2BDAA551002F38A7 /* SwiftUICalendar in Frameworks */,
 				2C219B532C16FE53001F4C28 /* FirebaseRemoteConfig in Frameworks */,
 				BFB73BB72C05BA6A00A9A10E /* SDWebImageSwiftUI in Frameworks */,
 				2C3C75AF2BCA3C5000312F26 /* Alamofire in Frameworks */,
-				BF0D589A2C61D81F0042D6BC /* CustomAlert in Frameworks */,
 				2C40DBBB2BEDFBC3007A3768 /* GoogleSignInSwift in Frameworks */,
 				2C219B512C16FE53001F4C28 /* FirebaseAnalytics in Frameworks */,
 				2C80ECCD2BD2C27D002F38A7 /* SwiftUIIntrospect in Frameworks */,
@@ -1515,8 +1515,8 @@
 				2C219B502C16FE53001F4C28 /* FirebaseAnalytics */,
 				2C219B522C16FE53001F4C28 /* FirebaseRemoteConfig */,
 				6D0E90D72C54659900F8D686 /* MasonryStack */,
-				BF0D58992C61D81F0042D6BC /* CustomAlert */,
 				BF8F85BF2C7B7BC60066432C /* FirebaseMessaging */,
+				BFE5EE732C7CBB7A0057626A /* CustomAlert */,
 			);
 			productName = NanaLand;
 			productReference = 2C3C75802BCA3ADA00312F26 /* NanaLand.app */;
@@ -1606,7 +1606,7 @@
 				2C2749792C08ADC600ECBA71 /* XCRemoteSwiftPackageReference "Swift-JWT" */,
 				2C219B4F2C16FE53001F4C28 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				6D0E90D62C54659900F8D686 /* XCRemoteSwiftPackageReference "MasonryStack" */,
-				BF0D58982C61D81F0042D6BC /* XCRemoteSwiftPackageReference "CustomAlert" */,
+				BFE5EE722C7CBB7A0057626A /* XCRemoteSwiftPackageReference "CustomAlert" */,
 			);
 			productRefGroup = 2C3C75812BCA3ADA00312F26 /* Products */;
 			projectDirPath = "";
@@ -2366,20 +2366,20 @@
 				minimumVersion = 0.1.0;
 			};
 		};
-		BF0D58982C61D81F0042D6BC /* XCRemoteSwiftPackageReference "CustomAlert" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/divadretlaw/CustomAlert.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.7.1;
-			};
-		};
 		BFB73BB52C05BA6A00A9A10E /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 3.0.4;
+			};
+		};
+		BFE5EE722C7CBB7A0057626A /* XCRemoteSwiftPackageReference "CustomAlert" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/divadretlaw/CustomAlert.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.7.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -2445,11 +2445,6 @@
 			package = 6D0E90D62C54659900F8D686 /* XCRemoteSwiftPackageReference "MasonryStack" */;
 			productName = MasonryStack;
 		};
-		BF0D58992C61D81F0042D6BC /* CustomAlert */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BF0D58982C61D81F0042D6BC /* XCRemoteSwiftPackageReference "CustomAlert" */;
-			productName = CustomAlert;
-		};
 		BF8F85BF2C7B7BC60066432C /* FirebaseMessaging */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2C219B4F2C16FE53001F4C28 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
@@ -2459,6 +2454,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BFB73BB52C05BA6A00A9A10E /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
 			productName = SDWebImageSwiftUI;
+		};
+		BFE5EE732C7CBB7A0057626A /* CustomAlert */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BFE5EE722C7CBB7A0057626A /* XCRemoteSwiftPackageReference "CustomAlert" */;
+			productName = CustomAlert;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
