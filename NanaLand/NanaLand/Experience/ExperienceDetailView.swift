@@ -18,7 +18,7 @@ struct ExperienceDetailView: View {
     @State private var keywordString = [""]
     @State private var reportModal = false
     @State private var reportReasonViewFlag = false // 신고하기로 네비게이션 하기 위한 플래그(신고 모달이 sheet형태라 navigation stack에 포함 안됨)
-    @State private var idx = 0
+    @State private var idx: Int64 = 0
     var id: Int64
     var experienceType = "k"
     var body: some View {
@@ -356,7 +356,7 @@ struct ExperienceDetailView: View {
 
                                                                     
                                                                     Text("\(viewModel.state.getReviewDataResponse.data[index].heartCount)")
-                                                                        .font(.caption01)
+                                                                          .font(.caption01)
                                                                         .foregroundColor(.black)
                                                                         .padding(.bottom, 2)
                                                                 }
@@ -424,7 +424,7 @@ struct ExperienceDetailView: View {
                                                        
                                                         Button {
                                                             reportModal = true
-                                                            idx = viewModel.state.getReviewDataResponse.data[index].id!
+                                                            idx = viewModel.state.getReviewDataResponse.data[index].id
                                                  
                                                         } label: {
                                                             Image("icPointBtn")
@@ -439,7 +439,7 @@ struct ExperienceDetailView: View {
                                                 }
                                                 .sheet(isPresented: $reportModal, onDismiss: {
                                                     if reportReasonViewFlag {
-                                                        AppState.shared.navigationPath.append(ExperienceViewType.report(id:Int64(idx)))
+                                                        AppState.shared.navigationPath.append(ExperienceViewType.report(id: idx))
                                                     }
                                                 }) {
                                                     ReportModalView(reportReasonViewFlag: $reportReasonViewFlag)

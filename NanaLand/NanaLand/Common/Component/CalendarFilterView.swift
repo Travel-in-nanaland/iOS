@@ -179,6 +179,10 @@ struct CalendarFilterView: View {
                         Text("\(week.shortString(locale: Locale(languageCode: .malay)))")
                             .font(.caption01)
                             .foregroundStyle(Color.gray1)
+                    case .vietnam:
+                        Text("\(week.shortString(locale: Locale(languageCode: .vietnamese)))")
+                            .font(.caption01)
+                            .foregroundStyle(Color.gray1)
                         
                     }
                     
