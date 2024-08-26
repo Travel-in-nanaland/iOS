@@ -1,0 +1,441 @@
+/*
+  Localizable.strings
+  NanaLand
+
+  Created by wodnd on 8/26/24.
+  
+*/
+//MARK: - Common
+"resultCount" = " Results";
+"charCount" = "characters";
+"confirm" = "Confirm";
+"next" = "Next";
+"requiredWithBracket" = "(Required)";
+"optionalWithBracket" = "(Optional)";
+"destination" = "Destination";
+"gotoMainScreen" = "Go to the main screen";
+"no" = "No";
+"yes" = "Yes";
+"emptyString" = "This service is being prepared.\nSee you next time!";
+"beingPrepared" = "This service is being prepared.\nSee you next time!";
+"notification" = "Notification";
+
+//MARK: - Tab
+"home" = "Home";
+"favorite" = "Favorites";
+"jejuStory" = "Jeju Stories";
+"myNana" = "My Nana";
+
+//MARK: - Category
+"all" = "ALL";
+"nature" = "7 Natural Wonders";
+"festival" = "Festivals";
+"market" = "Traditional Markets";
+"experience" = "Unique Experiences";
+"nanaPick" = "Nana’s Pick";
+
+//MARK: - Search
+"inputSearchTerm" = "Please enter a search";
+"recentSearchTerm" = "Recent Searches";
+"noRecentSearchTerm" = "";
+"removeAll" = "Clear All";
+"popularSearchTerm" = "Most Searched!";
+"searchVolumeUp" = "Search Volume UP! JEJU Place 🍊";
+"noResult" = "There are no results for that search.";
+
+//MARK: - Login/Register
+"appleLogin" = "Sign in with Apple";
+"googleLogin" = "Sign in with Google";
+"nonMemeberLogin" = "Browse Without Logging In";
+"welcomeToNanaLand" = "Welcome to\nnanaland in Jeju";
+"enterNicknameAndProfile" = "Enter your name and\nselect a profile picture.";
+"nicknameTextFieldPlaceHolder" = "Please enter your name";
+
+//MARK: - Terms
+"allAgree" = "Agree to All";
+"termsOfUseAgree" = "Agree to Terms of Use and\nPrivacy Policy";
+"marketingAgree" = "Agree to Marketing Use";
+"locationAgree" = "Agree to Location-Based Service Terms";
+
+
+//MARK: - Error/Alert
+"duplicatedNickname" = "This nickname is already in use by another user.";
+"invalidNickname" = "This nickname cannot be used.";
+"onlyCharSpaceNumberNickname" = "Nicknames can only contain letters, spaces, and numbers.";
+"logoutAlertTitle" = "Are you sure\nyou want to log out?";
+"withdrawAlertTitle" = "Are you sure you don't want to receive Jeju travel information and benefits?😢";
+"withdrawAlertMessage" = "*If you rejoin within 90 days, you can log in with your existing account.";
+"changeLanguageAlertTitle" = "Do you want to change\nto this language?";
+"invalidEmail" = "The email format is incorrect. Please re-enter!";
+"updateRequired" = "Update is required";
+"openAppstore" = "Move to App Store";
+
+//MARK: - TypeTest
+"skipTypeTest" = "Skip the test";
+// Question
+"typeTest1Q1L" = "%@";
+"typeTest1Q2L" = "your travel style?";
+"typeTest2Q1L" = "%@";
+"typeTest2Q2L" = "how do you plan your trips?";
+"typeTest3Q1L" = "%@ how do you set";
+"typeTest3Q2L" = "your travel budget?";
+"typeTest4Q1L" = "%@";
+"typeTest4Q2L" = "what's your travel style?";
+"typeTest5Q1L" = "%@,What do you most";
+"typeTest5Q2L" = "want to do on a trip?";
+// Answer
+"touristSpot" = "Active tourist spots";
+"localSpot" = "Quiet local spots";
+"flexible" = "Flexible";
+"organized" = "Highly organized";
+"budgetTravel" = "Budget travel";
+"luxuryTravel" = "Luxury travel";
+"photoRemain" = "Only photos remain!";
+"captureWithEyes" = "Capture with your eyes";
+"sentimentalPlace" = "Sentimental places";
+"traditionalCulture" = "Traditional culture";
+"naturalScenery" = "Natural scenery";
+"themePark" = "Theme parks";
+// Result
+"your" = "%@";
+"yourPreference" = "what travel style";
+"yourTravelStyle" = "do you prefer?";
+"tangerineJuiced" = "Squeezing the citrus...";
+"juiceCommingSoon" = "Delicious travel juice coming up soon!";
+"yourTravelStyleIs" = "%@'s travel type is";
+
+// Type
+"GAMGYUL_ICECREAM" = "Tangerine Ice Cream";
+"GAMGYUL_ICECREAM_DESCRIPTION" = "A type that brings sweet memories with its smooth and creamy texture.";
+"GAMGYUL_RICECAKE" = "Tangerine Rice Cake";
+"GAMGYUL_RICECAKE_DESCRIPTION" = "A type that stitches joy into a notepad, one by one, with its bouncy charm.";
+"GAMGYUL" = "Tangerine";
+"GAMGYUL_DESCRIPTION" = " A type that sticks to the basics and the most famous spots.";
+"GAMGYUL_CIDER" = "Tangerine Soda";
+"GAMGYUL_CIDER_DESCRIPTION" = "A type that is fizzy and refreshing.";
+"GAMGYUL_AFFOKATO" = "Tangerine Affogato";
+"GAMGYUL_AFFOKATO_DESCRIPTION" = "A type brimming with creativity, passionate and lively.";
+"GAMGYUL_HANGWA" = "Tangerine Traditional Sweets";
+"GAMGYUL_HANGWA_DESCRIPTION" = "A type that encapsulates the diverse and exquisite flavors of Jeju.";
+"GAMGYUL_JUICE" = "Tangerine Juice";
+"GAMGYUL_JUICE_DESCRIPTION" = "A type that sticks to the basics and the most famous spots.";
+"GAMGYUL_CHOCOLATE" = "Tangerine Chocolate";
+"GAMGYUL_CHOCOLATE_DESCRIPTION" = "A type with firm tastes, preferring quality over quantity.";
+"GAMGYUL_COCKTAIL" = "Tangerine Cocktail";
+"GAMGYUL_COCKTAIL_DESCRIPTION" = "A type that is flashy and extreme.";
+"TANGERINE_PEEL_TEA" = "Tangerine Peel Tea";
+"TANGERINE_PEEL_TEA_DESCRIPTION" = "A type that enjoys serene scenery in a calm manner.";
+"GAMGYUL_YOGURT" = "Tangerine Yogurt";
+"GAMGYUL_YOGURT_DESCRIPTION" = "A type that enjoys the pure taste, soft and tangy.";
+"GAMGYUL_FLATCCINO" = "Tangerine Frappuccino";
+"GAMGYUL_FLATCCINO_DESCRIPTION" = "A type that combines the zest of various fruits with the chill of ice, very creative.";
+"GAMGYUL_LATTE" = "Tangerine Latte";
+"GAMGYUL_LATTE_DESCRIPTION" = "A type that leisurely enjoys life under the warm sunshine.";
+"GAMGYUL_SIKHYE" = "Tangerine Shikhye";
+"GAMGYUL_SIKHYE_DESCRIPTION" = "A type full of rich flavors, slow but profound.";
+"GAMGYUL_ADE" = "Tangerine Ade";
+"GAMGYUL_ADE_DESCRIPTION" = "A type that is fizzy with sparkling water and fresh fruit, exuding a sense of freshness.";
+"GAMGYUL_BUBBLE_TEA" = "Tapioca Tangerine Tea";
+"GAMGYUL_BUBBLE_TEA_DESCRIPTION" = "A type full of curiosity, surprising with each bite.";
+"nanalandMadeYouJuice" = "nanaland in Jeju has created a custom travel juice for you!";
+// 결과 값 추천 여행지
+"recommendedTravelPlace" = "Recommended\nTravel Destinations";
+"recommenedeTravelTitleFirstLine" = "Recommended Travel";
+"recommenedeTravelTitleSecondLine" = "Destinations for %@";
+
+//MARK: - MyPage
+// main
+"editProfile" = "Edit Profile";
+"mynana" = "my nana";
+"loginRequired" = "Login is required";
+"none" = "None";
+"travelType" = "Travel Type";
+"goTest" = "Testing";
+"retest" = "retest";
+"introduction" = "introduction";
+
+// editProfile
+"nickName" = "Nickname";
+"complete" = "Update";
+"nickNameTypingLimitError" = "This nickname cannot be used.";
+"nickNameDuplicateError"= "This nickname is already in use by another user.";
+"nickNameContainSpecialCharacterError" = "Nicknames can only contain letters, spaces, and numbers.";
+"introduceTypingLimitError" = "The introduction must be within 70 characters.";
+
+// deleteAlert
+"deleteAlertTitle" = "Do you want to delete\nthe changes?";
+"deleteAlertSubTitle" = "If you go back now,\nthe changes will be deleted.";
+"cancel" = "Cancel";
+"delete" = "Delete";
+
+// settingPage
+"settings" = "Settings";
+"setUsage"= "Set usage";
+"termsAndPolicies" = "Terms and policies";
+"accessPolicyGuide" = "Access permission guide";
+"languageSetting" = "Language settings";
+"versionInfomation" = "Version Information";
+"logout" = "Log out";
+"memberWithdraw" = "Withdraw membership";
+"join" = "회원가입";
+
+// termsAndPoliciesPage
+"notificate" = "Notice";
+"marketingConsent" = "Marketing usage consent";
+"locationConsent" = "Location-based service terms consent";
+"noConsentError" = "* If you disagree, you may not be able to receive some services or \nbenefits, please be aware.";
+
+// accessPolicyGuidePage
+"mainDescription" = "The following permissions are required
+to use Nanaland in Jeju.";
+"phoneTitle" = "Phone Information";
+"phoneDescription" = "Access is required to verify phone status and ID.
+Needed for device tampering detection solutions";
+"requiredNotification" = "Required permissions are essential for using Nanaland in Jeju. Service usage may be restricted if permissions are denied.";
+"storageTitle" = "Storage";
+"storageDescription" = "Needed to provide photo storage functions.";
+"locationTitle" = "Location Information";
+"locationDescription" = "Needed to provide information on nearby restaurants and attractions based on current location.";
+"cameraTitle" = "Camera";
+"cameraDescription" = "Needed to upload review photos and restaurant information.";
+"notificationTitle" = "Notifications";
+"notificationDescription" = "Needed to receive notifications about events and benefits.";
+"audioTitle" = "Audio and Music";
+"audioDescription" = "Needed to upload video content.";
+"optionalNotification" = "Note that if you do not agree to optional permissions, some features of Nanaland in Jeju may be restricted.";
+
+// languageSettingPage
+"languageMainDescription" = "The language at the top is set as default.";
+
+// withdrawMembershipPage
+"withDrawNotification" = "Service Withdrawal Information";
+"firstNotification" = "By deleting your account, you will be unsubscribed from all services provided by Nanaland in Jeju.";
+"secondNotification" = "Upon account deletion, all coupons and points will be lost and will not be restored even if you re-register.";
+"thirdNotification" = "Transaction records that must be preserved under the e-commerce law will be kept for 5 years after account deletion.";
+"fourthNotification" = "You will not be able to participate in membership events again after account deletion.";
+"fifthNotification" = "If you re-register within 90 days after withdrawal, you can use your previous account.";
+"notificationConsent" = "I have read and agree to the information provided.";
+"withDrawReason" = "Reason for Account Deletion";
+"withdraw" = "Delete Account";
+"accountDeletion" = "Account Deletion";
+"INSUFFICIENT_CONTENT" = "Lack of Content";
+"INCONVENIENT_SERVICE" = "Service Inconvenience";
+"INCONVENIENT_COMMUNITY" = "Community Usage Inconvenience";
+"RARE_VISITS" = "Rarely Visit";
+
+// MARK: - 비회원
+"nonMemeberAlertDescription" = "You need to become a\nmember to use all services✨";
+"nonMemeberAlertGoRegister" = "Sign Up for Membership";
+
+// MARK: - Home
+"recommendTitle" = "Local Picks for %@! 🍊";
+"ourNana" = "Our Nana";
+"firstAdvertismentTitle" = "Want to see the beautiful sea in Jeju Island?";
+"firstAdvertismentSubTitle" = "Let's tour the nature in Seogwipo-si, Seongsan!";
+"secondAdvertismentTitle" = "How about going to see rare stars?💫";
+"secondAdvertismentSubTitle" = "Check out the emotional hills of Aewol😯";
+"thirdAdvertismentTitle" = "If you want to feel the sentiment of Korea,
+the market is the place!";
+"thirdAdvertismentSubTitle" = "Which traditional markets are still around?";
+"fourthAdvertismentTitle" = "Jeju's unique festival in July🎈";
+"fourthAdvertismentSubTitle" = "Let's go see the festival full of the treasures of the world, feeling Jeju Island!";
+// 홈화면 검색 placeholder
+"jejuCanolaFestival" = "Jeju's Canola Festival is on now! 🏵️";
+"jejuGreenTeaField" = "Let's visit Jeju's green tea fields! 😎";
+"jejuFiveDayMarket" = "When is the Jeju 5-day market? ❓";
+"udoToday" = "What to do in Udo today? 🏝️";
+"trendyGujwa" = "Exploring the trendy Gujwa! 👒";
+"hallasanTrail" = "Conquer the Hallasan trails! 🏔️";
+"jejuNightDrive" = "Nothing beats a night drive in Jeju! 🌉";
+"nearJejuAirport" = "Last stop, fun near Jeju Airport! 🛫";
+"jejuSummerHydrangea" = "Summer in Jeju means Hydrangea Day! 😀";
+"jejuCharmingHanok" = "Stay in a charming hanok in Jeju! 🏠";
+
+
+// MARK: - FilterView
+"count" = "Results";
+"location" = "Location";
+"allLocation" = "All";
+"jejuCity" = "Jeju-si";
+"Aewol" = "Aewol";
+"Jocheon" = "Jocheon";
+"Hangyeong" = "Hangyeong";
+"Gunjwa" = "Gujwa";
+"Hallim" = "Hallim";
+"Udo" = "Udo";
+"Chuja" = "Chuja";
+"SeogwipoCity" = "SeogwipoCity";
+"Daejeong" = "Daejeong";
+"Andeok" = "Andeok";
+"Namwon" = "Namwon";
+"Pyoseon" = "Pyoseon";
+"Seongsan" = "Seongsan";
+"allSelect" = "Select all";
+"reset" = "Reset";
+"apply" = "Apply";
+"photoDescription" = "*Reference photos.";
+
+// MARK: - NatureDetailView
+"unfoldView" = "more"; // 더보기
+"foldView" = "fold"; // 접기
+"introduce" = "Introduce!";
+"address" = "Address";
+"phoneNumber" = "Contact";
+"time" = "Operating Hours";
+"fee" = "Fee";
+"detailInfo" = "Details";
+"amenity" = "Facilities";
+"proposeUpdateInfo" = "Information Update Suggestions";
+
+// MARK: - FestivalView
+"thisMonthFestival" = "Monthly Festival";
+"pastFestival" = "Ended Festival";
+"seasonFestival" = "Seasonal Festival";
+
+// MARK: - SeasonModalView
+"selectSeason" = "Select Season";
+"spring" = "Spring";
+"summer" = "Summer";
+"autumn" = "Autumn";
+"winter" = "Winter";
+"month" = "월";
+"springMonth" = "March, April";
+"summerMonth" = "May, June, July, August";
+"autumnMonth" = "September, October";
+"winterMonth" = "November, December, January, February";
+
+// MARK: - MarketDetailView
+"homepage" = "Website";
+
+// MARK: - FestivalDetailView
+"duration" = "Duration";
+
+// MARK: - ExperienceDetailView
+"Activity" = "Activity";
+"CultureArts" = "CultureArts";
+
+// MARK: - CalendarView
+"chooseDate" = "ChooseDate";
+"calendarMonth" = "";
+"monday" = "MON";
+"tuesday" = "TUE";
+"wednesday" = "WED";
+"thursday" = "TUR";
+"friday" = "FRI";
+"saturday" = "SAT";
+"sunday" = "SUN";
+
+"jan" = "JAN";
+"feb" = "FEB";
+"mar" = "MAR";
+"apr" = "APR";
+"may" = "MAY";
+"jun" = "JUN";
+"jul" = "JUL";
+"aug" = "AUG";
+"sep" = "SEP";
+"oct" = "OCT";
+"nov" = "NOV";
+"dec" = "DEC";
+
+// MARK: - 검색 결과 없을 시 뷰
+"noResult" = "There are no results for that search.";
+
+// MARK: - 정보 수정 제안
+"reportInfo" = "Information Update Suggestions";
+"reportInfoTitle" = "Suggest an Information Update!";
+"reportInfoDescription" = "You may receive rewards if photos attached with your suggestions help verify location information.";
+"numberAndHomepage" = "Phone Number and Website";
+"oprationTime" = "Name and Location";
+"placeNameAndLocation" = "Operating Hours";
+"priceInfo" = "Price Information";
+"deletePlace" = "Delete Location";
+"etcReportInfoTitle" = "Share Other Information!";
+"provideService" = "Offering service";
+"addPhoto" = "Add Photos";
+"addPhotoDescription" = "Attach photos of verified information for more\n accurate details.";
+"reportInfoContentTitle" = "Suggest an Information Update";
+"reportInfoContentPlaceHolder" = "Leave detailed information on the items you want to update or any other comments.";
+"email" = "Email";
+"reportInfoEmailDescription" = "Enter your email to receive the results of your suggestion.";
+"send" = "Submit";
+"thxForReportInfoTitle" = "Thank you for your information correction suggestion";
+"thxForReportInfoDescription" = "With the information correction suggestion, the attractiveness of the travel destination has also increased!\n\nIt’s getting more and more exciting🧚‍♀️";
+"showContentAgain" = "View Content Again";
+"reportAgain" = "Add Another Item";
+
+"blank" = "";
+"review" = "Review";
+"write" = "후기 작성";
+"modify" = "후기 수정";
+"keyword" = "키워드";
+"selectRating1" = "별점";
+"selectRating2" = "을 ";
+"selectRating3" = "선택";
+"selectRating4" = "해주세요!";
+"visitReview1" = "방문 후기";
+"visitReview2" = "를 ";
+"visitReview3" = "작성";
+"visitReview4" = "해주세요!";
+"writeContent" = "내용을 작성해 주세요";
+"addKeyword" = "키워드 추가";
+"upload" = "올리기";
+"keywordDescription" = "*최소 3개 이상 선택해야하며, 최대 6개까지 선택 가능합니다.";
+"mood" = "분위기";
+"ANNIVERSARY" = "기념일에 가면 좋아요";
+"CUTE" = "아기자기해요";
+"LUXURY" = "고급스러워요";
+"SCENERY" = "풍경이 예뻐요";
+"KIND" = "친절해요";
+"companion" = "동반자";
+"CHILDREN" = "자녀";
+"FRIEND" = "친구";
+"PARENTS" = "부모";
+"ALONE" = "혼자";
+"HALF" = "연인/배우자";
+"RELATIVE" = "친척/형제";
+"PET" = "반려동물";
+"amenities" = "편의시설";
+"OUTLET" = "콘센트 사용 가능";
+"LARGE" = "넓은 장소";
+"PARK" = "주차장";
+"BATHROOM" = "깨끗한 화장실";
+"warning" = "경고";
+"warningDescription" = "최대 6개까지 선택 가능합니다";
+"check" = "확인";
+
+"notice" = "Notice";
+"testAgain" = "To Test Again";
+"noNickname" = "No Nickname";
+"noReview" = "후기를 남겨 나만의 경험을 기록하세요!";
+"noDescription" = "나를 한 줄로 표현해보세요!";
+"noNotice" = "공지사항이 존재하지 않습니다";
+
+// MARK: - 제주 맛집(테스트)
+"type" = "종류";
+"restaurant" = "제주 맛집";
+"meatblackpork" = "육류/흑돼지";
+"seaFood" = "해산물";
+"koreanFood" = "한식";
+"chineseFood" = "중식";
+"japaneseFood" = "일식";
+"westernFood" = "양식";
+"vegan" = "비건푸드";
+"halalFood" = "할랄푸드";
+"snacks" = "분식";
+"southAmericanFood" = "남미 음식";
+"southeastAsianFood" = "동남아 음식";
+"chickenBurger" = "치킨/버거";
+"cafeDessert" = "카페/디저트";
+"pubRestaurant" = "펍/요리주점";
+"menu" = "대표 메뉴";
+"writeReview" = "리뷰 작성하기";
+"service" = "제공 서비스";
+"instagram" = "인스타그램";
+"currency" = "원";
+
+//MARK: - 언어 설정
+"greeting" = "Hello!\nNice to meet you 👋";
+
+//MARK: - 신고하기
+"report" = "Report";
