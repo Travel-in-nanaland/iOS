@@ -484,7 +484,6 @@
 		6DCE99902C610E4C0080A1C6 /* ReviewWriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewWriteModel.swift; sourceTree = "<group>"; };
 		6DD11F412C51545C00363B08 /* TypeTestProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeTestProfileView.swift; sourceTree = "<group>"; };
 		6DD11F432C5161E500363B08 /* ReviewArticleItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewArticleItemView.swift; sourceTree = "<group>"; };
-		6DE682B62C7C1810005320FC /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6DF18F072C6E25120021ED5B /* TestLoading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TestLoading.json; sourceTree = "<group>"; };
 		9C6A9C3D2BCC1BAE000413AD /* Fonts+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fonts+.swift"; sourceTree = "<group>"; };
 		9C6A9C5A2BCC22CE000413AD /* AppleSDGothicNeoL.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoL.ttf; sourceTree = "<group>"; };
@@ -1591,7 +1590,6 @@
 				ko,
 				"zh-Hans",
 				ms,
-				vi,
 			);
 			mainGroup = 2C3C75772BCA3ADA00312F26;
 			packageReferences = (
@@ -1963,7 +1961,6 @@
 				2C2D3D4D2C0385D5002A38AA /* zh-Hans */,
 				2C2D3D4E2C0385DC002A38AA /* ko */,
 				2C2D3D4F2C0385FD002A38AA /* ms */,
-				6DE682B62C7C1810005320FC /* vi */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

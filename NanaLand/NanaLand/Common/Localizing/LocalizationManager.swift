@@ -41,7 +41,6 @@ enum Language: String, CaseIterable {
 	case english = "ENGLISH"
     case chinese = "CHINESE"
 	case malaysia = "MALAYSIA"
-    case vietnam = "VIETNAM"
     case korean = "KOREAN"
 	
 	init?(deeplinkName: String) {
@@ -54,8 +53,6 @@ enum Language: String, CaseIterable {
 			self = .chinese
 		case "ms":
 			self = .malaysia
-        case "vi":
-            self = .vietnam
 		default:
 			return nil
 		}
@@ -71,8 +68,6 @@ enum Language: String, CaseIterable {
 			return "zh-Hans"
 		case .malaysia:
 			return  "ms"
-        case .vietnam:
-            return "vi"
 		}
 	}
 	
@@ -86,8 +81,6 @@ enum Language: String, CaseIterable {
 			return "中国话"
 		case .malaysia:
 			return "Melayu"
-        case .vietnam:
-            return "Tiếng Việt"
 		}
 	}
 	
@@ -102,8 +95,6 @@ enum Language: String, CaseIterable {
 			return "zh"
 		case .malaysia:
 			return  "ms"
-        case .vietnam:
-            return "vi"
 		}
 	}
 }
