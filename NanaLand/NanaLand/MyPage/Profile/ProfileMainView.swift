@@ -66,6 +66,8 @@ struct ProfileMainView: View {
                     .environmentObject(LocalizationManager())
             case let .selectReview(id):
                 MyAllReviewView(viewModel: MyAllReviewViewModel(), selectedReviewId: id)
+            case let .writeReview:
+                ProfileReviewWriteView()
             }
         }
         .edgesIgnoringSafeArea(.bottom)
@@ -419,7 +421,7 @@ struct reviewTabView: View {
                             Spacer()
                             
                             Button(action: {
-                                
+                                AppState.shared.navigationPath.append(MyPageViewType.writeReview) // 후기 작성 페이지로 이도
                             }, label: {
                                 HStack{
                                     Image("icPencilMain")
@@ -591,6 +593,7 @@ enum MyPageViewType: Hashable {
     case allNotice
     case detailReview
     case detailNotice(id: Int64)
+    case writeReview
 }
 
 #Preview {
