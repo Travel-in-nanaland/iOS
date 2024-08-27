@@ -464,6 +464,7 @@
 		6D6D308C2C61FAAF00002F77 /* review_restaurant.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = review_restaurant.json; sourceTree = "<group>"; };
 		6D6D308D2C61FAAF00002F77 /* report_complete.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = report_complete.json; sourceTree = "<group>"; };
 		6D6D308E2C61FAAF00002F77 /* review_experience.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = review_experience.json; sourceTree = "<group>"; };
+		6D7C3B892C7E1BA800F5A09E /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6D7F580D2C7A5F8700FA08A9 /* MenuModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModalView.swift; sourceTree = "<group>"; };
 		6D9EDACA2C5B4567003A8DE5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6D9EDACB2C5B4567003A8DE5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1599,6 +1600,7 @@
 				ko,
 				"zh-Hans",
 				ms,
+				vi,
 			);
 			mainGroup = 2C3C75772BCA3ADA00312F26;
 			packageReferences = (
@@ -1973,6 +1975,7 @@
 				2C2D3D4D2C0385D5002A38AA /* zh-Hans */,
 				2C2D3D4E2C0385DC002A38AA /* ko */,
 				2C2D3D4F2C0385FD002A38AA /* ms */,
+				6D7C3B892C7E1BA800F5A09E /* vi */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
