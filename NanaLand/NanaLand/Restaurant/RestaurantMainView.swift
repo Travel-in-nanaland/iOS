@@ -146,7 +146,7 @@ struct RestaurantMainGridView: View {
                                                     Spacer()
                                                     Button {
                                                         Task {
-                                                            await toggleFavorite(body: FavoriteToggleRequest(id: Int(viewModel.state.getRestaurantMainResponse.data[index].id), category: .restaurant), index: index)
+                                                            await toggleFavorite(body: FavoriteToggleRequest(id: Int(viewModel.state.getRestaurantMainResponse.data[index].id), category: .experience), index: index)
                                                         }
                                                     } label: {
                                                         viewModel.state.getRestaurantMainResponse.data[index].favorite ? Image("icHeartFillMain").animation(nil) : Image("icHeartDefault").animation(nil)
@@ -169,27 +169,20 @@ struct RestaurantMainGridView: View {
                                                 .font(.caption01)
                                                 .foregroundStyle(Color.gray1)
                                             Spacer()
+                                            
                                             Image("icStarFill")
                                                 .resizable()
                                                 .aspectRatio(contentMode: .fit)
                                                 .frame(width: 11)
                                             
-                                            // ratingAvg가 Int
-                                            let rating = viewModel.state.getRestaurantMainResponse.data[index].ratingAvg
-
-                                            // Double로 변환하여 소수점 한 자리로 변환
-                                            let formattedRating = String(format: "%.1f", Double(rating))
-                                            
-                                            Text(formattedRating)
+                                            Text(String(format: "%.1f", viewModel.state.getRestaurantMainResponse.data[index].ratingAvg))
                                                 .font(.caption01_semibold)
                                                 .foregroundStyle(Color.main)
                                         }
-                                        
                                         .padding(.trailing, 8)
                                     }
                                 })
-                                
-                                .frame(width: (UIScreen.main.bounds.width - 40) / 2, height: 196)
+                                .frame(width: (UIScreen.main.bounds.width - 40) / 2, height:  ((Constants.screenWidth - 40) / 2) * (164 / 160))
                             }
                             if viewModel.state.page < viewModel.state.getRestaurantMainResponse.totalElements / 12 {
                                 ProgressView()

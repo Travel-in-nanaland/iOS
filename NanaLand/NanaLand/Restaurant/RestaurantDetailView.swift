@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CustomAlert
 import Kingfisher
 
 struct RestaurantDetailView: View {
@@ -17,7 +18,10 @@ struct RestaurantDetailView: View {
     @State private var contentIsOn = [false, false, false] // 댓글 더보기 버튼 클릭 여부(더 보기 클릭한 댓글만 라인 제한 풀기)
     @State private var isExpanded = false
     @State private var isAPICalled = false
-    
+    @State var showAlert: Bool = false//삭제하기 alert 여부
+    @State private var reportModal = false
+    @State private var reportReasonViewFlag = false // 신고하기로 네비게이션 하기 위한 플래그(신고 모달이 sheet형태라 navigation stack에 포함 안됨)
+    @State private var idx: Int64 = 0
     var layout: [GridItem] = [GridItem(.flexible())]
     
     var body: some View {
@@ -285,130 +289,281 @@ struct RestaurantDetailView: View {
                                         if viewModel.state.getReviewDataResponse.totalElements >= 1 {
                                             ForEach(0...viewModel.state.getReviewDataResponse.totalElements - 1, id: \.self) { index in
                                                 if index < 3 {
-                                                    VStack(alignment: .leading, spacing: 0) {
-                                                        HStack(spacing: 0) {
-                                                            KFImage(URL(string: viewModel.state.getReviewDataResponse.data[index].profileImage?.originUrl ?? ""))
-                                                                .resizable()
-                                                                .aspectRatio(contentMode: .fit)
-                                                                .frame(width: 42, height: 42)
-                                                                .clipShape(Circle())
-                                                                .padding(.leading, 16)
-                                                                .padding(.trailing, 8)
-                                                            VStack(alignment: .leading, spacing: 0) {
-                                                                Button {
-                                                                    AppState.shared.navigationPath.append(ReviewType.userProfile(id: Int64(viewModel.state.getReviewDataResponse.data[index].memberId!)))
-                                                                } label: {
-                                                                    Text(viewModel.state.getReviewDataResponse.data[index].nickname ?? "")
-                                                                        .font(.body02_bold)
-                                                                }
-                                                                
-                                                                HStack(spacing: 0) {
-                                                                    Text("리뷰 \(viewModel.state.getReviewDataResponse.data[index].memberReviewCount ?? 0)")
-                                                                        .font(.caption01)
-                                                                    Text(" | ")
-                                                                        .font(.caption01)
-                                                                    Image("icStarFill")
-                                                                        .resizable()
-                                                                        .frame(width: 11, height: 11)
-                                                                    Text("\(String(format: "%.1f", viewModel.state.getReviewDataResponse.data[index].rating ?? 0))")
-                                                                        .font(.caption01)
-                                                                }
-                                                                
-                                                            }
-                                                            Spacer()
-                                                            
-                                                            RoundedRectangle(cornerRadius: 30)
-                                                                .stroke(lineWidth: 1)
-                                                                .frame(width: 48, height: 28)
-                                                                .foregroundColor(viewModel.state.getReviewDataResponse.data[index].reviewHeart == true ? .main : .gray2)
-                                                                .overlay(){
-                                                                    HStack(spacing: 0){
-                                                                        
-                                                                        Button {
-                                                                            Task{
-                                                                                await reviewFavorite(id: viewModel.state.getReviewDataResponse.data[index].id)
-                                                                            }
-                                                                        } label: {
-                                                                            Image(viewModel.state.getReviewDataResponse.data[index].reviewHeart == true ? "icReviewHeartMain" : "icReviewHeart")
-                                                                        }
-
-                                                                        
-                                                                        Text("\(viewModel.state.getReviewDataResponse.data[index].heartCount)")
+                                                    if viewModel.state.getReviewDataResponse.data[index].myReview {
+                                                        VStack(alignment: .leading, spacing: 0) {
+                                                            HStack(spacing: 0) {
+                                                                KFImage(URL(string: viewModel.state.getReviewDataResponse.data[index].profileImage?.originUrl ?? ""))
+                                                                    .resizable()
+                                                                    .aspectRatio(contentMode: .fit)
+                                                                    .frame(width: 42, height: 42)
+                                                                    .clipShape(Circle())
+                                                                    .padding(.leading, 16)
+                                                                    .padding(.trailing, 8)
+                                                                VStack(alignment: .leading, spacing: 0) {
+                                                                    Button {
+                                                                        AppState.shared.navigationPath.append(ReviewType.userProfile(id: Int64(viewModel.state.getReviewDataResponse.data[index].memberId!)))
+                                                                    } label: {
+                                                                        Text(viewModel.state.getReviewDataResponse.data[index].nickname ?? "")
+                                                                            .font(.body02_bold)
+                                                                    }
+                                                                    
+                                                                    HStack(spacing: 0) {
+                                                                        Text("리뷰 \(viewModel.state.getReviewDataResponse.data[index].memberReviewCount ?? 0)")
                                                                             .font(.caption01)
-                                                                            .foregroundColor(.black)
-                                                                            .padding(.bottom, 2)
+                                                                        Text(" | ")
+                                                                            .font(.caption01)
+                                                                        Image("icStarFill")
+                                                                            .resizable()
+                                                                            .frame(width: 11, height: 11)
+                                                                        Text("\(String(format: "%.1f", viewModel.state.getReviewDataResponse.data[index].rating ?? 0))")
+                                                                            .font(.caption01)
+                                                                    }
+                                                                    
+                                                                }
+                                                                Spacer()
+                                                                
+                                                                HStack(spacing: 0){
+                                                                    Button(action: {
+                                                                        AppState.shared.navigationPath.append(ReviewType.detailReivew(id: viewModel.state.getReviewDataResponse.data[index].id, category: "RESTAURANT"))
+                                                                    }, label: {
+                                                                        Text("수정")
+                                                                            .font(.caption01)
+                                                                            .foregroundColor(.gray1)
+                                                                            .padding(EdgeInsets(top: 4, leading: 12, bottom: 4, trailing: 12))
+                                                                            .background {
+                                                                                RoundedRectangle(cornerRadius: 30)
+                                                                                    .foregroundColor(.gray3)
+                                                                            }
+                                                                    })
+                                                                    
+                                                                    Button(action: {
+                                                                        showAlert = true
+                                                                    }, label: {
+                                                                        Text("삭제")
+                                                                            .font(.caption01)
+                                                                            .foregroundColor(.gray1)
+                                                                            .padding(EdgeInsets(top: 4, leading: 12, bottom: 4, trailing: 12))
+                                                                            .background {
+                                                                                RoundedRectangle(cornerRadius: 30)
+                                                                                    .foregroundColor(.gray3)
+                                                                            }
+                                                                    })
+                                                                    .customAlert("해당 리뷰를\n 삭제하시겠습니까?", isPresented: $showAlert) {
+                                                                        
+                                                                    } actions: {
+                                                                        MultiButton{
+                                                                            Button {
+                                                                                showAlert = false
+                                                                                Task {
+                                                                                    await deleteMyReview(id: viewModel.state.getReviewDataResponse.data[index].id)
+                                                                                    await getReviewData(id: id, category: "RESTAURANT", page: 0, size: 12)
+                                                                                }
+                                                                            } label: {
+                                                                                Text("네")
+                                                                                    .font(.title02_bold)
+                                                                                    .foregroundStyle(Color.black)
+                                                                            }
+                                                                            
+                                                                            Button {
+                                                                                showAlert = false
+                                                                            } label: {
+                                                                                Text("아니오")
+                                                                                    .font(.title02_bold)
+                                                                                    .foregroundStyle(Color.main)
+                                                                            }
+                                                                            
+                                                                        }
                                                                     }
                                                                 }
-                                                                .padding()
-                                                        }
-                                                        .padding(.top, 10)
-                                                        .padding(.bottom, 12)
-                                                        HStack(spacing: 0) {
-                                                            if viewModel.state.getReviewDataResponse.data[index].images!.count != 0 {
-                                                                ForEach(0..<viewModel.state.getReviewDataResponse.data[index].images!.count) { idx in
-                                                                    KFImage(URL(string: viewModel.state.getReviewDataResponse.data[index].images![idx].originUrl))
-                                                                        .resizable()
-                                                                        .frame(width: 70, height: 70)
-                                                                        .cornerRadius(8)
-                                                                        .padding(.leading, 10)
-                                                                        .padding(.bottom, 5)
+                                                                .padding(.trailing, 10)
+                                                            }
+                                                            .padding(.top, 15)
+                                                            .padding(.bottom, 12)
+                                                            HStack(spacing: 0) {
+                                                                if viewModel.state.getReviewDataResponse.data[index].images!.count != 0 {
+                                                                    ForEach(0..<viewModel.state.getReviewDataResponse.data[index].images!.count) { idx in
+                                                                        KFImage(URL(string: viewModel.state.getReviewDataResponse.data[index].images![idx].originUrl))
+                                                                            .resizable()
+                                                                            .frame(width: 70, height: 70)
+                                                                            .cornerRadius(8)
+                                                                            .padding(.leading, 10)
+                                                                            .padding(.bottom, 5)
+                                                                    }
+                                                                    
                                                                 }
                                                                 
+                                                                
                                                             }
-                                                            
-                                                            
-                                                        }
-                                                        HStack(alignment: .bottom, spacing: 0) {
-                                                            Text("\(viewModel.state.getReviewDataResponse.data[index].content ?? "")")
-                                                                .lineLimit(contentIsOn[index] ? nil : 2)
-                                                                .padding(.leading, 16)
-                                                                .padding(.trailing, 2)
-                                                            
-                                                            Button {
-                                                                contentIsOn[index].toggle()
-                                                            } label: {
-                                                                Text(contentIsOn[index] ? "접기" : "더 보기")
-                                                                    .foregroundStyle(Color.gray1)
+                                                            HStack(alignment: .bottom, spacing: 0) {
+                                                                ExpandableText("\(viewModel.state.getReviewDataResponse.data[index].content ?? "")", lineLimit: 2)
+                                                                    .font(.body02)
+                                                                    .padding(.leading, 16)
+                                                                    .padding(.trailing, 16)
+                                                            }
+                                                            Spacer()
+                                                            HStack(spacing: 0) {
+                                                                Text("\(((viewModel.state.getReviewDataResponse.data[index].reviewTypeKeywords ?? [""]).map {"#\($0) "}).joined(separator: ", "))")
                                                                     .font(.caption01)
+                                                                    .foregroundStyle(Color.main)
+                                                                
+                                                            }
+                                                            .padding(.leading, 16)
+                                                            .padding(.trailing, 16)
+                                                            .multilineTextAlignment(.leading)
+                                                            .padding(.bottom, 4)
+                                                            HStack(spacing: 0) {
+                                                                Spacer()
+                                                                Text("\(viewModel.state.getReviewDataResponse.data[index].createdAt ?? "")")
+                                                                    .font(.caption01)
+                                                                    .foregroundStyle(Color.gray1)
                                                             }
                                                             .padding(.trailing, 16)
+                                                            .padding(.bottom, 16)
                                                         }
-                                                        Spacer()
-                                                        HStack(spacing: 0) {
-                                                            Text("\(((viewModel.state.getReviewDataResponse.data[index].reviewTypeKeywords ?? [""]).map {"#\($0) "}).joined(separator: ", "))")
-                                                                .font(.caption01)
-                                                                .foregroundStyle(Color.main)
-                                                            
-                                                        }
+                                                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                                                        .overlay(
+                                                            RoundedRectangle(cornerRadius: 12) // 모서리가 둥근 테두리
+                                                                .stroke(Color.gray.opacity(0.1), lineWidth: 1) // 테두리 색상과 두께
+                                                                .shadow(color: .gray.opacity(0.3), radius: 1, x: 0, y: 0)
+                                                        )
                                                         .padding(.leading, 16)
                                                         .padding(.trailing, 16)
-                                                        .multilineTextAlignment(.leading)
-                                                        .padding(.bottom, 4)
-                                                        HStack(spacing: 0) {
+                                                    } else {
+                                                        VStack(alignment: .leading, spacing: 0) {
+                                                            HStack(spacing: 0) {
+                                                                KFImage(URL(string: viewModel.state.getReviewDataResponse.data[index].profileImage?.originUrl ?? ""))
+                                                                    .resizable()
+                                                                    .aspectRatio(contentMode: .fit)
+                                                                    .frame(width: 42, height: 42)
+                                                                    .clipShape(Circle())
+                                                                    .padding(.leading, 16)
+                                                                    .padding(.trailing, 8)
+                                                                VStack(alignment: .leading, spacing: 0) {
+                                                                    Button {
+                                                                        AppState.shared.navigationPath.append(ReviewType.userProfile(id: Int64(viewModel.state.getReviewDataResponse.data[index].memberId!)))
+                                                                    } label: {
+                                                                        Text(viewModel.state.getReviewDataResponse.data[index].nickname ?? "")
+                                                                            .font(.body02_bold)
+                                                                    }
+                                                                    
+                                                                    HStack(spacing: 0) {
+                                                                        Text("리뷰 \(viewModel.state.getReviewDataResponse.data[index].memberReviewCount ?? 0)")
+                                                                            .font(.caption01)
+                                                                        Text(" | ")
+                                                                            .font(.caption01)
+                                                                        Image("icStarFill")
+                                                                            .resizable()
+                                                                            .frame(width: 11, height: 11)
+                                                                        Text("\(String(format: "%.1f", viewModel.state.getReviewDataResponse.data[index].rating ?? 0))")
+                                                                            .font(.caption01)
+                                                                    }
+                                                                    
+                                                                }
+                                                                Spacer()
+                                                                
+                                                                RoundedRectangle(cornerRadius: 30)
+                                                                    .stroke(lineWidth: 1)
+                                                                    .frame(width: 48, height: 28)
+                                                                    .foregroundColor(viewModel.state.getReviewDataResponse.data[index].reviewHeart == true ? .main : .gray2)
+                                                                    .overlay(){
+                                                                        HStack(spacing: 0){
+                                                                            
+                                                                            Button {
+                                                                                Task{
+                                                                                    await reviewFavorite(id: viewModel.state.getReviewDataResponse.data[index].id)
+                                                                                }
+                                                                            } label: {
+                                                                                Image(viewModel.state.getReviewDataResponse.data[index].reviewHeart == true ? "icReviewHeartMain" : "icReviewHeart")
+                                                                            }
+                                                                            
+                                                                            
+                                                                            Text("\(viewModel.state.getReviewDataResponse.data[index].heartCount)")
+                                                                                .font(.caption01)
+                                                                                .foregroundColor(.black)
+                                                                                .padding(.bottom, 2)
+                                                                        }
+                                                                    }
+                                                                    .padding()
+                                                            }
+                                                            .padding(.top, 10)
+                                                            .padding(.bottom, 12)
+                                                            HStack(spacing: 0) {
+                                                                if viewModel.state.getReviewDataResponse.data[index].images!.count != 0 {
+                                                                    ForEach(0..<viewModel.state.getReviewDataResponse.data[index].images!.count) { idx in
+                                                                        KFImage(URL(string: viewModel.state.getReviewDataResponse.data[index].images![idx].originUrl))
+                                                                            .resizable()
+                                                                            .frame(width: 70, height: 70)
+                                                                            .cornerRadius(8)
+                                                                            .padding(.leading, 10)
+                                                                            .padding(.bottom, 5)
+                                                                    }
+                                                                    
+                                                                }
+                                                                
+                                                                
+                                                            }
+                                                            HStack(alignment: .bottom, spacing: 0) {
+                                                                ExpandableText("\(viewModel.state.getReviewDataResponse.data[index].content ?? "")", lineLimit: 2)
+                                                                    .font(.body02)
+                                                                    .padding(.leading, 16)
+                                                                    .padding(.trailing, 16)
+                                                            }
                                                             Spacer()
-                                                            Text("\(viewModel.state.getReviewDataResponse.data[index].createdAt ?? "")")
-                                                                .font(.caption01)
-                                                                .foregroundStyle(Color.gray1)
-                                                                .padding(.trailing, 16)
-                                                                .padding(.bottom, 16)
-                                                            
+                                                            HStack(spacing: 0) {
+                                                                Text("\(((viewModel.state.getReviewDataResponse.data[index].reviewTypeKeywords ?? [""]).map {"#\($0) "}).joined(separator: ", "))")
+                                                                    .font(.caption01)
+                                                                    .foregroundStyle(Color.main)
+                                                                
+                                                            }
+                                                            .padding(.leading, 16)
+                                                            .padding(.trailing, 16)
+                                                            .multilineTextAlignment(.leading)
+                                                            .padding(.bottom, 4)
+                                                            HStack(spacing: 0) {
+                                                                Spacer()
+                                                                Text("\(viewModel.state.getReviewDataResponse.data[index].createdAt ?? "")")
+                                                                    .font(.caption01)
+                                                                    .foregroundStyle(Color.gray1)
+                                                                
+                                                                Button {
+                                                                    reportModal = true
+                                                                    idx = viewModel.state.getReviewDataResponse.data[index].id
+                                                         
+                                                                } label: {
+                                                                    Image("icPointBtn")
+                                                                        .resizable()
+                                                                        .renderingMode(.template)
+                                                                        .frame(width: 20, height: 20)
+                                                                        .foregroundStyle(Color.gray1)
+                                                                }
+                                                            }
+                                                            .padding(.trailing, 16)
+                                                            .padding(.bottom, 16)
                                                         }
+                                                        .sheet(isPresented: $reportModal, onDismiss: {
+                                                            if reportReasonViewFlag {
+                                                                AppState.shared.navigationPath.append(ReviewType.report(id: idx))
+                                                            }
+                                                        }) {
+                                                            ReportModalView(reportReasonViewFlag: $reportReasonViewFlag)
+                                                                .presentationDetents([.height(Constants.screenWidth * (103 / Constants.screenWidth))])
+                                                        }
+                                                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                                                        .overlay(
+                                                            RoundedRectangle(cornerRadius: 12) // 모서리가 둥근 테두리
+                                                                .stroke(Color.gray.opacity(0.1), lineWidth: 1) // 테두리 색상과 두께
+                                                                .shadow(color: .gray.opacity(0.3), radius: 1, x: 0, y: 0)
+                                                        )
+                                                        .padding(.leading, 16)
+                                                        .padding(.trailing, 16)
                                                     }
-                                                    .clipShape(RoundedRectangle(cornerRadius: 12))
-                                                    .overlay(
-                                                        RoundedRectangle(cornerRadius: 12) // 모서리가 둥근 테두리
-                                                            .stroke(Color.gray.opacity(0.1), lineWidth: 1) // 테두리 색상과 두께
-                                                            .shadow(color: .gray.opacity(0.3), radius: 1, x: 0, y: 0)
-                                                    )
-                                                    .padding(.leading, 16)
-                                                    .padding(.trailing, 16)
                                                 }
                                             }
                                         }
                                         if viewModel.state.getReviewDataResponse.totalElements > 3 {
                                             Button {
                                                 // TODO: - 후기 모두 보기(각 컨텐츠 별)
-                                                AppState.shared.navigationPath.append(ExperienceViewType.reviewAll(id: id))
+                                                AppState.shared.navigationPath.append(ReviewType.reviewAll(id: id))
                                             } label: {
                                                 Text("후기 더보기")
                                                     .foregroundStyle(Color.gray1)
@@ -513,10 +668,15 @@ struct RestaurantDetailView: View {
                 switch viewType {
                 case let .review:
                     ReviewWriteMain(reviewAddress: viewModel.state.getRestaurantDetailResponse.address ?? "", reviewImageUrl: viewModel.state.getRestaurantDetailResponse.images?[0].originUrl ?? "", reviewTitle: viewModel.state.getRestaurantDetailResponse.title ?? "", reviewId: viewModel.state.getRestaurantDetailResponse.id ?? 0, reviewCategory: "RESTAURANT")
-                case let .allReview(id):
-                    ReviewAllDetailMainView(id: id, reviewCategory: "RESTAURANT")
                 case let .userProfile(id):
                     UserProfileMainView(memberId: id)
+                case let .reviewAll(id):
+                    ReviewAllDetailMainView(id: id, reviewCategory: "RESTAURANT")
+                case let .report(id):
+                    ReportReasonView(id: id)
+                case let .detailReivew(id, category):
+                    MyReviewDetailView(reviewId: id, reviewCategory: category)
+                        .environmentObject(LocalizationManager())
                     
                 }
             }
@@ -545,6 +705,10 @@ struct RestaurantDetailView: View {
         await viewModel.action(.reviewFavorite(id: id))
     }
     
+    func deleteMyReview(id: Int64) async {
+        await viewModel.action(.deleteMyReview(id: id))
+    }
+    
     func getSafeArea() ->UIEdgeInsets  {
         return UIApplication.shared.windows.first?.safeAreaInsets ?? UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
@@ -552,8 +716,10 @@ struct RestaurantDetailView: View {
 
 enum ReviewType: Hashable {
     case review
-    case allReview(id: Int64)
     case userProfile(id: Int64)
+    case reviewAll(id: Int64)
+    case report(id: Int64) // 신고하기
+    case detailReivew(id: Int64, category: String)
 }
 
 #Preview {

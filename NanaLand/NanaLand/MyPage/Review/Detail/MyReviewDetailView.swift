@@ -108,6 +108,15 @@ struct MyReviewDetailView: View {
             if let images = detailViewModel.state.getReviewDetailResponse.images {
                 // 서버에서 받은 이미지 데이터를 서버 이미지 데이터 배열에 추가
                 serverImageData = images.compactMap { try? Data(contentsOf: URL(string: $0.thumbnailUrl)!) }
+//                serverImageData = images.compactMap { image in
+//                                let urlString = image.thumbnailUrl
+//                                if let url = URL(string: urlString) {
+//                                    return try? Data(contentsOf: url)
+//                                } else {
+//                                    print("Invalid URL: \(urlString)")
+//                                    return nil
+//                                }
+//                            }
             }
             apiCall += 1
         }
