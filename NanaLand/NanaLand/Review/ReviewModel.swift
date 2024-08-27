@@ -8,7 +8,7 @@
 import Foundation
 // 공통 리뷰 모델
 struct ReviewModel: Codable {
-    let totalElements: Int
+    var totalElements: Int
     let totalAvgRating: Double
     var data: [ReviewData]
 }
@@ -26,4 +26,5 @@ struct ReviewData: Codable {
     let images: [ImageList]?
     let reviewTypeKeywords: [String]?
     var reviewHeart: Bool
+    let myReview: Bool
 }
