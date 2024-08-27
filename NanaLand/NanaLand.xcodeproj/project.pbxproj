@@ -285,6 +285,9 @@
 		BFC671F62BF7198800D1A2FD /* ShopMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC671F02BF7198800D1A2FD /* ShopMainViewModel.swift */; };
 		BFC671F72BF7198800D1A2FD /* ShopMainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC671F12BF7198800D1A2FD /* ShopMainModel.swift */; };
 		BFC671F82BF7198800D1A2FD /* ShopDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC671F22BF7198800D1A2FD /* ShopDetailViewModel.swift */; };
+		BFCC3D6F2C7D874F00D12D74 /* ProfileReviewWriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC3D6E2C7D874F00D12D74 /* ProfileReviewWriteView.swift */; };
+		BFCC3D712C7D9CC500D12D74 /* ProfileReviewWriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC3D702C7D9CC500D12D74 /* ProfileReviewWriteViewModel.swift */; };
+		BFCC3D732C7D9E9B00D12D74 /* ProfileReviewWriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC3D722C7D9E9B00D12D74 /* ProfileReviewWriteModel.swift */; };
 		BFCDBE0E2C4E5CC400A50113 /* ReviewEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCDBE0D2C4E5CC400A50113 /* ReviewEndPoint.swift */; };
 		BFCDBE102C4E5CCE00A50113 /* ReviewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCDBE0F2C4E5CCE00A50113 /* ReviewService.swift */; };
 		BFE00CEC2C53BD3300F4C80C /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE00CEB2C53BD3300F4C80C /* Toast.swift */; };
@@ -583,6 +586,9 @@
 		BFC671F02BF7198800D1A2FD /* ShopMainViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopMainViewModel.swift; sourceTree = "<group>"; };
 		BFC671F12BF7198800D1A2FD /* ShopMainModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopMainModel.swift; sourceTree = "<group>"; };
 		BFC671F22BF7198800D1A2FD /* ShopDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopDetailViewModel.swift; sourceTree = "<group>"; };
+		BFCC3D6E2C7D874F00D12D74 /* ProfileReviewWriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileReviewWriteView.swift; sourceTree = "<group>"; };
+		BFCC3D702C7D9CC500D12D74 /* ProfileReviewWriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileReviewWriteViewModel.swift; sourceTree = "<group>"; };
+		BFCC3D722C7D9E9B00D12D74 /* ProfileReviewWriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileReviewWriteModel.swift; sourceTree = "<group>"; };
 		BFCDBE0D2C4E5CC400A50113 /* ReviewEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewEndPoint.swift; sourceTree = "<group>"; };
 		BFCDBE0F2C4E5CCE00A50113 /* ReviewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewService.swift; sourceTree = "<group>"; };
 		BFE00CEB2C53BD3300F4C80C /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
@@ -1480,6 +1486,9 @@
 				BF80FDA82BFB539400C5DA2D /* ProfileUpdateViewModel.swift */,
 				BF17B5FD2C5B261B0045B6E3 /* UserProfileMainView.swift */,
 				BF7727522C5B589000202419 /* UserProfileMainViewModel.swift */,
+				BFCC3D6E2C7D874F00D12D74 /* ProfileReviewWriteView.swift */,
+				BFCC3D702C7D9CC500D12D74 /* ProfileReviewWriteViewModel.swift */,
+				BFCC3D722C7D9E9B00D12D74 /* ProfileReviewWriteModel.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1808,11 +1817,14 @@
 				6D130D002C788D61005FCD99 /* NewNanaPickDetailService.swift in Sources */,
 				2C40DB9A2BE64973007A3768 /* NanaHome.swift in Sources */,
 				BF30C7352C05B32F0084702F /* GifImageView.swift in Sources */,
+				BFCC3D712C7D9CC500D12D74 /* ProfileReviewWriteViewModel.swift in Sources */,
 				2C2749932C0A18BE00ECBA71 /* DeepLinkManager.swift in Sources */,
 				2C1F31CE2BCD049C0066819F /* SearchMainView.swift in Sources */,
 				BF9834212BCE720B00A5C289 /* NanapickMainView.swift in Sources */,
 				2C9CF4E82C00714900A346E8 /* TypeTestViewModel.swift in Sources */,
 				BF607F132BF5A01D00770CE7 /* FestivalDetailViewModel.swift in Sources */,
+				BFCC3D6F2C7D874F00D12D74 /* ProfileReviewWriteView.swift in Sources */,
+				BFCC3D732C7D9E9B00D12D74 /* ProfileReviewWriteModel.swift in Sources */,
 				BFABD3512BE7634100C3F3A6 /* FestivalModel.swift in Sources */,
 				BF9834182BCE700B00A5C289 /* FestivalMainView.swift in Sources */,
 				2C5425002BF72C3500B16439 /* TripType.swift in Sources */,

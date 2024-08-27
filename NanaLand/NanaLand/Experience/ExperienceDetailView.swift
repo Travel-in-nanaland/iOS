@@ -166,7 +166,7 @@ struct ExperienceDetailView: View {
                                                 Text("간단 설명")
                                                     .foregroundStyle(Color.main)
                                                     .font(.body02_bold)
-                                                Text("\(viewModel.state.reportReasonViewFlag)")
+                                               
                                                 Spacer()
                                             }
                                             .padding(.leading, 20)
@@ -557,7 +557,6 @@ struct ExperienceDetailView: View {
                                 .font(.body_bold)
                                 .foregroundStyle(Color.white)
                                 .background(RoundedRectangle(cornerRadius: 50).foregroundStyle(Color.main).frame(width: Constants.screenWidth * (28 / 36), height: 40))
-                              
                                 
                         }
                         .frame(width: Constants.screenWidth * (28 / 36), height: 40)

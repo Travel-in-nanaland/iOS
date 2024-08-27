@@ -19,6 +19,7 @@ enum ReviewEndPoint {
     case getMyReviewDetail(id: Int64) //나의 리뷰 디테일
     case modifyMyReview(id: Int64, body: EditReviewDto, multipartFile: [Foundation.Data?])
     case reviewFavorite(id: Int64)
+    case profileReview(keyword: String) // 후기 작성 게시글 검색 자동완성
 }
 
 extension ReviewEndPoint: EndPoint {
@@ -48,6 +49,8 @@ extension ReviewEndPoint: EndPoint {
             return "/my/\(id)"
         case .reviewFavorite(let id):
             return "/heart/\(id)"
+        case .profileReview(let keyword):
+            return "/search/auto-complete"
         }
     }
     
@@ -73,6 +76,8 @@ extension ReviewEndPoint: EndPoint {
             return .put
         case .reviewFavorite:
             return .post
+        case .profileReview:
+            return .get
         }
     }
     
@@ -97,6 +102,8 @@ extension ReviewEndPoint: EndPoint {
         case .modifyMyReview:
             return ["Content-Type": "multipart/form-data"]
         case .reviewFavorite:
+            return ["Content-Type": "application/json"]
+        case .profileReview:
             return ["Content-Type": "application/json"]
         }
     }
@@ -128,6 +135,10 @@ extension ReviewEndPoint: EndPoint {
             return .requestModifyJSONWithImage(multipartFile: multipartFile, body: body)
         case let .reviewFavorite(id):
             return .requestPlain
+        case let .profileReview(keyword):
+            let param = ["keyword": keyword]
+            return .requestParameters(parameters: param)
         }
+        
     }
 }

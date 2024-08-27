@@ -55,4 +55,9 @@ struct ReviewService {
     static func reviewFavorite(id: Int64) async -> BaseResponse<ReviewFavoriteResponse>? {
         return await NetworkManager.shared.request(ReviewEndPoint.reviewFavorite(id: id))
     }
+    
+    //후기 위한 게시글 검색 자동완성
+    static func profileReview(keyword: String) async -> BaseResponse<[ProfileReviewWriteModel]>? {
+        return await NetworkManager.shared.request(ReviewEndPoint.profileReview(keyword: keyword))
+    }
 }
