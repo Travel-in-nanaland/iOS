@@ -468,7 +468,7 @@ struct BannerView: View {
     private let timer = Timer.publish(every: 3.5, on: .main, in: .common).autoconnect()
     // tabView에 selection에 바인딩 할 값
     @State private var index = 0
-    private let images: [String] = ["icTabNumber1", "icTabNumber2", "icTabNumber3"]
+    private let images: [String] = ["icTabNumber1", "icTabNumber2", "icTabNumber3", "icTabNumber3"]
     
     var body: some View {
         // selection에 index가 아닌 selectedNum을 바인딩

@@ -183,7 +183,7 @@ struct ExperienceMainGridView: View {
                                         .padding(.trailing, 8)
                                     }
                                 })
-                                .frame(width: (UIScreen.main.bounds.width - 40) / 2, height: 196)
+                                .frame(width: (UIScreen.main.bounds.width - 40) / 2, height:  ((Constants.screenWidth - 40) / 2) * (164 / 160))
                             }
                             if viewModel.state.page < viewModel.state.getExperienceMainResponse.totalElements / 12 {
                                 ProgressView()

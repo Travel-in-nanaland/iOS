@@ -17,6 +17,8 @@ struct ExperienceDetailView: View {
     @State private var roundedHeight: CGFloat = (Constants.screenWidth - 40) * (224.0 / 358.0)
     @State private var keywordString = [""]
     @State private var reportModal = false
+    @State private var reportReasonViewFlag = false // 신고하기로 네비게이션 하기 위한 플래그(신고 모달이 sheet형태라 navigation stack에 포함 안됨)
+    @State private var idx: Int64 = 0
     var id: Int64
     var experienceType = "k"
     var body: some View {
@@ -31,7 +33,7 @@ struct ExperienceDetailView: View {
                 }
                
                 HStack(spacing: 0) {
-    
+
                     Spacer()
                     ShareLink(item: DeepLinkManager.shared.makeLink(category: .experience, id: Int(viewModel.state.getExperienceDetailResponse.id ?? 0)), label: {
                         Image("icShare2")
@@ -50,7 +52,7 @@ struct ExperienceDetailView: View {
                                     .resizable()
                                     .frame(width: Constants.screenWidth, height: Constants.screenWidth * (26 / 39))
                                     .padding(.bottom, 24)
-                                
+
                                 ZStack(alignment: .center) {
                                     if !isOn {
                                         RoundedRectangle(cornerRadius: 30)
@@ -154,22 +156,39 @@ struct ExperienceDetailView: View {
                                 .padding(.trailing, 20)
                                 
                                 VStack(spacing: 24) {
-                                    if viewModel.state.getExperienceDetailResponse.details != "" {
+                                    if viewModel.state.getExperienceDetailResponse.intro != "" {
                                         
                                         VStack(spacing: 0) {
                                             HStack(spacing: 0) {
-                                                Image("icWarningCircle")
+                                                Image("icNoticeMain")
                                                     .renderingMode(.template)
                                                     .foregroundStyle(Color.main)
                                                 Text("간단 설명")
                                                     .foregroundStyle(Color.main)
                                                     .font(.body02_bold)
+                                                Text("\(viewModel.state.reportReasonViewFlag)")
+                                                Spacer()
                                             }
-                                            Text(viewModel.state.getExperienceDetailResponse.details ?? "")
-                                                .font(.body02)
+                                            .padding(.leading, 20)
+                                            .padding(.bottom, 4)
+                                            .padding(.top, 16)
+                                            HStack(spacing: 0) {
+                                                Text(viewModel.state.getExperienceDetailResponse.intro ?? "")
+                                                    .font(.body02)
+                                                    .multilineTextAlignment(.leading)
+                                                Spacer()
+                                            }
+                                            .padding(.leading, 20)
+                                            .padding(.bottom, 16)
+                                         
                                             
                                         }
-                                        
+                                        .frame(width: Constants.screenWidth - 40)
+                                        .background(
+                                            RoundedRectangle(cornerRadius: 12) // 코너 반경을 설정하세요
+                                                .fill(Color.main10P) // 배경 색상을 설정하세요
+                                               
+                                        )
                                     }
                                     if viewModel.state.getExperienceDetailResponse.address != "" {
                                         HStack(spacing: 10) {
@@ -296,7 +315,7 @@ struct ExperienceDetailView: View {
                                                             .padding(.leading, 16)
                                                             .padding(.trailing, 8)
                                                         
-
+                                                        
                                                         VStack(alignment: .leading, spacing: 0) {
                                                             Button {
                                                                 AppState.shared.navigationPath.append(ExperienceViewType.userProfile(id: Int64(viewModel.state.getReviewDataResponse.data[index].memberId!)))
@@ -304,7 +323,7 @@ struct ExperienceDetailView: View {
                                                                 Text(viewModel.state.getReviewDataResponse.data[index].nickname ?? "")
                                                                     .font(.body02_bold)
                                                             }
-                                                           
+                                                            
                                                             HStack(spacing: 0) {
                                                                 Text("리뷰 \(viewModel.state.getReviewDataResponse.data[index].memberReviewCount ?? 0)")
                                                                     .font(.caption01)
@@ -364,21 +383,21 @@ struct ExperienceDetailView: View {
                                                         }
                                                         
                                                     }
-                                                   
+                                                    
                                                     HStack(alignment: .bottom, spacing: 0) {
-//                                                        Text("\(viewModel.state.getReviewDataResponse.data[index].content ?? "")")
-//                                                            .lineLimit(contentIsOn[index] ? nil : 2)
-//                                                            .padding(.leading, 16)
-//                                                            .padding(.trailing, 2)
-//                                                     
-//                                                        Button {
-//                                                            contentIsOn[index].toggle()
-//                                                        } label: {
-//                                                            Text(contentIsOn[index] ? "접기" : "더 보기")
-//                                                                .foregroundStyle(Color.gray1)
-//                                                                .font(.caption01)
-//                                                        }
-//                                                        .padding(.trailing, 16)
+                                                        //                                                        Text("\(viewModel.state.getReviewDataResponse.data[index].content ?? "")")
+                                                        //                                                            .lineLimit(contentIsOn[index] ? nil : 2)
+                                                        //                                                            .padding(.leading, 16)
+                                                        //                                                            .padding(.trailing, 2)
+                                                        //
+                                                        //                                                        Button {
+                                                        //                                                            contentIsOn[index].toggle()
+                                                        //                                                        } label: {
+                                                        //                                                            Text(contentIsOn[index] ? "접기" : "더 보기")
+                                                        //                                                                .foregroundStyle(Color.gray1)
+                                                        //                                                                .font(.caption01)
+                                                        //                                                        }
+                                                        //                                                        .padding(.trailing, 16)
                                                         ExpandableText("\(viewModel.state.getReviewDataResponse.data[index].content ?? "")", lineLimit: 2)
                                                             .font(.body02)
                                                             .padding(.leading, 16)
@@ -402,8 +421,11 @@ struct ExperienceDetailView: View {
                                                         Text("\(viewModel.state.getReviewDataResponse.data[index].createdAt ?? "")")
                                                             .font(.caption01)
                                                             .foregroundStyle(Color.gray1)
+                                                       
                                                         Button {
                                                             reportModal = true
+                                                            idx = viewModel.state.getReviewDataResponse.data[index].id
+                                                 
                                                         } label: {
                                                             Image("icPointBtn")
                                                                 .resizable()
@@ -415,8 +437,12 @@ struct ExperienceDetailView: View {
                                                     .padding(.trailing, 16)
                                                     .padding(.bottom, 16)
                                                 }
-                                                .sheet(isPresented: $reportModal) {
-                                                    ReportModalView()
+                                                .sheet(isPresented: $reportModal, onDismiss: {
+                                                    if reportReasonViewFlag {
+                                                        AppState.shared.navigationPath.append(ExperienceViewType.report(id: idx))
+                                                    }
+                                                }) {
+                                                    ReportModalView(reportReasonViewFlag: $reportReasonViewFlag)
                                                         .presentationDetents([.height(Constants.screenWidth * (103 / Constants.screenWidth))])
                                                 }
                                                 .clipShape(RoundedRectangle(cornerRadius: 12))
@@ -428,7 +454,6 @@ struct ExperienceDetailView: View {
                                                 .padding(.leading, 16)
                                                 .padding(.trailing, 16)
                                             }
-                                            
                                         }
                                     }
                                     if viewModel.state.getReviewDataResponse.totalElements > 3 {
@@ -560,8 +585,6 @@ struct ExperienceDetailView: View {
                     )
                     
                 }
-                
-                
             }
             .navigationDestination(for: ExperienceViewType.self) { viewType in
                 switch viewType {
@@ -571,6 +594,8 @@ struct ExperienceDetailView: View {
                     UserProfileMainView(memberId: id)
                 case let .reviewAll(id):
                     ReviewAllDetailMainView(id: id, reviewCategory: "EXPERIENCE")
+                case let .report(id):
+                    ReportReasonView(id: id)
                 }
             }
            
@@ -608,6 +633,7 @@ enum ExperienceViewType: Hashable {
     case writeReview
     case userProfile(id: Int64)
     case reviewAll(id: Int64)
+    case report(id: Int64) // 신고하기
 }
 
 //#Preview {
