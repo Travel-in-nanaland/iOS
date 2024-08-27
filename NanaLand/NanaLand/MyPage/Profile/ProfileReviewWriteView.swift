@@ -124,7 +124,7 @@ struct ProfileReviewWriteView: View {
         .navigationDestination(for: ProfileReviewWriteViewType.self) { viewType in
             switch viewType {
             case .review:
-                ReviewWriteMain(reviewAddress: viewModel.state.getProfileReviewResponse[itemIndex].address ?? "", reviewImageUrl: viewModel.state.getProfileReviewResponse[itemIndex].firstImage?.originUrl ?? "", reviewTitle: viewModel.state.getProfileReviewResponse[itemIndex].title ?? "", reviewId: viewModel.state.getProfileReviewResponse[itemIndex].id ?? 0 , reviewCategory: viewModel.state.getProfileReviewResponse[itemIndex].categoryValue ?? "")
+                ReviewWriteMain(reviewAddress: viewModel.state.getProfileReviewResponse[itemIndex].address ?? "", reviewImageUrl: viewModel.state.getProfileReviewResponse[itemIndex].firstImage?.originUrl ?? "", reviewTitle: viewModel.state.getProfileReviewResponse[itemIndex].title ?? "", reviewId: viewModel.state.getProfileReviewResponse[itemIndex].id ?? 0 , reviewCategory: viewModel.state.getProfileReviewResponse[itemIndex].category ?? "")
             }
         }
     }

@@ -63,14 +63,14 @@ struct ReviewCompleteView: View {
 struct MainView: View {
     var title = ""
     
-    let experienceJsonName: String = "review_experience"
-    let restaurantJsonName: String = "review_restaurant"
+    let experienceJsonName: String = "report_complete_comment"
+    let restaurantJsonName: String = "report_complete_megaphone"
     var body: some View {
         
         if title == "EXPERIENCE" {
             VStack{
                 LottieView(jsonName: experienceJsonName, loopMode: .loop)
-                    .frame(height: 350)
+                    .frame(width: 230, height: 250)
                     .padding(.top, 100)
                 
                 Text("당신의 매력적인 글 고마워요 👻")
@@ -92,7 +92,7 @@ struct MainView: View {
         } else if title == "RESTAURANT" {
             VStack{
                 LottieView(jsonName: restaurantJsonName, loopMode: .loop)
-                    .frame(height: 350)
+                    .frame(width: 230, height: 250)
                     .padding(.top, 100)
                 
                 Text("너무 마음에 드는걸요 ?")
