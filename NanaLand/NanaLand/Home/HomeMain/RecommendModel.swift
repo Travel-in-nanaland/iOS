@@ -8,9 +8,9 @@
 import Foundation
 
 struct RecommendModel: Codable, Hashable {
-    var id: Int
+    var id: Int64
     var category: String
-    var thumbnailUrl: String
     var title: String
     var introduction: String
+    var firstImage: ImageList
 }

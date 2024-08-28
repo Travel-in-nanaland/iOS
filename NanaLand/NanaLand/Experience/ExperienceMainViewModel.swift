@@ -35,7 +35,7 @@ class ExperienceMainViewModel: ObservableObject {
             // TODO: - 이색체험 API 호출
             
             let response = await ExperienceService.getExperienceMainItem(experienceType: experienceType, keyword: keyword, address: address, page: page, size: size)
-               if let responseData = response!.data {
+            if let responseData = response!.data {
                 await MainActor.run {
                     print(response)
                     state.getExperienceMainResponse.totalElements = responseData.totalElements
