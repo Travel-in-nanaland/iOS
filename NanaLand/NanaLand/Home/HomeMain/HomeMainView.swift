@@ -159,10 +159,10 @@ struct HomeMainView: View {
                         switch article.category {
                         case "NATURE":
                             Button {
-                                AppState.shared.navigationPath.append(HomeViewType.natureDetail(id: article.id))
+                                AppState.shared.navigationPath.append(HomeViewType.natureDetail(id: Int(article.id)))
                             } label: {
                                 VStack(alignment: .leading, spacing: 8) {
-                                    KFImage(URL(string: article.thumbnailUrl)!)
+                                    KFImage(URL(string: article.firstImage.thumbnailUrl)!)
                                         .resizable()
                                         .frame(height: (Constants.screenWidth - 40) / 2 * (118 / 160))
                                         .clipShape(RoundedRectangle(cornerRadius: 12))
@@ -175,10 +175,10 @@ struct HomeMainView: View {
 
                         case "FESTIVAL":
                             Button {
-                                AppState.shared.navigationPath.append(HomeViewType.festivalDetail(id: article.id))
+                                AppState.shared.navigationPath.append(HomeViewType.festivalDetail(id: Int(article.id)))
                             } label: {
                                 VStack(alignment: .leading, spacing: 8) {
-                                    KFImage(URL(string: article.thumbnailUrl)!)
+                                    KFImage(URL(string: article.firstImage.thumbnailUrl)!)
                                         .resizable()
                                         .frame(height: (Constants.screenWidth - 40) / 2 * (118 / 160))
                                         .clipShape(RoundedRectangle(cornerRadius: 12))
@@ -190,10 +190,24 @@ struct HomeMainView: View {
 
                         case "MARKET":
                             Button {
-                                AppState.shared.navigationPath.append(HomeViewType.shopDetail(id: article.id))
+                                AppState.shared.navigationPath.append(HomeViewType.shopDetail(id: Int(article.id)))
                             } label: {
                                 VStack(alignment: .leading, spacing: 8) {
-                                    KFImage(URL(string: article.thumbnailUrl)!)
+                                    KFImage(URL(string: article.firstImage.thumbnailUrl)!)
+                                        .resizable()
+                                        .frame(height: (Constants.screenWidth - 40) / 2 * (118 / 160))
+                                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                          
+                                    Text(article.title)
+                                        .font(.gothicNeo(size: 14, font: "bold"))
+                                }
+                            }
+                        case "EXPERIENCE":
+                            Button {
+                                AppState.shared.navigationPath.append(HomeViewType.experienceDetail(id: Int(article.id)))
+                            } label: {
+                                VStack(alignment: .leading, spacing: 8) {
+                                    KFImage(URL(string: article.firstImage.thumbnailUrl)!)
                                         .resizable()
                                         .frame(height: (Constants.screenWidth - 40) / 2 * (118 / 160))
                                         .clipShape(RoundedRectangle(cornerRadius: 12))
@@ -205,10 +219,10 @@ struct HomeMainView: View {
                             
                         default:
                             Button {
-                                AppState.shared.navigationPath.append(HomeViewType.natureDetail(id: article.id))
+                                AppState.shared.navigationPath.append(HomeViewType.natureDetail(id: Int(article.id)))
                             } label: {
                                 VStack(alignment: .leading, spacing: 8) {
-                                    KFImage(URL(string: article.thumbnailUrl)!)
+                                    KFImage(URL(string: article.firstImage.thumbnailUrl)!)
                                         .resizable()
                                         .frame(height: (Constants.screenWidth - 40) / 2 * (118 / 160))
                                         .clipShape(RoundedRectangle(cornerRadius: 12))
@@ -274,6 +288,8 @@ struct HomeMainView: View {
                 FestivalDetailView(id: Int64(id))
             case let .natureDetail(id):
                 NatureDetailView(id: Int64(id))
+            case let .experienceDetail(id):
+                ExperienceDetailView(id: Int64(id))
             case let .notification:
                 NotificationView()
             }

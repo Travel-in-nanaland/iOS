@@ -19,4 +19,5 @@ enum HomeViewType: Hashable {
 	case festivalDetail(id: Int)
 	case notification
     case restaurant
+    case experienceDetail(id: Int)
 }

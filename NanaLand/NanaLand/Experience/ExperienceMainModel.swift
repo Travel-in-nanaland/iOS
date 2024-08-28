@@ -21,7 +21,7 @@ struct ExperienceData: Codable {
     var favorite: Bool
 }
 
-struct ImageList: Codable {
+struct ImageList: Codable, Hashable {
     var originUrl: String
     let thumbnailUrl: String
 }
