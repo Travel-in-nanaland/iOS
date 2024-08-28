@@ -354,19 +354,20 @@
 "showContentAgain" = "콘텐츠 다시 보러 가기";
 "reportAgain" = "다른 항목 추가하기";
 
+// MARK: - 후기
 "blank" = "";
 "review" = "후기";
 "write" = "후기 작성";
-"modify" = "후기 수정";
+"reviewModify" = "후기 수정";
 "keyword" = "키워드";
 "selectRating1" = "별점";
 "selectRating2" = "을 ";
 "selectRating3" = "선택";
-"selectRating4" = "해주세요!";
+"selectRating4" = "해주세요";
 "visitReview1" = "방문 후기";
 "visitReview2" = "를 ";
 "visitReview3" = "작성";
-"visitReview4" = "해주세요!";
+"visitReview4" = "해주세요";
 "writeContent" = "내용을 작성해 주세요";
 "addKeyword" = "키워드 추가";
 "upload" = "올리기";
@@ -380,7 +381,7 @@
 "companion" = "동반자";
 "CHILDREN" = "자녀";
 "FRIEND" = "친구";
-"PARENTS" = "부모";
+"PARENTS" = "부모님";
 "ALONE" = "혼자";
 "HALF" = "연인/배우자";
 "RELATIVE" = "친척/형제";
@@ -395,6 +396,8 @@
 "check" = "확인";
 "reviewBackAlertTitle" = "정말 나가시겠습니까?";
 "reviewBackAlertMessage" = "지금 나가시면,\n작성 중인 내용이 삭제됩니다.";
+"content200" = "내용은 200자 이내로 작성 가능합니다.";
+"modify" = "수정";
 
 "notice" = "공지사항";
 "testAgain" = "테스트 다시하기";
@@ -403,7 +406,7 @@
 "noDescription" = "나를 한 줄로 표현해보세요!";
 "noNotice" = "공지사항이 존재하지 않습니다";
 
-// MARK: - 제주 맛집(테스트)
+// MARK: - 제주 맛집
 "type" = "종류";
 "restaurant" = "제주 맛집";
 "meatblackpork" = "육류/흑돼지";
@@ -421,7 +424,7 @@
 "cafeDessert" = "카페/디저트";
 "pubRestaurant" = "펍/요리주점";
 "menu" = "대표 메뉴";
-"writeReview" = "리뷰 작성하기";
+"writeReview" = "후기 작성하기";
 "service" = "제공 서비스";
 "instagram" = "인스타그램";
 "currency" = "원";

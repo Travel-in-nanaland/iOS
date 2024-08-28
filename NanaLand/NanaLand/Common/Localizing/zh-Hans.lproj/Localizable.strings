@@ -352,3 +352,71 @@
 
 //MARK: - 언어 설정
 "greeting" = "你好!\n很高兴见到你 👋";
+
+// MARK: - 제주 맛집
+"type" = "类型";
+"restaurant" = "济州美食餐馆";
+"meatblackpork" = "肉类/黑猪肉";
+"seaFood" = "海鲜";
+"koreanFood" = "韩餐";
+"chineseFood" = "中餐";
+"japaneseFood" = "日本料理";
+"westernFood" = "西餐";
+"vegan" = "素食";
+"halalFood" = "清真食品";
+"snacks" = "小吃";
+"southAmericanFood" = "南美食物";
+"southeastAsianFood" = "东南亚食物";
+"chickenBurger" = "炸鸡/汉堡";
+"cafeDessert" = "咖啡馆/甜点";
+"pubRestaurant" = "酒吧/餐厅";
+"menu" = "代表菜单";
+"writeReview" = "写评价";
+"service" = "提供的服务";
+"instagram" = "Instagram";
+"currency" = "원";
+
+// MARK: - 후기
+"blank" = "";
+"review" = "评价";
+"write" = "写评价";
+"reviewModify" = "후기 수정";
+"modify" = "修改";
+"keyword" = "关键词";
+"selectRating1" = "请";
+"selectRating2" = "选择";
+"selectRating3" = "一个";
+"selectRating4" = "星级评分";
+"visitReview1" = "请";
+"visitReview2" = "写下";
+"visitReview3" = "一个";
+"visitReview4" = "访问评价";
+"writeContent" = "내용을 작성해 주세요";
+"addKeyword" = "添加关键词";
+"upload" = "上传";
+"keywordDescription" = "*您必须选择至少3个项目，最多可以选择6个项目。";
+"mood" = "氛围";
+"ANNIVERSARY" = "适合于纪念日";
+"CUTE" = "小巧可爱";
+"LUXURY" = "很高档";
+"SCENERY" = "风景很美";
+"KIND" = "好亲切";
+"companion" = "同伴";
+"CHILDREN" = "子女";
+"FRIEND" = "朋友";
+"PARENTS" = "父母";
+"ALONE" = "单独";
+"HALF" = "爱人/配偶";
+"RELATIVE" = "亲戚/兄弟姐妹";
+"PET" = "宠物";
+"amenities" = "便利设施";
+"OUTLET" = "提供电源插座";
+"LARGE" = "宽敞";
+"PARK" = "停车场";
+"BATHROOM" = "洁净的卫生间";
+"warning" = "경고";
+"warningDescription" = "最多可以选择6个";
+"check" = "确认";
+"reviewBackAlertTitle" = "您确定要离开吗?";
+"reviewBackAlertMessage" = "如果您现在离开，\n您正在写的内容将被删除。";
+"content200" = "内容可在200个字符内书写。";
