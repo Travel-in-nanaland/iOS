@@ -19,7 +19,25 @@ struct RestaurantKeywordView: View {
     // 눌려진 키워드 버튼 담을 배열(눌렸는지 안 눌렸는지)
     @State var buttonsToggled = Array(repeating: false, count: 14)
     var RestaurantKeyword = ["KOREAN", "CHINESE", "JAPANESE", "WESTERN", "SNACK", "SOUTH_AMERICAN", "SOUTHEAST_ASIAN", "VEGAN", "HALAL", "MEAT_BLACK_PORK", "SEAFOOD", "CHICKEN_BURGER", "CAFE_DESSERT", "PUB_FOOD_PUB"]
-    var RestaurantKeywordArray = ["한식", "중식", "일식", "양식", "분식", "남미 음식", "동남아 음식", "비건푸드", "할랄푸드", "육류/흑돼지", "해산물", "치킨/버거", "카페/디저트", "펍/요리주점"]
+//    var RestaurantKeywordArray = ["한식", "중식", "일식", "양식", "분식", "남미 음식", "동남아 음식", "비건푸드", "할랄푸드", "육류/흑돼지", "해산물", "치킨/버거", "카페/디저트", "펍/요리주점"]
+    var RestaurantKeywordArray: [String] {
+        [
+            LocalizedKey.koreanFood.localized(for: localizationManager.language),
+            LocalizedKey.chineseFood.localized(for: localizationManager.language),
+            LocalizedKey.japaneseFood.localized(for: localizationManager.language),
+            LocalizedKey.westernFood.localized(for: localizationManager.language),
+            LocalizedKey.snacks.localized(for: localizationManager.language),
+            LocalizedKey.southAmericanFood.localized(for: localizationManager.language),
+            LocalizedKey.southeastAsianFood.localized(for: localizationManager.language),
+            LocalizedKey.vegan.localized(for: localizationManager.language),
+            LocalizedKey.halalFood.localized(for: localizationManager.language),
+            LocalizedKey.meatblackpork.localized(for: localizationManager.language),
+            LocalizedKey.seaFood.localized(for: localizationManager.language),
+            LocalizedKey.chickenBurger.localized(for: localizationManager.language),
+            LocalizedKey.cafeDessert.localized(for: localizationManager.language),
+            LocalizedKey.pubRestaurant.localized(for: localizationManager.language)
+        ]
+    }
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
     
     var body: some View {

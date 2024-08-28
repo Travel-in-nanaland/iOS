@@ -253,7 +253,7 @@ struct NewNaNaPickDetailMainView: View {
                                             .padding(.bottom, 16)
                                         
                                         Text("\(detail.content)")
-                                            .frame(width: (Constants.screenWidth - 32))
+                                            .frame(width: (Constants.screenWidth - 32), alignment: .leading)
                                             .font(.body01)
                                             .lineSpacing(10)
                                             .padding(.bottom, 24)

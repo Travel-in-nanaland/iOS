@@ -40,8 +40,8 @@ struct ReviewWriteMain: View {
                                 .renderingMode(.template)
                                 .foregroundStyle(Color.black)
                         })
-                        .customAlert("정말 나가시겠습니까?", isPresented: $showAlert) {
-                            Text("지금 나가시면,\n작성 중인 내용이 삭제됩니다.")
+                        .customAlert(LocalizedKey.reviewBackAlertTitle.localized(for: localizationManager.language), isPresented: $showAlert) {
+                            Text(LocalizedKey.reviewBackAlertMessage.localized(for: localizationManager.language))
                                 .font(.body01)
                                 .foregroundStyle(Color.gray1)
                                 .padding(.top, 5)
@@ -54,7 +54,7 @@ struct ReviewWriteMain: View {
                                     }
                                    
                                 } label: {
-                                    Text("네")
+                                    Text(.yes)
                                         .font(.title02_bold)
                                         .foregroundStyle(Color.black)
                                 }
@@ -63,7 +63,7 @@ struct ReviewWriteMain: View {
                                         showAlert = false
                                     }
                                 } label: {
-                                    Text("아니오")
+                                    Text(.no)
                                         .font(.title02_bold)
                                         .foregroundStyle(Color.main)
                                 }
@@ -122,13 +122,30 @@ struct ReviewMainGridView: View {
                     .frame(width: 64, height: 1)
                     .padding(.bottom, 26)
                 
-                let selectRating1 = Text(.selectRating1).font(.body_bold).foregroundColor(.main)
-                let selectRating2 = Text(.selectRating2).font(.body_bold).foregroundColor(.black)
-                let selectRating3 = Text(.selectRating3).font(.body_bold).foregroundColor(.main)
-                let selectRating4 = Text(.selectRating4).font(.body_bold).foregroundColor(.black)
-                let selectRating = selectRating1 + selectRating2 + selectRating3 + selectRating4
                 
-                selectRating
+                if localizationManager.language == .korean {
+                    let selectRating = Text(.selectRating1).font(.body_bold).foregroundColor(.main) + Text(.selectRating2).font(.body_bold).foregroundColor(.black) + Text(.selectRating3).font(.body_bold).foregroundColor(.main) + Text(.selectRating4).font(.body_bold).foregroundColor(.black) + Text("!").font(.body_bold).foregroundColor(.black)
+                    
+                    selectRating
+                } else if localizationManager.language == .english {
+                    let selectRating = Text(.selectRating1).font(.body_bold).foregroundColor(.black) + Text(.selectRating2).font(.body_bold).foregroundColor(.main) + Text(.selectRating3).font(.body_bold).foregroundColor(.black) + Text(.selectRating4).font(.body_bold).foregroundColor(.main) +
+                        Text("!").font(.body_bold).foregroundColor(.black)
+                    
+                    selectRating
+                } else if localizationManager.language == .chinese {
+                    let selectRating = Text(.selectRating1).font(.body_bold).foregroundColor(.black) + Text(.selectRating2).font(.body_bold).foregroundColor(.main) + Text(.selectRating3).font(.body_bold).foregroundColor(.black) + Text(.selectRating4).font(.body_bold).foregroundColor(.main) + Text("!").font(.body_bold).foregroundColor(.black)
+                    
+                    selectRating
+                } else if localizationManager.language == .malaysia {
+                    let selectRating = Text(.selectRating1).font(.body_bold).foregroundColor(.black) + Text(.selectRating2).font(.body_bold).foregroundColor(.main) + Text(.selectRating3).font(.body_bold).foregroundColor(.black) + Text(.selectRating4).font(.body_bold).foregroundColor(.main) + Text("!").font(.body_bold).foregroundColor(.black)
+                    
+                    selectRating
+                } else {
+                    let selectRating = Text(.selectRating1).font(.body_bold).foregroundColor(.black) + Text(.selectRating2).font(.body_bold).foregroundColor(.main) + Text(.selectRating3).font(.body_bold).foregroundColor(.black) + Text(.selectRating4).font(.body_bold).foregroundColor(.main) + Text("!").font(.body_bold).foregroundColor(.black)
+                    
+                    selectRating
+                }
+                
                 
                 HStack {
                     ForEach(1...5, id: \.self) { number in
@@ -149,13 +166,27 @@ struct ReviewMainGridView: View {
                     .frame(width: 64, height: 1)
                     .padding(.bottom, 26)
                 
-                let visitReview1 = Text(.visitReview1).font(.body_bold).foregroundColor(.main)
-                let visitReview2 = Text(.visitReview2).font(.body_bold).foregroundColor(.black)
-                let visitReview3 = Text(.visitReview3).font(.body_bold).foregroundColor(.main)
-                let visitReview4 = Text(.visitReview4).font(.body_bold).foregroundColor(.black)
-                let visitReview = visitReview1 + visitReview2 + visitReview3 + visitReview4
-                
-                visitReview
+                if localizationManager.language == .korean {
+                    let visitReview = Text(.visitReview1).font(.body_bold).foregroundColor(.main) + Text(.visitReview2).font(.body_bold).foregroundColor(.black) + Text(.visitReview3).font(.body_bold).foregroundColor(.main) + Text(.visitReview4).font(.body_bold).foregroundColor(.black) + Text("!").font(.body_bold).foregroundColor(.black)
+                    
+                    visitReview
+                } else if localizationManager.language == .english {
+                    let visitReview = Text(.visitReview1).font(.body_bold).foregroundColor(.black) + Text(.visitReview2).font(.body_bold).foregroundColor(.main) + Text(.visitReview3).font(.body_bold).foregroundColor(.black) + Text(.visitReview4).font(.body_bold).foregroundColor(.main) + Text("!").font(.body_bold).foregroundColor(.black)
+                    
+                    visitReview
+                } else if localizationManager.language == .chinese {
+                    let visitReview = Text(.visitReview1).font(.body_bold).foregroundColor(.black) + Text(.visitReview2).font(.body_bold).foregroundColor(.main) + Text(.visitReview3).font(.body_bold).foregroundColor(.black) + Text(.visitReview4).font(.body_bold).foregroundColor(.main) + Text("!").font(.body_bold).foregroundColor(.black)
+                    
+                    visitReview
+                } else if localizationManager.language == .malaysia {
+                    let visitReview = Text(.visitReview1).font(.body_bold).foregroundColor(.black) + Text(.visitReview2).font(.body_bold).foregroundColor(.main) + Text(.visitReview3).font(.body_bold).foregroundColor(.black) + Text(.visitReview4).font(.body_bold).foregroundColor(.main) + Text("!").font(.body_bold).foregroundColor(.black)
+                    
+                    visitReview
+                } else {
+                    let visitReview = Text(.visitReview1).font(.body_bold).foregroundColor(.black) + Text(.visitReview2).font(.body_bold).foregroundColor(.main) + Text(.visitReview3).font(.body_bold).foregroundColor(.black) + Text(.visitReview4).font(.body_bold).foregroundColor(.main) + Text("!").font(.body_bold).foregroundColor(.black)
+                    
+                    visitReview
+                }
                 
                 HStack {
                     ZStack {
@@ -251,7 +282,7 @@ struct ReviewMainGridView: View {
                             if newValue.count > 200 {
                                 
                                 reviewContent = String(newValue.prefix(200))
-                                toastMessage = "내용은 200자 이내로 작성 가능합니다"
+                                toastMessage = LocalizedKey.content200.localized(for: localizationManager.language)
                                 showToast = true
                                 print("200자 초과")
                             }

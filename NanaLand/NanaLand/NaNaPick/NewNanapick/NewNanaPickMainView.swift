@@ -148,10 +148,12 @@ struct NanaPickRecommendView: View {
                         HStack(spacing: 0){
                             VStack(alignment: .leading, spacing: 0){
                                 Text(heading)
+                                    .lineLimit(1)
                                     .font(.body02_semibold)
                                     .foregroundColor(.white)
                                 
                                 Text(subHeading)
+                                    .lineLimit(1)
                                     .font(.title01_bold)
                                     .foregroundColor(.white)
                             }
@@ -176,6 +178,8 @@ struct NanaPickRecommendView: View {
                         .padding(.trailing, 5)
                     
                     Text(subHeading)
+                        .frame(width: 170)
+                        .lineLimit(1)
                         .font(.title02_bold)
                         .foregroundColor(.black)
                     
@@ -185,6 +189,8 @@ struct NanaPickRecommendView: View {
             } else {
                 HStack(spacing: 0){
                     Text(subHeading)
+                        .frame(width: 170)
+                        .lineLimit(1)
                         .font(.title02_bold)
                         .foregroundColor(.black)
                     

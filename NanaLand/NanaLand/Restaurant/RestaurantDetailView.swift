@@ -254,10 +254,11 @@ struct RestaurantDetailView: View {
                                             AppState.shared.navigationPath.append(ArticleDetailViewType.reportInfo(id: viewModel.state.getRestaurantDetailResponse.id, category: .restaurant))
                                         } label: {
                                             Text(.proposeUpdateInfo)
+                                                .padding()
                                                 .background(
                                                     RoundedRectangle(cornerRadius: 50.0)
                                                         .foregroundStyle(Color.gray2)
-                                                        .frame(width: 120, height: 40)
+                                                        .frame(height: 40)
                                                 )
                                                 .foregroundStyle(Color.white)
                                                 .font(.body02_bold)
@@ -266,7 +267,7 @@ struct RestaurantDetailView: View {
                                         
                                         VStack(spacing: 0) {
                                             HStack(spacing: 0) {
-                                                Text("후기")
+                                                Text(.review)
                                                     .font(.title01_bold)
                                                     .padding(.trailing, 2)
                                                 Text("\(viewModel.state.getReviewDataResponse.totalElements)")
@@ -308,7 +309,9 @@ struct RestaurantDetailView: View {
                                                                     }
                                                                     
                                                                     HStack(spacing: 0) {
-                                                                        Text("리뷰 \(viewModel.state.getReviewDataResponse.data[index].memberReviewCount ?? 0)")
+                                                                        Text(.review)
+                                                                            .font(.caption01)
+                                                                        Text(" \(viewModel.state.getReviewDataResponse.data[index].memberReviewCount ?? 0)")
                                                                             .font(.caption01)
                                                                         Text(" | ")
                                                                             .font(.caption01)
@@ -326,7 +329,7 @@ struct RestaurantDetailView: View {
                                                                     Button(action: {
                                                                         AppState.shared.navigationPath.append(ReviewType.detailReivew(id: viewModel.state.getReviewDataResponse.data[index].id, category: "RESTAURANT"))
                                                                     }, label: {
-                                                                        Text("수정")
+                                                                        Text(.modify)
                                                                             .font(.caption01)
                                                                             .foregroundColor(.gray1)
                                                                             .padding(EdgeInsets(top: 4, leading: 12, bottom: 4, trailing: 12))
@@ -339,7 +342,7 @@ struct RestaurantDetailView: View {
                                                                     Button(action: {
                                                                         showAlert = true
                                                                     }, label: {
-                                                                        Text("삭제")
+                                                                        Text(.delete)
                                                                             .font(.caption01)
                                                                             .foregroundColor(.gray1)
                                                                             .padding(EdgeInsets(top: 4, leading: 12, bottom: 4, trailing: 12))
@@ -359,7 +362,7 @@ struct RestaurantDetailView: View {
                                                                                     await getReviewData(id: id, category: "RESTAURANT", page: 0, size: 12)
                                                                                 }
                                                                             } label: {
-                                                                                Text("네")
+                                                                                Text(.yes)
                                                                                     .font(.title02_bold)
                                                                                     .foregroundStyle(Color.black)
                                                                             }
@@ -367,7 +370,7 @@ struct RestaurantDetailView: View {
                                                                             Button {
                                                                                 showAlert = false
                                                                             } label: {
-                                                                                Text("아니오")
+                                                                                Text(.no)
                                                                                     .font(.title02_bold)
                                                                                     .foregroundStyle(Color.main)
                                                                             }
@@ -645,9 +648,7 @@ struct RestaurantDetailView: View {
                             // Todo - 리뷰 작성
                             AppState.shared.navigationPath.append(ReviewType.review)
                         } label: {
-                            Text("후기 작성하기")
-                                .padding(.leading, (Constants.screenWidth) * (96 / 360))
-                                .padding(.trailing, (Constants.screenWidth) * (96 / 360))
+                            Text(.writeReview)
                                 .font(.body_bold)
                                 .foregroundStyle(Color.white)
                                 .background(RoundedRectangle(cornerRadius: 50).foregroundStyle(Color.main).frame(width: Constants.screenWidth * (28 / 36), height: 40))
