@@ -35,8 +35,16 @@ struct LocationModalView: View {
         "항공레저": "AIR_LEISURE",
         "해양체험": "MARINE_EXPERIENCE",
         "농촌체험": "RURAL_EXPERIENCE",
-        "힐링테라피": "HEALING_THERAPHY"
-    ]
+        "힐링테라피": "HEALING_THERAPHY",
+        "역사": "HISTORY",
+        "전시회": "EXHIBITION",
+        "공방": "WORKSHOP",
+        "미술관": "ART_MUSEUM",
+        "박물관": "MUSEUM",
+        "공원": "PARK",
+        "공연": "PERFORMANCE",
+        "종교시설": "RELIGIOUS_FACILITY",
+        "테마파크": "THEME_PARK"    ]
     
     let restaurantTranslations = [
         "한식": "KOREAN",
