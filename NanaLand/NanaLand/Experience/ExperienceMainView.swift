@@ -230,6 +230,7 @@ struct ExperienceMainGridView: View {
             }
         }
         .onAppear {
+            viewModel.state.page = 0
             Task {
                 if location == LocalizedKey.allLocation.localized(for: LocalizationManager().language) { // 지역 필터링
                     APIKeyword = keyword.replacingOccurrences(of: "수상레저", with: "WATER_LEISURE")
