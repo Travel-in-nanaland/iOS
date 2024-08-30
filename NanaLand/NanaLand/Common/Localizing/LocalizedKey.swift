@@ -427,6 +427,7 @@ enum LocalizedKey: String {
     case noReview
     case noDescription
     case noNotice
+    case seeAll
 
     // MARK: - 제주 맛집
     case type
@@ -450,6 +451,8 @@ enum LocalizedKey: String {
     case service
     case instagram
     case currency
+    case folding
+    case opening
     
     //MARK: - 언어 설정
     case greeting

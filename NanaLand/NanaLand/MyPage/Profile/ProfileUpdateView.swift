@@ -18,7 +18,6 @@ struct ProfileUpdateView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var isShowingImagePicker = false
     @State private var selectedImage: UIImage?
-    @State private var duplicateText = "해당 닉네임은 다른사용자가 사용 중입니다."
     @StateObject var viewModel = ProfileUpdateViewModel()
     @EnvironmentObject var localizationManager: LocalizationManager
     let specialCharacters = CharacterSet.punctuationCharacters.union(.symbols).union(.nonBaseCharacters)
@@ -36,8 +35,8 @@ struct ProfileUpdateView: View {
                             .renderingMode(.template)
                             .foregroundStyle(Color.black)
                     })
-                    .customAlert("정말 나가시겠습니까?", isPresented: $showAlert) {
-                        Text("지금 나가시면,\n작성 중인 내용이 삭제됩니다.")
+                    .customAlert(LocalizedKey.reviewBackAlertTitle.localized(for: localizationManager.language), isPresented: $showAlert) {
+                        Text(.reviewBackAlertMessage)
                             .font(.body01)
                             .foregroundStyle(Color.gray1)
                             .padding(.top, 5)
@@ -49,7 +48,7 @@ struct ProfileUpdateView: View {
                                     dismiss()
                                 }
                             } label: {
-                                Text("네")
+                                Text(.yes)
                                     .font(.title02_bold)
                                     .foregroundStyle(Color.black)
                             }
@@ -58,7 +57,7 @@ struct ProfileUpdateView: View {
                                     showAlert = false
                                 }
                             } label: {
-                                Text("아니오")
+                                Text(.no)
                                     .font(.title02_bold)
                                     .foregroundStyle(Color.main)
                             }
@@ -162,21 +161,21 @@ struct ProfileUpdateView: View {
                                 
                                 if nickName.count > 8 {
                                     Text(
-                                        (LocalizedKey.nickNameTypingLimitError.localized(for: localizationManager.language)))
+                                        (LocalizedKey.invalidNickname.localized(for: localizationManager.language)))
                                     .font(.caption01)
                                     .foregroundStyle(.red)
                                     .padding(.leading, 4)
                                     .padding(.top, 8)
                                     .frame(height: 30)
                                 } else if containsSpecialCharacter(nickName){
-                                    Text(LocalizedKey.nickNameContainSpecialCharacterError.localized(for: localizationManager.language))
+                                    Text(LocalizedKey.onlyCharSpaceNumberNickname.localized(for: localizationManager.language))
                                         .font(.caption01)
                                         .foregroundStyle(.red)
                                         .padding(.leading, 4)
                                         .padding(.top, 8)
                                         .frame(height: 30)
                                 } else if viewModel.state.isDuplicate {
-                                    Text(LocalizedKey.nickNameDuplicateError.localized(for: localizationManager.language))
+                                    Text(LocalizedKey.duplicatedNickname.localized(for: localizationManager.language))
                                         .font(.caption01)
                                         .foregroundStyle(.red)
                                         .padding(.leading, 4)

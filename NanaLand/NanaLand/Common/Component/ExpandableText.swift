@@ -23,7 +23,7 @@ struct ExpandableText: View {
         if !truncated {
             return ""
         } else {
-            return self.expanded ? "접기" : "더 보기"
+            return self.expanded ? LocalizedKey.folding.localized(for: LocalizationManager().language) : LocalizedKey.opening.localized(for: LocalizationManager().language)
         }
     }
     

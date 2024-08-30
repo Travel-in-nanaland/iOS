@@ -131,6 +131,7 @@ struct MyAllReviewView: View {
 
 struct MyReviewArticleItemView: View {
     @StateObject var viewModel: MyAllReviewViewModel
+    @EnvironmentObject var localizationManager: LocalizationManager
     var placeName: String
     var rating: Int
     var images: [AllReviewDetailImagesList]?
@@ -170,7 +171,7 @@ struct MyReviewArticleItemView: View {
                     Button(action: {
                         AppState.shared.navigationPath.append(reviewType.detailReivew(id: id, category: category))
                     }, label: {
-                        Text("수정")
+                        Text(.modify)
                             .font(.caption01)
                             .foregroundColor(.gray1)
                             .padding(EdgeInsets(top: 4, leading: 12, bottom: 4, trailing: 12))
@@ -183,7 +184,7 @@ struct MyReviewArticleItemView: View {
                     Button(action: {
                         showAlert = true
                     }, label: {
-                        Text("삭제")
+                        Text(.delete)
                             .font(.caption01)
                             .foregroundColor(.gray1)
                             .padding(EdgeInsets(top: 4, leading: 12, bottom: 4, trailing: 12))
@@ -192,7 +193,7 @@ struct MyReviewArticleItemView: View {
                                     .foregroundColor(.gray3)
                             }
                     })
-                    .customAlert("해당 리뷰를\n 삭제하시겠습니까?", isPresented: $showAlert) {
+                    .customAlert(LocalizedKey.reviewDeleteMessage.localized(for: localizationManager.language), isPresented: $showAlert) {
                         
                     } actions: {
                         MultiButton{
@@ -203,7 +204,7 @@ struct MyReviewArticleItemView: View {
                                     await getAllReviewItem(page: 0, size: 12)
                                 }
                             } label: {
-                                Text("네")
+                                Text(.yes)
                                     .font(.title02_bold)
                                     .foregroundStyle(Color.black)
                             }
@@ -211,7 +212,7 @@ struct MyReviewArticleItemView: View {
                             Button {
                                 showAlert = false
                             } label: {
-                                Text("아니오")
+                                Text(.no)
                                     .font(.title02_bold)
                                     .foregroundStyle(Color.main)
                             }

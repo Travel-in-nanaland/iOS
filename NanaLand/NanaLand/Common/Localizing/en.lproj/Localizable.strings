@@ -59,7 +59,7 @@
 
 
 //MARK: - Error/Alert
-"duplicatedNickname" = "This nickname is already in use by another user.";
+"duplicatedNickname" = "That nickname is being used by another user.";
 "invalidNickname" = "This nickname cannot be used.";
 "onlyCharSpaceNumberNickname" = "Nicknames can only contain letters, spaces, and numbers.";
 "logoutAlertTitle" = "Are you sure\nyou want to log out?";
@@ -411,12 +411,14 @@ the market is the place!";
 "reviewSeeMore" = "See more reviews";
 "reviewDeleteMessage" = "Do you want to\n delete this review?";
 
-"notice" = "Notice";
+//MARK: - 마이페이지
+"notice" = "Announcement";
 "testAgain" = "To Test Again";
 "noNickname" = "No Nickname";
 "noReview" = "후기를 남겨 나만의 경험을 기록하세요!";
-"noDescription" = "나를 한 줄로 표현해보세요!";
+"noDescription" = "Express yourself in one line!";
 "noNotice" = "공지사항이 존재하지 않습니다";
+"seeAll" = "See all";
 
 // MARK: - 제주 맛집
 "type" = "Type";
@@ -440,6 +442,8 @@ the market is the place!";
 "service" = "Services provided";
 "instagram" = "Instagram";
 "currency" = "원";
+"folding" = "접기";
+"opening" = "더 보기";
 
 //MARK: - 언어 설정
 "greeting" = "Hello!\nNice to meet you 👋";

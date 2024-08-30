@@ -7,7 +7,7 @@
 */
 //MARK: - Common
 "resultCount" = " Results";
-"charCount" = "characters";
+"charCount" = "ký tự";
 "confirm" = "Confirm";
 "next" = "Next";
 "requiredWithBracket" = "(Required)";
@@ -24,7 +24,7 @@
 "home" = "Home";
 "favorite" = "Favorites";
 "jejuStory" = "Jeju Stories";
-"myNana" = "My Nana";
+"myNana" = "Nana của tôi";
 
 //MARK: - Category
 "all" = "ALL";
@@ -59,7 +59,7 @@
 
 
 //MARK: - Error/Alert
-"duplicatedNickname" = "This nickname is already in use by another user.";
+"duplicatedNickname" = "Biệt danh đó đang được sử dụng bởi người dùng khác.";
 "invalidNickname" = "This nickname cannot be used.";
 "onlyCharSpaceNumberNickname" = "Nicknames can only contain letters, spaces, and numbers.";
 "logoutAlertTitle" = "Are you sure\nyou want to log out?";
@@ -71,7 +71,7 @@
 "openAppstore" = "Move to App Store";
 
 //MARK: - TypeTest
-"skipTypeTest" = "Skip the test";
+"skipTypeTest" = "Bỏ qua bài kiểm tra";
 // Question
 "typeTest1Q1L" = "%@";
 "typeTest1Q2L" = "your travel style?";
@@ -145,22 +145,22 @@
 
 //MARK: - MyPage
 // main
-"editProfile" = "Edit Profile";
+"editProfile" = "Chỉnh sửa hồ sơ";
 "mynana" = "my nana";
 "loginRequired" = "Login is required";
 "none" = "None";
 "travelType" = "Travel Type";
 "goTest" = "Testing";
 "retest" = "retest";
-"introduction" = "introduction";
+"introduction" = "Giới thiệu";
 
 // editProfile
-"nickName" = "Nickname";
-"complete" = "Update";
+"nickName" = "Biệt danh";
+"complete" = "Chỉnh sửa hoàn tất";
 "nickNameTypingLimitError" = "This nickname cannot be used.";
 "nickNameDuplicateError"= "This nickname is already in use by another user.";
 "nickNameContainSpecialCharacterError" = "Nicknames can only contain letters, spaces, and numbers.";
-"introduceTypingLimitError" = "The introduction must be within 70 characters.";
+"introduceTypingLimitError" = "Giới thiệu có thể được viết trong 70 ký tự hoặc ít hơn.";
 
 // deleteAlert
 "deleteAlertTitle" = "Do you want to delete\nthe changes?";
@@ -411,12 +411,14 @@ the market is the place!";
 "reviewSeeMore" = "Xem thêm đánh giá";
 "reviewDeleteMessage" = "Bạn có muốn\n xóa đánh giá này không?";
 
-"notice" = "Notice";
+//MARK: - 마이페이지
+"notice" = "Thông báo";
 "testAgain" = "To Test Again";
 "noNickname" = "No Nickname";
 "noReview" = "후기를 남겨 나만의 경험을 기록하세요!";
-"noDescription" = "나를 한 줄로 표현해보세요!";
+"noDescription" = "Thể hiện bản thân bạn trong một dòng!";
 "noNotice" = "공지사항이 존재하지 않습니다";
+"seeAll" = "Xem tất cả";
 
 // MARK: - 제주 맛집
 "type" = "Loại";
@@ -440,6 +442,8 @@ the market is the place!";
 "service" = "Các dịch vụ cung cấp";
 "instagram" = "Instagram";
 "currency" = "원";
+"folding" = "접기";
+"opening" = "더 보기";
 
 //MARK: - 언어 설정
 "greeting" = "Hello!\nNice to meet you 👋";

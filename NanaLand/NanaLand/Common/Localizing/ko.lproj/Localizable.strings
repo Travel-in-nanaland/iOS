@@ -401,12 +401,14 @@
 "reviewSeeMore" = "후기 더보기";
 "reviewDeleteMessage" = "해당 후기를\n삭제하시겠습니까?";
 
+//MARK: - 마이페이지
 "notice" = "공지사항";
 "testAgain" = "테스트 다시하기";
 "noNickname" = "닉네임 없음";
 "noReview" = "후기를 남겨 나만의 경험을 기록하세요!";
 "noDescription" = "나를 한 줄로 표현해보세요!";
 "noNotice" = "공지사항이 존재하지 않습니다";
+"seeAll" = "모두 보기";
 
 // MARK: - 제주 맛집
 "type" = "종류";
@@ -430,6 +432,8 @@
 "service" = "제공 서비스";
 "instagram" = "인스타그램";
 "currency" = "원";
+"folding" = "접기";
+"opening" = "더 보기";
 
 //MARK: - 언어 설정
 "greeting" = "안녕하세요!\n반갑습니다 👋";
