@@ -109,6 +109,7 @@ struct RestaurantKeywordView: View {
                 Task {
                     viewModel.state.getRestaurantMainResponse = RestaurantMainModel(totalElements: 0, data: [])
                     await getKeywordRestaurantMainItem(keyword: selectedKeyword.joined(separator: ","), address: address == LocalizedKey.allLocation.localized(for: LocalizationManager().language) ? "" : address, page: 0, size: 12)
+                    viewModel.state.page = 0
                     if keyword.isEmpty {
                         keyword = LocalizedKey.type.localized(for: localizationManager.language)
                     }

@@ -351,7 +351,7 @@ struct RestaurantDetailView: View {
                                                                                     .foregroundColor(.gray3)
                                                                             }
                                                                     })
-                                                                    .customAlert("해당 리뷰를\n 삭제하시겠습니까?", isPresented: $showAlert) {
+                                                                    .customAlert(LocalizedKey.reviewDeleteMessage.localized(for: localizationManager.language), isPresented: $showAlert) {
                                                                         
                                                                     } actions: {
                                                                         MultiButton{
@@ -450,7 +450,8 @@ struct RestaurantDetailView: View {
                                                                     }
                                                                     
                                                                     HStack(spacing: 0) {
-                                                                        Text("리뷰 \(viewModel.state.getReviewDataResponse.data[index].memberReviewCount ?? 0)")
+                                                                        Text(.review)
+                                                                            .font(.caption01) + Text(" \(viewModel.state.getReviewDataResponse.data[index].memberReviewCount ?? 0)")
                                                                             .font(.caption01)
                                                                         Text(" | ")
                                                                             .font(.caption01)
@@ -568,7 +569,7 @@ struct RestaurantDetailView: View {
                                                 // TODO: - 후기 모두 보기(각 컨텐츠 별)
                                                 AppState.shared.navigationPath.append(ReviewType.reviewAll(id: id))
                                             } label: {
-                                                Text("후기 더보기")
+                                                Text(.reviewSeeMore)
                                                     .foregroundStyle(Color.gray1)
                                                     .font(.body_bold)
                                             }

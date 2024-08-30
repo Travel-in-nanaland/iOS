@@ -63,9 +63,9 @@ struct RestaurantMainGridView: View {
         
         VStack {
             HStack(spacing: 0) {
-                Text("\(viewModel.state.getRestaurantMainResponse.totalElements) " + .count)
-                    .padding(.leading, 16)
-                    .foregroundStyle(Color.gray1)
+//                Text("\(viewModel.state.getRestaurantMainResponse.totalElements) " + .count)
+//                    .padding(.leading, 16)
+//                    .foregroundStyle(Color.gray1)
                 
                 Spacer()
                 

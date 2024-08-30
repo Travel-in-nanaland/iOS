@@ -398,6 +398,8 @@
 "reviewBackAlertMessage" = "지금 나가시면,\n작성 중인 내용이 삭제됩니다.";
 "content200" = "내용은 200자 이내로 작성 가능합니다.";
 "modify" = "수정";
+"reviewSeeMore" = "후기 더보기";
+"reviewDeleteMessage" = "해당 후기를\n삭제하시겠습니까?";
 
 "notice" = "공지사항";
 "testAgain" = "테스트 다시하기";
