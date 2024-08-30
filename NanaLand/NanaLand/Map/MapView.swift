@@ -59,8 +59,12 @@ struct MapView: View {
             langSuffix = "중국어"
         case .korean:
             langSuffix = "한국어"
+        case .malaysia:
+            langSuffix = "영어"
+        case .vietnam:
+            langSuffix = "영어"
         default:
-            langSuffix = "한국어"
+            langSuffix = "영어"
         }
         
         let localizedLocation = locationKey.localized(for: .korean)

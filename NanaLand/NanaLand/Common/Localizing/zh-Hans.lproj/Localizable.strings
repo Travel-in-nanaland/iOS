@@ -391,7 +391,7 @@
 "visitReview2" = "写下";
 "visitReview3" = "一个";
 "visitReview4" = "访问评价";
-"writeContent" = "내용을 작성해 주세요";
+"writeContent" = "请填写详细信息";
 "addKeyword" = "添加关键词";
 "upload" = "上传";
 "keywordDescription" = "*您必须选择至少3个项目，最多可以选择6个项目。";
@@ -420,3 +420,5 @@
 "reviewBackAlertTitle" = "您确定要离开吗?";
 "reviewBackAlertMessage" = "如果您现在离开，\n您正在写的内容将被删除。";
 "content200" = "内容可在200个字符内书写。";
+"reviewSeeMore" = "查看更多评论";
+"reviewDeleteMessage" = "您确定要删除此评论吗？\n";

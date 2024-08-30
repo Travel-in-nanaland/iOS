@@ -379,7 +379,7 @@ the market is the place!";
 "visitReview2" = "viết ";
 "visitReview3" = "một ";
 "visitReview4" = "đánh giá sau chuyến thăm";
-"writeContent" = "내용을 작성해 주세요";
+"writeContent" = "Vui lòng điền vào chi tiết";
 "addKeyword" = "Thêm từ khóa";
 "upload" = "Nâng cao";
 "keywordDescription" = "*Bạn phải chọn ít nhất 3 mục và có thể chọn tối đa 6 mục.";
@@ -408,6 +408,8 @@ the market is the place!";
 "reviewBackAlertTitle" = "Bạn có chắc chắn muốn rời đi không?";
 "reviewBackAlertMessage" = "Nếu bạn rời đi bây giờ,\nNhững gì bạn đang viết sẽ bị xóa.";
 "content200" = "Nội dung có thể được viết trong vòng 200 ký tự.";
+"reviewSeeMore" = "Xem thêm đánh giá";
+"reviewDeleteMessage" = "Bạn có muốn\n xóa đánh giá này không?";
 
 "notice" = "Notice";
 "testAgain" = "To Test Again";

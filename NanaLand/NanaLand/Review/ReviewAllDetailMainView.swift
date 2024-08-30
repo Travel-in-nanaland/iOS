@@ -12,6 +12,7 @@ import CustomAlert
 // (디테일페이지 -> 후기 더보기 눌렀을 때 나오는 모든 후기 뷰)
 struct ReviewAllDetailMainView: View {
     @StateObject var viewModel = ReviewAllDetailMainViewModel()
+    @EnvironmentObject var localizationManager: LocalizationManager
     @State private var isAPICalled = false
     @State private var contentIsOn: [Bool] = []
     @State private var reportModal = false
@@ -28,7 +29,7 @@ struct ReviewAllDetailMainView: View {
                 if isAPICalled {
                     VStack(spacing: 0) {
                         HStack(spacing: 0) {
-                            Text("후기")
+                            Text(.review)
                                 .font(.title01_bold)
                                 .padding(.trailing, 2)
                             Text("\(viewModel.state.getReviewDataResponse.totalElements)")
@@ -72,7 +73,9 @@ struct ReviewAllDetailMainView: View {
                                                 }
                                                 
                                                 HStack(spacing: 0) {
-                                                    Text("리뷰 \(viewModel.state.getReviewDataResponse.data[index].memberReviewCount ?? 0)")
+                                                    Text(.review)
+                                                        .font(.caption01) +
+                                                    Text(" \(viewModel.state.getReviewDataResponse.data[index].memberReviewCount ?? 0)")
                                                         .font(.caption01)
                                                     Text(" | ")
                                                         .font(.caption01)
@@ -90,7 +93,7 @@ struct ReviewAllDetailMainView: View {
                                                 Button(action: {
                                                     AppState.shared.navigationPath.append(ExperienceViewType.detailReivew(id: viewModel.state.getReviewDataResponse.data[index].id, category: reviewCategory))
                                                 }, label: {
-                                                    Text("수정")
+                                                    Text(.modify)
                                                         .font(.caption01)
                                                         .foregroundColor(.gray1)
                                                         .padding(EdgeInsets(top: 4, leading: 12, bottom: 4, trailing: 12))
@@ -103,7 +106,7 @@ struct ReviewAllDetailMainView: View {
                                                 Button(action: {
                                                     showAlert = true
                                                 }, label: {
-                                                    Text("삭제")
+                                                    Text(.delete)
                                                         .font(.caption01)
                                                         .foregroundColor(.gray1)
                                                         .padding(EdgeInsets(top: 4, leading: 12, bottom: 4, trailing: 12))
@@ -112,7 +115,7 @@ struct ReviewAllDetailMainView: View {
                                                                 .foregroundColor(.gray3)
                                                         }
                                                 })
-                                                .customAlert("해당 리뷰를\n 삭제하시겠습니까?", isPresented: $showAlert) {
+                                                .customAlert(LocalizedKey.reviewDeleteMessage.localized(for: localizationManager.language), isPresented: $showAlert) {
                                                     
                                                 } actions: {
                                                     MultiButton{
@@ -123,7 +126,7 @@ struct ReviewAllDetailMainView: View {
                                                                 await getReviewData(id: id, category: reviewCategory, page: 0, size: 12)
                                                             }
                                                         } label: {
-                                                            Text("네")
+                                                            Text(.yes)
                                                                 .font(.title02_bold)
                                                                 .foregroundStyle(Color.black)
                                                         }
@@ -131,7 +134,7 @@ struct ReviewAllDetailMainView: View {
                                                         Button {
                                                             showAlert = false
                                                         } label: {
-                                                            Text("아니오")
+                                                            Text(.no)
                                                                 .font(.title02_bold)
                                                                 .foregroundStyle(Color.main)
                                                         }
@@ -233,7 +236,9 @@ struct ReviewAllDetailMainView: View {
                                                 }
                                                 
                                                 HStack(spacing: 0) {
-                                                    Text("리뷰 \(viewModel.state.getReviewDataResponse.data[index].memberReviewCount ?? 0)")
+                                                    Text(.review)
+                                                        .font(.caption01) +
+                                                    Text(" \(viewModel.state.getReviewDataResponse.data[index].memberReviewCount ?? 0)")
                                                         .font(.caption01)
                                                     Text(" | ")
                                                         .font(.caption01)

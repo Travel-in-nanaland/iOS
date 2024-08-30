@@ -46,22 +46,24 @@ struct LocationModalView: View {
         "종교시설": "RELIGIOUS_FACILITY",
         "테마파크": "THEME_PARK"    ]
     
-    let restaurantTranslations = [
-        "한식": "KOREAN",
-        "중식": "CHINESE",
-        "일식": "JAPANESE",
-        "양식": "WESTERN",
-        "분식": "SNACK",
-        "남미 음식": "SOUTH_AMERICAN",
-        "동남아 음식": "SOUTHEAST_ASIAN",
-        "비건푸드": "VEGAN",
-        "할랄푸드": "HALAL",
-        "육류/흑돼지": "MEAT_BLACK_PORK",
-        "해산물": "SEAFOOD",
-        "치킨/버거": "CHICKEN_BURGER",
-        "카페/디저트": "CAFE_DESSERT",
-        "펍/요리주점": "PUB_FOOD_PUB"
-    ]
+    var restaurantTranslations: [String: String] {
+        return [
+            LocalizedKey.koreanFood.localized(for: localizationManager.language) : "KOREAN",
+            LocalizedKey.chineseFood.localized(for: localizationManager.language) : "CHINESE",
+            LocalizedKey.japaneseFood.localized(for: localizationManager.language) : "JAPANESE",
+            LocalizedKey.westernFood.localized(for: localizationManager.language) : "WESTERN",
+            LocalizedKey.snacks.localized(for: localizationManager.language) : "SNACK",
+            LocalizedKey.southAmericanFood.localized(for: localizationManager.language) : "SOUTH_AMERICAN",
+            LocalizedKey.southeastAsianFood.localized(for: localizationManager.language) : "SOUTHEAST_ASIAN",
+            LocalizedKey.vegan.localized(for: localizationManager.language) : "VEGAN",
+            LocalizedKey.halalFood.localized(for: localizationManager.language) : "HALAL",
+            LocalizedKey.meatblackpork.localized(for: localizationManager.language) : "MEAT_BLACK_PORK",
+            LocalizedKey.seaFood.localized(for: localizationManager.language) : "SEAFOOD",
+            LocalizedKey.chickenBurger.localized(for: localizationManager.language) : "CHICKEN_BURGER",
+            LocalizedKey.cafeDessert.localized(for: localizationManager.language) : "CAFE_DESSERT",
+            LocalizedKey.pubRestaurant.localized(for: localizationManager.language) : "PUB_FOOD_PUB"
+        ]
+    }
     
     var locationArray: [LocalizedKey] = [
         .jejuCity,
@@ -199,6 +201,7 @@ struct LocationModalView: View {
                     if title == "이번달" {
                         viewModel.state.getFestivalMainResponse = FestivalModel(totalElements: 0, data: [])
                         await getLocationFestivalMainItem(page: 0, size: 18, filterName: selectedLocationStrings.joined(separator: ","), start: startDate, end: endDate)
+                        viewModel.state.page = 0
                         viewModel.state.selectedLocation = selectedLocation
                     } else if title == "종료된" {
                         viewModel.state.getFestivalMainResponse = FestivalModel(totalElements: 0, data: [])
@@ -229,13 +232,14 @@ struct LocationModalView: View {
                         experienceViewModel.state.page = 0
                         experienceViewModel.state.selectedLocation = selectedLocation
                         
-                    } else if title == "제주 맛집" {
+                    } else if title == LocalizedKey.restaurant.localized(for: localizationManager.language) {
                         restaurantModel.state.getRestaurantMainResponse = RestaurantMainModel(totalElements: 0, data: []) // 초기화
                         APIKeyword = keyword
                         for (key, value) in restaurantTranslations {
                             APIKeyword = APIKeyword.replacingOccurrences(of: key, with: value)
                         }
-                        await getLocationRestaurantMainItem(filterName: selectedLocationStrings.joined(separator: ","), page: 0, size: 12, keyword: keyword == "종류" ? "" : APIKeyword)
+                        await getLocationRestaurantMainItem(filterName: selectedLocationStrings.joined(separator: ","), page: 0, size: 12, keyword: keyword == LocalizedKey.type.localized(for: localizationManager.language) ? "" : APIKeyword)
+                        restaurantModel.state.page = 0
                         restaurantModel.state.selectedLocation = selectedLocation
                     }
                     
