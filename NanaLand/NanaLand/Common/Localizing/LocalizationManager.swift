@@ -107,4 +107,3 @@ enum Language: String, CaseIterable {
 		}
 	}
 }
-

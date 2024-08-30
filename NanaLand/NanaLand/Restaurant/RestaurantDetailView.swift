@@ -392,10 +392,7 @@ struct RestaurantDetailView: View {
                                                                             .padding(.leading, 10)
                                                                             .padding(.bottom, 5)
                                                                     }
-                                                                    
                                                                 }
-                                                                
-                                                                
                                                             }
                                                             HStack(alignment: .bottom, spacing: 0) {
                                                                 ExpandableText("\(viewModel.state.getReviewDataResponse.data[index].content ?? "")", lineLimit: 2)

@@ -375,6 +375,8 @@
 "service" = "提供的服务";
 "instagram" = "Instagram";
 "currency" = "원";
+"folding" = "접기";
+"opening" = "더 보기";
 
 // MARK: - 후기
 "blank" = "";
@@ -422,3 +424,12 @@
 "content200" = "内容可在200个字符内书写。";
 "reviewSeeMore" = "查看更多评论";
 "reviewDeleteMessage" = "您确定要删除此评论吗？\n";
+
+//MARK: - 마이페이지
+"notice" = "公告";
+"testAgain" = "To Test Again";
+"noNickname" = "No Nickname";
+"noReview" = "후기를 남겨 나만의 경험을 기록하세요!";
+"noDescription" = "用一句话变现自己！";
+"noNotice" = "공지사항이 존재하지 않습니다";
+"seeAll" = "查看全部";

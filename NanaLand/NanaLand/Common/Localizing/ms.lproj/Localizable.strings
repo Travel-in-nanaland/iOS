@@ -59,7 +59,7 @@
 
 
 //MARK: - Error/Alert
-"duplicatedNickname" = "Nama panggilan ini sudah digunakan oleh pengguna lain.";
+"duplicatedNickname" = "Nama samaran tersebut sedang digunakan oleh pengguna lain.";
 "invalidNickname" = "Nama panggilan ini tidak boleh digunakan.";
 "onlyCharSpaceNumberNickname" = "Nama panggilan hanya boleh mengandungi huruf, ruang, dan nombor.";
 "logoutAlertTitle" = "Adakah anda benar-benar ingin log keluar?";
@@ -379,6 +379,8 @@ mengembalikan sebarang hasil.";
 "service" = "Perkhidmatan yang disediakan";
 "instagram" = "Instagram";
 "currency" = "원";
+"folding" = "접기";
+"opening" = "더 보기";
 
 // MARK: - 후기
 "blank" = "";
@@ -426,3 +428,12 @@ mengembalikan sebarang hasil.";
 "content200" = "Kandungan boleh ditulis dalam 200 aksara.";
 "reviewSeeMore" = "Lihat lebih banyak ulasan";
 "reviewDeleteMessage" = "Adakah anda mahu\n memadam ulasan ini?";
+
+//MARK: - 마이페이지
+"notice" = "Pengumuman";
+"testAgain" = "To Test Again";
+"noNickname" = "No Nickname";
+"noReview" = "후기를 남겨 나만의 경험을 기록하세요!";
+"noDescription" = "Luahkan diri anda dalam satu baris!";
+"noNotice" = "공지사항이 존재하지 않습니다";
+"seeAll" = "Lihat semua";

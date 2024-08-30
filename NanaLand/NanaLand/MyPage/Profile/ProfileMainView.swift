@@ -79,7 +79,7 @@ struct ProfileMainView: View {
     
     private var navigationBar: some View {
         ZStack {
-            NanaNavigationBar(title: .mynana)
+            NanaNavigationBar(title: .myNana)
             
             HStack(spacing: 0) {
                 Spacer()
@@ -412,7 +412,7 @@ struct reviewTabView: View {
                                 
                                 +
                                 
-                                Text(" 모두 보기 >")
+                                Text(" \(LocalizedKey.seeAll.localized(for: LocalizationManager().language)) >")
                                     .font(.body02_semibold)
                                     .foregroundColor(.black)
                             })
@@ -426,7 +426,7 @@ struct reviewTabView: View {
                                 HStack{
                                     Image("icPencilMain")
                                     
-                                    Text("리뷰 작성하기")
+                                    Text(.writeReview)
                                         .font(.caption01_semibold)
                                         .foregroundColor(.black)
                                         .padding(EdgeInsets(top: 0, leading: -3, bottom: 0, trailing: 3))
@@ -505,7 +505,7 @@ struct noticeTabView: View {
                                     .foregroundColor(.main)
                                 
                                 +
-                                Text(" 모두 보기 >")
+                                Text(" \(LocalizedKey.seeAll.localized(for: LocalizationManager().language)) >")
                                     .font(.body02_semibold)
                                     .foregroundColor(.black)
                             })
