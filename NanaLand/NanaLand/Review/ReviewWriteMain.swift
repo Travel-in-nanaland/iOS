@@ -264,7 +264,7 @@ struct ReviewMainGridView: View {
                     
                     TextEditor(text: $reviewContent)
                         .font(.body02)
-                        .foregroundColor(.gray1)
+                        .foregroundColor(.black)
                         .padding(4)
                         .background(Color.white)
                         .cornerRadius(8)
@@ -334,13 +334,14 @@ struct ReviewMainGridView: View {
                         Spacer()
                     }
                     MainTagView(tags: Array(viewModel.selectedKeyword.dropFirst()), keywordViewModel: viewModel, localizationManager: _localizationManager)
+                        .padding(.leading, -5)
                 }
                 .padding()
                 
                 ZStack {
                     RoundedRectangle(cornerRadius: 50)
                         .foregroundColor((viewModel.selectedKeyword.count < 3 || reviewContent.count == 0 || viewModel.state.getReviewWriteResponse.rating == 0) ? .main10P : .main)
-                        .frame(width: 370, height: 50)
+                        .frame(width: 360, height: 50)
                     Button {
                         Task {
                             for i in 0..<viewModel.selectedKeyword.count {

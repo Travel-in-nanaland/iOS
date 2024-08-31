@@ -279,7 +279,7 @@ struct ExperienceDetailView: View {
                                                     .foregroundStyle(Color.gray2)
                                                     .frame(width: 120, height: 40)
                                             )
-                                            .foregroundStyle(Color.white)
+                                            .foregroundStyle(Color.gray1)
                                             .font(.body02_bold)
                                             .padding(.bottom, 10)
                                     }

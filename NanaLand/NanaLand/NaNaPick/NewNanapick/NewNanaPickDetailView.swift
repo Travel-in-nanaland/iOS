@@ -172,6 +172,10 @@ struct NanaPickHeader: View {
 
 struct NewNaNaPickDetailMainView: View {
     @StateObject var viewModel: NewNanaPickDetailViewModel
+    @State private var selectedNum: Int = 0 // 인덱스를 관리하기 위해 Int로 변경
+    private let timer = Timer.publish(every: 2, on: .main, in: .common).autoconnect()
+    @State private var currentPage = 0
+    @State private var index = 0
     
     var body: some View {
         VStack(spacing: 0) {
@@ -244,13 +248,61 @@ struct NewNaNaPickDetailMainView: View {
                                         }
                                         .padding(.bottom, 20)
                                         
-                                        KFImage(URL(string: detail.images.first?.originUrl ?? ""))
-                                            .resizable()
-                                            .frame(height: (Constants.screenWidth - 32) * (176 / 328))
-                                            .clipShape(RoundedRectangle(cornerRadius: 12))
-                                            .padding(.leading, 16)
-                                            .padding(.trailing, 16)
-                                            .padding(.bottom, 16)
+                                        ZStack{
+                                            if detail.images.count == 1{
+                                                KFImage(URL(string: detail.images.first?.originUrl ?? ""))
+                                                    .resizable()
+                                                    .frame(height: (Constants.screenWidth - 32) * (176 / 328))
+                                                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                                                    .padding(.leading, 16)
+                                                    .padding(.trailing, 16)
+                                                    .padding(.bottom, 16)
+                                            } else {
+                                                TabView(selection: $selectedNum) {
+                                                    ForEach(detail.images.indices, id: \.self) { imageIndex in
+                                                        VStack{
+                                                            HStack{
+                                                                KFImage(URL(string: detail.images[imageIndex].originUrl))
+                                                                    .resizable()
+                                                                    .frame(height: (Constants.screenWidth - 32) * (176 / 328))
+                                                                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                                                                    .padding(.leading, 16)
+                                                                    .padding(.trailing, 16)
+                                                                    .padding(.bottom, 16)
+                                                                    .tag(imageIndex) // 인덱스를 태그로 설정
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                                .frame(height: (Constants.screenWidth - 32) * (196 / 328))
+                                                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                                                .onReceive(timer, perform: { _ in
+                                                    withAnimation {
+                                                        index = (index + 1) % detail.images.count
+                                                        selectedNum = index
+                                                        currentPage = index
+                                                    }
+                                                })
+                                                VStack(spacing: 0) {
+                                                    Spacer()
+                                                    HStack(spacing: 0) {
+                                                        Spacer()
+                                                        Text("\(index + 1) / \(detail.images.count)")
+                                                            .frame(width: 41, height: 20)
+                                                            .font(.caption02)
+                                                            .foregroundColor(.white)
+                                                            .overlay(
+                                                                RoundedRectangle(cornerRadius: 30)
+                                                                    .stroke(Color.white, lineWidth: 1) // 둥근 모서리와 테두리 추가
+                                                            )
+                                            
+                                                    }
+                                                    .padding(.bottom, 30)
+                                                    .padding(.trailing, 30)
+                                                   
+                                                }
+                                            }
+                                        }
                                         
                                         Text("\(detail.content)")
                                             .frame(width: (Constants.screenWidth - 32), alignment: .leading)
@@ -339,13 +391,43 @@ struct NewNaNaPickDetailMainView: View {
                                         }
                                         .padding(.bottom, 20)
                                         
-                                        KFImage(URL(string: detail.images.first?.originUrl ?? ""))
-                                            .resizable()
-                                            .frame(height: (Constants.screenWidth - 32) * (176 / 328))
-                                            .clipShape(RoundedRectangle(cornerRadius: 12))
-                                            .padding(.leading, 16)
-                                            .padding(.trailing, 16)
-                                            .padding(.bottom, 16)
+                                        ZStack{
+                                            if detail.images.count == 1{
+                                                KFImage(URL(string: detail.images.first?.originUrl ?? ""))
+                                                    .resizable()
+                                                    .frame(height: (Constants.screenWidth - 32) * (176 / 328))
+                                                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                                                    .padding(.leading, 16)
+                                                    .padding(.trailing, 16)
+                                                    .padding(.bottom, 16)
+                                            } else {
+                                                TabView(selection: $selectedNum) {
+                                                    ForEach(detail.images.indices, id: \.self) { imageIndex in
+                                                        KFImage(URL(string: detail.images[imageIndex].originUrl))
+                                                            .resizable()
+                                                            .frame(height: (Constants.screenWidth - 32) * (176 / 328))
+                                                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                                                            .padding(.leading, 16)
+                                                            .padding(.trailing, 16)
+                                                            .padding(.bottom, 16)
+                                                            .tag(imageIndex) // 인덱스를 태그로 설정
+                                                    }
+                                                }
+                                                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                                                .onReceive(timer, perform: { _ in
+                                                    withAnimation {
+                                                        index = (index + 1) % detail.images.count
+                                                        selectedNum = index
+                                                        currentPage = index
+                                                    }
+                                                })
+                                                VStack(spacing: 0) {
+                                                    Spacer()
+                                                    CustomPageIndicator(count: detail.images.count, currentPage: $currentPage)
+                                                }
+                                                .frame(height: 90)
+                                            }
+                                        }
                                         
                                         Text("\(detail.content)")
                                             .frame(width: (Constants.screenWidth - 32))
