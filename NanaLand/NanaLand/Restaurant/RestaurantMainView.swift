@@ -76,6 +76,7 @@ struct RestaurantMainGridView: View {
                         HStack(spacing: 0) {
                             Text(keyword.split(separator: ",").count >= 3 ? "\(keyword.split(separator: ",").prefix(2).joined(separator: ","))" + ".." : keyword.split(separator: ",").prefix(2).joined(separator: ","))
                                 .font(.gothicNeo(.medium, size: 12))
+                                .foregroundColor(Color.gray1)
                                 .lineLimit(1)
                                 .padding(.leading, 12)
                                 .truncationMode(.tail)
@@ -85,10 +86,10 @@ struct RestaurantMainGridView: View {
                         }
                         .frame(height: 40)
                     }
-                    .foregroundStyle(Color.gray1)
+                    .foregroundStyle(Color.gray2)
                     .background(
                         RoundedRectangle(cornerRadius: 30)
-                            .strokeBorder(Color.gray1, lineWidth: 1)
+                            .strokeBorder(Color.gray2, lineWidth: 1)
                     )
                     .padding(.trailing, 8)
                     .sheet(isPresented: $keywordModal) {
@@ -103,6 +104,7 @@ struct RestaurantMainGridView: View {
                         HStack(spacing: 0) {
                             Text(location.split(separator: ",").count >= 3 ? "\(location.split(separator: ",").prefix(2).joined(separator: ","))" + ".." : location.split(separator: ",").prefix(2).joined(separator: ","))
                                 .font(.gothicNeo(.medium, size: 12))
+                                .foregroundColor(Color.gray1)
                                 .lineLimit(1)
                                 .padding(.leading, 12)
                                 .truncationMode(.tail)
@@ -111,10 +113,10 @@ struct RestaurantMainGridView: View {
                         }
                         .frame(height: 40)
                     }
-                    .foregroundStyle(Color.gray1)
+                    .foregroundStyle(Color.gray2)
                     .background(
                         RoundedRectangle(cornerRadius: 30)
-                            .strokeBorder(Color.gray1, lineWidth: 1)
+                            .strokeBorder(Color.gray2, lineWidth: 1)
                     )
                     .padding(.trailing, 16)
                     .sheet(isPresented: $locationModal) { // 지역 필터링 뷰

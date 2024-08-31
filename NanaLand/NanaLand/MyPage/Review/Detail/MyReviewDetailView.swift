@@ -293,7 +293,7 @@ struct MyDetailReviewMainGridView: View {
                     
                     TextEditor(text: $reviewContent)
                         .font(.body02)
-                        .foregroundColor(.gray1)
+                        .foregroundColor(.black)
                         .padding(4)
                         .background(Color.white)
                         .cornerRadius(8)
@@ -358,13 +358,14 @@ struct MyDetailReviewMainGridView: View {
                         Spacer()
                     }
                     ReviewDetailTagView(tags: Array(detailViewModel.selectedKeyword.dropFirst()), keywordViewModel: detailViewModel, localizationManager: _localizationManager)
+                        .padding(.leading, -5)
                 }
                 .padding()
                 
                 ZStack {
                     RoundedRectangle(cornerRadius: 50)
                         .foregroundColor((detailViewModel.selectedKeyword.count < 3 || detailViewModel.state.editReviewDto.content.count == 0 || detailViewModel.state.editReviewDto.rating == 0) ? .main10P : .main)
-                        .frame(width: 370, height: 50)
+                        .frame(width: 360, height: 50)
                     Button {
                         Task {
                             detailViewModel.state.editReviewDto.editImageInfoList = prepareEditImageInfo()
