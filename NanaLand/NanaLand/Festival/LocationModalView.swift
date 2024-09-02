@@ -125,7 +125,7 @@ struct LocationModalView: View {
                         toggleButton(index)
                     }, label: {
                         Text(locationArray[index].localized(for: localizationManager.language))
-                            .font(.body02)
+                            .font(.gothicNeo(.regular, size: 12))
                             .foregroundStyle(buttonsToggled[index] ? Color.main : Color.gray1)
                             .padding(.leading, 7)
                             .padding(.trailing, 7)

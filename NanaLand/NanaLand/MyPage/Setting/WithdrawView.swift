@@ -169,14 +169,14 @@ struct WithdrawView: View {
 			AlertView(
 				title: .withdrawAlertTitle,
 				message: .withdrawAlertMessage,
-				leftButtonTitle: .cancel,
-				rightButtonTitle: .delete,
+				leftButtonTitle: .yes,
+				rightButtonTitle: .cancel,
 				leftButtonAction: {
-					showAlert = false
+                    AuthManager(registerVM: RegisterViewModel()).withdraw(withdrawalType: buttonType[selectedIndex!].rawValue)
 				},
 				rightButtonAction: {
 					// 회원탈퇴
-					AuthManager(registerVM: RegisterViewModel()).withdraw(withdrawalType: buttonType[selectedIndex!].rawValue)
+                    showAlert = false	
 				}
 			)
 		}

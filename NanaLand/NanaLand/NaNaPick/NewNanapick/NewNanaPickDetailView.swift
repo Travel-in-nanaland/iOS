@@ -187,8 +187,9 @@ struct NewNaNaPickDetailMainView: View {
                             if viewModel.state.getNanaPickDetailResponse.notice != nil {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 12)
-                                        .fill(Color.main10P)
+                                        .fill(Color.white)
                                         .frame(maxWidth: Constants.screenWidth - 40)
+                                        .shadow(radius: 1)
                                     VStack(alignment: .leading, spacing: 0) {
                                         HStack(alignment: .center, spacing: 0) {
                                             Image("icWarningCircle")

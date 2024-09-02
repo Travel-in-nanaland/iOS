@@ -36,9 +36,9 @@ struct ShopMainGridView: View {
     var body: some View {
 		VStack(spacing: 0) {
 			HStack(spacing: 0) {
-                Text("\(viewModel.state.getShopMainResponse.totalElements)" + .count)
-					.padding(.leading, 16)
-					.foregroundStyle(Color.gray1)
+//                Text("\(viewModel.state.getShopMainResponse.totalElements)" + .count)
+//					.padding(.leading, 16)
+//					.foregroundStyle(Color.gray1)
 				
 				Spacer()
 				

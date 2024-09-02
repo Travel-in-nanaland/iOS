@@ -93,9 +93,9 @@ struct SeasonFilterView: View {
     var count: Int // item 갯수
     var body: some View{
         HStack(spacing: 0) {
-            Text("\(count) " + .count)
-                .padding(.leading, 16)
-                .foregroundStyle(Color.gray1)
+//            Text("\(count) " + .count)
+//                .padding(.leading, 16)
+//                .foregroundStyle(Color.gray1)
             Spacer()
             
             Button {
@@ -180,9 +180,9 @@ struct FilterView: View {
     var body: some View{
         
         HStack(spacing: 0) {
-            Text("\(count) " + .count)
-                .padding(.leading, 16)
-                .foregroundStyle(Color.gray1)
+//            Text("\(count) " + .count)
+//                .padding(.leading, 16)
+//                .foregroundStyle(Color.gray1)
             Spacer()
             if title == "이번달" {
                 Button {

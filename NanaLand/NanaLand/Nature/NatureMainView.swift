@@ -42,9 +42,9 @@ struct NatureMainGridView: View {
     @State private var APIFlag = true // 첫 onAppear시에만 호출
     var body: some View {
         HStack(spacing: 0) {
-            Text("\(viewModel.state.getNatureMainResponse.totalElements)" + .count)
-                .padding(.leading, 16)
-                .foregroundStyle(Color.gray1)
+//            Text("\(viewModel.state.getNatureMainResponse.totalElements)" + .count)
+//                .padding(.leading, 16)
+//                .foregroundStyle(Color.gray1)
             Spacer()
             
             Button {
