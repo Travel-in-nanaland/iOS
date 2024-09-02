@@ -7,11 +7,37 @@
 
 import SwiftUI
 
+enum testType: Hashable{
+    case recommend(nickname: String)
+}
+
 struct TypeTestProfileView: View {
-    @EnvironmentObject var typeTestVM: TypeTestViewModel
+    @EnvironmentObject var localizationManager: LocalizationManager
     @StateObject var appState = AppState.shared
-    let nickname: String
+    var type: String
+    var nickname: String
     let imageSize = Constants.screenWidth / 9 * 5
+    
+    var localizedKeyMapping: [String: TripType] {
+            return [
+                LocalizedKey.GAMGYUL_ICECREAM.localized(for: localizationManager.language): .GAMGYUL_ICECREAM,
+                LocalizedKey.GAMGYUL_RICECAKE.localized(for: localizationManager.language): .GAMGYUL_RICECAKE,
+                LocalizedKey.GAMGYUL.localized(for: localizationManager.language): .GAMGYUL,
+                LocalizedKey.GAMGYUL_CIDER.localized(for: localizationManager.language): .GAMGYUL_CIDER,
+                LocalizedKey.GAMGYUL_AFFOKATO.localized(for: localizationManager.language): .GAMGYUL_AFFOKATO,
+                LocalizedKey.GAMGYUL_HANGWA.localized(for: localizationManager.language): .GAMGYUL_HANGWA,
+                LocalizedKey.GAMGYUL_JUICE.localized(for: localizationManager.language): .GAMGYUL_JUICE,
+                LocalizedKey.GAMGYUL_CHOCOLATE.localized(for: localizationManager.language): .GAMGYUL_CHOCOLATE,
+                LocalizedKey.GAMGYUL_COCKTAIL.localized(for: localizationManager.language): .GAMGYUL_COCKTAIL,
+                LocalizedKey.TANGERINE_PEEL_TEA.localized(for: localizationManager.language): .TANGERINE_PEEL_TEA,
+                LocalizedKey.GAMGYUL_YOGURT.localized(for: localizationManager.language): .GAMGYUL_YOGURT,
+                LocalizedKey.GAMGYUL_FLATCCINO.localized(for: localizationManager.language): .GAMGYUL_FLATCCINO,
+                LocalizedKey.GAMGYUL_LATTE.localized(for: localizationManager.language): .GAMGYUL_LATTE,
+                LocalizedKey.GAMGYUL_SIKHYE.localized(for: localizationManager.language): .GAMGYUL_SIKHYE,
+                LocalizedKey.GAMGYUL_ADE.localized(for: localizationManager.language): .GAMGYUL_ADE,
+                LocalizedKey.GAMGYUL_BUBBLE_TEA.localized(for: localizationManager.language): .GAMGYUL_BUBBLE_TEA
+            ]
+        }
     
     var body: some View {
         VStack(spacing: 0) {
@@ -32,18 +58,13 @@ struct TypeTestProfileView: View {
             .scrollIndicators(.hidden)
         }
         .padding(.vertical, 1)
-        .toolbar(.hidden, for: .navigationBar)
-        .onAppear {
-            // 서버에서 불러온 travelType을 userType에 저장
-            if let travelTypeRawValue = appState.userInfo.travelType {
-                print("travelTypeRawValue: \(travelTypeRawValue)")  // 여기서 rawValue 출력
-                if let travelType = TripType.localizedKeyMapping[travelTypeRawValue] {
-                    typeTestVM.state.userType = travelType
-                } else {
-                    print("Error: Could not convert travelTypeRawValue to TripType")
-                }
+        .toolbar(.hidden)
+        .navigationDestination(for: testType.self, destination: { page in
+            switch page{
+            case let .recommend(nickname):
+                ProfileRecommendView(nickname: nickname)
             }
-        }
+        })
     }
     
     private var header: some View {
@@ -59,21 +80,26 @@ struct TypeTestProfileView: View {
                     .font(.body01)
                     .foregroundStyle(Color.baseBlack)
                 
-                Text(typeTestVM.state.userType?.localizedKey ?? .GAMGYUL)
+                Text(type)
                     .font(.largeTitle01)
                     .foregroundStyle(Color.main)
             }
         }
     }
     
+    // Convert type string to TripType using localizedKeyMapping
+    private var convertedTripType: TripType? {
+        return localizedKeyMapping[type]
+    }
+    
     private var contentsPart: some View {
         VStack(spacing: 32) {
-            Image(typeTestVM.state.userType?.image ?? .GAMGYUL_ICECREAM)
+            Image(convertedTripType?.image ?? .GAMGYUL_ICECREAM)
                 .resizable()
                 .frame(width: imageSize, height: imageSize)
                 .clipShape(Circle())
             
-            Text(typeTestVM.state.userType?.descriptionLocalizedKey ?? .GAMGYUL_DESCRIPTION)
+            Text(convertedTripType?.descriptionLocalizedKey ?? .GAMGYUL_DESCRIPTION)
                 .foregroundColor(Color.main)
                 .multilineTextAlignment(.center)
                 .frame(width: Constants.screenWidth * 0.8)
@@ -91,13 +117,13 @@ struct TypeTestProfileView: View {
     private var bottomButtons: some View {
         VStack(spacing: 16) {
             Button(action: {
-                typeTestVM.action(.onTapGotoRecommendPlaceView)
+                AppState.shared.navigationPath.append(testType.recommend(nickname: nickname))
             }, label: {
                 RoundedRectangle(cornerRadius: 50)
                     .stroke(Color.main, lineWidth: 1)
                     .frame(height: 48)
                     .overlay {
-                        Text(typeTestVM.state.userType?.localizedKey ?? .GAMGYUL)
+                        Text(type)
                             .font(.body_bold)
                             .foregroundColor(Color.main)
                         +
@@ -123,16 +149,10 @@ struct TypeTestProfileView: View {
             })
         }
         .padding(.horizontal, 16)
-    }
+    }    
 }
 
 #Preview {
-    @StateObject var lm = LocalizationManager()
-    @StateObject var vm = TypeTestViewModel()
-    lm.language = .malaysia
-    vm.state.userType = .GAMGYUL_ADE
-    return TypeTestProfileView(nickname: "현우")
-        .environmentObject(lm)
-        .environmentObject(vm)
+    TypeTestProfileView(type:"감귤", nickname: "현우")
 }
 

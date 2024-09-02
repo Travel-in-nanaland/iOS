@@ -43,8 +43,9 @@ struct ReviewWriteMain: View {
                         .customAlert(LocalizedKey.reviewBackAlertTitle.localized(for: localizationManager.language), isPresented: $showAlert) {
                             Text(LocalizedKey.reviewBackAlertMessage.localized(for: localizationManager.language))
                                 .font(.body01)
-                                .foregroundStyle(Color.gray1)
-                                .padding(.top, 5)
+                                .foregroundColor(Color.gray1)
+                                .padding(.top, 10)
+                                .padding(.bottom, 5)
                         } actions: {
                             MultiButton {
                                 Button {
@@ -58,6 +59,7 @@ struct ReviewWriteMain: View {
                                         .font(.title02_bold)
                                         .foregroundStyle(Color.black)
                                 }
+                                .frame(width: 150, height: 56)
                                 Button {
                                     withAnimation(nil) {
                                         showAlert = false
@@ -67,6 +69,7 @@ struct ReviewWriteMain: View {
                                         .font(.title02_bold)
                                         .foregroundStyle(Color.main)
                                 }
+                                .frame(width: 150, height: 56)
                             }
                         }
                         .padding(.leading, 16)
@@ -77,7 +80,6 @@ struct ReviewWriteMain: View {
                
                 ReviewMainGridView(viewModel: viewModel, reviewItemAddress: reviewAddress, reviewItemImageUrl: reviewImageUrl, reviewTitle: reviewTitle, reviewId: reviewId, reviewCategory: reviewCategory)
             }
-            .toolbar(.hidden)
         }
         .toolbar(.hidden)
     }

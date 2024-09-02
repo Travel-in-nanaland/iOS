@@ -24,11 +24,11 @@ struct RestaurantMenuView: View {
                 Text(title)
                     .font(.body_bold)
                     .foregroundColor(.black)
+                    .padding(.bottom, 2)
                 HStack{
                     Text("\(formatPrice(price))\(LocalizedKey.currency.localized(for: localizationManager.language))")
                         .font(.body02)
                         .foregroundColor(.black)
-                        .padding(.bottom, 10)
                 }
             }
             
@@ -41,11 +41,10 @@ struct RestaurantMenuView: View {
                     .resizable()
                     .frame(width: 56, height: 56)
                     .cornerRadius(8)
-                    .padding(.bottom, 10)
             }
 
         }
-        .padding(EdgeInsets(top: 10, leading: 20, bottom: 0, trailing: 20))
+        .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
         .fullScreenCover(isPresented: $menuModal) {
             MenuModalView(imageUrl: imageUrl)
                 .background(ClearBackgroundView())

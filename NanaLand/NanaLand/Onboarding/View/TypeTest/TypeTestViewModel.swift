@@ -135,6 +135,7 @@ final class TypeTestViewModel: ObservableObject {
     func gotoRecommendPlace() {
         Task {
             let result = await HomeService.getRecommendDataInTypeTest()
+            print(result)
             
             await MainActor.run {
                 state.recommendPlace = result?.data ?? []

@@ -144,15 +144,17 @@ struct RestaurantDetailView: View {
                                             HStack(spacing: 10) {
                                                 VStack(spacing: 0) {
                                                     Image("icDetailPin")
+                                                        .padding(.bottom, 5)
                                                     Spacer()
                                                 }
                                                 
                                                 VStack(alignment: .leading, spacing: 0) {
                                                     Text(.address)
-                                                        .font(.gothicNeo(.bold, size: 14))
+                                                        .font(.body02_bold)
                                                     Text(viewModel.state.getRestaurantDetailResponse.address)
                                                         .font(.body02)
                                                     
+                                                    Spacer()
                                                 }
                                                 Spacer()
                                             }
@@ -163,14 +165,16 @@ struct RestaurantDetailView: View {
                                             HStack(spacing: 10) {
                                                 VStack(spacing: 0) {
                                                     Image("icDetailPhone")
+                                                        .padding(.bottom, 5)
                                                     Spacer()
                                                 }
                                                 
                                                 VStack(alignment: .leading, spacing: 0) {
                                                     Text(.phoneNumber)
-                                                        .font(.gothicNeo(.bold, size: 14))
+                                                        .font(.body02_bold)
                                                     Text(contantData)
                                                         .font(.body02)
+                                                    Spacer()
                                                 }
                                                 Spacer()
                                             }
@@ -181,14 +185,16 @@ struct RestaurantDetailView: View {
                                             HStack(spacing: 10) {
                                                 VStack(spacing: 0) {
                                                     Image("icDetailClock")
+                                                        .padding(.bottom, 5)
                                                     Spacer()
                                                 }
                                                 
                                                 VStack(alignment: .leading, spacing: 0) {
                                                     Text(.time)
-                                                        .font(.gothicNeo(.bold, size: 14))
+                                                        .font(.body02_bold)
                                                     Text(timeData)
                                                         .font(.body02)
+                                                    Spacer()
                                                 }
                                                 Spacer()
                                             }
@@ -198,15 +204,17 @@ struct RestaurantDetailView: View {
                                         if let serviceData = viewModel.state.getRestaurantDetailResponse.service {
                                             HStack(spacing: 10) {
                                                 VStack(spacing: 0) {
-                                                    Image("icService")
+                                                    Image("icDetailService")
+                                                        .padding(.bottom, 5)
                                                     Spacer()
                                                 }
                                                 
                                                 VStack(alignment: .leading, spacing: 0) {
                                                     Text(.service)
-                                                        .font(.gothicNeo(.bold, size: 14))
+                                                        .font(.body02_bold)
                                                     Text(serviceData)
                                                         .font(.body02)
+                                                    Spacer()
                                                 }
                                                 Spacer()
                                             }
@@ -217,14 +225,16 @@ struct RestaurantDetailView: View {
                                             HStack(spacing: 10) {
                                                 VStack(spacing: 0) {
                                                     Image("icDetailHomepage")
+                                                        .padding(.bottom, 5)
                                                     Spacer()
                                                 }
                                                 
                                                 VStack(alignment: .leading, spacing: 0) {
                                                     Text(.homepage)
-                                                        .font(.gothicNeo(.bold, size: 14))
+                                                        .font(.body02_bold)
                                                     Text(homepageData)
                                                         .font(.body02)
+                                                    Spacer()
                                                 }
                                                 Spacer()
                                             }
@@ -235,14 +245,17 @@ struct RestaurantDetailView: View {
                                             HStack(spacing: 10) {
                                                 VStack(spacing: 0) {
                                                     Image("icInsta")
+                                                        .padding(.bottom, 5)
                                                     Spacer()
                                                 }
                                                 
                                                 VStack(alignment: .leading, spacing: 0) {
                                                     Text(.instagram)
-                                                        .font(.gothicNeo(.bold, size: 14))
+                                                        .font(.body02_bold)
                                                     Text(instaData)
                                                         .font(.body02)
+                                                    
+                                                    Spacer()
                                                 }
                                                 Spacer()
                                             }
@@ -660,7 +673,6 @@ struct RestaurantDetailView: View {
                     }
                     .frame(width: Constants.screenWidth, height: 56)
                     .background(Color.white)
-                    .shadow(color: Color.gray.opacity(0.7), radius: 10, x: 0, y: 10)
                 }
             }
             .navigationDestination(for: ReviewType.self) { viewType in
