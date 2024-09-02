@@ -75,7 +75,7 @@ struct RestaurantMainGridView: View {
                     } label: {
                         HStack(spacing: 0) {
                             Text(keyword.split(separator: ",").count >= 3 ? "\(keyword.split(separator: ",").prefix(2).joined(separator: ","))" + ".." : keyword.split(separator: ",").prefix(2).joined(separator: ","))
-                                .font(.gothicNeo(.medium, size: 12))
+                                .font(.gothicNeo(.regular, size: 12))
                                 .foregroundColor(Color.gray1)
                                 .lineLimit(1)
                                 .padding(.leading, 12)
@@ -103,7 +103,7 @@ struct RestaurantMainGridView: View {
                     } label: {
                         HStack(spacing: 0) {
                             Text(location.split(separator: ",").count >= 3 ? "\(location.split(separator: ",").prefix(2).joined(separator: ","))" + ".." : location.split(separator: ",").prefix(2).joined(separator: ","))
-                                .font(.gothicNeo(.medium, size: 12))
+                                .font(.gothicNeo(.regular, size: 12))
                                 .foregroundColor(Color.gray1)
                                 .lineLimit(1)
                                 .padding(.leading, 12)

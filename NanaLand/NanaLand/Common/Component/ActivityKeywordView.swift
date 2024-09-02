@@ -152,7 +152,7 @@ struct ActivityKeywordView: View {
            
                 } label: {
                     Text(ActivityKeywordButtonNameArray[index])
-                        .font(.body02)
+                        .font(.gothicNeo(.regular, size: 12))
                         .foregroundStyle(buttonsToggled[index] ? Color.main : Color.gray1)
                 }
                 .frame(width: 95, height: 36)

@@ -44,10 +44,11 @@ struct NewNanaPickAllMainView: View {
                                     }
                             }
                         }
-                        .padding(.top, 20)
+                        .padding(.top, 24)
                     }
-                    .padding(.top, 10)
-                    .padding(.leading, Constants.screenWidth * 0.08)
+                    .padding(.top, 20)
+                    .padding(.leading, Constants.screenWidth * 0.03)
+                    .padding(.trailing, Constants.screenWidth * 0.03)
                 }
             }
         }
@@ -68,6 +69,11 @@ struct NewNanaPickAllMainView: View {
     
     func getNanaPickGridList(page: Int, size: Int) async {
         await viewModel.action(.getNanaPickGridList(page: page, size: size))
+    }
+    
+    // 픽셀 값을 포인트로 변환하는 함수
+    func pxToPoints(_ px: CGFloat) -> CGFloat {
+        return px / UIScreen.main.scale
     }
 }
 
@@ -99,7 +105,8 @@ struct NanaPickAllView: View {
                                             .font(.caption02_semibold)
                                             .foregroundColor(.white)
                                     }
-                                    .padding()
+                                    .padding(.top, 10)
+                                    .padding(.leading, 10)
                             }
                         
                             Spacer()
@@ -114,12 +121,14 @@ struct NanaPickAllView: View {
                 
                 VStack(alignment: .leading, spacing: 0){
                     Text(subHeading)
+                        .lineLimit(1)
                         .font(.body02_bold)
                         .foregroundColor(.black)
                     
                     Text(version)
                         .font(.caption02)
                         .foregroundColor(.black)
+                        .lineLimit(1)
                         .padding(.top, 2)
                 }
                 
@@ -127,12 +136,14 @@ struct NanaPickAllView: View {
             }
             .padding(.top, 5)
         }
+        .frame(width: 140)
     }
 }
 
 enum NewNanaPickAllType: Hashable {
     case detail(id: Int64)
 }
+
 
 #Preview {
     NewNanaPickAllMainView()
