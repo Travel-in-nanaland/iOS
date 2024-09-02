@@ -49,9 +49,8 @@ struct ProfileMainView: View {
                 SettingView()
             case .update:
                 ProfileUpdateView()
-            case .test:
-                TypeTestProfileView(nickname: AppState.shared.userInfo.nickname)
-                    .environmentObject(TypeTestViewModel())
+            case let .test(type, nickname):
+                TypeTestProfileView(type: type, nickname: nickname)
             case .allReview:
                 MyAllReviewView(viewModel: MyAllReviewViewModel())
                     .environmentObject(LocalizationManager())
@@ -158,7 +157,7 @@ struct ProfileMainView: View {
                     HStack{
                         if let travelType = appState.userInfo.travelType {
                             Button(action: {
-                                AppState.shared.navigationPath.append(MyPageViewType.test)
+                                AppState.shared.navigationPath.append(MyPageViewType.test(type: travelType, nickname: AppState.shared.userInfo.nickname))
                             }, label: {
                                 Text("\(travelType)")
                                     .font(.caption01)
@@ -412,9 +411,12 @@ struct reviewTabView: View {
                                 
                                 +
                                 
-                                Text(" \(LocalizedKey.seeAll.localized(for: LocalizationManager().language)) >")
+                                Text(" \(LocalizedKey.seeAll.localized(for: LocalizationManager().language))")
                                     .font(.body02_semibold)
                                     .foregroundColor(.black)
+                                
+                                Image("icPreviewRight")
+                                    .padding(.top, 2)
                             })
                             
                             
@@ -505,9 +507,12 @@ struct noticeTabView: View {
                                     .foregroundColor(.main)
                                 
                                 +
-                                Text(" \(LocalizedKey.seeAll.localized(for: LocalizationManager().language)) >")
+                                Text(" \(LocalizedKey.seeAll.localized(for: LocalizationManager().language))")
                                     .font(.body02_semibold)
                                     .foregroundColor(.black)
+                                
+                                Image("icPreviewRight")
+                                    .padding(.top, 2)
                             })
                             
                             Spacer()
@@ -587,7 +592,7 @@ extension View {
 enum MyPageViewType: Hashable {
     case setting
     case update
-    case test
+    case test(type: String, nickname: String)
     case allReview
     case selectReview(id: Int64)
     case allNotice

@@ -210,7 +210,7 @@ struct UserProfileMainView: View {
                     HStack{
                         if let travelType = viewModel.state.getUserProfileInfoResponse.travelType {
                             Button(action: {
-                                AppState.shared.navigationPath.append(MyPageViewType.test)
+                                AppState.shared.navigationPath.append(MyPageViewType.test(type: travelType, nickname: viewModel.state.getUserProfileInfoResponse.nickname))
                             }, label: {
                                 Text("\(travelType)")
                                     .font(.caption01)

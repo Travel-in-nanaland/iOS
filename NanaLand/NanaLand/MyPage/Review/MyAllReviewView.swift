@@ -161,9 +161,8 @@ struct MyReviewArticleItemView: View {
                             .multilineTextAlignment(.leading)
                         
                         
-                        Image(systemName: "chevron.right")
-                            .resizable()
-                            .frame(width: 3, height: 11)
+                        Image("icReviewRight")
+                            .padding(.top, 2)
                     }
                     
                     Spacer()

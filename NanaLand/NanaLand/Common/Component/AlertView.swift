@@ -87,7 +87,7 @@ struct AlertView: View {
 				
 				
 			}
-			.frame(width: Constants.screenWidth - 60)
+			.frame(width: 300)
 			.background(Color.white)
 			.cornerRadius(10)
 		}

@@ -59,11 +59,11 @@ struct TypeTestRecommendPlaceView: View {
 	
 	private func ticketView(place: RecommendModel) -> some View {
 		ZStack(alignment: .topLeading) {
-//			KFImage(URL(string: place.thumbnailUrl))
-//				.resizable()
-//				.scaledToFill()
-//				.frame(width: 300, height: 500)
-//				.clipped()
+            KFImage(URL(string: place.firstImage.thumbnailUrl))
+				.resizable()
+				.scaledToFill()
+				.frame(width: 300, height: 500)
+				.clipped()
 			
 			LinearGradient(
 				gradient: Gradient(stops: [
