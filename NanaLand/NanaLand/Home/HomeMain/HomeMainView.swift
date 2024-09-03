@@ -504,9 +504,18 @@ struct BannerView: View {
                             }
                         } label: {
                             
-                            KFImage(URL(string: banner.firstImage.originUrl))
-                                .resizable()
-                                .frame(width: Constants.screenWidth, height: Constants.screenWidth * (220 / 360))
+                            ZStack{
+                                KFImage(URL(string: banner.firstImage.originUrl))
+                                    .resizable()
+                                    .frame(width: Constants.screenWidth, height: Constants.screenWidth * (220 / 360))
+                                
+                                Rectangle()
+                                    .foregroundColor(.clear)
+                                    .background(){
+                                        LinearGradient(gradient: Gradient(colors: [.clear, .black.opacity(0.5)]), startPoint: .top, endPoint: .bottom)
+                                    }
+                                    .frame(width: Constants.screenWidth, height: Constants.screenWidth * (220 / 360))
+                            }
                             
                         }
 

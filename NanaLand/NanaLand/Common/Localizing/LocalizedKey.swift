@@ -461,6 +461,11 @@ enum LocalizedKey: String {
     case report
     
     
+    //MARK: - 나나스픽
+    case nanapickRecommend1
+    case nanapickRecommend2
+    case nanapickRecommend3
+    
     //MARK: - localized()
     func localized(for language: Language) -> String {
         guard let path = Bundle.main.path(forResource: language.localizedName, ofType: "lproj"),
