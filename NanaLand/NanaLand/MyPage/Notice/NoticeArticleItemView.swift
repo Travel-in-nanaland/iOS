@@ -14,12 +14,13 @@ struct NoticeArticleItemView: View {
     
     var body: some View {
         ZStack{
+            
             HStack{
                 Image("icNotice")
                     .padding(.bottom, 30)
                     .padding(.leading, 12)
                 
-                VStack(alignment: .leading){
+                VStack(alignment: .leading, spacing: 4){
                     Text(type)
                         .font(.caption01_semibold)
                         .foregroundColor(.main)
@@ -31,19 +32,19 @@ struct NoticeArticleItemView: View {
                     Text(dateFormatter(createdDate: date))
                         .font(.caption02)
                         .foregroundColor(.gray1)
-                        .padding(.top, 10)
+                        .padding(.top, 6)
                 }
                 
                 Spacer()
                 
                 Image("icArrow")
-                    .padding(.top, 50)
+                    .padding(.top, 40)
                     .padding(.trailing, 20)
             }
             .background(){
                 RoundedRectangle(cornerRadius: 12)
                     .fill(Color.white)
-                    .frame(minWidth: Constants.screenWidth - 32, minHeight: 88)
+                    .frame(minWidth: Constants.screenWidth - 32, minHeight: 85)
                     .shadow(radius: 1)
             }
         }

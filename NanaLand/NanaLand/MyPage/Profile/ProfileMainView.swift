@@ -100,9 +100,11 @@ struct ProfileMainView: View {
             HStack{
                 
                 if provider == "GUEST" {
-                    Image(.guestProfile)
+                    KFImage(URL(string: AppState.shared.userInfo.profileImage.originUrl))
                         .resizable()
-                        .frame(width: 100, height: 100)
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 80, height: 80)
+                        .background(.blue)
                         .clipShape(Circle())
                         .padding(.bottom, 16)
                         .padding(.leading, 15)
@@ -118,8 +120,9 @@ struct ProfileMainView: View {
                 }
                 
                 VStack{
-                    HStack{
-                        if provider == "GUEST" {
+                    
+                    if provider == "GUEST" {
+                        HStack{
                             Button(action: {
                                 AppState.shared.showRegisterInduction = true
                             }, label: {
@@ -133,8 +136,10 @@ struct ProfileMainView: View {
                                 }
                             })
                             .tint(.baseBlack)
-                            
-                        } else {
+                        }
+                        .padding(.bottom, 20)
+                    } else {
+                        HStack{
                             if AppState.shared.userInfo.nickname == "" {
                                 Text("닉네임 없음")
                                     .font(.title02_bold)
@@ -142,24 +147,42 @@ struct ProfileMainView: View {
                                 Text("\(AppState.shared.userInfo.nickname)")
                                     .font(.title02_bold)
                             }
-                        }
-                        
-                        Button(action: {
-                            AppState.shared.navigationPath.append(MyPageViewType.update)
-                        }, label: {
-                            Image("icPencil")
-                        })
-                        .padding(.leading, -5)
-                        
-                        Spacer()
-                    }
-                    
-                    HStack{
-                        if let travelType = appState.userInfo.travelType {
+                            
                             Button(action: {
-                                AppState.shared.navigationPath.append(MyPageViewType.test(type: travelType, nickname: AppState.shared.userInfo.nickname))
+                                AppState.shared.navigationPath.append(MyPageViewType.update)
                             }, label: {
-                                Text("\(travelType)")
+                                Image("icPencil")
+                            })
+                            .padding(.leading, -5)
+                            
+                            Spacer()
+                        }
+                    }
+                   
+                    
+                    if provider != "GUEST" {
+                        HStack{
+                            if let travelType = appState.userInfo.travelType {
+                                Button(action: {
+                                    AppState.shared.navigationPath.append(MyPageViewType.test(type: travelType, nickname: AppState.shared.userInfo.nickname))
+                                }, label: {
+                                    Text("\(travelType)")
+                                        .font(.caption01)
+                                        .foregroundStyle(Color.main)
+                                        .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
+                                        .background(){
+                                            Rectangle()
+                                                .cornerRadius(30)
+                                                .foregroundColor(.white)
+                                                .overlay(
+                                                    RoundedRectangle(cornerRadius: 30)
+                                                        .stroke(Color.main, lineWidth: 1.0)
+                                                )
+                                        }
+                                })
+                                
+                            } else {
+                                Text(.none)
                                     .font(.caption01)
                                     .foregroundStyle(Color.main)
                                     .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
@@ -169,113 +192,101 @@ struct ProfileMainView: View {
                                             .foregroundColor(.white)
                                             .overlay(
                                                 RoundedRectangle(cornerRadius: 30)
-                                                    .stroke(Color.main, lineWidth: 1.0)
+                                                    .stroke(Color.main, lineWidth: 2.0)
                                             )
                                     }
-                            })
+                            }
                             
-                        } else {
-                            Text(.none)
-                                .font(.caption01)
-                                .foregroundStyle(Color.main)
-                                .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
-                                .background(){
-                                    Rectangle()
-                                        .cornerRadius(30)
-                                        .foregroundColor(.white)
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 30)
-                                                .stroke(Color.main, lineWidth: 2.0)
-                                        )
-                                }
+                            Spacer()
                         }
+                        .padding(.top, -10)
+                        
+                        HStack{
+                            if !AppState.shared.userInfo.hashtags.isEmpty {
+                                HStack(spacing: 8) {
+                                    ForEach(AppState.shared.userInfo.hashtags, id: \.self) { hashtag in
+                                        Text("#\(hashtag)")
+                                            .font(.caption01)
+                                            .foregroundStyle(Color.main)
+                                    }
+                                    Spacer()
+                                    
+                                }
+                            }
+                            
+                            Spacer()
+                        }
+                        .padding(.leading, 3)
+                        .padding(.top, 3)
+                        
+                        HStack(spacing: 0) {
+                            Button(action: {
+                                appState.showTypeTest = true
+                            }, label: {
+                                HStack(spacing: 4) {
+                                    Text(AppState.shared.userInfo.hashtags.isEmpty ? .goTest :.retest)
+                                        .font(.gothicNeo(.semibold, size: 12))
+                                    
+                                    Image(.icRight)
+                                        .resizable()
+                                        .frame(width: 16, height: 16)
+                                }
+                            })
+                            .tint(.baseBlack)
+                            Spacer()
+                        }
+                        .padding(.leading, 3)
                         
                         Spacer()
                     }
-                    .padding(.top, -10)
                     
-                    HStack{
-                        if !AppState.shared.userInfo.hashtags.isEmpty {
-                            HStack(spacing: 8) {
-                                ForEach(AppState.shared.userInfo.hashtags, id: \.self) { hashtag in
-                                    Text("#\(hashtag)")
-                                        .font(.caption01)
-                                        .foregroundStyle(Color.main)
-                                }
-                                Spacer()
-                                
-                            }
-                        }
-                        
-                        Spacer()
-                    }
-                    .padding(.leading, 3)
-                    .padding(.top, 3)
-                    
-                    HStack(spacing: 0) {
-                        Button(action: {
-                            appState.showTypeTest = true
-                        }, label: {
-                            HStack(spacing: 4) {
-                                Text(AppState.shared.userInfo.hashtags.isEmpty ? .goTest :.retest)
-                                    .font(.gothicNeo(.semibold, size: 12))
-                                
-                                Image(.icRight)
-                                    .resizable()
-                                    .frame(width: 16, height: 16)
-                            }
-                        })
-                        .tint(.baseBlack)
-                        Spacer()
-                    }
-                    .padding(.leading, 3)
-                    
-                    Spacer()
                 }
                 
                 Spacer()
             }
             
-            if AppState.shared.userInfo.description.isEmpty {
-                HStack(spacing: 0) {
-                    VStack{
-                        Text(.noDescription)
-                            .font(.body02)
-                            .foregroundColor(.gray2)
-                            .padding(EdgeInsets(top: 0, leading: 20, bottom: 30, trailing: 20))
+            if provider != "GUEST" {
+                if AppState.shared.userInfo.description.isEmpty {
+                    HStack(spacing: 0) {
+                        VStack{
+                            Text(.noDescription)
+                                .font(.body02)
+                                .foregroundColor(.gray2)
+                                .padding(EdgeInsets(top: 0, leading: 20, bottom: 30, trailing: 20))
+                            Spacer()
+                        }
                         Spacer()
                     }
-                    Spacer()
-                }
-                .background(
-                    RoundedRectangle(cornerRadius: 12)
-                        .fill(Color.white)
-                        .frame(minWidth: Constants.screenWidth - 32, minHeight: 88)
-                        .shadow(radius: 1)
-                    
-                )
-                .padding(.top, 6)
-                .padding(16)
-            } else {
-                HStack(spacing: 0) {
-                    VStack{
-                        Text("\(AppState.shared.userInfo.description)")
-                            .font(.body02)
-                            .padding()
+                    .background(
+                        RoundedRectangle(cornerRadius: 12)
+                            .fill(Color.white)
+                            .frame(minWidth: Constants.screenWidth - 32, minHeight: 88)
+                            .shadow(radius: 1)
                         
+                    )
+                    .padding(.top, 6)
+                    .padding(16)
+                } else {
+                    HStack(spacing: 0) {
+                        VStack{
+                            Text("\(AppState.shared.userInfo.description)")
+                                .font(.body02)
+                                .padding()
+                            
+                            Spacer()
+                        }
                         Spacer()
                     }
-                    Spacer()
+                    .background(
+                        RoundedRectangle(cornerRadius: 12)
+                            .fill(Color.white)
+                            .frame(minWidth: Constants.screenWidth - 32, minHeight: 88)
+                            .shadow(radius: 1)
+                        
+                    )
+                    .padding(.top, 6)
+                    .padding(16)
                 }
-                .background(
-                    RoundedRectangle(cornerRadius: 12)
-                        .fill(Color.white)
-                        .frame(minWidth: Constants.screenWidth - 32, minHeight: 88)
-                        .shadow(radius: 1)
-                    
-                )
-                .padding(.top, 6)
-                .padding(16)
             }
             
         }
