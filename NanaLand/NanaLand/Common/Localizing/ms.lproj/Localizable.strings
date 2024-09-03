@@ -437,3 +437,8 @@ mengembalikan sebarang hasil.";
 "noDescription" = "Luahkan diri anda dalam satu baris!";
 "noNotice" = "공지사항이 존재하지 않습니다";
 "seeAll" = "Lihat semua";
+
+//MARK: - 나나스픽
+"nanapickRecommend1" = "금주 ";
+"nanapickRecommend2" = "추천 ";
+"nanapickRecommend3" = "나나's Pick";

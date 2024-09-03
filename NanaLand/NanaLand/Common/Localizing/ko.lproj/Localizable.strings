@@ -176,7 +176,7 @@
 "memberWithdraw" = "회원탈퇴";
 "join" = "회원가입";
 // termsAndPoliciesPage
-"notificate" = "알려드립니다.";
+"notificate" = "알아두면 좋아요!";
 "marketingConsent" = "마케팅 활용 동의";
 "locationConsent" = "위치기반 서비스 약관 동의";
 "noConsentError" = "* 비동의시, 받지 못하는 서비스 또는 혜택이 있을 수 있으니 주의하시길 바랍니다.";
@@ -441,3 +441,7 @@
 //MARK: - 신고하기
 "report" = "신고하기";
 
+//MARK: - 나나스픽
+"nanapickRecommend1" = "금주 ";
+"nanapickRecommend2" = "추천 ";
+"nanapickRecommend3" = "나나's Pick";

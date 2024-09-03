@@ -27,9 +27,30 @@ struct NewNanaPickMainView: View {
                 ScrollView{
                     
                     HStack(spacing: 0){
-                        Text("금주 추천 나나's pick")
-                            .font(.title02_bold)
-                            .foregroundColor(.black)
+                        if localizationManager.language == .korean {
+                            let recommend = Text(.nanapickRecommend1).font(.title02_bold).foregroundColor(.black) + Text(.nanapickRecommend2).font(.title02_bold).foregroundColor(.main) + Text(.nanapickRecommend3).font(.title02_bold).foregroundColor(.black)
+                            
+                            recommend
+                        } else if localizationManager.language == .english {
+                            let recommend = Text(.nanapickRecommend1).font(.title02_bold).foregroundColor(.black) + Text(.nanapickRecommend2).font(.title02_bold).foregroundColor(.main) + Text(.nanapickRecommend3).font(.title02_bold).foregroundColor(.black)
+                            
+                            recommend
+                        } else if localizationManager.language == .chinese {
+                            let recommend = Text(.nanapickRecommend1).font(.title02_bold).foregroundColor(.black) + Text(.nanapickRecommend2).font(.title02_bold).foregroundColor(.main) + Text(.nanapickRecommend3).font(.title02_bold).foregroundColor(.black)
+                            
+                            recommend
+                        } else if localizationManager.language == .malaysia {
+                            let recommend = Text(.nanapickRecommend1).font(.title02_bold).foregroundColor(.black) + Text(.nanapickRecommend2).font(.title02_bold).foregroundColor(.main) + Text(.nanapickRecommend3).font(.title02_bold).foregroundColor(.black)
+
+                            
+                            recommend
+                        } else {
+                            let recommend = Text(.nanapickRecommend1).font(.title02_bold).foregroundColor(.black) + Text(.nanapickRecommend2).font(.title02_bold).foregroundColor(.main) + Text(.nanapickRecommend3).font(.title02_bold).foregroundColor(.black)
+
+                            
+                            recommend
+                        }
+                    
                         Spacer()
                     }
                     .padding()
@@ -127,42 +148,52 @@ struct NanaPickRecommendView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0){
-            KFImage(URL(string: imageUrl))
-                .resizable()
-                .scaledToFill()
-                .frame(width: 210, height: 280)
-                .clipped()
-                .overlay(){
-                    VStack(spacing: 0){
-                        HStack(spacing: 0){
-                            Spacer()
-                            
-                            Text(version)
-                                .font(.caption01_semibold)
-                                .foregroundColor(.white)
-                        }
-                        .padding()
-                        
-                        Spacer()
-                        
-                        HStack(spacing: 0){
-                            VStack(alignment: .leading, spacing: 0){
-                                Text(heading)
-                                    .lineLimit(1)
-                                    .font(.body02_semibold)
-                                    .foregroundColor(.white)
+            ZStack{
+                KFImage(URL(string: imageUrl))
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 210, height: 280)
+                    .clipped()
+
+                Rectangle()
+                    .foregroundColor(.clear)
+                    .background(){
+                        LinearGradient(gradient: Gradient(colors: [.clear, .black.opacity(0.5)]), startPoint: .top, endPoint: .bottom)
+                    }
+                    .frame(width: 210, height: 280)
+                    .overlay(){
+                        VStack(spacing: 0){
+                            HStack(spacing: 0){
+                                Spacer()
                                 
-                                Text(subHeading)
-                                    .lineLimit(1)
-                                    .font(.title01_bold)
+                                Text(version)
+                                    .font(.caption01_semibold)
                                     .foregroundColor(.white)
                             }
+                            .padding()
                             
                             Spacer()
+                            
+                            HStack(spacing: 0){
+                                VStack(alignment: .leading, spacing: 0){
+                                    Text(heading)
+                                        .lineLimit(1)
+                                        .font(.body02_semibold)
+                                        .foregroundColor(.white)
+                                    
+                                    Text(subHeading)
+                                        .lineLimit(1)
+                                        .font(.title01_bold)
+                                        .foregroundColor(.white)
+                                }
+                                
+                                Spacer()
+                            }
+                            .padding()
                         }
-                        .padding()
                     }
-                }
+                
+            }
             
             if newest {
                 HStack(spacing: 0){

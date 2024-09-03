@@ -176,6 +176,7 @@
 		6DA236212C681F240079B2AB /* MyReviewDetailKeywordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA236202C681F240079B2AB /* MyReviewDetailKeywordView.swift */; };
 		6DC8205F2C57703800A15A07 /* MyReviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC8205E2C57703800A15A07 /* MyReviewModel.swift */; };
 		6DC820612C57708E00A15A07 /* MyReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC820602C57708E00A15A07 /* MyReviewViewModel.swift */; };
+		6DCA8D792C86B6F9005CE8ED /* NewNanaPickSpecialModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCA8D782C86B6F9005CE8ED /* NewNanaPickSpecialModalView.swift */; };
 		6DCE99912C610E4C0080A1C6 /* ReviewWriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCE99902C610E4C0080A1C6 /* ReviewWriteModel.swift */; };
 		6DD11F422C51545C00363B08 /* TypeTestProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD11F412C51545C00363B08 /* TypeTestProfileView.swift */; };
 		6DD11F442C5161E500363B08 /* ReviewArticleItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD11F432C5161E500363B08 /* ReviewArticleItemView.swift */; };
@@ -493,6 +494,7 @@
 		6DA236202C681F240079B2AB /* MyReviewDetailKeywordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReviewDetailKeywordView.swift; sourceTree = "<group>"; };
 		6DC8205E2C57703800A15A07 /* MyReviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReviewModel.swift; sourceTree = "<group>"; };
 		6DC820602C57708E00A15A07 /* MyReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReviewViewModel.swift; sourceTree = "<group>"; };
+		6DCA8D782C86B6F9005CE8ED /* NewNanaPickSpecialModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNanaPickSpecialModalView.swift; sourceTree = "<group>"; };
 		6DCE99902C610E4C0080A1C6 /* ReviewWriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewWriteModel.swift; sourceTree = "<group>"; };
 		6DD11F412C51545C00363B08 /* TypeTestProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeTestProfileView.swift; sourceTree = "<group>"; };
 		6DD11F432C5161E500363B08 /* ReviewArticleItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewArticleItemView.swift; sourceTree = "<group>"; };
@@ -1164,6 +1166,7 @@
 				6D130CF92C76FE7A005FCD99 /* NavigationHeartDeepLinkBar.swift */,
 				6D130CFD2C772F1E005FCD99 /* ScrollDetector.swift */,
 				6D130D032C789385005FCD99 /* NewNanaPickAllMainView.swift */,
+				6DCA8D782C86B6F9005CE8ED /* NewNanaPickSpecialModalView.swift */,
 			);
 			path = NewNanapick;
 			sourceTree = "<group>";
@@ -1753,6 +1756,7 @@
 				BF78A8B82BFB620400C7303A /* ProfileDTO.swift in Sources */,
 				2C80ECCF2BD2C777002F38A7 /* AppState.swift in Sources */,
 				6D2995282C557C25006AA447 /* MyReviewArticleItemView.swift in Sources */,
+				6DCA8D792C86B6F9005CE8ED /* NewNanaPickSpecialModalView.swift in Sources */,
 				BF9F514E2C7CD8D500055802 /* ReportEndPoint.swift in Sources */,
 				2C219B552C16FEE5001F4C28 /* RemoteConfigManager.swift in Sources */,
 				6D0E90D52C5438E200F8D686 /* ProfileReviewView.swift in Sources */,

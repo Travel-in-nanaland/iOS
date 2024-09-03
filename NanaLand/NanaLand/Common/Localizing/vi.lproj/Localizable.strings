@@ -450,3 +450,8 @@ the market is the place!";
 
 //MARK: - 신고하기
 "report" = "report";
+
+//MARK: - 나나스픽
+"nanapickRecommend1" = "금주 ";
+"nanapickRecommend2" = "추천 ";
+"nanapickRecommend3" = "나나's Pick";

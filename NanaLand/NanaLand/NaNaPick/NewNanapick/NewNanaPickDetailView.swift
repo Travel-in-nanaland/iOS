@@ -110,28 +110,37 @@ struct NanaPickDetailMainView: View {
                 GeometryReader { geo in
                     let imageFrame = geo.frame(in: .global)
                     
-                    KFImage(URL(string: viewModel.state.getNanaPickDetailResponse.firstImage.originUrl))
-                        .resizable()
-                        .scaledToFill() // 화면을 꽉 채우도록 조정
-                        .frame(width: imageFrame.width, height: imageFrame.height * 1.5)
-                        .clipped()
-                        .overlay(){
-                            HStack{
-                                VStack(alignment: .leading) {
-                                    Spacer()
-                                    
-                                    Text("제주 야경 봤슴무언?")
-                                        .font(.title02_bold)
-                                        .foregroundColor(.white)
-                                    Text("TOP 10 야경 맛집")
-                                        .font(.largeTitle01)
-                                        .foregroundColor(.white)
-                                }
-                                
-                                Spacer()
+                    ZStack{
+                        KFImage(URL(string: viewModel.state.getNanaPickDetailResponse.firstImage.originUrl))
+                            .resizable()
+                            .scaledToFill() // 화면을 꽉 채우도록 조정
+                            .frame(width: imageFrame.width, height: imageFrame.height * 1.5)
+                            .clipped()
+                        
+                        Rectangle()
+                            .foregroundColor(.clear)
+                            .background(){
+                                LinearGradient(gradient: Gradient(colors: [.clear, .black.opacity(0.5)]), startPoint: .top, endPoint: .bottom)
                             }
-                            .padding()
-                        }
+                            .frame(width: imageFrame.width, height: imageFrame.height * 1.5)
+                            .overlay(){
+                                HStack{
+                                    VStack(alignment: .leading) {
+                                        Spacer()
+                                        
+                                        Text(viewModel.state.getNanaPickDetailResponse.heading)
+                                            .font(.title02_bold)
+                                            .foregroundColor(.white)
+                                        Text(viewModel.state.getNanaPickDetailResponse.subHeading)
+                                            .font(.largeTitle01)
+                                            .foregroundColor(.white)
+                                    }
+                                    
+                                    Spacer()
+                                }
+                                .padding()
+                            }
+                    }
                 }
             }
             .frame(height: (headerHeight + offsetY) < minimunHeaderHeight ? minimunHeaderHeight : (headerHeight + offsetY), alignment: .bottom)
@@ -176,6 +185,8 @@ struct NewNaNaPickDetailMainView: View {
     private let timer = Timer.publish(every: 2, on: .main, in: .common).autoconnect()
     @State private var currentPage = 0
     @State private var index = 0
+    @State private var special: String = ""
+    @State private var specialModal = false
     
     var body: some View {
         VStack(spacing: 0) {
@@ -192,7 +203,7 @@ struct NewNaNaPickDetailMainView: View {
                                         .shadow(radius: 1)
                                     VStack(alignment: .leading, spacing: 0) {
                                         HStack(alignment: .center, spacing: 0) {
-                                            Image("icWarningCircle")
+                                            Image("icNanaPickNotice")
                                                 .resizable()
                                                 .renderingMode(.template)
                                                 .foregroundStyle(.main)
@@ -296,11 +307,11 @@ struct NewNaNaPickDetailMainView: View {
                                                                 RoundedRectangle(cornerRadius: 30)
                                                                     .stroke(Color.white, lineWidth: 1) // 둥근 모서리와 테두리 추가
                                                             )
-                                            
+                                                        
                                                     }
                                                     .padding(.bottom, 30)
                                                     .padding(.trailing, 30)
-                                                   
+                                                    
                                                 }
                                             }
                                         }
@@ -313,27 +324,30 @@ struct NewNaNaPickDetailMainView: View {
                                         
                                         ForEach(detail.additionalInfoList, id: \.infoKey) { data in
                                             HStack(alignment: .top, spacing: 0) {
-                                                Image(iconName(for: data.infoEmoji))
-                                                    .resizable()
-                                                    .frame(width: 20, height: 20)
-                                                    .padding(.trailing, 4)
                                                 
-                                                Text("\(data.infoKey): ")
-                                                    .font(.body02)
-                                                    .foregroundStyle(.gray1)
-                                                
-                                                if data.infoKey == "홈페이지" || data.infoKey == "예약링크" {
-                                                    Link(destination: URL(string: "\(data.infoValue)")!, label: {
+                                                if data.infoKey != "이 장소만의 매력포인트" {
+                                                    Image(iconName(for: data.infoEmoji))
+                                                        .resizable()
+                                                        .frame(width: 20, height: 20)
+                                                        .padding(.trailing, 4)
+                                                    
+                                                    Text("\(data.infoKey): ")
+                                                        .font(.body02)
+                                                        .foregroundStyle(.gray1)
+                                                    
+                                                    if data.infoKey == "홈페이지" || data.infoKey == "예약링크" {
+                                                        Link(destination: URL(string: "\(data.infoValue)")!, label: {
+                                                            Text("\(data.infoValue)")
+                                                                .font(.body02)
+                                                                .foregroundStyle(.gray1)
+                                                        })
+                                                    } else {
                                                         Text("\(data.infoValue)")
                                                             .font(.body02)
                                                             .foregroundStyle(.gray1)
-                                                    })
-                                                } else {
-                                                    Text("\(data.infoValue)")
-                                                        .font(.body02)
-                                                        .foregroundStyle(.gray1)
+                                                    }
+                                                    Spacer()
                                                 }
-                                                Spacer()
                                             }
                                             .padding(.leading, 16)
                                         }
@@ -355,12 +369,50 @@ struct NewNaNaPickDetailMainView: View {
                                             }
                                             Spacer()
                                         }
+                                        .padding(.top, 16)
                                         .padding(.leading, 16)
-                                        .padding(.bottom, 48)
+                                        .padding(.bottom, 16)
+                                        
+                                        ForEach(detail.additionalInfoList, id: \.infoKey) { data in
+                                            HStack(spacing: 0) {
+                                                if data.infoKey == "이 장소만의 매력포인트" {
+                                                    Button {
+                                                        specialModal = true
+                                                        special = data.infoValue
+                                                    } label: {
+                                                        RoundedRectangle(cornerRadius: 30)
+                                                            .frame(width: Constants.screenWidth * 0.95, height: 40)
+                                                            .foregroundColor(.white)
+                                                            .shadow(radius: 1)
+                                                            .overlay(){
+                                                                HStack(spacing: 0){
+                                                                    Text("이 장소만의 매력 포인트✨")
+                                                                        .font(.gothicNeo(.regular, size: 16))
+                                                                    
+                                                                    Spacer()
+                                                                    
+                                                                    Image("icSpecialGo")
+                                                                }
+                                                                .padding()
+                                                            }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        .fullScreenCover(isPresented: $specialModal) {
+                                            NewNanaPickSpecialModalView(content: special)
+                                                .background(ClearBackgroundView())
+                                        }
                                     }
+                                    .padding(.bottom, 30)
                                 }
-                                
+
                             } else {
+                                
+                                ZStack {}
+                                .padding(.top, 400)
+                                .padding(.bottom, 48)
+                                
                                 ForEach(viewModel.state.getNanaPickDetailResponse.nanaDetails.indices, id: \.self) { idx in
                                     let detail = viewModel.state.getNanaPickDetailResponse.nanaDetails[idx]
                                     
@@ -404,16 +456,21 @@ struct NewNaNaPickDetailMainView: View {
                                             } else {
                                                 TabView(selection: $selectedNum) {
                                                     ForEach(detail.images.indices, id: \.self) { imageIndex in
-                                                        KFImage(URL(string: detail.images[imageIndex].originUrl))
-                                                            .resizable()
-                                                            .frame(height: (Constants.screenWidth - 32) * (176 / 328))
-                                                            .clipShape(RoundedRectangle(cornerRadius: 12))
-                                                            .padding(.leading, 16)
-                                                            .padding(.trailing, 16)
-                                                            .padding(.bottom, 16)
-                                                            .tag(imageIndex) // 인덱스를 태그로 설정
+                                                        VStack{
+                                                            HStack{
+                                                                KFImage(URL(string: detail.images[imageIndex].originUrl))
+                                                                    .resizable()
+                                                                    .frame(height: (Constants.screenWidth - 32) * (176 / 328))
+                                                                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                                                                    .padding(.leading, 16)
+                                                                    .padding(.trailing, 16)
+                                                                    .padding(.bottom, 16)
+                                                                    .tag(imageIndex) // 인덱스를 태그로 설정
+                                                            }
+                                                        }
                                                     }
                                                 }
+                                                .frame(height: (Constants.screenWidth - 32) * (196 / 328))
                                                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
                                                 .onReceive(timer, perform: { _ in
                                                     withAnimation {
@@ -424,41 +481,57 @@ struct NewNaNaPickDetailMainView: View {
                                                 })
                                                 VStack(spacing: 0) {
                                                     Spacer()
-                                                    CustomPageIndicator(count: detail.images.count, currentPage: $currentPage)
+                                                    HStack(spacing: 0) {
+                                                        Spacer()
+                                                        Text("\(index + 1) / \(detail.images.count)")
+                                                            .frame(width: 41, height: 20)
+                                                            .font(.caption02)
+                                                            .foregroundColor(.white)
+                                                            .overlay(
+                                                                RoundedRectangle(cornerRadius: 30)
+                                                                    .stroke(Color.white, lineWidth: 1) // 둥근 모서리와 테두리 추가
+                                                            )
+                                                        
+                                                    }
+                                                    .padding(.bottom, 30)
+                                                    .padding(.trailing, 30)
+                                                    
                                                 }
-                                                .frame(height: 90)
                                             }
                                         }
                                         
                                         Text("\(detail.content)")
-                                            .frame(width: (Constants.screenWidth - 32))
+                                            .frame(width: (Constants.screenWidth - 32), alignment: .leading)
                                             .font(.body01)
                                             .lineSpacing(10)
                                             .padding(.bottom, 24)
                                         
                                         ForEach(detail.additionalInfoList, id: \.infoKey) { data in
                                             HStack(alignment: .top, spacing: 0) {
-                                                Image(iconName(for: data.infoEmoji))
-                                                    .resizable()
-                                                    .frame(width: 20, height: 20)
-                                                    .padding(.trailing, 4)
-                                                
-                                                Text("\(data.infoKey): ")
-                                                    .font(.body02)
-                                                    .foregroundStyle(.gray1)
-                                                
-                                                if data.infoKey == "홈페이지" || data.infoKey == "예약링크" {
-                                                    Link(destination: URL(string: "\(data.infoValue)")!, label: {
+                                        
+                                                if data.infoKey != "이 장소만의 매력포인트" {
+                                                    Image(iconName(for: data.infoEmoji))
+                                                        .resizable()
+                                                        .frame(width: 20, height: 20)
+                                                        .padding(.trailing, 4)
+                                                    
+                                                    Text("\(data.infoKey): ")
+                                                        .font(.body02)
+                                                        .foregroundStyle(.gray1)
+                                                    
+                                                    if data.infoKey == "홈페이지" || data.infoKey == "예약링크" {
+                                                        Link(destination: URL(string: "\(data.infoValue)")!, label: {
+                                                            Text("\(data.infoValue)")
+                                                                .font(.body02)
+                                                                .foregroundStyle(.gray1)
+                                                        })
+                                                    } else {
                                                         Text("\(data.infoValue)")
                                                             .font(.body02)
                                                             .foregroundStyle(.gray1)
-                                                    })
-                                                } else {
-                                                    Text("\(data.infoValue)")
-                                                        .font(.body02)
-                                                        .foregroundStyle(.gray1)
+                                                    }
+                                                    Spacer()
                                                 }
-                                                Spacer()
                                             }
                                             .padding(.leading, 16)
                                         }
@@ -480,11 +553,43 @@ struct NewNaNaPickDetailMainView: View {
                                             }
                                             Spacer()
                                         }
+                                        .padding(.top, 16)
                                         .padding(.leading, 16)
-                                        .padding(.bottom, 48)
+                                        .padding(.bottom, 16)
+                                        
+                                        ForEach(detail.additionalInfoList, id: \.infoKey) { data in
+                                            HStack(spacing: 0) {
+                                                if data.infoKey == "이 장소만의 매력포인트" {
+                                                    Button {
+                                                        specialModal = true
+                                                        special = data.infoValue
+                                                    } label: {
+                                                        RoundedRectangle(cornerRadius: 30)
+                                                            .frame(width: Constants.screenWidth * 0.95, height: 40)
+                                                            .foregroundColor(.white)
+                                                            .shadow(radius: 1)
+                                                            .overlay(){
+                                                                HStack(spacing: 0){
+                                                                    Text("이 장소만의 매력 포인트✨")
+                                                                        .font(.gothicNeo(.regular, size: 16))
+                                                                    
+                                                                    Spacer()
+                                                                    
+                                                                    Image("icSpecialGo")
+                                                                }
+                                                                .padding()
+                                                            }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        .fullScreenCover(isPresented: $specialModal) {
+                                            NewNanaPickSpecialModalView(content: special)
+                                                .background(ClearBackgroundView())
+                                        }
                                     }
+                                    .padding(.bottom, 30)
                                 }
-                                .padding(.top, 450)
                             }
                         }
                     }
@@ -495,17 +600,18 @@ struct NewNaNaPickDetailMainView: View {
     
     private func iconName(for emoji: String) -> String {
         switch emoji {
-        case "ADDRESS": return "icPin"
-        case "PARKING": return "icCar"
-        case "SPECIAL": return "icSpecial"
+        case "ADDRESS": return "icNanaAddress"
+        case "PARKING": return "icNanaCar"
         case "AMENITY": return "icAmenity"
-        case "WEBSITE": return "icHomepage"
-        case "RESERVATION_LINK": return "icReservation"
-        case "AGE": return "icAge"
-        case "TIME": return "icClock"
-        case "FEE": return "icFee"
-        case "DATE": return "icDate"
+        case "WEBSITE": return "icNanaHomepage"
+        case "RESERVATION_LINK": return "icNanaReservation"
+        case "AGE": return "icNanaAge"
+        case "TIME": return "icNanaTime"
+        case "FEE": return "icNanaCharge"
+        case "DATE": return "icNanaDate"
         case "DESCRIPTION": return "icDescription"
+        case "CALL" : return "icNanaInquiry"
+        case "ETC" : return "icNanaEtc"
         default: return "icPhone"
         }
     }
