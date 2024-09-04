@@ -63,8 +63,8 @@ struct ReviewCompleteView: View {
 struct MainView: View {
     var title = ""
     
-    let experienceJsonName: String = "report_complete_comment"
-    let restaurantJsonName: String = "report_complete_megaphone"
+    let experienceJsonName: String = "review_experience"
+    let restaurantJsonName: String = "report_restaurant"
     var body: some View {
         
         if title == "EXPERIENCE" {

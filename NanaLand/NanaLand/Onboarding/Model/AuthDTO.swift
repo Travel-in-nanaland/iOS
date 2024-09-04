@@ -11,6 +11,7 @@ struct LoginRequest: Codable {
 	let locale: String
 	let provider: String
 	let providerId: String
+    let fcmToken: String
 }
 
 struct RegisterRequest: Codable {
