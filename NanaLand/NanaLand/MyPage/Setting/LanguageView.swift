@@ -21,7 +21,6 @@ struct LanguageView: View {
                 if let selectedLanguage = viewModel.state.selectedLanguage {
                     languageButton(language: selectedLanguage)
                 }
-                
                 ForEach(Language.allCases.filter { $0 != viewModel.state.selectedLanguage }, id: \.self) { language in
                     languageButton(language: language)
                 }
@@ -35,13 +34,14 @@ struct LanguageView: View {
         .fullScreenCover(isPresented: $showAlert) {
             AlertView(
                 title: .changeLanguageAlertTitle,
-                leftButtonTitle: .no,
-                rightButtonTitle: .yes,
+                leftButtonTitle: .yes,
+                rightButtonTitle: .no,
                 leftButtonAction: {
+                    viewModel.action(.changeLanguage)
                     showAlert = false
                 },
                 rightButtonAction: {
-                    viewModel.action(.changeLanguage)
+                   
                     showAlert = false
                 }
             )

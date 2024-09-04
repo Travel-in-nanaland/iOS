@@ -79,7 +79,7 @@ final class AuthManager: NSObject {
 				return
 			}
 			
-			let loginRequest = LoginRequest(locale: self.locale, provider: "KAKAO", providerId: "\(id)")
+            let loginRequest = LoginRequest(locale: self.locale, provider: "KAKAO", providerId: "\(id)", fcmToken: "\(UserDefaults.standard.string(forKey: "FCMToken"))")
 			
 			Task {
 				var gender: String = ""
@@ -126,7 +126,7 @@ final class AuthManager: NSObject {
 				return
 			}
 			
-			let loginRequest = LoginRequest(locale: self.locale, provider: "GOOGLE", providerId: "\(userId)")
+            let loginRequest = LoginRequest(locale: self.locale, provider: "GOOGLE", providerId: "\(userId)", fcmToken: UserDefaults.standard.string(forKey: "FCMToken") ?? "")
 			
 			Task {
 				await self.loginToServer(
@@ -157,7 +157,8 @@ final class AuthManager: NSObject {
 		let loginRequest = LoginRequest(
 			locale: self.locale,
 			provider: "GUEST",
-			providerId: deviceId
+			providerId: deviceId,
+            fcmToken: "\(UserDefaults.standard.string(forKey: "FCMToken") ?? "")"
 		)
 		
 		await loginToServerFromNonMember(request: loginRequest)
@@ -477,7 +478,7 @@ extension AuthManager: ASAuthorizationControllerDelegate, ASAuthorizationControl
 		if let authorizationCode = String(data: appleIdCredential.authorizationCode ?? Data(), encoding: .utf8) {
 			KeyChainManager.addItem(key: "appleAuthorizationCode", value: authorizationCode)
 			
-			let loginRequest = LoginRequest(locale: self.locale, provider: "APPLE", providerId: userId)
+            let loginRequest = LoginRequest(locale: self.locale, provider: "APPLE", providerId: userId, fcmToken: "\(UserDefaults.standard.string(forKey: "FCMToken") ?? "")")
             print("email:\(email)")
 			Task {
 				await self.loginToServer(

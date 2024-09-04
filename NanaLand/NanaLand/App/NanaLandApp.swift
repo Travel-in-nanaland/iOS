@@ -88,7 +88,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         print("토큰을 받았다")
         // Store this token to firebase and retrieve when to send message to someone...
         let dataDict: [String: String] = ["token": fcmToken ?? ""]
-
+        UserDefaults.standard.set(fcmToken, forKey: "FCMToken")
         // Store token in Firestore For Sending Notifications From Server in Future...
 
         print(dataDict)
