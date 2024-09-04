@@ -218,7 +218,7 @@ struct FestivalDetailView: View {
                             if viewModel.state.getFestivalDetailResponse.period != "" {
                                 HStack(spacing: 10) {
                                     VStack(spacing: 0) {
-                                        Image("icDetailClock")
+                                        Image("icDetailDate")
                                     }
                                     
                                     VStack(alignment: .leading, spacing: 0) {
