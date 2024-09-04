@@ -190,7 +190,6 @@ struct SeasonModalView: View {
                     .frame(width: Constants.screenWidth, height: 64)
                     .background(selectedSeason == LocalizedKey.winter.localized(for: localizationManager.language) ? .main10P : .white)
                 }
-                .padding(.leading, 17)
                 Spacer()
             }
             Spacer()
