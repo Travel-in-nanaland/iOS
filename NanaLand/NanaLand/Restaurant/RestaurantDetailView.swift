@@ -22,6 +22,7 @@ struct RestaurantDetailView: View {
     @State private var reportModal = false
     @State private var reportReasonViewFlag = false // 신고하기로 네비게이션 하기 위한 플래그(신고 모달이 sheet형태라 navigation stack에 포함 안됨)
     @State private var idx: Int64 = 0
+    @State private var isReport = false
     var layout: [GridItem] = [GridItem(.flexible())]
     
     var body: some View {
@@ -556,7 +557,7 @@ struct RestaurantDetailView: View {
                                                         }
                                                         .sheet(isPresented: $reportModal, onDismiss: {
                                                             if reportReasonViewFlag {
-                                                                AppState.shared.navigationPath.append(ReviewType.report(id: idx))
+                                                                AppState.shared.navigationPath.append(ReviewType.report(id: idx, isReport: isReport))
                                                             }
                                                         }) {
                                                             ReportModalView(reportReasonViewFlag: $reportReasonViewFlag)
@@ -683,8 +684,8 @@ struct RestaurantDetailView: View {
                     UserProfileMainView(memberId: id)
                 case let .reviewAll(id):
                     ReviewAllDetailMainView(id: id, reviewCategory: "RESTAURANT")
-                case let .report(id):
-                    ReportReasonView(id: id)
+                case let .report(id, isReport):
+                    ReportReasonView(id: id, isReport: $isReport)
                 case let .detailReivew(id, category):
                     MyReviewDetailView(reviewId: id, reviewCategory: category)
                         .environmentObject(LocalizationManager())
@@ -729,7 +730,7 @@ enum ReviewType: Hashable {
     case review
     case userProfile(id: Int64)
     case reviewAll(id: Int64)
-    case report(id: Int64) // 신고하기
+    case report(id: Int64, isReport: Bool) // 신고하기
     case detailReivew(id: Int64, category: String)
 }
 

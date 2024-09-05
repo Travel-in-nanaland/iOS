@@ -21,7 +21,8 @@ struct ExperienceDetailView: View {
     @State private var reportReasonViewFlag = false // 신고하기로 네비게이션 하기 위한 플래그(신고 모달이 sheet형태라 navigation stack에 포함 안됨)
     @State private var idx: Int64 = 0
     @State var showAlert: Bool = false//삭제하기 alert 여부
-    @State var isReport = false
+    @State var isReport: Bool = false
+    
     var id: Int64
     var experienceType = "k"
     var body: some View {
@@ -605,7 +606,7 @@ struct ExperienceDetailView: View {
                                                     }
                                                     .sheet(isPresented: $reportModal, onDismiss: {
                                                         if reportReasonViewFlag {
-                                                            AppState.shared.navigationPath.append(ExperienceViewType.report(id: idx))
+                                                            AppState.shared.navigationPath.append(ExperienceViewType.report(id: idx, isReport: isReport))
                                                         }
                                                     }) {
                                                         ReportModalView(reportReasonViewFlag: $reportReasonViewFlag)
@@ -757,29 +758,27 @@ struct ExperienceDetailView: View {
                 switch viewType {
                 case let .writeReview:
                     ReviewWriteMain(reviewAddress: viewModel.state.getExperienceDetailResponse.address ?? "", reviewImageUrl: viewModel.state.getExperienceDetailResponse.images![0].originUrl ?? "", reviewTitle: viewModel.state.getExperienceDetailResponse.title ?? "", reviewId: viewModel.state.getExperienceDetailResponse.id ?? 0, reviewCategory: "EXPERIENCE")
+                    
                 case let .userProfile(id):
                     UserProfileMainView(memberId: id)
+                    
                 case let .reviewAll(id):
                     ReviewAllDetailMainView(id: id, reviewCategory: "EXPERIENCE")
-                case let .report(id):
-                    ReportReasonView(id: id)
+                    
+                case let .report(id, isReport):
+                    ReportReasonView(id: id, isReport: $isReport)
+                    
                 case let .detailReivew(id, category):
                     MyReviewDetailView(reviewId: id, reviewCategory: category)
                         .environmentObject(LocalizationManager())
+                    
                 }
             }
         }
         .toolbar(.hidden)
-        .onAppear {
-            if isReport {
-                // 토스트 띄우기
-                isReport = false
-                // 토스트 띄운후 false로 변경
-            }
-            print("onAppear")
-            // TODO: - 신고 완료 후 다시 돌아왔을 때 토스트 메시지 띄우기
-            
-        }
+        .overlay(
+            Toast(message: "신고한 내용은 운영정책에 따라 최대 24시간 이내 처리됩니다.", isShowing: $isReport, isAnimating: true)
+        )
     }
     
     func getExperienceDetail(id: Int64, isSearch: Bool) async {
@@ -816,7 +815,7 @@ enum ExperienceViewType: Hashable {
     case writeReview
     case userProfile(id: Int64)
     case reviewAll(id: Int64)
-    case report(id: Int64) // 신고하기
+    case report(id: Int64, isReport: Bool) // 신고하기
     case detailReivew(id: Int64, category: String)
 }
 
