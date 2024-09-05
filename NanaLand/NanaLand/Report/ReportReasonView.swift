@@ -16,7 +16,6 @@ struct ReportReasonView: View {
                 .padding(.bottom, 24)
             VStack(spacing: 0) {
                 ScrollView {
-                    
                     VStack(alignment: .leading, spacing: 0) {
    
                         Text("신고하는 이유를 알려주세요!")

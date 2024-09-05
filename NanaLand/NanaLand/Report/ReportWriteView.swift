@@ -11,7 +11,7 @@ import _PhotosUI_SwiftUI
 struct ReportWriteView: View {
     @Environment(\.dismiss) private var dismiss
     @State var text: String = ""
-    @State var emailText: String = ""
+    @State var emailText: String = UserDefaults.standard.string(forKey: "UserEmail")!
     @ObservedObject var viewModel = ReportWriteViewModel()
     @State private var reportContent: String = ""
     @State private var showToast: Bool = false
@@ -22,6 +22,7 @@ struct ReportWriteView: View {
     @State private var selectedImageData: [Data] = []
     @State private var emailTextFieldDisabled: Bool = false
     @State private var isLoading: Bool = false
+    @State private var emailTextWarning: Bool = false
     var claimType: String // 신고 목적
     var id: Int64
     var body: some View {
@@ -129,18 +130,40 @@ struct ReportWriteView: View {
                         }
                         .padding(.bottom, 8)
                         .padding(.leading, 16)
-                        TextField("aaaaaaaaaa@naver.com", text: $emailText)
-                            .padding()
-                            .cornerRadius(8)
-                            .frame(height: 48)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 8)
-                                    .stroke(Color.gray2, lineWidth: 1)
-                            )
-                            .padding(.leading, 16)
-                            .padding(.trailing, 16)
-                            .padding(.bottom, 44)
-                            .disabled(emailTextFieldDisabled)
+                        VStack(spacing: 0) {
+                            
+                            TextField("aaaaaaaaaa@naver.com", text: $emailText)
+                                .padding()
+                                .cornerRadius(8)
+                                .frame(height: 48)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .stroke(Color.gray2, lineWidth: 1)
+                                )
+                                .disabled(emailTextFieldDisabled)
+                                .onChange(of: emailText) { newValue in
+                                    if !isValidEmail(newValue) {
+                                        emailTextWarning = true
+                                    } else {
+                                        emailTextWarning = false
+                                    }
+                                }
+                                .padding(.bottom, 4)
+                            HStack(spacing: 0) {
+                                if (emailTextWarning) {
+                                    Text("*올바른 이메일을 입력해주세요.")
+                                        .foregroundStyle(.red)
+                                        .font(.caption01)
+                                }
+                                Spacer()
+                            }
+                            
+                        }
+                        .padding(.leading, 16)
+                        .padding(.trailing, 16)
+                        .padding(.bottom, 44)
+                        
+                      
                         HStack(spacing: 0) {
                             Text("사진 / 동영상")
                                 .font(.title02_bold)
@@ -231,7 +254,6 @@ struct ReportWriteView: View {
                                     selectedImageData.append(data) // 선택된 이미지 추가
                                 }
                             }
-                            
                         }
                         viewModel.updateImageCount(selectedImageData.count)
                     }
@@ -252,11 +274,10 @@ struct ReportWriteView: View {
                 .frame(width: Constants.screenWidth - 32, height: 48)
                 .background(
                     RoundedRectangle(cornerRadius: 50)
-                        .fill(reasonValidate ? Color.main : Color.main10P)
+                        .fill(reasonValidate && !emailTextWarning && emailText.count != 0 ? Color.main : Color.main10P)
                 )
-                .disabled(!reasonValidate)
+                .disabled(!reasonValidate || emailTextWarning || emailText.count == 0)
                 .padding(.bottom, 24)
-                
              
             }
             .overlay(
@@ -295,11 +316,16 @@ struct ReportWriteView: View {
                     .edgesIgnoringSafeArea(.all) // 전체 화면을 덮도록 설정
             }
         }
-     
     }
     
     func postReport(body: ReportDTO, multipartFile: [Foundation.Data?]) async {
         await viewModel.action(.postReport(body: body, multipartFile: multipartFile))
+    }
+    
+    func isValidEmail(_ email: String) -> Bool {
+        let emailRegex = "^[A-Z0-9a-z._%+-]+@[A-Z0-9a-z.-]+\\.[A-Za-z]{2,}$"
+        let predicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
+        return predicate.evaluate(with: email)
     }
 }
 

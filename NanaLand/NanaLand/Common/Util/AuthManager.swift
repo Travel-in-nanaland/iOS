@@ -78,7 +78,8 @@ final class AuthManager: NSObject {
 				print("email과 id는 nil일 수 없습니다.")
 				return
 			}
-			
+            UserDefaults.standard.set(email, forKey: "UserEmail")
+            
             let loginRequest = LoginRequest(locale: self.locale, provider: "KAKAO", providerId: "\(id)", fcmToken: "\(UserDefaults.standard.string(forKey: "FCMToken"))")
 			
 			Task {
@@ -125,6 +126,7 @@ final class AuthManager: NSObject {
 				print("email과 id는 nil일 수 없습니다.")
 				return
 			}
+            UserDefaults.standard.set(email, forKey: "UserEmail")
 			
             let loginRequest = LoginRequest(locale: self.locale, provider: "GOOGLE", providerId: "\(userId)", fcmToken: UserDefaults.standard.string(forKey: "FCMToken") ?? "")
 			
@@ -200,6 +202,7 @@ final class AuthManager: NSObject {
             print("비회원 로그인 성공: 토큰 획득")
 			KeyChainManager.addItem(key: "accessToken", value: tokens.accessToken)
 			KeyChainManager.addItem(key: "refreshToken", value: tokens.refreshToken)
+            UserDefaults.standard.set("", forKey: "UserEmail")
 			self.isLogin = true
 			self.provider = "GUEST"
 		} else if result?.status == 404 {
@@ -480,6 +483,7 @@ extension AuthManager: ASAuthorizationControllerDelegate, ASAuthorizationControl
 			
             let loginRequest = LoginRequest(locale: self.locale, provider: "APPLE", providerId: userId, fcmToken: "\(UserDefaults.standard.string(forKey: "FCMToken") ?? "")")
             print("email:\(email)")
+            UserDefaults.standard.set("", forKey: "UserEmail")
 			Task {
 				await self.loginToServer(
 					request: loginRequest,
