@@ -41,7 +41,7 @@ enum Language: String, CaseIterable {
 	case english = "ENGLISH"
     case chinese = "CHINESE"
 	case malaysia = "MALAYSIA"
-    case vietnam = "VIETMAN"
+    case vietnam = "VIETNAMESE"
     case korean = "KOREAN"
 	
 	init?(deeplinkName: String) {
