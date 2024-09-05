@@ -23,6 +23,7 @@ struct ReportWriteView: View {
     @State private var emailTextFieldDisabled: Bool = false
     @State private var isLoading: Bool = false
     @State private var emailTextWarning: Bool = false
+    @Binding var isReport: Bool
     var claimType: String // 신고 목적
     var id: Int64
     var body: some View {
@@ -33,6 +34,7 @@ struct ReportWriteView: View {
                 
                 ScrollView {
                     VStack(spacing: 0) {
+   
                         HStack(spacing: 0) {
                             Text("신고사유")
                                 .padding(.trailing, 12)
@@ -264,6 +266,7 @@ struct ReportWriteView: View {
                         isLoading = true
                         await postReport(body: viewModel.state.reportDTO, multipartFile: selectedImageData)
                         isLoading = false
+                        isReport = true
                         AppState.shared.navigationPath.removeLast()
                         AppState.shared.navigationPath.removeLast()
                     }
@@ -285,6 +288,7 @@ struct ReportWriteView: View {
             )
             .toolbar(.hidden)
             .onAppear {
+                isReport = true
                 viewModel.state.reportDTO.id = Int(id)
                 switch claimType {
                 case "영리목적 / 홍보성":
@@ -329,6 +333,6 @@ struct ReportWriteView: View {
     }
 }
 
-#Preview {
-    ReportWriteView(text: "abc", claimType: "aa", id: 0)
-}
+//#Preview {
+//    ReportWriteView(text: "abc", claimType: "aa", id: 0)
+//}

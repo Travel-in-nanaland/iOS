@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ReportReasonView: View {
     var id: Int64
+    @Binding var isReport: Bool
     var body: some View {
         VStack(spacing: 0) {
             NanaNavigationBar(title: .report, showBackButton: true)
@@ -17,7 +18,7 @@ struct ReportReasonView: View {
             VStack(spacing: 0) {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 0) {
-   
+     
                         Text("신고하는 이유를 알려주세요!")
                             .padding(.bottom, 4)
                             .font(.title01_bold)
@@ -28,15 +29,15 @@ struct ReportReasonView: View {
                             .padding(.bottom, 32)
                             .padding(.trailing, 88)
                         VStack(spacing: 16) {
-                            ReportReasonItemButtonView(id: id, title: "영리목적 / 홍보성")
-                            ReportReasonItemButtonView(id: id, title: "마음에 들지 않습니다")
-                            ReportReasonItemButtonView(id: id, title: "욕설/인신공격")
-                            ReportReasonItemButtonView(id: id, title: "개인정보 노출")
-                            ReportReasonItemButtonView(id: id, title: "음란 / 선정성")
-                            ReportReasonItemButtonView(id: id, title: "시설 폐업 및 다른 시설에 대한 리뷰")
-                            ReportReasonItemButtonView(id: id, title: "약물")
-                            ReportReasonItemButtonView(id: id, title: "학대 / 폭력")
-                            ReportReasonItemButtonView(id: id, title: "기타")
+                            ReportReasonItemButtonView(id: id, title: "영리목적 / 홍보성", isReport: $isReport)
+                            ReportReasonItemButtonView(id: id, title: "마음에 들지 않습니다", isReport: $isReport)
+                            ReportReasonItemButtonView(id: id, title: "욕설/인신공격", isReport: $isReport)
+                            ReportReasonItemButtonView(id: id, title: "개인정보 노출", isReport: $isReport)
+                            ReportReasonItemButtonView(id: id, title: "음란 / 선정성", isReport: $isReport)
+                            ReportReasonItemButtonView(id: id, title: "시설 폐업 및 다른 시설에 대한 리뷰", isReport: $isReport)
+                            ReportReasonItemButtonView(id: id, title: "약물", isReport: $isReport)
+                            ReportReasonItemButtonView(id: id, title: "학대 / 폭력", isReport: $isReport)
+                            ReportReasonItemButtonView(id: id, title: "기타", isReport: $isReport)
                         }
                     }
                 }
@@ -48,8 +49,8 @@ struct ReportReasonView: View {
         .padding(.trailing, 16)
         .navigationDestination(for: ReportReasonViewType.self) { viewType in
             switch viewType {
-            case let .write(claimType, id):
-                ReportWriteView(claimType: claimType, id: id)
+            case let .write(claimType, id, isReport):
+                ReportWriteView(isReport: $isReport, claimType: claimType, id: id)
             }
         }
     }
@@ -58,10 +59,11 @@ struct ReportReasonView: View {
 struct ReportReasonItemButtonView: View {
     var id: Int64
     var title: String
+    @Binding var isReport: Bool
     var body: some View {
         VStack(spacing: 0) {
             Button {
-                AppState.shared.navigationPath.append(ReportReasonViewType.write(claimType: title, id: id))
+                AppState.shared.navigationPath.append(ReportReasonViewType.write(claimType: title, id: id, isReport: isReport))
             } label: {
                 HStack(spacing: 0) {
                     Text("\(title)")
@@ -83,14 +85,13 @@ struct ReportReasonItemButtonView: View {
             RoundedRectangle(cornerRadius: 12) // 동일한 코너 반경 설정
                 .stroke(Color.gray2, lineWidth: 1) // 테두리 색상과 두께 설정
         )
-        
     }
 }
 
 enum ReportReasonViewType: Hashable {
-    case write(claimType: String, id: Int64)
+    case write(claimType: String, id: Int64, isReport: Bool)
 }
 
-#Preview {
-    ReportReasonView(id: 0)
-}
+//#Preview {
+//    ReportReasonView(id: 0)
+//}
