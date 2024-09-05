@@ -151,7 +151,7 @@
 "none" = "None";
 "travelType" = "Travel Type";
 "goTest" = "Testing";
-"retest" = "retest";
+"retest" = "Test again";
 "introduction" = "introduction";
 
 // editProfile
