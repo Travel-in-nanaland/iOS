@@ -24,7 +24,7 @@ class DeepLinkManager {
 		
 		checkUserStatusAndSendNotification(category: category, id: id, lang: lang)
 	}
-	
+    
 	// 딥링크 url에서 필요한 정보 추출
 	private func decompostionURL(url: URL) -> (category: Category, id: Int, lang: Language)? {
 		if let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false) {

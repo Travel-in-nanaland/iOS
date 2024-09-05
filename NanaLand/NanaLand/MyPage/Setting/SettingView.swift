@@ -69,6 +69,7 @@ struct SettingView: View {
                             leftButtonAction: {
                                 // 로그아웃
                                 AuthManager(registerVM: RegisterViewModel()).logout()
+                                UserDefaults.standard.removeObject(forKey: "UserEmail")
                             },
                             rightButtonAction: {
                                 showAlert = false

@@ -141,7 +141,7 @@ struct ProfileUpdateView: View {
                                 .frame(width: Constants.screenWidth - 32, height: 49)
                                 .background(
                                     RoundedRectangle(cornerRadius: 12)
-                                        .stroke(nickName.count > 8 ? Color.red : Color.gray2, lineWidth: 1)
+                                        .stroke(nickName.count > 8 || containsSpecialCharacter(nickName) ? Color.red : Color.gray2, lineWidth: 1)
                                 )
                                 .onChange(of: nickName) { nickName in
                                     // 텍스트가 변경될 때마다 실행되는 코드

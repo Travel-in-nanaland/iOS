@@ -69,8 +69,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/divadretlaw/CustomAlert.git",
       "state" : {
-        "revision" : "eee95709dcb68c7def06b4ab2bf28517ce598295",
-        "version" : "3.7.2"
+        "revision" : "0f6658610a550da4a0a021f173ca5558e0de1417",
+        "version" : "3.8.0"
       }
     },
     {
@@ -159,8 +159,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/kakao/kakao-ios-sdk",
       "state" : {
-        "revision" : "66b3bddc2657e8ccb7a16fa0264aac99c57be09b",
-        "version" : "2.22.5"
+        "revision" : "f50278451e3ea7e131fb94e08e3fe86023d84930",
+        "version" : "2.22.6"
       }
     },
     {
@@ -249,8 +249,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SDWebImage/SDWebImageSwiftUI",
       "state" : {
-        "revision" : "5d462f7530677ae0c2b9510c26383aa25ba48751",
-        "version" : "3.1.1"
+        "revision" : "5aa947356f4ea49a0c3b9968564267f6ea5abea7",
+        "version" : "3.1.2"
       }
     },
     {
@@ -276,8 +276,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-protobuf.git",
       "state" : {
-        "revision" : "e17d61f26df0f0e06f58f6977ba05a097a720106",
-        "version" : "1.27.1"
+        "revision" : "edb6ed4919f7756157fe02f2552b7e3850a538e5",
+        "version" : "1.28.1"
       }
     },
     {
@@ -303,8 +303,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/divadretlaw/WindowKit",
       "state" : {
-        "revision" : "4a02f62860d84be31376d2457d80c631ab923dd6",
-        "version" : "2.4.0"
+        "revision" : "ccdb0d63ce355ce2f4a7b1e2b774d3f56bac27ce",
+        "version" : "2.5.1"
       }
     },
     {
@@ -321,8 +321,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/divadretlaw/WindowSceneReader",
       "state" : {
-        "revision" : "c6e9e9ce20683a7d310d0ec1812ae999845ecd6b",
-        "version" : "3.1.1"
+        "revision" : "1f37f310e15a9a58014f2dbfce29526e5f3f4567",
+        "version" : "3.1.2"
       }
     }
   ],

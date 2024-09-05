@@ -20,22 +20,29 @@ struct ProfileReviewWriteView: View {
         VStack(spacing: 0) {
             NanaNavigationBar(title: .write, showBackButton: true)
                 .padding(.bottom, 24)
-            TextField("장소를 검색하세요", text: $viewModel.searchText)
-                .padding()
-                .background(.white)
-                .cornerRadius(16)
-                .background(
-                RoundedRectangle(cornerRadius: 16)
-                    .stroke(.gray, lineWidth: 1)
-                )
-                .padding()
-                .onChange(of: viewModel.debouncedText) { newValue in
+            ZStack {
+               
+                TextField("장소를 검색하세요", text: $viewModel.searchText)
+                    .padding()
+                    .padding(.leading, 25)
+                    .background(.white)
+                    .cornerRadius(16)
+                    .shadow(color: .gray.opacity(0.5), radius: 5, x: 0, y: 2) // 그림자 추가
+                    .padding()
+                    .onChange(of: viewModel.debouncedText) { newValue in
                         Task {
                             skeletonFlag = true
-                            await getProfileReview(keyword: "\(newValue)")
-                            skeletonFlag = false
-                        }
+                                await getProfileReview(keyword: "\(newValue)")
+                                skeletonFlag = false
+                            }
+                    }
+                HStack(spacing: 0) {
+                    Image("icSearch")
+                        .padding(.leading, 24)
+                    Spacer()
                 }
+            }
+            
             if viewModel.state.getProfileReviewResponse.count >= 1 {
                 if skeletonFlag {
                     ScrollView {

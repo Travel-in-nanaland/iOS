@@ -99,7 +99,7 @@ struct TypeTestRecommendPlaceView: View {
 					.font(.title01_bold)
 					.padding(.bottom, 4)
 				
-				Text(place.introduction)
+				Text(place.introduction ?? "")
 					.font(.caption01)
 					.padding(.bottom, 16)
 				
