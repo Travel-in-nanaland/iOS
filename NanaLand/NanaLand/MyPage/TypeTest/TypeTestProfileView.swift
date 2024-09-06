@@ -123,15 +123,58 @@ struct TypeTestProfileView: View {
                     .stroke(Color.main, lineWidth: 1)
                     .frame(height: 48)
                     .overlay {
-                        Text(type)
-                            .font(.body_bold)
-                            .foregroundColor(Color.main)
-                        +
-                        Text(" ")
-                        +
-                        Text(.destination)
-                            .font(.body_bold)
-                            .foregroundColor(Color.main)
+                        
+                        if localizationManager.language == .korean {
+                            Text(type)
+                                .font(.body_bold)
+                                .foregroundColor(Color.main)
+                            +
+                            Text(" ")
+                            +
+                            Text(.destination)
+                                .font(.body_bold)
+                                .foregroundColor(Color.main)
+                        } else if localizationManager.language == .english {
+                            Text(type)
+                                .font(.body_bold)
+                                .foregroundColor(Color.main)
+                            +
+                            Text(" ")
+                            +
+                            Text(.destination)
+                                .font(.body_bold)
+                                .foregroundColor(Color.main)
+                        } else if localizationManager.language == .chinese {
+                            Text(type)
+                                .font(.body_bold)
+                                .foregroundColor(Color.main)
+                            +
+                            Text(" ")
+                            +
+                            Text(.destination)
+                                .font(.body_bold)
+                                .foregroundColor(Color.main)
+                        } else if localizationManager.language == .malaysia {
+                            Text(.destination)
+                                .font(.body_bold)
+                                .foregroundColor(Color.main)
+                            +
+                            Text(" ")
+                            +
+                            Text(type)
+                                .font(.body_bold)
+                                .foregroundColor(Color.main)
+                        } else {
+                            Text(.destination)
+                                .font(.body_bold)
+                                .foregroundColor(Color.main)
+                            +
+                            Text(" ")
+                            +
+                            Text(type)
+                                .font(.body_bold)
+                                .foregroundColor(Color.main)
+                        }
                     }
             })
             

@@ -41,7 +41,7 @@ struct LanguageView: View {
                     showAlert = false
                 },
                 rightButtonAction: {
-                   
+                    viewModel.action(.cancelChange)
                     showAlert = false
                 }
             )
@@ -53,8 +53,8 @@ struct LanguageView: View {
     
     private func languageButton(language: Language) -> some View {
         Button(action: {
-            viewModel.action(.selectLanguage(language: language))
             showAlert = true
+            viewModel.action(.selectLanguage(language: language))
         }, label: {
             HStack {
                 Text(language.name)

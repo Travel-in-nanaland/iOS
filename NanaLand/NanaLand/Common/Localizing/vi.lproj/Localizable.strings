@@ -12,8 +12,8 @@
 "next" = "Next";
 "requiredWithBracket" = "(Required)";
 "optionalWithBracket" = "(Optional)";
-"destination" = "Destination";
-"gotoMainScreen" = "Go to the main screen";
+"destination" = "Điểm đến";
+"gotoMainScreen" = "Về màn hình chính";
 "no" = "Không";
 "yes" = "Có";
 "emptyString" = "This service is being prepared.\nSee you next time!";
@@ -60,12 +60,12 @@
 
 //MARK: - Error/Alert
 "duplicatedNickname" = "Biệt danh đó đang được sử dụng bởi người dùng khác.";
-"invalidNickname" = "This nickname cannot be used.";
-"onlyCharSpaceNumberNickname" = "Nicknames can only contain letters, spaces, and numbers.";
+"invalidNickname" = "Biệt danh đó không thể sử dụng.";
+"onlyCharSpaceNumberNickname" = "Biệt danh chỉ có thể chứa chữ cái, dấu cách, và số.";
 "logoutAlertTitle" = "Are you sure\nyou want to log out?";
 "withdrawAlertTitle" = "Are you sure you don't want to receive Jeju travel information and benefits?😢";
 "withdrawAlertMessage" = "*If you rejoin within 90 days, you can log in with your existing account.";
-"changeLanguageAlertTitle" = "Do you want to change\nto this language?";
+"changeLanguageAlertTitle" = "Bạn có muốn thay đổi\nsang ngôn ngữ đó không?";
 "invalidEmail" = "The email format is incorrect. Please re-enter!";
 "updateRequired" = "Update is required";
 "openAppstore" = "Move to App Store";
@@ -102,7 +102,7 @@
 "yourTravelStyle" = "do you prefer?";
 "tangerineJuiced" = "Squeezing the citrus...";
 "juiceCommingSoon" = "Delicious travel juice coming up soon!";
-"yourTravelStyleIs" = "%@'s travel type is";
+"yourTravelStyleIs" = "Loại hình du lịch của %@ là";
 
 // Type
 "GAMGYUL_ICECREAM" = "Tangerine Ice Cream";
@@ -139,9 +139,9 @@
 "GAMGYUL_BUBBLE_TEA_DESCRIPTION" = "A type full of curiosity, surprising with each bite.";
 "nanalandMadeYouJuice" = "nanaland in Jeju has created a custom travel juice for you!";
 // 결과 값 추천 여행지
-"recommendedTravelPlace" = "Recommended\nTravel Destinations";
-"recommenedeTravelTitleFirstLine" = "Recommended Travel";
-"recommenedeTravelTitleSecondLine" = "Destinations for %@";
+"recommendedTravelPlace" = "Điểm đến du lịch được đề xuất";
+"recommenedeTravelTitleFirstLine" = "Dành cho %@";
+"recommenedeTravelTitleSecondLine" = "Điểm đến du lịch được đề xuất";
 
 //MARK: - MyPage
 // main
@@ -413,11 +413,11 @@ the market is the place!";
 
 //MARK: - 마이페이지
 "notice" = "Thông báo";
-"testAgain" = "To Test Again";
+"testAgain" = "Kiểm tra lại";
 "noNickname" = "No Nickname";
-"noReview" = "후기를 남겨 나만의 경험을 기록하세요!";
+"noReview" = "Để lại đánh giá và ghi lại trải nghiệm của bạn!";
 "noDescription" = "Thể hiện bản thân bạn trong một dòng!";
-"noNotice" = "공지사항이 존재하지 않습니다";
+"noNotice" = "Không Có Thông Báo";
 "seeAll" = "Xem tất cả";
 
 // MARK: - 제주 맛집

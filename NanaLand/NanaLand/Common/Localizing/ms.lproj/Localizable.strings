@@ -60,7 +60,7 @@
 
 //MARK: - Error/Alert
 "duplicatedNickname" = "Nama samaran tersebut sedang digunakan oleh pengguna lain.";
-"invalidNickname" = "Nama panggilan ini tidak boleh digunakan.";
+"invalidNickname" = "Nama samaran tersebut tidak boleh digunakan.";
 "onlyCharSpaceNumberNickname" = "Nama panggilan hanya boleh mengandungi huruf, ruang, dan nombor.";
 "logoutAlertTitle" = "Adakah anda benar-benar ingin log keluar?";
 "withdrawAlertTitle" = "Betul-betul tidak mahu menerima maklumat dan tawaran perjalanan ke Jeju?😢";
@@ -139,8 +139,8 @@
 "nanalandMadeYouJuice" = "nanaland in Jeju telah membuat jus perjalanan khas untuk anda!";
 // 결과 값 추천 여행지
 "recommendedTravelPlace" = "Destinasi\nPelancongan Disyorkan";
-"recommenedeTravelTitleFirstLine" = "Destinasi Pelancongan";
-"recommenedeTravelTitleSecondLine" = "Disyorkan untuk %@";
+"recommenedeTravelTitleFirstLine" = "Untuk %@";
+"recommenedeTravelTitleSecondLine" = "Destinasi pelancongan yang disyorkan";
 
 
 //MARK: - MyPage
@@ -431,11 +431,11 @@ mengembalikan sebarang hasil.";
 
 //MARK: - 마이페이지
 "notice" = "Pengumuman";
-"testAgain" = "To Test Again";
+"testAgain" = "Uji semula";
 "noNickname" = "No Nickname";
-"noReview" = "후기를 남겨 나만의 경험을 기록하세요!";
+"noReview" = "Tinggalkan ulasan dan rekod pengalaman anda!";
 "noDescription" = "Luahkan diri anda dalam satu baris!";
-"noNotice" = "공지사항이 존재하지 않습니다";
+"noNotice" = "Tiada Pengumuman";
 "seeAll" = "Lihat semua";
 
 //MARK: - 나나스픽
