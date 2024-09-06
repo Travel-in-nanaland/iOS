@@ -32,7 +32,7 @@
 "festival" = "Festivals";
 "market" = "Traditional Markets";
 "experience" = "Unique Experiences";
-"nanaPick" = "Nana’s Pick";
+"nanaPick" = "Lựa chọn của Nana";
 
 //MARK: - Search
 "inputSearchTerm" = "Please enter a search";
@@ -455,6 +455,8 @@ the market is the place!";
 "nanapickRecommend1" = "금주 ";
 "nanapickRecommend2" = "추천 ";
 "nanapickRecommend3" = "나나's Pick";
+"nanapickAll" = "Xem tất cả";
+"locationPoint" = "Điểm Quyến Rũ Độc Đáo của Nơi Này✨";
 
 // MARK: - 이색 체험
 "activity" = "Hoạt động";

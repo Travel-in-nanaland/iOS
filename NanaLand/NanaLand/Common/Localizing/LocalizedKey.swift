@@ -484,6 +484,8 @@ enum LocalizedKey: String {
     case nanapickRecommend1
     case nanapickRecommend2
     case nanapickRecommend3
+    case nanapickAll
+    case locationPoint
     
     //MARK: - localized()
     func localized(for language: Language) -> String {

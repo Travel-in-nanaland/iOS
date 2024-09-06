@@ -59,6 +59,14 @@ struct RestaurantMainGridView: View {
         ]
     }
     
+    func generateAPIKeyword(from localizedKeyword: String) -> String {
+        var apiKeyword = localizedKeyword
+        for (localized, english) in translations {
+            apiKeyword = apiKeyword.replacingOccurrences(of: localized, with: english)
+        }
+        return apiKeyword
+    }
+    
     var body: some View {
         
         VStack {
@@ -220,27 +228,13 @@ struct RestaurantMainGridView: View {
             .onAppear {
                 Task {
                     if location == LocalizedKey.allLocation.localized(for: LocalizationManager().language) {
-                        APIKeyword = keyword.replacingOccurrences(of: LocalizedKey.koreanFood.localized(for: localizationManager.language), with: "KOREAN")
-                        APIKeyword = keyword.replacingOccurrences(of: LocalizedKey.chineseFood.localized(for: localizationManager.language), with: "CHINESE")
-                        APIKeyword = keyword.replacingOccurrences(of: LocalizedKey.japaneseFood.localized(for: localizationManager.language), with: "JAPANESE")
-                        APIKeyword = keyword.replacingOccurrences(of: LocalizedKey.westernFood.localized(for: localizationManager.language), with: "WESTERN")
-                        APIKeyword = keyword.replacingOccurrences(of: LocalizedKey.snacks.localized(for: localizationManager.language), with: "SNACK")
-                        APIKeyword = keyword.replacingOccurrences(of: LocalizedKey.southAmericanFood.localized(for: localizationManager.language), with: "SOUTH_AMERICAN")
-                        APIKeyword = keyword.replacingOccurrences(of: LocalizedKey.southeastAsianFood.localized(for: localizationManager.language), with: "SOUTHEAST_ASIAN")
-                        APIKeyword = keyword.replacingOccurrences(of: LocalizedKey.vegan.localized(for: localizationManager.language), with: "VEGAN")
-                        APIKeyword = keyword.replacingOccurrences(of: LocalizedKey.halalFood.localized(for: localizationManager.language), with: "HALAL")
-                        APIKeyword = keyword.replacingOccurrences(of: LocalizedKey.meatblackpork.localized(for: localizationManager.language), with: "MEAT_BLACK_PORK")
-                        APIKeyword = keyword.replacingOccurrences(of: LocalizedKey.seaFood.localized(for: localizationManager.language), with: "SEAFOOD")
-                        APIKeyword = keyword.replacingOccurrences(of: LocalizedKey.chickenBurger.localized(for: localizationManager.language), with: "CHICKEN_BURGER")
-                        APIKeyword = keyword.replacingOccurrences(of: LocalizedKey.cafeDessert.localized(for: localizationManager.language), with: "CAFE_DESSERT")
-                        APIKeyword = keyword.replacingOccurrences(of: LocalizedKey.pubRestaurant.localized(for: localizationManager.language), with: "PUB_FOOD_PUB")
+                        APIKeyword = generateAPIKeyword(from: keyword)
                         
-                        print(APIKeyword)
-                        
-                        await getRestaurantMainItem(keyword: keyword == LocalizedKey.type.localized(for: localizationManager.language) ? "" : keyword, address: "", page: 0, size: 12)
+                        await getRestaurantMainItem(keyword: keyword == LocalizedKey.type.localized(for: localizationManager.language) ? "" : APIKeyword, address: "", page: viewModel.state.page, size: 12)
                     } else {
+                        APIKeyword = generateAPIKeyword(from: keyword)
                         
-                        await getRestaurantMainItem(keyword: keyword == LocalizedKey.type.localized(for: localizationManager.language) ? "" : keyword, address: "", page: 0, size: 12)
+                        await getRestaurantMainItem(keyword: keyword == LocalizedKey.type.localized(for: localizationManager.language) ? "" : APIKeyword, address: location, page: viewModel.state.page, size: 12)
                     }
                     isAPICalled = true
                     

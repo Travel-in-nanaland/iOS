@@ -389,7 +389,7 @@ struct NewNaNaPickDetailMainView: View {
                                                             .shadow(radius: 1)
                                                             .overlay(){
                                                                 HStack(spacing: 0){
-                                                                    Text("이 장소만의 매력 포인트✨")
+                                                                    Text(.locationPoint)
                                                                         .font(.gothicNeo(.regular, size: 16))
                                                                     
                                                                     Spacer()
@@ -570,7 +570,7 @@ struct NewNaNaPickDetailMainView: View {
                                                             .shadow(radius: 1)
                                                             .overlay(){
                                                                 HStack(spacing: 0){
-                                                                    Text("이 장소만의 매력 포인트✨")
+                                                                    Text(.locationPoint)
                                                                         .font(.gothicNeo(.regular, size: 16))
                                                                     
                                                                     Spacer()
