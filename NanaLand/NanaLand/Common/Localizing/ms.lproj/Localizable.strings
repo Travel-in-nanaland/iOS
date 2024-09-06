@@ -442,6 +442,8 @@ mengembalikan sebarang hasil.";
 "nanapickRecommend1" = "금주 ";
 "nanapickRecommend2" = "추천 ";
 "nanapickRecommend3" = "나나's Pick";
+"nanapickAll" = "Lihat semua";
+"locationPoint" = "Daya Tarikan Unik Lokasi Ini✨";
 
 // MARK: - 이색체험
 "activity" = "Aktiviti";

@@ -77,7 +77,7 @@ struct NewNanaPickMainView: View {
                         
                     
                     HStack(spacing: 0){
-                        Text("나나's Pick")
+                        Text(.nanaPick)
                             .font(.title02_bold)
                             .foregroundColor(.black)
                         
@@ -89,7 +89,7 @@ struct NewNanaPickMainView: View {
                             Button {
                                 AppState.shared.navigationPath.append(NewNanaPickType.all)
                             } label: {
-                                Text("모두보기")
+                                Text(.nanapickAll)
                                     .font(.caption01)
                                     .foregroundColor(.gray1)
                             }

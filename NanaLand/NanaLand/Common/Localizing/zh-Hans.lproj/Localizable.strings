@@ -438,6 +438,8 @@
 "nanapickRecommend1" = "금주 ";
 "nanapickRecommend2" = "추천 ";
 "nanapickRecommend3" = "나나's Pick";
+"nanapickAll" = "查看全部";
+"locationPoint" = "这个地方独有的魅力点✨";
 
 // MARK: - 이색 체험
 "activity" = "活动";
