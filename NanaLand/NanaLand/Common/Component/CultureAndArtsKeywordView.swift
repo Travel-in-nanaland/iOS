@@ -17,7 +17,7 @@ struct CultureAndArtsKeywordView: View {
     // 눌려진 키워드 버튼 담을 배열(눌렸는지 안 눌렸는지)
     @State var selectedAPIKeyword: [String] = []
     @State var buttonsToggled = Array(repeating: false, count: 9)
-    var CultureAndArtsKeywordButtonArray = ["역사", "전시회", "공방", "미술관", "박물관", "공연", "공원", "종교시설", "테마파크"]
+    var CultureAndArtsKeywordButtonArray = [LocalizedKey.history.localized(for: LocalizationManager().language), LocalizedKey.exhibition.localized(for: LocalizationManager().language), LocalizedKey.experienceWorkshop.localized(for: LocalizationManager().language), LocalizedKey.artGallery.localized(for: LocalizationManager().language), LocalizedKey.museum.localized(for: LocalizationManager().language), LocalizedKey.performance.localized(for: LocalizationManager().language), LocalizedKey.park.localized(for: LocalizationManager().language), LocalizedKey.religiousFacilities.localized(for: LocalizationManager().language), LocalizedKey.themePark.localized(for: LocalizationManager().language)]
     var CultureAndArtsKeywordArray = ["HISTORY", "EXHIBITION", "WORKSHOP", "ART_MUSEUM", "MUSEUM", "PARK", "PERFORMANCE", "RELIGIOUS_FACILITY", "THEME_PARK"]
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
     var body: some View {
@@ -28,7 +28,7 @@ struct CultureAndArtsKeywordView: View {
                 .padding(.bottom, 12)
             
             HStack(spacing: 0) {
-                Text("문화예술")
+                Text(.cultureAndArts)
                     .font(.body_bold)
                 Spacer()
             }
@@ -129,7 +129,7 @@ struct CultureAndArtsKeywordView: View {
     // title, 닫기 버튼 뷰
     private var titleAndCloseButtonView: some View {
         HStack(spacing: 0) {
-            Text("키워드")
+            Text(.keyword)
                 .font(.title02_bold)
                 .padding(.trailing, 8)
             // 선택된 버튼의 개수 적용

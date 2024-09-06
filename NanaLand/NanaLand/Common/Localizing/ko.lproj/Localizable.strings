@@ -435,6 +435,25 @@
 "folding" = "접기";
 "opening" = "더 보기";
 
+// MARK: - 이색 체험
+"activity" = "액티비티";
+"cultureAndArts" = "문화예술";
+"groundLeisure" = "지상레저";
+"waterLeisure" = "수상레저";
+"aviationLeisure" = "항공레저";
+"marineExperience" = "해양체험";
+"ruralExperience" = "농촌체험";
+"healingTherapy" = "힐링테라피";
+"history" = "역사";
+"exhibition" = "전시회";
+"experienceWorkshop" = "공방";
+"artGallery" = "미술관";
+"museum" = "박물관";
+"park" = "공원";
+"performance" = "공연";
+"religiousFacilities" = "종교시설";
+
+
 //MARK: - 언어 설정
 "greeting" = "안녕하세요!\n반갑습니다 👋";
 

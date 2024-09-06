@@ -455,3 +455,21 @@ the market is the place!";
 "nanapickRecommend1" = "금주 ";
 "nanapickRecommend2" = "추천 ";
 "nanapickRecommend3" = "나나's Pick";
+
+// MARK: - 이색 체험
+"activity" = "Hoạt động";
+"cultureAndArts" = "Văn hóa và Nghệ thuật";
+"groundLeisure" = "Giải trí trên mặt đất";
+"waterLeisure" = "Giải trí dưới nước";
+"aviationLeisure" = "Giải trí hàng không";
+"marineExperience" = "Trải nghiệm biển";
+"ruralExperience" = "Trải nghiệm nông thôn";
+"healingTherapy" = "Liệu pháp chữa lành";
+"history" = "Lịch sử";
+"exhibition" = "Triển lãm";
+"experienceWorkshop" = "Hội thảo trải nghiệm";
+"artGallery" = "Phòng trưng bày nghệ thuật";
+"museum" = "Bảo tàng";
+"park" = "Công viên";
+"performance" = "Biểu diễn";
+"religiousFacilities" = "Cơ sở tôn giáo";

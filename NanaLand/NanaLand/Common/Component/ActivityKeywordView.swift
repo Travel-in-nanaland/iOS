@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ActivityKeywordView: View {
+    @EnvironmentObject var localizationManager: LocalizationManager
     @Environment(\.dismiss) var dismiss
     @Binding var keyword: String
     var address: String
@@ -18,7 +19,7 @@ struct ActivityKeywordView: View {
     // 눌려진 키워드 버튼 담을 배열(눌렸는지 안 눌렸는지)
     @State var buttonsToggled = Array(repeating: false, count: 6)
     var ActivityKeywordArray = ["LAND_LEISURE", "WATER_LEISURE", "AIR_LEISURE", "MARINE_EXPERIENCE", "RURAL_EXPERIENCE", "HEALING_THERAPY"]
-    var ActivityKeywordButtonNameArray = ["지상레저", "수상레저", "항공레저", "해양체험", "농촌체험", "힐링테라피"]
+    var ActivityKeywordButtonNameArray = [LocalizedKey.groundLeisure.localized(for: LocalizationManager().language), LocalizedKey.waterLeisure.localized(for: LocalizationManager().language), LocalizedKey.aviationLeisure.localized(for: LocalizationManager().language), LocalizedKey.marineExperience.localized(for: LocalizationManager().language), LocalizedKey.ruralExperience.localized(for: LocalizationManager().language), LocalizedKey.healingTherapy.localized(for: LocalizationManager().language)]
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
     
     var body: some View {
@@ -28,7 +29,7 @@ struct ActivityKeywordView: View {
                 .padding(.leading, 16)
                 .padding(.bottom, 12)
             HStack(spacing: 0) {
-                Text("액티비티")
+                Text(.activity)
                     .font(.body_bold)
                 Spacer()
             }
@@ -126,7 +127,7 @@ struct ActivityKeywordView: View {
     
     private var titleAndCloseButtonView: some View {
         HStack(spacing: 0) {
-            Text("키워드")
+            Text(.keyword)
                 .font(.title02_bold)
                 .padding(.trailing, 8)
             Text("\(buttonsToggled.filter { $0 == true}.count) / \(ActivityKeywordArray.count)")

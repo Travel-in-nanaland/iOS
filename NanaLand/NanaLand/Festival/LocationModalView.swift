@@ -30,21 +30,22 @@ struct LocationModalView: View {
     var keyword = "" // 키워드 필터링
     @State var APIKeyword = ""
     let translations = [
-        "지상레저": "LAND_LEISURE",
-        "수상레저": "WATER_LEISURE",
-        "항공레저": "AIR_LEISURE",
-        "해양체험": "MARINE_EXPERIENCE",
-        "농촌체험": "RURAL_EXPERIENCE",
-        "힐링테라피": "HEALING_THERAPHY",
-        "역사": "HISTORY",
-        "전시회": "EXHIBITION",
-        "공방": "WORKSHOP",
-        "미술관": "ART_MUSEUM",
-        "박물관": "MUSEUM",
-        "공원": "PARK",
-        "공연": "PERFORMANCE",
-        "종교시설": "RELIGIOUS_FACILITY",
-        "테마파크": "THEME_PARK"    ]
+        LocalizedKey.groundLeisure.localized(for: LocalizationManager().language): "LAND_LEISURE",
+        LocalizedKey.waterLeisure.localized(for: LocalizationManager().language): "WATER_LEISURE",
+        LocalizedKey.aviationLeisure.localized(for: LocalizationManager().language): "AIR_LEISURE",
+        LocalizedKey.marineExperience.localized(for: LocalizationManager().language): "MARINE_EXPERIENCE",
+        LocalizedKey.ruralExperience.localized(for: LocalizationManager().language): "RURAL_EXPERIENCE",
+        LocalizedKey.healingTherapy.localized(for: LocalizationManager().language): "HEALING_THERAPHY",
+        LocalizedKey.history.localized(for: LocalizationManager().language): "HISTORY",
+        LocalizedKey.exhibition.localized(for: LocalizationManager().language): "EXHIBITION",
+        LocalizedKey.experienceWorkshop.localized(for: LocalizationManager().language): "WORKSHOP",
+        LocalizedKey.artGallery.localized(for: LocalizationManager().language): "ART_MUSEUM",
+        LocalizedKey.museum.localized(for: LocalizationManager().language): "MUSEUM",
+        LocalizedKey.park.localized(for: LocalizationManager().language): "PARK",
+        LocalizedKey.performance.localized(for: LocalizationManager().language): "PERFORMANCE",
+        LocalizedKey.religiousFacilities.localized(for: LocalizationManager().language): "RELIGIOUS_FACILITY",
+        LocalizedKey.themePark.localized(for: LocalizationManager().language): "THEME_PARK"
+    ]
     
     var restaurantTranslations: [String: String] {
         return [
@@ -219,16 +220,13 @@ struct LocationModalView: View {
                         await getLocationShopMainItem(filterName: selectedLocationStrings.joined(separator: ","), page: 0, size: 18)
                         shopViewModel.state.page = 0
                         shopViewModel.state.selectedLocation = selectedLocation
-                    } else if title == "이색 체험" {
+                    } else if title == LocalizedKey.experience.localized(for: localizationManager.language) {
                         experienceViewModel.state.getExperienceMainResponse = ExperienceMainModel(totalElements: 0, data: []) // 초기화
                         APIKeyword = keyword
                         for (key, value) in translations {
                             APIKeyword = APIKeyword.replacingOccurrences(of: key, with: value)
                         }
-                        print(APIKeyword)
                         await getLocationExperienceMainItem(filterName: selectedLocationStrings.joined(separator: ","), page: 0, size: 12, type: type, keyword: keyword == "키워드" ? "" : APIKeyword)
-                        print("APIKeyword: \(APIKeyword)")
-                        print("Keyword: \(keyword)")
                         experienceViewModel.state.page = 0
                         experienceViewModel.state.selectedLocation = selectedLocation
                         

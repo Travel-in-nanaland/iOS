@@ -438,3 +438,21 @@
 "nanapickRecommend1" = "금주 ";
 "nanapickRecommend2" = "추천 ";
 "nanapickRecommend3" = "나나's Pick";
+
+// MARK: - 이색 체험
+"activity" = "活动";
+"cultureAndArts" = "文化艺术";
+"groundLeisure" = "陆地休闲";
+"waterLeisure" = "水上休闲";
+"aviationLeisure" = "航空休闲";
+"marineExperience" = "海洋体验";
+"ruralExperience" = "农村体验";
+"healingTherapy" = "治愈疗法";
+"history" = "历史";
+"exhibition" = "展览";
+"experienceWorkshop" = "体验工艺坊";
+"artGallery" = "美术馆";
+"museum" = "博物馆";
+"park" = "公园";
+"performance" = "表演";
+"religiousFacilities" = "宗教设施";
