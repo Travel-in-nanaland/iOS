@@ -442,3 +442,21 @@ mengembalikan sebarang hasil.";
 "nanapickRecommend1" = "금주 ";
 "nanapickRecommend2" = "추천 ";
 "nanapickRecommend3" = "나나's Pick";
+
+// MARK: - 이색체험
+"activity" = "Aktiviti";
+"cultureAndArts" = "Budaya dan Seni";
+"groundLeisure" = "Rekreasi darat";
+"waterLeisure" = "Rekreasi air";
+"aviationLeisure" = "Rekreasi penerbangan";
+"marineExperience" = "Pengalaman marin";
+"ruralExperience" = "Pengalaman luar bandar";
+"healingTherapy" = "Terapi Penyembuhan";
+"history" = "Sejarah";
+"exhibition" = "Pameran";
+"experienceWorkshop" = "Bengkel Pengalaman";
+"artGallery" = "Galeri seni";
+"museum" = "Muzium";
+"park" = "Taman";
+"performance" = "Persembahan";
+"religiousFacilities" = "Kemudahan agama";

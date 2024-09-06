@@ -454,6 +454,25 @@ enum LocalizedKey: String {
     case folding
     case opening
     
+    // MARK: - 이색 체험
+    case activity
+    case cultureAndArts
+    case groundLeisure
+    case waterLeisure
+    case aviationLeisure
+    case marineExperience
+    case ruralExperience
+    case healingTherapy
+    case history
+    case exhibition
+    case experienceWorkshop
+    case artGallery
+    case museum
+    case park
+    case performance
+    case religiousFacilities
+
+    
     //MARK: - 언어 설정
     case greeting
     

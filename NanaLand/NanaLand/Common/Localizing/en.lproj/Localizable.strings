@@ -445,6 +445,24 @@ the market is the place!";
 "folding" = "접기";
 "opening" = "더 보기";
 
+// MARK: - 이색 체험
+"activity" = "Activity";
+"cultureAndArts" = "Culture and Arts";
+"groundLeisure" = "Ground leisure";
+"waterLeisure" = "Water leisure";
+"aviationLeisure" = "Aviation leisure";
+"marineExperience" = "Marine experience";
+"ruralExperience" = "Rural experience";
+"healingTherapy" = "Healing Therapy";
+"history" = "History";
+"exhibition" = "Exhibition";
+"experienceWorkshop" = "Experience Workshop";
+"artGallery" = "Art gallery";
+"museum" = "Museum";
+"park" = "Park";
+"performance" = "Performance";
+"religiousFacilities" = "Religious facilities";
+
 //MARK: - 언어 설정
 "greeting" = "Hello!\nNice to meet you 👋";
 
