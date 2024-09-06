@@ -235,8 +235,11 @@ struct RestaurantMainGridView: View {
                         APIKeyword = keyword.replacingOccurrences(of: LocalizedKey.cafeDessert.localized(for: localizationManager.language), with: "CAFE_DESSERT")
                         APIKeyword = keyword.replacingOccurrences(of: LocalizedKey.pubRestaurant.localized(for: localizationManager.language), with: "PUB_FOOD_PUB")
                         
+                        print(APIKeyword)
+                        
                         await getRestaurantMainItem(keyword: keyword == LocalizedKey.type.localized(for: localizationManager.language) ? "" : keyword, address: "", page: 0, size: 12)
                     } else {
+                        
                         await getRestaurantMainItem(keyword: keyword == LocalizedKey.type.localized(for: localizationManager.language) ? "" : keyword, address: "", page: 0, size: 12)
                     }
                     isAPICalled = true
