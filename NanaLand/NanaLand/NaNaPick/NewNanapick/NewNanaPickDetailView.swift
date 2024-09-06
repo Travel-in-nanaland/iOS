@@ -181,12 +181,19 @@ struct NanaPickHeader: View {
 
 struct NewNaNaPickDetailMainView: View {
     @StateObject var viewModel: NewNanaPickDetailViewModel
-    @State private var selectedNum: Int = 0 // 인덱스를 관리하기 위해 Int로 변경
     private let timer = Timer.publish(every: 2, on: .main, in: .common).autoconnect()
     @State private var currentPage = 0
-    @State private var index = 0
     @State private var special: String = ""
     @State private var specialModal = false
+    // 선택된 탭을 유지하기 위한 배열
+    @State private var selectedNums: [Int]
+    
+    init(viewModel: NewNanaPickDetailViewModel) {
+            _viewModel = StateObject(wrappedValue: viewModel)
+            // 이미지 섹션 개수만큼 초기값을 0으로 설정
+            _selectedNums = State(initialValue: Array(repeating: 0, count: viewModel.state.getNanaPickDetailResponse.nanaDetails.count))
+        }
+        
     
     var body: some View {
         VStack(spacing: 0) {
@@ -270,7 +277,7 @@ struct NewNaNaPickDetailMainView: View {
                                                     .padding(.trailing, 16)
                                                     .padding(.bottom, 16)
                                             } else {
-                                                TabView(selection: $selectedNum) {
+                                                TabView(selection: $selectedNums[idx]) {
                                                     ForEach(detail.images.indices, id: \.self) { imageIndex in
                                                         VStack{
                                                             HStack{
@@ -288,18 +295,14 @@ struct NewNaNaPickDetailMainView: View {
                                                 }
                                                 .frame(height: (Constants.screenWidth - 32) * (196 / 328))
                                                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-                                                .onReceive(timer, perform: { _ in
-                                                    withAnimation {
-                                                        index = (index + 1) % detail.images.count
-                                                        selectedNum = index
-                                                        currentPage = index
-                                                    }
-                                                })
+                                                .onChange(of: selectedNums[idx]) { newValue in
+                                                    currentPage = newValue
+                                                }
                                                 VStack(spacing: 0) {
                                                     Spacer()
                                                     HStack(spacing: 0) {
                                                         Spacer()
-                                                        Text("\(index + 1) / \(detail.images.count)")
+                                                        Text("\(selectedNums[idx] + 1) / \(detail.images.count)")
                                                             .frame(width: 41, height: 20)
                                                             .font(.caption02)
                                                             .foregroundColor(.white)
@@ -406,12 +409,12 @@ struct NewNaNaPickDetailMainView: View {
                                     }
                                     .padding(.bottom, 30)
                                 }
-
+                                
                             } else {
                                 
                                 ZStack {}
-                                .padding(.top, 400)
-                                .padding(.bottom, 48)
+                                    .padding(.top, 400)
+                                    .padding(.bottom, 48)
                                 
                                 ForEach(viewModel.state.getNanaPickDetailResponse.nanaDetails.indices, id: \.self) { idx in
                                     let detail = viewModel.state.getNanaPickDetailResponse.nanaDetails[idx]
@@ -454,7 +457,7 @@ struct NewNaNaPickDetailMainView: View {
                                                     .padding(.trailing, 16)
                                                     .padding(.bottom, 16)
                                             } else {
-                                                TabView(selection: $selectedNum) {
+                                                TabView(selection: $selectedNums[idx]) {
                                                     ForEach(detail.images.indices, id: \.self) { imageIndex in
                                                         VStack{
                                                             HStack{
@@ -472,18 +475,15 @@ struct NewNaNaPickDetailMainView: View {
                                                 }
                                                 .frame(height: (Constants.screenWidth - 32) * (196 / 328))
                                                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-                                                .onReceive(timer, perform: { _ in
-                                                    withAnimation {
-                                                        index = (index + 1) % detail.images.count
-                                                        selectedNum = index
-                                                        currentPage = index
-                                                    }
-                                                })
+                                                .onChange(of: selectedNums[idx]) { newValue in
+                                                    currentPage = newValue
+                                                }
+                                                
                                                 VStack(spacing: 0) {
                                                     Spacer()
                                                     HStack(spacing: 0) {
                                                         Spacer()
-                                                        Text("\(index + 1) / \(detail.images.count)")
+                                                        Text("\(selectedNums[idx] + 1) / \(detail.images.count)")
                                                             .frame(width: 41, height: 20)
                                                             .font(.caption02)
                                                             .foregroundColor(.white)
@@ -508,7 +508,7 @@ struct NewNaNaPickDetailMainView: View {
                                         
                                         ForEach(detail.additionalInfoList, id: \.infoKey) { data in
                                             HStack(alignment: .top, spacing: 0) {
-                                        
+                                                
                                                 if data.infoKey != "이 장소만의 매력포인트" {
                                                     Image(iconName(for: data.infoEmoji))
                                                         .resizable()
