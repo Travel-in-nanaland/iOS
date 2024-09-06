@@ -60,7 +60,7 @@
 
 //MARK: - Error/Alert
 "duplicatedNickname" = "That nickname is being used by another user.";
-"invalidNickname" = "This nickname cannot be used.";
+"invalidNickname" = "That nickname cannot be used.";
 "onlyCharSpaceNumberNickname" = "Nicknames can only contain letters, spaces, and numbers.";
 "logoutAlertTitle" = "Are you sure\nyou want to log out?";
 "withdrawAlertTitle" = "Are you sure you don't want to receive Jeju travel information and benefits?😢";
@@ -140,8 +140,8 @@
 "nanalandMadeYouJuice" = "nanaland in Jeju has created a custom travel juice for you!";
 // 결과 값 추천 여행지
 "recommendedTravelPlace" = "Recommended\nTravel Destinations";
-"recommenedeTravelTitleFirstLine" = "Recommended Travel";
-"recommenedeTravelTitleSecondLine" = "Destinations for %@";
+"recommenedeTravelTitleFirstLine" = "Fro %@";
+"recommenedeTravelTitleSecondLine" = "Recommended travel destinations";
 
 //MARK: - MyPage
 // main
@@ -413,11 +413,11 @@ the market is the place!";
 
 //MARK: - 마이페이지
 "notice" = "Announcement";
-"testAgain" = "To Test Again";
+"testAgain" = "Test again";
 "noNickname" = "No Nickname";
-"noReview" = "후기를 남겨 나만의 경험을 기록하세요!";
+"noReview" = "Leave a review and record your experience!";
 "noDescription" = "Express yourself in one line!";
-"noNotice" = "공지사항이 존재하지 않습니다";
+"noNotice" = "No Announcements Available";
 "seeAll" = "See all";
 
 // MARK: - 제주 맛집

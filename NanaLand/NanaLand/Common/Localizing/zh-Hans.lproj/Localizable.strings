@@ -139,8 +139,8 @@
 "nanalandMadeYouJuice" = "nanaland in Jeju 为您定制了旅行果汁！";
 // 결과 값 추천 여행지
 "recommendedTravelPlace" = "推荐旅游地";
-"recommenedeTravelTitleFirstLine" = "为%@推荐";
-"recommenedeTravelTitleSecondLine" = "的旅游地";
+"recommenedeTravelTitleFirstLine" = "为了%@";
+"recommenedeTravelTitleSecondLine" = "推荐的旅行目的地";
 
 
 //MARK: - MyPage
@@ -427,11 +427,11 @@
 
 //MARK: - 마이페이지
 "notice" = "公告";
-"testAgain" = "To Test Again";
+"testAgain" = "再次测试";
 "noNickname" = "No Nickname";
-"noReview" = "후기를 남겨 나만의 경험을 기록하세요!";
+"noReview" = "留下评价并记录您的体验！";
 "noDescription" = "用一句话变现自己！";
-"noNotice" = "공지사항이 존재하지 않습니다";
+"noNotice" = "没有公告";
 "seeAll" = "查看全部";
 
 //MARK: - 나나스픽
