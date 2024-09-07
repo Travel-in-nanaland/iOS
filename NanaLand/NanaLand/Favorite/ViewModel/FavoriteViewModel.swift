@@ -69,10 +69,10 @@ class FavoriteViewModel: ObservableObject {
 			await getMarketFavoriteList()
 		case .experience:
 			await getExperienceFavoriteList()
-		case .nanaPick:
-			await getNanaFavoriteList()
         case .restaurant:
             await getRestaurantFavoriteList()
+		case .nanaPick:
+			await getNanaFavoriteList()
 		}
 	}
 	

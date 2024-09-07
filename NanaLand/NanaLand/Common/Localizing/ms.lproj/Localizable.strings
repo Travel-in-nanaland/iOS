@@ -174,6 +174,8 @@
 "versionInfomation" = "Maklumat versi";
 "logout" = "Log keluar";
 "memberWithdraw" = "Daftar keluar";
+"join" = "Daftar";
+
 // termsAndPoliciesPage
 "notificate" = "Makluman";
 "marketingConsent" = "Persetujuan penggunaan pemasaran";
@@ -437,6 +439,7 @@ mengembalikan sebarang hasil.";
 "noDescription" = "Luahkan diri anda dalam satu baris!";
 "noNotice" = "Tiada Pengumuman";
 "seeAll" = "Lihat semua";
+"loginReview" = "Log masuk untuk merekod pengalaman anda sendiri!";
 
 //MARK: - 나나스픽
 "nanapickRecommend1" = "금주 ";

@@ -10,8 +10,8 @@
 "charCount" = "ký tự";
 "confirm" = "Confirm";
 "next" = "Next";
-"requiredWithBracket" = "(Required)";
-"optionalWithBracket" = "(Optional)";
+"requiredWithBracket" = "(bắt buộc)";
+"optionalWithBracket" = "(tùy chọn)";
 "destination" = "Điểm đến";
 "gotoMainScreen" = "Về màn hình chính";
 "no" = "Không";
@@ -22,16 +22,16 @@
 
 //MARK: - Tab
 "home" = "Home";
-"favorite" = "Favorites";
+"favorite" = "Được chọn lọc";
 "jejuStory" = "Jeju Stories";
 "myNana" = "Nana của tôi";
 
 //MARK: - Category
-"all" = "ALL";
-"nature" = "7 Natural Wonders";
-"festival" = "Festivals";
-"market" = "Traditional Markets";
-"experience" = "Unique Experiences";
+"all" = "Toàn bộ";
+"nature" = "7 kỳ quan thiên nhiên";
+"festival" = "Lễ hội";
+"market" = "Chợ truyền thống";
+"experience" = "Trải nghiệm độc đáo";
 "nanaPick" = "Lựa chọn của Nana";
 
 //MARK: - Search
@@ -44,9 +44,9 @@
 "noResult" = "There are no results for that search.";
 
 //MARK: - Login/Register
-"appleLogin" = "Sign in with Apple";
-"googleLogin" = "Sign in with Google";
-"nonMemeberLogin" = "Browse Without Logging In";
+"appleLogin" = "Đăng nhập bằng Apple";
+"googleLogin" = "Đăng nhập bằng Google";
+"nonMemeberLogin" = "Duyệt mà không cần đăng nhập";
 "welcomeToNanaLand" = "Welcome to\nnanaland in Jeju";
 "enterNicknameAndProfile" = "Enter your name and\nselect a profile picture.";
 "nicknameTextFieldPlaceHolder" = "Please enter your name";
@@ -54,15 +54,15 @@
 //MARK: - Terms
 "allAgree" = "Agree to All";
 "termsOfUseAgree" = "Agree to Terms of Use and\nPrivacy Policy";
-"marketingAgree" = "Agree to Marketing Use";
-"locationAgree" = "Agree to Location-Based Service Terms";
+"marketingAgree" = "Đồng ý sử dụng tiếp thị";
+"locationAgree" = "Đồng ý với các điều khoản dịch vụ dựa trên vị trí (tùy chọn)";
 
 
 //MARK: - Error/Alert
 "duplicatedNickname" = "Biệt danh đó đang được sử dụng bởi người dùng khác.";
 "invalidNickname" = "Biệt danh đó không thể sử dụng.";
 "onlyCharSpaceNumberNickname" = "Biệt danh chỉ có thể chứa chữ cái, dấu cách, và số.";
-"logoutAlertTitle" = "Are you sure\nyou want to log out?";
+"logoutAlertTitle" = "Bạn có chắc chắn muốn đăng xuất\n không?";
 "withdrawAlertTitle" = "Are you sure you don't want to receive Jeju travel information and benefits?😢";
 "withdrawAlertMessage" = "*If you rejoin within 90 days, you can log in with your existing account.";
 "changeLanguageAlertTitle" = "Bạn có muốn thay đổi\nsang ngôn ngữ đó không?";
@@ -147,7 +147,7 @@
 // main
 "editProfile" = "Chỉnh sửa hồ sơ";
 "mynana" = "my nana";
-"loginRequired" = "Login is required";
+"loginRequired" = "Tôi cần đăng nhập";
 "none" = "None";
 "travelType" = "Travel Type";
 "goTest" = "Testing";
@@ -165,63 +165,62 @@
 // deleteAlert
 "deleteAlertTitle" = "Do you want to delete\nthe changes?";
 "deleteAlertSubTitle" = "If you go back now,\nthe changes will be deleted.";
-"cancel" = "Cancel";
+"cancel" = "Hủy bỏ";
 "delete" = "Xóa";
 
 // settingPage
-"settings" = "Settings";
-"setUsage"= "Set usage";
-"termsAndPolicies" = "Terms and policies";
-"accessPolicyGuide" = "Access permission guide";
-"languageSetting" = "Language settings";
-"versionInfomation" = "Version Information";
-"logout" = "Log out";
-"memberWithdraw" = "Withdraw membership";
-"join" = "회원가입";
+"settings" = "Cài đặt";
+"setUsage"= "Đã bật";
+"termsAndPolicies" = "Điều khoản và Chính sách";
+"accessPolicyGuide" = "Thông tin quyền truy cập";
+"languageSetting" = "Cài đặt ngôn ngữ";
+"versionInfomation" = "Thông tin phiên bản";
+"logout" = "Đăng xuất";
+"memberWithdraw" = "Rút khỏi thành viên";
+"join" = "Đăng ký";
 
 // termsAndPoliciesPage
-"notificate" = "Notice";
+"notificate" = "Tốt để biết!";
 "marketingConsent" = "Marketing usage consent";
 "locationConsent" = "Location-based service terms consent";
-"noConsentError" = "* If you disagree, you may not be able to receive some services or \nbenefits, please be aware.";
+"noConsentError" = "Xin lưu ý rằng nếu bạn không đồng ý, bạn có thể không nhận được các dịch vụ hoặc lợi ích.";
 
 // accessPolicyGuidePage
 "mainDescription" = "The following permissions are required
 to use Nanaland in Jeju.";
-"phoneTitle" = "Phone Information";
-"phoneDescription" = "Access is required to verify phone status and ID.
-Needed for device tampering detection solutions";
-"requiredNotification" = "Required permissions are essential for using Nanaland in Jeju. Service usage may be restricted if permissions are denied.";
-"storageTitle" = "Storage";
-"storageDescription" = "Needed to provide photo storage functions.";
-"locationTitle" = "Location Information";
-"locationDescription" = "Needed to provide information on nearby restaurants and attractions based on current location.";
+"phoneTitle" = "Thông tin thiết bị điện thoại";
+"phoneDescription" = "Yêu cầu quyền truy cập để xác minh trạng thái điện thoại di động và ID.\nYêu cầu khi cung cấp giải pháp phát hiện giả mạo thiết bị.";
+"requiredNotification" = "Quyền truy cập bắt buộc cần thiết để sử dụng dịch vụ Nana Land tại Jeju, và nếu quyền bị từ chối, việc sử dụng dịch vụ sẽ bị hạn chế.";
+"storageTitle" = "Không gian lưu trữ";
+"storageDescription" = "Cần thiết để cung cấp chức năng lưu trữ ảnh.";
+"locationTitle" = "Thông tin vị trí";
+"locationDescription" = "Cần thiết để cung cấp thông tin như nhà hàng và điểm tham quan gần đó dựa trên vị trí hiện tại của bạn.";
 "cameraTitle" = "Camera";
-"cameraDescription" = "Needed to upload review photos and restaurant information.";
-"notificationTitle" = "Notifications";
-"notificationDescription" = "Needed to receive notifications about events and benefits.";
-"audioTitle" = "Audio and Music";
-"audioDescription" = "Needed to upload video content.";
-"optionalNotification" = "Note that if you do not agree to optional permissions, some features of Nanaland in Jeju may be restricted.";
+"cameraDescription" = "Cần thiết để đăng ký ảnh đánh giá và thông tin nhà hàng.";
+"notificationTitle" = "Thông báo";
+"notificationDescription" = "Cần thiết để nhận thông báo thông tin sự kiện và lợi ích.";
+"audioTitle" = "Âm thanh và nhạc";
+"audioDescription" = "Cần thiết cho việc đăng ký nội dung video.";
+"optionalNotification" = "Xin lưu ý rằng nếu bạn không đồng ý với quyền truy cập tùy chọn, một số chức năng của dịch vụ Nana Land tại Jeju có thể bị hạn chế.";
 
 // languageSettingPage
 "languageMainDescription" = "The language at the top is set as default.";
 
 // withdrawMembershipPage
-"withDrawNotification" = "Service Withdrawal Information";
-"firstNotification" = "By deleting your account, you will be unsubscribed from all services provided by Nanaland in Jeju.";
-"secondNotification" = "Upon account deletion, all coupons and points will be lost and will not be restored even if you re-register.";
-"thirdNotification" = "Transaction records that must be preserved under the e-commerce law will be kept for 5 years after account deletion.";
-"fourthNotification" = "You will not be able to participate in membership events again after account deletion.";
-"fifthNotification" = "If you re-register within 90 days after withdrawal, you can use your previous account.";
-"notificationConsent" = "I have read and agree to the information provided.";
-"withDrawReason" = "Reason for Account Deletion";
-"withdraw" = "Delete Account";
-"accountDeletion" = "Account Deletion";
-"INSUFFICIENT_CONTENT" = "Lack of Content";
-"INCONVENIENT_SERVICE" = "Service Inconvenience";
-"INCONVENIENT_COMMUNITY" = "Community Usage Inconvenience";
-"RARE_VISITS" = "Rarely Visit";
+"withDrawNotification" = "Thông báo rút khỏi dịch vụ";
+"firstNotification" = "Xin lưu ý rằng nếu bạn rút khỏi dịch vụ này, bạn sẽ bị chấm dứt và ngừng cung cấp tất cả các dịch vụ dựa trên dịch vụ Nana Land tại Jeju.";
+"secondNotification" = "Nếu bạn hủy tư cách thành viên, bất kỳ phiếu giảm giá và điểm nào bạn có sẽ tự động hết hạn và sẽ không được khôi phục ngay cả khi bạn đăng ký lại.";
+"thirdNotification" = "Sau khi rút khỏi dịch vụ, các hồ sơ giao dịch phải được lưu trữ theo Luật Thương mại Điện tử sẽ được giữ trong 90 ngày.";
+"fourthNotification" = "Nếu bạn hủy tư cách thành viên, bạn sẽ không thể tham gia lại sự kiện đăng ký thành viên.";
+"fifthNotification" = "Nếu bạn đăng ký lại trong vòng 90 ngày kể từ khi rút lui, bạn có thể sử dụng tài khoản hiện tại của mình.";
+"notificationConsent" = "Tôi đã đọc các hướng dẫn và đồng ý.";
+"withDrawReason" = "Lý do rút khỏi dịch vụ";
+"withdraw" = "Rút lui";
+"accountDeletion" = "Rút khỏi thành viên";
+"INSUFFICIENT_CONTENT" = "Thiếu nội dung";
+"INCONVENIENT_SERVICE" = "Bất tiện khi sử dụng dịch vụ";
+"INCONVENIENT_COMMUNITY" = "Bất tiện khi sử dụng cộng đồng";
+"RARE_VISITS" = "Ít lượt truy cập";
 
 // MARK: - 비회원
 "nonMemeberAlertDescription" = "You need to become a\nmember to use all services✨";
@@ -419,6 +418,7 @@ the market is the place!";
 "noDescription" = "Thể hiện bản thân bạn trong một dòng!";
 "noNotice" = "Không Có Thông Báo";
 "seeAll" = "Xem tất cả";
+"loginReview" = "Đăng nhập để ghi lại trải nghiệm của riêng bạn!";
 
 // MARK: - 제주 맛집
 "type" = "Loại";
