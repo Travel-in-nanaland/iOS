@@ -389,7 +389,7 @@ struct guestTabView: View {
         ZStack{
             VStack{
                 
-                Text("로그인하여 나만의 경험을 기록해보세요!")
+                Text(.loginReview)
                     .font(.body01)
                     .foregroundColor(.gray1)
                     .padding(.top, 100)

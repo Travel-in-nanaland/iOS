@@ -174,6 +174,8 @@
 "versionInfomation" = "版本信息";
 "logout" = "登出";
 "memberWithdraw" = "注销会员";
+"join" = "注册";
+
 // termsAndPoliciesPage
 "notificate" = "提醒您";
 "marketingConsent" = "营销使用同意";
@@ -433,6 +435,7 @@
 "noDescription" = "用一句话变现自己！";
 "noNotice" = "没有公告";
 "seeAll" = "查看全部";
+"loginReview" = "登录以记录您自己的经验！";
 
 //MARK: - 나나스픽
 "nanapickRecommend1" = "금주 ";

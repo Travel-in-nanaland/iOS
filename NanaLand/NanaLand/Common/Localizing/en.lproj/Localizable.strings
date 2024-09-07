@@ -177,7 +177,7 @@
 "versionInfomation" = "Version Information";
 "logout" = "Log out";
 "memberWithdraw" = "Withdraw membership";
-"join" = "회원가입";
+"join" = "Sign Up";
 
 // termsAndPoliciesPage
 "notificate" = "Notice";
@@ -419,6 +419,7 @@ the market is the place!";
 "noDescription" = "Express yourself in one line!";
 "noNotice" = "No Announcements Available";
 "seeAll" = "See all";
+"loginReview" = "Log in to record your own experience!";
 
 // MARK: - 제주 맛집
 "type" = "Type";
