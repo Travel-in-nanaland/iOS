@@ -170,6 +170,7 @@ struct HomeMainView: View {
                                     Text(article.title)
                                         .font(.gothicNeo(size: 14, font: "bold"))
                                         .multilineTextAlignment(.leading)
+                                        .lineLimit(1)
                                 }
                             }
 
@@ -185,6 +186,8 @@ struct HomeMainView: View {
                           
                                     Text(article.title)
                                         .font(.gothicNeo(size: 14, font: "bold"))
+                                        .multilineTextAlignment(.leading)
+                                        .lineLimit(1)
                                 }
                             }
 
@@ -200,6 +203,8 @@ struct HomeMainView: View {
                           
                                     Text(article.title)
                                         .font(.gothicNeo(size: 14, font: "bold"))
+                                        .multilineTextAlignment(.leading)
+                                        .lineLimit(1)
                                 }
                             }
                         case "EXPERIENCE":
@@ -214,6 +219,8 @@ struct HomeMainView: View {
                           
                                     Text(article.title)
                                         .font(.gothicNeo(size: 14, font: "bold"))
+                                        .multilineTextAlignment(.leading)
+                                        .lineLimit(1)
                                 }
                             }
                             
@@ -229,6 +236,8 @@ struct HomeMainView: View {
                           
                                     Text(article.title)
                                         .font(.gothicNeo(size: 14, font: "bold"))
+                                        .multilineTextAlignment(.leading)
+                                        .lineLimit(1)
                                 }
                             }
                         }
