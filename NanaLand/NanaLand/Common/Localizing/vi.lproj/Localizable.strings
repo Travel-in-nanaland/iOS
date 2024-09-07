@@ -21,7 +21,7 @@
 "notification" = "Notification";
 
 //MARK: - Tab
-"home" = "Home";
+"home" = "Trang chủ";
 "favorite" = "Được chọn lọc";
 "jejuStory" = "Jeju Stories";
 "myNana" = "Nana của tôi";
@@ -35,13 +35,13 @@
 "nanaPick" = "Lựa chọn của Nana";
 
 //MARK: - Search
-"inputSearchTerm" = "Please enter a search";
-"recentSearchTerm" = "Recent Searches";
-"noRecentSearchTerm" = "";
-"removeAll" = "Clear All";
-"popularSearchTerm" = "Most Searched!";
-"searchVolumeUp" = "Search Volume UP! JEJU Place 🍊";
-"noResult" = "There are no results for that search.";
+"inputSearchTerm" = "Vui lòng nhập từ khóa tìm kiếm của bạn";
+"recentSearchTerm" = "Tìm kiếm gần đây";
+"noRecentSearchTerm" = "Không có tìm kiếm gần đây.";
+"removeAll" = "Xóa tất cả";
+"popularSearchTerm" = "Tìm kiếm nhiều nhất!";
+"searchVolumeUp" = "Tăng lượt tìm kiếm! Địa điểm JEJU 🍊";
+"noResult" = "Không có kết quả tìm kiếm tương ứng.";
 
 //MARK: - Login/Register
 "appleLogin" = "Đăng nhập bằng Apple";
@@ -229,15 +229,14 @@ to use Nanaland in Jeju.";
 // MARK: - Home
 "recommendTitle" = "Local Picks for %@! 🍊";
 "ourNana" = "Our Nana";
-"firstAdvertismentTitle" = "Want to see the beautiful sea in Jeju Island?";
-"firstAdvertismentSubTitle" = "Let's tour the nature in Seogwipo-si, Seongsan!";
-"secondAdvertismentTitle" = "How about going to see rare stars?💫";
-"secondAdvertismentSubTitle" = "Check out the emotional hills of Aewol😯";
-"thirdAdvertismentTitle" = "If you want to feel the sentiment of Korea,
-the market is the place!";
-"thirdAdvertismentSubTitle" = "Which traditional markets are still around?";
-"fourthAdvertismentTitle" = "Jeju's unique festival in July🎈";
-"fourthAdvertismentSubTitle" = "Let's go see the festival full of the treasures of the world, feeling Jeju Island!";
+"firstAdvertismentTitle" = "Muốn thấy biển đẹp ở Đảo Jeju?";
+"firstAdvertismentSubTitle" = "Hãy đi khám phá thiên nhiên ở Seongsan, Thành phố Seogwipo!";
+"secondAdvertismentTitle" = "Tại sao bạn không đi ngắm những ngôi sao quý giá?💫";
+"secondAdvertismentSubTitle" = "Khám phá các Oreum đầy cảm xúc của Aewol😯";
+"thirdAdvertismentTitle" = "Nếu bạn muốn cảm nhận không khí của Hàn Quốc, hãy đến chợ!";
+"thirdAdvertismentSubTitle" = "Những chợ truyền thống nào vẫn còn tồn tại?";
+"fourthAdvertismentTitle" = "Lễ hội tháng 7 chỉ tổ chức tại Đảo Jeju🎈";
+"fourthAdvertismentSubTitle" = "Hãy đi xem lễ hội nơi bạn có thể cảm nhận được kho báu của thế giới, Đảo Jeju.Trang chủ";
 // 홈화면 검색 placeholder
 "jejuCanolaFestival" = "Jeju's Canola Festival is on now! 🏵️";
 "jejuGreenTeaField" = "Let's visit Jeju's green tea fields! 😎";
@@ -252,7 +251,7 @@ the market is the place!";
 
 
 // MARK: - FilterView
-"count" = "Results";
+"count" = "trường hợp";
 "location" = "Location";
 "allLocation" = "All";
 "jejuCity" = "Jeju-si";
@@ -338,7 +337,7 @@ the market is the place!";
 "dec" = "DEC";
 
 // MARK: - 검색 결과 없을 시 뷰
-"noResult" = "There are no results for that search.";
+"noResult" = "Không có kết quả tìm kiếm tương ứng.";
 
 // MARK: - 정보 수정 제안
 "reportInfo" = "Information Update Suggestions";

@@ -37,7 +37,7 @@
 //MARK: - Search
 "inputSearchTerm" = "Please enter a search";
 "recentSearchTerm" = "Recent Searches";
-"noRecentSearchTerm" = "";
+"noRecentSearchTerm" = "There are no recent searches.";
 "removeAll" = "Clear All";
 "popularSearchTerm" = "Most Searched!";
 "searchVolumeUp" = "Search Volume UP! JEJU Place 🍊";

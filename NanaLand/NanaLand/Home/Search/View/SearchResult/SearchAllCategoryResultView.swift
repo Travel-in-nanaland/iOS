@@ -118,6 +118,7 @@ struct SearchAllCategoryItem: View {
                             }
                         })
                     }
+                    
                     if articles.count >= 2 {
                         NavigationLink(destination: {
                             destinationView(for: articles[1])
@@ -132,8 +133,18 @@ struct SearchAllCategoryItem: View {
                                 }
                             })
                         }
-                    } else {
-                        Spacer()
+                    } 
+                    
+                    else {
+                        VStack(alignment: .leading, spacing: 8){
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 12)
+                                    .foregroundColor(.clear)
+                                    .frame(width: (UIScreen.main.bounds.width - 40) / 2, height: ((UIScreen.main.bounds.width - 40) / 2) * (12 / 16))
+                            }
+                            
+                            Spacer()
+                        }
                     }
                 }
                 .padding(.bottom, 12)
@@ -167,12 +178,13 @@ struct SearchAllCategoryItem: View {
             ShopDetailView(id: Int64(article.id))
         case .experience:
             Text("Experience Detail View")
+            ExperienceDetailView(id: Int64(article.id))
         case .nanaPick:
             NaNaPickDetailView(id: Int64(article.id))
         case .all:
             Text("test")
         case .restaurant:
-            Text("test")
+            RestaurantDetailView(id: Int64(article.id))
         }
     }
 }
