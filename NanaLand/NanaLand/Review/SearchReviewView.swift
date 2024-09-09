@@ -1,15 +1,15 @@
 //
-//  ProfileReviewWriteView.swift
+//  SearchReviewView.swift
 //  NanaLand
 //
-//  Created by juni on 8/27/24.
+//  Created by wodnd on 9/10/24.
 //
 
 import SwiftUI
 import Kingfisher
 import Combine
 
-struct ProfileReviewWriteView: View {
+struct SearchReviewView: View {
     @StateObject var viewModel = ProfileReviewWriteViewModel()
     @State var placeSearch: String = ""
     @State var debouncedText: String = ""
@@ -19,7 +19,7 @@ struct ProfileReviewWriteView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            NanaNavigationBar(title: .write, showBackButton: true)
+            SearchNavigationBar(title: .write, showBackButton: true)
                 .padding(.bottom, 24)
             ZStack {
                
@@ -79,7 +79,7 @@ struct ProfileReviewWriteView: View {
                         ForEach(0...viewModel.state.getProfileReviewResponse.count - 1, id: \.self) { idx in
                             Button {
                                 itemIndex = idx
-                                AppState.shared.navigationPath.append(ProfileReviewWriteViewType.review)
+                                AppState.shared.navigationPath.append(SearchReviewWriteViewType.review)
                             } label: {
                                 VStack(alignment: .leading, spacing: 0) {
                                     HStack(spacing: 0) {
@@ -129,7 +129,7 @@ struct ProfileReviewWriteView: View {
             Spacer()
         }
         .toolbar(.hidden)
-        .navigationDestination(for: ProfileReviewWriteViewType.self) { viewType in
+        .navigationDestination(for: SearchReviewWriteViewType.self) { viewType in
             switch viewType {
             case .review:
                 ReviewWriteMain(reviewAddress: viewModel.state.getProfileReviewResponse[itemIndex].address ?? "", reviewImageUrl: viewModel.state.getProfileReviewResponse[itemIndex].firstImage?.originUrl ?? "", reviewTitle: viewModel.state.getProfileReviewResponse[itemIndex].title ?? "", reviewId: viewModel.state.getProfileReviewResponse[itemIndex].id ?? 0 , reviewCategory: viewModel.state.getProfileReviewResponse[itemIndex].category ?? "")
@@ -143,10 +143,64 @@ struct ProfileReviewWriteView: View {
     
 }
 
-enum ProfileReviewWriteViewType: Hashable {
+struct SearchNavigationBar: View {
+    @Environment(\.dismiss) var dismiss
+    
+    let title: LocalizedKey
+    let showBackButton: Bool
+    
+    init(title: LocalizedKey, showBackButton: Bool = false) {
+        self.title = title
+        self.showBackButton = showBackButton
+    }
+    
+    var body: some View {
+        ZStack(alignment: .bottom) {
+            Rectangle()
+                .fill(Color.clear)
+                .frame(height:20)
+                .background(
+                    Color.white
+                        .shadow(color: Color.baseBlack.opacity(0.05), radius: 8, y: 5)
+                )
+            
+            
+            HStack {
+                Spacer()
+                Text(title)
+                    .font(.gothicNeo(.bold, size: 20))
+                    .multilineTextAlignment(.center)
+                Spacer(minLength: 0)
+            }
+            .frame(height: 56)
+            .background(Color.white)
+        }
+        .frame(height: 56)
+        .overlay(alignment: .leading) {
+            if showBackButton {
+                Button(action: {
+                    AppState.shared.navigationPath.removeLast()
+                    AppState.shared.navigationPath.removeLast()
+                    AppState.shared.navigationPath.removeLast()
+                    AppState.shared.navigationPath.removeLast()
+                    AppState.shared.navigationPath.removeLast()
+                    AppState.shared.currentTab = .profile
+                }, label: {
+                    Image("icLeft")
+                        .resizable()
+                        .frame(width: 32, height: 32)
+                })
+                .padding(.horizontal, 16)
+                .tint(.baseBlack)
+            }
+        }
+    }
+}
+
+enum SearchReviewWriteViewType: Hashable {
     case review
 }
 
 //#Preview {
-//    ProfileReviewWriteView(placeSearch: "검색어를 입력하세요")
+//    SearchReviewView(placeSearch: "검색어를 입력하세요")
 //}

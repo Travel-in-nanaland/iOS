@@ -35,7 +35,7 @@ struct ReviewCompleteView: View {
             .padding(.bottom, 10)
             
             Button(action: {
-                dismiss()
+                AppState.shared.navigationPath.append(ReviewCompleteType.reviewSearch)
             }, label: {
                 Text("다른 리뷰 추가하기")
                     
@@ -56,6 +56,12 @@ struct ReviewCompleteView: View {
         .toolbar(.hidden)
         .onAppear {
             print("\(AppState.shared.navigationPath)")
+        }
+        .navigationDestination(for: ReviewCompleteType.self) { review in
+            switch review {
+            case let .reviewSearch:
+                SearchReviewView()
+            }
         }
     }
 }
@@ -114,6 +120,10 @@ struct MainView: View {
         }
     }
    
+}
+
+enum ReviewCompleteType {
+    case reviewSearch
 }
 
 #Preview {   

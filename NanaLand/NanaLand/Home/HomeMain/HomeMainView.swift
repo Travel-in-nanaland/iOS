@@ -312,6 +312,7 @@ struct HomeMainView: View {
 }
 
 struct AdvertisementView: View {
+    @EnvironmentObject var localizationManager: LocalizationManager
     private let timer = Timer.publish(every: 2, on: .main, in: .common).autoconnect()
     @State private var index = 1
     // tabView에 selection에 바인딩 할 값
@@ -358,8 +359,11 @@ struct AdvertisementView: View {
                                                     .multilineTextAlignment(.leading)
                                             }
                                             Spacer()
-                                            Image(image)
-                                                .padding(.trailing, 15)
+                                            
+                                            if localizationManager.language == .korean || localizationManager.language == .chinese {
+                                                Image(image)
+                                                    .padding(.trailing, 15)
+                                            }
                                         }
                                         .frame(width: Constants.screenWidth, height: 80)
                                         .background(.skyBlue)
@@ -377,8 +381,11 @@ struct AdvertisementView: View {
                                                     .multilineTextAlignment(.leading)
                                             }
                                             Spacer()
-                                            Image(image)
-                                                .padding(.trailing, 15)
+                                            
+                                            if localizationManager.language == .korean || localizationManager.language == .chinese {
+                                                Image(image)
+                                                    .padding(.trailing, 15)
+                                            }
                                         }
                                         .frame(width: Constants.screenWidth, height: 80)
                                         .background(.main50P)
@@ -396,8 +403,11 @@ struct AdvertisementView: View {
                                                     .multilineTextAlignment(.leading)
                                             }
                                             Spacer()
-                                            Image(image)
-                                                .padding(.trailing, 15)
+                                            
+                                            if localizationManager.language == .korean || localizationManager.language == .chinese {
+                                                Image(image)
+                                                    .padding(.trailing, 15)
+                                            }
                                         }
                                         .frame(width: Constants.screenWidth, height: 80)
                                         .background(Color.init(hex: 0xF7C2BC))
@@ -416,8 +426,11 @@ struct AdvertisementView: View {
                                                     .multilineTextAlignment(.leading)
                                             }
                                             Spacer()
-                                            Image(image)
-                                                .padding(.trailing, 15)
+                                            
+                                            if localizationManager.language == .korean || localizationManager.language == .chinese {
+                                                Image(image)
+                                                    .padding(.trailing, 15)
+                                            }
                                         }
                                         .frame(width: Constants.screenWidth, height: 80)
                                         .background(Color.init(hex: 0xFFBC11))
