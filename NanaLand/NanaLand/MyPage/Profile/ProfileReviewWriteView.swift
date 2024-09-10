@@ -11,6 +11,7 @@ import Combine
 
 struct ProfileReviewWriteView: View {
     @StateObject var viewModel = ProfileReviewWriteViewModel()
+    @EnvironmentObject var localizationManager: LocalizationManager
     @State var placeSearch: String = ""
     @State var debouncedText: String = ""
     @State var skeletonFlag: Bool = false
@@ -22,7 +23,7 @@ struct ProfileReviewWriteView: View {
                 .padding(.bottom, 24)
             ZStack {
                
-                TextField("장소를 검색하세요", text: $viewModel.searchText)
+                TextField(LocalizedKey.searchLocation.localized(for: localizationManager.language), text: $viewModel.searchText)
                     .padding()
                     .padding(.leading, 25)
                     .background(.white)
@@ -120,7 +121,7 @@ struct ProfileReviewWriteView: View {
                 }
             } else {
                 Spacer()
-                Text("해당 검색 결과가 없습니다.")
+                Text(.noSearchResult)
                     .font(.body01)
                     .foregroundStyle(.gray1)
                 Spacer()

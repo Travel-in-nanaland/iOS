@@ -22,15 +22,13 @@ struct SearchMainView: View {
         VStack(spacing: 0) {
             navigationBar
             
-            ScrollView(.vertical, showsIndicators: false) {
+            ScrollView {
                 recentlySearch
                 popularSearch
+                    .padding(.bottom, 65)
                 recommendContents
-                
-                Spacer()
-                    .frame(height: 100)
             }
-            
+          
         }
         .toolbar(.hidden, for: .navigationBar)
         .task {
@@ -197,17 +195,16 @@ struct SearchMainView: View {
             }
         }
         .padding(.horizontal, 16)
-        .padding(.bottom, 34)
-       
+        .padding(.bottom, 0)
     }
     
     private var recommendContents: some View {
-        NavigationView{
-            VStack(alignment: .leading) {
+        
+            VStack(alignment: .leading, spacing: 0) {
                 Text(.searchVolumeUp)
                     .font(.gothicNeo(.bold, size: 18))
                     .foregroundStyle(Color.baseBlack)
-                
+                    .padding(.bottom, 16)
                 LazyVGrid(
                     columns: [GridItem(.flexible()), GridItem(.flexible())]
                 ) {
@@ -265,7 +262,8 @@ struct SearchMainView: View {
                                     .foregroundStyle(.black)
                                     .lineLimit(1)
                                 
-                                Spacer()
+                
+                        
                             }
                             
 //                            VStack(alignment: .leading, spacing: 8) {
@@ -303,7 +301,8 @@ struct SearchMainView: View {
             }
             .padding(.horizontal, 16)
             
-        }
+        
+
     }
     
     private func search(term: String) {

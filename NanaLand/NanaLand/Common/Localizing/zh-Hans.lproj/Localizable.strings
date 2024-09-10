@@ -424,6 +424,8 @@
 "content200" = "内容可在200个字符内书写。";
 "reviewSeeMore" = "查看更多评论";
 "reviewDeleteMessage" = "您确定要删除此评论吗？\n";
+"searchLocation" = "搜索地点";
+"noSearchResult" = "没有相应的搜索结果。";
 
 //MARK: - 마이페이지
 "notice" = "公告";

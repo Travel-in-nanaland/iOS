@@ -7,9 +7,11 @@
 
 import SwiftUI
 import _PhotosUI_SwiftUI
+import CustomAlert
 
 struct ReportWriteView: View {
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject private var localizationManager: LocalizationManager
     @State var text: String = ""
     @State var emailText: String = UserDefaults.standard.string(forKey: "UserEmail")!
     @ObservedObject var viewModel = ReportWriteViewModel()
@@ -24,13 +26,43 @@ struct ReportWriteView: View {
     @State private var isLoading: Bool = false
     @State private var emailTextWarning: Bool = false
     @Binding var isReport: Bool
+    @State var showAlert = false //뒤로가기 alert 여부
     var claimType: String // 신고 목적
     var id: Int64
     var body: some View {
         ZStack {
             VStack(spacing: 0) {
-                NanaNavigationBar(title: .report, showBackButton: true)
-                    .padding(.bottom, 24)
+                ZStack {
+                    NanaNavigationBar(title: .report, showBackButton: false)
+                        .padding(.bottom, 24)
+                    HStack(spacing: 0) {
+                        Button(action: {
+                            withAnimation(nil) {
+                                showAlert = true
+                            }
+                 
+                        }, label: {
+                            Image("icLeft")
+                                .renderingMode(.template)
+                                .foregroundStyle(Color.black)
+                        })
+                        .fullScreenCover(isPresented: $showAlert) {
+                            AlertView(title: .reviewBackAlertTitle, message: .reviewBackAlertMessage, leftButtonTitle: .yes, rightButtonTitle: .no, leftButtonAction: {
+                                showAlert = false
+                            }, rightButtonAction: {
+                                showAlert = false
+                                dismiss()
+                            })
+                        }
+                        .transaction { transaction in
+                            transaction.disablesAnimations = true
+                        }
+                        .padding(.leading, 16)
+                        Spacer()
+                    }
+                    .padding(.bottom, 12)
+                }
+          
                 
                 ScrollView {
                     VStack(spacing: 0) {

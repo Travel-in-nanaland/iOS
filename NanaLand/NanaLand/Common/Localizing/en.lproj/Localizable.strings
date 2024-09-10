@@ -410,6 +410,8 @@ the market is the place!";
 "content200" = "Content can be written within 200 characters.";
 "reviewSeeMore" = "See more reviews";
 "reviewDeleteMessage" = "Do you want to\n delete this review?";
+"searchLocation" = "Search Location";
+"noSearchResult" = "There are no corresponding search results.";
 
 //MARK: - 마이페이지
 "notice" = "Announcement";
