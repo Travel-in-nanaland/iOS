@@ -15,8 +15,27 @@ struct NewNanaPickMainView: View {
     @State private var currentItem = 0
     private let timer = Timer.publish(every: 2, on: .main, in: .common).autoconnect()
     @State private var isAPICalled = false
+    @State private var scrollToEndTrigger = false // 스크롤 끝까지 이동할 트리거
+    @State private var offsetX: CGFloat = .zero
+    @State private var previousOffset: CGFloat = 0
+    @State private var scrollDirection: String = "Scrolling" // 스크롤 방향
     
     var layout: [GridItem] = [GridItem(.flexible())]
+    
+    private var hiddenView: some View {
+           GeometryReader { proxy in
+               let offsetX = proxy.frame(in: .global).origin.x
+               Color.clear
+                   .preference(
+                       key: ScrollPreferenceKey.self,
+                       value: offsetX
+                   )
+                   .onAppear { // 나타날때 뷰의 최초위치를 저장하는 로직
+                       self.offsetX = offsetX
+                   }
+           }
+           .frame(height: 0)
+       }
     
     var body: some View {
         VStack(spacing: 0){
@@ -55,23 +74,47 @@ struct NewNanaPickMainView: View {
                     }
                     .padding()
                     
-                    ScrollView(.horizontal){
-                        LazyHGrid(rows: layout){
-                            ForEach(viewModel.state.getNanaPickRecommendResponse, id: \.id) { recommend in
-                                
-                                Button(action: {
-                                    AppState.shared.navigationPath.append(NewNanaPickType.detail(id: recommend.id))
-                                }, label: {
-                                    NanaPickRecommendView(imageUrl: recommend.firstImage.originUrl, version: recommend.version, heading: recommend.heading, subHeading: recommend.subHeading, newest: recommend.newest)
-                                        .padding()
-                                })
+                    // 일정구간 스크롤 시 다음 아이템으로(반대일 경우는 어찌한담?)
+                    ScrollViewReader { proxy in
+                        ScrollView(.horizontal) {
+                            ZStack {
+                               // hiddenView
+                                LazyHGrid(rows: layout){
+                                    ForEach(viewModel.state.getNanaPickRecommendResponse, id: \.id) { recommend in
+                                        Button(action: {
+                                            AppState.shared.navigationPath.append(NewNanaPickType.detail(id: recommend.id))
+                                        }, label: {
+                                            NanaPickRecommendView(imageUrl: recommend.firstImage.originUrl, version: recommend.version, heading: recommend.heading, subHeading: recommend.subHeading, newest: recommend.newest)
+                                                .padding()
+                                        })
+                                        .id(recommend.id)
+                                    }
+                                }
                             }
+                          
                         }
+//                        .onPreferenceChange(ScrollPreferenceKey.self, perform: { value in
+//                            let direction = value > previousOffset ? "Right" : "Left"
+//                            previousOffset = value
+//                            print(scrollDirection)
+//                            if direction == "Left" { // 스크롤을 왼쪽으로 땡겼을 때
+//                                if value <= -100.0 && value >= -110.0 {
+//                                    withAnimation {
+//                                        proxy.scrollTo(viewModel.state.getNanaPickRecommendResponse[1].id, anchor: .leading)
+//                                    }
+//                                }
+//                                if value <= -350.0 && value >= -360.0 {
+//                                    withAnimation {
+//                                        proxy.scrollTo(viewModel.state.getNanaPickRecommendResponse[2].id, anchor: .leading)
+//                                    }
+//                                }
+//                            }
+//                        })
                     }
-//                    .introspect(.scrollView, on: .iOS(.v16, .v17)) { scrollView in
-//                        scrollView.isScrollEnabled = true
-//                        scrollView.isPagingEnabled = true
-//                    }
+                    //                    .introspect(.scrollView, on: .iOS(.v16, .v17)) { scrollView in
+                    //                        scrollView.isScrollEnabled = true
+                    //                        scrollView.isPagingEnabled = true
+                    //                    }
                     .scrollIndicators(.hidden)
                     .padding(.top, -10)
                         
@@ -323,6 +366,14 @@ struct CustomCornerRadiusShape: Shape {
         return Path(path.cgPath)
     }
 }
+
+struct ScrollPreferenceKey: PreferenceKey {
+    static var defaultValue: CGFloat = .zero
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+        value += nextValue()
+    }
+}
+
 
 
 #Preview {
