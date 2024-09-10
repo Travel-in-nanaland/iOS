@@ -35,35 +35,17 @@ struct ProfileUpdateView: View {
                             .renderingMode(.template)
                             .foregroundStyle(Color.black)
                     })
-                    .customAlert(LocalizedKey.reviewBackAlertTitle.localized(for: localizationManager.language), isPresented: $showAlert) {
-                        Text(.reviewBackAlertMessage)
-                            .font(.body01)
-                            .foregroundStyle(Color.gray1)
-                            .padding(.top, 5)
-                    } actions: {
-                        MultiButton {
-                            Button {
-                                withAnimation(nil) {
-                                    showAlert = false
-                                    dismiss()
-                                }
-                            } label: {
-                                Text(.yes)
-                                    .font(.title02_bold)
-                                    .foregroundStyle(Color.black)
-                            }
-                            Button {
-                                withAnimation(nil) {
-                                    showAlert = false
-                                }
-                            } label: {
-                                Text(.no)
-                                    .font(.title02_bold)
-                                    .foregroundStyle(Color.main)
-                            }
-                        }
+                    .fullScreenCover(isPresented: $showAlert) {
+                        AlertView(title: .reviewBackAlertTitle, message: .reviewBackAlertMessage, leftButtonTitle: .yes, rightButtonTitle: .no, leftButtonAction: {
+                            showAlert = false
+                            dismiss()
+                        }, rightButtonAction: {
+                            showAlert = false
+                        })
                     }
-                    .padding(.leading, 16)
+                    .transaction { transaction in
+                        transaction.disablesAnimations = true
+                    }
                     Spacer()
                 }
                 .padding(.bottom, 12)

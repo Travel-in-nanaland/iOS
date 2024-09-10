@@ -37,7 +37,7 @@ struct AlertView: View {
 				.opacity(0.3)
 				.ignoresSafeArea()
 			
-			VStack(spacing: 0) {
+            VStack(alignment: .center, spacing: 0) {
 				Text(title)
 					.multilineTextAlignment(.center)
 					.font(.title01_bold)
@@ -58,6 +58,7 @@ struct AlertView: View {
 					.padding(.top, 24)
 				
 				HStack(spacing: 0) {
+          
 					if leftButtonTitle != nil {
 						Button(action: {
 							leftButtonAction()
@@ -65,12 +66,15 @@ struct AlertView: View {
 							Text(leftButtonTitle!)
 								.font(.title02_bold)
 								.foregroundStyle(Color.baseBlack)
-								.frame(width: (Constants.screenWidth - 61)/2)
-						})
 						
+                          
+						})
+                        .frame(width: 150)
+ 
 						Divider()
 							.foregroundStyle(Color.gray2)
 							.frame(width: 1)
+               
 					}
 					
 					Button(action: {
@@ -79,12 +83,12 @@ struct AlertView: View {
 						Text(rightButtonTitle)
 							.font(.title02_bold)
 							.foregroundStyle(Color.main)
-							.frame(width: leftButtonTitle != nil ? (Constants.screenWidth - 61)/2 : (Constants.screenWidth - 60))
+						
 					})
+                    .frame(width: 150)
+                  
 				}
 				.frame(height: 55)
-
-				
 				
 			}
 			.frame(width: 300)

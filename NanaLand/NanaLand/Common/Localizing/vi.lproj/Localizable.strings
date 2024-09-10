@@ -408,6 +408,8 @@ to use Nanaland in Jeju.";
 "content200" = "Nội dung có thể được viết trong vòng 200 ký tự.";
 "reviewSeeMore" = "Xem thêm đánh giá";
 "reviewDeleteMessage" = "Bạn có muốn\n xóa đánh giá này không?";
+"searchLocation" = "Tìm Kiếm Địa Điểm";
+"noSearchResult" = "Không có kết quả tìm kiếm tương ứng.";
 
 //MARK: - 마이페이지
 "notice" = "Thông báo";

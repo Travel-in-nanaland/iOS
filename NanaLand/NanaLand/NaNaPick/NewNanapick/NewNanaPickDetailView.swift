@@ -306,6 +306,10 @@ struct NewNaNaPickDetailMainView: View {
                                                             .frame(width: 41, height: 20)
                                                             .font(.caption02)
                                                             .foregroundColor(.white)
+                                                            .background(
+                                                                    RoundedRectangle(cornerRadius: 30)
+                                                                        .fill(Color.black.opacity(0.5)) // Set the background color here
+                                                                )
                                                             .overlay(
                                                                 RoundedRectangle(cornerRadius: 30)
                                                                     .stroke(Color.white, lineWidth: 1) // 둥근 모서리와 테두리 추가
@@ -487,6 +491,10 @@ struct NewNaNaPickDetailMainView: View {
                                                             .frame(width: 41, height: 20)
                                                             .font(.caption02)
                                                             .foregroundColor(.white)
+                                                            .background(
+                                                                    RoundedRectangle(cornerRadius: 30)
+                                                                        .fill(Color.black.opacity(0.5)) // Set the background color here
+                                                                )
                                                             .overlay(
                                                                 RoundedRectangle(cornerRadius: 30)
                                                                     .stroke(Color.white, lineWidth: 1) // 둥근 모서리와 테두리 추가

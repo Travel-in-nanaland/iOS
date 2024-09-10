@@ -430,6 +430,8 @@ mengembalikan sebarang hasil.";
 "content200" = "Kandungan boleh ditulis dalam 200 aksara.";
 "reviewSeeMore" = "Lihat lebih banyak ulasan";
 "reviewDeleteMessage" = "Adakah anda mahu\n memadam ulasan ini?";
+"searchLocation" = "Cari Lokasi";
+"noSearchResult" = "Tiada hasil carian yang sepadan.";
 
 //MARK: - 마이페이지
 "notice" = "Pengumuman";

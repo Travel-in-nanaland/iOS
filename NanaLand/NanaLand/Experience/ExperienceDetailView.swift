@@ -779,6 +779,7 @@ struct ExperienceDetailView: View {
         .overlay(
             Toast(message: "신고한 내용은 운영정책에 따라 최대 24시간 이내 처리됩니다.", isShowing: $isReport, isAnimating: true)
         )
+        
     }
     
     func getExperienceDetail(id: Int64, isSearch: Bool) async {

@@ -40,37 +40,17 @@ struct ReviewWriteMain: View {
                                 .renderingMode(.template)
                                 .foregroundStyle(Color.black)
                         })
-                        .customAlert(LocalizedKey.reviewBackAlertTitle.localized(for: localizationManager.language), isPresented: $showAlert) {
-                            Text(LocalizedKey.reviewBackAlertMessage.localized(for: localizationManager.language))
-                                .font(.body01)
-                                .foregroundColor(Color.gray1)
-                                .padding(.top, 10)
-                                .padding(.bottom, 5)
-                        } actions: {
-                            MultiButton {
-                                Button {
-                                    withAnimation(nil) {
-                                        showAlert = false
-                                        dismiss()
-                                    }
-                                   
-                                } label: {
-                                    Text(.yes)
-                                        .font(.title02_bold)
-                                        .foregroundStyle(Color.black)
-                                }
-                                .frame(width: 150, height: 56)
-                                Button {
-                                    withAnimation(nil) {
-                                        showAlert = false
-                                    }
-                                } label: {
-                                    Text(.no)
-                                        .font(.title02_bold)
-                                        .foregroundStyle(Color.main)
-                                }
-                                .frame(width: 150, height: 56)
-                            }
+                        .fullScreenCover(isPresented: $showAlert) {
+                            AlertView(title: .reviewBackAlertTitle, message: .reviewBackAlertMessage, leftButtonTitle: .yes, rightButtonTitle: .no, leftButtonAction: {
+                                showAlert = false
+                                dismiss()
+                            }, rightButtonAction: {
+                                showAlert = false
+                                
+                            })
+                        }
+                        .transaction { transaction in
+                            transaction.disablesAnimations = true
                         }
                         .padding(.leading, 16)
                         Spacer()
@@ -343,7 +323,7 @@ struct ReviewMainGridView: View {
                 ZStack {
                     RoundedRectangle(cornerRadius: 50)
                         .foregroundColor((viewModel.selectedKeyword.count < 3 || reviewContent.count == 0 || viewModel.state.getReviewWriteResponse.rating == 0) ? .main10P : .main)
-                        .frame(width: 360, height: 50)
+                        .frame(height: 50)
                     Button {
                         Task {
                             for i in 0..<viewModel.selectedKeyword.count {
@@ -353,7 +333,6 @@ struct ReviewMainGridView: View {
                             
                             AppState.shared.navigationPath.append(ReviewViewType.complete)
                         }
-                        
                         
                     } label: {
                         Text(.upload)
@@ -365,6 +344,9 @@ struct ReviewMainGridView: View {
                     
                 }
                 .padding(.bottom, 20)
+                .padding(.leading, 16)
+                .padding(.trailing, 16)
+        
             }
         }
         .onChange(of: selectedItems) { newItems in

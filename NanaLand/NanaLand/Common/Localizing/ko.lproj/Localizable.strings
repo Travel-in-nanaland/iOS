@@ -400,6 +400,8 @@
 "modify" = "수정";
 "reviewSeeMore" = "후기 더보기";
 "reviewDeleteMessage" = "해당 후기를\n삭제하시겠습니까?";
+"searchLocation" = "장소를 검색하세요";
+"noSearchResult" = "해당 검색 결과가 없습니다.";
 
 //MARK: - 마이페이지
 "notice" = "공지사항";
