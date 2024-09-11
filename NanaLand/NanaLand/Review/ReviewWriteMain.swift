@@ -27,30 +27,47 @@ struct ReviewWriteMain: View {
         ZStack{
             VStack(spacing: 0) {
                 ZStack {
-                    NanaNavigationBar(title: .write, showBackButton: false)
+                    NanaNavigationBar(title: .review, showBackButton: false)
                         .padding(.bottom, 16)
                     HStack(spacing: 0) {
                         Button(action: {
                             withAnimation(nil) {
                                 showAlert = true
                             }
-                 
+                            
                         }, label: {
                             Image("icLeft")
                                 .renderingMode(.template)
                                 .foregroundStyle(Color.black)
                         })
-                        .fullScreenCover(isPresented: $showAlert) {
-                            AlertView(title: .reviewBackAlertTitle, message: .reviewBackAlertMessage, leftButtonTitle: .yes, rightButtonTitle: .no, leftButtonAction: {
-                                showAlert = false
-                                dismiss()
-                            }, rightButtonAction: {
-                                showAlert = false
-                                
-                            })
-                        }
-                        .transaction { transaction in
-                            transaction.disablesAnimations = true
+                        .customAlert(LocalizedKey.reviewBackAlertTitle.localized(for: localizationManager.language), isPresented: $showAlert) {
+                            Text(.reviewBackAlertMessage)
+                                .font(.body01)
+                                .foregroundStyle(Color.gray1)
+                                .padding(.top, 5)
+                        } actions: {
+                            MultiButton {
+                                Button {
+                                    withAnimation(nil) {
+                                        showAlert = false
+                                        dismiss()
+                                    }
+                                    
+                                } label: {
+                                    Text(.yes)
+                                        .font(.title02_bold)
+                                        .foregroundStyle(Color.black)
+                                }
+                                Button {
+                                    withAnimation(nil) {
+                                        showAlert = false
+                                    }
+                                } label: {
+                                    Text(.no)
+                                        .font(.title02_bold)
+                                        .foregroundStyle(Color.main)
+                                }
+                            }
                         }
                         .padding(.leading, 16)
                         Spacer()
@@ -186,7 +203,7 @@ struct ReviewMainGridView: View {
                         ) {
                             if viewModel.state.getReviewWriteResponse.imgCnt == 5{
                                 Button { // 사진이 5장인 상태(최대상태) 에서 또 클릭 할 시 토스트 메시지 띄우기
-                                    toastMessage = "사진은 최대 5장까지 선택 가능합니다"
+                                    toastMessage = LocalizedKey.photoMax.localized(for: localizationManager.language)
                                     showToast = true
                                 } label: {
                                     VStack {

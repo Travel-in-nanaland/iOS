@@ -44,28 +44,79 @@ struct TypeTestCheckStyleView: View {
     
     private var titlePart: some View {
         VStack(spacing: 16) {
-            if LocalizationManager.shared.language == .malaysia {
-                Text(.yourPreference)
-                    .font(.largeTitle02_regular)
-                    .foregroundStyle(Color.black)
-                
-                Text(AppState.shared.userInfo.nickname)
-                    .font(.largeTitle02)
-                    .foregroundStyle(Color.main)
-            } else {
-                HStack{
+            if LocalizationManager.shared.language == .korean {
+                HStack(spacing: 0){
                     Text(AppState.shared.userInfo.nickname)
                         .font(.largeTitle02)
                         .foregroundStyle(Color.main)
                     
-                    Text("님의")
+                    Text(.yourPreference)
                         .font(.largeTitle02_regular)
                         .foregroundStyle(Color.black)
                 }
-                
-                Text(.yourPreference)
-                    .font(.largeTitle02_regular)
-                    .foregroundStyle(Color.black)
+            }
+            
+            if LocalizationManager.shared.language == .english {
+                HStack(spacing: 0){
+                    Text("What is ")
+                        .font(.largeTitle02_regular)
+                        .foregroundStyle(Color.black)
+                    
+                    Text("\(AppState.shared.userInfo.nickname)")
+                        .font(.largeTitle02)
+                        .foregroundStyle(Color.main)
+                    
+                    Text("'s taste")
+                        .font(.largeTitle02_regular)
+                        .foregroundStyle(Color.black)
+                    
+                    
+                }
+            }
+            
+            if LocalizationManager.shared.language == .chinese {
+                HStack(spacing: 0){
+                    Text(AppState.shared.userInfo.nickname)
+                        .font(.largeTitle02)
+                        .foregroundStyle(Color.main)
+                    
+                    Text("的 口味是什么?")
+                        .font(.largeTitle02)
+                        .foregroundStyle(Color.black)
+                }
+            }
+            
+            if LocalizationManager.shared.language == .malaysia {
+                HStack(spacing: 0){
+                    
+                    Text("Apakah rasa ")
+                        .font(.largeTitle02)
+                        .foregroundStyle(Color.black)
+                    
+                    Text(AppState.shared.userInfo.nickname)
+                        .font(.largeTitle02)
+                        .foregroundStyle(Color.main)
+                    
+                    Text("?")
+                        .font(.largeTitle02)
+                        .foregroundStyle(Color.black)
+                }
+            }
+            
+            if LocalizationManager.shared.language == .vietnam {
+                HStack(spacing: 0){
+                    Text("Sở thích của ")
+                        .font(.largeTitle02)
+                        .foregroundStyle(Color.black)
+                    
+                    Text(AppState.shared.userInfo.nickname)
+                        .font(.largeTitle02)
+                        .foregroundStyle(Color.main)
+                    
+                    Text(" là gì?")
+                        .font(.largeTitle02)
+                        .foregroundStyle(Color.black)
+                }
             }
             
             Text(.yourTravelStyle)

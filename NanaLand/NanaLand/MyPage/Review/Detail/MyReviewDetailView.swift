@@ -34,7 +34,7 @@ struct MyReviewDetailView: View {
         ZStack{
             VStack(spacing: 0) {
                 ZStack {
-                    NanaNavigationBar(title: .modify, showBackButton: false)
+                    NanaNavigationBar(title: .reviewModify, showBackButton: false)
                         .padding(.bottom, 16)
                     HStack(spacing: 0) {
                         Button(action: {
@@ -47,8 +47,8 @@ struct MyReviewDetailView: View {
                                 .renderingMode(.template)
                                 .foregroundStyle(Color.black)
                         })
-                        .customAlert("정말 나가시겠습니까?", isPresented: $showAlert) {
-                            Text("지금 나가시면,\n작성 중인 내용이 삭제됩니다.")
+                        .customAlert(LocalizedKey.reviewBackAlertTitle.localized(for: localizationManager.language), isPresented: $showAlert) {
+                            Text(.reviewBackAlertMessage)
                                 .font(.body01)
                                 .foregroundStyle(Color.gray1)
                                 .padding(.top, 5)
@@ -61,7 +61,7 @@ struct MyReviewDetailView: View {
                                     }
                                     
                                 } label: {
-                                    Text("네")
+                                    Text(.yes)
                                         .font(.title02_bold)
                                         .foregroundStyle(Color.black)
                                 }
@@ -70,7 +70,7 @@ struct MyReviewDetailView: View {
                                         showAlert = false
                                     }
                                 } label: {
-                                    Text("아니오")
+                                    Text(.no)
                                         .font(.title02_bold)
                                         .foregroundStyle(Color.main)
                                 }
@@ -213,7 +213,7 @@ struct MyDetailReviewMainGridView: View {
                         ) {
                             if detailViewModel.state.getReviewModifyResponse.imgCnt == 5{
                                 Button { // 사진이 5장인 상태(최대상태) 에서 또 클릭 할 시 토스트 메시지 띄우기
-                                    toastMessage = "사진은 최대 5장까지 선택 가능합니다"
+                                    toastMessage = LocalizedKey.photoMax.localized(for: localizationManager.language)
                                     showToast = true
                                 } label: {
                                     VStack {
