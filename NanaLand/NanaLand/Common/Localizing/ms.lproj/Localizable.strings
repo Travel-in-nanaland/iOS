@@ -361,7 +361,7 @@ mengembalikan sebarang hasil.";
 
 // MARK: - 제주 맛집
 "type" = "Jenis";
-"restaurant" = "Restoran Jeju";
+"restaurant" = "Restoran";
 "meatblackpork" = "Daging/Babi hitam";
 "seaFood" = "Makanan laut";
 "koreanFood" = "Makanan Korea";
@@ -380,15 +380,15 @@ mengembalikan sebarang hasil.";
 "writeReview" = "Tulis ulasan";
 "service" = "Perkhidmatan yang disediakan";
 "instagram" = "Instagram";
-"currency" = "원";
-"folding" = "접기";
-"opening" = "더 보기";
+"currency" = "won";
+"folding" = "tutup";
+"opening" = "Lihat lebih lanjut";
 
 // MARK: - 후기
 "blank" = "";
 "review" = "Ulasan";
 "write" = "Tulis ulasan";
-"reviewModify" = "후기 수정";
+"reviewModify" = "Edit Ulasan";
 "modify" = "Pembetulan";
 "keyword" = "Kata kunci";
 "selectRating1" = "Sila ";
@@ -432,6 +432,7 @@ mengembalikan sebarang hasil.";
 "reviewDeleteMessage" = "Adakah anda mahu\n memadam ulasan ini?";
 "searchLocation" = "Cari Lokasi";
 "noSearchResult" = "Tiada hasil carian yang sepadan.";
+"photoMax" = "Anda boleh memilih sehingga 5 gambar";
 
 //MARK: - 마이페이지
 "notice" = "Pengumuman";
@@ -444,9 +445,9 @@ mengembalikan sebarang hasil.";
 "loginReview" = "Log masuk untuk merekod pengalaman anda sendiri!";
 
 //MARK: - 나나스픽
-"nanapickRecommend1" = "금주 ";
-"nanapickRecommend2" = "추천 ";
-"nanapickRecommend3" = "나나's Pick";
+"nanapickRecommend1" = "Cadangan ";
+"nanapickRecommend2" = "minggu ini, ";
+"nanapickRecommend3" = "Pilihan Nana";
 "nanapickAll" = "Lihat semua";
 "locationPoint" = "Daya Tarikan Unik Lokasi Ini✨";
 

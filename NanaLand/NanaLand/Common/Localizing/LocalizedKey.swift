@@ -397,6 +397,7 @@ enum LocalizedKey: String {
     case reviewDeleteMessage
     case searchLocation
     case noSearchResult
+    case photoMax
     
     // MARK: - 키워드 내용
     case mood

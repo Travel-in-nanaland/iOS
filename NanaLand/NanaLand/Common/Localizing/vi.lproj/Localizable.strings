@@ -73,71 +73,71 @@
 //MARK: - TypeTest
 "skipTypeTest" = "Bỏ qua bài kiểm tra";
 // Question
-"typeTest1Q1L" = "%@";
-"typeTest1Q2L" = "your travel style?";
-"typeTest2Q1L" = "%@";
-"typeTest2Q2L" = "how do you plan your trips?";
-"typeTest3Q1L" = "%@ how do you set";
-"typeTest3Q2L" = "your travel budget?";
-"typeTest4Q1L" = "%@";
-"typeTest4Q2L" = "what's your travel style?";
-"typeTest5Q1L" = "%@,What do you most";
-"typeTest5Q2L" = "want to do on a trip?";
+"typeTest1Q1L" = "Khi chọn điểm đến du lịch thì";
+"typeTest1Q2L" = "%@ thế nào?";
+"typeTest2Q1L" = "Khi lập kế hoạch du lịch thì";
+"typeTest2Q2L" = "%@ thế nào?";
+"typeTest3Q1L" = "Khi xác định chi phí du lịch thì";
+"typeTest3Q2L" = "%@ thế nào?";
+"typeTest4Q1L" = "%@ làm gì";
+"typeTest4Q2L" = "khi đi du lịch?";
+"typeTest5Q1L" = "Bạn muốn làm gì nhất";
+"typeTest5Q2L" = "khi đi du lịch?";
 // Answer
-"touristSpot" = "Active tourist spots";
-"localSpot" = "Quiet local spots";
-"flexible" = "Flexible";
-"organized" = "Highly organized";
-"budgetTravel" = "Budget travel";
-"luxuryTravel" = "Luxury travel";
-"photoRemain" = "Only photos remain!";
-"captureWithEyes" = "Capture with your eyes";
-"sentimentalPlace" = "Sentimental places";
-"traditionalCulture" = "Traditional culture";
-"naturalScenery" = "Natural scenery";
-"themePark" = "Theme parks";
+"touristSpot" = "Địa điểm du lịch sôi động";
+"localSpot" = "Nơi yên tĩnh tại địa phương";
+"flexible" = "Linh hoạt";
+"organized" = "Hoàn toàn được lên kế hoạch";
+"budgetTravel" = "Du lịch tiết kiệm";
+"luxuryTravel" = "Du lịch sang trọng";
+"photoRemain" = "Chỉ còn lại những bức ảnh!";
+"captureWithEyes" = "Khi tôi đi du lịch, tôi ghi lại phong cảnh bằng mắt mình!";
+"sentimentalPlace" = "Nôi đẹp";
+"traditionalCulture" = "Văn hóa truyền thống";
+"naturalScenery" = "Phong cảnh thiên nhiên";
+"themePark" = "Công viên giải trí";
 // Result
-"your" = "%@";
-"yourPreference" = "what travel style";
-"yourTravelStyle" = "do you prefer?";
-"tangerineJuiced" = "Squeezing the citrus...";
-"juiceCommingSoon" = "Delicious travel juice coming up soon!";
+"your" = "Sở thích";
+"yourPreference" = "của %@ là gì?";
+"yourTravelStyle" = "Bạn muốn du lịch theo phong cách nào?";
+"tangerineJuiced" = "Quýt đang được ép...";
+"juiceCommingSoon" = "Nước ép du lịch ngon lành sắp ra mắt!";
 "yourTravelStyleIs" = "Loại hình du lịch của %@ là";
 
 // Type
-"GAMGYUL_ICECREAM" = "Tangerine Ice Cream";
-"GAMGYUL_ICECREAM_DESCRIPTION" = "A type that brings sweet memories with its smooth and creamy texture.";
-"GAMGYUL_RICECAKE" = "Tangerine Rice Cake";
-"GAMGYUL_RICECAKE_DESCRIPTION" = "A type that stitches joy into a notepad, one by one, with its bouncy charm.";
-"GAMGYUL" = "Tangerine";
-"GAMGYUL_DESCRIPTION" = " A type that sticks to the basics and the most famous spots.";
-"GAMGYUL_CIDER" = "Tangerine Soda";
-"GAMGYUL_CIDER_DESCRIPTION" = "A type that is fizzy and refreshing.";
-"GAMGYUL_AFFOKATO" = "Tangerine Affogato";
-"GAMGYUL_AFFOKATO_DESCRIPTION" = "A type brimming with creativity, passionate and lively.";
-"GAMGYUL_HANGWA" = "Tangerine Traditional Sweets";
-"GAMGYUL_HANGWA_DESCRIPTION" = "A type that encapsulates the diverse and exquisite flavors of Jeju.";
-"GAMGYUL_JUICE" = "Tangerine Juice";
-"GAMGYUL_JUICE_DESCRIPTION" = "A type that sticks to the basics and the most famous spots.";
-"GAMGYUL_CHOCOLATE" = "Tangerine Chocolate";
-"GAMGYUL_CHOCOLATE_DESCRIPTION" = "A type with firm tastes, preferring quality over quantity.";
-"GAMGYUL_COCKTAIL" = "Tangerine Cocktail";
-"GAMGYUL_COCKTAIL_DESCRIPTION" = "A type that is flashy and extreme.";
-"TANGERINE_PEEL_TEA" = "Tangerine Peel Tea";
-"TANGERINE_PEEL_TEA_DESCRIPTION" = "A type that enjoys serene scenery in a calm manner.";
-"GAMGYUL_YOGURT" = "Tangerine Yogurt";
-"GAMGYUL_YOGURT_DESCRIPTION" = "A type that enjoys the pure taste, soft and tangy.";
-"GAMGYUL_FLATCCINO" = "Tangerine Frappuccino";
-"GAMGYUL_FLATCCINO_DESCRIPTION" = "A type that combines the zest of various fruits with the chill of ice, very creative.";
-"GAMGYUL_LATTE" = "Tangerine Latte";
-"GAMGYUL_LATTE_DESCRIPTION" = "A type that leisurely enjoys life under the warm sunshine.";
-"GAMGYUL_SIKHYE" = "Tangerine Shikhye";
-"GAMGYUL_SIKHYE_DESCRIPTION" = "A type full of rich flavors, slow but profound.";
-"GAMGYUL_ADE" = "Tangerine Ade";
-"GAMGYUL_ADE_DESCRIPTION" = "A type that is fizzy with sparkling water and fresh fruit, exuding a sense of freshness.";
-"GAMGYUL_BUBBLE_TEA" = "Tapioca Tangerine Tea";
-"GAMGYUL_BUBBLE_TEA_DESCRIPTION" = "A type full of curiosity, surprising with each bite.";
-"nanalandMadeYouJuice" = "nanaland in Jeju has created a custom travel juice for you!";
+"GAMGYUL_ICECREAM" = "Kem quýt";
+"GAMGYUL_ICECREAM_DESCRIPTION" = "Một loại kem quýt mang đến những kỷ niệm mềm mại nhưng ngọt ngào.";
+"GAMGYUL_RICECAKE" = "Bánh gạo nếp quýt";
+"GAMGYUL_RICECAKE_DESCRIPTION" = "Một loại bánh gạo nếp quýt thêu nên niềm vui nhảy nhót từng chút lên sổ tay của bạn.";
+"GAMGYUL" = "Quýt";
+"GAMGYUL_DESCRIPTION" = "Chỉ những nơi nổi tiếng và cơ bản nhất! Loại quýt";
+"GAMGYUL_CIDER" = "Nước táo quýt";
+"GAMGYUL_CIDER_DESCRIPTION" = "Một loại nước táo quýt sảng khoái và tươi mát.";
+"GAMGYUL_AFFOKATO" = "Affogato quýt";
+"GAMGYUL_AFFOKATO_DESCRIPTION" = "Một loại affogato quýt đầy sáng tạo dành cho bạn, người đam mê và năng động.";
+"GAMGYUL_HANGWA" = "Bánh truyền thống quýt (Hangwa)";
+"GAMGYUL_HANGWA_DESCRIPTION" = "Đồ ăn nhẹ quýt cao cấp chứa đựng hương vị đa dạng của Jeju.";
+"GAMGYUL_JUICE" = "Nước ép quýt";
+"GAMGYUL_JUICE_DESCRIPTION" = "Chỉ những nơi nổi tiếng và cơ bản nhất! Loại nước ép quýt";
+"GAMGYUL_CHOCOLATE" = "Sô-cô-la quýt";
+"GAMGYUL_CHOCOLATE_DESCRIPTION" = "Một loại sô-cô-la quýt nơi hương vị mạnh mẽ và chất lượng quan trọng hơn sự cầu kỳ.";
+"GAMGYUL_COCKTAIL" = "Cocktail quýt";
+"GAMGYUL_COCKTAIL_DESCRIPTION" = "Một loại cocktail quýt đầy màu sắc và táo bạo.";
+"TANGERINE_PEEL_TEA" = "Trà vỏ quýt";
+"TANGERINE_PEEL_TEA_DESCRIPTION" = "Một loại trà vỏ quýt với phong cảnh thanh bình.";
+"GAMGYUL_YOGURT" = "Sữa chua quýt";
+"GAMGYUL_YOGURT_DESCRIPTION" = "Hương vị nguyên bản! Một loại sữa chua quýt mềm mại và tươi mát.";
+"GAMGYUL_FLATCCINO" = "Flatccino quýt";
+"GAMGYUL_FLATCCINO_DESCRIPTION" = "Một loại flatccino quýt sáng tạo kết hợp giữa sự tươi mát của nhiều loại trái cây và đá lạnh.";
+"GAMGYUL_LATTE" = "Latte quýt";
+"GAMGYUL_LATTE_DESCRIPTION" = "Một loại latte quýt mà bạn thưởng thức dưới ánh nắng ấm áp!";
+"GAMGYUL_SIKHYE" = "Sikhye quýt (nước gạo ngọt)";
+"GAMGYUL_SIKHYE_DESCRIPTION" = "Đầy hương vị! Một loại sikhye quýt (nước gạo ngọt) chậm mà sâu lắng!";
+"GAMGYUL_ADE" = "Nước Ade quýt";
+"GAMGYUL_ADE_DESCRIPTION" = "Trái cây tươi tắn văng vào nước có ga! Loại Tangerine Ade mang cảm giác sảng khoái.";
+"GAMGYUL_BUBBLE_TEA" = "Trà sữa trân châu quýt";
+"GAMGYUL_BUBBLE_TEA_DESCRIPTION" = "Bạn đầy tò mò! Một loại trà sữa trân châu quýt càng uống càng thấy ngon!";
+"nanalandMadeYouJuice" = "nanaland in Jeju đã tạo ra một loại nước ép du lịch riêng cho bạn!";
 // 결과 값 추천 여행지
 "recommendedTravelPlace" = "Điểm đến du lịch được đề xuất";
 "recommenedeTravelTitleFirstLine" = "Dành cho %@";
@@ -183,11 +183,10 @@
 "notificate" = "Tốt để biết!";
 "marketingConsent" = "Marketing usage consent";
 "locationConsent" = "Location-based service terms consent";
-"noConsentError" = "Xin lưu ý rằng nếu bạn không đồng ý, bạn có thể không nhận được các dịch vụ hoặc lợi ích.";
+"noConsentError" = "* Xin lưu ý rằng nếu bạn không đồng ý, bạn có thể không nhận được các dịch vụ hoặc lợi ích.";
 
 // accessPolicyGuidePage
-"mainDescription" = "The following permissions are required
-to use Nanaland in Jeju.";
+"mainDescription" = "Để sử dụng Nana Land tại đảo Jeju, \nCác Cho phép quyền truy cập sau đây là cần thiết.";
 "phoneTitle" = "Thông tin thiết bị điện thoại";
 "phoneDescription" = "Yêu cầu quyền truy cập để xác minh trạng thái điện thoại di động và ID.\nYêu cầu khi cung cấp giải pháp phát hiện giả mạo thiết bị.";
 "requiredNotification" = "Quyền truy cập bắt buộc cần thiết để sử dụng dịch vụ Nana Land tại Jeju, và nếu quyền bị từ chối, việc sử dụng dịch vụ sẽ bị hạn chế.";
@@ -204,7 +203,7 @@ to use Nanaland in Jeju.";
 "optionalNotification" = "Xin lưu ý rằng nếu bạn không đồng ý với quyền truy cập tùy chọn, một số chức năng của dịch vụ Nana Land tại Jeju có thể bị hạn chế.";
 
 // languageSettingPage
-"languageMainDescription" = "The language at the top is set as default.";
+"languageMainDescription" = "được đặt mặc định theo\n ngôn ngữ ở trên cùng.";
 
 // withdrawMembershipPage
 "withDrawNotification" = "Thông báo rút khỏi dịch vụ";
@@ -227,7 +226,7 @@ to use Nanaland in Jeju.";
 "nonMemeberAlertGoRegister" = "Sign Up for Membership";
 
 // MARK: - Home
-"recommendTitle" = "Local Picks for %@! 🍊";
+"recommendTitle" = "Đề cử người dân cho %@ 🍊";
 "ourNana" = "Our Nana";
 "firstAdvertismentTitle" = "Muốn thấy biển đẹp ở Đảo Jeju?";
 "firstAdvertismentSubTitle" = "Hãy đi khám phá thiên nhiên ở Seongsan, Thành phố Seogwipo!";
@@ -366,7 +365,7 @@ to use Nanaland in Jeju.";
 "blank" = "";
 "review" = "Đánh giá";
 "write" = "Viết đánh giá";
-"reviewModify" = "후기 수정";
+"reviewModify" = "Chỉnh sửa đánh giá";
 "modify" = "Chỉnh sửa";
 "keyword" = "Từ khóa";
 "selectRating1" = "Vui lòng ";
@@ -410,6 +409,7 @@ to use Nanaland in Jeju.";
 "reviewDeleteMessage" = "Bạn có muốn\n xóa đánh giá này không?";
 "searchLocation" = "Tìm Kiếm Địa Điểm";
 "noSearchResult" = "Không có kết quả tìm kiếm tương ứng.";
+"photoMax" = "Bạn có thể chọn tối đa 5 ảnh";
 
 //MARK: - 마이페이지
 "notice" = "Thông báo";
@@ -423,7 +423,7 @@ to use Nanaland in Jeju.";
 
 // MARK: - 제주 맛집
 "type" = "Loại";
-"restaurant" = "Nhà hàng ở Jeju";
+"restaurant" = "Nhà hàng";
 "meatblackpork" = "Thịt/Thịt lợn đen";
 "seaFood" = "Hải sản";
 "koreanFood" = "Ẩm thực Hàn Quốc";
@@ -442,9 +442,9 @@ to use Nanaland in Jeju.";
 "writeReview" = "Viết đánh giá";
 "service" = "Các dịch vụ cung cấp";
 "instagram" = "Instagram";
-"currency" = "원";
-"folding" = "접기";
-"opening" = "더 보기";
+"currency" = "won";
+"folding" = "thu gọn";
+"opening" = "Xem thêm";
 
 //MARK: - 언어 설정
 "greeting" = "Hello!\nNice to meet you 👋";
@@ -453,9 +453,9 @@ to use Nanaland in Jeju.";
 "report" = "report";
 
 //MARK: - 나나스픽
-"nanapickRecommend1" = "금주 ";
-"nanapickRecommend2" = "추천 ";
-"nanapickRecommend3" = "나나's Pick";
+"nanapickRecommend1" = "Gợi ý tuần này, ";
+"nanapickRecommend2" = "Lựa chọn ";
+"nanapickRecommend3" = "của Nana";
 "nanapickAll" = "Xem tất cả";
 "locationPoint" = "Điểm Quyến Rũ Độc Đáo của Nơi Này✨";
 

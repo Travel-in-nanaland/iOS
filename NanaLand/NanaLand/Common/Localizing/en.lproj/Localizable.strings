@@ -368,7 +368,7 @@ the market is the place!";
 "blank" = "";
 "review" = "Review";
 "write" = "Write a review";
-"reviewModify" = "후기 수정";
+"reviewModify" = "Edit review";
 "modify" = "Correction";
 "keyword" = "Keyword";
 "selectRating1" = "Please ";
@@ -412,6 +412,7 @@ the market is the place!";
 "reviewDeleteMessage" = "Do you want to\n delete this review?";
 "searchLocation" = "Search Location";
 "noSearchResult" = "There are no corresponding search results.";
+"photoMax" = "You can select up to 5 photos";
 
 //MARK: - 마이페이지
 "notice" = "Announcement";
@@ -425,7 +426,7 @@ the market is the place!";
 
 // MARK: - 제주 맛집
 "type" = "Type";
-"restaurant" = "Jeju Restaurants";
+"restaurant" = "Restaurants";
 "meatblackpork" = "Meat/Black pork";
 "seaFood" = "Seafood";
 "koreanFood" = "Korean food";
@@ -444,9 +445,9 @@ the market is the place!";
 "writeReview" = "Write a review";
 "service" = "Services provided";
 "instagram" = "Instagram";
-"currency" = "원";
-"folding" = "접기";
-"opening" = "더 보기";
+"currency" = "won";
+"folding" = "close";
+"opening" = "See more";
 
 // MARK: - 이색 체험
 "activity" = "Activity";
@@ -473,8 +474,8 @@ the market is the place!";
 "report" = "report";
 
 //MARK: - 나나스픽
-"nanapickRecommend1" = "금주 ";
-"nanapickRecommend2" = "추천 ";
-"nanapickRecommend3" = "나나's Pick";
+"nanapickRecommend1" = "This week’s ";
+"nanapickRecommend2" = "recommendation, ";
+"nanapickRecommend3" = "Nana’s Pick";
 "nanapickAll" = "See all";
 "locationPoint" = "Unique Charm Points of this Location✨";

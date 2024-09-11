@@ -376,15 +376,15 @@
 "writeReview" = "写评价";
 "service" = "提供的服务";
 "instagram" = "Instagram";
-"currency" = "원";
-"folding" = "접기";
-"opening" = "더 보기";
+"currency" = "韩元";
+"folding" = "关闭";
+"opening" = "看更多";
 
 // MARK: - 후기
 "blank" = "";
 "review" = "评价";
 "write" = "写评价";
-"reviewModify" = "후기 수정";
+"reviewModify" = "编辑评价";
 "modify" = "修改";
 "keyword" = "关键词";
 "selectRating1" = "请";
@@ -428,6 +428,7 @@
 "reviewDeleteMessage" = "您确定要删除此评论吗？\n";
 "searchLocation" = "搜索地点";
 "noSearchResult" = "没有相应的搜索结果。";
+"photoMax" = "您最多可以选择5张照片";
 
 //MARK: - 마이페이지
 "notice" = "公告";
@@ -440,9 +441,9 @@
 "loginReview" = "登录以记录您自己的经验！";
 
 //MARK: - 나나스픽
-"nanapickRecommend1" = "금주 ";
-"nanapickRecommend2" = "추천 ";
-"nanapickRecommend3" = "나나's Pick";
+"nanapickRecommend1" = "本周";
+"nanapickRecommend2" = "推荐，";
+"nanapickRecommend3" = "Nana精选";
 "nanapickAll" = "查看全部";
 "locationPoint" = "这个地方独有的魅力点✨";
 

@@ -59,7 +59,7 @@ struct NewNanaPickMainView: View {
                             
                             recommend
                         } else if localizationManager.language == .malaysia {
-                            let recommend = Text(.nanapickRecommend1).font(.title02_bold).foregroundColor(.black) + Text(.nanapickRecommend2).font(.title02_bold).foregroundColor(.main) + Text(.nanapickRecommend3).font(.title02_bold).foregroundColor(.black)
+                            let recommend = Text(.nanapickRecommend1).font(.title02_bold).foregroundColor(.main) + Text(.nanapickRecommend2).font(.title02_bold).foregroundColor(.black) + Text(.nanapickRecommend3).font(.title02_bold).foregroundColor(.black)
 
                             
                             recommend
