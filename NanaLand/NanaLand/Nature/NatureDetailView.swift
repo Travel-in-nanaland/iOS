@@ -328,10 +328,11 @@ struct NatureDetailView: View {
                                 AppState.shared.navigationPath.append(ArticleDetailViewType.reportInfo(id: viewModel.state.getNatureDetailResponse.id, category: .nature))
                             } label: {
                                 Text(.proposeUpdateInfo)
+                                    .padding()
                                     .background(
                                         RoundedRectangle(cornerRadius: 50.0)
                                             .foregroundStyle(Color.gray2)
-                                            .frame(width: 120, height: 40)
+                                            .frame(height: 40)
                                     )
                                     .foregroundStyle(Color.gray1)
                                     .font(.body02_bold)

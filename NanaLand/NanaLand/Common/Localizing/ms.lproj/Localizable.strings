@@ -468,3 +468,24 @@ mengembalikan sebarang hasil.";
 "park" = "Taman";
 "performance" = "Persembahan";
 "religiousFacilities" = "Kemudahan agama";
+"BriefExplanation" = "Penjelasan ringkas";
+
+// MARK: - 신고
+"report" = "Laporan";
+"reportResult" = "Kandungan yang dilaporkan akan diproses dalam /ntempoh maksimum 24 jam mengikut dasar operasi.";
+"reportReason" = "Sila tulis sebab laporan anda dalam sekurang-kurangnya 20 aksara!"; // 신고 사유
+"reportCharacterPermission" = "Kandungan boleh ditulis dalam 500 aksara atau kurang.";// 내용 500자 이하
+"reportResultEmail" = "Sila masukkan alamat e-mel anda untuk menerima keputusan laporan."; // 신고 결과 이메일
+"emailValidation " = "Format e-mel tidak betul. Sila masukkan semula!";// 이메일 벨리 체크
+"reportReason" = "Sila beritahu kami mengapa anda melaporkannya!"; // 신고사유
+"reportWarning" = "Maklumat yang dilaporkan tanpa alasan yang sah mesti disahkan oleh pentadbir./nIa mungkin tidak akan diterima."; // 허위신고 주의문구
+"profitPromotionalPurpose" = "Untuk tujuan keuntungan / promosi"; // 영리목적 / 홍보성
+"unlike" = "Saya tidak suka"; // 마음에 들지 않음.
+"personalAttack" = "Profanity/personal attacks"; // 인신 공격
+"personalInformationExposure" = "Pendedahan maklumat peribadi";  // 개인정보 노출
+"obscenitySensuality" = "Lucah / Sensualiti"; // 음란
+"facilityClosures" = "Penutupan kemudahan dan ulasan kemudahan lain"; // 폐업
+"medication" = "Ubat"; // 약물
+"AbuseViolence" = "Penyalahgunaan / Keganasan"; // 학대
+"etc" = "Lain-lain"; // 기타
+"photosVideos" = "Foto / Video"; 

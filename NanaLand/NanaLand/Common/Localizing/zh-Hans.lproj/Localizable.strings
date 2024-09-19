@@ -464,3 +464,24 @@
 "park" = "公园";
 "performance" = "表演";
 "religiousFacilities" = "宗教设施";
+"BriefExplanation" = "简要说明";
+
+// MARK: - 신고하기
+"report" = "举报";
+"reportResult" = "举报内容符合运营政策。将在最多24小时内处理。";
+"reportReasonValidation" = "请写下至少20个字符的举报理由！"; // 신고 사유
+"reportCharacterPermission" = "内容可以写在 500 个字符以内。";// 내용 500자 이하
+"reportResultEmail" = "请输入您的电子邮件地址以接收报告结果。"; // 신고 결과 이메일
+"emailValidation " = "电子邮件格式不正确。请重新输入！";// 이메일 벨리 체크
+"reportReason" = "请告诉我们举报原因！"; // 신고사유
+"reportWarning" = "无有效理由的举报信息必须由管理员确认。可能不会反映。"; // 허위신고 주의문구
+"profitPromotionalPurpose" = "用于营利/推广目的"; // 영리목적 / 홍보성
+"unlike" = "我不喜欢"; // 마음에 들지 않음.
+"personalAttack" = "侮辱性/人身攻击"; // 인신 공격
+"personalInformationExposure" = "曝光个人信息";  // 개인정보 노출
+"obscenitySensuality" = "淫秽/性感内容"; // 음란
+"facilityClosures" = "设施停业及其他设施的评论"; // 폐업
+"medication" = "药物"; // 약물
+"AbuseViolence" = "虐待/暴力"; // 학대
+"etc" = "其他"; // 기타
+"photosVideos"="照片/视频";

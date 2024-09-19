@@ -35,7 +35,7 @@ struct ReportModalView: View {
                     reportReasonViewFlag = true
                     self.presentationMode.wrappedValue.dismiss()
                 } label: {
-                    Text("신고")
+                    Text(.report)
                         .padding(.leading, 16)
 
                 }

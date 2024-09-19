@@ -466,12 +466,30 @@ the market is the place!";
 "park" = "Park";
 "performance" = "Performance";
 "religiousFacilities" = "Religious facilities";
+"BriefExplanation" = "BriefExplanation";
 
 //MARK: - 언어 설정
 "greeting" = "Hello!\nNice to meet you 👋";
 
 //MARK: - 신고하기
 "report" = "report";
+"reportResult" = "The reported contents are in accordance with the operating policy.It will be processed within a maximum of 24 hours.";
+"reportReasonValidation" = "Please write the reason for your report in at least 20 characters!"; // 신고 사유
+"reportCharacterPermission" = "Content can be written in 500 characters or less.";// 내용 500자 이하
+"reportResultEmail" = "Please enter your email address to receive the report results."; // 신고 결과 이메일
+"emailValidation " = "The email format is incorrect. Please enter again!";// 이메일 벨리 체크
+"reportReason" = "Please tell us why you are reporting it!"; // 신고사유
+"reportWarning" = "Information reported without valid grounds must be confirmed by the administrator./nIt may not be reflected."; // 허위신고 주의문구
+"profitPromotionalPurpose" = "For profit / promotional purpose"; // 영리목적 / 홍보성
+"unlike" = "I don't like it"; // 마음에 들지 않음.
+"personalAttack" = "Profanity/personal attacks"; // 인신 공격
+"personalInformationExposure" = "Personal information exposure";  // 개인정보 노출
+"obscenitySensuality" = "Obscenity/sensuality"; // 음란
+"facilityClosures" = "Facility closures and reviews of other facilities"; // 폐업
+"medication" = "Medication"; // 약물
+"AbuseViolence" = "Abuse/Violence"; // 학대
+"etc" = "Etc"; // 기타
+"photosVideos" = "Photos / Videos"; 
 
 //MARK: - 나나스픽
 "nanapickRecommend1" = "This week’s ";

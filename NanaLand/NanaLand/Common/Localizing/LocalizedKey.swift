@@ -475,6 +475,7 @@ enum LocalizedKey: String {
     case park
     case performance
     case religiousFacilities
+    case BriefExplanation
 
     
     //MARK: - 언어 설정
@@ -482,7 +483,22 @@ enum LocalizedKey: String {
     
     //MARK: - 신고하기
     case report
-    
+    case reportResult
+    case reportReasonValidation // 신고 사유 20자 이상
+    case reportCharacterPermission // 내용 500자 이하
+    case reportResultEmail // 신고 결과 이메일
+    case emailValidation // 이메일 벨리 체크
+    case reportReason // 신고사유
+    case reportWarning // 허위신고 주의문구
+    case profitPromotionalPurpose // 영리목적 / 홍보성
+    case unlike // 마음에 들지 않음.
+    case personalAttack // 인신 공격
+    case personalInformationExposure // 개인정보 노출
+    case obscenitySensuality // 음란
+    case facilityClosures // 폐업
+    case medication // 약물
+    case AbuseViolence // 학대
+    case etc // 기타
     
     //MARK: - 나나스픽
     case nanapickRecommend1

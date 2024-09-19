@@ -476,3 +476,25 @@
 "park" = "Công viên";
 "performance" = "Biểu diễn";
 "religiousFacilities" = "Cơ sở tôn giáo";
+"BriefExplanation" = "Giải thích ngắn gọn";
+
+// MARK: - 신고
+"report" = "Báo cáo";
+"reportResult" = "Nội dung báo cáo phù hợp với chính sách hoạt động.Sẽ được xử lý trong vòng tối đa 24 giờ.";
+"reportReason" = "Vui lòng viết lý do báo cáo của bạn bằng ít nhất 20 ký tự!"; // 신고 사유
+"reportCharacterPermission" = "Nội dung có thể được viết bằng 500 ký tự hoặc ít hơn.";// 내용 500자 이하
+"reportResultEmail" = "Vui lòng nhập địa chỉ email của bạn để nhận kết quả báo cáo."; // 신고 결과 이메일
+"emailValidation " = "Định dạng email không đúng. Vui lòng nhập lại!";// 이메일 벨리 체크
+"reportReason" = "Hãy cho chúng tôi biết lý do bạn báo cáo!"; // 신고사유
+"reportWarning" = "Thông tin báo cáo không có căn cứ hợp lệ phải được xác nhận bởi quản trị viên.Có thể sẽ không được phản ánh."; // 허위신고 주의문구
+"profitPromotionalPurpose" = "Vì mục đích lợi nhuận / quảng cáo"; // 영리목적 / 홍보성
+"unlike" = "Tôi không thích"; // 마음에 들지 않음.
+"personalAttack" = "Lăng mạ / Tấn công cá nhân"; // 인신 공격
+"personalInformationExposure" = "Tiết lộ thông tin cá nhân";  // 개인정보 노출
+"obscenitySensuality" = "Khiêu dâm / Gợi cảm"; // 음란
+"facilityClosures" = "Đóng cửa cơ sở và đánh giá các cơ sở khác"; // 폐업
+"medication" = "Thuốc"; // 약물
+"AbuseViolence" = "Lạm dụng / Bạo lực"; // 학대
+"etc" = "Khác"; // 기타
+"photosVideos" = "Ảnh / Video"; 
+

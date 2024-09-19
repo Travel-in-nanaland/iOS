@@ -89,7 +89,7 @@ struct ReportWriteView: View {
                             .overlay(alignment: .topLeading) {
                                 VStack(spacing: 0) {
                                     HStack(spacing: 0) {
-                                        Text("신고 사유를 20자 이상 작성해 주세요.")
+                                        Text(.reportReason)
                                             .foregroundStyle(text.isEmpty ? .gray : .clear)
                                             .font(.body02)
                                             .padding(.top, 8)
@@ -113,7 +113,7 @@ struct ReportWriteView: View {
                                 print("\(newValue)")
                                 if newValue.count > 500 {
                                     text = String(newValue.prefix(500))
-                                    toastMessage = "내용은 500자 이내로 작성 가능합니다"
+                                    toastMessage = LocalizedKey.reportCharacterPermission.localized(for: LocalizationManager.shared.language)
                                     showToast = true
                                     reasonValidate = false
                                 }
@@ -133,7 +133,7 @@ struct ReportWriteView: View {
               
                             HStack(spacing: 0) {
                                 Image("icWarning")
-                                Text("신고 사유는 20자 이상으로 입력해주세요.")
+                                Text(.reportReason)
                                     .font(.caption01)
                                     .foregroundStyle(.red)
                                 Spacer()
@@ -145,7 +145,7 @@ struct ReportWriteView: View {
                     
                     VStack(spacing: 0) {
                         HStack(spacing: 0) {
-                            Text("이메일")
+                            Text(.email)
                                 .padding(.trailing, 12)
                                 .font(.title02_bold)
                             Text("*필수")
@@ -156,7 +156,7 @@ struct ReportWriteView: View {
                         .padding(.leading, 16)
                         .padding(.bottom, 8)
                         HStack(spacing: 0) {
-                            Text("신고 결과를 받을 이메일을 입력해주세요.")
+                            Text(.reportResultEmail)
                                 .font(.body02)
                                 .foregroundStyle(Color.gray1)
                                 
@@ -185,7 +185,7 @@ struct ReportWriteView: View {
                                 .padding(.bottom, 4)
                             HStack(spacing: 0) {
                                 if (emailTextWarning) {
-                                    Text("*올바른 이메일을 입력해주세요.")
+                                    Text(.emailValidation)
                                         .foregroundStyle(.red)
                                         .font(.caption01)
                                 }
@@ -222,7 +222,7 @@ struct ReportWriteView: View {
                                 ) {
                                     if viewModel.state.imgCnt == 5{
                                         Button { // 사진이 5장인 상태(최대상태) 에서 또 클릭 할 시 토스트 메시지 띄우기
-                                            toastMessage = "사진은 최대 5장까지 선택 가능합니다"
+                                            toastMessage = LocalizedKey.photoMax.localized(for: LocalizationManager.shared.language)
                                             showToast = true
                                         } label: {
                                             VStack {

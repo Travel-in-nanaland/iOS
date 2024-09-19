@@ -19,25 +19,25 @@ struct ReportReasonView: View {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 0) {
      
-                        Text("신고하는 이유를 알려주세요!")
+                        Text(.reportReason)
                             .padding(.bottom, 4)
                             .font(.title01_bold)
-                        Text("타당한 근거 없이 신고된 내용은 관리자 확인 후 반영되지 않을 수 있습니다.")
+                        Text(.reportWarning)
                             .font(.body02)
                             .foregroundStyle(Color.gray1)
                             .multilineTextAlignment(.leading)
                             .padding(.bottom, 32)
                             .padding(.trailing, 88)
                         VStack(spacing: 16) {
-                            ReportReasonItemButtonView(id: id, title: "영리목적 / 홍보성", isReport: $isReport)
-                            ReportReasonItemButtonView(id: id, title: "마음에 들지 않습니다", isReport: $isReport)
-                            ReportReasonItemButtonView(id: id, title: "욕설/인신공격", isReport: $isReport)
-                            ReportReasonItemButtonView(id: id, title: "개인정보 노출", isReport: $isReport)
-                            ReportReasonItemButtonView(id: id, title: "음란 / 선정성", isReport: $isReport)
-                            ReportReasonItemButtonView(id: id, title: "시설 폐업 및 다른 시설에 대한 리뷰", isReport: $isReport)
-                            ReportReasonItemButtonView(id: id, title: "약물", isReport: $isReport)
-                            ReportReasonItemButtonView(id: id, title: "학대 / 폭력", isReport: $isReport)
-                            ReportReasonItemButtonView(id: id, title: "기타", isReport: $isReport)
+                            ReportReasonItemButtonView(id: id, title: LocalizedKey.profitPromotionalPurpose.localized(for: LocalizationManager.shared.language), isReport: $isReport)
+                            ReportReasonItemButtonView(id: id, title: LocalizedKey.unlike.localized(for: LocalizationManager.shared.language), isReport: $isReport)
+                            ReportReasonItemButtonView(id: id, title: LocalizedKey.personalAttack.localized(for: LocalizationManager.shared.language), isReport: $isReport)
+                            ReportReasonItemButtonView(id: id, title: LocalizedKey.personalInformationExposure.localized(for: LocalizationManager.shared.language), isReport: $isReport)
+                            ReportReasonItemButtonView(id: id, title: LocalizedKey.obscenitySensuality.localized(for: LocalizationManager.shared.language), isReport: $isReport)
+                            ReportReasonItemButtonView(id: id, title: LocalizedKey.facilityClosures.localized(for: LocalizationManager.shared.language), isReport: $isReport)
+                            ReportReasonItemButtonView(id: id, title: LocalizedKey.medication.localized(for: LocalizationManager.shared.language), isReport: $isReport)
+                            ReportReasonItemButtonView(id: id, title: LocalizedKey.AbuseViolence.localized(for: LocalizationManager.shared.language), isReport: $isReport)
+                            ReportReasonItemButtonView(id: id, title: LocalizedKey.etc.localized(for: LocalizationManager.shared.language), isReport: $isReport)
                         }
                     }
                 }

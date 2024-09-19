@@ -167,7 +167,7 @@ struct ExperienceDetailView: View {
                                                 Image("icNoticeMain")
                                                     .renderingMode(.template)
                                                     .foregroundStyle(Color.main)
-                                                Text("간단 설명")
+                                                Text(.BriefExplanation)
                                                     .foregroundStyle(Color.main)
                                                     .font(.body02_bold)
                                                
@@ -276,10 +276,11 @@ struct ExperienceDetailView: View {
                                         AppState.shared.navigationPath.append(ArticleDetailViewType.reportInfo(id: viewModel.state.getExperienceDetailResponse.id!, category: .experience))
                                     } label: {
                                         Text(.proposeUpdateInfo)
+                                            .padding()
                                             .background(
                                                 RoundedRectangle(cornerRadius: 50.0)
                                                     .foregroundStyle(Color.gray2)
-                                                    .frame(width: 120, height: 40)
+                                                    .frame(height: 40)
                                             )
                                             .foregroundStyle(Color.gray1)
                                             .font(.body02_bold)
@@ -287,7 +288,7 @@ struct ExperienceDetailView: View {
                                     }
                                     VStack(spacing: 0) {
                                         HStack(spacing: 0) {
-                                            Text("후기")
+                                            Text(.review)
                                                 .font(.title01_bold)
                                                 .padding(.trailing, 2)
                                             Text("\(viewModel.state.getReviewDataResponse.totalElements)")
@@ -630,7 +631,7 @@ struct ExperienceDetailView: View {
                                             // TODO: - 후기 모두 보기(각 컨텐츠 별)
                                             AppState.shared.navigationPath.append(ExperienceViewType.reviewAll(id: id))
                                         } label: {
-                                            Text("후기 더보기")
+                                            Text(.reviewSeeMore)
                                                 .foregroundStyle(Color.gray1)
                                                 .font(.body_bold)
                                         }
@@ -720,7 +721,7 @@ struct ExperienceDetailView: View {
                             // Todo - 리뷰 작성
                             AppState.shared.navigationPath.append(ExperienceViewType.writeReview)
                         } label: {
-                            Text("후기 작성하기")
+                            Text(.writeReview)
                                 .padding(.leading, (Constants.screenWidth) * (96 / 360))
                                 .padding(.trailing, (Constants.screenWidth) * (96 / 360))
                                 .font(.body_bold)
@@ -777,7 +778,7 @@ struct ExperienceDetailView: View {
         }
         .toolbar(.hidden)
         .overlay(
-            Toast(message: "신고한 내용은 운영정책에 따라 최대 24시간 이내 처리됩니다.", isShowing: $isReport, isAnimating: true)
+            Toast(message: LocalizedKey.reportResult.localized(for: LocalizationManager.shared.language), isShowing: $isReport, isAnimating: true)
         )
         
     }
