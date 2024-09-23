@@ -30,17 +30,21 @@ class UserProfileMainViewModel: ObservableObject {
         switch action {
         case let .getUserPreviewResponse(memberId):
             let response = await ReviewService.getPreviewData(memberId: memberId)
-            if response != nil {
+            if let responseData = response!.data {
                 await MainActor.run {
-                    state.getUserPreviewResponse = response!.data!
+                    print(response)
+                    state.getUserPreviewResponse = responseData
                     print("\(state.getUserPreviewResponse.data)")
                     print("\(state.getUserPreviewResponse.totalElements)")
                 }
+            } else {
+                print("Error")
             }
         case let .getUserProfileInfo(id):
             let response = await UserInfoService.getUserProfileInto(id: id)
             if response != nil {
                 await MainActor.run {
+                    state.getUserProfileInfoResponse.profileImage.originUrl = response!.data!.profileImage.originUrl
                     state.getUserProfileInfoResponse.nickname = response!.data!.nickname
                     state.getUserProfileInfoResponse.hashtags = response!.data!.hashtags
                     state.getUserProfileInfoResponse.travelType = response!.data!.travelType
@@ -51,3 +55,4 @@ class UserProfileMainViewModel: ObservableObject {
         }
     }
 }
+
