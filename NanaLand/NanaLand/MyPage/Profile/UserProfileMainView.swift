@@ -42,7 +42,7 @@ struct UserProfileMainView: View {
                             if viewModel.state.getUserPreviewResponse.totalElements >= 1 {
                                 VStack(spacing: 0) {
                                     HStack(spacing: 0) {
-                                        Text("후기")
+                                        Text(.review)
                                             .font(.body_bold)
                                         Spacer()
                                         Text("\(viewModel.state.getUserPreviewResponse.totalElements)")
@@ -52,7 +52,7 @@ struct UserProfileMainView: View {
                                             AppState.shared.navigationPath.append(UserProfileViewType.reviewAll(id: memberId))
                                         } label: {
                                             HStack(spacing: 0) {
-                                                Text("모두 보기")
+                                                Text(.seeAll)
                                                     .font(.body02)
                                                 Image("icRight")
                                                     .resizable()
@@ -64,14 +64,14 @@ struct UserProfileMainView: View {
                                     .padding(.leading, 16)
                                     .padding(.trailing, 16)
                                     .padding(.bottom, 18)
-                                    Divider()
-                                        .padding(.bottom, 16)
-                                    
+//                                    Divider()
+//                                        .padding(.bottom, 16)
+//
                                     MasonryVStack(columns: 2) {
                                         ForEach(0...viewModel.state.getUserPreviewResponse.data.count - 1, id: \.self) { index in
                                             if index <= 5 {
                                                 Button {
-                                                    
+                                                    AppState.shared.navigationPath.append(UserProfileViewType.selectReview(id: memberId))
                                                 } label: {
                                                     
                                                     VStack(alignment:.leading, spacing: 0) {
@@ -124,11 +124,17 @@ struct UserProfileMainView: View {
                                         }
                                     }
                                     .padding(.horizontal, 16)
-                                   
+                                    .padding(.bottom, 16)
                                 }
-                                .background(Color.white)
+                                .background(
+                                    Rectangle()
+                                        .fill(Color.white)
+                                        .cornerRadius(30, corners: [.topLeft, .topRight])
+                                        .shadow(radius: 1)
+                                )
                                 
                             }
+                        
                             
                         }
                     }
@@ -139,6 +145,8 @@ struct UserProfileMainView: View {
             switch viewType {
             case let .reviewAll(id):
                 ReviewAllMainView(memberId: id)
+            case let .selectReview(id):
+                ReviewAllMainView(memberId: id, selectedReviewId: id)
             }
         }
         .onAppear {
@@ -165,11 +173,10 @@ struct UserProfileMainView: View {
                         .padding(.bottom, 16)
                         .padding(.leading, 15)
                 } else {
-                    KFImage(URL(string: (viewModel.state.getUserProfileInfoResponse.profileImage.thumbnailUrl)))
+                    KFImage(URL(string: (viewModel.state.getUserProfileInfoResponse.profileImage.originUrl)))
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 100, height: 100)
-                        .background(.blue)
                         .clipShape(Circle())
                         .padding(.bottom, 16)
                         .padding(.leading, 15)
@@ -337,8 +344,10 @@ struct UserProfileMainView: View {
 
 enum UserProfileViewType: Hashable {
     case reviewAll(id: Int64)
+    case selectReview(id: Int64)
 }
 
 #Preview {
     UserProfileMainView(memberId: 2)
 }
+

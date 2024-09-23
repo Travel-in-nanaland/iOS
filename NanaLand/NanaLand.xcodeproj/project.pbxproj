@@ -117,6 +117,8 @@
 		2C9CF4E62C00701E00A346E8 /* TypeTestNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9CF4E52C00701E00A346E8 /* TypeTestNavigationView.swift */; };
 		2C9CF4E82C00714900A346E8 /* TypeTestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9CF4E72C00714900A346E8 /* TypeTestViewModel.swift */; };
 		2C9CF4EA2C00716B00A346E8 /* RegisterViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9CF4E92C00716B00A346E8 /* RegisterViewType.swift */; };
+		6D0A43402C9F2E9300529D1E /* AuthKey_9JRUHFTK3L.p8 in Resources */ = {isa = PBXBuildFile; fileRef = 6D0A433D2C9F2E9300529D1E /* AuthKey_9JRUHFTK3L.p8 */; };
+		6D0A43412C9F2E9300529D1E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D0A433E2C9F2E9300529D1E /* GoogleService-Info.plist */; };
 		6D0E90D52C5438E200F8D686 /* ProfileReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0E90D42C5438E200F8D686 /* ProfileReviewView.swift */; };
 		6D0E90D82C54659900F8D686 /* MasonryStack in Frameworks */ = {isa = PBXBuildFile; productRef = 6D0E90D72C54659900F8D686 /* MasonryStack */; };
 		6D130CF42C76FE1F005FCD99 /* NewNanaPickDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D130CF32C76FE1F005FCD99 /* NewNanaPickDetailView.swift */; };
@@ -159,8 +161,6 @@
 		6D6D30912C61FAAF00002F77 /* review_experience.json in Resources */ = {isa = PBXBuildFile; fileRef = 6D6D308E2C61FAAF00002F77 /* review_experience.json */; };
 		6D7756752C8F4E190085D747 /* SearchReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7756742C8F4E190085D747 /* SearchReviewView.swift */; };
 		6D7F580E2C7A5F8700FA08A9 /* MenuModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7F580D2C7A5F8700FA08A9 /* MenuModalView.swift */; };
-		6D9EDACD2C5B4567003A8DE5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D9EDACA2C5B4567003A8DE5 /* GoogleService-Info.plist */; };
-		6D9EDACF2C5B4567003A8DE5 /* AuthKey_9JRUHFTK3L.p8 in Resources */ = {isa = PBXBuildFile; fileRef = 6D9EDACC2C5B4567003A8DE5 /* AuthKey_9JRUHFTK3L.p8 */; };
 		6D9EDAD12C5B459A003A8DE5 /* secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9EDAD02C5B459A003A8DE5 /* secret.swift */; };
 		6D9EDAD32C5B47B4003A8DE5 /* RestaurantKeywordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9EDAD22C5B47B4003A8DE5 /* RestaurantKeywordView.swift */; };
 		6D9EDAD92C5B527D003A8DE5 /* NoticeMainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9EDAD82C5B527D003A8DE5 /* NoticeMainModel.swift */; };
@@ -435,6 +435,9 @@
 		2C9CF4E52C00701E00A346E8 /* TypeTestNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeTestNavigationView.swift; sourceTree = "<group>"; };
 		2C9CF4E72C00714900A346E8 /* TypeTestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeTestViewModel.swift; sourceTree = "<group>"; };
 		2C9CF4E92C00716B00A346E8 /* RegisterViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewType.swift; sourceTree = "<group>"; };
+		6D0A433C2C9F2E9300529D1E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6D0A433D2C9F2E9300529D1E /* AuthKey_9JRUHFTK3L.p8 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AuthKey_9JRUHFTK3L.p8; sourceTree = "<group>"; };
+		6D0A433E2C9F2E9300529D1E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6D0E90D42C5438E200F8D686 /* ProfileReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileReviewView.swift; sourceTree = "<group>"; };
 		6D130CF32C76FE1F005FCD99 /* NewNanaPickDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNanaPickDetailView.swift; sourceTree = "<group>"; };
 		6D130CF52C76FE2E005FCD99 /* NewNanaPickDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNanaPickDetailModel.swift; sourceTree = "<group>"; };
@@ -477,9 +480,6 @@
 		6D7756742C8F4E190085D747 /* SearchReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchReviewView.swift; sourceTree = "<group>"; };
 		6D7C3B892C7E1BA800F5A09E /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6D7F580D2C7A5F8700FA08A9 /* MenuModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModalView.swift; sourceTree = "<group>"; };
-		6D9EDACA2C5B4567003A8DE5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		6D9EDACB2C5B4567003A8DE5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6D9EDACC2C5B4567003A8DE5 /* AuthKey_9JRUHFTK3L.p8 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AuthKey_9JRUHFTK3L.p8; sourceTree = "<group>"; };
 		6D9EDAD02C5B459A003A8DE5 /* secret.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = secret.swift; sourceTree = "<group>"; };
 		6D9EDAD22C5B47B4003A8DE5 /* RestaurantKeywordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantKeywordView.swift; sourceTree = "<group>"; };
 		6D9EDAD82C5B527D003A8DE5 /* NoticeMainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeMainModel.swift; sourceTree = "<group>"; };
@@ -719,9 +719,9 @@
 		2C3C75822BCA3ADA00312F26 /* NanaLand */ = {
 			isa = PBXGroup;
 			children = (
-				6D9EDACC2C5B4567003A8DE5 /* AuthKey_9JRUHFTK3L.p8 */,
-				6D9EDACA2C5B4567003A8DE5 /* GoogleService-Info.plist */,
-				6D9EDACB2C5B4567003A8DE5 /* Info.plist */,
+				6D0A433D2C9F2E9300529D1E /* AuthKey_9JRUHFTK3L.p8 */,
+				6D0A433E2C9F2E9300529D1E /* GoogleService-Info.plist */,
+				6D0A433C2C9F2E9300529D1E /* Info.plist */,
 				2C5425092BF76D8200B16439 /* NanaLand.entitlements */,
 				BF9F51452C7CD8BC00055802 /* Report */,
 				6D541A512C4E444A0095BB77 /* Review */,
@@ -1681,10 +1681,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D9EDACF2C5B4567003A8DE5 /* AuthKey_9JRUHFTK3L.p8 in Resources */,
 				6D664E672C4A43410083C464 /* splash.gif in Resources */,
 				2C27498B2C09950900ECBA71 /* loading_tangerine.json in Resources */,
-				6D9EDACD2C5B4567003A8DE5 /* GoogleService-Info.plist in Resources */,
 				9C6A9C692BCC22CE000413AD /* AppleSDGothicNeoSB.ttf in Resources */,
 				9C6A9C662BCC22CE000413AD /* AppleSDGothicNeoR.ttf in Resources */,
 				6DF18F082C6E25130021ED5B /* TestLoading.json in Resources */,
@@ -1700,7 +1698,9 @@
 				2C2749872C0992AB00ECBA71 /* report_info_star.json in Resources */,
 				BF548BDC2C7CDA5400B34635 /* report_complete_megaphone.json in Resources */,
 				BF548BDD2C7CDA5400B34635 /* report_complete_comment.json in Resources */,
+				6D0A43402C9F2E9300529D1E /* AuthKey_9JRUHFTK3L.p8 in Resources */,
 				2C1F31C42BCD01390066819F /* AppleSDGothicNeoM.ttf in Resources */,
+				6D0A43412C9F2E9300529D1E /* GoogleService-Info.plist in Resources */,
 				6D6D30912C61FAAF00002F77 /* review_experience.json in Resources */,
 				2C27498A2C09950900ECBA71 /* loading_drink.json in Resources */,
 			);

@@ -20,12 +20,14 @@ struct allReview: Codable {
     let rating: Int64
     let content: String
     let createdAt: String
-    let heartCount: Int64
+    var heartCount: Int64
     let images: [AllReviewDetailImagesList]?
     let reviewTypeKeywords: [String]
+    var reviewHeart: Bool
 }
 
 struct AllReviewDetailImagesList: Codable {
     let originUrl: String
     let thumbnailUrl: String
 }
+
