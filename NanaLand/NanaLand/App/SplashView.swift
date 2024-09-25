@@ -7,9 +7,10 @@
 
 import SwiftUI
 import Lottie
+
 struct SplashView: View {
     var body: some View {
-        VStack(spacing: 0) {
+        ZStack {
             GifImageView(name: "splash")
         }
     }
