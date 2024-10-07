@@ -101,7 +101,7 @@ struct ActivityKeywordView: View {
                     await getKeywordExperienceMainItem(keyword: selectedKeyword.joined(separator: ","), address: address == LocalizedKey.allLocation.localized(for: LocalizationManager().language) ? "" : address, page: 0, size: 12)
                     viewModel.state.page = 0
                     if keyword.isEmpty {
-                        keyword = "키워드"
+                        keyword = LocalizedKey.keyword.localized(for: LocalizationManager().language)
                     }
                 }
                
