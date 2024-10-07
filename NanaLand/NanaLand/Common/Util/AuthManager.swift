@@ -175,6 +175,7 @@ final class AuthManager: NSObject {
 			// 로그인 성공 토큰 저장하고 홈 화면으로
 			KeyChainManager.addItem(key: "accessToken", value: tokens.accessToken)
 			KeyChainManager.addItem(key: "refreshToken", value: tokens.refreshToken)
+            UserDefaults.standard.set(Date(), forKey: "tokenIssueDate") // 현재 시간을 발급 시간으로 저장
 			self.isLogin = true
 			self.provider = request.provider
 			

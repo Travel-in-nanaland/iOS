@@ -20,6 +20,7 @@ struct NanaLandTabView: View {
 		NavigationStack(path: $appState.navigationPath) {
 			TabView(selection: $appState.currentTab) {
                 HomeMainView()
+                    .environmentObject(LocalizationManager())
                     .tabItem {
                         Label(
 							title: { Text(.home).font(.gothicNeo(.semibold, size: 10)) },
@@ -37,6 +38,7 @@ struct NanaLandTabView: View {
                     .tag(Tab.home)
                 
                 FavoriteMainView()
+                    .environmentObject(LocalizationManager())
                     .tabItem {
                         Label(
 							title: { Text(.favorite).font(.gothicNeo(.semibold, size: 10)) },
@@ -72,6 +74,7 @@ struct NanaLandTabView: View {
                     .tag(Tab.nanaPick)
                 
                 ProfileMainView()
+                    .environmentObject(LocalizationManager())
                     .tabItem {
                         Label(
 							title: { Text(.myNana).font(.gothicNeo(.semibold, size: 10)) },
@@ -105,7 +108,7 @@ struct NanaLandTabView: View {
 		.fullScreenCover(isPresented: $appState.showTypeTest) {
 			TypeTestNavigationView(nickname: provider == "GUEST" ? "GUEST" : appState.userInfo.nickname)
 		}
-        .introspect(.tabView, on: .iOS(.v16, .v17)) { tabView in
+        .introspect(.tabView, on: .iOS(.v16, .v17, .v18)) { tabView in
             let appearance = UITabBarAppearance()
             
                 appearance.configureWithTransparentBackground()

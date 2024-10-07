@@ -226,6 +226,12 @@ struct RestaurantMainGridView: View {
                 }
             }
             .onAppear {
+                if let accessToken = KeyChainManager.readItem(key: "accessToken") {
+                    print("Access Token: \(accessToken)")
+                } else {
+                    print("Access Token을 가져오는데 실패했습니다.")
+                }
+                
                 Task {
                     if location == LocalizedKey.allLocation.localized(for: LocalizationManager().language) {
                         APIKeyword = generateAPIKeyword(from: keyword)
