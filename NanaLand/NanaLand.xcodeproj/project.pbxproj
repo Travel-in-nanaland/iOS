@@ -130,7 +130,6 @@
 		6D130D022C788D6D005FCD99 /* NewNanaPickDetailEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D130D012C788D6D005FCD99 /* NewNanaPickDetailEndPoint.swift */; };
 		6D130D042C789385005FCD99 /* NewNanaPickAllMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D130D032C789385005FCD99 /* NewNanaPickAllMainView.swift */; };
 		6D1B05552C4973A2001F6DD9 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1B05542C4973A2001F6DD9 /* MapView.swift */; };
-		6D2474572CA271B1003865C0 /* splash.json in Resources */ = {isa = PBXBuildFile; fileRef = 6D2474562CA271B1003865C0 /* splash.json */; };
 		6D2995222C554BCD006AA447 /* NoticeArticleItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2995212C554BCD006AA447 /* NoticeArticleItemView.swift */; };
 		6D2995242C557922006AA447 /* MyAllReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2995232C557922006AA447 /* MyAllReviewView.swift */; };
 		6D2995282C557C25006AA447 /* MyReviewArticleItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2995272C557C25006AA447 /* MyReviewArticleItemView.swift */; };
@@ -141,6 +140,7 @@
 		6D48AA0E2C75C66800E16429 /* NewNanaPickMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D48AA0D2C75C66800E16429 /* NewNanaPickMainViewModel.swift */; };
 		6D48AA112C75C75400E16429 /* NewNanaPickService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D48AA102C75C75400E16429 /* NewNanaPickService.swift */; };
 		6D48AA132C75C75E00E16429 /* NewNanaPickEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D48AA122C75C75E00E16429 /* NewNanaPickEndPoint.swift */; };
+		6D4BC7C02CA733E700ADA908 /* splash.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6D4BC7BF2CA733E700ADA908 /* splash.gif */; };
 		6D541A5B2C4E44C30095BB77 /* ReviewKeywordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D541A5A2C4E44C30095BB77 /* ReviewKeywordModel.swift */; };
 		6D541A5D2C4E44F10095BB77 /* ReviewKeywordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D541A5C2C4E44F10095BB77 /* ReviewKeywordViewModel.swift */; };
 		6D541A612C4E453C0095BB77 /* ReviewWriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D541A602C4E453C0095BB77 /* ReviewWriteViewModel.swift */; };
@@ -154,7 +154,6 @@
 		6D541A782C4F40B00095BB77 /* RestaurantService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D541A772C4F40B00095BB77 /* RestaurantService.swift */; };
 		6D541A7A2C4F40C00095BB77 /* RestaurantEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D541A792C4F40C00095BB77 /* RestaurantEndPoint.swift */; };
 		6D6162682C4FA2AD00E97C0F /* RestaurantMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6162672C4FA2AD00E97C0F /* RestaurantMainView.swift */; };
-		6D618D8B2CA43CAE00ED1536 /* splash.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6D618D8A2CA43CAE00ED1536 /* splash.gif */; };
 		6D61BF0B2C83C128006EE92B /* TypeTestProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D61BF0A2C83C128006EE92B /* TypeTestProfileViewModel.swift */; };
 		6D61BF0D2C83CCF6006EE92B /* ProfileRecommendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D61BF0C2C83CCF6006EE92B /* ProfileRecommendView.swift */; };
 		6D6D308F2C61FAAF00002F77 /* review_restaurant.json in Resources */ = {isa = PBXBuildFile; fileRef = 6D6D308C2C61FAAF00002F77 /* review_restaurant.json */; };
@@ -449,7 +448,6 @@
 		6D130D012C788D6D005FCD99 /* NewNanaPickDetailEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNanaPickDetailEndPoint.swift; sourceTree = "<group>"; };
 		6D130D032C789385005FCD99 /* NewNanaPickAllMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNanaPickAllMainView.swift; sourceTree = "<group>"; };
 		6D1B05542C4973A2001F6DD9 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		6D2474562CA271B1003865C0 /* splash.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = splash.json; path = ../../../../../../../../Downloads/splash.json; sourceTree = "<group>"; };
 		6D2995212C554BCD006AA447 /* NoticeArticleItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeArticleItemView.swift; sourceTree = "<group>"; };
 		6D2995232C557922006AA447 /* MyAllReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAllReviewView.swift; sourceTree = "<group>"; };
 		6D2995272C557C25006AA447 /* MyReviewArticleItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReviewArticleItemView.swift; sourceTree = "<group>"; };
@@ -460,6 +458,7 @@
 		6D48AA0D2C75C66800E16429 /* NewNanaPickMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNanaPickMainViewModel.swift; sourceTree = "<group>"; };
 		6D48AA102C75C75400E16429 /* NewNanaPickService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNanaPickService.swift; sourceTree = "<group>"; };
 		6D48AA122C75C75E00E16429 /* NewNanaPickEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNanaPickEndPoint.swift; sourceTree = "<group>"; };
+		6D4BC7BF2CA733E700ADA908 /* splash.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = splash.gif; sourceTree = "<group>"; };
 		6D541A5A2C4E44C30095BB77 /* ReviewKeywordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewKeywordModel.swift; sourceTree = "<group>"; };
 		6D541A5C2C4E44F10095BB77 /* ReviewKeywordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewKeywordViewModel.swift; sourceTree = "<group>"; };
 		6D541A602C4E453C0095BB77 /* ReviewWriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewWriteViewModel.swift; sourceTree = "<group>"; };
@@ -473,7 +472,6 @@
 		6D541A772C4F40B00095BB77 /* RestaurantService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantService.swift; sourceTree = "<group>"; };
 		6D541A792C4F40C00095BB77 /* RestaurantEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantEndPoint.swift; sourceTree = "<group>"; };
 		6D6162672C4FA2AD00E97C0F /* RestaurantMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantMainView.swift; sourceTree = "<group>"; };
-		6D618D8A2CA43CAE00ED1536 /* splash.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = splash.gif; path = ../../../../../../../../Downloads/splash.gif; sourceTree = "<group>"; };
 		6D61BF0A2C83C128006EE92B /* TypeTestProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeTestProfileViewModel.swift; sourceTree = "<group>"; };
 		6D61BF0C2C83CCF6006EE92B /* ProfileRecommendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRecommendView.swift; sourceTree = "<group>"; };
 		6D6D308C2C61FAAF00002F77 /* review_restaurant.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = review_restaurant.json; sourceTree = "<group>"; };
@@ -683,8 +681,7 @@
 		2C2D3D562C05993D002A38AA /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
-				6D618D8A2CA43CAE00ED1536 /* splash.gif */,
-				6D2474562CA271B1003865C0 /* splash.json */,
+				6D4BC7BF2CA733E700ADA908 /* splash.gif */,
 				BF548BDB2C7CDA5300B34635 /* report_complete_comment.json */,
 				BF548BDA2C7CDA5300B34635 /* report_complete_megaphone.json */,
 				6DF18F072C6E25120021ED5B /* TestLoading.json */,
@@ -1693,8 +1690,6 @@
 				6D6D30902C61FAAF00002F77 /* report_complete.json in Resources */,
 				2C3C75882BCA3ADC00312F26 /* Assets.xcassets in Resources */,
 				2C2D3D4C2C0385B3002A38AA /* Localizable.strings in Resources */,
-				6D618D8B2CA43CAE00ED1536 /* splash.gif in Resources */,
-				6D2474572CA271B1003865C0 /* splash.json in Resources */,
 				6D6D308F2C61FAAF00002F77 /* review_restaurant.json in Resources */,
 				2C1F31C02BCD01240066819F /* AppleSDGothicNeoEB.ttf in Resources */,
 				2C1F31C62BCD01390066819F /* AppleSDGothicNeoB.ttf in Resources */,
@@ -1703,6 +1698,7 @@
 				BF548BDC2C7CDA5400B34635 /* report_complete_megaphone.json in Resources */,
 				BF548BDD2C7CDA5400B34635 /* report_complete_comment.json in Resources */,
 				6D0A43402C9F2E9300529D1E /* AuthKey_9JRUHFTK3L.p8 in Resources */,
+				6D4BC7C02CA733E700ADA908 /* splash.gif in Resources */,
 				2C1F31C42BCD01390066819F /* AppleSDGothicNeoM.ttf in Resources */,
 				6D0A43412C9F2E9300529D1E /* GoogleService-Info.plist in Resources */,
 				6D6D30912C61FAAF00002F77 /* review_experience.json in Resources */,

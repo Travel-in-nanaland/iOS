@@ -254,6 +254,7 @@ struct HomeMainView: View {
         //safeArea 크기 가져아서 넣기
         .padding(.top, 1)
         .onAppear {
+            print("언어:\(localizationManager.language)")
             Task {
                 await getRecommendData()
                 isRecommendCalled = true
