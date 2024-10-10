@@ -12,7 +12,6 @@ enum WithDrawType: String, CaseIterable {
 	case INCONVENIENT_SERVICE  // 서비스 이용 불편
 	case INCONVENIENT_COMMUNITY  // 커뮤니티 사용 불편
 	case RARE_VISITS  // 방문 횟수 거의 없음
-	
 	var localizedKey: LocalizedKey {
 		switch self {
 		case .INSUFFICIENT_CONTENT:
@@ -29,7 +28,7 @@ enum WithDrawType: String, CaseIterable {
 
 struct WithdrawView: View {
     @EnvironmentObject var localizationManager: LocalizationManager
- 
+    @Environment(\.dismiss) private var dismiss
 	let buttonType: [WithDrawType] = WithDrawType.allCases
 	@State private var selectedIndex: Int? = nil
     @State private var showAlert = false
@@ -147,7 +146,9 @@ struct WithdrawView: View {
 				
 				Spacer()
 				
-				Button(action: {}, label: {
+				Button(action: {
+                    dismiss()
+                }, label: {
 					Text(.cancel)
 						.foregroundStyle(.white)
 						.font(.body_bold)
