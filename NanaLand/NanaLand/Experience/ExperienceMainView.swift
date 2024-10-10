@@ -274,7 +274,7 @@ struct ExperienceMainGridView: View {
 // 액티비티, 문화예술 탭바
 struct ExperienceTabBarView: View {
     @Binding var currentTab: Int
-    var tabBarOptions: [String] = [LocalizedKey.Activity.localized(for: LocalizationManager().language), LocalizedKey.cultureAndArts.localized(for: LocalizationManager().language)]
+    var tabBarOptions: [String] = [LocalizedKey.activity.localized(for: LocalizationManager().language), LocalizedKey.cultureAndArts.localized(for: LocalizationManager().language)]
     @Namespace var namespace
     var body: some View {
         HStack(spacing: 0) {
