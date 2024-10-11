@@ -413,6 +413,15 @@ the market is the place!";
 "searchLocation" = "Search Location";
 "noSearchResult" = "There are no corresponding search results.";
 "photoMax" = "You can select up to 5 photos";
+"reviewCompleteExperience" = "Thank you for \nyour fascinating writing 👻";
+"reviewCompleteExperienceSub1" = "As much as your charm";
+"reviewCompleteExperienceSub2" = "The attractiveness of the travel \ndestination also increased!";
+"reviewCompleteExperienceSub3" = "I think I'm getting more and more excited🧚‍♀️";
+"reviewCompleteRestaurant" = "You like it so much?";
+"reviewCompleteRestaurantSub1" = "Your meticulous writing\nSomeone's travel choices\nIt enriched me!";
+"reviewCompleteRestaurantSub2" = "I look forward to next time too";
+"goContent" = "Go see content again";
+"addAnotherReview" = "Add another review";
 
 //MARK: - 마이페이지
 "notice" = "Announcement";

@@ -403,6 +403,15 @@
 "searchLocation" = "장소를 검색하세요";
 "noSearchResult" = "해당 검색 결과가 없습니다.";
 "photoMax" = "사진은 5개까지 선택 가능합니다";
+"reviewCompleteExperience" = "당신의 매력적인 글 고마워요 👻";
+"reviewCompleteExperienceSub1" = "당신의 매력만큼이나";
+"reviewCompleteExperienceSub2" = "여행지의 매력도 함께 올라갔어요!";
+"reviewCompleteExperienceSub3" = "점점 기대될 것 같아요🧚‍♀️";
+"reviewCompleteRestaurant" = "너무 마음에 드는걸요 ?";
+"reviewCompleteRestaurantSub1" = "당신의 세심한 글이\n누군가의 여행 선택지를\n풍요롭게 해줬어요 !";
+"reviewCompleteRestaurantSub2" = "다음번도 기대할게요";
+"goContent" = "콘텐츠 다시 보러 가기";
+"addAnotherReview" = "다른 리뷰 추가하기";
 
 //MARK: - 마이페이지
 "notice" = "공지사항";

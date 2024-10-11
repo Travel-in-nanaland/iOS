@@ -410,6 +410,15 @@
 "searchLocation" = "Tìm Kiếm Địa Điểm";
 "noSearchResult" = "Không có kết quả tìm kiếm tương ứng.";
 "photoMax" = "Bạn có thể chọn tối đa 5 ảnh";
+"reviewCompleteExperience" = "Cảm ơn bạn vì bài viết \nhấp dẫn của bạn 👻";
+"reviewCompleteExperienceSub1" = "Cũng giống như sự quyến rũ của bạn";
+"reviewCompleteExperienceSub2" = "Sức hấp dẫn của điểm đến du lịch cũng \ntăng lên!";
+"reviewCompleteExperienceSub3" = "Tôi nghĩ tôi ngày càng phấn khích hơn🧚‍♀️";
+"reviewCompleteRestaurant" = "Bạn thích nó nhiều như vậy sao?";
+"reviewCompleteRestaurantSub1" = "Bài viết tỉ mỉ của bạn\nLựa chọn du lịch của ai đó\nNó đã làm phong phú tôi!";
+"reviewCompleteRestaurantSub2" = "Tôi cũng mong chờ lần tới";
+"goContent" = "Xem lại nội dung";
+"addAnotherReview" = "Thêm một đánh giá khác";
 
 //MARK: - 마이페이지
 "notice" = "Thông báo";
