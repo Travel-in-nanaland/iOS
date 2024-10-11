@@ -29,7 +29,7 @@
 //MARK: - Category
 "all" = "Seluruh";
 "nature" = "7 Keajaiban Alam";
-"festival" = "Festival";
+"festival" = "Perayaan";
 "market" = "Pasaran Tradisional";
 "experience" = "Aktiviti Menarik";
 "nanaPick" = "Pilihan Nana";
@@ -433,6 +433,15 @@ mengembalikan sebarang hasil.";
 "searchLocation" = "Cari Lokasi";
 "noSearchResult" = "Tiada hasil carian yang sepadan.";
 "photoMax" = "Anda boleh memilih sehingga 5 gambar";
+"reviewCompleteExperience" = "Terima kasih atas penulisan anda \nyang menarik 👻";
+"reviewCompleteExperienceSub1" = "Seperti daya tarikan anda";
+"reviewCompleteExperienceSub2" = "Daya tarikan destinasi pelancongan juga \nmeningkat!";
+"reviewCompleteExperienceSub3" = "Saya rasa saya semakin teruja🧚‍♀️";
+"reviewCompleteRestaurant" = "Anda suka sangat?";
+"reviewCompleteRestaurantSub1" = "Penulisan anda yang teliti\nPilihan perjalanan seseorang\nIa memperkayakan saya!";
+"reviewCompleteRestaurantSub2" = "Saya juga menantikan kali seterusnya";
+"goContent" = "Lihat kandungan semula";
+"addAnotherReview" = "Tambah ulasan lain";
 
 //MARK: - 마이페이지
 "notice" = "Pengumuman";
