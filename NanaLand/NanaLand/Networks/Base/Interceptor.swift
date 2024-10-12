@@ -50,6 +50,7 @@ class Interceptor: RequestInterceptor {
                 if isRefreshed, let newAccessToken = KeyChainManager.readItem(key: "accessToken") {
                     var urlRequest = urlRequest
                     urlRequest.headers.add(.authorization("Bearer \(newAccessToken)"))
+                    print("JWT: \(accessToken)")
                     completion(.success(urlRequest))
                 } else {
                     completion(.failure(AuthError.noToken))
@@ -59,6 +60,7 @@ class Interceptor: RequestInterceptor {
             // 토큰이 유효한 경우 그대로 진행
             var urlRequest = urlRequest
             urlRequest.headers.add(.authorization("Bearer \(accessToken)"))
+            print("JWT: \(accessToken)")
             completion(.success(urlRequest))
         }
     }
