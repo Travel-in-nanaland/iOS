@@ -226,17 +226,20 @@ struct RestaurantMainGridView: View {
                 }
             }
             .onAppear {
-                viewModel.state.getRestaurantMainResponse = RestaurantMainModel(totalElements: 0, data: [])
                 
                 Task {
                     if location == LocalizedKey.allLocation.localized(for: LocalizationManager().language) {
                         APIKeyword = generateAPIKeyword(from: keyword)
                         
-                        await getRestaurantMainItem(keyword: keyword == LocalizedKey.type.localized(for: localizationManager.language) ? "" : APIKeyword, address: "", page: viewModel.state.page, size: 12)
+                        if viewModel.state.getRestaurantMainResponse.totalElements == 0 {
+                            await getRestaurantMainItem(keyword: keyword == LocalizedKey.type.localized(for: localizationManager.language) ? "" : APIKeyword, address: "", page: viewModel.state.page, size: 12)
+                        }
                     } else {
                         APIKeyword = generateAPIKeyword(from: keyword)
                         
-                        await getRestaurantMainItem(keyword: keyword == LocalizedKey.type.localized(for: localizationManager.language) ? "" : APIKeyword, address: location, page: viewModel.state.page, size: 12)
+                        if viewModel.state.getRestaurantMainResponse.totalElements == 0{
+                            await getRestaurantMainItem(keyword: keyword == LocalizedKey.type.localized(for: localizationManager.language) ? "" : APIKeyword, address: location, page: viewModel.state.page, size: 12)
+                        }
                     }
                     isAPICalled = true
                     
