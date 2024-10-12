@@ -276,10 +276,10 @@
 "unfoldView" = "more"; // 더보기
 "foldView" = "fold"; // 접기
 "introduce" = "Introduce!";
-"address" = "Address";
-"phoneNumber" = "Contact";
-"time" = "Operating Hours";
-"fee" = "Fee";
+"address" = "Địa chỉ";
+"phoneNumber" = "Liên hệ";
+"time" = "Giờ sử dụng";
+"fee" = "Phí vào cửa";
 "detailInfo" = "Details";
 "amenity" = "Facilities";
 "proposeUpdateInfo" = "Information Update Suggestions";
@@ -302,7 +302,7 @@
 "winterMonth" = "November, December, January, February";
 
 // MARK: - MarketDetailView
-"homepage" = "Website";
+"homepage" = "trang chủ";
 
 // MARK: - FestivalDetailView
 "duration" = "Duration";
