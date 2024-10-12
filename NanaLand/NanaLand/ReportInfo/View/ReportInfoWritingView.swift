@@ -100,9 +100,26 @@ struct ReportInfoWritingView: View {
                                         reportInfoVM.state.showEmailErrorMessage = true
                                     }
                                 }
+                            
 						}
 						.frame(height: 48)
 						
+                        if reportInfoVM.state.showEmailErrorMessage {
+                            HStack(spacing: 4) {
+                                Image(.icWarningCircle)
+                                    .resizable()
+                                    .frame(width: 20, height: 20)
+                                    .foregroundStyle(Color.warning)
+                                
+                                Text(.invalidEmail)
+                                    .font(.gothicNeo(.medium, size: 12))
+                                    .foregroundStyle(Color.warning)
+                                
+                                Spacer()
+                            }
+//                            .padding(.horizontal, 16)
+                        }
+        
                         Text(.addPhoto)
                             .font(.title02_bold)
                             .foregroundColor(.black)
@@ -201,22 +218,6 @@ struct ReportInfoWritingView: View {
                     .overlay(
                         Toast(message: toastMessage, isShowing: $showToast, isAnimating: true)
                     )
-					
-					if reportInfoVM.state.showEmailErrorMessage {
-						HStack(spacing: 4) {
-							Image(.icWarningCircle)
-								.resizable()
-								.frame(width: 20, height: 20)
-								.foregroundStyle(Color.warning)
-							
-							Text(.invalidEmail)
-								.font(.gothicNeo(.medium, size: 12))
-								.foregroundStyle(Color.warning)
-							
-							Spacer()
-						}
-						.padding(.horizontal, 16)
-					}
 					
 					Spacer()
 						.frame(height: 100)

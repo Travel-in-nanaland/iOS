@@ -162,7 +162,7 @@ struct RestaurantDetailView: View {
                                             .frame(width: Constants.screenWidth - 40)
                                         }
                                         
-                                        if let contantData = viewModel.state.getRestaurantDetailResponse.contact{
+                                        if let contantData = viewModel.state.getRestaurantDetailResponse.contact, contantData != "" {
                                             HStack(spacing: 10) {
                                                 VStack(spacing: 0) {
                                                     Image("icDetailPhone")
@@ -182,7 +182,7 @@ struct RestaurantDetailView: View {
                                             .frame(width: Constants.screenWidth - 40)
                                         }
                                         
-                                        if let timeData = viewModel.state.getRestaurantDetailResponse.time {
+                                        if let timeData = viewModel.state.getRestaurantDetailResponse.time, timeData != "" {
                                             HStack(spacing: 10) {
                                                 VStack(spacing: 0) {
                                                     Image("icDetailClock")
@@ -202,7 +202,7 @@ struct RestaurantDetailView: View {
                                             .frame(width: Constants.screenWidth - 40)
                                         }
                                         
-                                        if let serviceData = viewModel.state.getRestaurantDetailResponse.service {
+                                        if let serviceData = viewModel.state.getRestaurantDetailResponse.service, serviceData != "" {
                                             HStack(spacing: 10) {
                                                 VStack(spacing: 0) {
                                                     Image("icDetailService")
@@ -222,7 +222,7 @@ struct RestaurantDetailView: View {
                                             .frame(width: Constants.screenWidth - 40)
                                         }
                                         
-                                        if let homepageData = viewModel.state.getRestaurantDetailResponse.homepage {
+                                        if let homepageData = viewModel.state.getRestaurantDetailResponse.homepage, homepageData != "" {
                                             HStack(spacing: 10) {
                                                 VStack(spacing: 0) {
                                                     Image("icDetailHomepage")
@@ -242,7 +242,7 @@ struct RestaurantDetailView: View {
                                             .frame(width: Constants.screenWidth - 40)
                                         }
                                         
-                                        if let instaData = viewModel.state.getRestaurantDetailResponse.instagram {
+                                        if let instaData = viewModel.state.getRestaurantDetailResponse.instagram, instaData != "" {
                                             HStack(spacing: 10) {
                                                 VStack(spacing: 0) {
                                                     Image("icInsta")
