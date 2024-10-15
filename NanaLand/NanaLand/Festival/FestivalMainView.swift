@@ -581,35 +581,37 @@ struct FestivalMainGridView: View {
             
             Task {
                 if APIFlag {
-                    viewModel.state.getFestivalMainResponse = FestivalModel(totalElements: 0, data: [])
-                    if title == "이번달" {
-                        await getThisMonthFestivalMainItem(page: 0, size: 12, filterName: [""].joined(separator: ","), startDate: "", endDate: "")
-                        isAPICalled = true
-                    } else if title == "계절별" {
-                        let formatterMonth = DateFormatter()
-                        formatterMonth.dateFormat = "MM"
-                        let currentMonth = formatterMonth.string(from: Date())
-                        
-                        switch Int(currentMonth) {
-                        case 3, 4:
-                            await getSeasonFestivalMainItem(page: 0, size: 12, season: "spring")
-                        case 5, 6, 7, 8:
-                            await getSeasonFestivalMainItem(page: 0, size: 12, season: "summer")
-                        case 9, 10:
-                            await getSeasonFestivalMainItem(page: 0, size: 12, season: "autum")
-                        case 11, 12, 1, 2:
-                            await getSeasonFestivalMainItem(page: 0, size: 12, season: "winter")
-                        case .none:
-                            print("SeasonModal Error")
-                        case .some(_):
-                            print("SeasonModal Error")
+//                    viewModel.state.getFestivalMainResponse = FestivalModel(totalElements: 0, data: [])
+                    if viewModel.state.getFestivalMainResponse.totalElements == 0{
+                        if title == "이번달" {
+                            await getThisMonthFestivalMainItem(page: 0, size: 12, filterName: [""].joined(separator: ","), startDate: "", endDate: "")
+                            isAPICalled = true
+                        } else if title == "계절별" {
+                            let formatterMonth = DateFormatter()
+                            formatterMonth.dateFormat = "MM"
+                            let currentMonth = formatterMonth.string(from: Date())
+                            
+                            switch Int(currentMonth) {
+                            case 3, 4:
+                                await getSeasonFestivalMainItem(page: 0, size: 12, season: "spring")
+                            case 5, 6, 7, 8:
+                                await getSeasonFestivalMainItem(page: 0, size: 12, season: "summer")
+                            case 9, 10:
+                                await getSeasonFestivalMainItem(page: 0, size: 12, season: "autum")
+                            case 11, 12, 1, 2:
+                                await getSeasonFestivalMainItem(page: 0, size: 12, season: "winter")
+                            case .none:
+                                print("SeasonModal Error")
+                            case .some(_):
+                                print("SeasonModal Error")
+                            }
+                            isAPICalled = true
+                        } else {
+                            await getPastFestivalMainITem(page: Int32(page), size: 12, filterName: [""].joined(separator: ","))
+                            isAPICalled = true
                         }
-                        isAPICalled = true
-                    } else {
-                        await getPastFestivalMainITem(page: Int32(page), size: 12, filterName: [""].joined(separator: ","))
-                        isAPICalled = true
+                        APIFlag = false
                     }
-                    APIFlag = false
                 }
              
                 buttonsToggled = Array(repeating: false, count: viewModel.state.getFestivalMainResponse.data.count)

@@ -159,10 +159,12 @@ struct ShopMainGridView: View {
         .onAppear {
             Task {
                 if APIFlag {
-                    viewModel.state.getShopMainResponse = ShopMainModel(totalElements: 0, data: [])
-                    await getShopMainItem(page: 0, size:12, filterName:"")
-                    isAPICalled = true
-                    APIFlag = false
+//                    viewModel.state.getShopMainResponse = ShopMainModel(totalElements: 0, data: [])
+                    if viewModel.state.getShopMainResponse.totalElements == 0 {
+                        await getShopMainItem(page: 0, size:12, filterName:"")
+                        isAPICalled = true
+                        APIFlag = false
+                    }
                 }
               
             }
