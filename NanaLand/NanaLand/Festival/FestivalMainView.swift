@@ -28,9 +28,9 @@ struct FestivalMainView: View {
             case 0:
                 FestivalMainGridView(title: "이번달", locationTitle: "\(locationTitle)")
             case 1:
-                FestivalMainGridView(title: "종료된")
-            case 2:
                 FestivalMainGridView(title: "계절별")
+            case 2:
+                FestivalMainGridView(title: "종료된")
             default:
                 FestivalMainGridView(title: "이번달")
             }
@@ -308,7 +308,7 @@ struct FilterView: View {
 
 struct TabBarView: View {
     @Binding var currentTab: Int
-    var tabBarOptions: [String] = [LocalizedKey.thisMonthFestival.localized(for: LocalizationManager().language), LocalizedKey.pastFestival.localized(for: LocalizationManager().language), LocalizedKey.seasonFestival.localized(for: LocalizationManager().language)]
+    var tabBarOptions: [String] = [LocalizedKey.thisMonthFestival.localized(for: LocalizationManager().language), LocalizedKey.seasonFestival.localized(for: LocalizationManager().language), LocalizedKey.pastFestival.localized(for: LocalizationManager().language)]
     @Namespace var namespace
     var body: some View {
         HStack {
