@@ -490,7 +490,7 @@
 // MARK: - 신고
 "report" = "Báo cáo";
 "reportResult" = "Nội dung báo cáo phù hợp với chính sách hoạt động.Sẽ được xử lý trong vòng tối đa 24 giờ.";
-"reportReason" = "Vui lòng viết lý do báo cáo của bạn bằng ít nhất 20 ký tự!"; // 신고 사유
+"reportReasonValidation" = "Vui lòng viết lý do báo cáo của bạn bằng ít nhất 20 ký tự!"; // 신고 사유
 "reportCharacterPermission" = "Nội dung có thể được viết bằng 500 ký tự hoặc ít hơn.";// 내용 500자 이하
 "reportResultEmail" = "Vui lòng nhập địa chỉ email của bạn để nhận kết quả báo cáo."; // 신고 결과 이메일
 "emailValidation " = "Định dạng email không đúng. Vui lòng nhập lại!";// 이메일 벨리 체크
