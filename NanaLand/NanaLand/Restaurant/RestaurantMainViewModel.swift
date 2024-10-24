@@ -11,9 +11,10 @@ class RestaurantMainViewModel: ObservableObject {
     struct State {
         var getRestaurantMainResponse = RestaurantMainModel(totalElements: 0, data: [])
         var page = 0
-        var location = ""
+        var location = LocalizedKey.allLocation.localized(for: LocalizationManager().language)
         var selectedKeyword: [String] = []
         var selectedLocation: [LocalizedKey] = []
+        var apiLocation = LocalizedKey.allLocation.localized(for: LocalizationManager().language)
     }
     
     enum Action {

@@ -170,7 +170,6 @@ struct FilterView: View {
     var count: Int // item 갯수
     @State private var locationModal = false
     @State private var dateModal = false
-    @State private var location = LocalizedKey.allLocation.localized(for: LocalizationManager().language)
     @State private var yearMonthDay: YearMonthDay? // 시작날짜 선택 했을 때
     @State private var endYearMonthDay: YearMonthDay? // 종료날짜 선택 했을 때
     var title: String
@@ -244,7 +243,7 @@ struct FilterView: View {
                 )
                 .padding(.trailing, 16)
                 .sheet(isPresented: $dateModal) {
-                    CalendarFilterView(viewModel: viewModel, startDate: $yearMonthDay, endDate: $endYearMonthDay, location: $location, currentStartDate: viewModel.state.selectedStartDate, currentEndDate: viewModel.state.selectedEndDate)
+                    CalendarFilterView(viewModel: viewModel, startDate: $yearMonthDay, endDate: $endYearMonthDay, currentStartDate: viewModel.state.selectedStartDate, currentEndDate: viewModel.state.selectedEndDate)
                         .presentationDetents([.height(500)])
                 }
             }
@@ -256,7 +255,7 @@ struct FilterView: View {
                    
                 } label: {
                     HStack(spacing: 0) {
-                        Text(location.split(separator: ",").count >= 3 ? "\(location.split(separator: ",").prefix(2).joined(separator: ","))" + ".." : location.split(separator: ",").prefix(2).joined(separator: ","))
+                        Text(viewModel.state.location.split(separator: ",").count >= 3 ? "\(viewModel.state.location.split(separator: ",").prefix(2).joined(separator: ","))" + ".." : viewModel.state.location.split(separator: ",").prefix(2).joined(separator: ","))
                             .font(.gothicNeo(.medium, size: 12))
                             .lineLimit(1)
                             .padding(.leading, 12)
@@ -279,16 +278,16 @@ struct FilterView: View {
                 .sheet(isPresented: $locationModal) {
                     if yearMonthDay == nil {
                         // 첫 화면 일 때
-                        LocationModalView(viewModel: viewModel, natureViewModel: NatureMainViewModel(), shopViewModel: ShopMainViewModel(), restaurantModel: RestaurantMainViewModel(), experienceViewModel: ExperienceMainViewModel(), location: $location, isModalShown: $locationModal, selectedLocation: viewModel.state.selectedLocation, startDate: "", endDate: "", title: title)
+                        LocationModalView(viewModel: viewModel, natureViewModel: NatureMainViewModel(), shopViewModel: ShopMainViewModel(), restaurantModel: RestaurantMainViewModel(), experienceViewModel: ExperienceMainViewModel(), isModalShown: $locationModal, selectedLocation: viewModel.state.selectedLocation, startDate: "", endDate: "", title: title)
                             .presentationDetents([.height(Constants.screenWidth * (630 / Constants.screenWidth))])
                     } // 종료 날짜를 선택 안했을 때나, 시작 날짜와 종료날짜를 동일하게 선택 => 당일 조회
                     else if endYearMonthDay == yearMonthDay  || endYearMonthDay == nil {
                         
-                        LocationModalView(viewModel: viewModel, natureViewModel: NatureMainViewModel(), shopViewModel: ShopMainViewModel(), restaurantModel: RestaurantMainViewModel(), experienceViewModel: ExperienceMainViewModel(), location: $location, isModalShown: $locationModal, selectedLocation: viewModel.state.selectedLocation, startDate: "\(yearMonthDay!.year)" + "\(formattedNumber(yearMonthDay!.month))" + "\(formattedNumber(yearMonthDay!.day))", endDate: "\(yearMonthDay!.year)" + "\(formattedNumber(yearMonthDay!.month))" + "\(formattedNumber(yearMonthDay!.day))", title: title)
+                        LocationModalView(viewModel: viewModel, natureViewModel: NatureMainViewModel(), shopViewModel: ShopMainViewModel(), restaurantModel: RestaurantMainViewModel(), experienceViewModel: ExperienceMainViewModel(), isModalShown: $locationModal, selectedLocation: viewModel.state.selectedLocation, startDate: "\(yearMonthDay!.year)" + "\(formattedNumber(yearMonthDay!.month))" + "\(formattedNumber(yearMonthDay!.day))", endDate: "\(yearMonthDay!.year)" + "\(formattedNumber(yearMonthDay!.month))" + "\(formattedNumber(yearMonthDay!.day))", title: title)
                             .presentationDetents([.height(Constants.screenWidth * (630 / Constants.screenWidth))])
                     } else {
                         // 시작 날짜 종료날짜 다를 때
-                        LocationModalView(viewModel: viewModel, natureViewModel: NatureMainViewModel(), shopViewModel: ShopMainViewModel(), restaurantModel: RestaurantMainViewModel(), experienceViewModel: ExperienceMainViewModel(), location: $location, isModalShown: $locationModal, selectedLocation: viewModel.state.selectedLocation, startDate:  "\(yearMonthDay!.year)" + "\(formattedNumber(yearMonthDay!.month))" + "\(formattedNumber(yearMonthDay!.day))", endDate:  "\(endYearMonthDay!.year)" + "\(formattedNumber(endYearMonthDay!.month))" + "\(formattedNumber(endYearMonthDay!.day))", title: title)
+                        LocationModalView(viewModel: viewModel, natureViewModel: NatureMainViewModel(), shopViewModel: ShopMainViewModel(), restaurantModel: RestaurantMainViewModel(), experienceViewModel: ExperienceMainViewModel(), isModalShown: $locationModal, selectedLocation: viewModel.state.selectedLocation, startDate:  "\(yearMonthDay!.year)" + "\(formattedNumber(yearMonthDay!.month))" + "\(formattedNumber(yearMonthDay!.day))", endDate:  "\(endYearMonthDay!.year)" + "\(formattedNumber(endYearMonthDay!.month))" + "\(formattedNumber(endYearMonthDay!.day))", title: title)
                             .presentationDetents([.height(Constants.screenWidth * (630 / Constants.screenWidth))])
                     }
                                               
@@ -371,7 +370,6 @@ struct FestivalMainGridView: View {
     var locationTitle = ""
     @State var selectedSeason = ""
     
-    @State private var APIFlag = true // 첫 onAppear 시에만 호출 하도록
     @EnvironmentObject var localizationManager: LocalizationManager
     var body: some View {
 		VStack(spacing: 0) {
@@ -458,36 +456,32 @@ struct FestivalMainGridView: View {
 								})
 							}
                             if title == "종료된" {
-                                if viewModel.state.getFestivalMainResponse.totalElements >= 12 {
-                                    if viewModel.state.page < 6 {
-                                        ProgressView()
-                                            .onAppear {
-                                                Task {
-                                                    
-                                                    await getPastFestivalMainITem(page: Int32(viewModel.state.page
-                                                                                              + 1),size: Int32(size), filterName:viewModel.state.location)
-                                                        print(page)
-                                                    viewModel.state.page += 1
-                                                    
-                                                    
-                                                }
+                                if viewModel.state.page < viewModel.state.getFestivalMainResponse.totalElements / 12 {
+                                    ProgressView()
+                                        .onAppear {
+                                            Task {
+                                                
+                                                await getPastFestivalMainITem(page: Int32(viewModel.state.page
+                                                                                          + 1),size: Int32(size), filterName:viewModel.state.location)
+                                                viewModel.state.page += 1
+                                                
+                                                
                                             }
-                                    }
+                                        }
                                 }
                                 
+                            } else if title == "이번달" {
+                                if viewModel.state.page < viewModel.state.getFestivalMainResponse.totalElements / 12 {
+                                    ProgressView()
+                                        .onAppear {
+                                            Task {
+                                                await getThisMonthFestivalMainItem(page: Int32(page + 1),size: Int32(size), filterName:viewModel.state.location, startDate: "", endDate:"")
+                                                viewModel.state.page += 1
+                                            }
+                                        }
+                                }
                             }
-//                            else if title == "이번달" {
-//                                if page < 5 {
-//                                    ProgressView()
-//                                        .onAppear {
-//                                            Task {
-//                                                await getThisMonthFestivalMainItem(page: Int32(page + 1),size: Int32(size), filterName:[""].joined(separator: ","), startDate: "", endDate:"")
-//                                                print(page)
-//                                                page += 1
-//                                            }
-//                                        }
-//                                }
-//                            }
+                            
                             else if title == "계절별" {
                                 switch selectedSeason {
                                 case LocalizedKey.spring.localized(for: LocalizationManager().language):
@@ -580,11 +574,10 @@ struct FestivalMainGridView: View {
             page = 0
             
             Task {
-                if APIFlag {
-//                    viewModel.state.getFestivalMainResponse = FestivalModel(totalElements: 0, data: [])
+                if viewModel.state.location == LocalizedKey.allLocation.localized(for: localizationManager.language){
                     if viewModel.state.getFestivalMainResponse.totalElements == 0{
                         if title == "이번달" {
-                            await getThisMonthFestivalMainItem(page: 0, size: 12, filterName: [""].joined(separator: ","), startDate: "", endDate: "")
+                            await getThisMonthFestivalMainItem(page: 0, size: 12, filterName: "", startDate: "", endDate: "")
                             isAPICalled = true
                         } else if title == "계절별" {
                             let formatterMonth = DateFormatter()
@@ -607,10 +600,39 @@ struct FestivalMainGridView: View {
                             }
                             isAPICalled = true
                         } else {
-                            await getPastFestivalMainITem(page: Int32(page), size: 12, filterName: [""].joined(separator: ","))
+                            await getPastFestivalMainITem(page: Int32(page), size: 12, filterName: "")
                             isAPICalled = true
                         }
-                        APIFlag = false
+                    }
+                } else {
+                    if viewModel.state.getFestivalMainResponse.totalElements == 0{
+                        if title == "이번달" {
+                            await getThisMonthFestivalMainItem(page: 0, size: 12, filterName: viewModel.state.apiLocation, startDate: "", endDate: "")
+                            isAPICalled = true
+                        } else if title == "계절별" {
+                            let formatterMonth = DateFormatter()
+                            formatterMonth.dateFormat = "MM"
+                            let currentMonth = formatterMonth.string(from: Date())
+                            
+                            switch Int(currentMonth) {
+                            case 3, 4:
+                                await getSeasonFestivalMainItem(page: 0, size: 12, season: "spring")
+                            case 5, 6, 7, 8:
+                                await getSeasonFestivalMainItem(page: 0, size: 12, season: "summer")
+                            case 9, 10:
+                                await getSeasonFestivalMainItem(page: 0, size: 12, season: "autum")
+                            case 11, 12, 1, 2:
+                                await getSeasonFestivalMainItem(page: 0, size: 12, season: "winter")
+                            case .none:
+                                print("SeasonModal Error")
+                            case .some(_):
+                                print("SeasonModal Error")
+                            }
+                            isAPICalled = true
+                        } else {
+                            await getPastFestivalMainITem(page: Int32(page), size: 12, filterName: viewModel.state.apiLocation)
+                            isAPICalled = true
+                        }
                     }
                 }
              
