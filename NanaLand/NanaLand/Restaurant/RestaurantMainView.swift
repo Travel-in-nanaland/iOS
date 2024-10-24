@@ -37,7 +37,9 @@ struct RestaurantMainGridView: View {
     @State private var keywordModal = false
     @State private var locationModal = false
     @State private var keyword = LocalizedKey.type.localized(for: LocalizationManager().language)
-    @State private var location = LocalizedKey.allLocation.localized(for: LocalizationManager().language)
+//    @State private var location = LocalizedKey.allLocation.localized(for: LocalizationManager().language)
+//    @State private var apiLocation = LocalizedKey.allLocation.localized(for: LocalizationManager().language)
+    
     @State private var APIKeyword = ""
     
     var translations: [String: String] {
@@ -101,7 +103,7 @@ struct RestaurantMainGridView: View {
                     )
                     .padding(.trailing, 8)
                     .sheet(isPresented: $keywordModal) {
-                        RestaurantKeywordView(keyword: $keyword, address: location, viewModel: viewModel, selectedKeyword: viewModel.state.selectedKeyword)
+                        RestaurantKeywordView(keyword: $keyword, viewModel: viewModel, selectedKeyword: viewModel.state.selectedKeyword)
                             .presentationDetents([.height(Constants.screenWidth * (448 / 360))]) // 팝업 뷰 height 조절
                     }
                     
@@ -110,7 +112,7 @@ struct RestaurantMainGridView: View {
                         self.locationModal = true
                     } label: {
                         HStack(spacing: 0) {
-                            Text(location.split(separator: ",").count >= 3 ? "\(location.split(separator: ",").prefix(2).joined(separator: ","))" + ".." : location.split(separator: ",").prefix(2).joined(separator: ","))
+                            Text(viewModel.state.location.split(separator: ",").count >= 3 ? "\(viewModel.state.location.split(separator: ",").prefix(2).joined(separator: ","))" + ".." : viewModel.state.location.split(separator: ",").prefix(2).joined(separator: ","))
                                 .font(.gothicNeo(.regular, size: 12))
                                 .foregroundColor(Color.gray1)
                                 .lineLimit(1)
@@ -128,7 +130,7 @@ struct RestaurantMainGridView: View {
                     )
                     .padding(.trailing, 16)
                     .sheet(isPresented: $locationModal) { // 지역 필터링 뷰
-                        LocationModalView(viewModel: FestivalMainViewModel(), natureViewModel: NatureMainViewModel(), shopViewModel: ShopMainViewModel(), restaurantModel: viewModel, experienceViewModel: ExperienceMainViewModel(), location: $location, isModalShown: $locationModal, selectedLocation: viewModel.state.selectedLocation, startDate: "", endDate: "", title: LocalizedKey.restaurant.localized(for: localizationManager.language), keyword: keyword)
+                        LocationModalView(viewModel: FestivalMainViewModel(), natureViewModel: NatureMainViewModel(), shopViewModel: ShopMainViewModel(), restaurantModel: viewModel, experienceViewModel: ExperienceMainViewModel(), isModalShown: $locationModal, selectedLocation: viewModel.state.selectedLocation, startDate: "", endDate: "", title: LocalizedKey.restaurant.localized(for: localizationManager.language), keyword: keyword)
                             .presentationDetents([.height(Constants.screenWidth * (63 / 36))])
                     }
                 }
@@ -202,7 +204,7 @@ struct RestaurantMainGridView: View {
                                     .onAppear {
                                         print("\(viewModel.state.page)")
                                         Task {
-                                            if location == LocalizedKey.allLocation.localized(for: LocalizationManager().language) {
+                                            if viewModel.state.location == LocalizedKey.allLocation.localized(for: LocalizationManager().language) {
                                                 APIKeyword = keyword
                                                 for (key, value) in translations {
                                                     APIKeyword = APIKeyword.replacingOccurrences(of: key, with: value)
@@ -213,7 +215,7 @@ struct RestaurantMainGridView: View {
                                                 for (key, value) in translations {
                                                     APIKeyword = APIKeyword.replacingOccurrences(of: key, with: value)
                                                 }
-                                                await getRestaurantMainItem(keyword: keyword == LocalizedKey.type.localized(for: localizationManager.language) ? "" : APIKeyword, address: location, page: viewModel.state.page + 1, size: 12)
+                                                await getRestaurantMainItem(keyword: keyword == LocalizedKey.type.localized(for: localizationManager.language) ? "" : APIKeyword, address: viewModel.state.apiLocation, page: viewModel.state.page + 1, size: 12)
                                             }
                                             
                                             viewModel.state.page += 1
@@ -226,9 +228,9 @@ struct RestaurantMainGridView: View {
                 }
             }
             .onAppear {
-                
                 Task {
-                    if location == LocalizedKey.allLocation.localized(for: LocalizationManager().language) {
+                    
+                    if viewModel.state.location == LocalizedKey.allLocation.localized(for: LocalizationManager().language) {
                         APIKeyword = generateAPIKeyword(from: keyword)
                         
                         if viewModel.state.getRestaurantMainResponse.totalElements == 0 {
@@ -238,11 +240,11 @@ struct RestaurantMainGridView: View {
                         APIKeyword = generateAPIKeyword(from: keyword)
                         
                         if viewModel.state.getRestaurantMainResponse.totalElements == 0{
-                            await getRestaurantMainItem(keyword: keyword == LocalizedKey.type.localized(for: localizationManager.language) ? "" : APIKeyword, address: location, page: viewModel.state.page, size: 12)
+                            await getRestaurantMainItem(keyword: keyword == LocalizedKey.type.localized(for: localizationManager.language) ? "" : APIKeyword, address: viewModel.state.apiLocation, page: viewModel.state.page, size: 12)
                         }
                     }
-                    isAPICalled = true
                     
+                    isAPICalled = true
                 }
             }
             .navigationDestination(for: RestaurantViewType.self) { viewType in

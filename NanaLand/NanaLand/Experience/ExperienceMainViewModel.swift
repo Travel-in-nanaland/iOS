@@ -11,7 +11,8 @@ class ExperienceMainViewModel: ObservableObject {
     struct State {
         var getExperienceMainResponse = ExperienceMainModel(totalElements: 0, data: [])
         var page = 0
-        var location = ""
+        var location = LocalizedKey.allLocation.localized(for: LocalizationManager().language)
+        var apiLocation = LocalizedKey.allLocation.localized(for: LocalizationManager().language)
         var selectedKeyword: [String] = []
         var selectedLocation: [LocalizedKey] = []
     }

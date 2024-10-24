@@ -11,7 +11,6 @@ import SwiftUI
 struct RestaurantKeywordView: View {
     @Environment(\.dismiss) var dismiss
     @Binding var keyword: String
-    var address: String
     @ObservedObject var viewModel: RestaurantMainViewModel
     @EnvironmentObject var localizationManager: LocalizationManager
     @State var selectedKeyword: [String] // 선택된 키워드 이름 담을 배열
@@ -108,7 +107,7 @@ struct RestaurantKeywordView: View {
                 keyword = selectedKeywordName.joined(separator: ",")
                 Task {
                     viewModel.state.getRestaurantMainResponse = RestaurantMainModel(totalElements: 0, data: [])
-                    await getKeywordRestaurantMainItem(keyword: selectedKeyword.joined(separator: ","), address: address == LocalizedKey.allLocation.localized(for: LocalizationManager().language) ? "" : address, page: 0, size: 12)
+                    await getKeywordRestaurantMainItem(keyword: selectedKeyword.joined(separator: ","), address: viewModel.state.apiLocation, page: 0, size: 12)
                     viewModel.state.page = 0
                     if keyword.isEmpty {
                         keyword = LocalizedKey.type.localized(for: localizationManager.language)

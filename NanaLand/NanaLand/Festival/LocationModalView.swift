@@ -16,7 +16,8 @@ struct LocationModalView: View {
     @ObservedObject var experienceViewModel: ExperienceMainViewModel
     @EnvironmentObject var localizationManager: LocalizationManager
     
-    @Binding var location: String
+//    @Binding var location: String
+//    @Binding var apiLocation: String
     @Binding var isModalShown: Bool
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -223,22 +224,54 @@ struct LocationModalView: View {
                         await getLocationFestivalMainItem(page: 0, size: 18, filterName: selectedLocationStrings.joined(separator: ","), start: startDate, end: endDate)
                         viewModel.state.page = 0
                         viewModel.state.selectedLocation = selectedLocation
+                        
+                        viewModel.state.apiLocation = selectedLocationStrings.joined(separator: ",")
+                        viewModel.state.location = selectedLocation.map { $0.localized(for: localizationManager.language) }.joined(separator: ",")
+                        
+                        // 장소 선택 안 할시 전 지역
+                        if viewModel.state.location.isEmpty {
+                            viewModel.state.location = LocalizedKey.allLocation.localized(for: localizationManager.language)
+                        }
+                        
                     } else if title == "종료된" {
                         viewModel.state.getFestivalMainResponse = FestivalModel(totalElements: 0, data: [])
                         viewModel.state.page = 0
                         await getPastLocationFestivalMainItem(page: 0, size: 12, filterName: selectedLocationStrings.joined(separator: ","))
                         viewModel.state.selectedLocation = selectedLocation
+                        viewModel.state.apiLocation = selectedLocationStrings.joined(separator: ",")
+                        viewModel.state.location = selectedLocation.map { $0.localized(for: localizationManager.language) }.joined(separator: ",")
+                        // 장소 선택 안 할시 전 지역
+                        if viewModel.state.location.isEmpty {
+                            viewModel.state.location = LocalizedKey.allLocation.localized(for: localizationManager.language)
+                        }
+                        
                     } else if title == "7대자연" {
                         natureViewModel.state.getNatureMainResponse = NatureMainModel(totalElements: 0, data: [])
                         await getLocationNatureMainItem(filterName: selectedLocationStrings.joined(separator: ","), page: 0, size: 12)
-                        natureViewModel.state.location = selectedLocationStrings.joined(separator: ",")
+                        natureViewModel.state.apiLocation = selectedLocationStrings.joined(separator: ",")
+                        natureViewModel.state.location = selectedLocation.map { $0.localized(for: localizationManager.language) }.joined(separator: ",")
                         natureViewModel.state.page = 0
                         natureViewModel.state.selectedLocation = selectedLocation
+                        
+                        // 장소 선택 안 할시 전 지역
+                        if natureViewModel.state.location.isEmpty {
+                            natureViewModel.state.location = LocalizedKey.allLocation.localized(for: localizationManager.language)
+                        }
+                        
                     } else if title == "전통시장"{ // 전통시장
                         shopViewModel.state.getShopMainResponse = ShopMainModel(totalElements: 0, data: [])
                         await getLocationShopMainItem(filterName: selectedLocationStrings.joined(separator: ","), page: 0, size: 18)
                         shopViewModel.state.page = 0
                         shopViewModel.state.selectedLocation = selectedLocation
+                        
+                        shopViewModel.state.apiLocation = selectedLocationStrings.joined(separator: ",")
+                        shopViewModel.state.location = selectedLocation.map { $0.localized(for: localizationManager.language) }.joined(separator: ",")
+                        
+                        // 장소 선택 안 할시 전 지역
+                        if shopViewModel.state.location.isEmpty {
+                            shopViewModel.state.location = LocalizedKey.allLocation.localized(for: localizationManager.language)
+                        }
+                        
                     } else if title == LocalizedKey.experience.localized(for: localizationManager.language) {
                         experienceViewModel.state.getExperienceMainResponse = ExperienceMainModel(totalElements: 0, data: []) // 초기화
                         APIKeyword = keyword
@@ -249,6 +282,13 @@ struct LocationModalView: View {
                         experienceViewModel.state.page = 0
                         experienceViewModel.state.selectedLocation = selectedLocation
                         
+                        experienceViewModel.state.apiLocation = selectedLocationStrings.joined(separator: ",")
+                        experienceViewModel.state.location = selectedLocation.map { $0.localized(for: localizationManager.language) }.joined(separator: ",")
+                        
+                        if experienceViewModel.state.location.isEmpty {
+                            viewModel.state.location = LocalizedKey.allLocation.localized(for: localizationManager.language)
+                        }
+                        
                     } else if title == LocalizedKey.restaurant.localized(for: localizationManager.language) {
                         restaurantModel.state.getRestaurantMainResponse = RestaurantMainModel(totalElements: 0, data: []) // 초기화
                         APIKeyword = keyword
@@ -256,17 +296,16 @@ struct LocationModalView: View {
                             APIKeyword = APIKeyword.replacingOccurrences(of: key, with: value)
                         }
                         await getLocationRestaurantMainItem(filterName: selectedLocationStrings.joined(separator: ","), page: 0, size: 12, keyword: keyword == LocalizedKey.type.localized(for: localizationManager.language) ? "" : APIKeyword)
-                        restaurantModel.state.page = 0
+                        
+                        restaurantModel.state.apiLocation = selectedLocationStrings.joined(separator: ",")
+                        restaurantModel.state.location = selectedLocation.map { $0.localized(for: localizationManager.language) }.joined(separator: ",")
                         restaurantModel.state.selectedLocation = selectedLocation
-                    }
-                    
-                    let locationToLocalizedKey = selectedLocation.map { $0.localized(for: localizationManager.language) }
-                    location = locationToLocalizedKey.joined(separator: ",")
-                    viewModel.state.location = location
-
-                    // 장소 선택 안 할시 전 지역
-                    if location.isEmpty {
-                        location = LocalizedKey.allLocation.localized(for: localizationManager.language)
+                        restaurantModel.state.page = 0
+                        
+                        // 장소 선택 안 할시 전 지역
+                        if restaurantModel.state.location.isEmpty {
+                            restaurantModel.state.location = LocalizedKey.allLocation.localized(for: localizationManager.language)
+                        }
                     }
                 }
                 
@@ -344,7 +383,6 @@ struct LocationModalView: View {
         shopViewModel: ShopMainViewModel(),// Assuming ShopMainViewModel() has an init method
         restaurantModel: RestaurantMainViewModel(),
         experienceViewModel: ExperienceMainViewModel(),
-        location: .constant(""),
         isModalShown: .constant(true),
         selectedLocation: [], startDate: "2024-05-01",
         endDate: "2024-05-31",

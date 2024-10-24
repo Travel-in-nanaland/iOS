@@ -38,7 +38,6 @@ struct NatureMainGridView: View {
     @State private var isAPICalled = false
     @State private var filterTitle = "지역"
     @State private var locationModal = false
-    @State private var location = LocalizedKey.allLocation.localized(for: LocalizationManager().language)
     @State private var APIFlag = true // 첫 onAppear시에만 호출
     var body: some View {
         HStack(spacing: 0) {
@@ -52,7 +51,7 @@ struct NatureMainGridView: View {
             
             } label: {
                 HStack(spacing: 0) {
-                    Text(location.split(separator: ",").count >= 3 ? "\(location.split(separator: ",").prefix(2).joined(separator: ","))" + ".." : location.split(separator: ",").prefix(2).joined(separator: ","))
+                    Text(viewModel.state.location.split(separator: ",").count >= 3 ? "\(viewModel.state.location.split(separator: ",").prefix(2).joined(separator: ","))" + ".." : viewModel.state.location.split(separator: ",").prefix(2).joined(separator: ","))
                         .font(.gothicNeo(.medium, size: 12))
                         .lineLimit(1)
                         .padding(.leading, 12)
@@ -74,7 +73,7 @@ struct NatureMainGridView: View {
             )
             .padding(.trailing, 16)
             .sheet(isPresented: $locationModal) {
-                LocationModalView(viewModel: FestivalMainViewModel(), natureViewModel: viewModel, shopViewModel: ShopMainViewModel(), restaurantModel: RestaurantMainViewModel(), experienceViewModel: ExperienceMainViewModel(), location: $location, isModalShown: $locationModal, selectedLocation: viewModel.state.selectedLocation, startDate: "", endDate: "", title: "7대자연")
+                LocationModalView(viewModel: FestivalMainViewModel(), natureViewModel: viewModel, shopViewModel: ShopMainViewModel(), restaurantModel: RestaurantMainViewModel(), experienceViewModel: ExperienceMainViewModel(), isModalShown: $locationModal, selectedLocation: viewModel.state.selectedLocation, startDate: "", endDate: "", title: "7대자연")
                     .presentationDetents([.height(Constants.screenWidth * (63 / 36))])
             }
 
@@ -145,14 +144,14 @@ struct NatureMainGridView: View {
                                 
                                 
                             }
-                        if viewModel.state.page < 40 {
+                        if viewModel.state.page < viewModel.state.getNatureMainResponse.totalElements / 12 {
                             ProgressView()
                                 .onAppear {
                                     Task {
-                                        if location == LocalizedKey.allLocation.localized(for: LocalizationManager().language) {
+                                        if viewModel.state.location == LocalizedKey.allLocation.localized(for: LocalizationManager().language) {
                                             await getNatureMainItem(page: Int64(viewModel.state.page + 1), size: 12, filterName: "")
                                         } else {
-                                            await getNatureMainItem(page: Int64(viewModel.state.page + 1), size: 12, filterName: location)
+                                            await getNatureMainItem(page: Int64(viewModel.state.page + 1), size: 12, filterName: viewModel.state.apiLocation)
                                         }
                                         
                                         viewModel.state.page += 1
@@ -179,18 +178,18 @@ struct NatureMainGridView: View {
                     if viewModel.state.getNatureMainResponse.totalElements == 0{
                         if isAdvertisement {
                             await getNatureMainItem(page: 0, size: 12, filterName: LocalizedKey.Seongsan.localized(for: localizationManager.language))
-                            location = LocalizedKey.Seongsan.localized(for: localizationManager.language)
+                            viewModel.state.location = LocalizedKey.Seongsan.localized(for: localizationManager.language)
                             isAPICalled = true
                             isAdvertisement = false
                             viewModel.state.page = 0
                             
                         } else {
-                            if location == LocalizedKey.allLocation.localized(for: localizationManager.language) {
+                            if viewModel.state.location == LocalizedKey.allLocation.localized(for: localizationManager.language) {
                                 await getNatureMainItem(page: 0, size: 12, filterName:"")
                                 isAPICalled = true
                                 viewModel.state.page = 0
                             } else {
-                                await getNatureMainItem(page: 0, size: 12, filterName: location)
+                                await getNatureMainItem(page: 0, size: 12, filterName: viewModel.state.apiLocation)
                                 isAPICalled = true
                                 viewModel.state.page = 0
                             }

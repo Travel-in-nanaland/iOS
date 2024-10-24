@@ -28,9 +28,7 @@ struct ShopMainView: View {
 struct ShopMainGridView: View {
     @EnvironmentObject var localizationMangaer: LocalizationManager
     @StateObject var viewModel = ShopMainViewModel()
-    @State private var APIFlag = true // onAppear시 한번만 호출 되도록
     @State private var locationModal = false
-    @State private var location = LocalizedKey.allLocation.localized(for: LocalizationManager().language)
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
     @State private var isAPICalled = false
     var body: some View {
@@ -46,7 +44,7 @@ struct ShopMainGridView: View {
                     self.locationModal = true
 				} label: {
                     HStack(spacing: 0) {
-                        Text(location.split(separator: ",").count >= 3 ? "\(location.split(separator: ",").prefix(2).joined(separator: ","))" + ".." : location.split(separator: ",").prefix(2).joined(separator: ","))
+                        Text(viewModel.state.location.split(separator: ",").count >= 3 ? "\(viewModel.state.location.split(separator: ",").prefix(2).joined(separator: ","))" + ".." : viewModel.state.location.split(separator: ",").prefix(2).joined(separator: ","))
                             .font(.gothicNeo(.medium, size: 12))
                             .lineLimit(1)
                             .padding(.leading, 12)
@@ -63,7 +61,7 @@ struct ShopMainGridView: View {
 				)
 				.padding(.trailing, 16)
                     .sheet(isPresented: $locationModal) {
-                        LocationModalView(viewModel: FestivalMainViewModel(), natureViewModel: NatureMainViewModel(), shopViewModel: viewModel, restaurantModel: RestaurantMainViewModel(), experienceViewModel: ExperienceMainViewModel(),location: $location, isModalShown: $locationModal, selectedLocation: viewModel.state.selectedLocation, startDate: "", endDate: "", title: LocalizedKey.market.localized(for: localizationMangaer.language))
+                        LocationModalView(viewModel: FestivalMainViewModel(), natureViewModel: NatureMainViewModel(), shopViewModel: viewModel, restaurantModel: RestaurantMainViewModel(), experienceViewModel: ExperienceMainViewModel(), isModalShown: $locationModal, selectedLocation: viewModel.state.selectedLocation, startDate: "", endDate: "", title: LocalizedKey.market.localized(for: localizationMangaer.language))
                         .presentationDetents([.height(Constants.screenWidth * (63 / 36))])
                 }
 			}
@@ -132,11 +130,12 @@ struct ShopMainGridView: View {
                             if viewModel.state.page < viewModel.state.getShopMainResponse.totalElements / 12 {
                                 ProgressView()
                                     .onAppear {
+                                        print("\(viewModel.state.page)")
                                         Task {
-                                            if location == LocalizedKey.allLocation.localized(for: LocalizationManager().language) {
+                                            if viewModel.state.location == LocalizedKey.allLocation.localized(for: localizationMangaer.language) {
                                                 await getShopMainItem(page: Int64(viewModel.state.page + 1), size: 12, filterName: "")
                                             } else {
-                                                await getShopMainItem(page: Int64(viewModel.state.page + 1), size: 12, filterName: location)
+                                                await getShopMainItem(page: Int64(viewModel.state.page + 1), size: 12, filterName: viewModel.state.apiLocation)
                                             }
                                             viewModel.state.page += 1
                                         }
@@ -158,15 +157,18 @@ struct ShopMainGridView: View {
 		}
         .onAppear {
             Task {
-                if APIFlag {
-//                    viewModel.state.getShopMainResponse = ShopMainModel(totalElements: 0, data: [])
+                if viewModel.state.location == LocalizedKey.allLocation.localized(for: localizationMangaer.language) {
                     if viewModel.state.getShopMainResponse.totalElements == 0 {
                         await getShopMainItem(page: 0, size:12, filterName:"")
                         isAPICalled = true
-                        APIFlag = false
+                    }
+                    
+                } else {
+                    if viewModel.state.getShopMainResponse.totalElements == 0 {
+                        await getShopMainItem(page: 0, size:12, filterName:viewModel.state.apiLocation)
+                        isAPICalled = true
                     }
                 }
-              
             }
         }
     }

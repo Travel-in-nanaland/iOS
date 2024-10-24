@@ -9,7 +9,8 @@ import Foundation
 class NatureMainViewModel: ObservableObject {
     struct State {
         var getNatureMainResponse = NatureMainModel(totalElements: 0, data: [])
-        var location = ""
+        var location = LocalizedKey.allLocation.localized(for: LocalizationManager().language)
+        var apiLocation = LocalizedKey.allLocation.localized(for: LocalizationManager().language)
         var page = 0
         var selectedLocation: [LocalizedKey] = []
     }
