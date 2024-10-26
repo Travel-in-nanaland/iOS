@@ -134,21 +134,25 @@ struct SeasonFilterView: View {
             switch Int(currentMonth) {
             case 3, 4:
                 season = LocalizedKey.spring.localized(for: LocalizationManager().language)
+                viewModel.state.selectedSeason = season
                 Task{
                     await getSeasonFestivalMainItem(page: 0, size: 12, season: "spring")
                 }
             case 5, 6, 7, 8:
                 season = LocalizedKey.summer.localized(for: LocalizationManager().language)
+                viewModel.state.selectedSeason = season
                 Task{
                     await getSeasonFestivalMainItem(page: 0, size: 12, season: "summer")
                 }
             case 9, 10:
                 season = LocalizedKey.autumn.localized(for: LocalizationManager().language)
+                viewModel.state.selectedSeason = season
                 Task{
                     await getSeasonFestivalMainItem(page: 0, size: 12, season: "autumn")
                 }
             case 11, 12, 1, 2:
                 season = LocalizedKey.winter.localized(for: LocalizationManager().language)
+                viewModel.state.selectedSeason = season
                 Task{
                     await getSeasonFestivalMainItem(page: 0, size: 12, season: "winter")
                 }

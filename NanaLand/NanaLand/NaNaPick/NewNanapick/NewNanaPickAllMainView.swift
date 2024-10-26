@@ -121,7 +121,8 @@ struct NanaPickAllView: View {
                 
                 VStack(alignment: .leading, spacing: 0){
                     Text(subHeading)
-                        .lineLimit(1)
+                        .lineLimit(3)
+                        .multilineTextAlignment(.leading)
                         .font(.body02_bold)
                         .foregroundColor(.black)
                     
