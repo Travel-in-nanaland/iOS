@@ -29,7 +29,7 @@ struct ShopDetailView: View {
                     
                     ZStack(alignment: .center) {
                         if !isOn { // 더보기 버튼이 안 눌렸을 때
-                            RoundedRectangle(cornerRadius: 30)
+                            RoundedRectangle(cornerRadius: 12)
                                 .fill(Color.white) // 빈 뷰를 하얀색으로 채웁니다.
                                 .frame(maxWidth: Constants.screenWidth - 40, maxHeight: .infinity) // 뷰의 크기를 지정합니다.
                                               .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)

@@ -34,15 +34,16 @@ struct RestaurantMenuView: View {
             
             Spacer()
             
-            Button {
-                menuModal = true
-            } label: {
-                KFImage(URL(string: imageUrl))
-                    .resizable()
-                    .frame(width: 56, height: 56)
-                    .cornerRadius(8)
+            if imageUrl != "" {
+                Button {
+                    menuModal = true
+                } label: {
+                    KFImage(URL(string: imageUrl))
+                        .resizable()
+                        .frame(width: 56, height: 56)
+                        .cornerRadius(8)
+                }
             }
-
         }
         .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
         .fullScreenCover(isPresented: $menuModal) {

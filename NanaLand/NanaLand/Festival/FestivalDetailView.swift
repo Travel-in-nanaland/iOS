@@ -29,7 +29,7 @@ struct FestivalDetailView: View {
                         
                         ZStack(alignment: .center) {
                             if !isOn { // 더보기 버튼이 안 눌렸을 때
-                                RoundedRectangle(cornerRadius: 30)
+                                RoundedRectangle(cornerRadius: 12)
                                     .fill(Color.white)
                                     .frame(maxWidth: Constants.screenWidth - 40, maxHeight: .infinity)
                                     .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)

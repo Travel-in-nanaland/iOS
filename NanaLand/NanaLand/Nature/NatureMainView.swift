@@ -176,26 +176,28 @@ struct NatureMainGridView: View {
            
             Task {
                 if APIFlag {
-                    if isAdvertisement {
-                        await getNatureMainItem(page: 0, size: 12, filterName: LocalizedKey.Seongsan.localized(for: localizationManager.language))
-                        location = LocalizedKey.Seongsan.localized(for: localizationManager.language)
-                        isAPICalled = true
-                        isAdvertisement = false
-                        viewModel.state.page = 0
-                        
-                    } else {
-                        if location == LocalizedKey.allLocation.localized(for: localizationManager.language) {
-                            await getNatureMainItem(page: 0, size: 12, filterName:"")
+                    if viewModel.state.getNatureMainResponse.totalElements == 0{
+                        if isAdvertisement {
+                            await getNatureMainItem(page: 0, size: 12, filterName: LocalizedKey.Seongsan.localized(for: localizationManager.language))
+                            location = LocalizedKey.Seongsan.localized(for: localizationManager.language)
                             isAPICalled = true
+                            isAdvertisement = false
                             viewModel.state.page = 0
+                            
                         } else {
-                            await getNatureMainItem(page: 0, size: 12, filterName: location)
-                            isAPICalled = true
-                            viewModel.state.page = 0
+                            if location == LocalizedKey.allLocation.localized(for: localizationManager.language) {
+                                await getNatureMainItem(page: 0, size: 12, filterName:"")
+                                isAPICalled = true
+                                viewModel.state.page = 0
+                            } else {
+                                await getNatureMainItem(page: 0, size: 12, filterName: location)
+                                isAPICalled = true
+                                viewModel.state.page = 0
+                            }
+                            
                         }
-                        
+                        APIFlag = false
                     }
-                    APIFlag = false
                 }
                
                 

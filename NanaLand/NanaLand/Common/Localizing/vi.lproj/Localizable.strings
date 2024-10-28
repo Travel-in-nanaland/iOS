@@ -276,10 +276,10 @@
 "unfoldView" = "more"; // 더보기
 "foldView" = "fold"; // 접기
 "introduce" = "Introduce!";
-"address" = "Address";
-"phoneNumber" = "Contact";
-"time" = "Operating Hours";
-"fee" = "Fee";
+"address" = "Địa chỉ";
+"phoneNumber" = "Liên hệ";
+"time" = "Giờ sử dụng";
+"fee" = "Phí vào cửa";
 "detailInfo" = "Details";
 "amenity" = "Facilities";
 "proposeUpdateInfo" = "Information Update Suggestions";
@@ -302,7 +302,7 @@
 "winterMonth" = "November, December, January, February";
 
 // MARK: - MarketDetailView
-"homepage" = "Website";
+"homepage" = "trang chủ";
 
 // MARK: - FestivalDetailView
 "duration" = "Duration";
@@ -410,6 +410,15 @@
 "searchLocation" = "Tìm Kiếm Địa Điểm";
 "noSearchResult" = "Không có kết quả tìm kiếm tương ứng.";
 "photoMax" = "Bạn có thể chọn tối đa 5 ảnh";
+"reviewCompleteExperience" = "Cảm ơn bạn vì bài viết \nhấp dẫn của bạn 👻";
+"reviewCompleteExperienceSub1" = "Cũng giống như sự quyến rũ của bạn";
+"reviewCompleteExperienceSub2" = "Sức hấp dẫn của điểm đến du lịch cũng \ntăng lên!";
+"reviewCompleteExperienceSub3" = "Tôi nghĩ tôi ngày càng phấn khích hơn🧚‍♀️";
+"reviewCompleteRestaurant" = "Bạn thích nó nhiều như vậy sao?";
+"reviewCompleteRestaurantSub1" = "Bài viết tỉ mỉ của bạn\nLựa chọn du lịch của ai đó\nNó đã làm phong phú tôi!";
+"reviewCompleteRestaurantSub2" = "Tôi cũng mong chờ lần tới";
+"goContent" = "Xem lại nội dung";
+"addAnotherReview" = "Thêm một đánh giá khác";
 
 //MARK: - 마이페이지
 "notice" = "Thông báo";
@@ -481,7 +490,7 @@
 // MARK: - 신고
 "report" = "Báo cáo";
 "reportResult" = "Nội dung báo cáo phù hợp với chính sách hoạt động.Sẽ được xử lý trong vòng tối đa 24 giờ.";
-"reportReason" = "Vui lòng viết lý do báo cáo của bạn bằng ít nhất 20 ký tự!"; // 신고 사유
+"reportReasonValidation" = "Vui lòng viết lý do báo cáo của bạn bằng ít nhất 20 ký tự!"; // 신고 사유
 "reportCharacterPermission" = "Nội dung có thể được viết bằng 500 ký tự hoặc ít hơn.";// 내용 500자 이하
 "reportResultEmail" = "Vui lòng nhập địa chỉ email của bạn để nhận kết quả báo cáo."; // 신고 결과 이메일
 "emailValidation " = "Định dạng email không đúng. Vui lòng nhập lại!";// 이메일 벨리 체크

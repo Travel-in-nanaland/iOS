@@ -429,6 +429,15 @@
 "searchLocation" = "搜索地点";
 "noSearchResult" = "没有相应的搜索结果。";
 "photoMax" = "您最多可以选择5张照片";
+"reviewCompleteExperience" = "感谢您精彩的写作👻";
+"reviewCompleteExperienceSub1" = "就像你的魅力一样";
+"reviewCompleteExperienceSub2" = "旅游目的地的吸引力也增加了！";
+"reviewCompleteExperienceSub3" = "越来越期待了🧚‍♀️";
+"reviewCompleteRestaurant" = "非常喜欢！";
+"reviewCompleteRestaurantSub1" = "你细致入微的写作\n让n某人的旅行选择\n更加丰富！";
+"reviewCompleteRestaurantSub2" = "下次也会期待的";
+"goContent" = "回看内容";
+"addAnotherReview" = "添加另一条评价";
 
 //MARK: - 마이페이지
 "notice" = "公告";

@@ -49,10 +49,11 @@ struct ReportWriteView: View {
                         .fullScreenCover(isPresented: $showAlert) {
                             AlertView(title: .reviewBackAlertTitle, message: .reviewBackAlertMessage, leftButtonTitle: .yes, rightButtonTitle: .no, leftButtonAction: {
                                 showAlert = false
+                                dismiss()
                             }, rightButtonAction: {
                                 showAlert = false
-                                dismiss()
                             })
+                            
                         }
                         .transaction { transaction in
                             transaction.disablesAnimations = true
@@ -346,10 +347,10 @@ struct ReportWriteView: View {
                 }
             }
             if isLoading {
-                ProgressView() // 로딩 중에는 ProgressView를 표시
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background(Color.black.opacity(0.5)) // 배경색
-                    .edgesIgnoringSafeArea(.all) // 전체 화면을 덮도록 설정
+                LottieView(jsonName: "loading", loopMode: .loop)
+                    .frame(width: Constants.screenWidth, height: Constants.screenHeight)
+                    .background(Color.black.opacity(0.3))
+                    .edgesIgnoringSafeArea(.all)
             }
         }
     }

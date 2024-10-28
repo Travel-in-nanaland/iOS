@@ -28,9 +28,9 @@ struct FestivalMainView: View {
             case 0:
                 FestivalMainGridView(title: "이번달", locationTitle: "\(locationTitle)")
             case 1:
-                FestivalMainGridView(title: "종료된")
-            case 2:
                 FestivalMainGridView(title: "계절별")
+            case 2:
+                FestivalMainGridView(title: "종료된")
             default:
                 FestivalMainGridView(title: "이번달")
             }
@@ -308,7 +308,7 @@ struct FilterView: View {
 
 struct TabBarView: View {
     @Binding var currentTab: Int
-    var tabBarOptions: [String] = [LocalizedKey.thisMonthFestival.localized(for: LocalizationManager().language), LocalizedKey.pastFestival.localized(for: LocalizationManager().language), LocalizedKey.seasonFestival.localized(for: LocalizationManager().language)]
+    var tabBarOptions: [String] = [LocalizedKey.thisMonthFestival.localized(for: LocalizationManager().language), LocalizedKey.seasonFestival.localized(for: LocalizationManager().language), LocalizedKey.pastFestival.localized(for: LocalizationManager().language)]
     @Namespace var namespace
     var body: some View {
         HStack {
@@ -581,35 +581,37 @@ struct FestivalMainGridView: View {
             
             Task {
                 if APIFlag {
-                    viewModel.state.getFestivalMainResponse = FestivalModel(totalElements: 0, data: [])
-                    if title == "이번달" {
-                        await getThisMonthFestivalMainItem(page: 0, size: 12, filterName: [""].joined(separator: ","), startDate: "", endDate: "")
-                        isAPICalled = true
-                    } else if title == "계절별" {
-                        let formatterMonth = DateFormatter()
-                        formatterMonth.dateFormat = "MM"
-                        let currentMonth = formatterMonth.string(from: Date())
-                        
-                        switch Int(currentMonth) {
-                        case 3, 4:
-                            await getSeasonFestivalMainItem(page: 0, size: 12, season: "spring")
-                        case 5, 6, 7, 8:
-                            await getSeasonFestivalMainItem(page: 0, size: 12, season: "summer")
-                        case 9, 10:
-                            await getSeasonFestivalMainItem(page: 0, size: 12, season: "autum")
-                        case 11, 12, 1, 2:
-                            await getSeasonFestivalMainItem(page: 0, size: 12, season: "winter")
-                        case .none:
-                            print("SeasonModal Error")
-                        case .some(_):
-                            print("SeasonModal Error")
+//                    viewModel.state.getFestivalMainResponse = FestivalModel(totalElements: 0, data: [])
+                    if viewModel.state.getFestivalMainResponse.totalElements == 0{
+                        if title == "이번달" {
+                            await getThisMonthFestivalMainItem(page: 0, size: 12, filterName: [""].joined(separator: ","), startDate: "", endDate: "")
+                            isAPICalled = true
+                        } else if title == "계절별" {
+                            let formatterMonth = DateFormatter()
+                            formatterMonth.dateFormat = "MM"
+                            let currentMonth = formatterMonth.string(from: Date())
+                            
+                            switch Int(currentMonth) {
+                            case 3, 4:
+                                await getSeasonFestivalMainItem(page: 0, size: 12, season: "spring")
+                            case 5, 6, 7, 8:
+                                await getSeasonFestivalMainItem(page: 0, size: 12, season: "summer")
+                            case 9, 10:
+                                await getSeasonFestivalMainItem(page: 0, size: 12, season: "autum")
+                            case 11, 12, 1, 2:
+                                await getSeasonFestivalMainItem(page: 0, size: 12, season: "winter")
+                            case .none:
+                                print("SeasonModal Error")
+                            case .some(_):
+                                print("SeasonModal Error")
+                            }
+                            isAPICalled = true
+                        } else {
+                            await getPastFestivalMainITem(page: Int32(page), size: 12, filterName: [""].joined(separator: ","))
+                            isAPICalled = true
                         }
-                        isAPICalled = true
-                    } else {
-                        await getPastFestivalMainITem(page: Int32(page), size: 12, filterName: [""].joined(separator: ","))
-                        isAPICalled = true
+                        APIFlag = false
                     }
-                    APIFlag = false
                 }
              
                 buttonsToggled = Array(repeating: false, count: viewModel.state.getFestivalMainResponse.data.count)

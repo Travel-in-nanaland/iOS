@@ -83,6 +83,24 @@ struct LocationModalView: View {
         .Seongsan
     ]
 
+    var locationTranslations: [String: String] {
+            return [
+                LocalizedKey.jejuCity.localized(for: localizationManager.language) : "JEJU",
+                LocalizedKey.Aewol.localized(for: localizationManager.language) : "AEWOL",
+                LocalizedKey.Jocheon.localized(for: localizationManager.language) : "JOCHEON",
+                LocalizedKey.Hangyeong.localized(for: localizationManager.language) : "HANGYEONG",
+                LocalizedKey.Gunjwa.localized(for: localizationManager.language) : "GUJWA",
+                LocalizedKey.Hallim.localized(for: localizationManager.language) : "HALLIM",
+                LocalizedKey.Udo.localized(for: localizationManager.language) : "UDO",
+                LocalizedKey.Chuja.localized(for: localizationManager.language) : "CHUJA",
+                LocalizedKey.SeogwipoCity.localized(for: localizationManager.language) : "SEOGWIPO",
+                LocalizedKey.Daejeong.localized(for: localizationManager.language) : "DAEJEONG",
+                LocalizedKey.Andeok.localized(for: localizationManager.language) : "ANDEOK",
+                LocalizedKey.Namwon.localized(for: localizationManager.language) : "NAMWON",
+                LocalizedKey.Pyoseon.localized(for: localizationManager.language) : "PYOSEON",
+                LocalizedKey.Seongsan.localized(for: localizationManager.language) : "SEONGSAN"
+            ]
+        }
     
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 4)
     
@@ -198,7 +216,8 @@ struct LocationModalView: View {
                 }
                 
                 Task {
-                    let selectedLocationStrings = selectedLocation.map { $0.localized(for: localizationManager.language) }
+//                    let selectedLocationStrings = selectedLocation.map { $0.localized(for: localizationManager.language) }
+                    let selectedLocationStrings = selectedLocation.map { locationTranslations[$0.localized(for: localizationManager.language)] ?? $0.localized(for: localizationManager.language) }
                     if title == "이번달" {
                         viewModel.state.getFestivalMainResponse = FestivalModel(totalElements: 0, data: [])
                         await getLocationFestivalMainItem(page: 0, size: 18, filterName: selectedLocationStrings.joined(separator: ","), start: startDate, end: endDate)
@@ -241,7 +260,8 @@ struct LocationModalView: View {
                         restaurantModel.state.selectedLocation = selectedLocation
                     }
                     
-                    location = selectedLocationStrings.joined(separator: ",")
+                    let locationToLocalizedKey = selectedLocation.map { $0.localized(for: localizationManager.language) }
+                    location = locationToLocalizedKey.joined(separator: ",")
                     viewModel.state.location = location
 
                     // 장소 선택 안 할시 전 지역

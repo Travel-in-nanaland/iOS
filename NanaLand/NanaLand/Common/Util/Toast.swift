@@ -24,7 +24,7 @@ struct Toast: View {
                         .padding()
                         .background(Color.black.opacity(0.7))
                         .foregroundColor(.white)
-                        .multilineTextAlignment(.center)
+                        .multilineTextAlignment(.trailing)
                         .cornerRadius(30)
                         .offset(y: -20)
                         .animation(.easeInOut(duration: 0.5), value: isAnimating)

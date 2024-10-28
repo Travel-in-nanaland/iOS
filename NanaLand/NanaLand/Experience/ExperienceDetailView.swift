@@ -59,13 +59,13 @@ struct ExperienceDetailView: View {
 
                                 ZStack(alignment: .center) {
                                     if !isOn {
-                                        RoundedRectangle(cornerRadius: 30)
+                                        RoundedRectangle(cornerRadius: 12)
                                             .fill(Color.white)
                                             .frame(maxWidth: Constants.screenWidth - 40, maxHeight: .infinity)
                                             .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
                                         
                                         VStack(spacing: 0) {
-                                            HStack(spacing: 0) {
+                                            HStack(spacing: 16) {
                                                 Text(viewModel.state.getExperienceDetailResponse.addressTag ?? "")
                                                     .background(RoundedRectangle(cornerRadius: 30)
                                                         .foregroundStyle(Color.main10P)
@@ -73,7 +73,6 @@ struct ExperienceDetailView: View {
                                                     )
                                                     .frame(width: 64, height: 20)
                                                     .font(.gothicNeo(.regular, size: 12))
-                                                    .padding(.leading, 16)
                                                     .foregroundStyle(Color.main)
                                                 ForEach(0...viewModel.state.getExperienceDetailResponse.keywords!.count - 1, id: \.self) { index in
                                                     Text(viewModel.state.getExperienceDetailResponse.keywords![index])
@@ -85,11 +84,10 @@ struct ExperienceDetailView: View {
                                                         .frame(width: 64, height: 20)
                                                         .font(.gothicNeo(.regular, size: 12))
                                                         .foregroundStyle(Color.main)
-                                                        .padding(.leading, 12)
                                                 }
                                                 Spacer()
-                                                    
                                             }
+                                            .padding(.leading, 16)
                                             .padding(.bottom, 12)
                                             
                                             HStack(spacing: 0) {
