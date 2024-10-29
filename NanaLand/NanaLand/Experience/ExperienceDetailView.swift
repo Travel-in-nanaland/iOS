@@ -720,8 +720,8 @@ struct ExperienceDetailView: View {
                             AppState.shared.navigationPath.append(ExperienceViewType.writeReview)
                         } label: {
                             Text(.writeReview)
-                                .padding(.leading, (Constants.screenWidth) * (96 / 360))
-                                .padding(.trailing, (Constants.screenWidth) * (96 / 360))
+//                                .padding(.leading, (Constants.screenWidth) * (96 / 360))
+//                                .padding(.trailing, (Constants.screenWidth) * (96 / 360))
                                 .font(.body_bold)
                                 .foregroundStyle(Color.white)
                                 .background(RoundedRectangle(cornerRadius: 50).foregroundStyle(Color.main).frame(width: Constants.screenWidth * (28 / 36), height: 40))

@@ -10,7 +10,8 @@ import Foundation
 class ShopMainViewModel: ObservableObject {
     struct State {
         var getShopMainResponse = ShopMainModel(totalElements: 0, data: [])
-        var location = ""
+        var location = LocalizedKey.allLocation.localized(for: LocalizationManager().language)
+        var apiLocation = LocalizedKey.allLocation.localized(for: LocalizationManager().language)
         var page = 0
         var selectedLocation: [LocalizedKey] = []
     }
@@ -36,8 +37,16 @@ class ShopMainViewModel: ObservableObject {
             
             if response != nil {
                 await MainActor.run {
-                    state.getShopMainResponse.totalElements = response!.data.totalElements
-                    state.getShopMainResponse.data.append(contentsOf: response!.data.data)
+                    let newData = response!.data.data
+                        
+                        // 기존 데이터에서 중복되지 않는 항목만 추가
+                        let uniqueData = newData.filter { newItem in
+                            !state.getShopMainResponse.data.contains(where: { $0.id == newItem.id })
+                        }
+                        
+                        state.getShopMainResponse.data.append(contentsOf: uniqueData)
+                        state.getShopMainResponse.totalElements = response!.data.totalElements
+                        print(state.getShopMainResponse.totalElements)
                 }
             } else {
                 print("Erorr")

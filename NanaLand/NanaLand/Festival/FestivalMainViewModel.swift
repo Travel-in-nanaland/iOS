@@ -13,7 +13,8 @@ class FestivalMainViewModel: ObservableObject {
         var getFestivalMainResponse = FestivalModel(totalElements: 0, data: [])
         var title = ""
         var page = 0
-        var location = ""
+        var location = LocalizedKey.allLocation.localized(for: LocalizationManager().language)
+        var apiLocation = LocalizedKey.allLocation.localized(for: LocalizationManager().language)
         var selectedLocation: [LocalizedKey] = []
         var selectedSeason = ""
         var selectedStartDate: YearMonthDay? = .current

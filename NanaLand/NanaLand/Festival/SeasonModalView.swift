@@ -194,8 +194,6 @@ struct SeasonModalView: View {
             }
             Spacer()
         }
-       
-        
     }
     
     func getSeasonFestivalMainItem(page: Int32, size: Int32, season: String) async {

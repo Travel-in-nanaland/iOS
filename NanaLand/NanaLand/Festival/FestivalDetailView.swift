@@ -299,8 +299,8 @@ struct FestivalDetailView: View {
                             }
                         }
                         .padding(.top, 32)
-                        .id("Scroll_To_Top")
                     }
+                    .id("Scroll_To_Top")
                 }
                 .navigationDestination(for: ArticleDetailViewType.self) { viewType in
                     switch viewType {

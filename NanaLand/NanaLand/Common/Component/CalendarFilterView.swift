@@ -15,7 +15,6 @@ struct CalendarFilterView: View {
 	@StateObject var calendarController = CalendarController()
 	@Binding var startDate: YearMonthDay?
 	@Binding var endDate: YearMonthDay?
-    @Binding var location: String
 	// 적용하기 누르면 바인딩
 	@State var currentStartDate: YearMonthDay?
 	@State var currentEndDate: YearMonthDay?
@@ -266,17 +265,21 @@ struct CalendarFilterView: View {
                 let strEndDate = String(endDate?.year ?? strCurrentYear!) + formattedNumber(endDate?.month ?? Int(strCurrentMonth)!) + formattedNumber(endDate?.day ?? strCurrentDay!)
                 
                 Task {
-                    if location == "지역" || location == LocalizedKey.allLocation.localized(for: localizationManager.language) {
-                        location = ""
+                    if viewModel.state.location == LocalizedKey.allLocation.localized(for: localizationManager.language) {
+                        // 시작날짜~종료날짜 필터링
+                        viewModel.state.getFestivalMainResponse = FestivalModel(totalElements: 0, data: [])
+                        await getDateFestivalMainItem(page: 0, size: 12, filterName: "", start: strStartDate, end: strEndDate)
+                        viewModel.state.selectedStartDate = currentStartDate
+                        viewModel.state.selectedEndDate = currentEndDate
+                    } else {
+                        // 시작날짜~종료날짜 필터링
+                        viewModel.state.getFestivalMainResponse = FestivalModel(totalElements: 0, data: [])
+                        await getDateFestivalMainItem(page: 0, size: 12, filterName: viewModel.state.apiLocation, start: strStartDate, end: strEndDate)
+                        viewModel.state.selectedStartDate = currentStartDate
+                        viewModel.state.selectedEndDate = currentEndDate
                     }
-                    // 시작날짜~종료날짜 필터링
-                    viewModel.state.getFestivalMainResponse = FestivalModel(totalElements: 0, data: [])
-                    await getDateFestivalMainItem(page: 0, size: 12, filterName: [location].joined(separator: ","), start: strStartDate, end: strEndDate)
-                    viewModel.state.selectedStartDate = currentStartDate
-                    viewModel.state.selectedEndDate = currentEndDate
-                    if location == "" {
-                        location = LocalizedKey.allLocation.localized(for: localizationManager.language)
-                    }
+                    
+                   
                 }
 				dismiss()
 			}, label: {

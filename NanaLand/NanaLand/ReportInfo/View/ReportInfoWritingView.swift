@@ -37,7 +37,6 @@ struct ReportInfoWritingView: View {
                 
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(alignment: .leading, spacing: 0) {
-                        
                         VStack(alignment: .leading, spacing: 0) {
                             Text(.reportInfoContentTitle)
                                 .font(.title02_bold)
