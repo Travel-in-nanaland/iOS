@@ -92,6 +92,7 @@ struct ReviewMainGridView: View {
     @State private var showToast = false
     @State private var toastMessage = ""
     @State private var uploadButtonFlag = false
+    @State private var isLoading = false
     @FocusState private var isTextEditorFocused: Bool
     var reviewItemAddress: String = ""
     var reviewItemImageUrl: String = ""
@@ -99,113 +100,127 @@ struct ReviewMainGridView: View {
     var reviewId: Int64 = 0
     var reviewCategory: String = ""
     
+    
     var body: some View {
-        ScrollView {
-            VStack {
-                KFImage(URL(string: reviewItemImageUrl))
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 80, height: 80)
-                    .cornerRadius(8)
-                    .padding()
-                
-                Text(reviewTitle)
-                    .font(.body_bold)
-                    .padding(.bottom, 5)
-                Text(reviewItemAddress)
-                    .font(.body02)
-                    .padding(.bottom, 24)
-                
-                Rectangle()
-                    .fill(Color.gray2)
-                    .frame(width: 64, height: 1)
-                    .padding(.bottom, 26)
-                
-                
-                if localizationManager.language == .korean {
-                    let selectRating = Text(.selectRating1).font(.body_bold).foregroundColor(.main) + Text(.selectRating2).font(.body_bold).foregroundColor(.black) + Text(.selectRating3).font(.body_bold).foregroundColor(.main) + Text(.selectRating4).font(.body_bold).foregroundColor(.black) + Text("!").font(.body_bold).foregroundColor(.black)
+        ZStack {
+            ScrollView {
+                VStack {
+                    KFImage(URL(string: reviewItemImageUrl))
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 80, height: 80)
+                        .cornerRadius(8)
+                        .padding()
                     
-                    selectRating
-                } else if localizationManager.language == .english {
-                    let selectRating = Text(.selectRating1).font(.body_bold).foregroundColor(.black) + Text(.selectRating2).font(.body_bold).foregroundColor(.main) + Text(.selectRating3).font(.body_bold).foregroundColor(.black) + Text(.selectRating4).font(.body_bold).foregroundColor(.main) +
-                        Text("!").font(.body_bold).foregroundColor(.black)
+                    Text(reviewTitle)
+                        .font(.body_bold)
+                        .padding(.bottom, 5)
+                    Text(reviewItemAddress)
+                        .font(.body02)
+                        .padding(.bottom, 24)
                     
-                    selectRating
-                } else if localizationManager.language == .chinese {
-                    let selectRating = Text(.selectRating1).font(.body_bold).foregroundColor(.black) + Text(.selectRating2).font(.body_bold).foregroundColor(.main) + Text(.selectRating3).font(.body_bold).foregroundColor(.black) + Text(.selectRating4).font(.body_bold).foregroundColor(.main) + Text("!").font(.body_bold).foregroundColor(.black)
+                    Rectangle()
+                        .fill(Color.gray2)
+                        .frame(width: 64, height: 1)
+                        .padding(.bottom, 26)
                     
-                    selectRating
-                } else if localizationManager.language == .malaysia {
-                    let selectRating = Text(.selectRating1).font(.body_bold).foregroundColor(.black) + Text(.selectRating2).font(.body_bold).foregroundColor(.main) + Text(.selectRating3).font(.body_bold).foregroundColor(.black) + Text(.selectRating4).font(.body_bold).foregroundColor(.main) + Text("!").font(.body_bold).foregroundColor(.black)
                     
-                    selectRating
-                } else {
-                    let selectRating = Text(.selectRating1).font(.body_bold).foregroundColor(.black) + Text(.selectRating2).font(.body_bold).foregroundColor(.main) + Text(.selectRating3).font(.body_bold).foregroundColor(.black) + Text(.selectRating4).font(.body_bold).foregroundColor(.main) + Text("!").font(.body_bold).foregroundColor(.black)
-                    
-                    selectRating
-                }
-                
-                
-                HStack {
-                    ForEach(1...5, id: \.self) { number in
-                        Image(number <= viewModel.state.getReviewWriteResponse.rating ? "icStarFill" : "icStar")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 36)
-                            .onTapGesture {
-                                viewModel.updateRating(number)
-                                viewModel.state.reviewDTO.rating = number
-                            }
-                    }
-                }
-                .padding(.bottom, 24)
-                
-                Rectangle()
-                    .fill(Color.gray2)
-                    .frame(width: 64, height: 1)
-                    .padding(.bottom, 26)
-                
-                if localizationManager.language == .korean {
-                    let visitReview = Text(.visitReview1).font(.body_bold).foregroundColor(.main) + Text(.visitReview2).font(.body_bold).foregroundColor(.black) + Text(.visitReview3).font(.body_bold).foregroundColor(.main) + Text(.visitReview4).font(.body_bold).foregroundColor(.black) + Text("!").font(.body_bold).foregroundColor(.black)
-                    
-                    visitReview
-                } else if localizationManager.language == .english {
-                    let visitReview = Text(.visitReview1).font(.body_bold).foregroundColor(.black) + Text(.visitReview2).font(.body_bold).foregroundColor(.main) + Text(.visitReview3).font(.body_bold).foregroundColor(.black) + Text(.visitReview4).font(.body_bold).foregroundColor(.main) + Text("!").font(.body_bold).foregroundColor(.black)
-                    
-                    visitReview
-                } else if localizationManager.language == .chinese {
-                    let visitReview = Text(.visitReview1).font(.body_bold).foregroundColor(.black) + Text(.visitReview2).font(.body_bold).foregroundColor(.main) + Text(.visitReview3).font(.body_bold).foregroundColor(.black) + Text(.visitReview4).font(.body_bold).foregroundColor(.main) + Text("!").font(.body_bold).foregroundColor(.black)
-                    
-                    visitReview
-                } else if localizationManager.language == .malaysia {
-                    let visitReview = Text(.visitReview1).font(.body_bold).foregroundColor(.black) + Text(.visitReview2).font(.body_bold).foregroundColor(.main) + Text(.visitReview3).font(.body_bold).foregroundColor(.black) + Text(.visitReview4).font(.body_bold).foregroundColor(.main) + Text("!").font(.body_bold).foregroundColor(.black)
-                    
-                    visitReview
-                } else {
-                    let visitReview = Text(.visitReview1).font(.body_bold).foregroundColor(.black) + Text(.visitReview2).font(.body_bold).foregroundColor(.main) + Text(.visitReview3).font(.body_bold).foregroundColor(.black) + Text(.visitReview4).font(.body_bold).foregroundColor(.main) + Text("!").font(.body_bold).foregroundColor(.black)
-                    
-                    visitReview
-                }
-                
-                HStack {
-                    ZStack {
-                        Rectangle()
-                            .fill(Color.gray2)
-                            .frame(width: 80, height: 80)
-                            .cornerRadius(8)
-                            .padding(.leading, -5)
+                    if localizationManager.language == .korean {
+                        let selectRating = Text(.selectRating1).font(.body_bold).foregroundColor(.main) + Text(.selectRating2).font(.body_bold).foregroundColor(.black) + Text(.selectRating3).font(.body_bold).foregroundColor(.main) + Text(.selectRating4).font(.body_bold).foregroundColor(.black) + Text("!").font(.body_bold).foregroundColor(.black)
                         
-                        PhotosPicker(
-                            selection: $selectedItems,
-                            maxSelectionCount: 5,
-                            matching: .images,
-                            photoLibrary: .shared()
-                        ) {
-                            if viewModel.state.getReviewWriteResponse.imgCnt == 5{
-                                Button { // 사진이 5장인 상태(최대상태) 에서 또 클릭 할 시 토스트 메시지 띄우기
-                                    toastMessage = LocalizedKey.photoMax.localized(for: localizationManager.language)
-                                    showToast = true
-                                } label: {
+                        selectRating
+                    } else if localizationManager.language == .english {
+                        let selectRating = Text(.selectRating1).font(.body_bold).foregroundColor(.black) + Text(.selectRating2).font(.body_bold).foregroundColor(.main) + Text(.selectRating3).font(.body_bold).foregroundColor(.black) + Text(.selectRating4).font(.body_bold).foregroundColor(.main) +
+                            Text("!").font(.body_bold).foregroundColor(.black)
+                        
+                        selectRating
+                    } else if localizationManager.language == .chinese {
+                        let selectRating = Text(.selectRating1).font(.body_bold).foregroundColor(.black) + Text(.selectRating2).font(.body_bold).foregroundColor(.main) + Text(.selectRating3).font(.body_bold).foregroundColor(.black) + Text(.selectRating4).font(.body_bold).foregroundColor(.main) + Text("!").font(.body_bold).foregroundColor(.black)
+                        
+                        selectRating
+                    } else if localizationManager.language == .malaysia {
+                        let selectRating = Text(.selectRating1).font(.body_bold).foregroundColor(.black) + Text(.selectRating2).font(.body_bold).foregroundColor(.main) + Text(.selectRating3).font(.body_bold).foregroundColor(.black) + Text(.selectRating4).font(.body_bold).foregroundColor(.main) + Text("!").font(.body_bold).foregroundColor(.black)
+                        
+                        selectRating
+                    } else {
+                        let selectRating = Text(.selectRating1).font(.body_bold).foregroundColor(.black) + Text(.selectRating2).font(.body_bold).foregroundColor(.main) + Text(.selectRating3).font(.body_bold).foregroundColor(.black) + Text(.selectRating4).font(.body_bold).foregroundColor(.main) + Text("!").font(.body_bold).foregroundColor(.black)
+                        
+                        selectRating
+                    }
+                    
+                    
+                    HStack {
+                        ForEach(1...5, id: \.self) { number in
+                            Image(number <= viewModel.state.getReviewWriteResponse.rating ? "icStarFill" : "icStar")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 36)
+                                .onTapGesture {
+                                    viewModel.updateRating(number)
+                                    viewModel.state.reviewDTO.rating = number
+                                }
+                        }
+                    }
+                    .padding(.bottom, 24)
+                    
+                    Rectangle()
+                        .fill(Color.gray2)
+                        .frame(width: 64, height: 1)
+                        .padding(.bottom, 26)
+                    
+                    if localizationManager.language == .korean {
+                        let visitReview = Text(.visitReview1).font(.body_bold).foregroundColor(.main) + Text(.visitReview2).font(.body_bold).foregroundColor(.black) + Text(.visitReview3).font(.body_bold).foregroundColor(.main) + Text(.visitReview4).font(.body_bold).foregroundColor(.black) + Text("!").font(.body_bold).foregroundColor(.black)
+                        
+                        visitReview
+                    } else if localizationManager.language == .english {
+                        let visitReview = Text(.visitReview1).font(.body_bold).foregroundColor(.black) + Text(.visitReview2).font(.body_bold).foregroundColor(.main) + Text(.visitReview3).font(.body_bold).foregroundColor(.black) + Text(.visitReview4).font(.body_bold).foregroundColor(.main) + Text("!").font(.body_bold).foregroundColor(.black)
+                        
+                        visitReview
+                    } else if localizationManager.language == .chinese {
+                        let visitReview = Text(.visitReview1).font(.body_bold).foregroundColor(.black) + Text(.visitReview2).font(.body_bold).foregroundColor(.main) + Text(.visitReview3).font(.body_bold).foregroundColor(.black) + Text(.visitReview4).font(.body_bold).foregroundColor(.main) + Text("!").font(.body_bold).foregroundColor(.black)
+                        
+                        visitReview
+                    } else if localizationManager.language == .malaysia {
+                        let visitReview = Text(.visitReview1).font(.body_bold).foregroundColor(.black) + Text(.visitReview2).font(.body_bold).foregroundColor(.main) + Text(.visitReview3).font(.body_bold).foregroundColor(.black) + Text(.visitReview4).font(.body_bold).foregroundColor(.main) + Text("!").font(.body_bold).foregroundColor(.black)
+                        
+                        visitReview
+                    } else {
+                        let visitReview = Text(.visitReview1).font(.body_bold).foregroundColor(.black) + Text(.visitReview2).font(.body_bold).foregroundColor(.main) + Text(.visitReview3).font(.body_bold).foregroundColor(.black) + Text(.visitReview4).font(.body_bold).foregroundColor(.main) + Text("!").font(.body_bold).foregroundColor(.black)
+                        
+                        visitReview
+                    }
+                    
+                    HStack {
+                        ZStack {
+                            Rectangle()
+                                .fill(Color.gray2)
+                                .frame(width: 80, height: 80)
+                                .cornerRadius(8)
+                                .padding(.leading, -5)
+                            
+                            PhotosPicker(
+                                selection: $selectedItems,
+                                maxSelectionCount: 5,
+                                matching: .images,
+                                photoLibrary: .shared()
+                            ) {
+                                if viewModel.state.getReviewWriteResponse.imgCnt == 5{
+                                    Button { // 사진이 5장인 상태(최대상태) 에서 또 클릭 할 시 토스트 메시지 띄우기
+                                        toastMessage = LocalizedKey.photoMax.localized(for: localizationManager.language)
+                                        showToast = true
+                                    } label: {
+                                        VStack {
+                                            Image(systemName: "camera")
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fit)
+                                                .frame(width: 26)
+                                            Text("\(viewModel.state.getReviewWriteResponse.imgCnt) / 5")
+                                                .font(.gothicNeo(.light, size: 15))
+                                        }
+                                        .foregroundColor(.white)
+                                    }
+                                }
+                                else {
                                     VStack {
                                         Image(systemName: "camera")
                                             .resizable()
@@ -217,179 +232,176 @@ struct ReviewMainGridView: View {
                                     .foregroundColor(.white)
                                 }
                             }
-                            else {
-                                VStack {
-                                    Image(systemName: "camera")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: 26)
-                                    Text("\(viewModel.state.getReviewWriteResponse.imgCnt) / 5")
-                                        .font(.gothicNeo(.light, size: 15))
-                                }
-                                .foregroundColor(.white)
-                            }
+                            .padding(.leading, -5)
                         }
-                        .padding(.leading, -5)
-                    }
-                    
-                    ScrollView(.horizontal) {
-                        HStack {
-                            ForEach(Array(selectedImageData.enumerated()), id: \.element) { index, imageData in
-                                if let uiImage = UIImage(data: imageData) {
-                                    ZStack(alignment: .topTrailing) {
-                                        Image(uiImage: uiImage)
-                                            .resizable()
-                                            .frame(width: 80, height: 80)
-                                            .cornerRadius(8)
-                                        
-                                        Button(action: {
-                                            selectedImageData.remove(at: index)
-                                            selectedItems.remove(at: index)
-                                            viewModel.updateImageCount(selectedImageData.count)
-                                        }) {
-                                            Image("icRemovePhoto")
-                                                .padding(.trailing, 2)
-                                                .padding(.top, 2)
+                        
+                        ScrollView(.horizontal) {
+                            HStack {
+                                ForEach(Array(selectedImageData.enumerated()), id: \.element) { index, imageData in
+                                    if let uiImage = UIImage(data: imageData) {
+                                        ZStack(alignment: .topTrailing) {
+                                            Image(uiImage: uiImage)
+                                                .resizable()
+                                                .frame(width: 80, height: 80)
+                                                .cornerRadius(8)
+                                            
+                                            Button(action: {
+                                                selectedImageData.remove(at: index)
+                                                selectedItems.remove(at: index)
+                                                viewModel.updateImageCount(selectedImageData.count)
+                                            }) {
+                                                Image("icRemovePhoto")
+                                                    .padding(.trailing, 2)
+                                                    .padding(.top, 2)
+                                            }
                                         }
                                     }
                                 }
                             }
                         }
                     }
-                }
-                .padding(EdgeInsets(top: 0, leading: 20, bottom: 5, trailing: 20))
-                
-                ZStack(alignment: .topLeading) {
+                    .padding(EdgeInsets(top: 0, leading: 20, bottom: 5, trailing: 20))
                     
-                    TextEditor(text: $reviewContent)
-                        .font(.body02)
-                        .foregroundColor(.black)
-                        .padding(4)
-                        .background(Color.white)
-                        .cornerRadius(8)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 8)
-                                .stroke(Color.gray2, lineWidth: 1)
-                        )
-                        .frame(height: 190)
-                        .onChange(of: reviewContent) { newValue in
-                            viewModel.state.reviewDTO.content = newValue
-                            print("\(newValue)")
-                            for i in 0..<viewModel.selectedKeyword.count {
-                                print(viewModel.selectedKeyword[i].tag)
-                            }
-                            if newValue.count > 200 {
-                                
-                                reviewContent = String(newValue.prefix(200))
-                                toastMessage = LocalizedKey.content200.localized(for: localizationManager.language)
-                                showToast = true
-                                print("200자 초과")
-                            }
-                        }
-                        .padding(.horizontal)
-                        .focused($isTextEditorFocused)
-                    
-                    if reviewContent == "" {
-                        Text(.writeContent)
+                    ZStack(alignment: .topLeading) {
+                        
+                        TextEditor(text: $reviewContent)
                             .font(.body02)
-                            .foregroundColor(.gray1)
+                            .foregroundColor(.black)
                             .padding(4)
-                            .padding(EdgeInsets(top: 8, leading: 20, bottom: 0, trailing: 0))
-                            .onTapGesture {
-                                isTextEditorFocused = true
-                            }
-                    }
-                }
-                
-                HStack {
-                    Spacer()
-                    Text("(\(reviewContent.count) / 200)")
-                        .font(.body02)
-                        .foregroundColor(.gray)
-                        .padding(.top, -40)
-                        .padding(.trailing, 30)
-                }
-                
-                VStack(alignment: .leading, spacing: 4) {
-                    HStack {
-                        NavigationLink {
-                            ReviewKeywordView(viewModel: viewModel)
-                        } label: {
-                            HStack {
-                                Text(.addKeyword)
-                                    .font(.body02)
-                                Image(systemName: "plus")
-                            }
-                            .padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
-                            .background(
-                                RoundedRectangle(cornerRadius: 50)
-                                    .stroke(Color.main, lineWidth: 1)
+                            .background(Color.white)
+                            .cornerRadius(8)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .stroke(Color.gray2, lineWidth: 1)
                             )
-                            .foregroundColor(.main)
-                        }
-                        
-                        MainTagView(tags: Array(viewModel.selectedKeyword.prefix(1)), keywordViewModel: viewModel, localizationManager: _localizationManager)
-                        
-                        Spacer()
-                    }
-                    MainTagView(tags: Array(viewModel.selectedKeyword.dropFirst()), keywordViewModel: viewModel, localizationManager: _localizationManager)
-                        .padding(.leading, -5)
-                }
-                .padding()
-                
-                ZStack {
-                    RoundedRectangle(cornerRadius: 50)
-                        .foregroundColor((viewModel.selectedKeyword.count < 3 || reviewContent.count == 0 || viewModel.state.getReviewWriteResponse.rating == 0) ? .main10P : .main)
-                        .frame(height: 50)
-                    Button {
-                        Task {
-                            for i in 0..<viewModel.selectedKeyword.count {
-                                viewModel.state.reviewDTO.reviewKeywords.append(viewModel.selectedKeyword[i].tag)
+                            .frame(height: 190)
+                            .onChange(of: reviewContent) { newValue in
+                                viewModel.state.reviewDTO.content = newValue
+                                print("\(newValue)")
+                                for i in 0..<viewModel.selectedKeyword.count {
+                                    print(viewModel.selectedKeyword[i].tag)
+                                }
+                                if newValue.count > 200 {
+                                    
+                                    reviewContent = String(newValue.prefix(200))
+                                    toastMessage = LocalizedKey.content200.localized(for: localizationManager.language)
+                                    showToast = true
+                                    print("200자 초과")
+                                }
                             }
-                            await postReview(id: reviewId, category: reviewCategory, body: viewModel.state.reviewDTO, multipartFile: selectedImageData)
-                            
-                            AppState.shared.navigationPath.append(ReviewViewType.complete)
-                        }
+                            .padding(.horizontal)
+                            .focused($isTextEditorFocused)
                         
-                    } label: {
-                        Text(.upload)
-                            .font(.body_bold)
-                            .foregroundStyle(.white)
-                    }
-                    .disabled((viewModel.selectedKeyword.count < 3 || reviewContent.count == 0 || viewModel.state.getReviewWriteResponse.rating == 0) ? true : false)
-                    
-                    
-                }
-                .padding(.bottom, 20)
-                .padding(.leading, 16)
-                .padding(.trailing, 16)
-        
-            }
-        }
-        .onChange(of: selectedItems) { newItems in
-            Task {
-                
-                selectedImageData.removeAll()
-                for newItem in newItems {
-                    if let data = try? await newItem.loadTransferable(type: Data.self) {
-                        if selectedImageData.count < 5 {
-                            selectedImageData.append(data) // 선택된 이미지 추가
+                        if reviewContent == "" {
+                            Text(.writeContent)
+                                .font(.body02)
+                                .foregroundColor(.gray1)
+                                .padding(4)
+                                .padding(EdgeInsets(top: 8, leading: 20, bottom: 0, trailing: 0))
+                                .onTapGesture {
+                                    isTextEditorFocused = true
+                                }
                         }
                     }
-        
+                    
+                    HStack {
+                        Spacer()
+                        Text("(\(reviewContent.count) / 200)")
+                            .font(.body02)
+                            .foregroundColor(.gray)
+                            .padding(.top, -40)
+                            .padding(.trailing, 30)
+                    }
+                    
+                    VStack(alignment: .leading, spacing: 4) {
+                        HStack {
+                            NavigationLink {
+                                ReviewKeywordView(viewModel: viewModel)
+                            } label: {
+                                HStack {
+                                    Text(.addKeyword)
+                                        .font(.body02)
+                                    Image(systemName: "plus")
+                                }
+                                .padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
+                                .background(
+                                    RoundedRectangle(cornerRadius: 50)
+                                        .stroke(Color.main, lineWidth: 1)
+                                )
+                                .foregroundColor(.main)
+                            }
+                            
+                            MainTagView(tags: Array(viewModel.selectedKeyword.prefix(1)), keywordViewModel: viewModel, localizationManager: _localizationManager)
+                            
+                            Spacer()
+                        }
+                        MainTagView(tags: Array(viewModel.selectedKeyword.dropFirst()), keywordViewModel: viewModel, localizationManager: _localizationManager)
+                            .padding(.leading, -5)
+                    }
+                    .padding()
+                    
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 50)
+                            .foregroundColor((viewModel.selectedKeyword.count < 3 || reviewContent.count == 0 || viewModel.state.getReviewWriteResponse.rating == 0) ? .main10P : .main)
+                            .frame(height: 50)
+                        Button {
+                            Task {
+                                isLoading = true // 로딩창 on
+                                for i in 0..<viewModel.selectedKeyword.count {
+                                    viewModel.state.reviewDTO.reviewKeywords.append(viewModel.selectedKeyword[i].tag)
+                                }
+                                await postReview(id: reviewId, category: reviewCategory, body: viewModel.state.reviewDTO, multipartFile: selectedImageData)
+                                isLoading = false // 리뷰 통신이 끝나면 로딩창 off
+                                AppState.shared.navigationPath.append(ReviewViewType.complete)
+                            }
+                            
+                        } label: {
+                            Text(.upload)
+                                .font(.body_bold)
+                                .foregroundStyle(.white)
+                        }
+                        .disabled((viewModel.selectedKeyword.count < 3 || reviewContent.count == 0 || viewModel.state.getReviewWriteResponse.rating == 0) ? true : false)
+                        
+                        
+                    }
+                    .padding(.bottom, 20)
+                    .padding(.leading, 16)
+                    .padding(.trailing, 16)
+            
                 }
-                viewModel.updateImageCount(selectedImageData.count)
+            }
+            .onChange(of: selectedItems) { newItems in
+                Task {
+                    
+                    selectedImageData.removeAll()
+                    for newItem in newItems {
+                        if let data = try? await newItem.loadTransferable(type: Data.self) {
+                            if selectedImageData.count < 5 {
+                                selectedImageData.append(data) // 선택된 이미지 추가
+                            }
+                        }
+            
+                    }
+                    viewModel.updateImageCount(selectedImageData.count)
+                }
+            }
+            .overlay(
+                Toast(message: toastMessage, isShowing: $showToast, isAnimating: true)
+            )
+            .navigationDestination(for: ReviewViewType.self) { viewType in
+                switch viewType {
+                case .complete:
+                    ReviewCompleteView(title: reviewCategory)
+                }
+            }
+            if isLoading {
+                LottieView(jsonName: "loading", loopMode: .loop)
+                    .frame(width: Constants.screenWidth, height: Constants.screenHeight)
+                    .background(Color.black.opacity(0.3))
+                    .edgesIgnoringSafeArea(.all)
             }
         }
-        .overlay(
-            Toast(message: toastMessage, isShowing: $showToast, isAnimating: true)
-        )
-        .navigationDestination(for: ReviewViewType.self) { viewType in
-            switch viewType {
-            case .complete:
-                ReviewCompleteView(title: reviewCategory)
-            }
-        }
+       
     }
     
     func postReview(id: Int64, category: String, body: ReviewDTO, multipartFile: [Foundation.Data?]) async {

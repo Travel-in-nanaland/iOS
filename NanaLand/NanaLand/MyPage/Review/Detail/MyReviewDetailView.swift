@@ -384,10 +384,10 @@ struct MyDetailReviewMainGridView: View {
                         Text(.upload)
                             .font(.body_bold)
                             .foregroundStyle(.white)
+                            .frame(width: Constants.screenWidth - 40, height: 50)
                     }
+                   
                     .disabled((detailViewModel.selectedKeyword.count < 3 || detailViewModel.state.editReviewDto.content.count == 0 || detailViewModel.state.editReviewDto.rating == 0) ? true : false)
-                    
-                    
                 }
                 .padding(.bottom, 20)
             }

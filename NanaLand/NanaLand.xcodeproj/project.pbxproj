@@ -298,6 +298,7 @@
 		BFCC3D732C7D9E9B00D12D74 /* ProfileReviewWriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC3D722C7D9E9B00D12D74 /* ProfileReviewWriteModel.swift */; };
 		BFCDBE0E2C4E5CC400A50113 /* ReviewEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCDBE0D2C4E5CC400A50113 /* ReviewEndPoint.swift */; };
 		BFCDBE102C4E5CCE00A50113 /* ReviewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCDBE0F2C4E5CCE00A50113 /* ReviewService.swift */; };
+		BFDF5AC12CCF7D0E00FE5547 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = BFDF5AC02CCF7D0E00FE5547 /* loading.json */; };
 		BFE00CEC2C53BD3300F4C80C /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE00CEB2C53BD3300F4C80C /* Toast.swift */; };
 		BFE60DE32C58FE5A009FBA59 /* ReviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE60DE22C58FE5A009FBA59 /* ReviewModel.swift */; };
 		BFF5DA912BE809D100FD8764 /* LocationModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF5DA902BE809D100FD8764 /* LocationModalView.swift */; };
@@ -608,6 +609,7 @@
 		BFCC3D722C7D9E9B00D12D74 /* ProfileReviewWriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileReviewWriteModel.swift; sourceTree = "<group>"; };
 		BFCDBE0D2C4E5CC400A50113 /* ReviewEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewEndPoint.swift; sourceTree = "<group>"; };
 		BFCDBE0F2C4E5CCE00A50113 /* ReviewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewService.swift; sourceTree = "<group>"; };
+		BFDF5AC02CCF7D0E00FE5547 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = loading.json; path = ../../../../../../../../../Downloads/loading.json; sourceTree = "<group>"; };
 		BFE00CEB2C53BD3300F4C80C /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		BFE60DE22C58FE5A009FBA59 /* ReviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewModel.swift; sourceTree = "<group>"; };
 		BFF5DA902BE809D100FD8764 /* LocationModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModalView.swift; sourceTree = "<group>"; };
@@ -681,6 +683,7 @@
 		2C2D3D562C05993D002A38AA /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
+				BFDF5AC02CCF7D0E00FE5547 /* loading.json */,
 				6D4BC7BF2CA733E700ADA908 /* splash.gif */,
 				BF548BDB2C7CDA5300B34635 /* report_complete_comment.json */,
 				BF548BDA2C7CDA5300B34635 /* report_complete_megaphone.json */,
@@ -1696,6 +1699,7 @@
 				2C1F31C52BCD01390066819F /* AppleSDGothicNeoH.ttf in Resources */,
 				2C2749872C0992AB00ECBA71 /* report_info_star.json in Resources */,
 				BF548BDC2C7CDA5400B34635 /* report_complete_megaphone.json in Resources */,
+				BFDF5AC12CCF7D0E00FE5547 /* loading.json in Resources */,
 				BF548BDD2C7CDA5400B34635 /* report_complete_comment.json in Resources */,
 				6D0A43402C9F2E9300529D1E /* AuthKey_9JRUHFTK3L.p8 in Resources */,
 				6D4BC7C02CA733E700ADA908 /* splash.gif in Resources */,
@@ -2183,7 +2187,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jeju.nanaland;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2222,7 +2226,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jeju.nanaland;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

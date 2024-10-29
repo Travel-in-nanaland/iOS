@@ -34,8 +34,12 @@ struct ProfileReviewWriteView: View {
                     .onChange(of: viewModel.debouncedText) { newValue in
                         Task {
                             skeletonFlag = true
+                            if newValue != "" {
                                 await getProfileReview(keyword: "\(newValue)")
-                                skeletonFlag = false
+                            } else {
+
+                            }
+                            skeletonFlag = false
                             }
                     }
                 HStack(spacing: 0) {

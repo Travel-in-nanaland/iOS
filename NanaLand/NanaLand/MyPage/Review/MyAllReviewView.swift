@@ -11,7 +11,7 @@ import Kingfisher
 
 struct MyAllReviewView: View {
     @EnvironmentObject var localizationManager: LocalizationManager
-    @StateObject var viewModel: MyAllReviewViewModel
+    @StateObject var viewModel = MyAllReviewViewModel()
     @State private var isAPICalled = false
     var layout: [GridItem] = [GridItem(.flexible())]
     @State var selectedReviewId: Int64?
@@ -115,6 +115,7 @@ struct MyAllReviewView: View {
         }
         .toolbar(.hidden)
         .onAppear {
+            print("hello")
             Task {
                 await getAllReviewItem(page: 0, size: 12)
                 isAPICalled = true
