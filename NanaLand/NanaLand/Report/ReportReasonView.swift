@@ -10,6 +10,7 @@ import SwiftUI
 struct ReportReasonView: View {
     var id: Int64
     @Binding var isReport: Bool
+    var isUserReport: Bool = false // 기본적으로 리뷰 신고 
     var body: some View {
         VStack(spacing: 0) {
             NanaNavigationBar(title: .report, showBackButton: true)
@@ -44,13 +45,16 @@ struct ReportReasonView: View {
                 
             }
         }
+        .onAppear {
+            print("유저:\(isUserReport)")
+        }
         .toolbar(.hidden)
         .padding(.leading, 16)
         .padding(.trailing, 16)
         .navigationDestination(for: ReportReasonViewType.self) { viewType in
             switch viewType {
             case let .write(claimType, id, isReport):
-                ReportWriteView(isReport: $isReport, claimType: claimType, id: id)
+                ReportWriteView(isReport: $isReport, claimType: claimType, id: id, isUserReport: isUserReport)
             }
         }
     }

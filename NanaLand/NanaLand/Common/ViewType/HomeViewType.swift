@@ -20,4 +20,5 @@ enum HomeViewType: Hashable {
 	case notification
     case restaurant
     case experienceDetail(id: Int)
+    case restaurantDetail(id: Int)
 }

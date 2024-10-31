@@ -243,10 +243,10 @@ struct ProfileUpdateView: View {
                         
                     })
                     .tint(.baseWhite)
-                    .background((nickName.count > 8 || nickName.count == 0) ? Color.main10P : Color.main)
+                    .background((nickName.count > 8 || nickName.count == 0 || introduceText.count > 70 || containsSpecialCharacter(nickName)) ? Color.main10P : Color.main)
                     .clipShape(RoundedRectangle(cornerRadius: 30))
                     .padding(.bottom, 24)
-                    .disabled((nickName.count > 8 || nickName.count == 0 || introduceText.count > 70) ? true : false)
+                    .disabled((nickName.count > 8 || nickName.count == 0 || introduceText.count > 70 || containsSpecialCharacter(nickName)) ? true : false)
                 }
                 .frame(height: geometry.size.height)
                 

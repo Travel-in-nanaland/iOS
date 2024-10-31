@@ -37,12 +37,12 @@ class Interceptor: RequestInterceptor {
             Task {
                 let refreshCompleted = await refreshAccessToken()
                 if refreshCompleted, let newAccessToken = KeyChainManager.readItem(key: "accessToken") {
-                    completion(.retry)
+                    completion(.retry) // 토큰 최신화가 되면 retry
                 } else {
                     completion(.doNotRetry)
                 }
             }
-        } else {
+        } else { // 토큰 관련 에러가 아닐 경우 retry 안 하고 에러 발생
             completion(.doNotRetryWithError(error))
         }
         

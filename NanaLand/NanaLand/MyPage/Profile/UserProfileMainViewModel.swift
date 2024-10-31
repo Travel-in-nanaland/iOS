@@ -32,7 +32,6 @@ class UserProfileMainViewModel: ObservableObject {
             let response = await ReviewService.getPreviewData(memberId: memberId)
             if let responseData = response!.data {
                 await MainActor.run {
-                    print(response)
                     state.getUserPreviewResponse = responseData
                     print("\(state.getUserPreviewResponse.data)")
                     print("\(state.getUserPreviewResponse.totalElements)")

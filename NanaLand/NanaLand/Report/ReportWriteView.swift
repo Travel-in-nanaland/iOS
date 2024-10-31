@@ -29,6 +29,7 @@ struct ReportWriteView: View {
     @State var showAlert = false //뒤로가기 alert 여부
     var claimType: String // 신고 목적
     var id: Int64
+    var isUserReport = false // 기본으로 일단 리뷰 신고 인 걸로
     var body: some View {
         ZStack {
             VStack(spacing: 0) {
@@ -134,7 +135,7 @@ struct ReportWriteView: View {
               
                             HStack(spacing: 0) {
                                 Image("icWarning")
-                                Text(.reportReason)
+                                Text(.reportReasonValidation)
                                     .font(.caption01)
                                     .foregroundStyle(.red)
                                 Spacer()
@@ -180,6 +181,7 @@ struct ReportWriteView: View {
                                     if !isValidEmail(newValue) {
                                         emailTextWarning = true
                                     } else {
+                                        viewModel.state.reportDTO.email = newValue
                                         emailTextWarning = false
                                     }
                                 }
@@ -321,6 +323,12 @@ struct ReportWriteView: View {
             )
             .toolbar(.hidden)
             .onAppear {
+                print("유젘ㅋㅋㅋㅋㅋㅋㅋ:\(isUserReport)")
+                if isUserReport {
+                    viewModel.state.reportDTO.reportType = "MEMBER"
+                } else {
+                    viewModel.state.reportDTO.reportType = "REVIEW"
+                }
                 isReport = true
                 viewModel.state.reportDTO.id = Int(id)
                 switch claimType {
