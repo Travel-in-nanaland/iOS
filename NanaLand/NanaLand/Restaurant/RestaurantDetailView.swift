@@ -636,45 +636,53 @@ struct RestaurantDetailView: View {
                 }
                 VStack(spacing: 0) {
                     Spacer()
-                    HStack(spacing: 0) {
-                        Button {
-                            Task {
-                                await toggleFavorite(body: FavoriteToggleRequest(id: Int(viewModel.state.getRestaurantDetailResponse.id), category: .restaurant))
+                    ZStack {
+                        Rectangle()
+                                .fill(Color.red) // 투명한 배경
+                                .frame(height: 56) // HStack과 같은 높이
+                                .shadow(color: Color.black.opacity(0.2), radius: 4, x: 0, y: -2) // 그림자 설정
+                        HStack(spacing: 0) {
+                            Button {
+                                Task {
+                                    await toggleFavorite(body: FavoriteToggleRequest(id: Int(viewModel.state.getRestaurantDetailResponse.id), category: .restaurant))
+                                }
+                            } label: {
+                                viewModel.state.getRestaurantDetailResponse.favorite ?
+                                Image("icHeartFillMain")
+                                    .renderingMode(.template)
+                                    .resizable()
+                                    .frame(width: 36, height: 36)
+                                    .foregroundStyle(Color.main)
+                                    .padding(.leading, 16) : Image("icFavoriteHeart")
+                                    .renderingMode(.template)
+                                    .resizable()
+                                    .frame(width: 36, height: 36)
+                                    .foregroundStyle(Color.main)
+                                    .padding(.leading, 16)
                             }
-                        } label: {
-                            viewModel.state.getRestaurantDetailResponse.favorite ?
-                            Image("icHeartFillMain")
-                                .renderingMode(.template)
-                                .resizable()
-                                .frame(width: 36, height: 36)
-                                .foregroundStyle(Color.main)
-                                .padding(.leading, 16) : Image("icFavoriteHeart")
-                                .renderingMode(.template)
-                                .resizable()
-                                .frame(width: 36, height: 36)
-                                .foregroundStyle(Color.main)
-                                .padding(.leading, 16)
-                        }
-                        Spacer()
-                        Button {
-                            // Todo - 리뷰 작성
-                            AppState.shared.navigationPath.append(ReviewType.review)
-                        } label: {
-                            Text(.writeReview)
-                                .font(.body_bold)
-                                .foregroundStyle(Color.white)
-                                .background(RoundedRectangle(cornerRadius: 50).foregroundStyle(Color.main).frame(width: Constants.screenWidth * (28 / 36), height: 40))
+                            Spacer()
+                            Button {
+                                // Todo - 리뷰 작성
+                                AppState.shared.navigationPath.append(ReviewType.review)
+                            } label: {
+                                Text(.writeReview)
+                                    .font(.body_bold)
+                                    .foregroundStyle(Color.white)
+                                    .background(RoundedRectangle(cornerRadius: 50).foregroundStyle(Color.main).frame(width: Constants.screenWidth * (28 / 36), height: 40))
+                                
+                                
+                            }
+                            .frame(width: Constants.screenWidth * (28 / 36), height: 40)
+                            .padding(.trailing, 16)
                             
                             
                         }
-                        .frame(width: Constants.screenWidth * (28 / 36), height: 40)
-                        .padding(.trailing, 16)
-                        
-                        
+                        .frame(width: Constants.screenWidth, height: 56)
+                        .background(Color.white)
                     }
-                    .frame(width: Constants.screenWidth, height: 56)
-                    .background(Color.white)
+                    
                 }
+                
             }
             .navigationDestination(for: ReviewType.self) { viewType in
                 switch viewType {

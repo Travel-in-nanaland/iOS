@@ -12,9 +12,12 @@ import MasonryStack
 struct UserProfileMainView: View {
     @StateObject var appState = AppState.shared
     @StateObject var viewModel = UserProfileMainViewModel()
+    @State private var reportReasonViewFlag = false // 신고하기로 네비게이션 하기 위한 플래그(신고 모달이 sheet 형태라 navigation stack에 포함 안됨)
     @State private var isAPICalled = false
+    @State private var id: Int64 = 0 // 유저 id 저장
     @AppStorage("provider") var provider: String = ""
     @State private var reportModal = false // 신고하기 모달창
+    @State private var isReport = false
     var memberId: Int64 = 1
     var body: some View {
         VStack(spacing: 0) {
@@ -24,6 +27,8 @@ struct UserProfileMainView: View {
                     Spacer()
                     Button {
                         reportModal = true
+                        // TODO: report할 유저의 ID 저장 하기
+                        id = memberId
                     } label: {
                         Image("icPointBtn")
                             .resizable()
@@ -147,6 +152,8 @@ struct UserProfileMainView: View {
                 ReviewAllMainView(memberId: id)
             case let .selectReview(id):
                 ReviewAllMainView(memberId: id, selectedReviewId: id)
+            case let .report(id, isReport):
+                ReportReasonView(id: id, isReport: $isReport, isUserReport: true)
             }
         }
         .onAppear {
@@ -159,6 +166,17 @@ struct UserProfileMainView: View {
             }
         }
         .toolbar(.hidden)
+        .sheet(isPresented: $reportModal, onDismiss: {
+            if reportReasonViewFlag {
+                AppState.shared.navigationPath.append(UserProfileViewType.report(id: memberId, isReport: isReport))
+            }
+        }) {
+            ReportModalView(reportReasonViewFlag: $reportReasonViewFlag)
+                .presentationDetents([.height(Constants.screenWidth * (103 / Constants.screenWidth))])
+        }
+        .overlay(
+            Toast(message: LocalizedKey.reportResult.localized(for: LocalizationManager.shared.language), isShowing: $isReport, isAnimating: true)
+        )
     }
     
     private var profileAndNickname: some View {
@@ -345,6 +363,7 @@ struct UserProfileMainView: View {
 enum UserProfileViewType: Hashable {
     case reviewAll(id: Int64)
     case selectReview(id: Int64)
+    case report(id: Int64, isReport: Bool) // 신고하기
 }
 
 #Preview {

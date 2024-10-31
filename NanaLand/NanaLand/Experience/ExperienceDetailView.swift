@@ -18,10 +18,10 @@ struct ExperienceDetailView: View {
     @State private var roundedHeight: CGFloat = (Constants.screenWidth - 40) * (224.0 / 358.0)
     @State private var keywordString = [""]
     @State private var reportModal = false
-    @State private var reportReasonViewFlag = false // 신고하기로 네비게이션 하기 위한 플래그(신고 모달이 sheet형태라 navigation stack에 포함 안됨)
+    @State private var reportReasonViewFlag = false // 신고하기로 네비게이션 하기 위한 플래그(신고 모달이 sheet형태라 navigation stack에 포함 안됨 -> 신고 모달창을 X버튼을 눌러서 껏는지, 신고하기 버튼을 눌러서 껏는지 확인하기 위해)
     @State private var idx: Int64 = 0
     @State var showAlert: Bool = false//삭제하기 alert 여부
-    @State var isReport: Bool = false
+    @State var isReport: Bool = false // 뭐지..
     
     var id: Int64
     var experienceType = "k"
@@ -635,8 +635,7 @@ struct ExperienceDetailView: View {
                                         }
                                         .frame(width: Constants.screenWidth - 32, height: 48)
                                         .background(){
-                                            RoundedRectangle(cornerRadius: 50).stroke(lineWidth: 1).foregroundStyle(.gray2).background(.clear
-                                            )
+                                            RoundedRectangle(cornerRadius: 50).stroke(lineWidth: 1).foregroundStyle(.gray2).background(.clear)
                                         }
                                     }
                                 }

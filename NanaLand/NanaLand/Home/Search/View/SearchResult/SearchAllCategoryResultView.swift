@@ -9,53 +9,159 @@ import SwiftUI
 
 struct SearchAllCategoryResultView: View {
     @ObservedObject var searchVM: SearchViewModel
-
+     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
-            SearchAllCategoryItem(
-                searchVM: searchVM,
-                category: .nature,
-                count: searchVM.state.allCategorySearchResult.nature.totalElements,
-                articles: searchVM.state.allCategorySearchResult.nature.data
-            )
-
-            SearchAllCategoryItem(
-                searchVM: searchVM,
-                category: .festival,
-                count: searchVM.state.allCategorySearchResult.festival.totalElements,
-                articles: searchVM.state.allCategorySearchResult.festival.data
-            )
-
-            SearchAllCategoryItem(
-                searchVM: searchVM,
-                category: .market,
-                count: searchVM.state.allCategorySearchResult.market.totalElements,
-                articles: searchVM.state.allCategorySearchResult.market.data
-            )
-
-            SearchAllCategoryItem(
-                searchVM: searchVM,
-                category: .experience,
-                count: searchVM.state.allCategorySearchResult.experience.totalElements,
-                articles: searchVM.state.allCategorySearchResult.experience.data
-            )
+            // 아이템 있는 것들 먼저 우선순위로 뷰 띄우기 위해서(리팩토링이 좀 필요할수도..)
+            if searchVM.state.allCategorySearchResult.nature.totalElements > 0 {
+                SearchAllCategoryItem(
+                    searchVM: searchVM,
+                    category: .nature,
+                    count: searchVM.state.allCategorySearchResult.nature.totalElements,
+                    articles: searchVM.state.allCategorySearchResult.nature.data
+                )
+            }
             
-            SearchAllCategoryItem(
-                searchVM: searchVM,
-                category: .restaurant,
-                count: searchVM.state.allCategorySearchResult.restaurant.totalElements,
-                articles: searchVM.state.allCategorySearchResult.restaurant.data
-            )
-
-            SearchAllCategoryItem(
-                searchVM: searchVM,
-                category: .nanaPick,
-                count: searchVM.state.allCategorySearchResult.nana.totalElements,
-                articles: searchVM.state.allCategorySearchResult.nana.data
-            )
+            if searchVM.state.allCategorySearchResult.festival.totalElements > 0 {
+                SearchAllCategoryItem(
+                    searchVM: searchVM,
+                    category: .festival,
+                    count: searchVM.state.allCategorySearchResult.festival.totalElements,
+                    articles: searchVM.state.allCategorySearchResult.festival.data
+                )
+            }
             
+            if searchVM.state.allCategorySearchResult.market.totalElements > 0 {
+                SearchAllCategoryItem(
+                    searchVM: searchVM,
+                    category: .market,
+                    count: searchVM.state.allCategorySearchResult.market.totalElements,
+                    articles: searchVM.state.allCategorySearchResult.market.data
+                )
+            }
             
-
+            if searchVM.state.allCategorySearchResult.experience.totalElements > 0 {
+                SearchAllCategoryItem(
+                    searchVM: searchVM,
+                    category: .experience,
+                    count: searchVM.state.allCategorySearchResult.experience.totalElements,
+                    articles: searchVM.state.allCategorySearchResult.experience.data
+                )
+            }
+            
+            if searchVM.state.allCategorySearchResult.restaurant.totalElements > 0 {
+                SearchAllCategoryItem(
+                    searchVM: searchVM,
+                    category: .restaurant,
+                    count: searchVM.state.allCategorySearchResult.restaurant.totalElements,
+                    articles: searchVM.state.allCategorySearchResult.restaurant.data
+                )
+            }
+            
+            if searchVM.state.allCategorySearchResult.nana.totalElements > 0 {
+                SearchAllCategoryItem(
+                    searchVM: searchVM,
+                    category: .nanaPick,
+                    count: searchVM.state.allCategorySearchResult.nana.totalElements,
+                    articles: searchVM.state.allCategorySearchResult.nana.data
+                )
+            }
+            
+            if searchVM.state.allCategorySearchResult.nature.totalElements == 0 {
+                SearchAllCategoryItem(
+                    searchVM: searchVM,
+                    category: .nature,
+                    count: searchVM.state.allCategorySearchResult.nature.totalElements,
+                    articles: searchVM.state.allCategorySearchResult.nature.data
+                )
+            }
+            
+            if searchVM.state.allCategorySearchResult.festival.totalElements == 0 {
+                SearchAllCategoryItem(
+                    searchVM: searchVM,
+                    category: .festival,
+                    count: searchVM.state.allCategorySearchResult.festival.totalElements,
+                    articles: searchVM.state.allCategorySearchResult.festival.data
+                )
+            }
+            
+            if searchVM.state.allCategorySearchResult.market.totalElements == 0 {
+                SearchAllCategoryItem(
+                    searchVM: searchVM,
+                    category: .market,
+                    count: searchVM.state.allCategorySearchResult.market.totalElements,
+                    articles: searchVM.state.allCategorySearchResult.market.data
+                )
+            }
+            
+            if searchVM.state.allCategorySearchResult.experience.totalElements == 0 {
+                SearchAllCategoryItem(
+                    searchVM: searchVM,
+                    category: .experience,
+                    count: searchVM.state.allCategorySearchResult.experience.totalElements,
+                    articles: searchVM.state.allCategorySearchResult.experience.data
+                )
+            }
+            
+            if searchVM.state.allCategorySearchResult.restaurant.totalElements == 0 {
+                SearchAllCategoryItem(
+                    searchVM: searchVM,
+                    category: .restaurant,
+                    count: searchVM.state.allCategorySearchResult.restaurant.totalElements,
+                    articles: searchVM.state.allCategorySearchResult.restaurant.data
+                )
+            }
+            
+            if searchVM.state.allCategorySearchResult.nana.totalElements == 0 {
+                SearchAllCategoryItem(
+                    searchVM: searchVM,
+                    category: .nanaPick,
+                    count: searchVM.state.allCategorySearchResult.nana.totalElements,
+                    articles: searchVM.state.allCategorySearchResult.nana.data
+                )
+            }
+//            SearchAllCategoryItem(
+//                searchVM: searchVM,
+//                category: .nature,
+//                count: searchVM.state.allCategorySearchResult.nature.totalElements,
+//                articles: searchVM.state.allCategorySearchResult.nature.data
+//            )
+//
+//            SearchAllCategoryItem(
+//                searchVM: searchVM,
+//                category: .festival,
+//                count: searchVM.state.allCategorySearchResult.festival.totalElements,
+//                articles: searchVM.state.allCategorySearchResult.festival.data
+//            )
+//
+//            SearchAllCategoryItem(
+//                searchVM: searchVM,
+//                category: .market,
+//                count: searchVM.state.allCategorySearchResult.market.totalElements,
+//                articles: searchVM.state.allCategorySearchResult.market.data
+//            )
+//
+//            SearchAllCategoryItem(
+//                searchVM: searchVM,
+//                category: .experience,
+//                count: searchVM.state.allCategorySearchResult.experience.totalElements,
+//                articles: searchVM.state.allCategorySearchResult.experience.data
+//            )
+//            
+//            SearchAllCategoryItem(
+//                searchVM: searchVM,
+//                category: .restaurant,
+//                count: searchVM.state.allCategorySearchResult.restaurant.totalElements,
+//                articles: searchVM.state.allCategorySearchResult.restaurant.data
+//            )
+//
+//            SearchAllCategoryItem(
+//                searchVM: searchVM,
+//                category: .nanaPick,
+//                count: searchVM.state.allCategorySearchResult.nana.totalElements,
+//                articles: searchVM.state.allCategorySearchResult.nana.data
+//            )
+//
             Spacer()
                 .frame(height: 100)
         }

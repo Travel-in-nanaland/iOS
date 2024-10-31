@@ -314,6 +314,7 @@ struct LocationModalView: View {
                 Text(.apply)
                     .font(.body_bold)
                     .foregroundStyle(Color.white)
+                    .frame(width: Constants.screenWidth - 32, height: 48)
             })
             .frame(width: Constants.screenWidth - 32, height: 48)
             .background(

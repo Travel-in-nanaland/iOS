@@ -223,6 +223,21 @@ struct HomeMainView: View {
                                         .lineLimit(1)
                                 }
                             }
+                        case "RESTAURANT":
+                            Button {
+                                AppState.shared.navigationPath.append(HomeViewType.restaurantDetail(id: Int(article.id)))
+                            }  label:{ VStack(alignment: .leading, spacing: 8) {
+                                KFImage(URL(string: article.firstImage.thumbnailUrl)!)
+                                    .resizable()
+                                    .frame(height: (Constants.screenWidth - 40) / 2 * (118 / 160))
+                                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                      
+                                Text(article.title)
+                                    .font(.gothicNeo(size: 14, font: "bold"))
+                                    .multilineTextAlignment(.leading)
+                                    .lineLimit(1)
+                            }
+                        }
                             
                         default:
                             Button {
@@ -300,6 +315,8 @@ struct HomeMainView: View {
                 NatureDetailView(id: Int64(id))
             case let .experienceDetail(id):
                 ExperienceDetailView(id: Int64(id))
+            case let .restaurantDetail(id):
+                RestaurantDetailView(id: Int64(id))
             case let .notification:
                 NotificationView()
             }
