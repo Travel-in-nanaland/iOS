@@ -10,6 +10,7 @@ import Kingfisher
 import CustomAlert
 
 struct ExperienceDetailView: View {
+    @EnvironmentObject var localizationManager: LocalizationManager
     @StateObject var viewModel = ExperienceDetailViewModel()
     @StateObject var userProfileViewModel = UserProfileMainViewModel()
     @State private var isOn = false // 더보기 버튼 클릭 여부
@@ -29,10 +30,10 @@ struct ExperienceDetailView: View {
         VStack {
             ZStack {
                 if (experienceType == "CultureArts") {
-                    NanaNavigationBar(title: .CultureArts, showBackButton: true)
+                    NanaNavigationBar(title: .cultureAndArts, showBackButton: true)
                         .frame(height: 56)
                 } else {
-                    NanaNavigationBar(title: .Activity, showBackButton: true)
+                    NanaNavigationBar(title: .activity, showBackButton: true)
                         .frame(height: 56)
                 }
                
@@ -330,7 +331,9 @@ struct ExperienceDetailView: View {
                                                                 }
                                                                 
                                                                 HStack(spacing: 0) {
-                                                                    Text("리뷰 \(viewModel.state.getReviewDataResponse.data[index].memberReviewCount ?? 0)")
+                                                                    Text(.review)
+                                                                        .font(.caption01)
+                                                                    Text(" \(viewModel.state.getReviewDataResponse.data[index].memberReviewCount ?? 0)")
                                                                         .font(.caption01)
                                                                     Text(" | ")
                                                                         .font(.caption01)
@@ -348,7 +351,7 @@ struct ExperienceDetailView: View {
                                                                 Button(action: {
                                                                     AppState.shared.navigationPath.append(ExperienceViewType.detailReivew(id: viewModel.state.getReviewDataResponse.data[index].id, category: "EXPERIENCE"))
                                                                 }, label: {
-                                                                    Text("수정")
+                                                                    Text(.modify)
                                                                         .font(.caption01)
                                                                         .foregroundColor(.gray1)
                                                                         .padding(EdgeInsets(top: 4, leading: 12, bottom: 4, trailing: 12))
@@ -361,7 +364,7 @@ struct ExperienceDetailView: View {
                                                                 Button(action: {
                                                                     showAlert = true
                                                                 }, label: {
-                                                                    Text("삭제")
+                                                                    Text(.delete)
                                                                         .font(.caption01)
                                                                         .foregroundColor(.gray1)
                                                                         .padding(EdgeInsets(top: 4, leading: 12, bottom: 4, trailing: 12))
@@ -370,7 +373,7 @@ struct ExperienceDetailView: View {
                                                                                 .foregroundColor(.gray3)
                                                                         }
                                                                 })
-                                                                .customAlert("해당 리뷰를\n 삭제하시겠습니까?", isPresented: $showAlert) {
+                                                                .customAlert(LocalizedKey.reviewDeleteMessage.localized(for: localizationManager.language), isPresented: $showAlert) {
                                                                     
                                                                 } actions: {
                                                                     MultiButton{
@@ -381,7 +384,7 @@ struct ExperienceDetailView: View {
                                                                                 await getReviewData(id: id, category: "EXPERIENCE", page: 0, size: 12)
                                                                             }
                                                                         } label: {
-                                                                            Text("네")
+                                                                            Text(.yes)
                                                                                 .font(.title02_bold)
                                                                                 .foregroundStyle(Color.black)
                                                                         }
@@ -389,7 +392,7 @@ struct ExperienceDetailView: View {
                                                                         Button {
                                                                             showAlert = false
                                                                         } label: {
-                                                                            Text("아니오")
+                                                                            Text(.no)
                                                                                 .font(.title02_bold)
                                                                                 .foregroundStyle(Color.main)
                                                                         }
@@ -491,7 +494,10 @@ struct ExperienceDetailView: View {
                                                                 }
                                                                 
                                                                 HStack(spacing: 0) {
-                                                                    Text("리뷰 \(viewModel.state.getReviewDataResponse.data[index].memberReviewCount ?? 0)")
+                                                                    Text(.review)
+                                                                        .font(.caption01)
+                                                                    
+                                                                    Text(" \(viewModel.state.getReviewDataResponse.data[index].memberReviewCount ?? 0)")
                                                                         .font(.caption01)
                                                                     Text(" | ")
                                                                         .font(.caption01)

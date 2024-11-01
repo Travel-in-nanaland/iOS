@@ -42,7 +42,7 @@ struct SearchDetailCategoryResultView: View {
                 .font(.gothicNeo(.medium, size: 14))
                 .foregroundStyle(Color.gray1)
                 
-                if searchVM.state.currentSearchTab == .experience || searchVM.state.currentSearchTab == .nanaPick || searchVM.state.currentSearchTab == .market || searchVM.state.currentSearchTab == .nature || searchVM.state.currentSearchTab == .festival {
+                if searchVM.state.currentSearchTab == .experience || searchVM.state.currentSearchTab == .nanaPick || searchVM.state.currentSearchTab == .market || searchVM.state.currentSearchTab == .nature || searchVM.state.currentSearchTab == .festival || searchVM.state.currentSearchTab == .restaurant {
                     if false {
                         VStack(spacing: 4) {
                             Image(.airplane)

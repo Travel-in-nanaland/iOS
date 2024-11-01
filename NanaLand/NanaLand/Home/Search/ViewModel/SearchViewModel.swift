@@ -83,6 +83,7 @@ final class SearchViewModel: ObservableObject {
 		state.festivalPage = 0
 		state.experiencePage = 0
 		state.nanaPage = 0
+        state.restaurantPage = 0
 	}
 	
 	private func setRecentSearch(term: String) {
@@ -238,7 +239,7 @@ final class SearchViewModel: ObservableObject {
             
             state.isLoading = true
             
-            if let data = await SearchService.searchExperienceCategory(term: term, page: state.restaurantPage) {
+            if let data = await SearchService.searchRestaurantCategory(term: term, page: state.restaurantPage) {
                 if state.restaurantPage == 0 {
                     state.restaurantCategorySearchResult = data.data
                 } else {
