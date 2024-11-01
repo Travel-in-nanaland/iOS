@@ -499,6 +499,9 @@ the market is the place!";
 "AbuseViolence" = "Abuse/Violence"; // 학대
 "etc" = "Etc"; // 기타
 "photosVideos" = "Photos / Videos"; 
+"reason" = "Reason for reporting";
+"reasonEssential" = "*Essential";
+"reportSend" = "Send";
 
 //MARK: - 나나스픽
 "nanapickRecommend1" = "This week’s ";

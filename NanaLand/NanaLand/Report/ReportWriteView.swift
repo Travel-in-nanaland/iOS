@@ -70,10 +70,10 @@ struct ReportWriteView: View {
                     VStack(spacing: 0) {
    
                         HStack(spacing: 0) {
-                            Text("신고사유")
+                            Text(.reason)
                                 .padding(.trailing, 12)
                                 .font(.title02_bold)
-                            Text("*필수")
+                            Text(.reasonEssential)
                                 .foregroundStyle(.main)
                                 .font(.caption01)
                             Spacer()
@@ -150,7 +150,7 @@ struct ReportWriteView: View {
                             Text(.email)
                                 .padding(.trailing, 12)
                                 .font(.title02_bold)
-                            Text("*필수")
+                            Text(.reasonEssential)
                                 .foregroundStyle(.main)
                                 .font(.caption01)
                             Spacer()
@@ -202,7 +202,7 @@ struct ReportWriteView: View {
                         
                       
                         HStack(spacing: 0) {
-                            Text("사진 / 동영상")
+                            Text(.photosVideos)
                                 .font(.title02_bold)
                             Spacer()
                         }
@@ -306,7 +306,7 @@ struct ReportWriteView: View {
                         AppState.shared.navigationPath.removeLast()
                     }
                 } label: {
-                    Text("보내기")
+                    Text(.reportSend)
                         .foregroundStyle(Color.white)
                 }
                 .frame(width: Constants.screenWidth - 32, height: 48)

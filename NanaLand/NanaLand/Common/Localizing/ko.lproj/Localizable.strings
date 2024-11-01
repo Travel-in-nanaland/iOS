@@ -490,6 +490,9 @@
 "AbuseViolence" = "학대 / 폭력"; // 학대
 "etc" = "기타"; // 기타
 "photosVideos" = "사진 / 동영상"; 
+"reason" = "신고 사유";
+"reasonEssential" = "*필수";
+"reportSend" = "보내기";
 
 //MARK: - 나나스픽
 "nanapickRecommend1" = "금주 ";

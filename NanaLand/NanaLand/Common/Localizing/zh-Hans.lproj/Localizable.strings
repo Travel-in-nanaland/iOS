@@ -494,3 +494,6 @@
 "AbuseViolence" = "虐待/暴力"; // 학대
 "etc" = "其他"; // 기타
 "photosVideos"="照片/视频";
+"reason" = "举报原因";
+"reasonEssential" = "*必填";
+"reportSend" = "发送";

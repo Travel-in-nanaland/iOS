@@ -506,4 +506,6 @@
 "AbuseViolence" = "Lạm dụng / Bạo lực"; // 학대
 "etc" = "Khác"; // 기타
 "photosVideos" = "Ảnh / Video"; 
-
+"reason" = "Lý do báo cáo";
+"reasonEssential" = "*Bắt buộc";
+"reportSend" = "Gửi";
