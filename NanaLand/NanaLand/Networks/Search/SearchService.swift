@@ -46,9 +46,9 @@ struct SearchService {
 	}
     
     static func searchRestaurantCategory(term: String, page: Int) async -> OldBaseResponse<ArticleResponse>? {
-        let response: OldBaseResponse<SearchDetailCategoryResponse>? = await NetworkManager.shared.request(SearchEndPoint.getSearchExperienceCategory(term: term, page: page))
+        let response: OldBaseResponse<SearchDetailCategoryResponse>? = await NetworkManager.shared.request(SearchEndPoint.getSearchRestaurantCategory(term: term, page: page))
         
-        return mapSearchDetailArticleToArticle(response, category: .experience)
+        return mapSearchDetailArticleToArticle(response, category: .restaurant)
     }
     
 	static func getPopularKeyword() async -> OldBaseResponse<[String]>? {

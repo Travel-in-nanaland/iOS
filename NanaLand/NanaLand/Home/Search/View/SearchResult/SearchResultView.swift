@@ -203,7 +203,7 @@ struct SearchResultView: View {
                 }
         }
         .tabViewStyle(.page(indexDisplayMode: .never))
-        .introspect(.scrollView, on: .iOS(.v16, .v17)) { scrollView in
+        .introspect(.scrollView, on: .iOS(.v16, .v17, .v18)) { scrollView in
             scrollView.isScrollEnabled = false
         }
     }

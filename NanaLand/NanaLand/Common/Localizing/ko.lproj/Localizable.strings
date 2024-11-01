@@ -500,3 +500,6 @@
 "nanapickRecommend3" = "나나's Pick";
 "nanapickAll" = "모두보기";
 "locationPoint" = "이 장소만의 매력 포인트✨";
+
+//MARK: - 타유저프로필
+"basicDescription" = "안녕하세요! 반가워요🖐️\n함께 제주 여행을 즐겨봐요 :D";

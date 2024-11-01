@@ -6,7 +6,7 @@
   
 */
 //MARK: - Common
-"resultCount" = " Results";
+"resultCount" = " trường hợp";
 "charCount" = "ký tự";
 "confirm" = "Confirm";
 "next" = "Next";
@@ -509,3 +509,6 @@
 "reason" = "Lý do báo cáo";
 "reasonEssential" = "*Bắt buộc";
 "reportSend" = "Gửi";
+
+//MARK: - 타유저프로필
+"basicDescription" = "Xin chào! Rất vui được gặp bạn🖐️\nHãy cùng tận hưởng chuyến du lịch đến Jeju";

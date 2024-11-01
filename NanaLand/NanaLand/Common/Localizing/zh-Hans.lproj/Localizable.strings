@@ -497,3 +497,6 @@
 "reason" = "举报原因";
 "reasonEssential" = "*必填";
 "reportSend" = "发送";
+
+//MARK: - 타유저프로필
+"basicDescription" = "你好！很高兴见到你🖐️\n一起享受济州的旅行吧";

@@ -47,7 +47,7 @@ extension SearchEndPoint: EndPoint {
 		case .getSearchNanaCategory:
 			return "/nana"
         case .getSearchRestaurantCategory:
-            return ""
+            return "/restaurant"
 		case .getPopularKeyword:
 			return "/popular"
 		case .getVolumeUp:

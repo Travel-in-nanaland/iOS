@@ -302,7 +302,7 @@ struct UserProfileMainView: View {
             if AppState.shared.userInfo.description.isEmpty {
                 HStack(spacing: 0) {
                     VStack{
-                        Text("안녕하세요! 반가워요✋\n함께 제주 여행을 즐겨봐요 :D")
+                        Text(.basicDescription)
                             .font(.body02)
                             .foregroundColor(.black)
                             .padding()
