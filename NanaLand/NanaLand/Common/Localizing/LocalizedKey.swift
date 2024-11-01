@@ -508,6 +508,10 @@ enum LocalizedKey: String {
     case medication // 약물
     case AbuseViolence // 학대
     case etc // 기타
+    case reason //신고사유
+    case photosVideos
+    case reasonEssential
+    case reportSend //보내기
     
     //MARK: - 나나스픽
     case nanapickRecommend1

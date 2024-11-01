@@ -498,3 +498,6 @@ mengembalikan sebarang hasil.";
 "AbuseViolence" = "Penyalahgunaan / Keganasan"; // 학대
 "etc" = "Lain-lain"; // 기타
 "photosVideos" = "Foto / Video"; 
+"reason" = "Sebab untuk laporan";
+"reasonEssential" = "*Diperlukan";
+"reportSend" = "Hantar";
