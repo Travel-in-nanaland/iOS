@@ -384,8 +384,9 @@ struct NewNaNaPickDetailMainView: View {
                                             HStack(spacing: 0) {
                                                 if data.infoKey == "이 장소만의 매력포인트" {
                                                     Button {
-                                                        specialModal = true
                                                         special = data.infoValue
+                                                        print("special2: \(special)")
+                                                        specialModal = true
                                                     } label: {
                                                         RoundedRectangle(cornerRadius: 30)
                                                             .frame(width: Constants.screenWidth * 0.95, height: 40)
@@ -567,11 +568,14 @@ struct NewNaNaPickDetailMainView: View {
                                         .padding(.bottom, 16)
                                         
                                         ForEach(detail.additionalInfoList, id: \.infoKey) { data in
+                                            
                                             HStack(spacing: 0) {
                                                 if data.infoKey == "이 장소만의 매력포인트" {
                                                     Button {
-                                                        specialModal = true
                                                         special = data.infoValue
+                                                        print("special: \(special)")
+                                                        specialModal = true
+                                                        
                                                     } label: {
                                                         RoundedRectangle(cornerRadius: 30)
                                                             .frame(width: Constants.screenWidth * 0.95, height: 40)
