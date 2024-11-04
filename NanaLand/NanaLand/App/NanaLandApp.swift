@@ -12,6 +12,9 @@ import GoogleSignIn
 import Firebase
 import UserNotifications
 import FirebaseMessaging
+import FirebaseFirestore
+import FirebaseCore
+import FirebaseAuth
 
 @main
 struct NanaLandApp: App {

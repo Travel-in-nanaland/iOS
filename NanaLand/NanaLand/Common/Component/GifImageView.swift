@@ -26,11 +26,7 @@ struct GifImageView: View {
                     Text("GIF 파일을 찾을 수 없습니다.")
                 }
             }
-            
-        
         }
-    
-        
     }
 }
 

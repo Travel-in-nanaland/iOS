@@ -8,6 +8,7 @@
 import SwiftUI
 import Kingfisher
 import SwiftUIIntrospect
+import FirebaseAnalytics
 
 struct HomeMainView: View {
     @EnvironmentObject var localizationManager: LocalizationManager
@@ -22,7 +23,10 @@ struct HomeMainView: View {
             VStack(spacing: 0) {
                 HStack(spacing: 0) {
                     Button(action: {
-                        
+                        Analytics.logEvent("button_click_custom", parameters: [
+                            "button_name": "로고 버튼 custom"
+                        ])
+                        print("analytics")
                     }) {
                         Image("icLogo")
                         
@@ -48,7 +52,6 @@ struct HomeMainView: View {
                         Image("icBell")
                     }
                     .padding(.trailing, 16)
-                    
                 }
                 .padding(.bottom, 8)
                 .padding(.top, 1)
