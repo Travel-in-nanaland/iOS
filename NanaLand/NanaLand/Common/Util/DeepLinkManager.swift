@@ -13,7 +13,7 @@ class DeepLinkManager {
 	
 	func makeLink(category: Category, id: Int) -> URL {
 		let lang = LocalizationManager.shared.language.deeplinkName
-		return URL(string: "\(Secrets.baseUrl)/share/\(lang)?category=\(category.rawValue)&id=\(id)")!
+		return URL(string: "\(Secrets.deepLinkUrl)/share/\(lang)?category=\(category.rawValue)&id=\(id)")!
 	}
 	
 	func handleDeepLink(url: URL) {
