@@ -23,19 +23,19 @@ struct NewNanaPickMainView: View {
     var layout: [GridItem] = [GridItem(.flexible())]
     
     private var hiddenView: some View {
-           GeometryReader { proxy in
-               let offsetX = proxy.frame(in: .global).origin.x
-               Color.clear
-                   .preference(
-                       key: ScrollPreferenceKey.self,
-                       value: offsetX
-                   )
-                   .onAppear { // 나타날때 뷰의 최초위치를 저장하는 로직
-                       self.offsetX = offsetX
-                   }
-           }
-           .frame(height: 0)
-       }
+        GeometryReader { proxy in
+            let offsetX = proxy.frame(in: .global).origin.x
+            Color.clear
+                .preference(
+                    key: ScrollPreferenceKey.self,
+                    value: offsetX
+                )
+                .onAppear { // 나타날때 뷰의 최초위치를 저장하는 로직
+                    self.offsetX = offsetX
+                }
+        }
+        .frame(height: 0)
+    }
     
     var body: some View {
         VStack(spacing: 0){
@@ -60,16 +60,16 @@ struct NewNanaPickMainView: View {
                             recommend
                         } else if localizationManager.language == .malaysia {
                             let recommend = Text(.nanapickRecommend1).font(.title02_bold).foregroundColor(.main) + Text(.nanapickRecommend2).font(.title02_bold).foregroundColor(.black) + Text(.nanapickRecommend3).font(.title02_bold).foregroundColor(.black)
-
+                            
                             
                             recommend
                         } else {
                             let recommend = Text(.nanapickRecommend1).font(.title02_bold).foregroundColor(.black) + Text(.nanapickRecommend2).font(.title02_bold).foregroundColor(.main) + Text(.nanapickRecommend3).font(.title02_bold).foregroundColor(.black)
-
+                            
                             
                             recommend
                         }
-                    
+                        
                         Spacer()
                     }
                     .padding()
@@ -78,7 +78,7 @@ struct NewNanaPickMainView: View {
                     ScrollViewReader { proxy in
                         ScrollView(.horizontal) {
                             ZStack {
-                               // hiddenView
+                                // hiddenView
                                 LazyHGrid(rows: layout){
                                     ForEach(viewModel.state.getNanaPickRecommendResponse, id: \.id) { recommend in
                                         Button(action: {
@@ -91,25 +91,25 @@ struct NewNanaPickMainView: View {
                                     }
                                 }
                             }
-                          
+                            
                         }
-//                        .onPreferenceChange(ScrollPreferenceKey.self, perform: { value in
-//                            let direction = value > previousOffset ? "Right" : "Left"
-//                            previousOffset = value
-//                            print(scrollDirection)
-//                            if direction == "Left" { // 스크롤을 왼쪽으로 땡겼을 때
-//                                if value <= -100.0 && value >= -110.0 {
-//                                    withAnimation {
-//                                        proxy.scrollTo(viewModel.state.getNanaPickRecommendResponse[1].id, anchor: .leading)
-//                                    }
-//                                }
-//                                if value <= -350.0 && value >= -360.0 {
-//                                    withAnimation {
-//                                        proxy.scrollTo(viewModel.state.getNanaPickRecommendResponse[2].id, anchor: .leading)
-//                                    }
-//                                }
-//                            }
-//                        })
+                        //                        .onPreferenceChange(ScrollPreferenceKey.self, perform: { value in
+                        //                            let direction = value > previousOffset ? "Right" : "Left"
+                        //                            previousOffset = value
+                        //                            print(scrollDirection)
+                        //                            if direction == "Left" { // 스크롤을 왼쪽으로 땡겼을 때
+                        //                                if value <= -100.0 && value >= -110.0 {
+                        //                                    withAnimation {
+                        //                                        proxy.scrollTo(viewModel.state.getNanaPickRecommendResponse[1].id, anchor: .leading)
+                        //                                    }
+                        //                                }
+                        //                                if value <= -350.0 && value >= -360.0 {
+                        //                                    withAnimation {
+                        //                                        proxy.scrollTo(viewModel.state.getNanaPickRecommendResponse[2].id, anchor: .leading)
+                        //                                    }
+                        //                                }
+                        //                            }
+                        //                        })
                     }
                     //                    .introspect(.scrollView, on: .iOS(.v16, .v17)) { scrollView in
                     //                        scrollView.isScrollEnabled = true
@@ -117,7 +117,7 @@ struct NewNanaPickMainView: View {
                     //                    }
                     .scrollIndicators(.hidden)
                     .padding(.top, -10)
-                        
+                    
                     
                     HStack(spacing: 0){
                         Text(.nanaPick)
@@ -136,7 +136,7 @@ struct NewNanaPickMainView: View {
                                     .font(.caption01)
                                     .foregroundColor(.gray1)
                             }
-
+                            
                         }
                     }
                     .padding()
@@ -182,7 +182,7 @@ struct NewNanaPickMainView: View {
 
 
 struct NanaPickRecommendView: View {
-
+    
     var imageUrl: String
     var version: String
     var heading: String
@@ -197,7 +197,7 @@ struct NanaPickRecommendView: View {
                     .scaledToFill()
                     .frame(width: 210, height: 280)
                     .clipped()
-
+                
                 Rectangle()
                     .foregroundColor(.clear)
                     .background(){
@@ -269,6 +269,7 @@ struct NanaPickRecommendView: View {
                         .foregroundColor(.black)
                     
                     Spacer()
+                    
                 }
                 .padding(.top, 10)
             }
@@ -285,67 +286,68 @@ struct NewNanaPickArticleItem: View {
     
     var body: some View {
         
-        RoundedRectangle(cornerRadius: 10)
-            .frame(width: Constants.screenWidth * 0.92, height: 80)
-            .foregroundColor(.white)
-            .shadow(radius: 1)
-            .overlay(){
-                HStack(spacing: 0){
-                    KFImage(URL(string: imageUrl))
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 72, height: 80)
-                        .clipped()
-                        .clipShape(CustomCornerRadiusShape(corners: [.topLeft, .bottomLeft], radius: 10))
-                        .overlay(){
-                            if newest {
-                                VStack(spacing: 0){
-                                    HStack(spacing: 0){
-                                        RoundedRectangle(cornerRadius: 15)
-                                            .frame(width: 36, height: 16)
-                                            .foregroundColor(.main)
-                                            .overlay(){
-                                                Text("NEW")
-                                                    .font(.caption02_semibold)
-                                                    .foregroundColor(.white)
-                                            }
-                                        
+        Button {
+            AppState.shared.navigationPath.append(NewNanaPickType.detail(id: id))
+        } label: {
+            RoundedRectangle(cornerRadius: 10)
+                .frame(width: Constants.screenWidth * 0.92, height: 80)
+                .foregroundColor(.white)
+                .shadow(radius: 1)
+                .overlay(){
+                    HStack(spacing: 0){
+                        KFImage(URL(string: imageUrl))
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 72, height: 80)
+                            .clipped()
+                            .clipShape(CustomCornerRadiusShape(corners: [.topLeft, .bottomLeft], radius: 10))
+                            .overlay(){
+                                if newest {
+                                    VStack(spacing: 0){
+                                        HStack(spacing: 0){
+                                            RoundedRectangle(cornerRadius: 15)
+                                                .frame(width: 36, height: 16)
+                                                .foregroundColor(.main)
+                                                .overlay(){
+                                                    Text("NEW")
+                                                        .font(.caption02_semibold)
+                                                        .foregroundColor(.white)
+                                                }
+                                            
+                                            Spacer()
+                                        }
                                         Spacer()
                                     }
-                                    Spacer()
+                                    .padding(.top, 5)
+                                    .padding(.leading, 5)
                                 }
-                                .padding(.top, 5)
-                                .padding(.leading, 5)
                             }
-                        }
-                    
-                    VStack(alignment: .leading, spacing: 0){
-                        Text(subHeading)
-                            .font(.body_bold)
-                            .foregroundColor(.black)
-                            .padding(.bottom, 5)
                         
-                        Text(version)
-                            .font(.caption01)
-                            .foregroundColor(.black)
-                    }
-                    .padding()
-                    
-                    Spacer()
-                    
-                    VStack(spacing: 0){
+                        VStack(alignment: .leading, spacing: 0){
+                            Text(subHeading)
+                                .font(.body_bold)
+                                .foregroundColor(.black)
+                                .padding(.bottom, 5)
+                            
+                            Text(version)
+                                .font(.caption01)
+                                .foregroundColor(.black)
+                        }
+                        .padding()
+                        
                         Spacer()
                         
-                        Button {
-                            AppState.shared.navigationPath.append(NewNanaPickType.detail(id: id))
-                        } label: {
+                        VStack(spacing: 0){
+                            Spacer()
+                            
                             Image("icArrow")
+                            
                         }
-
+                        .padding()
                     }
-                    .padding()
                 }
-            }
+        }
+        
     }
 }
 
