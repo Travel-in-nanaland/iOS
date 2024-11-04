@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NewNanaPickSpecialModalView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    var content: String
+    @Binding var content: String
     var body: some View {
         ZStack{
             
@@ -50,5 +50,5 @@ struct NewNanaPickSpecialModalView: View {
 }
 
 #Preview {
-    NewNanaPickSpecialModalView(content: "높은 장소성 :넓은 마당과, 도립공원,오설록등 곳곳에 펼쳐진 제주 명소속에서 프라이빗한 독채 한옥을 즐길수 있다.\n침실 : 고재에서 풍겨오는 은은한 나무향과 한지와 같은 전통 소재를 활용한 전통성, 한편으론 편의를 위해 마련된 프리미엄 브랜드 소재의 침구")
+    NewNanaPickSpecialModalView(content: .constant("높은 장소성 :넓은 마당과, 도립공원,오설록등 곳곳에 펼쳐진 제주 명소속에서 프라이빗한 독채 한옥을 즐길수 있다.\n침실 : 고재에서 풍겨오는 은은한 나무향과 한지와 같은 전통 소재를 활용한 전통성, 한편으론 편의를 위해 마련된 프리미엄 브랜드 소재의 침구"))
 }
