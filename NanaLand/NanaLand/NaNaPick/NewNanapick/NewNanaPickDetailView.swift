@@ -403,12 +403,13 @@ struct NewNaNaPickDetailMainView: View {
                                                                 .padding()
                                                             }
                                                     }
+                                                    .fullScreenCover(isPresented: $specialModal) {
+                                                        NewNanaPickSpecialModalView(content: $special)
+                                                            .background(ClearBackgroundView())
+                                                    }
                                                 }
+                                                
                                             }
-                                        }
-                                        .fullScreenCover(isPresented: $specialModal) {
-                                            NewNanaPickSpecialModalView(content: special)
-                                                .background(ClearBackgroundView())
                                         }
                                     }
                                     .padding(.bottom, 30)
@@ -588,13 +589,14 @@ struct NewNaNaPickDetailMainView: View {
                                                                 .padding()
                                                             }
                                                     }
+                                                    .fullScreenCover(isPresented: $specialModal) {
+                                                        NewNanaPickSpecialModalView(content: $special)
+                                                            .background(ClearBackgroundView())
+                                                    }
                                                 }
                                             }
                                         }
-                                        .fullScreenCover(isPresented: $specialModal) {
-                                            NewNanaPickSpecialModalView(content: special)
-                                                .background(ClearBackgroundView())
-                                        }
+                                        
                                     }
                                     .padding(.bottom, 30)
                                 }
