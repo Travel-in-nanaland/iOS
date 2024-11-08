@@ -169,8 +169,9 @@ final class AuthManager: NSObject {
 	/// 서버에 로그인 실패(404)시 회원가입 필요(데이터 임시저장)
 	/// 서버에 로그인 성공 시 다음 화면
 	func loginToServer(request: LoginRequest, email: String, gender: String = "", birthDate: String = "") async {
-		let result = await AuthService.loginServer(body: request)
 		
+        let result = await AuthService.loginServer(body: request)
+    
 		if let tokens = result?.data {
 			// 로그인 성공 토큰 저장하고 홈 화면으로
 			KeyChainManager.addItem(key: "accessToken", value: tokens.accessToken)
@@ -180,6 +181,7 @@ final class AuthManager: NSObject {
 			self.provider = request.provider
 			
 		} else if result?.status == 404 {
+
 			// 로그인 실패(404)인 경우 회원가입 필요
 			// 현재 상태 저장하고 약관 동의 화면으로
 			registerVM.state.registerRequest = RegisterRequest(

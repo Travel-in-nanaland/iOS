@@ -100,7 +100,6 @@ class NetworkManager {
                     encoder: JSONParameterEncoder.default,
                     headers: endPoint.headers
                 )
-                .validate()
             }
             
         case let .requestJSONWithImage(multipartFile, body, withInterceptor):
@@ -114,7 +113,6 @@ class NetworkManager {
                     multipartFormData.append(jsonData, withName: "reqDto", mimeType: "application/json")
                 }
             }, to: URL(string: "\(endPoint.baseURL)\(endPoint.path)")!, method: endPoint.method, headers: endPoint.headers, interceptor: withInterceptor ? Interceptor() : nil)
-            .validate()
             // 리뷰 요청 보내기 위해서 만든 케이스(body, imageFile, parameter 까지)
         case let .requestJSONWithImageWithParam(multipartFile, body, withInterceptor, parameters):
             var urlComponents = URLComponents(string: "\(endPoint.baseURL)\(endPoint.path)")!
