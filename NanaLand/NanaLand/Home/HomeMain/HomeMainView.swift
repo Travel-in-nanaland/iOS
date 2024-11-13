@@ -498,8 +498,9 @@ struct AdvertisementView: View {
         .navigationDestination(for: AdvertisementViewType.self) { viewType in
             switch viewType {
             case .ad1:
-                // 광고 클릭으로 들어간 경우
-                NatureMainView(isAdvertisement: true)
+                // TODO: - 광고 클릭으로 들어갈 경우 구현
+                // 광고 클릭으로 들어간 경우 추가해야함
+                NatureMainView()
             case .ad2:
                 NatureMainView()
             case .ad3:

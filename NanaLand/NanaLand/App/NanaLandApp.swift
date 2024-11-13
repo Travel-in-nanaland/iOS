@@ -39,6 +39,7 @@ struct NanaLandApp: App {
 			NanaHome()
 				.environmentObject(localizationdManager)
 				.onOpenURL{ url in
+                    print("url: \(url)")
 					if url.scheme == "nanaland" {
 						DeepLinkManager.shared.handleDeepLink(url: url )
 					} else if (AuthApi.isKakaoTalkLoginUrl(url)) {

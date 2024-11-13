@@ -295,7 +295,7 @@ final class AuthManager: NSObject {
 	}
 	
 	/// 회원탈퇴
-	func withdraw(withdrawalType: String) {
+	func withdraw(withdrawalType: String) async{
 		if provider == "KAKAO" {
 			kakaoWithdraw(withdrawalType: withdrawalType)
 		} else if provider == "GOOGLE" {
@@ -400,6 +400,7 @@ final class AuthManager: NSObject {
 			.responseData { response in
 				switch response.result {
 				case .success(let result):
+                    print(result)
 					let decoder = JSONDecoder()
 					if let decodedData = try? decoder.decode(AppleTokenResponse.self, from: result) {
 						print("애플 토큰 발급 성공 \(decodedData.refresh_token)")
