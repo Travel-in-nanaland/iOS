@@ -485,7 +485,7 @@ mengembalikan sebarang hasil.";
 "reportReasonValidation" = "Sila tulis sebab laporan anda dalam sekurang-kurangnya 20 aksara!"; // 신고 사유
 "reportCharacterPermission" = "Kandungan boleh ditulis dalam 500 aksara atau kurang.";// 내용 500자 이하
 "reportResultEmail" = "Sila masukkan alamat e-mel anda untuk menerima keputusan laporan."; // 신고 결과 이메일
-"emailValidation " = "Format e-mel tidak betul. Sila masukkan semula!";// 이메일 벨리 체크
+"emailValidation" = "Format e-mel tidak betul. Sila masukkan semula!";// 이메일 벨리 체크
 "reportReason" = "Sila beritahu kami mengapa anda melaporkannya!"; // 신고사유
 "reportWarning" = "Maklumat yang dilaporkan tanpa alasan yang sah mesti disahkan oleh pentadbir./nIa mungkin tidak akan diterima."; // 허위신고 주의문구
 "profitPromotionalPurpose" = "Untuk tujuan keuntungan / promosi"; // 영리목적 / 홍보성

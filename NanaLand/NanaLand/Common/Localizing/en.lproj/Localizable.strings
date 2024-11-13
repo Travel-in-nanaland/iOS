@@ -48,8 +48,8 @@
 "googleLogin" = "Sign in with Google";
 "nonMemeberLogin" = "Browse Without Logging In";
 "welcomeToNanaLand" = "Welcome to\nnanaland in Jeju";
-"enterNicknameAndProfile" = "Enter your name and\nselect a profile picture.";
-"nicknameTextFieldPlaceHolder" = "Please enter your name";
+"enterNicknameAndProfile" = "Enter your Nickname and\nselect a profile picture.";
+"nicknameTextFieldPlaceHolder" = "Please enter your Nickname";
 
 //MARK: - Terms
 "allAgree" = "Agree to All";
@@ -486,7 +486,7 @@ the market is the place!";
 "reportReasonValidation" = "Please write the reason for your report in at least 20 characters!"; // 신고 사유
 "reportCharacterPermission" = "Content can be written in 500 characters or less.";// 내용 500자 이하
 "reportResultEmail" = "Please enter your email address to receive the report results."; // 신고 결과 이메일
-"emailValidation " = "The email format is incorrect. Please enter again!";// 이메일 벨리 체크
+"emailValidation" = "The email format is incorrect. Please enter again!";// 이메일 벨리 체크
 "reportReason" = "Please tell us why you are reporting it!"; // 신고사유
 "reportWarning" = "Information reported without valid grounds must be confirmed by the administrator./nIt may not be reflected."; // 허위신고 주의문구
 "profitPromotionalPurpose" = "For profit / promotional purpose"; // 영리목적 / 홍보성

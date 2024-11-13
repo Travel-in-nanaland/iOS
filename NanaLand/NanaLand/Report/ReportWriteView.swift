@@ -50,6 +50,7 @@ struct ReportWriteView: View {
                         .fullScreenCover(isPresented: $showAlert) {
                             AlertView(title: .reviewBackAlertTitle, message: .reviewBackAlertMessage, leftButtonTitle: .yes, rightButtonTitle: .no, leftButtonAction: {
                                 showAlert = false
+                                isReport = false
                                 dismiss()
                             }, rightButtonAction: {
                                 showAlert = false
@@ -316,14 +317,13 @@ struct ReportWriteView: View {
                 )
                 .disabled(!reasonValidate || emailTextWarning || emailText.count == 0)
                 .padding(.bottom, 24)
-             
             }
             .overlay(
                 Toast(message: toastMessage, isShowing: $showToast, isAnimating: true)
             )
             .toolbar(.hidden)
             .onAppear {
-                print("유젘ㅋㅋㅋㅋㅋㅋㅋ:\(isUserReport)")
+                print("\(isUserReport)")
                 if isUserReport {
                     viewModel.state.reportDTO.reportType = "MEMBER"
                 } else {

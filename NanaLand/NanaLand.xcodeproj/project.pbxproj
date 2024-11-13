@@ -160,7 +160,6 @@
 		6D6D30902C61FAAF00002F77 /* report_complete.json in Resources */ = {isa = PBXBuildFile; fileRef = 6D6D308D2C61FAAF00002F77 /* report_complete.json */; };
 		6D6D30912C61FAAF00002F77 /* review_experience.json in Resources */ = {isa = PBXBuildFile; fileRef = 6D6D308E2C61FAAF00002F77 /* review_experience.json */; };
 		6D7756752C8F4E190085D747 /* SearchReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7756742C8F4E190085D747 /* SearchReviewView.swift */; };
-		6D7DDEA82CD4757A003BE67B /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 6D7DDEA72CD4757A003BE67B /* loading.json */; };
 		6D7F580E2C7A5F8700FA08A9 /* MenuModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7F580D2C7A5F8700FA08A9 /* MenuModalView.swift */; };
 		6D9EDAD12C5B459A003A8DE5 /* secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9EDAD02C5B459A003A8DE5 /* secret.swift */; };
 		6D9EDAD32C5B47B4003A8DE5 /* RestaurantKeywordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9EDAD22C5B47B4003A8DE5 /* RestaurantKeywordView.swift */; };
@@ -209,6 +208,7 @@
 		BF1611492BDB7870000340F2 /* ShopService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1611482BDB7870000340F2 /* ShopService.swift */; };
 		BF16114B2BDB7881000340F2 /* ShopEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF16114A2BDB7881000340F2 /* ShopEndPoint.swift */; };
 		BF17B5FE2C5B261B0045B6E3 /* UserProfileMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF17B5FD2C5B261B0045B6E3 /* UserProfileMainView.swift */; };
+		BF1AA1CF2CDDD8A500B10E88 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = BF1AA1CE2CDDD8A500B10E88 /* loading.json */; };
 		BF1AD4F72C60994200334E8F /* ReviewAllDetailMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AD4F62C60994200334E8F /* ReviewAllDetailMainView.swift */; };
 		BF1AD4F92C60995100334E8F /* ReviewAllDetailMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AD4F82C60995100334E8F /* ReviewAllDetailMainViewModel.swift */; };
 		BF22B8032C460F7D0059B380 /* ExperienceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF22B8022C460F7D0059B380 /* ExperienceService.swift */; };
@@ -482,7 +482,6 @@
 		6D6D308E2C61FAAF00002F77 /* review_experience.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = review_experience.json; sourceTree = "<group>"; };
 		6D7756742C8F4E190085D747 /* SearchReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchReviewView.swift; sourceTree = "<group>"; };
 		6D7C3B892C7E1BA800F5A09E /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
-		6D7DDEA72CD4757A003BE67B /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		6D7F580D2C7A5F8700FA08A9 /* MenuModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModalView.swift; sourceTree = "<group>"; };
 		6D9EDAD02C5B459A003A8DE5 /* secret.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = secret.swift; sourceTree = "<group>"; };
 		6D9EDAD22C5B47B4003A8DE5 /* RestaurantKeywordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantKeywordView.swift; sourceTree = "<group>"; };
@@ -524,6 +523,7 @@
 		BF1611482BDB7870000340F2 /* ShopService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopService.swift; sourceTree = "<group>"; };
 		BF16114A2BDB7881000340F2 /* ShopEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopEndPoint.swift; sourceTree = "<group>"; };
 		BF17B5FD2C5B261B0045B6E3 /* UserProfileMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileMainView.swift; sourceTree = "<group>"; };
+		BF1AA1CE2CDDD8A500B10E88 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = loading.json; path = ../../../../../../../../../Downloads/loading.json; sourceTree = "<group>"; };
 		BF1AD4F62C60994200334E8F /* ReviewAllDetailMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewAllDetailMainView.swift; sourceTree = "<group>"; };
 		BF1AD4F82C60995100334E8F /* ReviewAllDetailMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewAllDetailMainViewModel.swift; sourceTree = "<group>"; };
 		BF22B8022C460F7D0059B380 /* ExperienceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceService.swift; sourceTree = "<group>"; };
@@ -687,13 +687,13 @@
 		2C2D3D562C05993D002A38AA /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
-				6D7DDEA72CD4757A003BE67B /* loading.json */,
 				6D4BC7BF2CA733E700ADA908 /* splash.gif */,
 				BF548BDB2C7CDA5300B34635 /* report_complete_comment.json */,
 				BF548BDA2C7CDA5300B34635 /* report_complete_megaphone.json */,
 				6DF18F072C6E25120021ED5B /* TestLoading.json */,
 				6D6D308D2C61FAAF00002F77 /* report_complete.json */,
 				6D6D308E2C61FAAF00002F77 /* review_experience.json */,
+				BF1AA1CE2CDDD8A500B10E88 /* loading.json */,
 				6D6D308C2C61FAAF00002F77 /* review_restaurant.json */,
 				2C2749862C0992AA00ECBA71 /* report_info_star.json */,
 				2C2749882C09950900ECBA71 /* loading_drink.json */,
@@ -1713,7 +1713,7 @@
 				2C1F31C52BCD01390066819F /* AppleSDGothicNeoH.ttf in Resources */,
 				2C2749872C0992AB00ECBA71 /* report_info_star.json in Resources */,
 				BF548BDC2C7CDA5400B34635 /* report_complete_megaphone.json in Resources */,
-				6D7DDEA82CD4757A003BE67B /* loading.json in Resources */,
+				BF1AA1CF2CDDD8A500B10E88 /* loading.json in Resources */,
 				BF548BDD2C7CDA5400B34635 /* report_complete_comment.json in Resources */,
 				6D0A43402C9F2E9300529D1E /* AuthKey_9JRUHFTK3L.p8 in Resources */,
 				6D4BC7C02CA733E700ADA908 /* splash.gif in Resources */,
@@ -2184,7 +2184,7 @@
 				CODE_SIGN_ENTITLEMENTS = NanaLand/NanaLand.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"NanaLand/Preview Content\"";
 				DEVELOPMENT_TEAM = UM6P9H795G;
 				ENABLE_PREVIEWS = YES;
@@ -2223,7 +2223,7 @@
 				CODE_SIGN_ENTITLEMENTS = NanaLand/NanaLand.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"NanaLand/Preview Content\"";
 				DEVELOPMENT_TEAM = UM6P9H795G;
 				ENABLE_PREVIEWS = YES;

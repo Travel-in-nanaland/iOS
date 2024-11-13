@@ -48,8 +48,8 @@
 "googleLogin" = "Đăng nhập bằng Google";
 "nonMemeberLogin" = "Duyệt mà không cần đăng nhập";
 "welcomeToNanaLand" = "Welcome to\nnanaland in Jeju";
-"enterNicknameAndProfile" = "Enter your name and\nselect a profile picture.";
-"nicknameTextFieldPlaceHolder" = "Please enter your name";
+"enterNicknameAndProfile" = "Enter your Nickname and\nselect a profile picture.";
+"nicknameTextFieldPlaceHolder" = "Please enter your Nickname";
 
 //MARK: - Terms
 "allAgree" = "Agree to All";
@@ -493,7 +493,7 @@
 "reportReasonValidation" = "Vui lòng viết lý do báo cáo của bạn bằng ít nhất 20 ký tự!"; // 신고 사유
 "reportCharacterPermission" = "Nội dung có thể được viết bằng 500 ký tự hoặc ít hơn.";// 내용 500자 이하
 "reportResultEmail" = "Vui lòng nhập địa chỉ email của bạn để nhận kết quả báo cáo."; // 신고 결과 이메일
-"emailValidation " = "Định dạng email không đúng. Vui lòng nhập lại!";// 이메일 벨리 체크
+"emailValidation" = "Định dạng email không đúng. Vui lòng nhập lại!";// 이메일 벨리 체크
 "reportReason" = "Hãy cho chúng tôi biết lý do bạn báo cáo!"; // 신고사유
 "reportWarning" = "Thông tin báo cáo không có căn cứ hợp lệ phải được xác nhận bởi quản trị viên.Có thể sẽ không được phản ánh."; // 허위신고 주의문구
 "profitPromotionalPurpose" = "Vì mục đích lợi nhuận / quảng cáo"; // 영리목적 / 홍보성
