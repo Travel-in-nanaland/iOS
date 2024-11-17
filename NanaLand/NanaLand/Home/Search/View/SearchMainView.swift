@@ -67,7 +67,7 @@ struct SearchMainView: View {
         VStack(spacing: 0) {
             HStack {
                 Text(.recentSearchTerm)
-                    .font(.gothicNeo(.bold, size: 18))
+                    .font(.body_bold)
                     .foregroundStyle(Color.baseBlack)
                 
                 Spacer()
@@ -146,7 +146,7 @@ struct SearchMainView: View {
                     Text(.popularSearchTerm)
                 }
             }
-            .font(.gothicNeo(.bold, size: 18))
+            .font(.body_bold)
             .foregroundStyle(Color.baseBlack)
             .padding(.bottom, 16)
             
@@ -165,7 +165,7 @@ struct SearchMainView: View {
                             Text("\(searchVM.state.popularSearchTerms[index])")
                             Spacer(minLength: 0)
                         }
-                        .font(.gothicNeo(index == 0 || index == 1 ? .semibold : .medium, size: 14))
+                        .font(.body02)
                         .foregroundStyle(index == 0 || index == 1 ? Color.main : Color.gray1)
                         .onTapGesture {
                             search(term: searchVM.state.popularSearchTerms[index])
@@ -183,7 +183,7 @@ struct SearchMainView: View {
                                 Text("\(searchVM.state.popularSearchTerms[index])")
                                 Spacer(minLength: 0)
                             }
-                            .font(.gothicNeo(.medium, size: 14))
+                            .font(.body02)
                             .foregroundStyle(Color.gray1)
                             .onTapGesture {
                                 search(term: searchVM.state.popularSearchTerms[index])
@@ -202,7 +202,7 @@ struct SearchMainView: View {
         
             VStack(alignment: .leading, spacing: 0) {
                 Text(.searchVolumeUp)
-                    .font(.gothicNeo(.bold, size: 18))
+                    .font(.body_bold)
                     .foregroundStyle(Color.baseBlack)
                     .padding(.bottom, 16)
                 LazyVGrid(
@@ -257,7 +257,7 @@ struct SearchMainView: View {
                                 }
                                 
                                 Text(article.title)
-                                    .font(.gothicNeo(.bold, size: 14))
+                                    .font(.body02_semibold)
                                     .foregroundStyle(.black)
                                     .lineLimit(1)
                                 

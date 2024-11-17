@@ -109,7 +109,7 @@ struct LocationModalView: View {
         VStack(spacing: 0) {
             HStack(spacing: 0) {
                 Text(.location)
-                    .font(.title02_bold)
+                    .font(.body_bold)
                     .padding(.leading, 16)
                     .padding(.top, 24)
                 Spacer()
@@ -145,7 +145,7 @@ struct LocationModalView: View {
                         toggleButton(index)
                     }, label: {
                         Text(locationArray[index].localized(for: localizationManager.language))
-                            .font(.gothicNeo(.regular, size: 12))
+                            .font(.body02)
                             .foregroundStyle(buttonsToggled[index] ? Color.main : Color.gray1)
                             .padding(.leading, 7)
                             .padding(.trailing, 7)

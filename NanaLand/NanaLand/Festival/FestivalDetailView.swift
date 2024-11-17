@@ -70,7 +70,7 @@ struct FestivalDetailView: View {
                                     .padding(.bottom, 12)
                                     HStack(spacing: 0) {
                                         Text(viewModel.state.getFestivalDetailResponse.title)
-                                            .font(.gothicNeo(.bold, size: 20))
+                                            .font(.title02_bold)
                                             .padding(.leading, 16)
                                         Spacer()
                                     }
@@ -78,7 +78,7 @@ struct FestivalDetailView: View {
                                     .padding(.bottom, 8)
                                     
                                     Text(viewModel.state.getFestivalDetailResponse.content)
-                                        .font(.gothicNeo(.regular, size: 16))
+                                        .font(.body02)
                                         .frame(height: roundedHeight * (84 / 224))
                                         .padding(.leading, 16)
                                         .padding(.trailing, 16)
@@ -145,14 +145,14 @@ struct FestivalDetailView: View {
                                     .padding(.bottom, 12)
                                     HStack(spacing: 0) {
                                         Text(viewModel.state.getFestivalDetailResponse.title)
-                                            .font(.gothicNeo(.bold, size: 20))
+                                            .font(.title02_bold)
                                             .padding(.leading, 16)
                                         Spacer()
                                     }
                                     .padding(.bottom, 8)
                                     Text(viewModel.state.getFestivalDetailResponse.content)
                                         .fixedSize(horizontal: false, vertical: true)
-                                        .font(.gothicNeo(.regular, size: 16))
+                                        .font(.body02)
                                         .padding(.leading, 16)
                                         .padding(.trailing, 16)
                                         .lineSpacing(10)

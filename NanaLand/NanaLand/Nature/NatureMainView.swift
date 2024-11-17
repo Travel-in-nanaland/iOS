@@ -121,7 +121,7 @@ struct NatureMainGridView: View {
                                         Spacer()
                                         
                                         Text("\(viewModel.state.getNatureMainResponse.data[index].title)")
-                                            .font(.gothicNeo(.bold, size: 14))
+                                            .font(.body02_semibold)
                                             .foregroundStyle(.black)
                                             .lineLimit(1)
                                         
@@ -216,4 +216,5 @@ struct NatureMainGridView: View {
 
 #Preview {
     NatureMainView()
+        .environmentObject(LocalizationManager())
 }

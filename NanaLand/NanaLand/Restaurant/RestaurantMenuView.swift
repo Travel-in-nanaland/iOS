@@ -22,7 +22,7 @@ struct RestaurantMenuView: View {
         HStack{
             VStack(alignment: .leading){
                 Text(title)
-                    .font(.body_bold)
+                    .font(.body02_bold)
                     .foregroundColor(.black)
                     .padding(.bottom, 2)
                 HStack{

@@ -50,7 +50,7 @@ struct NanaSearchBar: View {
 			}
 			.padding(.horizontal, 12)
 			.padding(.vertical, 11)
-			.font(.gothicNeo(.medium, size: 14))
+            .font(.caption01)
 			.background {
 				Capsule()
 					.stroke(Color.main, lineWidth: 1)

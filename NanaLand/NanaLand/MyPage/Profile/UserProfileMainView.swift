@@ -88,7 +88,7 @@ struct UserProfileMainView: View {
                                                         }
                                                         HStack(spacing: 0) {
                                                             Text("\(viewModel.state.getUserPreviewResponse.data[index].placeName)")
-                                                                .font(.body02_bold)
+                                                                .font(.body02_semibold)
                                                                 .lineLimit(1)
                                                                 .padding(.leading, 8)
                                                                 .padding(.top, 8)
@@ -368,5 +368,6 @@ enum UserProfileViewType: Hashable {
 
 #Preview {
     UserProfileMainView(memberId: 2)
+        .environmentObject(LocalizationManager())
 }
 

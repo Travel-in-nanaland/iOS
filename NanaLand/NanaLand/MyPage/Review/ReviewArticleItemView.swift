@@ -50,7 +50,7 @@ struct ReviewArticleItemView: View {
                                 VStack{
                                     HStack{
                                         Text(placeName)
-                                            .font(.body02_bold)
+                                            .font(.body02_semibold)
                                             .foregroundColor(.black)
                                         
                                         Spacer()

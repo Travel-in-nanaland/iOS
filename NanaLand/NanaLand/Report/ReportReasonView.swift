@@ -22,9 +22,9 @@ struct ReportReasonView: View {
      
                         Text(.reportReason)
                             .padding(.bottom, 4)
-                            .font(.title01_bold)
+                            .font(.body_bold)
                         Text(.reportWarning)
-                            .font(.body02)
+                            .font(.caption01)
                             .foregroundStyle(Color.gray1)
                             .multilineTextAlignment(.leading)
                             .padding(.bottom, 32)

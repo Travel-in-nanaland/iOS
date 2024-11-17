@@ -19,7 +19,7 @@ struct NewNanaPickSpecialModalView: View {
                 .overlay(){
                     VStack(spacing: 0){
                         HStack(spacing: 0){
-                            Text("이 장소만의 매력 포인트✨")
+                            Text(.locationPoint)
                                 .font(.title02_bold)
                                 .foregroundColor(.black)
                             

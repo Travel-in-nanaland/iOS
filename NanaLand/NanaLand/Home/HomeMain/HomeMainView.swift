@@ -150,7 +150,7 @@ struct HomeMainView: View {
                 HStack {
                     let nickname: String = provider == "GUEST" ? LocalizedKey.ourNana.localized(for: LocalizationManager.shared.language) : AppState.shared.userInfo.nickname
                     Text(.recommendTitle, arguments: [nickname])
-                        .font(.gothicNeo(size: 18, font: "bold"))
+                        .font(.body_bold)
                     
                     Spacer()
                 }
@@ -578,10 +578,10 @@ struct BannerView: View {
                                 VStack(alignment: .leading, spacing: 2) {
                                     Text(banner.subHeading)
                                         .foregroundStyle(.white)
-                                        .font(.body_bold)
+                                        .font(.body02_bold)
                                     Text(banner.heading)
                                         .foregroundStyle(.white)
-                                        .font(.largeTitle02)
+                                        .font(.title02_bold)
                                 }
                                 Spacer()
                             }

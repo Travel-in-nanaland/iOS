@@ -180,7 +180,7 @@ struct SearchAllCategoryItem: View {
         VStack(spacing: 0) {
             HStack(spacing: 8) {
                 Text(category.localizedName)
-                    .font(.gothicNeo(.bold, size: 18))
+                    .font(.body_bold)
                     .foregroundStyle(Color.baseBlack)
 
                 HStack(spacing: 0) {

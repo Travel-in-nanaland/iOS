@@ -40,7 +40,7 @@ struct ArticleItem: View {
             }
             
             Text(article.title)
-                .font(.gothicNeo(.bold, size: 14))
+                .font(.body02_semibold)
                 .foregroundStyle(.black)
                 .lineLimit(1)
             
