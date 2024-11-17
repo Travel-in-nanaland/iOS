@@ -130,11 +130,11 @@ struct CultureAndArtsKeywordView: View {
     private var titleAndCloseButtonView: some View {
         HStack(spacing: 0) {
             Text(.keyword)
-                .font(.title02_bold)
+                .font(.body_bold)
                 .padding(.trailing, 8)
             // 선택된 버튼의 개수 적용
             Text("\(buttonsToggled.filter { $0 == true}.count) / \(CultureAndArtsKeywordArray.count)")
-                .font(.body02)
+                .font(.caption01)
                 .foregroundStyle(Color.gray1)
             Spacer()
             Button {
@@ -157,7 +157,7 @@ struct CultureAndArtsKeywordView: View {
            
                 } label: {
                     Text(CultureAndArtsKeywordButtonArray[index])
-                        .font(.gothicNeo(.regular, size: 12))
+                        .font(.body02)
                         .foregroundStyle(buttonsToggled[index] ? Color.main : Color.gray1)
                 }
                 .frame(width: 95, height: 36)

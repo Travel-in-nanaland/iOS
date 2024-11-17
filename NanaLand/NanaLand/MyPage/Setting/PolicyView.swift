@@ -45,7 +45,7 @@ struct PolicyItemButtonView: View {
         } label: {
             HStack(spacing: 0) {
                 Text("\(title)")
-                    .font(.body01)
+                    .font(.body02)
                     .padding(.leading, 16)
                     .multilineTextAlignment(.leading)
                 Spacer()

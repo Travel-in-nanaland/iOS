@@ -18,11 +18,11 @@ struct TypeTestLoadingView: View {
 				.frame(height: 250)
 			
 			Text(.tangerineJuiced)
-				.font(.largeTitle02)
+				.font(.title01_bold)
 				.foregroundStyle(Color.main)
 			
 			Text(.juiceCommingSoon)
-				.font(.title2)
+				.font(.body01)
 				.foregroundStyle(Color.black)
 				.multilineTextAlignment(.center)
 		}

@@ -129,10 +129,10 @@ struct NanaPickDetailMainView: View {
                                         Spacer()
                                         
                                         Text(viewModel.state.getNanaPickDetailResponse.heading)
-                                            .font(.title02_bold)
+                                            .font(.body_bold)
                                             .foregroundColor(.white)
                                         Text(viewModel.state.getNanaPickDetailResponse.subHeading)
-                                            .font(.largeTitle01)
+                                            .font(.largeTitle02)
                                             .foregroundColor(.white)
                                     }
                                     
@@ -245,7 +245,7 @@ struct NewNaNaPickDetailMainView: View {
                                                 HStack(alignment: .bottom) {
                                                     Text("\(detail.number)")
                                                         .foregroundStyle(Color.main)
-                                                        .font(.gothicNeo(.bold, size: 18))
+                                                        .font(.title02_bold)
                                                         .background(
                                                             Circle()
                                                                 .fill(Color.white)
@@ -259,7 +259,7 @@ struct NewNaNaPickDetailMainView: View {
                                                             .foregroundStyle(Color.main)
                                                             .font(.caption01)
                                                         Text("\(detail.title)")
-                                                            .font(.title01_bold)
+                                                            .font(.title02_bold)
                                                     }
                                                 }
                                             }
@@ -325,7 +325,7 @@ struct NewNaNaPickDetailMainView: View {
                                         
                                         Text("\(detail.content)")
                                             .frame(width: (Constants.screenWidth - 32), alignment: .leading)
-                                            .font(.body01)
+                                            .font(.body02)
                                             .lineSpacing(10)
                                             .padding(.bottom, 24)
                                         
@@ -365,7 +365,7 @@ struct NewNaNaPickDetailMainView: View {
                                                     Text("\(hashtag)")
                                                         .padding(.leading, 16)
                                                         .padding(.trailing, 16)
-                                                        .font(.body02)
+                                                        .font(.caption02)
                                                         .frame(minWidth: 49, minHeight: 32)
                                                         .background(
                                                             RoundedRectangle(cornerRadius: 30)
@@ -395,7 +395,7 @@ struct NewNaNaPickDetailMainView: View {
                                                             .overlay(){
                                                                 HStack(spacing: 0){
                                                                     Text(.locationPoint)
-                                                                        .font(.gothicNeo(.regular, size: 16))
+                                                                        .font(.body02)
                                                                     
                                                                     Spacer()
                                                                     
@@ -431,7 +431,7 @@ struct NewNaNaPickDetailMainView: View {
                                                 HStack(alignment: .bottom) {
                                                     Text("\(detail.number)")
                                                         .foregroundStyle(Color.main)
-                                                        .font(.gothicNeo(.bold, size: 18))
+                                                        .font(.title02_bold)
                                                         .background(
                                                             Circle()
                                                                 .fill(Color.white)
@@ -445,7 +445,7 @@ struct NewNaNaPickDetailMainView: View {
                                                             .foregroundStyle(Color.main)
                                                             .font(.caption01)
                                                         Text("\(detail.title)")
-                                                            .font(.title01_bold)
+                                                            .font(.title02_bold)
                                                     }
                                                 }
                                             }
@@ -512,7 +512,7 @@ struct NewNaNaPickDetailMainView: View {
                                         
                                         Text("\(detail.content)")
                                             .frame(width: (Constants.screenWidth - 32), alignment: .leading)
-                                            .font(.body01)
+                                            .font(.body02)
                                             .lineSpacing(10)
                                             .padding(.bottom, 24)
                                         
@@ -552,7 +552,7 @@ struct NewNaNaPickDetailMainView: View {
                                                     Text("\(hashtag)")
                                                         .padding(.leading, 16)
                                                         .padding(.trailing, 16)
-                                                        .font(.body02)
+                                                        .font(.caption02)
                                                         .frame(minWidth: 49, minHeight: 32)
                                                         .background(
                                                             RoundedRectangle(cornerRadius: 30)
@@ -584,7 +584,7 @@ struct NewNaNaPickDetailMainView: View {
                                                             .overlay(){
                                                                 HStack(spacing: 0){
                                                                     Text(.locationPoint)
-                                                                        .font(.gothicNeo(.regular, size: 16))
+                                                                        .font(.body02)
                                                                     
                                                                     Spacer()
                                                                     

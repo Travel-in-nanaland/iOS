@@ -69,7 +69,7 @@ struct NatureDetailView: View {
                                     .padding(.bottom, 12)
                                     HStack(spacing: 0) {
                                         Text(viewModel.state.getNatureDetailResponse.title)
-                                            .font(.gothicNeo(.bold, size: 20))
+                                            .font(.title02_bold)
                                             .padding(.leading, 16)
                                         Spacer()
                                     }
@@ -77,7 +77,7 @@ struct NatureDetailView: View {
                                     .padding(.bottom, 8)
                                     
                                     Text(viewModel.state.getNatureDetailResponse.content)
-                                        .font(.gothicNeo(.regular, size: 16))
+                                        .font(.body02)
                                         .frame(height: roundedHeight * (84 / 224))
                                         .padding(.leading, 16)
                                         .lineSpacing(10)
@@ -145,14 +145,14 @@ struct NatureDetailView: View {
                                     .padding(.bottom, 12)
                                     HStack(spacing: 0) {
                                         Text(viewModel.state.getNatureDetailResponse.title)
-                                            .font(.gothicNeo(.bold, size: 20))
+                                            .font(.title02_bold)
                                             .padding(.leading, 16)
                                         Spacer()
                                     }
                                     .padding(.bottom, 8)
                                     Text(viewModel.state.getNatureDetailResponse.content)
                                         .fixedSize(horizontal: false, vertical: true)
-                                        .font(.gothicNeo(.regular, size: 16))
+                                        .font(.body02)
                                         .lineSpacing(10)
                                         .padding(.leading, 16)
                                         .padding(.trailing, 16)

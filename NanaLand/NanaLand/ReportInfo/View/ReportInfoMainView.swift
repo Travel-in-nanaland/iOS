@@ -29,11 +29,11 @@ struct ReportInfoMainView: View {
 			ScrollView(.vertical, showsIndicators: false) {
 				VStack(alignment: .leading, spacing: 0) {
 					Text(.reportInfoTitle)
-						.font(.title01_bold)
+						.font(.body_bold)
 						.padding(.bottom, 4)
 					
 					Text(.reportInfoDescription)
-						.font(.body02)
+						.font(.caption01)
 						.padding(.bottom, 32)
 						.foregroundStyle(Color(hex: 0x717171))
 					
@@ -50,7 +50,7 @@ struct ReportInfoMainView: View {
 					}
 					
 					Text(.etcReportInfoTitle)
-						.font(.title01_bold)
+						.font(.body_bold)
 						.padding(.top, 32)
 						.padding(.bottom, 16)
 					

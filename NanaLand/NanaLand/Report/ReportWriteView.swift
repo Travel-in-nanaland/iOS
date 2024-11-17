@@ -73,7 +73,7 @@ struct ReportWriteView: View {
                         HStack(spacing: 0) {
                             Text(.reason)
                                 .padding(.trailing, 12)
-                                .font(.title02_bold)
+                                .font(.body_bold)
                             Text(.reasonEssential)
                                 .foregroundStyle(.main)
                                 .font(.caption01)
@@ -150,7 +150,7 @@ struct ReportWriteView: View {
                         HStack(spacing: 0) {
                             Text(.email)
                                 .padding(.trailing, 12)
-                                .font(.title02_bold)
+                                .font(.body_bold)
                             Text(.reasonEssential)
                                 .foregroundStyle(.main)
                                 .font(.caption01)
@@ -160,7 +160,7 @@ struct ReportWriteView: View {
                         .padding(.bottom, 8)
                         HStack(spacing: 0) {
                             Text(.reportResultEmail)
-                                .font(.body02)
+                                .font(.caption01)
                                 .foregroundStyle(Color.gray1)
                                 
                             Spacer()
@@ -204,7 +204,7 @@ struct ReportWriteView: View {
                       
                         HStack(spacing: 0) {
                             Text(.photosVideos)
-                                .font(.title02_bold)
+                                .font(.body_bold)
                             Spacer()
                         }
                         .padding(.leading, 16)

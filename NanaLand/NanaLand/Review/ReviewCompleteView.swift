@@ -79,19 +79,19 @@ struct MainView: View {
                     .padding(.top, 100)
                 
                 Text(.reviewCompleteExperience)
-                    .font(.largeTitle02)
+                    .font(.title01_bold)
                     .foregroundStyle(Color.main)
                     .multilineTextAlignment(.center)
                     .fixedSize(horizontal: false, vertical: true)
                     
                 Text(.reviewCompleteExperienceSub1)
-                    .font(.title02)
+                    .font(.body01)
                     .multilineTextAlignment(.center)
                     .lineSpacing(10)
                     .padding(.top, 10)
                 
                 Text(.reviewCompleteExperienceSub2)
-                    .font(.title02)
+                    .font(.body01)
                     .foregroundColor(.main)
                     .multilineTextAlignment(.center)
                     .fixedSize(horizontal: false, vertical: true)
@@ -99,7 +99,7 @@ struct MainView: View {
                     .padding(.top, 10)
                 
                 Text(.reviewCompleteExperienceSub3)
-                    .font(.title02)
+                    .font(.body01)
                     .multilineTextAlignment(.center)
                     .padding(.top, 20)
             }
@@ -110,19 +110,19 @@ struct MainView: View {
                     .padding(.top, 100)
                 
                 Text(.reviewCompleteRestaurant)
-                    .font(.largeTitle02)
+                    .font(.title01_bold)
                     .foregroundStyle(Color.main)
                     .frame(height: 36)
                     
                 Text(.reviewCompleteRestaurantSub1)
-                    .font(.title02)
+                    .font(.body01)
                     .multilineTextAlignment(.center)
                     .fixedSize(horizontal: false, vertical: true)
                     .lineSpacing(10)
                     .padding(.top, 10)
                 
                 Text(.reviewCompleteRestaurantSub2)
-                    .font(.title02)
+                    .font(.body01)
                     .multilineTextAlignment(.center)
                     .padding(.top, 20)
             }
