@@ -189,7 +189,7 @@ struct TypeTestView: View {
 			.padding(.bottom, 16)
 			
 			Text(type.title)
-				.font(.gothicNeo(.semibold, size: 14))
+                .font(.body02)
 				.foregroundStyle(Color.baseBlack)
 				.multilineTextAlignment(.center)
 			

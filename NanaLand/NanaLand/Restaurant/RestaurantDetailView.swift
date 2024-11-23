@@ -81,7 +81,7 @@ struct RestaurantDetailView: View {
                                             .padding(.bottom, 10)
                                             HStack(spacing: 0) {
                                                 Text(viewModel.state.getRestaurantDetailResponse.title)
-                                                    .font(.gothicNeo(.bold, size: 20))
+                                                    .font(.title02_bold)
                                                     .padding(.leading, 40)
                                                 Spacer()
                                             }
@@ -89,6 +89,7 @@ struct RestaurantDetailView: View {
                                             
                                             HStack{
                                                 Text(viewModel.state.getRestaurantDetailResponse.content)
+                                                    .font(.body02)
                                                     .fixedSize(horizontal: false, vertical: true) // 세로 방향으로 확장 허용
                                                     .lineLimit(isExpanded ? nil : 5)
                                                     .padding(.leading, 40)
@@ -123,7 +124,7 @@ struct RestaurantDetailView: View {
                                         
                                         HStack{
                                             Text(.menu)
-                                                .font(.title02_bold)
+                                                .font(.body_bold)
                                                 .foregroundColor(.black)
                                             Spacer()
                                         }
@@ -291,10 +292,10 @@ struct RestaurantDetailView: View {
                                         VStack(spacing: 0) {
                                             HStack(spacing: 0) {
                                                 Text(.review)
-                                                    .font(.title01_bold)
+                                                    .font(.title02_bold)
                                                     .padding(.trailing, 2)
                                                 Text("\(viewModel.state.getReviewDataResponse.totalElements)")
-                                                    .font(.title02_bold)
+                                                    .font(.body01)
                                                     .foregroundStyle(Color.main)
                                                 Spacer()
                                                 ForEach(1...5, id: \.self) { number in

@@ -47,24 +47,24 @@ struct NewNanaPickMainView: View {
                     
                     HStack(spacing: 0){
                         if localizationManager.language == .korean {
-                            let recommend = Text(.nanapickRecommend1).font(.title02_bold).foregroundColor(.black) + Text(.nanapickRecommend2).font(.title02_bold).foregroundColor(.main) + Text(.nanapickRecommend3).font(.title02_bold).foregroundColor(.black)
+                            let recommend = Text(.nanapickRecommend1).font(.body_bold).foregroundColor(.black) + Text(.nanapickRecommend2).font(.body_bold).foregroundColor(.main) + Text(.nanapickRecommend3).font(.body_bold).foregroundColor(.black)
                             
                             recommend
                         } else if localizationManager.language == .english {
-                            let recommend = Text(.nanapickRecommend1).font(.title02_bold).foregroundColor(.black) + Text(.nanapickRecommend2).font(.title02_bold).foregroundColor(.main) + Text(.nanapickRecommend3).font(.title02_bold).foregroundColor(.black)
+                            let recommend = Text(.nanapickRecommend1).font(.body_bold).foregroundColor(.black) + Text(.nanapickRecommend2).font(.body_bold).foregroundColor(.main) + Text(.nanapickRecommend3).font(.body_bold).foregroundColor(.black)
                             
                             recommend
                         } else if localizationManager.language == .chinese {
-                            let recommend = Text(.nanapickRecommend1).font(.title02_bold).foregroundColor(.black) + Text(.nanapickRecommend2).font(.title02_bold).foregroundColor(.main) + Text(.nanapickRecommend3).font(.title02_bold).foregroundColor(.black)
+                            let recommend = Text(.nanapickRecommend1).font(.body_bold).foregroundColor(.black) + Text(.nanapickRecommend2).font(.body_bold).foregroundColor(.main) + Text(.nanapickRecommend3).font(.body_bold).foregroundColor(.black)
                             
                             recommend
                         } else if localizationManager.language == .malaysia {
-                            let recommend = Text(.nanapickRecommend1).font(.title02_bold).foregroundColor(.main) + Text(.nanapickRecommend2).font(.title02_bold).foregroundColor(.black) + Text(.nanapickRecommend3).font(.title02_bold).foregroundColor(.black)
+                            let recommend = Text(.nanapickRecommend1).font(.body_bold).foregroundColor(.main) + Text(.nanapickRecommend2).font(.body_bold).foregroundColor(.black) + Text(.nanapickRecommend3).font(.body_bold).foregroundColor(.black)
                             
                             
                             recommend
                         } else {
-                            let recommend = Text(.nanapickRecommend1).font(.title02_bold).foregroundColor(.black) + Text(.nanapickRecommend2).font(.title02_bold).foregroundColor(.main) + Text(.nanapickRecommend3).font(.title02_bold).foregroundColor(.black)
+                            let recommend = Text(.nanapickRecommend1).font(.body_bold).foregroundColor(.black) + Text(.nanapickRecommend2).font(.body_bold).foregroundColor(.main) + Text(.nanapickRecommend3).font(.body_bold).foregroundColor(.black)
                             
                             
                             recommend
@@ -121,7 +121,7 @@ struct NewNanaPickMainView: View {
                     
                     HStack(spacing: 0){
                         Text(.nanaPick)
-                            .font(.title02_bold)
+                            .font(.body_bold)
                             .foregroundColor(.black)
                         
                         Spacer()
@@ -222,13 +222,13 @@ struct NanaPickRecommendView: View {
                                     Text(heading)
                                         .lineLimit(2)
                                         .multilineTextAlignment(.leading)
-                                        .font(.body02_semibold)
+                                        .font(.caption02_semibold)
                                         .foregroundColor(.white)
                                     
                                     Text(subHeading)
                                         .lineLimit(2)
                                         .multilineTextAlignment(.leading)
-                                        .font(.title01_bold)
+                                        .font(.body02_bold)
                                         .foregroundColor(.white)
                                 }
                                 
@@ -256,7 +256,7 @@ struct NanaPickRecommendView: View {
                     Text(subHeading)
                         .frame(width: 170)
                         .lineLimit(1)
-                        .font(.title02_bold)
+                        .font(.body_bold)
                         .foregroundColor(.black)
                     
                     Spacer()
@@ -267,7 +267,7 @@ struct NanaPickRecommendView: View {
                     Text(subHeading)
                         .frame(width: 170)
                         .lineLimit(1)
-                        .font(.title02_bold)
+                        .font(.body_bold)
                         .foregroundColor(.black)
                     
                     Spacer()

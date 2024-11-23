@@ -44,7 +44,7 @@ struct WithdrawView: View {
                     VStack(spacing: 0) {
                         HStack(spacing: 0) {
                             Text("nanaland in Jeju")
-                                .font(.largeTitle01)
+                                .font(.largeTitle02)
                                 .foregroundStyle(Color.main)
                                 .padding(.leading, 16)
                                 
@@ -54,7 +54,7 @@ struct WithdrawView: View {
                         
                         HStack(spacing: 0) {
                             Text(.withDrawNotification)
-                                .font(.title02_bold)
+                                .font(.body_bold)
                                 .padding(.leading, 16)
                                 
                             Spacer()
@@ -91,7 +91,7 @@ struct WithdrawView: View {
                         }
                         .padding(.leading, 16)
                         .padding(.bottom, 8)
-                        .font(.title02_bold)
+                        .font(.body_bold)
                         
                         VStack(spacing: 0) {
                             ForEach(Array(zip(buttonType.indices, buttonType)), id: \.0) { (index, type) in
@@ -224,4 +224,5 @@ struct WithdrawViewItem: View {
 
 #Preview {
     WithdrawView()
+        .environmentObject(LocalizationManager())
 }

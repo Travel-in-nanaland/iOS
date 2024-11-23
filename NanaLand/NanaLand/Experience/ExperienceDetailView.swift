@@ -93,7 +93,7 @@ struct ExperienceDetailView: View {
                                             
                                             HStack(spacing: 0) {
                                                 Text(viewModel.state.getExperienceDetailResponse.title!)
-                                                    .font(.gothicNeo(.bold, size: 20))
+                                                    .font(.title02_bold)
                                                     .padding(.leading, 16)
                                                 Spacer()
                                             }
@@ -293,10 +293,10 @@ struct ExperienceDetailView: View {
                                     VStack(spacing: 0) {
                                         HStack(spacing: 0) {
                                             Text(.review)
-                                                .font(.title01_bold)
+                                                .font(.title02_bold)
                                                 .padding(.trailing, 2)
                                             Text("\(viewModel.state.getReviewDataResponse.totalElements)")
-                                                .font(.title02_bold)
+                                                .font(.body01)
                                                 .foregroundStyle(Color.main)
                                             Spacer()
                                             ForEach(1...5, id: \.self) { number in

@@ -139,18 +139,18 @@ struct SettingItemButtonView: View {
             HStack(spacing: 0) {
                 if title == LocalizedKey.versionInfomation.localized(for: localizationManager.language){
                     Text("\(title)")
-                        .font(.body01)
+                        .font(.body02)
                         .padding(.leading, 16)
                     Spacer()
                     // 현재 버전 가져오기
                     if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
                         Text(version)
                             .padding(.trailing, 16)
-                            .font(.body01)
+                            .font(.body02)
                     }
                 } else {
                     Text("\(title)")
-                        .font(.body01)
+                        .font(.body02)
                         .padding(.leading, 16)
                     Spacer()
                 }

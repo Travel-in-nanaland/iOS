@@ -128,10 +128,10 @@ struct ActivityKeywordView: View {
     private var titleAndCloseButtonView: some View {
         HStack(spacing: 0) {
             Text(.keyword)
-                .font(.title02_bold)
+                .font(.body_bold)
                 .padding(.trailing, 8)
             Text("\(buttonsToggled.filter { $0 == true}.count) / \(ActivityKeywordArray.count)")
-                .font(.body02)
+                .font(.caption01)
                 .foregroundStyle(Color.gray1)
             Spacer()
             Button {
@@ -153,7 +153,7 @@ struct ActivityKeywordView: View {
            
                 } label: {
                     Text(ActivityKeywordButtonNameArray[index])
-                        .font(.gothicNeo(.regular, size: 12))
+                        .font(.body02)
                         .foregroundStyle(buttonsToggled[index] ? Color.main : Color.gray1)
                 }
                 .frame(width: 95, height: 36)

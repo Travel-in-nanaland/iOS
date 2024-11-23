@@ -32,7 +32,7 @@ struct NanaNavigationBar: View {
 			HStack {
 				Spacer()
 				Text(title)
-					.font(.gothicNeo(.bold, size: 20))
+                    .font(.body_bold)
 					.multilineTextAlignment(.center)
 				Spacer(minLength: 0)
 			}

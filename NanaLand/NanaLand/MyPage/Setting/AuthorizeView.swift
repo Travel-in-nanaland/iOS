@@ -20,20 +20,20 @@ struct AuthorizeView: View {
                         
                         if localizationManager.language == .korean {
                             Text("나나랜드인제주 사용을 위해")
-                                .font(.title02)
+                                .font(.body01)
                                 .foregroundColor(.black)
                             
                             HStack(spacing: 0){
                                 Text("다음 ")
-                                    .font(.title02)
+                                    .font(.body01)
                                     .foregroundColor(.black)
                                 
                                 Text("접근 권한 허용")
-                                    .font(.title02_bold)
+                                    .font(.body_bold)
                                     .foregroundColor(.black)
                                     
                                 Text("이 필요합니다.")
-                                    .font(.title02)
+                                    .font(.body01)
                                     .foregroundColor(.black)
                             }
                             
@@ -41,20 +41,20 @@ struct AuthorizeView: View {
                         
                         if localizationManager.language == .chinese {
                             Text("使用nanaland in Jeju")
-                                .font(.title02)
+                                .font(.body01)
                                 .foregroundColor(.black)
                             
                             HStack(spacing: 0){
                                 Text("需要以下")
-                                    .font(.title02)
+                                    .font(.body01)
                                     .foregroundColor(.black)
                                 
                                 Text("访问权限")
-                                    .font(.title02_bold)
+                                    .font(.body_bold)
                                     .foregroundColor(.black)
                                     
                                 Text("。")
-                                    .font(.title02)
+                                    .font(.body01)
                                     .foregroundColor(.black)
                             }
                             
@@ -62,20 +62,20 @@ struct AuthorizeView: View {
                         
                         if localizationManager.language == .english {
                             Text("To use nanaland in Jeju")
-                                .font(.title02)
+                                .font(.body01)
                                 .foregroundColor(.black)
                             
                             HStack(spacing: 0){
                                 Text("The following ")
-                                    .font(.title02)
+                                    .font(.body01)
                                     .foregroundColor(.black)
                                 
                                 Text("permission access ")
-                                    .font(.title02_bold)
+                                    .font(.body_bold)
                                     .foregroundColor(.main)
                                     
                                 Text("is required.")
-                                    .font(.title02)
+                                    .font(.body01)
                                     .foregroundColor(.black)
                             }
                             
@@ -83,16 +83,16 @@ struct AuthorizeView: View {
                         
                         if localizationManager.language == .malaysia {
                             Text("Untuk menggunakan nanaland di Jeju")
-                                .font(.title02)
+                                .font(.body01)
                                 .foregroundColor(.black)
                             
                             HStack(spacing: 0){
                                 Text("akses kebenaran ")
-                                    .font(.title02_bold)
+                                    .font(.body_bold)
                                     .foregroundColor(.black)
                                 
                                 Text("berikut diperlukan.")
-                                    .font(.title02)
+                                    .font(.body01)
                                     .foregroundColor(.black)
                             }
                             
@@ -100,20 +100,20 @@ struct AuthorizeView: View {
                         
                         if localizationManager.language == .vietnam {
                             Text("Để sử dụng Nana Land tại đảo Jeju,")
-                                .font(.title02)
+                                .font(.body01)
                                 .foregroundColor(.black)
                             
                             HStack(spacing: 0){
                                 Text("Các ")
-                                    .font(.title02)
+                                    .font(.body01)
                                     .foregroundColor(.black)
                                 
                                 Text("Cho phép quyền truy cập ")
-                                    .font(.title02_bold)
+                                    .font(.body_bold)
                                     .foregroundColor(.black)
                                     
                                 Text("sau đây là cần thiết.")
-                                    .font(.title02)
+                                    .font(.body01)
                                     .foregroundColor(.black)
                             }
                             
@@ -226,10 +226,10 @@ struct AuthorizeItemView: View {
         VStack(spacing: 4) {
             HStack(spacing: 2) {
                 Text(title)
-                    .font(.body02_semibold)
+                    .font(.body02)
                     .padding(.leading, 16)
                 Text(isRequired ? LocalizedKey.requiredWithBracket.localized(for: localizationManager.language) : LocalizedKey.optionalWithBracket.localized(for: localizationManager.language))
-                    .font(.body02_semibold)
+                    .font(.body02)
                     .foregroundStyle(isRequired ? .main : .black)
                 Spacer()
             }
@@ -246,4 +246,5 @@ struct AuthorizeItemView: View {
 }
 #Preview {
     AuthorizeView()
+        .environmentObject(LocalizationManager())
 }

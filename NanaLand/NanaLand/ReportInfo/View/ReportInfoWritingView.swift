@@ -39,7 +39,7 @@ struct ReportInfoWritingView: View {
                     VStack(alignment: .leading, spacing: 0) {
                         VStack(alignment: .leading, spacing: 0) {
                             Text(.reportInfoContentTitle)
-                                .font(.title02_bold)
+                                .font(.body_bold)
                                 .padding(.bottom, 8)
                             
                             ZStack {
@@ -66,11 +66,11 @@ struct ReportInfoWritingView: View {
                             .padding(.bottom, 48)
                             
                             Text(.email)
-                                .font(.title02_bold)
+                                .font(.body_bold)
                                 .padding(.bottom, 4)
                             
                             Text(.reportInfoEmailDescription)
-                                .font(.body02)
+                                .font(.caption01)
                                 .foregroundStyle(Color(hex: 0x717171))
                                 .padding(.bottom, 8)
                             
@@ -121,7 +121,7 @@ struct ReportInfoWritingView: View {
                             }
             
                             Text(.addPhoto)
-                                .font(.title02_bold)
+                                .font(.body_bold)
                                 .foregroundColor(.black)
                                 .padding(.top, 50)
                             

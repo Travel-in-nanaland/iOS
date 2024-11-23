@@ -72,13 +72,13 @@ struct ShopDetailView: View {
                                     .padding(.bottom, 14)
                                     HStack(spacing: 0) {
                                         Text(viewModel.state.getShopDetailResponse.title)
-                                            .font(.gothicNeo(.bold, size: 20))
+                                            .font(.title02_bold)
                                             .padding(.leading, 16)
                                         Spacer()
                                     }
                                     .padding(.bottom, 8)
                                     Text(viewModel.state.getShopDetailResponse.content)
-                                        .font(.gothicNeo(.regular, size: 16))
+                                        .font(.body02)
                                         .frame(height: roundedHeight * (84 / 224))
                                         .padding(.leading, 16)
                                         .lineSpacing(10)
@@ -147,14 +147,14 @@ struct ShopDetailView: View {
                                     .padding(.bottom, 14)
                                     HStack(spacing: 0) {
                                         Text(viewModel.state.getShopDetailResponse.title)
-                                            .font(.gothicNeo(.bold, size: 20))
+                                            .font(.title02_bold)
                                             .padding(.leading, 16)
                                         Spacer()
                                     }
                                     .padding(.bottom, 8)
                                     Text(viewModel.state.getShopDetailResponse.content)
                                         .fixedSize(horizontal: false, vertical: true)
-                                        .font(.gothicNeo(.regular, size: 16))
+                                        .font(.body02)
                                         .padding(.leading, 16)
                                         .padding(.trailing, 16)
                                         .lineSpacing(10)

@@ -19,7 +19,7 @@ struct SeasonModalView: View {
         VStack(spacing: 0) {
             HStack(spacing: 0) {
                 Text(.selectSeason)
-                    .font(.title02_bold)
+                    .font(.body_bold)
                 Spacer()
                 Button {
                     isModalShown = false
@@ -54,7 +54,7 @@ struct SeasonModalView: View {
                             HStack(spacing: 0) {
                                 Text(.spring)
                                     .frame(height: 22)
-                                    .font(selectedSeason == LocalizedKey.spring.localized(for: localizationManager.language) ? .body_bold : .body01)
+                                    .font(.body02_bold)
                                     .foregroundStyle(selectedSeason == LocalizedKey.spring.localized(for: localizationManager.language) ? Color.main : Color.black)
                                     .padding(.trailing, 16)
                               
@@ -93,7 +93,7 @@ struct SeasonModalView: View {
                             HStack(spacing: 0) {
                                 Text(.summer)
                                     .frame(height: 22)
-                                    .font(selectedSeason == LocalizedKey.summer.localized(for: localizationManager.language) ? .body_bold : .body01)
+                                    .font(.body02_bold)
                                     .foregroundStyle(selectedSeason == LocalizedKey.summer.localized(for: localizationManager.language) ? Color.main : Color.black)
                                     .padding(.trailing, 16)
                                 Spacer()
@@ -131,7 +131,7 @@ struct SeasonModalView: View {
                             HStack(spacing: 0) {
                                 Text(.autumn)
                                     .frame(height: 22)
-                                    .font(selectedSeason == LocalizedKey.autumn.localized(for: localizationManager.language) ? .body_bold : .body01)
+                                    .font(.body02_bold)
                                     .foregroundStyle(selectedSeason == LocalizedKey.autumn.localized(for: localizationManager.language) ? Color.main : Color.black)
                                     .padding(.trailing, 16)
                               
@@ -169,7 +169,7 @@ struct SeasonModalView: View {
                             HStack(spacing: 0) {
                                 Text(.winter)
                                     .frame(height: 22)
-                                    .font(selectedSeason == LocalizedKey.winter.localized(for: localizationManager.language) ? .body_bold : .body01)
+                                    .font(.body02_bold)
                                     .foregroundStyle(selectedSeason == LocalizedKey.winter.localized(for: localizationManager.language) ? Color.main : Color.black)
                                     .padding(.trailing, 16)
                             
