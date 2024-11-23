@@ -9,7 +9,7 @@ import SwiftUI
 import Kingfisher
 
 struct ExperienceMainView: View {
-    @State private var tabIndex = 0
+    @State var tabIndex = 0
     var body: some View {
         VStack {
 			NanaNavigationBar(title: .experience, showBackButton: true)

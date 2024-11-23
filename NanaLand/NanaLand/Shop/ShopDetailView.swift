@@ -206,25 +206,31 @@ struct ShopDetailView: View {
                                 
                             }
                             .frame(width: Constants.screenWidth - 40)
-                            
-                            HStack(spacing: 10) {
-                                VStack(spacing: 0) {
-                                    Image("icPhone")
-                                        .renderingMode(.template)
-                                        .foregroundStyle(Color.main)
+                            if viewModel.state.getShopDetailResponse.content != "" {
+                                let sanitizedNumber = viewModel.state.getShopDetailResponse.contact.replacingOccurrences(of: "-", with: "")
+                                HStack(spacing: 10) {
+                                    VStack(spacing: 0) {
+                                        Image("icPhone")
+                                            .renderingMode(.template)
+                                            .foregroundStyle(Color.main)
+                                        Spacer()
+                                    }
+                                    
+                                    VStack(alignment: .leading, spacing: 0) {
+                                        Text(.phoneNumber)
+                                            .font(.gothicNeo(.bold, size: 14))
+                                        Link(destination: URL(string: "tel://\(sanitizedNumber)")!, label: {
+                                            Text(viewModel.state.getShopDetailResponse.contact)
+                                                .underline()
+                                                .font(.gothicNeo(.regular, size: 12))
+                                        })
+                                        
+                                    }
                                     Spacer()
                                 }
-                                
-                                VStack(alignment: .leading, spacing: 0) {
-                                    Text(.phoneNumber)
-                                        .font(.gothicNeo(.bold, size: 14))
-                                    Text(viewModel.state.getShopDetailResponse.contact)
-                                        .font(.body02)
-                                    
-                                }
-                                Spacer()
+                                .frame(width: Constants.screenWidth - 40)
                             }
-                            .frame(width: Constants.screenWidth - 40)
+                            
                             
                             HStack(spacing: 10) {
                                 VStack(spacing: 0) {
@@ -270,15 +276,18 @@ struct ShopDetailView: View {
                                         .foregroundStyle(Color.main)
                                     Spacer()
                                 }
-                                
-                                VStack(alignment: .leading, spacing: 0) {
-                                    Text(.homepage)
-                                        .font(.gothicNeo(.bold, size: 14))
-                                    Text(viewModel.state.getShopDetailResponse.homepage)
-                                        .font(.body02)
-                                    
+                                if viewModel.state.getShopDetailResponse.homepage != "" {
+                                    VStack(alignment: .leading, spacing: 0) {
+                                        Text(.homepage)
+                                            .font(.gothicNeo(.bold, size: 14))
+                                        Link(destination: URL(string: "\(viewModel.state.getShopDetailResponse.homepage)")!, label: {
+                                            Text(viewModel.state.getShopDetailResponse.homepage)
+                                                .underline()
+                                                .font(.body02)
+                                        })
+                                    }
+                                    Spacer()
                                 }
-                                Spacer()
                             }
                             .frame(width: Constants.screenWidth - 40, height: (Constants.screenWidth - 40) * ( 42 / 358))
                             .padding(.bottom, 32)

@@ -13,4 +13,5 @@ struct RecommendModel: Codable, Hashable {
     var title: String
     var introduction: String?
     var firstImage: ImageList
+    var favorite: Bool
 }

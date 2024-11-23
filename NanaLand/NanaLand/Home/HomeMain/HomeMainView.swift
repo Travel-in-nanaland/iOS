@@ -61,201 +61,340 @@ struct HomeMainView: View {
                     .padding(.bottom, 16)
                 
                 /// category View
-                HStack(alignment: .top, spacing: 0) {
-                    // 7대자연 link
-                    Button(action: {
-                        AppState.shared.navigationPath.append(HomeViewType.nature)
-                    }, label: {
-                        VStack(spacing: 0) {
-                            Image("icNature")
-                                .frame(width: 62, height: 48)
-                            
-                            Text(.nature)
-                                .font(.gothicNeo(size: 12, font: "semibold"))
-                                .tint(.black)
-                        }
-                    })
-                    .frame(minHeight: 65)
-             
-                    Spacer()
-                    // 축제 link
-                    Button(action: {
-                        AppState.shared.navigationPath.append(HomeViewType.festival)
-                    }, label: {
-                        VStack(spacing: 0) {
-                            Image("icFestival")
-                                .frame(width: 62, height: 48)
-                            
-                            Text(.festival)
-                                .font(.gothicNeo(size: 12, font: "semibold"))
-                                .tint(.black)
-                        }
-                    })
-                    .frame(minHeight: 65)
-                    Spacer()
-                    // 전통시장 link
-                    Button(action: {
-                        AppState.shared.navigationPath.append(HomeViewType.shop)
-                    }, label: {
-                        VStack(spacing: 0) {
-                            Image("icShop")
-                                .frame(width: 62, height: 48)
-                            
-                            Text(.market)
-                                .font(.gothicNeo(size: 12, font: "semibold"))
-                                .tint(.black)
-                        }
-                    })
-                    .frame(minHeight: 65)
-                    Spacer()
-                    // 이색체험 link
-                    Button(action: {
-                        AppState.shared.navigationPath.append(HomeViewType.experience)
-                    }, label: {
-                        VStack(spacing: 0) {
-                            Image("icExp")
-                                .frame(width: 62, height: 48)
-                            Text(.experience)
-                                .font(.gothicNeo(size: 12, font: "semibold"))
-                                .tint(.black)
-                        }
-                    })
-                    .frame(minHeight: 65)
-                    Spacer()
-                    // 제주 맛집 link
-                    Button(action: {
-                        AppState.shared.navigationPath.append(HomeViewType.restaurant)
-                    }, label: {
-                        VStack(spacing: 0) {
-                            Image("icRestaurant")
-                                .frame(width: 62, height: 48)
-                            
-                            Text(.restaurant)
-                                .font(.gothicNeo(size: 12, font: "semibold"))
-                                .tint(.black)
-                        }
-                    })
-                    .frame(minHeight: 65)
+                ScrollView(.horizontal, showsIndicators: true) {
+                    HStack(alignment: .top, spacing: 16) {
+                        // 7대자연 link
+                        Button(action: {
+                            AppState.shared.navigationPath.append(HomeViewType.nature)
+                        }, label: {
+                            VStack(spacing: 0) {
+                                Image("icNature")
+                                    .resizable()
+                                    .frame(width: 62, height: 62)
+                                    .background(.gray0)
+                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                                    .padding(.bottom, 4)
+                                Text(.nature)
+                                    .font(.gothicNeo(size: 12, font: "semibold"))
+                                    .tint(.black)
+                            }
+                        })
+                        .frame(minHeight: 65)
+                 
+                        // 축제 link
+                        Button(action: {
+                            AppState.shared.navigationPath.append(HomeViewType.festival)
+                        }, label: {
+                            VStack(spacing: 0) {
+                                Image("icFestival")
+                                    .resizable()
+                                    .frame(width: 62, height: 62)
+                                    .background(.gray0)
+                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                                    .padding(.bottom, 4)
+                                Text(.festival)
+                                    .font(.gothicNeo(size: 12, font: "semibold"))
+                                    .tint(.black)
+                            }
+                        })
+                        .frame(minHeight: 65)
+
+                        // 전통시장 link
+                        Button(action: {
+                            AppState.shared.navigationPath.append(HomeViewType.shop)
+                        }, label: {
+                            VStack(spacing: 0) {
+                                Image("icShop")
+                                    .resizable()
+                                    .frame(width: 62, height: 62)
+                                    .background(.gray0)
+                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                                    .padding(.bottom, 4)
+                                
+                                Text(.market)
+                                    .font(.gothicNeo(size: 12, font: "semibold"))
+                                    .tint(.black)
+                            }
+                        })
+                        .frame(minHeight: 65)
+
+
+                        // 액티비티 link
+                        Button(action: {
+                            AppState.shared.navigationPath.append(HomeViewType.activity)
+                        }, label: {
+                            VStack(spacing: 0) {
+                                Image("icActivity")
+                                    .resizable()
+                                    .frame(width: 62, height: 62)
+                                    .background(.gray0)
+                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                                    .padding(.bottom, 4)
+                                
+                                Text(.activity)
+                                    .font(.gothicNeo(size: 12, font: "semibold"))
+                                    .tint(.black)
+                            }
+                        })
+                        .frame(minHeight: 65)
+                        
+                        // 문화예술 link
+                        Button(action: {
+                            AppState.shared.navigationPath.append(HomeViewType.cultureAndArt)
+                        }, label: {
+                            VStack(spacing: 0) {
+                                Image("icCultureArt")
+                                    .resizable()
+                                    .frame(width: 62, height: 62)
+                                    .background(.gray0)
+                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                                    .padding(.bottom, 4)
+                                
+                                Text(.cultureAndArts)
+                                    .font(.gothicNeo(size: 12, font: "semibold"))
+                                    .tint(.black)
+                            }
+                        })
+                        .frame(minHeight: 65)
+                        
+                        Button(action: {
+                            AppState.shared.navigationPath.append(HomeViewType.restaurant)
+                        }, label: {
+                            VStack(spacing: 0) {
+                                Image("icRestaurant")
+                                    .resizable()
+                                    .frame(width: 62, height: 62)
+                                    .background(.gray0)
+                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                                    .padding(.bottom, 4)
+                                
+                                Text(.restaurant)
+                                    .font(.gothicNeo(size: 12, font: "semibold"))
+                                    .tint(.black)
+                            }
+                        })
+                    }
+                    .padding(.leading, 0)
+                    .padding(.trailing, 0)
+                    .padding(.bottom, 32)
                 }
                 .frame(width: UIScreen.main.bounds.width - 32)
-                .padding(.bottom, 32)
                 
                 /// 광고 뷰
                 HStack(spacing: 0) {
                     AdvertisementView()
                         .frame(width: Constants.screenWidth, height: (UIScreen.main.bounds.width - 40.0) * (80.0 / 328.0))
                         .padding(.bottom, 40)
-                       
                 }
+                
                 HStack {
                     let nickname: String = provider == "GUEST" ? LocalizedKey.ourNana.localized(for: LocalizationManager.shared.language) : AppState.shared.userInfo.nickname
                     Text(.recommendTitle, arguments: [nickname])
                         .font(.body_bold)
-                    
                     Spacer()
                 }
                 .padding(.leading, 16)
                 .padding(.bottom, 8)
-                
-                HStack(alignment: .top, spacing: 8) {
-                    ForEach(viewModel.state.getRecommendResponse, id: \.id) { article in
-                        switch article.category {
-                        case "NATURE":
-                            Button {
-                                AppState.shared.navigationPath.append(HomeViewType.natureDetail(id: Int(article.id)))
-                            } label: {
-                                VStack(alignment: .leading, spacing: 8) {
-                                    KFImage(URL(string: article.firstImage.thumbnailUrl)!)
-                                        .resizable()
-                                        .frame(height: (Constants.screenWidth - 40) / 2 * (118 / 160))
-                                        .clipShape(RoundedRectangle(cornerRadius: 12))
-                          
-                                    Text(article.title)
-                                        .font(.gothicNeo(size: 14, font: "bold"))
-                                        .multilineTextAlignment(.leading)
-                                        .lineLimit(1)
+                ScrollView(.horizontal) {
+                    HStack(alignment: .top, spacing: 8) {
+                        ForEach(Array(zip(viewModel.state.getRecommendResponse.indices, viewModel.state.getRecommendResponse)), id: \.1.id) { (index, article) in
+                            switch article.category {
+                            case "NATURE":
+                                Button {
+                                    AppState.shared.navigationPath.append(HomeViewType.natureDetail(id: Int(article.id)))
+                                } label: {
+                                    VStack(alignment: .leading, spacing: 8) {
+                                        ZStack {
+                                            KFImage(URL(string: article.firstImage.thumbnailUrl)!)
+                                                .resizable()
+                                                .frame(height: (Constants.screenWidth - 40) / 2 * (118 / 160))
+                                                .clipShape(RoundedRectangle(cornerRadius: 12))
+                                            VStack(spacing: 0) {
+                                                HStack(spacing: 0) {
+                                                    Spacer()
+                                                    
+                                                    Button {
+                                                        Task {
+                                                            await toggleFavorite(body: FavoriteToggleRequest(id: Int(article.id), category: .nature), index: index)
+                                                        }
+                                                    } label: {
+                                                        article.favorite ? Image("icHeartFillMain") : Image("icHeartDefault")
+                                                    }
+                                                }
+                                                .padding(.top, 8)
+                                                Spacer()
+                                            }
+                                            .padding(.trailing, 8)
+                                        }
+                                        
+                                        Text(article.title)
+                                            .font(.gothicNeo(size: 14, font: "bold"))
+                                            .multilineTextAlignment(.leading)
+                                            .lineLimit(1)
+                                    }
+                                    .frame(width: 160)
                                 }
-                            }
 
-                        case "FESTIVAL":
-                            Button {
-                                AppState.shared.navigationPath.append(HomeViewType.festivalDetail(id: Int(article.id)))
-                            } label: {
-                                VStack(alignment: .leading, spacing: 8) {
-                                    KFImage(URL(string: article.firstImage.thumbnailUrl)!)
-                                        .resizable()
-                                        .frame(height: (Constants.screenWidth - 40) / 2 * (118 / 160))
-                                        .clipShape(RoundedRectangle(cornerRadius: 12))
-                          
-                                    Text(article.title)
-                                        .font(.gothicNeo(size: 14, font: "bold"))
-                                        .multilineTextAlignment(.leading)
-                                        .lineLimit(1)
+                            case "FESTIVAL":
+                                Button {
+                                    AppState.shared.navigationPath.append(HomeViewType.festivalDetail(id: Int(article.id)))
+                                } label: {
+                                    VStack(alignment: .leading, spacing: 8) {
+                                        ZStack {
+                                            KFImage(URL(string: article.firstImage.thumbnailUrl)!)
+                                                .resizable()
+                                                .frame(height: (Constants.screenWidth - 40) / 2 * (118 / 160))
+                                                .clipShape(RoundedRectangle(cornerRadius: 12))
+                                            VStack(spacing: 0) {
+                                                HStack(spacing: 0) {
+                                                    Spacer()
+                                                    
+                                                    Button {
+                                                        Task {
+                                                            await toggleFavorite(body: FavoriteToggleRequest(id: Int(article.id), category: .festival), index: index)
+                                                        }
+                                                    } label: {
+                                                        article.favorite ? Image("icHeartFillMain") : Image("icHeartDefault")
+                                                    }
+                                                }
+                                                .padding(.top, 8)
+                                                Spacer()
+                                            }
+                                            .padding(.trailing, 8)
+                                        }
+                              
+                                        Text(article.title)
+                                            .font(.gothicNeo(size: 14, font: "bold"))
+                                            .multilineTextAlignment(.leading)
+                                            .lineLimit(1)
+                                    }
+                                    .frame(width: 160)
                                 }
-                            }
 
-                        case "MARKET":
-                            Button {
-                                AppState.shared.navigationPath.append(HomeViewType.shopDetail(id: Int(article.id)))
-                            } label: {
-                                VStack(alignment: .leading, spacing: 8) {
-                                    KFImage(URL(string: article.firstImage.thumbnailUrl)!)
-                                        .resizable()
-                                        .frame(height: (Constants.screenWidth - 40) / 2 * (118 / 160))
-                                        .clipShape(RoundedRectangle(cornerRadius: 12))
-                          
-                                    Text(article.title)
-                                        .font(.gothicNeo(size: 14, font: "bold"))
-                                        .multilineTextAlignment(.leading)
-                                        .lineLimit(1)
+                            case "MARKET":
+                                Button {
+                                    AppState.shared.navigationPath.append(HomeViewType.shopDetail(id: Int(article.id)))
+                                } label: {
+                                    VStack(alignment: .leading, spacing: 8) {
+                                        ZStack {
+                                            KFImage(URL(string: article.firstImage.thumbnailUrl)!)
+                                                .resizable()
+                                                .frame(height: (Constants.screenWidth - 40) / 2 * (118 / 160))
+                                                .clipShape(RoundedRectangle(cornerRadius: 12))
+                                            VStack(spacing: 0) {
+                                                HStack(spacing: 0) {
+                                                    Spacer()
+                                                    
+                                                    Button {
+                                                        Task {
+                                                            await toggleFavorite(body: FavoriteToggleRequest(id: Int(article.id), category: .market), index: index)
+                                                        }
+                                                    } label: {
+                                                        article.favorite ? Image("icHeartFillMain") : Image("icHeartDefault")
+                                                    }
+                                                }
+                                                .padding(.top, 8)
+                                                Spacer()
+                                            }
+                                            .padding(.trailing, 8)
+                                        }
+                              
+                                        Text(article.title)
+                                            .font(.gothicNeo(size: 14, font: "bold"))
+                                            .multilineTextAlignment(.leading)
+                                            .lineLimit(1)
+                                    }
+                                    .frame(width: 160)
                                 }
-                            }
-                        case "EXPERIENCE":
-                            Button {
-                                AppState.shared.navigationPath.append(HomeViewType.experienceDetail(id: Int(article.id)))
-                            } label: {
-                                VStack(alignment: .leading, spacing: 8) {
-                                    KFImage(URL(string: article.firstImage.thumbnailUrl)!)
-                                        .resizable()
-                                        .frame(height: (Constants.screenWidth - 40) / 2 * (118 / 160))
-                                        .clipShape(RoundedRectangle(cornerRadius: 12))
-                          
-                                    Text(article.title)
-                                        .font(.gothicNeo(size: 14, font: "bold"))
-                                        .multilineTextAlignment(.leading)
-                                        .lineLimit(1)
+                                
+                            case "EXPERIENCE":
+                                Button {
+                                    AppState.shared.navigationPath.append(HomeViewType.experienceDetail(id: Int(article.id)))
+                                } label: {
+                                    VStack(alignment: .leading, spacing: 8) {
+                                        ZStack {
+                                            KFImage(URL(string: article.firstImage.thumbnailUrl)!)
+                                                .resizable()
+                                                .frame(height: (Constants.screenWidth - 40) / 2 * (118 / 160))
+                                                .clipShape(RoundedRectangle(cornerRadius: 12))
+                                            VStack(spacing: 0) {
+                                                HStack(spacing: 0) {
+                                                    Spacer()
+                                                    
+                                                    Button {
+                                                        Task {
+                                                            await toggleFavorite(body: FavoriteToggleRequest(id: Int(article.id), category: .experience), index: index)
+                                                        }
+                                                    } label: {
+                                                        article.favorite ? Image("icHeartFillMain") : Image("icHeartDefault")
+                                                    }
+                                                }
+                                                .padding(.top, 8)
+                                                Spacer()
+                                            }
+                                            .padding(.trailing, 8)
+                                        }
+                              
+                                        Text(article.title)
+                                            .font(.gothicNeo(size: 14, font: "bold"))
+                                            .multilineTextAlignment(.leading)
+                                            .lineLimit(1)
+                                    }
+                                    .frame(width: 160)
                                 }
+                                
+                            case "RESTAURANT":
+                                Button {
+                                    AppState.shared.navigationPath.append(HomeViewType.restaurantDetail(id: Int(article.id)))
+                                }  label:{
+                                    VStack(alignment: .leading, spacing: 8) {
+                                        ZStack {
+                                            KFImage(URL(string: article.firstImage.thumbnailUrl)!)
+                                                .resizable()
+                                                .frame(height: (Constants.screenWidth - 40) / 2 * (118 / 160))
+                                                .clipShape(RoundedRectangle(cornerRadius: 12))
+                                            VStack(spacing: 0) {
+                                                HStack(spacing: 0) {
+                                                    Spacer()
+                                                    
+                                                    Button {
+                                                        Task {
+                                                            await toggleFavorite(body: FavoriteToggleRequest(id: Int(article.id), category: .restaurant), index: index)
+                                                        }
+                                                    } label: {
+                                                        article.favorite ? Image("icHeartFillMain") : Image("icHeartDefault")
+                                                    }
+                                                }
+                                                .padding(.top, 8)
+                                                Spacer()
+                                            }
+                                            .padding(.trailing, 8)
+                                        }
+                                        
+                                        Text(article.title)
+                                            .font(.gothicNeo(size: 14, font: "bold"))
+                                            .multilineTextAlignment(.leading)
+                                            .lineLimit(1)
+                                    }
+                                .frame(width: 160)
                             }
-                        case "RESTAURANT":
-                            Button {
-                                AppState.shared.navigationPath.append(HomeViewType.restaurantDetail(id: Int(article.id)))
-                            }  label:{ VStack(alignment: .leading, spacing: 8) {
-                                KFImage(URL(string: article.firstImage.thumbnailUrl)!)
-                                    .resizable()
-                                    .frame(height: (Constants.screenWidth - 40) / 2 * (118 / 160))
-                                    .clipShape(RoundedRectangle(cornerRadius: 12))
-                      
-                                Text(article.title)
-                                    .font(.gothicNeo(size: 14, font: "bold"))
-                                    .multilineTextAlignment(.leading)
-                                    .lineLimit(1)
-                            }
-                        }
-                            
-                        default:
-                            Button {
-                                AppState.shared.navigationPath.append(HomeViewType.natureDetail(id: Int(article.id)))
-                            } label: {
-                                VStack(alignment: .leading, spacing: 8) {
-                                    KFImage(URL(string: article.firstImage.thumbnailUrl)!)
-                                        .resizable()
-                                        .frame(height: (Constants.screenWidth - 40) / 2 * (118 / 160))
-                                        .clipShape(RoundedRectangle(cornerRadius: 12))
-                          
-                                    Text(article.title)
-                                        .font(.gothicNeo(size: 14, font: "bold"))
-                                        .multilineTextAlignment(.leading)
-                                        .lineLimit(1)
+                                
+                            default:
+                                Button {
+                                    AppState.shared.navigationPath.append(HomeViewType.natureDetail(id: Int(article.id)))
+                                } label: {
+                                    VStack(alignment: .leading, spacing: 8) {
+                                        KFImage(URL(string: article.firstImage.thumbnailUrl)!)
+                                            .resizable()
+                                            .frame(height: (Constants.screenWidth - 40) / 2 * (118 / 160))
+                                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                                        
+                                        Text(article.title)
+                                            .font(.gothicNeo(size: 14, font: "bold"))
+                                            .multilineTextAlignment(.leading)
+                                            .lineLimit(1)
+                                    }
+                                    .frame(width: 160)
                                 }
                             }
                         }
@@ -266,6 +405,55 @@ struct HomeMainView: View {
                 
                 Spacer()
                     .frame(height: 50)
+                // MARK: 지금 인기있는 게시물
+                VStack(spacing: 16) {
+                    HStack(spacing: 0) {
+                        Text("지금 인기있는 장소🔥")
+                            .font(.body_bold)
+                        Spacer()
+                    }
+                    .padding(.leading, 16)
+                    ForEach(viewModel.state.getHotResponse, id: \.id) { data in
+                        ZStack {
+                            KFImage(URL(string: data.firstImage.originUrl)!)
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: Constants.screenWidth - 32, height: 140)
+                                .clipShape(RoundedRectangle(cornerRadius: 12))
+                            HStack(spacing: 0) {
+                                VStack(alignment: .leading, spacing: 0) {
+                                    Spacer()
+                                    Text(data.address)
+                                        .font(.caption01)
+                                        .foregroundStyle(.white)
+                                    Text(data.title)
+                                        .font(.title01_bold)
+                                        .foregroundStyle(.white)
+                                }
+                                Spacer()
+                            }
+                            .padding(.leading, 16)
+                            .padding(.bottom, 12)
+                            VStack(spacing: 0) {
+                                HStack(spacing: 0) {
+                                    Spacer()
+                                    Image("icHeartDefault")
+                                        .resizable()
+                                        .frame(width: 20, height: 20)
+                                        .background(
+                                            Circle()
+                                                .fill(Color.white)
+                                        )
+                                }
+                                .padding(.trailing, 8)
+                                .padding(.top, 8)
+                                Spacer()
+                            }
+                          
+                        }
+                        .frame(width: Constants.screenWidth - 32, height: 140)
+                    }
+                }
             }
         }
         .scrollIndicators(.hidden)
@@ -275,6 +463,7 @@ struct HomeMainView: View {
             print("언어:\(localizationManager.language)")
             Task {
                 await getRecommendData()
+                await getHotItem()
                 isRecommendCalled = true
             }
         }
@@ -306,6 +495,10 @@ struct HomeMainView: View {
                 ShopMainView()
             case .experience:
                 ExperienceMainView()
+            case .activity:
+                ExperienceMainView(tabIndex: 0)
+            case .cultureAndArt:
+                ExperienceMainView(tabIndex: 1)
             case .nanapick:
                 NanapickMainView()
             case .restaurant:
@@ -320,16 +513,22 @@ struct HomeMainView: View {
                 ExperienceDetailView(id: Int64(id))
             case let .restaurantDetail(id):
                 RestaurantDetailView(id: Int64(id))
-            case let .notification:
+            case .notification:
                 NotificationView()
             }
         }
     }
-    
     func getRecommendData() async {
         await viewModel.action(.getRecommendItem)
     }
     
+    func toggleFavorite(body: FavoriteToggleRequest, index: Int) async {
+        await viewModel.action(.toggleFavorite(body: body, index: index))
+    }
+    
+    func getHotItem() async {
+        await viewModel.action(.getHotItem)
+    }
 }
 
 struct AdvertisementView: View {
@@ -341,7 +540,6 @@ struct AdvertisementView: View {
     @State private var selectedNum: String = ""
     private let images: [String] = ["ad1", "ad2", "ad3", "ad4"]
     @State private var currentPage = 0
-    
     
     var body: some View {
         // selection에 index가 아닌 selectedNum을 바인딩
@@ -433,7 +631,6 @@ struct AdvertisementView: View {
                                         .frame(width: Constants.screenWidth, height: 80)
                                         .background(Color.init(hex: 0xF7C2BC))
                                         
-                                        
                                     case "ad4":
                                         HStack(spacing: 0){
                                             VStack(alignment: .leading, spacing: 0) {
@@ -456,25 +653,18 @@ struct AdvertisementView: View {
                                         .frame(width: Constants.screenWidth, height: 80)
                                         .background(Color.init(hex: 0xFFBC11))
                                         
-                                        
-                                        
                                     default:
                                         Text(.firstAdvertismentTitle)
                                             .font(.gothicNeo(.bold, size: 16))
                                         Text(.firstAdvertismentSubTitle)
                                             .font(.gothicNeo(.medium, size: 12))
                                     }
-                                    
                                 }
                                 .frame(width: Constants.screenWidth)
-                                
                             })
-                            
                         }
                         .frame(width: Constants.screenWidth, height: 80)
-                        
                     }
-                    
                 }
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
@@ -547,7 +737,6 @@ struct BannerView: View {
                                     .append(BannerViewType.thirdBanner(id: Int(banner.id)))
                             }
                         } label: {
-                            
                             ZStack{
                                 KFImage(URL(string: banner.firstImage.originUrl))
                                     .resizable()
@@ -560,7 +749,6 @@ struct BannerView: View {
                                     }
                                     .frame(width: Constants.screenWidth, height: Constants.screenWidth * (220 / 360))
                             }
-                            
                         }
 
                         VStack(spacing: 0) {
@@ -587,7 +775,6 @@ struct BannerView: View {
                             }
                             .padding(.bottom, 16)
                             .padding(.leading, 16)
-                            
                         }
                     }
                     .frame(width: Constants.screenWidth, height: Constants.screenWidth * (220 / 360))
@@ -615,9 +802,7 @@ struct BannerView: View {
                         .overlay(
                             RoundedRectangle(cornerRadius: 30)
                                 .stroke(Color.white, lineWidth: 1) // 둥근 모서리와 테두리 추가
-                                
                         )
-        
                 }
                 .frame(width: UIScreen.main.bounds.width)
                 .padding(.trailing, 15)
@@ -631,7 +816,6 @@ struct BannerView: View {
             Task {
                 await getBannerData()
                 isBannerCalled = true
-                
             }
         }
         .navigationDestination(for: BannerViewType.self) {viewType in
@@ -644,7 +828,6 @@ struct BannerView: View {
                 NewNanaPickDetailView(id: Int64(id))
             }
         }
-        
     }
     
     func getBannerData() async {

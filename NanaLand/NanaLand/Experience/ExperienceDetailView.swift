@@ -46,7 +46,7 @@ struct ExperienceDetailView: View {
                     })
                 }
             }
-            
+           
             ZStack {
                 ScrollViewReader { proxyReader in
                     
@@ -212,6 +212,7 @@ struct ExperienceDetailView: View {
                                     }
                                   
                                     if viewModel.state.getExperienceDetailResponse.contact != "" {
+                                        let sanitizedNumber = viewModel.state.getExperienceDetailResponse.contact!.replacingOccurrences(of: "-", with: "")
                                         HStack(spacing: 10) {
                                             VStack(spacing: 0) {
                                                 Image("icPhone")
@@ -221,8 +222,11 @@ struct ExperienceDetailView: View {
                                             VStack(alignment: .leading, spacing: 0) {
                                                 Text(.phoneNumber)
                                                     .font(.body02_bold)
-                                                Text(viewModel.state.getExperienceDetailResponse.contact ?? "")
-                                                    .font(.body02)
+                                                Link(destination: URL(string: "tel://\(sanitizedNumber)")!, label: {
+                                                    Text(viewModel.state.getExperienceDetailResponse.contact ?? "")
+                                                        .underline()
+                                                        .font(.gothicNeo(.regular, size: 12))
+                                                })
                                             }
                                             Spacer()
                                         }
@@ -258,17 +262,18 @@ struct ExperienceDetailView: View {
                                             VStack(alignment: .leading, spacing: 0) {
                                                 Text(.homepage)
                                                     .font(.body02_bold)
-                                                Text(viewModel.state.getExperienceDetailResponse.homepage ?? "")
-                                                    .font(.body02)
+                                                Link(destination: URL(string: "\(viewModel.state.getExperienceDetailResponse.homepage ?? "")")!, label: {
+                                                    Text(viewModel.state.getExperienceDetailResponse.homepage ?? "")
+                                                        .underline()
+                                                        .font(.body02)
+                                                })
                                             }
                                             Spacer()
                                         }
                                         .frame(width: Constants.screenWidth - 40)
                                         .padding(.bottom, 32)
                                     }
-                                    
-                            
-                                    
+
                                     Button {
                                         print(viewModel.state.getExperienceDetailResponse.id!)
                                         print(AppState.shared.navigationPath.count)
@@ -553,7 +558,6 @@ struct ExperienceDetailView: View {
                                                                 .padding(.leading, 16)
                                                                 .padding(.trailing, 16)
                                                             }
-                                                            
                                                         }
                                                         
                                                         HStack(alignment: .bottom, spacing: 0) {

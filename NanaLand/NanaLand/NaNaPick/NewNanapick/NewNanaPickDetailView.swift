@@ -345,6 +345,7 @@ struct NewNaNaPickDetailMainView: View {
                                                     if data.infoKey == "홈페이지" || data.infoKey == "예약링크" {
                                                         Link(destination: URL(string: "\(data.infoValue)")!, label: {
                                                             Text("\(data.infoValue)")
+                                                                .underline()
                                                                 .font(.body02)
                                                                 .foregroundStyle(.gray1)
                                                         })

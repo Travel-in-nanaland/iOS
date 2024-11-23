@@ -47,11 +47,14 @@ class HomeMainViewModel: ObservableObject {
     struct State {
         var getBannerResponse = [BannerModel]()
         var getRecommendResponse = [RecommendModel]()
+        var getHotResponse = [HotModel]()
     }
     
     enum Action {
         case getBannerItem
         case getRecommendItem
+        case toggleFavorite(body: FavoriteToggleRequest, index: Int)
+        case getHotItem
     }
     
     @Published var state: State
@@ -78,6 +81,60 @@ class HomeMainViewModel: ObservableObject {
             if response != nil {
                 await MainActor.run {
                     state.getRecommendResponse = response?.data ?? []
+                    print(state.getRecommendResponse)
+                }
+            }
+        case .toggleFavorite(body: let body, index: let index):
+            
+            switch body.category {
+            case "NATURE":
+                let response = await FavoriteService.toggleFavorite(id: body.id, category: .nature)
+                if response != nil {
+                    await MainActor.run {
+                        state.getRecommendResponse[index].favorite = response!.data.favorite
+                    }
+                }
+            case "FESTIVAL":
+                let response = await FavoriteService.toggleFavorite(id: body.id, category: .festival)
+                if response != nil {
+                    await MainActor.run {
+                        state.getRecommendResponse[index].favorite = response!.data.favorite
+                    }
+                }
+            case "MARKET":
+                let response = await FavoriteService.toggleFavorite(id: body.id, category: .market)
+                if response != nil {
+                    await MainActor.run {
+                        state.getRecommendResponse[index].favorite = response!.data.favorite
+                    }
+                }
+            case "EXPERIENCE":
+                let response = await FavoriteService.toggleFavorite(id: body.id, category: .experience)
+                if response != nil {
+                    await MainActor.run {
+                        state.getRecommendResponse[index].favorite = response!.data.favorite
+                    }
+                }
+            case "RESTAURANT":
+                let response = await FavoriteService.toggleFavorite(id: body.id, category: .restaurant)
+                if response != nil {
+                    await MainActor.run {
+                        state.getRecommendResponse[index].favorite = response!.data.favorite
+                    }
+                }
+            default:
+                let response = await FavoriteService.toggleFavorite(id: body.id, category: .nature)
+                if response != nil {
+                    await MainActor.run {
+                        state.getRecommendResponse[index].favorite = response!.data.favorite
+                    }
+                }
+            }
+        case .getHotItem:
+            let response = await HomeService.getHotItem()
+            if response != nil {
+                await MainActor.run {
+                    state.getHotResponse = response!.data ?? []
                 }
             }
         }

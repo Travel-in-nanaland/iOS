@@ -21,4 +21,8 @@ struct HomeService {
 	static func getRecommendDataInTypeTest() async -> BaseResponse<[RecommendModel]>? {
 		return await NetworkManager.shared.request(HomeEndPoint.getRecommendDataInTypeTest)
 	}
+    
+    static func getHotItem() async -> BaseResponse<[HotModel]>? {
+        return await NetworkManager.shared.request(HomeEndPoint.getHotItem)
+    }
 }

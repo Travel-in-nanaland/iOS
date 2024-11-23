@@ -45,15 +45,15 @@ class Interceptor: RequestInterceptor {
         } else { // 토큰 관련 에러가 아닐 경우 retry 안 하고 에러 발생
             completion(.doNotRetryWithError(error))
         }
-        
     }
     
         // 토큰 리프레시 함수
         private func refreshAccessToken() async -> Bool {
+            print("토큰 리프레시 함수 실행")
             guard let refreshTokenResponse = await AuthService.refreshingToken() else {
                 return false
             }
-    
+            
             // 갱신된 토큰 저장
             if let newAccessToken = refreshTokenResponse.data?.accessToken,
                let newRefreshToken = refreshTokenResponse.data?.refreshToken {
