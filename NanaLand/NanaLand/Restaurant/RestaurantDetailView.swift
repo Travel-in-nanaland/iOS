@@ -164,6 +164,7 @@ struct RestaurantDetailView: View {
                                         
                                         if let contantData = viewModel.state.getRestaurantDetailResponse.contact, contantData != "" {
                                             HStack(spacing: 10) {
+                                                let sanitizedNumber = viewModel.state.getRestaurantDetailResponse.contact!.replacingOccurrences(of: "-", with: "")
                                                 VStack(spacing: 0) {
                                                     Image("icDetailPhone")
                                                         .padding(.bottom, 5)
@@ -173,8 +174,11 @@ struct RestaurantDetailView: View {
                                                 VStack(alignment: .leading, spacing: 0) {
                                                     Text(.phoneNumber)
                                                         .font(.body02_bold)
-                                                    Text(contantData)
-                                                        .font(.body02)
+                                                    Link(destination: URL(string: "tel://\(sanitizedNumber)")!, label: {
+                                                        Text(viewModel.state.getRestaurantDetailResponse.contact!)
+                                                            .underline()
+                                                            .font(.gothicNeo(.regular, size: 12))
+                                                    })
                                                     Spacer()
                                                 }
                                                 Spacer()
@@ -233,8 +237,11 @@ struct RestaurantDetailView: View {
                                                 VStack(alignment: .leading, spacing: 0) {
                                                     Text(.homepage)
                                                         .font(.body02_bold)
-                                                    Text(homepageData)
-                                                        .font(.body02)
+                                                    Link(destination: URL(string: "\(homepageData)")!, label: {
+                                                        Text("\(homepageData)")
+                                                            .underline()
+                                                            .font(.body02)
+                                                    })
                                                     Spacer()
                                                 }
                                                 Spacer()
@@ -253,9 +260,11 @@ struct RestaurantDetailView: View {
                                                 VStack(alignment: .leading, spacing: 0) {
                                                     Text(.instagram)
                                                         .font(.body02_bold)
-                                                    Text(instaData)
-                                                        .font(.body02)
-                                                    
+                                                    Link(destination: URL(string: "\(instaData)")!, label: {
+                                                        Text(instaData)
+                                                            .underline()
+                                                            .font(.body02)
+                                                    })
                                                     Spacer()
                                                 }
                                                 Spacer()
@@ -472,7 +481,6 @@ struct RestaurantDetailView: View {
                                                                         Text("\(String(format: "%.1f", viewModel.state.getReviewDataResponse.data[index].rating ?? 0))")
                                                                             .font(.caption01)
                                                                     }
-                                                                    
                                                                 }
                                                                 Spacer()
                                                                 
@@ -490,8 +498,7 @@ struct RestaurantDetailView: View {
                                                                             } label: {
                                                                                 Image(viewModel.state.getReviewDataResponse.data[index].reviewHeart == true ? "icReviewHeartMain" : "icReviewHeart")
                                                                             }
-                                                                            
-                                                                            
+      
                                                                             Text("\(viewModel.state.getReviewDataResponse.data[index].heartCount)")
                                                                                 .font(.caption01)
                                                                                 .foregroundColor(.black)
@@ -512,10 +519,7 @@ struct RestaurantDetailView: View {
                                                                             .padding(.leading, 10)
                                                                             .padding(.bottom, 5)
                                                                     }
-                                                                    
                                                                 }
-                                                                
-                                                                
                                                             }
                                                             HStack(alignment: .bottom, spacing: 0) {
                                                                 ExpandableText("\(viewModel.state.getReviewDataResponse.data[index].content ?? "")", lineLimit: 2)
@@ -543,7 +547,6 @@ struct RestaurantDetailView: View {
                                                                 Button {
                                                                     reportModal = true
                                                                     idx = viewModel.state.getReviewDataResponse.data[index].id
-                                                         
                                                                 } label: {
                                                                     Image("icPointBtn")
                                                                         .resizable()
@@ -669,20 +672,14 @@ struct RestaurantDetailView: View {
                                     .font(.body_bold)
                                     .foregroundStyle(Color.white)
                                     .background(RoundedRectangle(cornerRadius: 50).foregroundStyle(Color.main).frame(width: Constants.screenWidth * (28 / 36), height: 40))
-                                
-                                
                             }
                             .frame(width: Constants.screenWidth * (28 / 36), height: 40)
                             .padding(.trailing, 16)
-                            
-                            
                         }
                         .frame(width: Constants.screenWidth, height: 56)
                         .background(Color.white)
                     }
-                    
                 }
-                
             }
             .navigationDestination(for: ReviewType.self) { viewType in
                 switch viewType {
@@ -697,7 +694,6 @@ struct RestaurantDetailView: View {
                 case let .detailReivew(id, category):
                     MyReviewDetailView(reviewId: id, reviewCategory: category)
                         .environmentObject(LocalizationManager())
-                    
                 }
             }
             .toolbar(.hidden)

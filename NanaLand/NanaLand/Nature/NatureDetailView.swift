@@ -26,7 +26,7 @@ struct NatureDetailView: View {
                             .resizable()
                             .frame(width: Constants.screenWidth, height: Constants.screenWidth * (26 / 39))
                             .padding(.bottom, 24)
-                        
+                            
                         ZStack(alignment: .center) {
                             if !isOn { // 더보기 버튼이 안 눌렸을 때
                                 RoundedRectangle(cornerRadius: 12)
@@ -82,8 +82,7 @@ struct NatureDetailView: View {
                                         .padding(.leading, 16)
                                         .lineSpacing(10)
                                         .padding(.trailing, 16)
-                                    
-                                    
+
                                     Spacer()
                                     HStack {
                                         Spacer()
@@ -157,7 +156,6 @@ struct NatureDetailView: View {
                                         .padding(.leading, 16)
                                         .padding(.trailing, 16)
                                     
-                                    
                                     Spacer()
                                     HStack {
                                         Spacer()
@@ -227,6 +225,7 @@ struct NatureDetailView: View {
                             }
                             
                             if viewModel.state.getNatureDetailResponse.contact != "" {
+                                let sanitizedNumber = viewModel.state.getNatureDetailResponse.contact.replacingOccurrences(of: "-", with: "")
                                 HStack(spacing: 10) {
                                     VStack(spacing: 0) {
                                         Image("icPhone")
@@ -237,8 +236,11 @@ struct NatureDetailView: View {
                                     VStack(alignment: .leading, spacing: 0) {
                                         Text(.phoneNumber)
                                             .font(.gothicNeo(.bold, size: 14))
-                                        Text(viewModel.state.getNatureDetailResponse.contact)
-                                            .font(.gothicNeo(.regular, size: 12))
+                                        Link(destination: URL(string: "tel://\(sanitizedNumber)")!, label: {
+                                            Text(viewModel.state.getNatureDetailResponse.contact)
+                                                .underline()
+                                                .font(.gothicNeo(.regular, size: 12))
+                                        })
                                     }
                                     Spacer()
                                 }

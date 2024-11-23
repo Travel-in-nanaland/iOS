@@ -199,6 +199,7 @@ struct FestivalDetailView: View {
                             }
                             
                             if viewModel.state.getFestivalDetailResponse.contact != "" {
+                                let sanitizedNumber = viewModel.state.getFestivalDetailResponse.contact.replacingOccurrences(of: "-", with: "")
                                 HStack(spacing: 10) {
                                     VStack(spacing: 0) {
                                         Image("icDetailPhone")
@@ -207,8 +208,11 @@ struct FestivalDetailView: View {
                                     VStack(alignment: .leading, spacing: 0) {
                                         Text(.phoneNumber)
                                             .font(.gothicNeo(.bold, size: 14))
-                                        Text(viewModel.state.getFestivalDetailResponse.contact)
-                                            .font(.gothicNeo(.regular, size: 12))
+                                        Link(destination: URL(string: "tel://\(sanitizedNumber)")!, label: {
+                                            Text(viewModel.state.getFestivalDetailResponse.contact)
+                                                .underline()
+                                                .font(.gothicNeo(.regular, size: 12))
+                                        })
                                     }
                                     Spacer()
                                 }
@@ -274,8 +278,11 @@ struct FestivalDetailView: View {
                                     VStack(alignment: .leading, spacing: 0) {
                                         Text(.homepage)
                                             .font(.gothicNeo(.bold, size: 14))
-                                        Text(viewModel.state.getFestivalDetailResponse.homepage)
-                                            .font(.gothicNeo(.regular, size: 12))
+                                        Link(destination: URL(string: "\(viewModel.state.getFestivalDetailResponse.homepage)")!, label: {
+                                            Text(viewModel.state.getFestivalDetailResponse.homepage)
+                                                .underline()
+                                                .font(.body02)
+                                        })
                                     }
                                     Spacer()
                                 }

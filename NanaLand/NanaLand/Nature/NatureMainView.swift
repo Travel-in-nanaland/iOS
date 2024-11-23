@@ -25,14 +25,12 @@ struct NatureMainView: View {
             Spacer()
         }
         .toolbar(.hidden)
-
     }
 }
 
 struct NatureMainGridView: View {
     @State var isAdvertisement = false
     @EnvironmentObject var localizationManager: LocalizationManager
-
     @StateObject var viewModel = NatureMainViewModel()
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
     @State private var isAPICalled = false
@@ -69,14 +67,12 @@ struct NatureMainGridView: View {
             .background(
                 RoundedRectangle(cornerRadius: 30)
                     .strokeBorder(Color.gray2, lineWidth: 1)
-                    
             )
             .padding(.trailing, 16)
             .sheet(isPresented: $locationModal) {
                 LocationModalView(viewModel: FestivalMainViewModel(), natureViewModel: viewModel, shopViewModel: ShopMainViewModel(), restaurantModel: RestaurantMainViewModel(), experienceViewModel: ExperienceMainViewModel(), isModalShown: $locationModal, selectedLocation: viewModel.state.selectedLocation, startDate: "", endDate: "", title: "7대자연")
                     .presentationDetents([.height(Constants.screenWidth * (63 / 36))])
             }
-
         }
         .padding(.bottom, 16)
         ScrollView {
@@ -136,13 +132,8 @@ struct NatureMainGridView: View {
                                             .foregroundStyle(Color.main)
                                     }
                                 })
-                                
-                                
                                 .frame(width: (UIScreen.main.bounds.width - 40) / 2, height: 196)
-                                
                                 .padding(.leading, 0)
-                                
-                                
                             }
                         if viewModel.state.page < viewModel.state.getNatureMainResponse.totalElements / 12 {
                             ProgressView()
@@ -163,7 +154,6 @@ struct NatureMainGridView: View {
                     .padding(.bottom, UIApplication.shared.windows.first?.safeAreaInsets.bottom ?? 0)
                 }
             }
-            
         }
         .navigationDestination(for: ArticleViewType.self) { viewType in
             switch viewType {
@@ -172,7 +162,6 @@ struct NatureMainGridView: View {
             }
         }
         .onAppear {
-           
             Task {
                 if APIFlag {
                     if viewModel.state.getNatureMainResponse.totalElements == 0{
@@ -193,14 +182,10 @@ struct NatureMainGridView: View {
                                 isAPICalled = true
                                 viewModel.state.page = 0
                             }
-                            
                         }
                         APIFlag = false
                     }
                 }
-               
-                
-                
             }
         }
     }
