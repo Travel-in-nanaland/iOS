@@ -22,6 +22,7 @@ struct SearchArticle: Codable {
 	let firstImage: ArticleImageList
 	let title: String
 	var favorite: Bool
+    let onGoing: Bool?
 }
 
 

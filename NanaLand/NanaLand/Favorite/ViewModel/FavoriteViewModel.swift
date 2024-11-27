@@ -136,6 +136,8 @@ class FavoriteViewModel: ObservableObject {
 			
 			state.festivalFavoriteArticlePage += 1
 			state.isLoading = false
+            
+            print(data.data)
 		} else {
 			print("getFestivalFavoriteList Error")
 			state.isLoading = false
