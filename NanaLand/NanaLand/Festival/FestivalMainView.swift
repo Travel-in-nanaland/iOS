@@ -414,6 +414,7 @@ struct FestivalMainGridView: View {
 												.frame(width: (Constants.screenWidth - 40) / 2, height: ((UIScreen.main.bounds.width - 40) / 2) * (12 / 16))
 												.clipShape(RoundedRectangle(cornerRadius: 12))
 												.padding(.bottom, 8)
+                                            
                                             VStack(spacing: 0) {
 												HStack(spacing: 0) {
 													Spacer()

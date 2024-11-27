@@ -247,7 +247,7 @@ struct SearchMainView: View {
                                                 }
                                               
                                             } label: {
-                                                article.favorite ? Image("icHeartFillMain") : Image("icHeartDefault")
+                                                article.favorite ?? false ? Image("icHeartFillMain") : Image("icHeartDefault")
                                             }
                                         }
                                         .padding(.top, 8)
