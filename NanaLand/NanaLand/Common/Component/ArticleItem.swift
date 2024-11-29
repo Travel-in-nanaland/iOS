@@ -41,7 +41,7 @@ struct ArticleItem: View {
                             onTapHeart()
                             
                         } label: {
-                            article.favorite ?? false ? Image("icHeartFillMain") : Image("icHeartDefault")
+                            article.favorite ?? false ?  Image("icHeart_Fill").animation(nil) : Image("icHeart_Blank").animation(nil)
                         }
                     }
                     .padding(.top, 8)

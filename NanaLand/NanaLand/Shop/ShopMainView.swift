@@ -87,6 +87,8 @@ struct ShopMainGridView: View {
                                                 .frame(width: (UIScreen.main.bounds.width - 40) / 2, height: ((UIScreen.main.bounds.width - 40) / 2) * (12 / 16))
                                                 .clipShape(RoundedRectangle(cornerRadius: 12))
                                             VStack(spacing: 0) {
+                                                Spacer()
+                                                
                                                 HStack(spacing: 0) {
                                                     Spacer()
                                                     
@@ -96,11 +98,10 @@ struct ShopMainGridView: View {
                                                         }
                                                         
                                                     } label: {
-                                                        viewModel.state.getShopMainResponse.data[index].favorite ? Image("icHeartFillMain") : Image("icHeartDefault")
+                                                        viewModel.state.getShopMainResponse.data[index].favorite ? Image("icHeart_Fill") : Image("icHeart_Blank")
                                                     }
                                                 }
-                                                .padding(.top, 8)
-                                                Spacer()
+                                                .padding(.bottom, 12)
                                             }
                                             .padding(.trailing, 8)
                                         }
