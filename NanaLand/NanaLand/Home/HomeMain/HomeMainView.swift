@@ -218,7 +218,7 @@ struct HomeMainView: View {
                                                             await toggleFavorite(body: FavoriteToggleRequest(id: Int(article.id), category: .nature), index: index)
                                                         }
                                                     } label: {
-                                                        article.favorite ? Image("icHeartFillMain") : Image("icHeartDefault")
+                                                        article.favorite ? Image("icHeart_Fill") : Image("icHeart_Blank")
                                                     }
                                                 }
                                                 .padding(.top, 8)
@@ -254,7 +254,7 @@ struct HomeMainView: View {
                                                             await toggleFavorite(body: FavoriteToggleRequest(id: Int(article.id), category: .festival), index: index)
                                                         }
                                                     } label: {
-                                                        article.favorite ? Image("icHeartFillMain") : Image("icHeartDefault")
+                                                        article.favorite ? Image("icHeart_Fill") : Image("icHeart_Blank")
                                                     }
                                                 }
                                                 .padding(.top, 8)
@@ -290,7 +290,7 @@ struct HomeMainView: View {
                                                             await toggleFavorite(body: FavoriteToggleRequest(id: Int(article.id), category: .market), index: index)
                                                         }
                                                     } label: {
-                                                        article.favorite ? Image("icHeartFillMain") : Image("icHeartDefault")
+                                                        article.favorite ? Image("icHeart_Fill") : Image("icHeart_Blank")
                                                     }
                                                 }
                                                 .padding(.top, 8)
@@ -326,7 +326,7 @@ struct HomeMainView: View {
                                                             await toggleFavorite(body: FavoriteToggleRequest(id: Int(article.id), category: .experience), index: index)
                                                         }
                                                     } label: {
-                                                        article.favorite ? Image("icHeartFillMain") : Image("icHeartDefault")
+                                                        article.favorite ? Image("icHeart_Fill") : Image("icHeart_Blank")
                                                     }
                                                 }
                                                 .padding(.top, 8)
@@ -362,7 +362,7 @@ struct HomeMainView: View {
                                                             await toggleFavorite(body: FavoriteToggleRequest(id: Int(article.id), category: .restaurant), index: index)
                                                         }
                                                     } label: {
-                                                        article.favorite ? Image("icHeartFillMain") : Image("icHeartDefault")
+                                                        article.favorite ? Image("icHeart_Fill") : Image("icHeart_Blank")
                                                     }
                                                 }
                                                 .padding(.top, 8)
@@ -434,10 +434,11 @@ struct HomeMainView: View {
                             }
                             .padding(.leading, 16)
                             .padding(.bottom, 12)
+                            
                             VStack(spacing: 0) {
                                 HStack(spacing: 0) {
                                     Spacer()
-                                    Image("icHeartDefault")
+                                    Image("icHeart_Blank")
                                         .resizable()
                                         .frame(width: 20, height: 20)
                                         .background(

@@ -155,8 +155,9 @@ struct RestaurantMainGridView: View {
                                                 .resizable()
                                                 .frame(width: (Constants.screenWidth - 40) / 2, height: ((Constants.screenWidth - 40) / 2) * (12 / 16))
                                                 .clipShape(RoundedRectangle(cornerRadius: 12))
-                                            
+
                                             VStack(spacing: 0) {
+                                                Spacer()
                                                 HStack(spacing: 0) {
                                                     Spacer()
                                                     Button {
@@ -164,11 +165,10 @@ struct RestaurantMainGridView: View {
                                                             await toggleFavorite(body: FavoriteToggleRequest(id: Int(viewModel.state.getRestaurantMainResponse.data[index].id), category: .experience), index: index)
                                                         }
                                                     } label: {
-                                                        viewModel.state.getRestaurantMainResponse.data[index].favorite ? Image("icHeartFillMain").animation(nil) : Image("icHeartDefault").animation(nil)
+                                                        viewModel.state.getRestaurantMainResponse.data[index].favorite ? Image("icHeart_Fill") : Image("icHeart_Blank")
                                                     }
                                                 }
-                                                .padding(.top, 8)
-                                                Spacer()
+                                                .padding(.bottom, 8)
                                             }
                                             .padding(.trailing, 8)
                                         }
