@@ -60,6 +60,7 @@ struct SearchResultView: View {
     @Environment(\.dismiss) var dismiss
     @ObservedObject var searchVM: SearchViewModel
     
+    @State var searchBarClick = true
     @State var searchTerm: String
     
     @State var isNatureSearchIsDone: Bool = false
@@ -92,7 +93,7 @@ struct SearchResultView: View {
             
             NanaSearchBar(
                 searchTerm: $searchTerm,
-                searchAction: {
+                searchBarClick: $searchBarClick, searchAction: {
                     await searchVM.action(.searchTerm(category: .all, term: searchTerm))
                     isNatureSearchIsDone = false
                     isMarketSearchIsDone = false

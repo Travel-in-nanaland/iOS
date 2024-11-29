@@ -14,6 +14,7 @@ struct SearchMainView: View {
     @StateObject var searchVM: SearchViewModel = SearchViewModel()
     
     @State var searchTerm = ""
+    @State var searchBarClick = true
     @State var showResultView: Bool = false
     
     let itemWidth = (Constants.screenWidth-40)/2
@@ -52,7 +53,7 @@ struct SearchMainView: View {
             
             NanaSearchBar(
                 placeHolder: .inputSearchTerm,
-                searchTerm: $searchTerm,
+                searchTerm: $searchTerm, searchBarClick: $searchBarClick,
                 searchAction: {
                     search(term: searchTerm)
                 }

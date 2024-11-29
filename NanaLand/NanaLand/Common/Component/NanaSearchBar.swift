@@ -9,6 +9,7 @@ import SwiftUI
 
 struct NanaSearchBar: View {
 	@Binding var searchTerm: String
+    @Binding var searchBarClick: Bool
 	
 	let placeHolder: LocalizedKey
 	let searchAction: () async -> Void
@@ -19,6 +20,7 @@ struct NanaSearchBar: View {
 	init(
 		placeHolder: LocalizedKey = .inputSearchTerm,
 		searchTerm: Binding<String>,
+        searchBarClick: Binding<Bool>,
 		searchAction: @escaping () async -> Void = {},
 		showClearButton: Bool = true,
 		clearButtonAction: @escaping () -> Void = {},
@@ -26,6 +28,7 @@ struct NanaSearchBar: View {
 	) {
 		self.placeHolder = placeHolder
 		self._searchTerm = searchTerm
+        self._searchBarClick = searchBarClick // 초기화
 		self.searchAction = searchAction
 		self.showClearButton = showClearButton
 		self.clearButtonAction = clearButtonAction
@@ -37,7 +40,7 @@ struct NanaSearchBar: View {
 			TextField(text: $searchTerm, label: {
 				Text(placeHolder)
 					.font(.gothicNeo(.medium, size: 14))
-					.foregroundStyle(Color.gray1)
+					.foregroundStyle(searchBarClick == false ? Color.white : Color.gray1)
 			})
 			.submitLabel(.search)
 			.disabled(disabled)
@@ -53,7 +56,7 @@ struct NanaSearchBar: View {
             .font(.caption01)
 			.background {
 				Capsule()
-					.stroke(Color.main, lineWidth: 1)
+                    .stroke(searchBarClick == false ? Color.white : Color.main, lineWidth: 1)
 			}
 			.contentShape(Rectangle())
 			.overlay(alignment: .trailing) {
@@ -70,10 +73,9 @@ struct NanaSearchBar: View {
 				}
 			}
 		}
-		
     }
 }
 
 #Preview {
-	NanaSearchBar(placeHolder: .inputSearchTerm, searchTerm: .constant(""))
+    NanaSearchBar(placeHolder: .inputSearchTerm, searchTerm: .constant(""), searchBarClick: .constant(false))
 }

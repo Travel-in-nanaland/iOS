@@ -14,6 +14,7 @@ struct HomeMainView: View {
     @EnvironmentObject var localizationManager: LocalizationManager
     @StateObject var viewModel = HomeMainViewModel()
     @State private var isRecommendCalled = false
+    @State var searchBarClick = false
     @AppStorage("provider") var provider:String = ""
     
     let randomSearchPlaceHolder: LocalizedKey = [.jejuCanolaFestival, .jejuGreenTeaField, .jejuFiveDayMarket, .udoToday, .trendyGujwa, .hallasanTrail, .jejuNightDrive, .nearJejuAirport, .jejuSummerHydrangea, .jejuCharmingHanok].randomElement()!
@@ -21,44 +22,66 @@ struct HomeMainView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 0) {
-                HStack(spacing: 0) {
-                    Button(action: {
-                        Analytics.logEvent("button_click_custom", parameters: [
-                            "button_name": "로고 버튼 custom"
-                        ])
-                        print("analytics")
-                    }) {
-                        Image("icLogo")
+                BannerView(searchBarClick: $searchBarClick)
+                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width * (300 / 360))
+                    .edgesIgnoringSafeArea(.top)
+                    .padding(.top, -1)
+                    .padding(.leading, -0.5)
+                    .padding(.bottom, 16)
+                    .overlay {
+                        ZStack{
+                            VStack(spacing: 0){
+                                TouchBlockingUIView()
+                                            .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width * (40 / 360))
+                                
+                                Spacer()
+                            }
+                            .padding(.top, UIScreen.main.bounds.width * (50 / 360))
+                            
+                            VStack(spacing: 0){
+                                HStack(spacing: 0) {
+                                    Button(action: {
+                                        Analytics.logEvent("button_click_custom", parameters: [
+                                            "button_name": "로고 버튼 custom"
+                                        ])
+                                        print("analytics")
+                                    }) {
+                                        Image("icLogo")
+                                        
+                                    }
+                                    .padding(.leading, 16)
+                                    Spacer()
+                                    
+                                    NanaSearchBar(
+                                        placeHolder: randomSearchPlaceHolder,
+                                        searchTerm: .constant(""),
+                                        searchBarClick: $searchBarClick,
+                                        showClearButton: false,
+                                        disabled: true
+                                    )
+                                    .simultaneousGesture(TapGesture().onEnded {
+                                        searchBarClick = true
+                                        AppState.shared.navigationPath.append(HomeViewType.search)
+                                    })
+                                    
+                                    Spacer()
+                                    
+                                    Button(action: {
+                                        AppState.shared.navigationPath.append(HomeViewType.notification)
+                                    }) {
+                                        Image("icBell")
+                                    }
+                                    .padding(.trailing, 16)
+                                }
+                                .padding(.bottom, 8)
+                                .padding(.top, 1)
+                                
+                                Spacer()
+                            }
+                            .padding(.top, UIScreen.main.bounds.width * (60 / 360))
+                        }
                         
                     }
-                    .padding(.leading, 16)
-                    Spacer()
-                    
-                    NanaSearchBar(
-                        placeHolder: randomSearchPlaceHolder,
-                        searchTerm: .constant(""),
-                        showClearButton: false,
-                        disabled: true
-                    )
-                    .simultaneousGesture(TapGesture().onEnded {
-                        AppState.shared.navigationPath.append(HomeViewType.search)
-                    })
-                    
-                    Spacer()
-                    
-                    Button(action: {
-                        AppState.shared.navigationPath.append(HomeViewType.notification)
-                    }) {
-                        Image("icBell")
-                    }
-                    .padding(.trailing, 16)
-                }
-                .padding(.bottom, 8)
-                .padding(.top, 1)
-                // banner View
-                BannerView()
-                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width * (220 / 360))
-                    .padding(.bottom, 16)
                 
                 /// category View
                 ScrollView(.horizontal, showsIndicators: true) {
@@ -80,7 +103,7 @@ struct HomeMainView: View {
                             }
                         })
                         .frame(minHeight: 65)
-                 
+                        
                         // 축제 link
                         Button(action: {
                             AppState.shared.navigationPath.append(HomeViewType.festival)
@@ -98,7 +121,7 @@ struct HomeMainView: View {
                             }
                         })
                         .frame(minHeight: 65)
-
+                        
                         // 전통시장 link
                         Button(action: {
                             AppState.shared.navigationPath.append(HomeViewType.shop)
@@ -117,8 +140,8 @@ struct HomeMainView: View {
                             }
                         })
                         .frame(minHeight: 65)
-
-
+                        
+                        
                         // 액티비티 link
                         Button(action: {
                             AppState.shared.navigationPath.append(HomeViewType.activity)
@@ -234,7 +257,7 @@ struct HomeMainView: View {
                                     }
                                     .frame(width: 160)
                                 }
-
+                                
                             case "FESTIVAL":
                                 Button {
                                     AppState.shared.navigationPath.append(HomeViewType.festivalDetail(id: Int(article.id)))
@@ -262,7 +285,7 @@ struct HomeMainView: View {
                                             }
                                             .padding(.trailing, 8)
                                         }
-                              
+                                        
                                         Text(article.title)
                                             .font(.gothicNeo(size: 14, font: "bold"))
                                             .multilineTextAlignment(.leading)
@@ -270,7 +293,7 @@ struct HomeMainView: View {
                                     }
                                     .frame(width: 160)
                                 }
-
+                                
                             case "MARKET":
                                 Button {
                                     AppState.shared.navigationPath.append(HomeViewType.shopDetail(id: Int(article.id)))
@@ -298,7 +321,7 @@ struct HomeMainView: View {
                                             }
                                             .padding(.trailing, 8)
                                         }
-                              
+                                        
                                         Text(article.title)
                                             .font(.gothicNeo(size: 14, font: "bold"))
                                             .multilineTextAlignment(.leading)
@@ -334,7 +357,7 @@ struct HomeMainView: View {
                                             }
                                             .padding(.trailing, 8)
                                         }
-                              
+                                        
                                         Text(article.title)
                                             .font(.gothicNeo(size: 14, font: "bold"))
                                             .multilineTextAlignment(.leading)
@@ -376,8 +399,8 @@ struct HomeMainView: View {
                                             .multilineTextAlignment(.leading)
                                             .lineLimit(1)
                                     }
-                                .frame(width: 160)
-                            }
+                                    .frame(width: 160)
+                                }
                                 
                             default:
                                 Button {
@@ -450,7 +473,7 @@ struct HomeMainView: View {
                                 .padding(.top, 8)
                                 Spacer()
                             }
-                          
+                            
                         }
                         .frame(width: Constants.screenWidth - 32, height: 140)
                     }
@@ -467,6 +490,7 @@ struct HomeMainView: View {
                 await getHotItem()
                 isRecommendCalled = true
             }
+            searchBarClick = false
         }
         .onReceive(NotificationCenter.default.publisher(for: .deeplinkShowMarketDetail)) { notification in
             if let userInfo = notification.userInfo, let id = userInfo["id"] as? Int {
@@ -684,7 +708,7 @@ struct AdvertisementView: View {
                 CustomPageIndicator(count: images.count, currentPage: $currentPage)
             }
             .frame(height: 90)
-          
+            
         }
         .navigationDestination(for: AdvertisementViewType.self) { viewType in
             switch viewType {
@@ -713,7 +737,8 @@ enum AdvertisementViewType {
 struct BannerView: View {
     @StateObject var viewModel = HomeMainViewModel()
     
-   @State private var isBannerCalled = false
+    @Binding var searchBarClick: Bool
+    @State private var isBannerCalled = false
     
     var message = ""
     private let timer = Timer.publish(every: 3.5, on: .main, in: .common).autoconnect()
@@ -728,37 +753,33 @@ struct BannerView: View {
                 ForEach(viewModel.state.getBannerResponse.indices, id: \.self) { index in
                     let banner = viewModel.state.getBannerResponse[index]
                     ZStack {
-                        Button {
-                            if index == 0 {
-                                AppState.shared.navigationPath.append(BannerViewType.firstBanner(id: Int(banner.id)))
-                            } else if index == 1{
-                                AppState.shared.navigationPath.append(BannerViewType.secondBanner(id: Int(banner.id)))
-                            } else {
-                                AppState.shared.navigationPath
-                                    .append(BannerViewType.thirdBanner(id: Int(banner.id)))
+                        Button(action: {
+                            if !searchBarClick {
+                                if index == 0 {
+                                    AppState.shared.navigationPath.append(BannerViewType.firstBanner(id: Int(banner.id)))
+                                } else if index == 1 {
+                                    AppState.shared.navigationPath.append(BannerViewType.secondBanner(id: Int(banner.id)))
+                                } else {
+                                    AppState.shared.navigationPath.append(BannerViewType.thirdBanner(id: Int(banner.id)))
+                                }
                             }
-                        } label: {
-                            ZStack{
-                                KFImage(URL(string: banner.firstImage.originUrl))
-                                    .resizable()
-                                    .frame(width: Constants.screenWidth, height: Constants.screenWidth * (220 / 360))
-                                
-                                Rectangle()
-                                    .foregroundColor(.clear)
-                                    .background(){
-                                        LinearGradient(gradient: Gradient(colors: [.clear, .black.opacity(0.5)]), startPoint: .top, endPoint: .bottom)
-                                    }
-                                    .frame(width: Constants.screenWidth, height: Constants.screenWidth * (220 / 360))
-                            }
+                        }) {
+                            KFImage(URL(string: banner.firstImage.originUrl))
+                                .resizable()
+                                .frame(width: Constants.screenWidth, height: Constants.screenWidth * (300 / 360))
+                                .overlay(
+                                    LinearGradient(
+                                        gradient: Gradient(colors: [.clear, .black.opacity(0.5)]),
+                                        startPoint: .top,
+                                        endPoint: .bottom
+                                    )
+                                )
                         }
-
+                        .disabled(searchBarClick)
+                        
                         VStack(spacing: 0) {
                             HStack(spacing: 0) {
-                                Spacer()
-                                Text(banner.version)
-                                    .font(.caption01)
-                                    .foregroundStyle(.white)
-                                    .padding(.trailing, 16)
+                                
                             }
                             .padding(.top, 8)
                             
@@ -778,7 +799,7 @@ struct BannerView: View {
                             .padding(.leading, 16)
                         }
                     }
-                    .frame(width: Constants.screenWidth, height: Constants.screenWidth * (220 / 360))
+                    .frame(width: Constants.screenWidth, height: Constants.screenWidth * (300 / 360))
                 }
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
@@ -797,9 +818,9 @@ struct BannerView: View {
                         .font(.caption02)
                         .foregroundColor(.white)
                         .background(
-                                RoundedRectangle(cornerRadius: 30)
-                                    .fill(Color.black.opacity(0.5)) // Set the background color here
-                            )
+                            RoundedRectangle(cornerRadius: 30)
+                                .fill(Color.black.opacity(0.5)) // Set the background color here
+                        )
                         .overlay(
                             RoundedRectangle(cornerRadius: 30)
                                 .stroke(Color.white, lineWidth: 1) // 둥근 모서리와 테두리 추가
@@ -807,12 +828,12 @@ struct BannerView: View {
                 }
                 .frame(width: UIScreen.main.bounds.width)
                 .padding(.trailing, 15)
-               
+                
             }
             .padding(.bottom, 16)
             
         }
-        .frame(width: Constants.screenWidth, height: Constants.screenWidth * (220 / 360))
+        .frame(width: Constants.screenWidth, height: Constants.screenWidth * (300 / 360))
         .onAppear {
             Task {
                 await getBannerData()
@@ -856,6 +877,26 @@ enum BannerViewType: Hashable {
     case firstBanner(id: Int)
     case secondBanner(id: Int)
     case thirdBanner(id: Int)
+}
+
+class TouchBlockingView: UIView {
+    // 터치 이벤트를 차단하는 메서드 오버라이드
+    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        // false를 반환하여 터치 이벤트가 전달되지 않도록 설정
+        return false
+    }
+}
+
+struct TouchBlockingUIView: UIViewRepresentable {
+    func makeUIView(context: Context) -> TouchBlockingView {
+        let view = TouchBlockingView()
+        view.backgroundColor = .clear // 터치 차단 영역은 투명
+        return view
+    }
+
+    func updateUIView(_ uiView: TouchBlockingView, context: Context) {
+        // 필요 시 업데이트 로직 추가
+    }
 }
 
 #Preview {
