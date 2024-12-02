@@ -36,12 +36,14 @@ struct FavoriteArticle: Codable {
 	let title: String
 	let firstImage: ArticleImageList
 	let category: Category
+    let onGoing: Bool?
 	
 	init(from decoder: any Decoder) throws {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
 		self.id = try container.decode(Int.self, forKey: .id)
 		self.title = try container.decode(String.self, forKey: .title)
 		self.firstImage = try container.decode(ArticleImageList.self, forKey: .firstImage)
+        self.onGoing = try container.decodeIfPresent(Bool.self, forKey: .onGoing) // 선택적으로 디코드
 		
 		let categoryString = try container.decode(String.self, forKey: .category)
 		self.category =  {

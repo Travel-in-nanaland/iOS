@@ -12,21 +12,24 @@ struct Article: Codable {
 	let id: Int
 	let firstImage: ArticleImageList
 	let title: String
-	var favorite: Bool
+	var favorite: Bool?
 	let category: Category
+    let onGoing: Bool?
 	
 	init(
 		id: Int,
         firstImage: ArticleImageList,
 		title: String,
-		favorite: Bool,
-		category: Category
+		favorite: Bool?,
+		category: Category,
+        onGoing: Bool?
 	) {
 		self.id = id
 		self.firstImage = firstImage
 		self.title = title
 		self.favorite = favorite
 		self.category = category
+        self.onGoing = onGoing
 	}
 	
 	init(from favoriteArticle: FavoriteArticle) {
@@ -35,6 +38,7 @@ struct Article: Codable {
 		self.title = favoriteArticle.title
 		self.favorite = true
 		self.category = favoriteArticle.category
+        self.onGoing = favoriteArticle.onGoing
 	}
 	
 	init(from searchArticle: SearchArticle, category: Category) {
@@ -43,6 +47,7 @@ struct Article: Codable {
 		self.title = searchArticle.title
 		self.favorite = searchArticle.favorite
 		self.category = category
+        self.onGoing = searchArticle.onGoing
 	}
 	
 	init(from decoder: any Decoder) throws {
@@ -50,7 +55,8 @@ struct Article: Codable {
 		self.id = try container.decode(Int.self, forKey: .id)
 		self.title = try container.decode(String.self, forKey: .title)
         self.firstImage = try container.decode(ArticleImageList.self, forKey: .firstImage)
-		self.favorite = try container.decode(Bool.self, forKey: .favorite)
+		self.favorite = try container.decodeIfPresent(Bool.self, forKey: .favorite)
+        self.onGoing = try container.decodeIfPresent(Bool.self, forKey: .onGoing) // 선택적으로 디코드
 		
 		let categoryString = try container.decode(String.self, forKey: .category)
 		self.category =  {

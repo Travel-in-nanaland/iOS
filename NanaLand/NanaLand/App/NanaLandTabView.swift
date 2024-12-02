@@ -20,6 +20,7 @@ struct NanaLandTabView: View {
 		NavigationStack(path: $appState.navigationPath) {
 			TabView(selection: $appState.currentTab) {
                 HomeMainView()
+                    .edgesIgnoringSafeArea(.top)
                     .environmentObject(LocalizationManager())
                     .tabItem {
                         Label(

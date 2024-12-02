@@ -414,7 +414,10 @@ struct FestivalMainGridView: View {
 												.frame(width: (Constants.screenWidth - 40) / 2, height: ((UIScreen.main.bounds.width - 40) / 2) * (12 / 16))
 												.clipShape(RoundedRectangle(cornerRadius: 12))
 												.padding(.bottom, 8)
+                                            
                                             VStack(spacing: 0) {
+                                                Spacer()
+                                                
 												HStack(spacing: 0) {
 													Spacer()
 													
@@ -426,17 +429,17 @@ struct FestivalMainGridView: View {
 														}
 														
 													} label: {
-														
-														viewModel.state.getFestivalMainResponse.data[index].favorite ? Image("icHeartFillMain").animation(nil) : Image("icHeartDefault").animation(nil)
+                                                        
+														viewModel.state.getFestivalMainResponse.data[index].favorite ? Image("icHeart_Fill").animation(nil) : Image("icHeart_Blank").animation(nil)
 														
 													}
 												}
-												.padding(.top, 8)
-												Spacer()
+												.padding(.bottom, 20)
 											}
 											.padding(.trailing, 8)
 										}
 										
+                                        
 										Text(viewModel.state.getFestivalMainResponse.data[index].title)
 											.font(.body02_bold)
 											.padding(.bottom, 4)

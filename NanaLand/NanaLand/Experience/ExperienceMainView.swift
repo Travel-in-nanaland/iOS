@@ -149,6 +149,8 @@ struct ExperienceMainGridView: View {
                                                 .clipShape(RoundedRectangle(cornerRadius: 12))
                                             
                                             VStack(spacing: 0) {
+                                                Spacer()
+                                                
                                                 HStack(spacing: 0) {
                                                     Spacer()
                                                     Button {
@@ -156,11 +158,10 @@ struct ExperienceMainGridView: View {
                                                             await toggleFavorite(body: FavoriteToggleRequest(id: Int(viewModel.state.getExperienceMainResponse.data[index].id), category: .experience), index: index)
                                                         }
                                                     } label: {
-                                                        viewModel.state.getExperienceMainResponse.data[index].favorite ? Image("icHeartFillMain").animation(nil) : Image("icHeartDefault").animation(nil)
+                                                        viewModel.state.getExperienceMainResponse.data[index].favorite ? Image("icHeart_Fill").animation(nil) : Image("icHeart_Blank").animation(nil)
                                                     }
                                                 }
-                                                .padding(.top, 8)
-                                                Spacer()
+                                                .padding(.bottom, 8)
                                             }
                                             .padding(.trailing, 8)
                                         }
