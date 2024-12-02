@@ -452,10 +452,14 @@ struct HomeMainView: View {
                             default:
                                 break
                             }
-                            .padding(.leading, 16)
-                            .padding(.bottom, 12)
-                            
-                            VStack(spacing: 0) {
+                           
+                        } label: {
+                            ZStack {
+                                KFImage(URL(string: data.firstImage.originUrl)!)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: Constants.screenWidth - 32, height: 140)
+                                    .clipShape(RoundedRectangle(cornerRadius: 12))
                                 HStack(spacing: 0) {
                                     VStack(alignment: .leading, spacing: 0) {
                                         Spacer()
@@ -501,15 +505,9 @@ struct HomeMainView: View {
                                     .padding(.trailing, 8)
                                     .padding(.top, 8)
                                     Spacer()
-                                    Image("icHeart_Blank")
-                                        .resizable()
-                                        .frame(width: 20, height: 20)
-                                        .background(
-                                            Circle()
-                                                .fill(Color.white)
-                                        )
                                 }
                             }
+                            .frame(width: Constants.screenWidth - 32, height: 140)
                         }
                     }
                 }
