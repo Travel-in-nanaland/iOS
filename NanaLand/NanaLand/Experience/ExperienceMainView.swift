@@ -101,9 +101,7 @@ struct ExperienceMainGridView: View {
                         CultureAndArtsKeywordView(keyword: $keyword, address: viewModel.state.apiLocation, viewModel: viewModel, selectedKeyword: viewModel.state.selectedKeyword)
                             .presentationDetents([.height(Constants.screenWidth * (376 / 360))]) // 팝업 뷰 height 조절
                     }
-                    
                 }
-                
                 
                 Button {
                     self.locationModal = true
@@ -248,7 +246,6 @@ struct ExperienceMainGridView: View {
                     experienceType == "Activity" ? await getExperienceMainItem(experienceType: "ACTIVITY", keyword: keyword == LocalizedKey.keyword.localized(for: LocalizationManager().language) ? "" : APIKeyword, address: viewModel.state.apiLocation, page: 0, size: 12) : await getExperienceMainItem(experienceType: "CULTURE_AND_ARTS", keyword: keyword == LocalizedKey.keyword.localized(for: LocalizationManager().language) ? "" : APIKeyword, address: viewModel.state.apiLocation, page: 0, size: 12)
                 }
                
-                
                 isAPICalled = true
             
             }

@@ -14,4 +14,5 @@ struct HotModel: Codable {
     let category: String
     let firstImage: ImageList
     let viewCount: Int
+    var favorite: Bool
 }
