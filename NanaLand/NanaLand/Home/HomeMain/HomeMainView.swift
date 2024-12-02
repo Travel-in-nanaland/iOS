@@ -80,7 +80,6 @@ struct HomeMainView: View {
                             }
                             .padding(.top, UIScreen.main.bounds.width * (60 / 360))
                         }
-                        
                     }
                 
                 /// category View
@@ -140,7 +139,7 @@ struct HomeMainView: View {
                             }
                         })
                         .frame(minHeight: 65)
-                        
+             
                         
                         // 액티비티 link
                         Button(action: {
@@ -436,30 +435,71 @@ struct HomeMainView: View {
                         Spacer()
                     }
                     .padding(.leading, 16)
-                    ForEach(viewModel.state.getHotResponse, id: \.id) { data in
-                        ZStack {
-                            KFImage(URL(string: data.firstImage.originUrl)!)
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: Constants.screenWidth - 32, height: 140)
-                                .clipShape(RoundedRectangle(cornerRadius: 12))
-                            HStack(spacing: 0) {
-                                VStack(alignment: .leading, spacing: 0) {
-                                    Spacer()
-                                    Text(data.address)
-                                        .font(.caption01)
-                                        .foregroundStyle(.white)
-                                    Text(data.title)
-                                        .font(.title01_bold)
-                                        .foregroundStyle(.white)
-                                }
-                                Spacer()
+                    ForEach(Array(zip(viewModel.state.getHotResponse.indices, viewModel.state.getHotResponse)),id: \.1.id) { (index, data) in
+                        Button {
+                            // TODO: 해당 게시물에 맞게 네비게이션 구현
+                            switch data.category {
+                            case "NATURE":
+                                AppState.shared.navigationPath.append(HomeViewType.natureDetail(id: Int(data.id)))
+                            case "FESTIVAL":
+                                AppState.shared.navigationPath.append(HomeViewType.festivalDetail(id: Int(data.id)))
+                            case "MARKET":
+                                AppState.shared.navigationPath.append(HomeViewType.shopDetail(id: Int(data.id)))
+                            case "EXPERIENCE":
+                                AppState.shared.navigationPath.append(HomeViewType.experienceDetail(id: Int(data.id)))
+                            case "RESTAURANT":
+                                AppState.shared.navigationPath.append(HomeViewType.restaurantDetail(id: Int(data.id)))
+                            default:
+                                break
                             }
                             .padding(.leading, 16)
                             .padding(.bottom, 12)
                             
                             VStack(spacing: 0) {
                                 HStack(spacing: 0) {
+                                    VStack(alignment: .leading, spacing: 0) {
+                                        Spacer()
+                                        Text(data.address)
+                                            .font(.caption01)
+                                            .foregroundStyle(.white)
+                                        Text(data.title)
+                                            .font(.title01_bold)
+                                            .foregroundStyle(.white)
+                                            .multilineTextAlignment(.leading)
+                                    }
+                                    Spacer()
+                                }
+                                .padding(.leading, 16)
+                                .padding(.bottom, 12)
+                                VStack(spacing: 0) {
+                                    HStack(spacing: 0) {
+                                        Spacer()
+                                        Button {
+                                            // TODO: - 좋아요 토글
+                                            Task {
+                                                switch data.category {
+                                                case "NATURE":
+                                                    await hotToggleFavorite(body: FavoriteToggleRequest(id: Int(data.id), category: .nature), index: index)
+                                                case "FESTIVAL":
+                                                    await hotToggleFavorite(body: FavoriteToggleRequest(id: Int(data.id), category: .festival), index: index)
+                                                case "MARKET":
+                                                    await hotToggleFavorite(body: FavoriteToggleRequest(id: Int(data.id), category: .market), index: index)
+                                                case "EXPERIENCE":
+                                                    await hotToggleFavorite(body: FavoriteToggleRequest(id: Int(data.id), category: .experience), index: index)
+                                                case "RESTAURANT":
+                                                    await hotToggleFavorite(body: FavoriteToggleRequest(id: Int(data.id), category: .restaurant), index: index)
+                                                default:
+                                                    break
+                                                }
+                                            }
+                                           
+                                        } label: {
+                                            data.favorite ? Image("icHeartFillMain") : Image("icHeartDefault")
+                                    
+                                        }
+                                    }
+                                    .padding(.trailing, 8)
+                                    .padding(.top, 8)
                                     Spacer()
                                     Image("icHeart_Blank")
                                         .resizable()
@@ -469,13 +509,8 @@ struct HomeMainView: View {
                                                 .fill(Color.white)
                                         )
                                 }
-                                .padding(.trailing, 8)
-                                .padding(.top, 8)
-                                Spacer()
                             }
-                            
                         }
-                        .frame(width: Constants.screenWidth - 32, height: 140)
                     }
                 }
             }
@@ -553,6 +588,10 @@ struct HomeMainView: View {
     
     func getHotItem() async {
         await viewModel.action(.getHotItem)
+    }
+    
+    func hotToggleFavorite(body: FavoriteToggleRequest, index: Int) async {
+        await viewModel.action(.hotItemToggleFavorite(body: body, index: index))
     }
 }
 

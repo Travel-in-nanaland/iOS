@@ -9,40 +9,6 @@ import Foundation
 import Alamofire
 
 class HomeMainViewModel: ObservableObject {
-//    @Published var recommendResponseData: RecommendModel?
-//    @Published var bannerResponseData:  BannerModel?
-//    let baseUrl = "http://13.125.110.80:8080"
-//
-//    let headers: HTTPHeaders = [
-//        "Accept": "application/json",
-//        "Authorization": "Bearer \(Secrets.tempAccessToken)"
-//    ]
-//
-//    // 추천 data 받아오는 함수
-//    func recommendFetchData() {
-//
-//        AF.request("http://13.125.110.80:8080/member/recommended", headers: headers).responseDecodable(of: RecommendModel.self) { response in
-//            switch response.result {
-//            case .success(let data):
-//                self.recommendResponseData = data
-//            case .failure(let error):
-//                print("Error fetching data: \(error)")
-//            }
-//        }
-//    }
-//    // 배너 data 받아오는 함수
-//    func bannerFetchData() {
-//
-//        AF.request("http://13.125.110.80:8080/nana", headers: headers).responseDecodable(of: BannerModel.self) { response in
-//            switch response.result {
-//            case .success(let data):
-//                self.bannerResponseData = data
-//
-//            case .failure(let error):
-//                print("Error fetching data: \(error)")
-//            }
-//        }
-//    }
     
     struct State {
         var getBannerResponse = [BannerModel]()
@@ -54,6 +20,7 @@ class HomeMainViewModel: ObservableObject {
         case getBannerItem
         case getRecommendItem
         case toggleFavorite(body: FavoriteToggleRequest, index: Int)
+        case hotItemToggleFavorite(body: FavoriteToggleRequest, index: Int)
         case getHotItem
     }
     
@@ -137,7 +104,45 @@ class HomeMainViewModel: ObservableObject {
                     state.getHotResponse = response!.data ?? []
                 }
             }
+        case .hotItemToggleFavorite(body: let body, index: let index):
+            switch body.category {
+            case "NATURE":
+                if let response = await FavoriteService.toggleFavorite(id: body.id, category: .nature) {
+                    await MainActor.run {
+                        state.getHotResponse[index].favorite = response.data.favorite
+                    }
+                }
+            case "FESTIVAL":
+                if let response = await FavoriteService.toggleFavorite(id: body.id, category: .festival) {
+                    await MainActor.run {
+                        state.getHotResponse[index].favorite = response.data.favorite
+                    }
+                }
+            case "MARKET":
+                if let response = await FavoriteService.toggleFavorite(id: body.id, category: .market) {
+                    await MainActor.run {
+                        state.getHotResponse[index].favorite = response.data.favorite
+                    }
+                }
+            case "EXPERIENCE":
+                if let response = await FavoriteService.toggleFavorite(id: body.id, category: .experience) {
+                    await MainActor.run {
+                        state.getHotResponse[index].favorite = response.data.favorite
+                    }
+                }
+            case "RESTAURANT":
+                if let response = await FavoriteService.toggleFavorite(id: body.id, category: .restaurant) {
+                    await MainActor.run {
+                        state.getHotResponse[index].favorite = response.data.favorite
+                    }
+                }
+            default:
+                break
+            }
+            
         }
+        
+
     }
 }
 

@@ -77,12 +77,12 @@ struct ExperienceDetailView: View {
                                                     .foregroundStyle(Color.main)
                                                 ForEach(0...viewModel.state.getExperienceDetailResponse.keywords!.count - 1, id: \.self) { index in
                                                     Text(viewModel.state.getExperienceDetailResponse.keywords![index])
+                                                        .padding(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12))
                                                         .background(RoundedRectangle(cornerRadius: 30)
                                                             .foregroundStyle(Color.main10P)
-                                                            .frame(width: 64, height: 20)
-                                                            
+                                                            .frame(height: 20)
                                                         )
-                                                        .frame(width: 64, height: 20)
+                                                        .frame(height: 20)
                                                         .font(.gothicNeo(.regular, size: 12))
                                                         .foregroundStyle(Color.main)
                                                 }
