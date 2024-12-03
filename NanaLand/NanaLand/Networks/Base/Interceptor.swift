@@ -39,6 +39,11 @@ class Interceptor: RequestInterceptor {
                 if refreshCompleted, let newAccessToken = KeyChainManager.readItem(key: "accessToken") {
                     completion(.retry) // 토큰 최신화가 되면 retry
                 } else {
+                    print("refresh Token 만료")
+                    // MARK: 로그인 창으로 보내기
+                    DispatchQueue.main.async {
+                        UserDefaults.standard.set(false, forKey: "isLogin")
+                    }
                     completion(.doNotRetry)
                 }
             }

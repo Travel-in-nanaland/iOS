@@ -498,7 +498,7 @@ struct HomeMainView: View {
                                             }
                                            
                                         } label: {
-                                            data.favorite ? Image("icHeartFillMain") : Image("icHeartDefault")
+                                            data.favorite ? Image("icHeart_Fill") : Image("icHeart_Blank")
                                     
                                         }
                                     }
