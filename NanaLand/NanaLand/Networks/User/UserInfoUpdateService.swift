@@ -18,7 +18,7 @@ import Alamofire
 struct UserInfoUpdateService {
     
     // 1. 프로필 업데이트 요청
-    static func updateUserProfile(nickname: String, description: String, fileKey: String) async -> BaseResponse<EmptyResponseModel>? {
+    static func updateUserProfile(nickname: String, description: String, fileKey: String?) async -> BaseResponse<EmptyResponseModel>? {
         return await NetworkManager.shared.request(UserInfoUpdateEndPoint.updateUserProfile(nickname: nickname, description: description, fileKey: fileKey))
     }
 }

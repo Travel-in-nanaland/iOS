@@ -192,6 +192,11 @@ struct UserProfileMainView: View {
                         .padding(.leading, 15)
                 } else {
                     KFImage(URL(string: (viewModel.state.getUserProfileInfoResponse.profileImage.originUrl)))
+                        .placeholder {
+                            Image(.guestProfile) // 로드 전 표시될 이미지
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                        }
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 100, height: 100)
@@ -366,8 +371,8 @@ enum UserProfileViewType: Hashable {
     case report(id: Int64, isReport: Bool) // 신고하기
 }
 
-#Preview {
-    UserProfileMainView(memberId: 2)
-        .environmentObject(LocalizationManager())
-}
+//#Preview {
+//    UserProfileMainView(memberId: 2)
+//        .environmentObject(LocalizationManager())
+//}
 

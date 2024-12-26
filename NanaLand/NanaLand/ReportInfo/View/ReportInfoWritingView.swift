@@ -229,6 +229,7 @@ struct ReportInfoWritingView: View {
                         isLoading = true
                         await reportInfoVM.action(.onTapSendButton(image: selectedImageData, content: content, email: email))
                         isLoading = false
+                        AppState.shared.navigationPath.append(ReportViewType.finish)
                     }
                 }, label: {
                     RoundedRectangle(cornerRadius: 12)
@@ -256,7 +257,18 @@ struct ReportInfoWritingView: View {
                     .edgesIgnoringSafeArea(.all)
             }
         }
+        .navigationDestination(for: ReportViewType.self) { viewType in
+            switch viewType {
+            case let .finish:
+                ReportInfoResultView(reportInfoVM: reportInfoVM)
+            }
+        }
 	}
+}
+
+
+enum ReportViewType {
+    case finish
 }
 
 #Preview {

@@ -18,254 +18,267 @@ struct ProfileUpdateView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var isShowingImagePicker = false
     @State private var selectedImage: UIImage?
+    @State private var isLoading: Bool = false
     @StateObject var viewModel = ProfileUpdateViewModel()
     @EnvironmentObject var localizationManager: LocalizationManager
     let specialCharacters = CharacterSet.punctuationCharacters.union(.symbols).union(.nonBaseCharacters)
     var body: some View {
         
-        VStack(spacing: 0) {
-            ZStack {
-                NanaNavigationBar(title: .editProfile, showBackButton: false)
-                    .padding(.bottom, 16)
-                HStack(spacing: 0) {
-                    Button(action: {
-                        showAlert = true
-                    }, label: {
-                        Image("icLeft")
-                            .renderingMode(.template)
-                            .foregroundStyle(Color.black)
-                    })
-                    .fullScreenCover(isPresented: $showAlert) {
-                        AlertView(title: .reviewBackAlertTitle, message: .reviewBackAlertMessage, leftButtonTitle: .yes, rightButtonTitle: .no, leftButtonAction: {
-                            showAlert = false
-                            dismiss()
-                        }, rightButtonAction: {
-                            showAlert = false
-                        })
-                    }
-                    .transaction { transaction in
-                        transaction.disablesAnimations = true
-                    }
-                    Spacer()
-                }
-                .padding(.bottom, 12)
-            }
-        }
-        .toolbar(.hidden)
-        GeometryReader { geometry in
-            ScrollView {
-                VStack(spacing: 0) {
-                    ZStack() {
-                        VStack(spacing: 0) {
-                            if let image = selectedImage {
-                                Image(uiImage: image)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 100, height: 100)
-                                    .clipShape(Circle())
-                                
-                            } else {
-                                KFImage(URL(string: AppState.shared.userInfo.profileImage.originUrl))
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 100, height: 100)
-                                    .clipShape(Circle())
-                                
-                            }
-                        }
-                        .frame(width: 100, height: 100)
-                        VStack(spacing: 0) {
-                            Spacer()
-                            HStack(spacing: 0) {
-                                Spacer()
-                                Button(action: {
-                                    self.isShowingImagePicker.toggle()
-                                    
-                                }, label: {
-                                    Image("icCamera")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: 32, height: 32)
-                                        .foregroundStyle(Color.white)
-                                        .padding(4)
-                                        .background(.gray2)
-                                        .clipShape(Circle())
-                                })
-                                .sheet(isPresented: $isShowingImagePicker) {
-                                    ImagePicker(selectedImage: self.$selectedImage)
-                                }
-                            }
-                            .frame(width: 100)
-                            
-                        }
-                        .frame(width: 100, height: 100)
-                    }
-                    .frame(width: 100, height: 100)
-                    .padding(.bottom, 48)
-                    
-                    VStack(spacing: 0) {
-                        HStack(spacing: 0) {
-                            Text(.nickName)
-                                .font(.body_bold)
-                            Spacer()
-                            Text("\(nickName.count) / 8 " + .charCount)
-                                .font(.caption01)
-                                .foregroundStyle(nickName.count > 8 ? Color.red : Color.gray1)
-                            
-                        }
-                        .padding(.leading, 16)
-                        .padding(.trailing, 16)
-                        .padding(.bottom, 8)
-                        
-                        VStack(spacing: 0) {
-                            TextField("", text: $nickName)
-                                .padding(.leading, 16)
-                                .frame(width: Constants.screenWidth - 32, height: 49)
-                                .background(
-                                    RoundedRectangle(cornerRadius: 12)
-                                        .stroke(nickName.count > 8 || containsSpecialCharacter(nickName) ? Color.red : Color.gray2, lineWidth: 1)
-                                )
-                                .onChange(of: nickName) { nickName in
-                                    // 텍스트가 변경될 때마다 실행되는 코드
-                                    viewModel.state.isDuplicate = false
-                                }
-                            
-                            HStack(spacing: 0) {
-                                if (nickName.count > 8 || viewModel.state.isDuplicate || containsSpecialCharacter(nickName)) {
-                                    Image("icWarningCircle")
-                                        .renderingMode(.template)
-                                        .resizable()
-                                        .frame(width: 20, height: 20)
-                                        .foregroundStyle(Color.red)
-                                        .padding(.leading, 16)
-                                        .padding(.top, 8)
-                                }
-                                
-                                if nickName.count > 8 {
-                                    Text(
-                                        (LocalizedKey.invalidNickname.localized(for: localizationManager.language)))
-                                    .font(.caption01)
-                                    .foregroundStyle(.red)
-                                    .padding(.leading, 4)
-                                    .padding(.top, 8)
-                                    .frame(height: 30)
-                                } else if containsSpecialCharacter(nickName){
-                                    Text(LocalizedKey.onlyCharSpaceNumberNickname.localized(for: localizationManager.language))
-                                        .font(.caption01)
-                                        .foregroundStyle(.red)
-                                        .padding(.leading, 4)
-                                        .padding(.top, 8)
-                                        .frame(height: 30)
-                                } else if viewModel.state.isDuplicate {
-                                    Text(LocalizedKey.duplicatedNickname.localized(for: localizationManager.language))
-                                        .font(.caption01)
-                                        .foregroundStyle(.red)
-                                        .padding(.leading, 4)
-                                        .padding(.top, 8)
-                                        .frame(height: 30)
-                                } else {
-                                    Text(" ")
-                                }
-                                
-                                Spacer()
-                            }
-                        }
-                        
-                    }
-                    .ignoresSafeArea(.keyboard)
-                    
+        ZStack{
+            VStack(spacing: 0) {
+                ZStack {
+                    NanaNavigationBar(title: .editProfile, showBackButton: false)
+                        .padding(.bottom, 16)
                     HStack(spacing: 0) {
-                        Text(.introduction)
-                            .font(.body_bold)
+                        Button(action: {
+                            showAlert = true
+                        }, label: {
+                            Image("icLeft")
+                                .renderingMode(.template)
+                                .foregroundStyle(Color.black)
+                        })
+                        .fullScreenCover(isPresented: $showAlert) {
+                            AlertView(title: .reviewBackAlertTitle, message: .reviewBackAlertMessage, leftButtonTitle: .yes, rightButtonTitle: .no, leftButtonAction: {
+                                showAlert = false
+                                dismiss()
+                            }, rightButtonAction: {
+                                showAlert = false
+                            })
+                        }
+                        .transaction { transaction in
+                            transaction.disablesAnimations = true
+                        }
                         Spacer()
-                        Text("\(introduceText.count) / 70 " + .charCount)
-                            .font(.caption01)
-                            .foregroundStyle(introduceText.count > 70 ? Color.red : Color.gray1)
                     }
-                    .padding(.leading, 16)
-                    .padding(.trailing, 16)
-                    .padding(.bottom, 8)
-                    .padding(.top, 80)
-                    
-                    VStack(spacing: 0) {
-                        TextEditor(text: $introduceText)
-                            .padding()
-                            .foregroundColor(Color.black)
-                            .font(.body02)
-                            .lineSpacing(5) // 줄 간격
-                            .frame(width: Constants.screenWidth - 32, height: 80)
-                            .overlay(RoundedRectangle(cornerRadius: 12).stroke(introduceText.count > 70 ? .red : Color.gray2, lineWidth: 1))
+                    .padding(.bottom, 12)
+                }
+                
+                GeometryReader { geometry in
+                    ScrollView {
+                        VStack(spacing: 0) {
+                            ZStack() {
+                                VStack(spacing: 0) {
+                                    if let image = selectedImage {
+                                        Image(uiImage: image)
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fill)
+                                            .frame(width: 100, height: 100)
+                                            .clipShape(Circle())
+                                        
+                                    } else {
+                                        KFImage(URL(string: AppState.shared.userInfo.profileImage.originUrl))
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fill)
+                                            .frame(width: 100, height: 100)
+                                            .clipShape(Circle())
+                                        
+                                    }
+                                }
+                                .frame(width: 100, height: 100)
+                                VStack(spacing: 0) {
+                                    Spacer()
+                                    HStack(spacing: 0) {
+                                        Spacer()
+                                        Button(action: {
+                                            self.isShowingImagePicker.toggle()
+                                            
+                                        }, label: {
+                                            Image("icCamera")
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fit)
+                                                .frame(width: 32, height: 32)
+                                                .foregroundStyle(Color.white)
+                                                .padding(4)
+                                                .background(.gray2)
+                                                .clipShape(Circle())
+                                        })
+                                        .sheet(isPresented: $isShowingImagePicker) {
+                                            ImagePicker(selectedImage: self.$selectedImage)
+                                        }
+                                    }
+                                    .frame(width: 100)
+                                    
+                                }
+                                .frame(width: 100, height: 100)
+                            }
+                            .frame(width: 100, height: 100)
+                            .padding(.bottom, 48)
+                            
+                            VStack(spacing: 0) {
+                                HStack(spacing: 0) {
+                                    Text(.nickName)
+                                        .font(.body_bold)
+                                    Spacer()
+                                    Text("\(nickName.count) / 8 " + .charCount)
+                                        .font(.caption01)
+                                        .foregroundStyle(nickName.count > 8 ? Color.red : Color.gray1)
+                                    
+                                }
+                                .padding(.leading, 16)
+                                .padding(.trailing, 16)
+                                .padding(.bottom, 8)
+                                
+                                VStack(spacing: 0) {
+                                    TextField("", text: $nickName)
+                                        .padding(.leading, 16)
+                                        .frame(width: Constants.screenWidth - 32, height: 49)
+                                        .background(
+                                            RoundedRectangle(cornerRadius: 12)
+                                                .stroke(nickName.count > 8 || containsSpecialCharacter(nickName) ? Color.red : Color.gray2, lineWidth: 1)
+                                        )
+                                        .onChange(of: nickName) { nickName in
+                                            // 텍스트가 변경될 때마다 실행되는 코드
+                                            viewModel.state.isDuplicate = false
+                                        }
+                                    
+                                    HStack(spacing: 0) {
+                                        if (nickName.count > 8 || viewModel.state.isDuplicate || containsSpecialCharacter(nickName)) {
+                                            Image("icWarningCircle")
+                                                .renderingMode(.template)
+                                                .resizable()
+                                                .frame(width: 20, height: 20)
+                                                .foregroundStyle(Color.red)
+                                                .padding(.leading, 16)
+                                                .padding(.top, 8)
+                                        }
+                                        
+                                        if nickName.count > 8 {
+                                            Text(
+                                                (LocalizedKey.invalidNickname.localized(for: localizationManager.language)))
+                                            .font(.caption01)
+                                            .foregroundStyle(.red)
+                                            .padding(.leading, 4)
+                                            .padding(.top, 8)
+                                            .frame(height: 30)
+                                        } else if containsSpecialCharacter(nickName){
+                                            Text(LocalizedKey.onlyCharSpaceNumberNickname.localized(for: localizationManager.language))
+                                                .font(.caption01)
+                                                .foregroundStyle(.red)
+                                                .padding(.leading, 4)
+                                                .padding(.top, 8)
+                                                .frame(height: 30)
+                                        } else if viewModel.state.isDuplicate {
+                                            Text(LocalizedKey.duplicatedNickname.localized(for: localizationManager.language))
+                                                .font(.caption01)
+                                                .foregroundStyle(.red)
+                                                .padding(.leading, 4)
+                                                .padding(.top, 8)
+                                                .frame(height: 30)
+                                        } else {
+                                            Text(" ")
+                                        }
+                                        
+                                        Spacer()
+                                    }
+                                }
+                                
+                            }
+                            .ignoresSafeArea(.keyboard)
+                            
+                            HStack(spacing: 0) {
+                                Text(.introduction)
+                                    .font(.body_bold)
+                                Spacer()
+                                Text("\(introduceText.count) / 70 " + .charCount)
+                                    .font(.caption01)
+                                    .foregroundStyle(introduceText.count > 70 ? Color.red : Color.gray1)
+                            }
                             .padding(.leading, 16)
                             .padding(.trailing, 16)
                             .padding(.bottom, 8)
-                        if introduceText.count > 70 {
-                            HStack(spacing: 0) {
-                                Image("icWarningCircle")
-                                    .renderingMode(.template)
-                                    .resizable()
-                                    .frame(width: 20, height: 20)
-                                    .foregroundStyle(Color.red)
-                                Text(.introduceTypingLimitError)
-                                    .font(.caption01)
-                                    .foregroundStyle(.red)
-                                    .padding(.leading, 4)
+                            .padding(.top, 80)
+                            
+                            VStack(spacing: 0) {
+                                TextEditor(text: $introduceText)
+                                    .padding()
+                                    .foregroundColor(Color.black)
+                                    .font(.body02)
+                                    .lineSpacing(5) // 줄 간격
+                                    .frame(width: Constants.screenWidth - 32, height: 80)
+                                    .overlay(RoundedRectangle(cornerRadius: 12).stroke(introduceText.count > 70 ? .red : Color.gray2, lineWidth: 1))
+                                    .padding(.leading, 16)
+                                    .padding(.trailing, 16)
+                                    .padding(.bottom, 8)
+                                if introduceText.count > 70 {
+                                    HStack(spacing: 0) {
+                                        Image("icWarningCircle")
+                                            .renderingMode(.template)
+                                            .resizable()
+                                            .frame(width: 20, height: 20)
+                                            .foregroundStyle(Color.red)
+                                        Text(.introduceTypingLimitError)
+                                            .font(.caption01)
+                                            .foregroundStyle(.red)
+                                            .padding(.leading, 4)
+                                        Spacer()
+                                    }
+                                    .padding(.leading, 16)
+                                }
+                                
+                                
                                 Spacer()
                             }
-                            .padding(.leading, 16)
+                            .ignoresSafeArea(.keyboard)
+                            
+                            Spacer()
+                            
+                            Button(action: {
+                                //                        Task {
+                                //                            await updateUserInfo(body: ProfileDTO(nickname: nickName, description: introduceText), multipartFile: [selectedImage?.jpegData(compressionQuality: 0.8)])
+                                //                            AppState.shared.userInfo.nickname = viewModel.state.updatedNickName
+                                //                            AppState.shared.userInfo.description = viewModel.state.updatedDescription
+                                //                            // 배열의 첫 번째 요소에 접근하고 설정하는 부분을 안전하게 처리합니다.
+                                //                            AppState.shared.userInfo.profileImage.originUrl = viewModel.state.updatedProfilImage
+                                //                            // 닉네임 중복이 아니면
+                                //                            if (!viewModel.state.isDuplicate) {
+                                //                                dismiss()
+                                //                            } else {
+                                //
+                                //                            }
+                                //                        }
+                                Task {
+                                    isLoading = true
+                                    await viewModel.action(
+                                        .updateProfile(
+                                            nickname: nickName,
+                                            description: introduceText,
+                                            profileImage: selectedImage?.jpegData(compressionQuality: 0.8)
+                                        )
+                                    )
+                                    isLoading = false
+                                    if viewModel.state.isUploadComplete {
+                                        AppState.shared.userInfo.nickname = nickName
+                                        AppState.shared.userInfo.description = introduceText
+                                        dismiss()
+                                    } else {
+                                        warningLabel = viewModel.state.errorMessage ?? "업로드에 실패했습니다."
+                                    }
+                                }
+                            }, label: {
+                                Text(.complete)
+                                    .font(.body_bold)
+                                    .frame(width: Constants.screenWidth - 32, height: 48)
+                                    .foregroundStyle(.white)
+                                
+                            })
+                            .tint(.baseWhite)
+                            .background((nickName.count > 8 || nickName.count == 0 || introduceText.count > 70 || containsSpecialCharacter(nickName)) ? Color.main10P : Color.main)
+                            .clipShape(RoundedRectangle(cornerRadius: 30))
+                            .padding(.bottom, 24)
+                            .disabled((nickName.count > 8 || nickName.count == 0 || introduceText.count > 70 || containsSpecialCharacter(nickName)) ? true : false)
                         }
+                        .frame(height: geometry.size.height)
                         
-                        
-                        Spacer()
                     }
-                    .ignoresSafeArea(.keyboard)
-                    
-                    Spacer()
-                    
-                    Button(action: {
-                        //                        Task {
-                        //                            await updateUserInfo(body: ProfileDTO(nickname: nickName, description: introduceText), multipartFile: [selectedImage?.jpegData(compressionQuality: 0.8)])
-                        //                            AppState.shared.userInfo.nickname = viewModel.state.updatedNickName
-                        //                            AppState.shared.userInfo.description = viewModel.state.updatedDescription
-                        //                            // 배열의 첫 번째 요소에 접근하고 설정하는 부분을 안전하게 처리합니다.
-                        //                            AppState.shared.userInfo.profileImage.originUrl = viewModel.state.updatedProfilImage
-                        //                            // 닉네임 중복이 아니면
-                        //                            if (!viewModel.state.isDuplicate) {
-                        //                                dismiss()
-                        //                            } else {
-                        //
-                        //                            }
-                        //                        }
-                        Task {
-                            await viewModel.action(
-                                .updateProfile(
-                                    nickname: nickName,
-                                    description: introduceText,
-                                    profileImage: selectedImage?.jpegData(compressionQuality: 0.8)
-                                )
-                            )
-                            if viewModel.state.isUploadComplete {
-                                AppState.shared.userInfo.nickname = nickName
-                                AppState.shared.userInfo.description = introduceText
-                                dismiss()
-                            } else {
-                                warningLabel = viewModel.state.errorMessage ?? "업로드에 실패했습니다."
-                            }
-                        }
-                    }, label: {
-                        Text(.complete)
-                            .font(.body_bold)
-                            .frame(width: Constants.screenWidth - 32, height: 48)
-                            .foregroundStyle(.white)
-                        
-                    })
-                    .tint(.baseWhite)
-                    .background((nickName.count > 8 || nickName.count == 0 || introduceText.count > 70 || containsSpecialCharacter(nickName)) ? Color.main10P : Color.main)
-                    .clipShape(RoundedRectangle(cornerRadius: 30))
-                    .padding(.bottom, 24)
-                    .disabled((nickName.count > 8 || nickName.count == 0 || introduceText.count > 70 || containsSpecialCharacter(nickName)) ? true : false)
                 }
-                .frame(height: geometry.size.height)
-                
+            }
+            .toolbar(.hidden)
+            
+            if isLoading {
+                LottieView(jsonName: "loading", loopMode: .loop)
+                    .frame(width: Constants.screenWidth, height: Constants.screenHeight)
+                    .background(Color.black.opacity(0.3))
+                    .edgesIgnoringSafeArea(.all)
             }
         }
         
