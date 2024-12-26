@@ -13,6 +13,7 @@ struct ReportInfoRequest: Codable {
 	let category: String
 	let content: String
 	let email: String
+    var fileKeys: [String?]
 }
 
 struct ReportInfoResponse: Codable {

@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 enum ReportInfoEndPoint {
-	case postInfoFixReport(body: ReportInfoRequest, image: [Foundation.Data?])
+	case postInfoFixReport(body: ReportInfoRequest)
 }
 
 extension ReportInfoEndPoint: EndPoint {
@@ -33,15 +33,15 @@ extension ReportInfoEndPoint: EndPoint {
 	
 	var task: APITask {
 		switch self {
-		case .postInfoFixReport(let body, let image):
-			return .requestJSONWithImage(multipartFile: image, body: body)
+		case .postInfoFixReport(let body):
+			return .requestJSONEncodable(body: body)
 		}
 	}
 	
 	var headers: HTTPHeaders? {
 		switch self {
 		case .postInfoFixReport:
-			return ["Content-Type": "multipart/form-data"]
+			return ["Content-Type": "application/json;charset=UTF-8"]
 		}
 	}
 	

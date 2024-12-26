@@ -34,7 +34,6 @@ class ReportWriteViewModel: ObservableObject {
     func action(_ action: Action) async {
         switch action {
         case let .postReport(body, multipartFile):
-            
             var eTags: [FileUploadPart] = []
             var uploadIdAndFileKeys: [(uploadId: String, fileKey: String)] = []
             
@@ -110,6 +109,7 @@ class ReportWriteViewModel: ObservableObject {
                     print(response!.message)
                 }
             }
+            
         }
     }
 }

@@ -16,21 +16,21 @@ import Alamofire
 //    var baseURL: String {
 //        return "\(Secrets.baseUrl)/member"
 //    }
-//    
+//
 //    var path: String {
 //        switch self {
 //        case .updateUserInfo:
 //            return "/profile"
 //        }
 //    }
-//    
+//
 //    var method: HTTPMethod {
 //        switch self {
 //        case .updateUserInfo:
 //            return .patch
 //        }
 //    }
-//    
+//
 //    var headers: HTTPHeaders? {
 //        return ["Content-Type": "multipart/form-data"]
 //    }
@@ -45,7 +45,7 @@ import Alamofire
 
 
 enum UserInfoUpdateEndPoint {
-    case updateUserProfile(nickname: String, description: String, fileKey: String)
+    case updateUserProfile(nickname: String, description: String, fileKey: String?)
 }
 
 extension UserInfoUpdateEndPoint: EndPoint {
@@ -58,8 +58,12 @@ extension UserInfoUpdateEndPoint: EndPoint {
     
     var path: String {
         switch self {
-        case let .updateUserProfile(_, _, fileKey): // fileKey를 동적으로 참조
-            return "/profile?fileKey=\(fileKey)"
+        case let .updateUserProfile(_, _, fileKey):
+            if let fileKey = fileKey {
+                return "/profile?fileKey=\(fileKey)"
+            } else {
+                return "/profile"
+            }
         }
     }
     
