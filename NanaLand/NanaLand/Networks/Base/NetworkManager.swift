@@ -17,8 +17,7 @@ class NetworkManager {
         var data = Foundation.Data()
         do {
             data = try result.get()
-        } catch {
-            print("data fetch error")
+        } catch let error{
             return nil
         }
         
@@ -37,11 +36,12 @@ class NetworkManager {
         let result = await request.serializingData().result
         var data = Foundation.Data()
         do {
+            print("result::\(result)")
             print("endPoint: \(endPoint)")
             print("request: " + "\(request)\(result)")
             data = try result.get()
-        } catch {
-            print("data fetch error")
+        } catch let error {
+            print("data fetch error::\(error.localizedDescription)")
             return nil
         }
         
@@ -55,7 +55,7 @@ class NetworkManager {
         
     }
     
-    private func makeDataRequest(_ endPoint: EndPoint) -> DataRequest {
+    func makeDataRequest(_ endPoint: EndPoint) -> DataRequest {
         switch endPoint.task {
         case .requestPlain:
             return AF.request(
@@ -113,6 +113,7 @@ class NetworkManager {
                     multipartFormData.append(jsonData, withName: "reqDto", mimeType: "application/json")
                 }
             }, to: URL(string: "\(endPoint.baseURL)\(endPoint.path)")!, method: endPoint.method, headers: endPoint.headers, interceptor: withInterceptor ? Interceptor() : nil)
+            
             // 리뷰 요청 보내기 위해서 만든 케이스(body, imageFile, parameter 까지)
         case let .requestJSONWithImageWithParam(multipartFile, body, withInterceptor, parameters):
             var urlComponents = URLComponents(string: "\(endPoint.baseURL)\(endPoint.path)")!
@@ -132,6 +133,26 @@ class NetworkManager {
                 }
             }, to: urlWithQuery, method: endPoint.method, headers: endPoint.headers, interceptor: withInterceptor ? Interceptor() : nil)
             .validate()
+            
+        case let .requestJSONWithBodyWithParam(body, withInterceptor, parameters):
+            var urlComponents = URLComponents(string: "\(endPoint.baseURL)\(endPoint.path)")!
+            urlComponents.queryItems = parameters.map { URLQueryItem(name: $0.key, value: "\($0.value)") }
+            guard let urlWithQuery = urlComponents.url else {
+                fatalError("Invalid URL")
+            }
+            // JSON Body 설정
+            var request = URLRequest(url: urlWithQuery)
+            request.httpMethod = endPoint.method.rawValue
+            request.headers = endPoint.headers!
+            
+            if let jsonData = try? JSONEncoder().encode(body) {
+                request.httpBody = jsonData
+                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            }
+            
+            return AF.request(request, interceptor: withInterceptor ? Interceptor() : nil)
+                .validate()
+
             
             //리뷰 수정 보내기 위함 함수
         case let .requestModifyJSONWithImage(multipartFile, body, withInterceptor):
@@ -159,6 +180,18 @@ class NetworkManager {
                         }
                     }, to: URL(string: "\(endPoint.baseURL)\(endPoint.path)")!, method: endPoint.method, headers: endPoint.headers, interceptor: withInterceptor ? Interceptor() : nil)
                     .validate()
+            
+        case let .requestImageToS3(presignedURL, imageData, mimeType):
+            return AF.upload(imageData, to: presignedURL, method: .put, headers: endPoint.headers).validate().response { response in
+                if let error = response.error {
+                    print("Upload failed: \(error.localizedDescription)")
+                } else {
+                    if let headers = response.response?.headers, let eTag = headers["ETag"] {
+                        print("ResponseEtag: \(eTag)")
+                    }
+                  
+                }
+            }
         }
     }
 }

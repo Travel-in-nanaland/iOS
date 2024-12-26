@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 enum ReviewEndPoint {
-    case createReview(id: Int64, category: String, body: ReviewDTO, multipartFile: [Foundation.Data?])
+    case createReview(id: Int64, category: String, body: ReviewDTO)
     case getReviewData(id: Int64, category: String, page: Int, size: Int) // 후기 조회
     case getMyReviewData // 마이페이지 리뷰
     case getAllReviewData(page: Int, size: Int) // 마이페이지 리뷰
@@ -29,7 +29,7 @@ extension ReviewEndPoint: EndPoint {
     
     var path: String {
         switch self {
-        case .createReview(let id, let category, let body, let multipartFile):
+        case .createReview(let id, let category, let body):
             return "/\(id)"
         case .getReviewData(let id, let category, let page, let size):
             return "/list/\(id)"
@@ -84,7 +84,7 @@ extension ReviewEndPoint: EndPoint {
     var headers: HTTPHeaders? {
         switch self {
         case .createReview:
-            return ["Content-Type": "multipart/form-data"]
+            return ["Content-Type": "application/json"]
         case .getReviewData:
             return ["Content-Type": "application/json"]
         case .getMyReviewData:
@@ -110,9 +110,9 @@ extension ReviewEndPoint: EndPoint {
     
     var task: APITask {
         switch self {
-        case let .createReview(id, category, body, multipartFile):
+        case let .createReview(id, category, body):
             let param = ["category": category]
-            return .requestJSONWithImageWithParam(multipartFile: multipartFile, body: body, parameters: param)
+            return .requestJSONWithBodyWithParam( body: body, parameters: param)
         case let .getReviewData(id, category, page, size):
             let param = ["category": category, "page": page, "size": size] as [String : Any]
             return .requestParameters(parameters: param)

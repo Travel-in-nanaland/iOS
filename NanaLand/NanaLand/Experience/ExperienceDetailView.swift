@@ -23,6 +23,7 @@ struct ExperienceDetailView: View {
     @State private var idx: Int64 = 0
     @State var showAlert: Bool = false//삭제하기 alert 여부
     @State var isReport: Bool = false // 뭐지..
+    @State private var selectedIndex: Int? = nil // 리뷰 삭제 시 index 참조 위해서
     
     var id: Int64
     var experienceType = "k"
@@ -368,6 +369,7 @@ struct ExperienceDetailView: View {
                                                                 
                                                                 Button(action: {
                                                                     showAlert = true
+                                                                    selectedIndex = index
                                                                 }, label: {
                                                                     Text(.delete)
                                                                         .font(.caption01)
@@ -384,9 +386,11 @@ struct ExperienceDetailView: View {
                                                                     MultiButton{
                                                                         Button {
                                                                             showAlert = false
-                                                                            Task {
-                                                                                await deleteMyReview(id: viewModel.state.getReviewDataResponse.data[index].id)
-                                                                                await getReviewData(id: id, category: "EXPERIENCE", page: 0, size: 12)
+                                                                            if let selectedIndex = selectedIndex {
+                                                                                Task {
+                                                                                    await deleteMyReview(id: viewModel.state.getReviewDataResponse.data[selectedIndex].id)
+                                                                                    await getReviewData(id: id, category: "EXPERIENCE", page: 0, size: 12)
+                                                                                }
                                                                             }
                                                                         } label: {
                                                                             Text(.yes)

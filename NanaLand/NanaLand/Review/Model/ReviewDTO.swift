@@ -11,6 +11,7 @@ struct ReviewDTO: Codable {
     var rating: Int
     var content: String
     var reviewKeywords: [String]
+    var fileKeys: [String]
 }
 
 struct ReviewPostModel: Codable {

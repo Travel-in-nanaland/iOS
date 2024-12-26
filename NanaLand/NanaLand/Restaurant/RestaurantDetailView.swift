@@ -23,6 +23,7 @@ struct RestaurantDetailView: View {
     @State private var reportReasonViewFlag = false // 신고하기로 네비게이션 하기 위한 플래그(신고 모달이 sheet형태라 navigation stack에 포함 안됨)
     @State private var idx: Int64 = 0
     @State private var isReport = false
+    @State private var selectedIndex: Int? = nil // 리뷰 삭제 시 index 참조하기 위해서
     var layout: [GridItem] = [GridItem(.flexible())]
     
     var body: some View {
@@ -365,6 +366,7 @@ struct RestaurantDetailView: View {
                                                                     
                                                                     Button(action: {
                                                                         showAlert = true
+                                                                        selectedIndex = index
                                                                     }, label: {
                                                                         Text(.delete)
                                                                             .font(.caption01)
@@ -381,10 +383,13 @@ struct RestaurantDetailView: View {
                                                                         MultiButton{
                                                                             Button {
                                                                                 showAlert = false
-                                                                                Task {
-                                                                                    await deleteMyReview(id: viewModel.state.getReviewDataResponse.data[index].id)
-                                                                                    await getReviewData(id: id, category: "RESTAURANT", page: 0, size: 12)
+                                                                                if let selectedIndex = selectedIndex {
+                                                                                    Task {
+                                                                                        await deleteMyReview(id: viewModel.state.getReviewDataResponse.data[selectedIndex].id)
+                                                                                        await getReviewData(id: id, category: "RESTAURANT", page: 0, size: 12)
+                                                                                    }
                                                                                 }
+                                                                               
                                                                             } label: {
                                                                                 Text(.yes)
                                                                                     .font(.title02_bold)
@@ -684,7 +689,7 @@ struct RestaurantDetailView: View {
             }
             .navigationDestination(for: ReviewType.self) { viewType in
                 switch viewType {
-                case let .review:
+                case .review:
                     ReviewWriteMain(reviewAddress: viewModel.state.getRestaurantDetailResponse.address ?? "", reviewImageUrl: viewModel.state.getRestaurantDetailResponse.images?[0].originUrl ?? "", reviewTitle: viewModel.state.getRestaurantDetailResponse.title ?? "", reviewId: viewModel.state.getRestaurantDetailResponse.id ?? 0, reviewCategory: "RESTAURANT")
                 case let .userProfile(id):
                     UserProfileMainView(memberId: id)

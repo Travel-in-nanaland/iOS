@@ -10,6 +10,7 @@ import PhotosUI
 import Kingfisher
 import UIKit
 import CustomAlert
+import Alamofire
 
 struct ReviewWriteMain: View {
     @EnvironmentObject var localizationManager: LocalizationManager
@@ -93,6 +94,7 @@ struct ReviewMainGridView: View {
     @State private var toastMessage = ""
     @State private var uploadButtonFlag = false
     @State private var isLoading = false
+    @State private var fileKeys = []
     @FocusState private var isTextEditorFocused: Bool
     var reviewItemAddress: String = ""
     var reviewItemImageUrl: String = ""
@@ -350,19 +352,60 @@ struct ReviewMainGridView: View {
                                 for i in 0..<viewModel.selectedKeyword.count {
                                     viewModel.state.reviewDTO.reviewKeywords.append(viewModel.selectedKeyword[i].tag)
                                 }
-                                await postReview(id: reviewId, category: reviewCategory, body: viewModel.state.reviewDTO, multipartFile: selectedImageData)
-                                isLoading = false // 리뷰 통신이 끝나면 로딩창 off
-                                AppState.shared.navigationPath.append(ReviewViewType.complete)
+
+                                // MARK: - Presigned Url을 통한 이미지 Upload 로직
+                                // 1. 이미지 청크 파일로 분할하기(최대 5MB)
+                                // 2. upload-init api 호출
+                                if selectedItems.count >= 1 {
+                                    for i in 0...(selectedItems.count - 1) {
+                                        // 청크 파일 생성(각 청크파일 용량 최대 5MB) -> 현재는 일단 청크로 나눠서 업로드 하지는 않음.(추후 수정 필요)
+                                        let chunks = viewModel.splitImageIntoChunks(data: selectedImageData[i], chunkSize: 1024 * 5000)
+                                        // 확장자명 얻어오기(지원가능한 확장자명임)
+                                        let extensionName = selectedItems[i].supportedContentTypes[0].identifier
+                                        // 확장자명만 떼오기(원래는 "public.jpeg" 이런식 -> jpeg만 얻어오게 하기 위해서)
+                                        if let range = extensionName.range(of: ".") {
+                                            let substring = extensionName[range.upperBound...]
+                                            print(ReviewS3UploadDTO(originalFileName: "\(selectedItems[i].itemIdentifier ?? "").\(String(substring))", fileSize: selectedImageData[i].count, fileCategory: "REVIEW", partCount: chunks.count))
+                                            viewModel.state.reviewS3UploadDTO.originalFileName = "\(selectedItems[i].itemIdentifier ?? "").\(String(substring))"
+                                            viewModel.state.reviewS3UploadDTO.fileCategory = "REVIEW"
+                                            viewModel.state.reviewS3UploadDTO.fileSize = selectedImageData[i].count
+                                            viewModel.state.reviewS3UploadDTO.partCount = chunks.count
+                                            
+                                            await uploadImage(body: viewModel.state.reviewS3UploadDTO)
+                                           // await uploadImageToS32(presignedURL: URL(string: viewModel.state.getReviewS3Response.presignedUrlInfos[0].preSignedUrl)!, imageData: selectedImageData[i], mimeType: "image/\(String(substring))") (리팩토링 필요~~)
+                                            await uploadImageToS3(presignedURL: URL(string: viewModel.state.getReviewS3Response.presignedUrlInfos[0].preSignedUrl)!, imageData: selectedImageData[i], mimeType: "image/\(String(substring))", uploadId: viewModel.state.getReviewS3Response.uploadId, fileKey: viewModel.state.getReviewS3Response.fileKey) { success, eTag, uploadId, fileKey, error in
+                                                if success {
+                                                    Task { // await 함수 task에 안넣으면 compiler type check 오류가 발생.
+                                                        await uploadComplete(body: ReviewS3UploadCompleteDTO(uploadId: uploadId!, fileKey: fileKey!, parts: [eTagData(partNumber: 1, etag: eTag!)]))
+                                                        viewModel.state.reviewDTO.fileKeys.append(fileKey ?? "")
+                                                        fileKeys.append(fileKey!)
+                                                        if fileKeys.count == selectedItems.count {
+                                                            await postReview(id: reviewId, category: reviewCategory, body: viewModel.state.reviewDTO)
+                                                            isLoading = false // 리뷰 통신이 끝나면 로딩창 off
+                                                            AppState.shared.navigationPath.append(ReviewViewType.complete)
+                                                        }
+                                                    }
+                                                } else {
+                                                    print("이미지 업로드 실패")
+                                                }
+                                            }
+                                        } else {
+                                            
+                                        }
+                                    }
+                                } else {
+                                    isLoading = false
+                                    await postReview(id: reviewId, category: reviewCategory, body: viewModel.state.reviewDTO) // 이미지 없이 리뷰 올리기
+                                    AppState.shared.navigationPath.append(ReviewViewType.complete)
+                                }
+                               
                             }
-                            
                         } label: {
                             Text(.upload)
                                 .font(.body_bold)
                                 .foregroundStyle(.white)
                         }
                         .disabled((viewModel.selectedKeyword.count < 3 || reviewContent.count == 0 || viewModel.state.getReviewWriteResponse.rating == 0) ? true : false)
-                        
-                        
                     }
                     .padding(.bottom, 20)
                     .padding(.leading, 16)
@@ -404,8 +447,39 @@ struct ReviewMainGridView: View {
        
     }
     
-    func postReview(id: Int64, category: String, body: ReviewDTO, multipartFile: [Foundation.Data?]) async {
-        await viewModel.action(.postReview(id: id, category: category, body: body, multipartFile: multipartFile))
+    func postReview(id: Int64, category: String, body: ReviewDTO) async {
+        await viewModel.action(.postReview(id: id, category: category, body: body))
+    }
+    
+    func uploadImage(body: ReviewS3UploadDTO) async {
+        await viewModel.action(.uploadInit(body: body))
+    }
+    
+    func uploadComplete(body: ReviewS3UploadCompleteDTO) async {
+        await viewModel.action(.uploadComplete(body: body))
+    }
+    
+    func uploadImageToS32(presignedURL: URL, imageData: Data, mimeType: String) async {
+        await viewModel.action(.uploadImageToS3(presignedURL: presignedURL, imageData: imageData, mimeType: mimeType))
+    }
+    
+    // S3에 이미지 업로드 하는 함수(추후 리팩토링 필요)
+    func uploadImageToS3(presignedURL: URL, imageData: Data, mimeType: String, uploadId: String, fileKey: String, completion: @escaping (Bool, String?, String?, String?, Error?) -> Void) async {
+
+        AF.upload(imageData, to: presignedURL, method: .put, headers: [
+            "Content-Type": mimeType
+        ]).validate().response { response in
+            switch response.result {
+            case .success:
+                if let headers = response.response?.headers, let eTag = headers["ETag"] {
+                    completion(true, eTag, uploadId, fileKey,nil)
+                } else {
+                    completion(true, nil, nil, nil, nil)
+                }
+            case .failure(let error):
+                completion(false, nil, nil, nil, error)
+            }
+        }
     }
 }
 
