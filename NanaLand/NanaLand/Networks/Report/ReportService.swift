@@ -8,7 +8,11 @@
 import Foundation
 
 struct ReportService {
-    static func postReport(body: ReportDTO, multipartFile: [Foundation.Data?]) async -> BaseResponse<ReportModel>? {
-        return await NetworkManager.shared.request(ReportEndPoint.postReport(body: body, multipartFile: multipartFile))
+//    static func postReport(body: ReportDTO, multipartFile: [Foundation.Data?]) async -> BaseResponse<ReportModel>? {
+//        return await NetworkManager.shared.request(ReportEndPoint.postReport(body: body, multipartFile: multipartFile))
+//    }
+    
+    static func postReport(body: ReportDTO) async -> BaseResponse<ReportModel>? {
+        return await NetworkManager.shared.request(ReportEndPoint.postReport(body: body))
     }
 }
