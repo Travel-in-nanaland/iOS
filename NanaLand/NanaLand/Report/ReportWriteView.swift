@@ -41,7 +41,7 @@ struct ReportWriteView: View {
                             withAnimation(nil) {
                                 showAlert = true
                             }
-                 
+                            
                         }, label: {
                             Image("icLeft")
                                 .renderingMode(.template)
@@ -65,11 +65,11 @@ struct ReportWriteView: View {
                     }
                     .padding(.bottom, 12)
                 }
-          
+                
                 
                 ScrollView {
                     VStack(spacing: 0) {
-   
+                        
                         HStack(spacing: 0) {
                             Text(.reason)
                                 .padding(.trailing, 12)
@@ -109,7 +109,7 @@ struct ReportWriteView: View {
                                             .padding(.bottom, 5)
                                     }
                                 }
-                             
+                                
                             }
                             .onChange(of: text) { newValue in
                                 viewModel.state.reportDTO.content = newValue
@@ -133,7 +133,7 @@ struct ReportWriteView: View {
                             .padding(.trailing, 16)
                             .padding(.bottom, 8)
                         if (text.count > 0 && text.count < 20) {
-              
+                            
                             HStack(spacing: 0) {
                                 Image("icWarning")
                                 Text(.reportReasonValidation)
@@ -162,7 +162,7 @@ struct ReportWriteView: View {
                             Text(.reportResultEmail)
                                 .font(.caption01)
                                 .foregroundStyle(Color.gray1)
-                                
+                            
                             Spacer()
                         }
                         .padding(.bottom, 8)
@@ -201,7 +201,7 @@ struct ReportWriteView: View {
                         .padding(.trailing, 16)
                         .padding(.bottom, 44)
                         
-                      
+                        
                         HStack(spacing: 0) {
                             Text(.photosVideos)
                                 .font(.body_bold)
@@ -287,9 +287,13 @@ struct ReportWriteView: View {
                     Task {
                         selectedImageData.removeAll()
                         for newItem in newItems {
-                            if let data = try? await newItem.loadTransferable(type: Data.self) {
+                            if let data = try? await newItem.loadTransferable(type: Data.self),
+                               let uiImage = UIImage(data: data) { // Data를 UIImage로 변환
                                 if selectedImageData.count < 5 {
-                                    selectedImageData.append(data) // 선택된 이미지 추가
+                                    // 이미지를 압축한 뒤 Data로 저장
+                                    if let compressedData = uiImage.jpegData(compressionQuality: 0.8) {
+                                        selectedImageData.append(compressedData)
+                                    }
                                 }
                             }
                         }

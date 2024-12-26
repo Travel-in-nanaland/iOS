@@ -222,17 +222,33 @@ struct ProfileUpdateView: View {
                     Spacer()
                     
                     Button(action: {
+                        //                        Task {
+                        //                            await updateUserInfo(body: ProfileDTO(nickname: nickName, description: introduceText), multipartFile: [selectedImage?.jpegData(compressionQuality: 0.8)])
+                        //                            AppState.shared.userInfo.nickname = viewModel.state.updatedNickName
+                        //                            AppState.shared.userInfo.description = viewModel.state.updatedDescription
+                        //                            // 배열의 첫 번째 요소에 접근하고 설정하는 부분을 안전하게 처리합니다.
+                        //                            AppState.shared.userInfo.profileImage.originUrl = viewModel.state.updatedProfilImage
+                        //                            // 닉네임 중복이 아니면
+                        //                            if (!viewModel.state.isDuplicate) {
+                        //                                dismiss()
+                        //                            } else {
+                        //
+                        //                            }
+                        //                        }
                         Task {
-                            await updateUserInfo(body: ProfileDTO(nickname: nickName, description: introduceText), multipartFile: [selectedImage?.jpegData(compressionQuality: 0.8)])
-                            AppState.shared.userInfo.nickname = viewModel.state.updatedNickName
-                            AppState.shared.userInfo.description = viewModel.state.updatedDescription
-                            // 배열의 첫 번째 요소에 접근하고 설정하는 부분을 안전하게 처리합니다.
-                            AppState.shared.userInfo.profileImage.originUrl = viewModel.state.updatedProfilImage
-                            // 닉네임 중복이 아니면
-                            if (!viewModel.state.isDuplicate) {
+                            await viewModel.action(
+                                .updateProfile(
+                                    nickname: nickName,
+                                    description: introduceText,
+                                    profileImage: selectedImage?.jpegData(compressionQuality: 0.8)
+                                )
+                            )
+                            if viewModel.state.isUploadComplete {
+                                AppState.shared.userInfo.nickname = nickName
+                                AppState.shared.userInfo.description = introduceText
                                 dismiss()
                             } else {
-                                
+                                warningLabel = viewModel.state.errorMessage ?? "업로드에 실패했습니다."
                             }
                         }
                     }, label: {
@@ -261,9 +277,9 @@ struct ProfileUpdateView: View {
         return string.rangeOfCharacter(from: specialCharacters) != nil
     }
     
-    func updateUserInfo(body: ProfileDTO, multipartFile: [Foundation.Data?]) async {
-        await viewModel.action(.getUpdatedUserInfo(body: ProfileDTO(nickname: body.nickname, description: body.description), multipartFile: multipartFile))
-    }
+//    func updateUserInfo(body: ProfileDTO, multipartFile: [Foundation.Data?]) async {
+//        await viewModel.action(.getUpdatedUserInfo(body: ProfileDTO(nickname: body.nickname, description: body.description), multipartFile: multipartFile))
+//    }
 }
 
 #Preview {

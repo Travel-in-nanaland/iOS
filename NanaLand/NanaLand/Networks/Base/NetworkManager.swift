@@ -55,7 +55,7 @@ class NetworkManager {
         
     }
     
-    private func makeDataRequest(_ endPoint: EndPoint) -> DataRequest {
+    func makeDataRequest(_ endPoint: EndPoint) -> DataRequest {
         switch endPoint.task {
         case .requestPlain:
             return AF.request(
@@ -159,6 +159,12 @@ class NetworkManager {
                         }
                     }, to: URL(string: "\(endPoint.baseURL)\(endPoint.path)")!, method: endPoint.method, headers: endPoint.headers, interceptor: withInterceptor ? Interceptor() : nil)
                     .validate()
+        case let .requestRawData(preSignedUrl, fileData):
+            return AF.upload(fileData,
+                             to: preSignedUrl,
+                             method: .put,
+                             headers: HTTPHeaders(["Content-Type": "application/octet-stream"]))
+                .validate()
         }
     }
 }
