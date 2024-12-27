@@ -11,6 +11,10 @@ struct EmptyResponseModel: Codable {
     
 }
 
+struct S3UploadResponse: Codable {
+    let eTag: String
+}
+
 struct OldBaseResponse<T: Codable>: Codable {
 	let status: Int
 	let message: String

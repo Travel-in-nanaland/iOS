@@ -20,7 +20,6 @@ struct ReviewKeywordView: View {
             .background(Color.white)
             .padding(.bottom, 10)
         
-        
         ZStack{
             NavigationView {
                 VStack(spacing: 0) {

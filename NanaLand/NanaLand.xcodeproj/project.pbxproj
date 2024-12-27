@@ -260,6 +260,12 @@
 		BF80FDA92BFB539400C5DA2D /* ProfileUpdateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF80FDA82BFB539400C5DA2D /* ProfileUpdateViewModel.swift */; };
 		BF85F65E2CD3614F0020BDBF /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = BF85F65D2CD3614F0020BDBF /* FirebaseFirestore */; };
 		BF85F6602CD3617A0020BDBF /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = BF85F65F2CD3617A0020BDBF /* FirebaseAuth */; };
+		BF8EF0642D06D7CC00A722BB /* ReviewS3UploadDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8EF0632D06D7CC00A722BB /* ReviewS3UploadDTO.swift */; };
+		BF8EF0662D06D82100A722BB /* ReviewS3UploadModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8EF0652D06D82100A722BB /* ReviewS3UploadModel.swift */; };
+		BF8EF0692D07D81000A722BB /* FileEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8EF0682D07D80F00A722BB /* FileEndPoint.swift */; };
+		BF8EF06B2D07D81700A722BB /* FileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8EF06A2D07D81700A722BB /* FileService.swift */; };
+		BF8EF06D2D0823BD00A722BB /* ReviewS3UploadCompleteDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8EF06C2D0823BD00A722BB /* ReviewS3UploadCompleteDTO.swift */; };
+		BF8EF06F2D0829FF00A722BB /* ReviewS3UploadCompleteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8EF06E2D0829FF00A722BB /* ReviewS3UploadCompleteModel.swift */; };
 		BF8F85C02C7B7BC60066432C /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = BF8F85BF2C7B7BC60066432C /* FirebaseMessaging */; };
 		BF9834182BCE700B00A5C289 /* FestivalMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9834172BCE700B00A5C289 /* FestivalMainView.swift */; };
 		BF98341E2BCE71F000A5C289 /* ExperienceMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF98341D2BCE71F000A5C289 /* ExperienceMainView.swift */; };
@@ -577,6 +583,12 @@
 		BF80FDA42BFB446C00C5DA2D /* UserInfoUpdateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoUpdateService.swift; sourceTree = "<group>"; };
 		BF80FDA62BFB447B00C5DA2D /* UserInfoUpdateEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoUpdateEndPoint.swift; sourceTree = "<group>"; };
 		BF80FDA82BFB539400C5DA2D /* ProfileUpdateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUpdateViewModel.swift; sourceTree = "<group>"; };
+		BF8EF0632D06D7CC00A722BB /* ReviewS3UploadDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewS3UploadDTO.swift; sourceTree = "<group>"; };
+		BF8EF0652D06D82100A722BB /* ReviewS3UploadModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewS3UploadModel.swift; sourceTree = "<group>"; };
+		BF8EF0682D07D80F00A722BB /* FileEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileEndPoint.swift; sourceTree = "<group>"; };
+		BF8EF06A2D07D81700A722BB /* FileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileService.swift; sourceTree = "<group>"; };
+		BF8EF06C2D0823BD00A722BB /* ReviewS3UploadCompleteDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewS3UploadCompleteDTO.swift; sourceTree = "<group>"; };
+		BF8EF06E2D0829FF00A722BB /* ReviewS3UploadCompleteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewS3UploadCompleteModel.swift; sourceTree = "<group>"; };
 		BF9834172BCE700B00A5C289 /* FestivalMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FestivalMainView.swift; sourceTree = "<group>"; };
 		BF98341D2BCE71F000A5C289 /* ExperienceMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceMainView.swift; sourceTree = "<group>"; };
 		BF9834202BCE720B00A5C289 /* NanapickMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NanapickMainView.swift; sourceTree = "<group>"; };
@@ -803,6 +815,7 @@
 		2C3C75C02BCA540200312F26 /* Networks */ = {
 			isa = PBXGroup;
 			children = (
+				BF8EF0672D07D77600A722BB /* File */,
 				6D799D452D1D3737003954C1 /* PreSignedUpload */,
 				BFC7AF282C7EDBB800432ECC /* Notification */,
 				BF9F514D2C7CD8D500055802 /* Report */,
@@ -1204,19 +1217,16 @@
 		6D541A512C4E444A0095BB77 /* Review */ = {
 			isa = PBXGroup;
 			children = (
+				BFCE889D2D14026E0033F88B /* Model */,
 				6D541A622C4E45810095BB77 /* ReviewKeywordView.swift */,
-				6D541A5A2C4E44C30095BB77 /* ReviewKeywordModel.swift */,
 				6D541A5C2C4E44F10095BB77 /* ReviewKeywordViewModel.swift */,
 				6D541A602C4E453C0095BB77 /* ReviewWriteViewModel.swift */,
 				6D541A642C4E45D50095BB77 /* ReviewWriteMain.swift */,
-				BF4CB7022C5255DC0019AF48 /* ReviewDTO.swift */,
 				BFB977A72C561F3000516ADA /* ReviewCompleteView.swift */,
-				BFE60DE22C58FE5A009FBA59 /* ReviewModel.swift */,
 				BFFB1A372C5EAC6900FE869A /* ReviewAllMainView.swift */,
 				BFFB1A392C5F191600FE869A /* ReviewAllMainViewModel.swift */,
 				BF1AD4F62C60994200334E8F /* ReviewAllDetailMainView.swift */,
 				BF1AD4F82C60995100334E8F /* ReviewAllDetailMainViewModel.swift */,
-				6DCE99902C610E4C0080A1C6 /* ReviewWriteModel.swift */,
 				6D7756742C8F4E190085D747 /* SearchReviewView.swift */,
 			);
 			path = Review;
@@ -1393,6 +1403,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BF8EF0672D07D77600A722BB /* File */ = {
+			isa = PBXGroup;
+			children = (
+				BF8EF0682D07D80F00A722BB /* FileEndPoint.swift */,
+				BF8EF06A2D07D81700A722BB /* FileService.swift */,
+			);
+			path = File;
+			sourceTree = "<group>";
+		};
 		BF9834132BCE6FCF00A5C289 /* Nature */ = {
 			isa = PBXGroup;
 			children = (
@@ -1509,6 +1528,21 @@
 				BFCDBE0F2C4E5CCE00A50113 /* ReviewService.swift */,
 			);
 			path = Review;
+			sourceTree = "<group>";
+		};
+		BFCE889D2D14026E0033F88B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BF8EF06E2D0829FF00A722BB /* ReviewS3UploadCompleteModel.swift */,
+				BF8EF0652D06D82100A722BB /* ReviewS3UploadModel.swift */,
+				6DCE99902C610E4C0080A1C6 /* ReviewWriteModel.swift */,
+				BFE60DE22C58FE5A009FBA59 /* ReviewModel.swift */,
+				6D541A5A2C4E44C30095BB77 /* ReviewKeywordModel.swift */,
+				BF4CB7022C5255DC0019AF48 /* ReviewDTO.swift */,
+				BF8EF0632D06D7CC00A722BB /* ReviewS3UploadDTO.swift */,
+				BF8EF06C2D0823BD00A722BB /* ReviewS3UploadCompleteDTO.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		BFE573672C7DECC100A5740C /* Notification */ = {
@@ -1845,6 +1879,7 @@
 				BFF646682C00DDE300BCC41F /* HomeService.swift in Sources */,
 				2C40DB9C2BE66809007A3768 /* AuthDTO.swift in Sources */,
 				BF2D937B2BFF25C60057381A /* AuthorizeView.swift in Sources */,
+				BF8EF06F2D0829FF00A722BB /* ReviewS3UploadCompleteModel.swift in Sources */,
 				BF9834252BCE847300A5C289 /* HomeMainViewModel.swift in Sources */,
 				2C40DBB62BECEE2A007A3768 /* UITabBarController+.swift in Sources */,
 				6D9EDADB2C5B5285003A8DE5 /* NoticeMainViewModel.swift in Sources */,
@@ -1877,6 +1912,7 @@
 				BFABD3532BE7F9E100C3F3A6 /* SeasonModalView.swift in Sources */,
 				2C2D3D532C0389C0002A38AA /* Text+.swift in Sources */,
 				2C2D3D6E2C07F9D1002A38AA /* LanguageDTO.swift in Sources */,
+				BF8EF0662D06D82100A722BB /* ReviewS3UploadModel.swift in Sources */,
 				BFABD34D2BE75F3E00C3F3A6 /* FestivalService.swift in Sources */,
 				BFC671F72BF7198800D1A2FD /* ShopMainModel.swift in Sources */,
 				BF2F8D842C46864200C0F943 /* RestaurantMainViewModel.swift in Sources */,
@@ -1888,6 +1924,7 @@
 				2C80ECB72BCFA055002F38A7 /* Data+.swift in Sources */,
 				BF4CB7032C5255DC0019AF48 /* ReviewDTO.swift in Sources */,
 				2C9CF4D62BFDF32E00A346E8 /* ReportInfoEndPoint.swift in Sources */,
+				BF8EF06D2D0823BD00A722BB /* ReviewS3UploadCompleteDTO.swift in Sources */,
 				BF794B652BF9BB860045FAD2 /* ProfileUpdateView.swift in Sources */,
 				6D6162682C4FA2AD00E97C0F /* RestaurantMainView.swift in Sources */,
 				BF7F7F602BE613400000F08A /* NatureDetailEndPoint.swift in Sources */,
@@ -1966,6 +2003,7 @@
 				2C3C75CC2BCAA93D00312F26 /* NanaLandTabView.swift in Sources */,
 				2C80ECDE2BD7E63E002F38A7 /* FavoriteDTO.swift in Sources */,
 				2C2749A62C0EEF6C00ECBA71 /* NotificationView.swift in Sources */,
+				BF8EF06B2D07D81700A722BB /* FileService.swift in Sources */,
 				6D2995222C554BCD006AA447 /* NoticeArticleItemView.swift in Sources */,
 				9C6A9C3E2BCC1BAE000413AD /* Fonts+.swift in Sources */,
 				2C27498F2C09B3D700ECBA71 /* TypeTestRecommendPlaceView.swift in Sources */,
@@ -1997,12 +2035,14 @@
 				6DA2249A2C67F1F000519C00 /* MyReviewDetailViewModel.swift in Sources */,
 				6D130D042C789385005FCD99 /* NewNanaPickAllMainView.swift in Sources */,
 				BFC671EA2BF7191500D1A2FD /* NatureDetailViewModel.swift in Sources */,
+				BF8EF0692D07D81000A722BB /* FileEndPoint.swift in Sources */,
 				6D29952C2C5599C5006AA447 /* NoticeDetailView.swift in Sources */,
 				2C40DB912BE6383B007A3768 /* AuthService.swift in Sources */,
 				BFFB1A382C5EAC6900FE869A /* ReviewAllMainView.swift in Sources */,
 				2C80ECEE2BDBE0CE002F38A7 /* CalendarItem.swift in Sources */,
 				6DD11F442C5161E500363B08 /* ReviewArticleItemView.swift in Sources */,
 				BF1493732BD1097100FC626B /* NaNaPickService.swift in Sources */,
+				BF8EF0642D06D7CC00A722BB /* ReviewS3UploadDTO.swift in Sources */,
 				6DC820612C57708E00A15A07 /* MyReviewViewModel.swift in Sources */,
 				BFC671E82BF718F200D1A2FD /* NatureMainViewModel.swift in Sources */,
 				BF1493752BD10A4100FC626B /* NaNaPickEndPoint.swift in Sources */,
@@ -2225,7 +2265,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.3;
+				MARKETING_VERSION = 1.1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jeju.nanaland;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2264,7 +2304,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.3;
+				MARKETING_VERSION = 1.1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jeju.nanaland;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

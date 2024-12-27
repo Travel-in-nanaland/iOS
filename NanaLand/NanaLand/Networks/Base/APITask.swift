@@ -16,10 +16,11 @@ enum APITask {
     /// 이미지와 함께 body 전송
     /// Interceptor 사용하려면 true로, 미사용이라면 false
     case requestJSONWithImage(multipartFile: [Foundation.Data?], body: Encodable, withInterceptor: Bool = true)
+    case requestJSONWithBodyWithParam(body: Encodable, withInterceptor: Bool = true, parameters: Parameters)
     case requestJSONWithImageWithParam(multipartFile: [Foundation.Data?], body: Encodable, withInterceptor: Bool = true, parameters: Parameters)
     case requestModifyJSONWithImage(multipartFile: [Foundation.Data?], body: Encodable, withInterceptor: Bool = true)
     case requestJSONWithImageList(multipartFile: [Foundation.Data?], body: Encodable, withInterceptor: Bool = true)
-    
+    case requestImageToS3(presignedURL: URL, imageData: Data, mimeType: String) 
     /// PreSigned URL을 사용해 raw data 전송
     case requestRawData(preSignedUrl: String, fileData: Data)
 }
