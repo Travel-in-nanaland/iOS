@@ -179,11 +179,12 @@ struct SearchNavigationBar: View {
         .overlay(alignment: .leading) {
             if showBackButton {
                 Button(action: {
-                    AppState.shared.navigationPath.removeLast()
-                    AppState.shared.navigationPath.removeLast()
-                    AppState.shared.navigationPath.removeLast()
-                    AppState.shared.navigationPath.removeLast()
-                    AppState.shared.navigationPath.removeLast()
+                    let stepsToRemove = 5 // 제거할 스택의 개수
+                        for _ in 0..<stepsToRemove {
+                            if !AppState.shared.navigationPath.isEmpty {
+                                AppState.shared.navigationPath.removeLast()
+                            }
+                        }
                     AppState.shared.currentTab = .profile
                 }, label: {
                     Image("icLeft")

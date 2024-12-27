@@ -441,6 +441,7 @@ enum LocalizedKey: String {
     case noNotice
     case seeAll
     case loginReview
+    case ACTIVITY
     case RESTAURANT
     case CULTURE_AND_ARTS
 

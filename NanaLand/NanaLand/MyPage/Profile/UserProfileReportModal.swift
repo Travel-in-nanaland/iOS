@@ -1,44 +1,32 @@
 //
-//  ReviewModifyModal.swift
+//  UserProfileReportModal.swift
 //  NanaLand
 //
-//  Created by wodnd on 12/27/24.
+//  Created by wodnd on 12/28/24.
 //
 
 import SwiftUI
 import CustomAlert
 
-struct ReviewModifyModal: View {
+struct UserProfileReportModal: View {
     
     var id: Int64
-    var category: String
-    @Binding var isShowingModify: Bool
-    @Binding var showAlert: Bool//삭제하기 alert 여부
+    @Binding var isShowingReport: Bool
     
     var body: some View {
         ZStack{
             VStack(spacing: 10){
                 RoundedRectangle(cornerRadius: 12)
-                    .frame(width: Constants.screenWidth * (328 / 360), height: Constants.screenWidth * (96 / 360))
+                    .frame(width: Constants.screenWidth * (328 / 360), height: Constants.screenWidth * (47 / 360))
                     .shadow(radius: 1)
                     .foregroundColor(.white)
                     .overlay {
                         VStack(spacing: 21){
                             Button(action: {
-                                isShowingModify = false
-                                AppState.shared.navigationPath.append(MyPageViewType.detailReview(id: id, category: category))
+                                isShowingReport = false
+                                AppState.shared.navigationPath.append(UserProfileViewType.reportReview(id: id, isReport: false))
                             }, label: {
-                                Text(.modify)
-                                    .font(.body01)
-                                    .frame(height: Constants.screenWidth * (26 / 360))
-                                    .foregroundColor(.black)
-                            })
-                            
-                            Button(action: {
-                                showAlert = true
-                                isShowingModify = false
-                            }, label: {
-                                Text(.delete)
+                                Text(.report)
                                     .font(.body01)
                                     .frame(height: Constants.screenWidth * (26 / 360))
                                     .foregroundColor(.black)
@@ -47,7 +35,7 @@ struct ReviewModifyModal: View {
                     }
                 
                 Button(action: {
-                    isShowingModify.toggle()
+                    isShowingReport.toggle()
                 }, label: {
                     RoundedRectangle(cornerRadius: 12)
                         .frame(width: Constants.screenWidth * (328 / 360), height: Constants.screenWidth * (47 / 360))
@@ -61,9 +49,9 @@ struct ReviewModifyModal: View {
                 })
             }
         }
-    }    
+    }
 }
 
 #Preview {
-    ReviewModifyModal(id: 0, category: "", isShowingModify: .constant(false), showAlert: .constant(false))
+    UserProfileReportModal(id: 0, isShowingReport: .constant(false))
 }
