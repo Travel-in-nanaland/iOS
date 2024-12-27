@@ -100,7 +100,7 @@ struct ProfileMainView: View {
             HStack{
                 
                 if provider == "GUEST" {
-                    KFImage(URL(string: AppState.shared.userInfo.profileImage.originUrl))
+                    Image(.guestProfile)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 80, height: 80)
@@ -110,6 +110,11 @@ struct ProfileMainView: View {
                         .padding(.leading, 15)
                 } else {
                     KFImage(URL(string: AppState.shared.userInfo.profileImage.originUrl))
+                        .placeholder {
+                            Image(.guestProfile) // 로드 전 표시될 이미지
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                        }
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 80, height: 80)

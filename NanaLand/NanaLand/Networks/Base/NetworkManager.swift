@@ -192,6 +192,12 @@ class NetworkManager {
                   
                 }
             }
+        case let .requestRawData(preSignedUrl, fileData):
+            return AF.upload(fileData,
+                             to: preSignedUrl,
+                             method: .put,
+                             headers: HTTPHeaders(["Content-Type": "application/octet-stream"]))
+                .validate()
         }
     }
 }
