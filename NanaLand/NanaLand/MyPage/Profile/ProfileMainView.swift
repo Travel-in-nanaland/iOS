@@ -553,7 +553,7 @@ struct reviewTabView: View {
                                                     showAlert = false
                                                     print("삭제 요청: \(deleteId)")
                                                     Task {
-                                                        await deleteMyReview(id: review.id)
+                                                        await deleteMyReview(id: deleteId)
                                                         await getMyReviewItem()
                                                     }
                                                 } label: {
