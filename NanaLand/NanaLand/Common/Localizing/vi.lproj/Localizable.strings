@@ -308,7 +308,7 @@
 "duration" = "Duration";
 
 // MARK: - ExperienceDetailView
-"Activity" = "Activity";
+"Activity" = "Hoạt động";
 "CultureArts" = "CultureArts";
 
 // MARK: - CalendarView
@@ -429,6 +429,7 @@
 "noNotice" = "Không Có Thông Báo";
 "seeAll" = "Xem tất cả";
 "loginReview" = "Đăng nhập để ghi lại trải nghiệm của riêng bạn!";
+"ACTIVITY" = "Hoạt động";
 "RESTAURANT" = "Nhà hàng";
 "CULTURE_AND_ARTS" = "Văn hóa và Nghệ thuật";
 

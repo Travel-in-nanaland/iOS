@@ -188,7 +188,7 @@ struct ReviewArticleItemView: View {
     
     /// 서버에서 받아온 `category`를 번역된 텍스트로 반환
     func getLocalizedCategory(for category: String) -> String {
-        if let localizedKey = LocalizedKey(rawValue: category.lowercased()) {
+        if let localizedKey = LocalizedKey(rawValue: category) {
             return localizedKey.localized(for: LocalizationManager.shared.language)
         } else {
             return category // 매핑되지 않는 경우 기본값 반환
