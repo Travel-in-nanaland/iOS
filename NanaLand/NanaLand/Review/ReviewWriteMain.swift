@@ -50,8 +50,8 @@ struct ReviewWriteMain: View {
                             MultiButton {
                                 Button {
                                     withAnimation(nil) {
-                                        showAlert = false
                                         dismiss()
+                                        showAlert = false
                                     }
                                     
                                 } label: {
@@ -59,6 +59,7 @@ struct ReviewWriteMain: View {
                                         .font(.title02_bold)
                                         .foregroundStyle(Color.black)
                                 }
+                                
                                 Button {
                                     withAnimation(nil) {
                                         showAlert = false

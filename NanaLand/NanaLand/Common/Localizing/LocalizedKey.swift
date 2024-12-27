@@ -441,6 +441,8 @@ enum LocalizedKey: String {
     case noNotice
     case seeAll
     case loginReview
+    case RESTAURANT
+    case CULTURE_AND_ARTS
 
     // MARK: - 제주 맛집
     case type

@@ -45,16 +45,17 @@ class MyAllReviewViewModel: ObservableObject {
         case let .deleteMyReview(id):
             // TODO - 공지사항 API 호출
             let response = await ReviewService.deleteMyReview(id: id)
-            if response != nil {
-                await MainActor.run {
-                    if let index = state.getMyAllReviewResponse.data?.firstIndex(where: { $0.id == id }) {
-                        state.getMyAllReviewResponse.data?.remove(at: index)
-                        state.getMyAllReviewResponse.totalElements -= 1
-                    }
-                }
-            } else {
-                print("Error")
-            }
+            print("삭제: \(response)")
+//            if response != nil {
+//                await MainActor.run {
+//                    if let index = state.getMyAllReviewResponse.data?.firstIndex(where: { $0.id == id }) {
+//                        state.getMyAllReviewResponse.data?.remove(at: index)
+//                        state.getMyAllReviewResponse.totalElements -= 1
+//                    }
+//                }
+//            } else {
+//                print("Error")
+//            }
         }
     }
 }

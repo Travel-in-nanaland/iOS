@@ -432,6 +432,8 @@ the market is the place!";
 "noNotice" = "No Announcements Available";
 "seeAll" = "See all";
 "loginReview" = "Log in to record your own experience!";
+"RESTAURANT" = "Restaurants";
+"CULTURE_AND_ARTS" = "Culture and Arts";
 
 // MARK: - 제주 맛집
 "type" = "Type";

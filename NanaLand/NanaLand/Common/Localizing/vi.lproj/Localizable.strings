@@ -429,6 +429,8 @@
 "noNotice" = "Không Có Thông Báo";
 "seeAll" = "Xem tất cả";
 "loginReview" = "Đăng nhập để ghi lại trải nghiệm của riêng bạn!";
+"RESTAURANT" = "Nhà hàng";
+"CULTURE_AND_ARTS" = "Văn hóa và Nghệ thuật";
 
 // MARK: - 제주 맛집
 "type" = "Loại";
