@@ -9,11 +9,13 @@ import Foundation
 class MyReviewViewModel: ObservableObject {
     struct State {
         var getMyReviewResponse = MyReviewModel(totalElements: 0, data: [])
+        var deleteMyReviewResponse = EmptyResponseModel()
         var memberId = 0
     }
     
     enum Action {
         case getMyReviewItem
+        case deleteMyReview(id: Int64)
     }
     
     @Published var state: State
@@ -39,6 +41,10 @@ class MyReviewViewModel: ObservableObject {
             } else {
                 print("Error")
             }
+        case let .deleteMyReview(id):
+            // TODO - 공지사항 API 호출
+            let response = await ReviewService.deleteMyReview(id: id)
+            print("삭제: \(response)")
         }
     }
 }

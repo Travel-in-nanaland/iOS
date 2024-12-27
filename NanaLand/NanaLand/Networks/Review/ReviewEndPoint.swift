@@ -96,7 +96,7 @@ extension ReviewEndPoint: EndPoint {
         case .getUserAllReviewData:
             return ["Content-Type": "application/json"]
         case .deleteMyReview:
-            return ["Content-Type": "application/json"]
+            return ["Content-Type": "application/json;charset=UTF-8"]
         case .getMyReviewDetail:
             return ["Content-Type": "application/json"]
         case .modifyMyReview:
@@ -110,13 +110,13 @@ extension ReviewEndPoint: EndPoint {
     
     var task: APITask {
         switch self {
-        case let .createReview(id, category, body):
+        case let .createReview(_, category, body):
             let param = ["category": category]
             return .requestJSONWithBodyWithParam( body: body, parameters: param)
-        case let .getReviewData(id, category, page, size):
+        case let .getReviewData(_, category, page, size):
             let param = ["category": category, "page": page, "size": size] as [String : Any]
             return .requestParameters(parameters: param)
-        case let .getMyReviewData:
+        case .getMyReviewData:
             return .requestPlain
         case let .getAllReviewData(page, size):
             let param = ["page": page, "size": size] as [String : Any]
@@ -127,13 +127,13 @@ extension ReviewEndPoint: EndPoint {
         case let .getUserAllReviewData(memberId, page, size):
             let param = ["memberId": memberId, "page": page, "size": size] as [String : Any]
             return .requestParameters(parameters: param)
-        case let .deleteMyReview(id):
+        case let .deleteMyReview(_):
             return .requestPlain
-        case let .getMyReviewDetail(id):
+        case let .getMyReviewDetail(_):
             return .requestPlain
-        case let .modifyMyReview(id, body, multipartFile):
+        case let .modifyMyReview(_, body, multipartFile):
             return .requestModifyJSONWithImage(multipartFile: multipartFile, body: body)
-        case let .reviewFavorite(id):
+        case let .reviewFavorite(_):
             return .requestPlain
         case let .profileReview(keyword):
             let param = ["keyword": keyword]

@@ -16,8 +16,8 @@ struct ProfileUpdateView: View {
     @State private var showAlert = false
     @State private var warningLabel = ""
     @Environment(\.dismiss) private var dismiss
-    @State private var isShowingImagePicker = false
-    @State private var selectedImage: UIImage?
+    @State private var isShowingProfileCase = false
+    @State var selectedImage: UIImage?
     @State private var isLoading: Bool = false
     @StateObject var viewModel = ProfileUpdateViewModel()
     @EnvironmentObject var localizationManager: LocalizationManager
@@ -80,7 +80,7 @@ struct ProfileUpdateView: View {
                                     HStack(spacing: 0) {
                                         Spacer()
                                         Button(action: {
-                                            self.isShowingImagePicker.toggle()
+                                            self.isShowingProfileCase.toggle()
                                             
                                         }, label: {
                                             Image("icCamera")
@@ -92,8 +92,9 @@ struct ProfileUpdateView: View {
                                                 .background(.gray2)
                                                 .clipShape(Circle())
                                         })
-                                        .sheet(isPresented: $isShowingImagePicker) {
-                                            ImagePicker(selectedImage: self.$selectedImage)
+                                        .sheet(isPresented: $isShowingProfileCase) {
+                                            ProfileUpdateModal(selectedImage: $selectedImage, basicProfileName: $viewModel.state.basicProfileName, isBasicProfile: $viewModel.state.isBasicProfile)
+                                                .presentationDetents([.height(Constants.screenWidth * (184 / 360))]) // 팝업 뷰 height 조절
                                         }
                                     }
                                     .frame(width: 100)

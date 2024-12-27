@@ -64,6 +64,8 @@ class ProfileUpdateViewModel: ObservableObject {
         var isUploadComplete = false
         var errorMessage: String?
         var isDuplicate = false
+        var isBasicProfile = false
+        var basicProfileName: String?
     }
     
     enum Action {
@@ -81,53 +83,57 @@ class ProfileUpdateViewModel: ObservableObject {
         case let .updateProfile(nickname, description, profileImage):
             var fileKey: String?
 
-            if let imageData = profileImage {
-                // 1. 파일 업로드 초기화 요청
-                guard let initResponse = await PreSignedUploadService.initializeFileUpload(
-                    fileName: "profile_image.jpg",
-                    fileSize: imageData.count,
-                    fileCategory: "MEMBER_PROFILE",
-                    partCount: 1
-                ) else {
-                    await MainActor.run {
-                        self.state.errorMessage = "파일 업로드 초기화에 실패했습니다."
+            if self.state.isBasicProfile {
+                fileKey = "default/\(self.state.basicProfileName ?? "Gray").png"
+            } else {
+                if let imageData = profileImage {
+                    // 1. 파일 업로드 초기화 요청
+                    guard let initResponse = await PreSignedUploadService.initializeFileUpload(
+                        fileName: "profile_image.jpg",
+                        fileSize: imageData.count,
+                        fileCategory: "MEMBER_PROFILE",
+                        partCount: 1
+                    ) else {
+                        await MainActor.run {
+                            self.state.errorMessage = "파일 업로드 초기화에 실패했습니다."
+                        }
+                        return
                     }
-                    return
-                }
 
-                guard let preSignedUrlInfo = initResponse.data?.presignedUrlInfos.first else {
-                    await MainActor.run {
-                        self.state.errorMessage = "PreSigned URL 정보를 가져오지 못했습니다."
+                    guard let preSignedUrlInfo = initResponse.data?.presignedUrlInfos.first else {
+                        await MainActor.run {
+                            self.state.errorMessage = "PreSigned URL 정보를 가져오지 못했습니다."
+                        }
+                        return
                     }
-                    return
-                }
 
-                // 2. PreSigned URL로 파일 전송 및 ETag 수집
-                guard let eTag = await PreSignedUploadService.uploadFileToPreSignedURL(
-                    preSignedUrl: preSignedUrlInfo.preSignedUrl,
-                    fileData: imageData
-                ) else {
-                    await MainActor.run {
-                        self.state.errorMessage = "파일 업로드에 실패했습니다."
+                    // 2. PreSigned URL로 파일 전송 및 ETag 수집
+                    guard let eTag = await PreSignedUploadService.uploadFileToPreSignedURL(
+                        preSignedUrl: preSignedUrlInfo.preSignedUrl,
+                        fileData: imageData
+                    ) else {
+                        await MainActor.run {
+                            self.state.errorMessage = "파일 업로드에 실패했습니다."
+                        }
+                        return
                     }
-                    return
-                }
 
-                // 3. 업로드 완료 요청
-                let completeResponse = await PreSignedUploadService.completeFileUpload(
-                    uploadId: initResponse.data!.uploadId,
-                    fileKey: initResponse.data!.fileKey,
-                    parts: [FileUploadPart(partNumber: preSignedUrlInfo.partNumber, eTag: eTag)]
-                )
+                    // 3. 업로드 완료 요청
+                    let completeResponse = await PreSignedUploadService.completeFileUpload(
+                        uploadId: initResponse.data!.uploadId,
+                        fileKey: initResponse.data!.fileKey,
+                        parts: [FileUploadPart(partNumber: preSignedUrlInfo.partNumber, eTag: eTag)]
+                    )
 
-                if completeResponse == nil {
-                    await MainActor.run {
-                        self.state.errorMessage = "업로드 완료 요청에 실패했습니다."
+                    if completeResponse == nil {
+                        await MainActor.run {
+                            self.state.errorMessage = "업로드 완료 요청에 실패했습니다."
+                        }
+                        return
                     }
-                    return
-                }
 
-                fileKey = initResponse.data?.fileKey
+                    fileKey = initResponse.data?.fileKey
+                }
             }
 
             // 4. 프로필 업데이트 요청
