@@ -344,7 +344,7 @@ struct ReviewMainGridView: View {
                     
                     ZStack {
                         RoundedRectangle(cornerRadius: 50)
-                            .foregroundColor((viewModel.selectedKeyword.count < 3 || reviewContent.count == 0 || viewModel.state.getReviewWriteResponse.rating == 0) ? .main10P : .main)
+                            .foregroundColor((viewModel.selectedKeyword.count < 1 || reviewContent.count == 0 || viewModel.state.getReviewWriteResponse.rating == 0) ? .main10P : .main)
                             .frame(height: 50)
                         Button {
                             Task {
@@ -405,7 +405,7 @@ struct ReviewMainGridView: View {
                                 .font(.body_bold)
                                 .foregroundStyle(.white)
                         }
-                        .disabled((viewModel.selectedKeyword.count < 3 || reviewContent.count == 0 || viewModel.state.getReviewWriteResponse.rating == 0) ? true : false)
+                        .disabled((viewModel.selectedKeyword.count < 1 || reviewContent.count == 0 || viewModel.state.getReviewWriteResponse.rating == 0) ? true : false)
                     }
                     .padding(.bottom, 20)
                     .padding(.leading, 16)

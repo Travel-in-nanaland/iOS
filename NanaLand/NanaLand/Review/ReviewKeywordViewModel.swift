@@ -24,7 +24,8 @@ class ReviewKeywordViewModel: ObservableObject {
         ReviewKeywordModel(text: .OUTLET, tag: "OUTLET"),
         ReviewKeywordModel(text: .LARGE, tag: "LARGE"),
         ReviewKeywordModel(text: .PARK, tag: "PARK"),
-        ReviewKeywordModel(text: .BATHROOM, tag: "BATHROOM")
+        ReviewKeywordModel(text: .BATHROOM, tag: "BATHROOM"),
+        ReviewKeywordModel(text: .NOKEYWORD, tag: "NONE")
     ]
     
     @Published var selectKeywords: Set<ReviewKeywordModel> = []

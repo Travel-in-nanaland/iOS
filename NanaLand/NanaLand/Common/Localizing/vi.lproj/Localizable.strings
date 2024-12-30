@@ -399,6 +399,7 @@
 "LARGE" = "Rộng rãi";
 "PARK" = "Bãi đậu xe";
 "BATHROOM" = "Nhà vệ sinh sạch sẽ";
+"NOKEYWORD" = "선택할 키워드가 없어요";
 "warning" = "경고";
 "warningDescription" = "Bạn có thể chọn tối đa 6";
 "check" = "Kiểm tra";
