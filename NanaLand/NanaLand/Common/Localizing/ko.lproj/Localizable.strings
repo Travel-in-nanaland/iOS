@@ -371,7 +371,7 @@
 "writeContent" = "내용을 작성해 주세요";
 "addKeyword" = "키워드 추가";
 "upload" = "올리기";
-"keywordDescription" = "*최소 3개 이상 선택해야하며, 최대 6개까지 선택 가능합니다.";
+"keywordDescription" = "*최소 1개 이상 선택해야하며, 최대 6개까지 선택 가능합니다.";
 "mood" = "분위기";
 "ANNIVERSARY" = "기념일에 가면 좋아요";
 "CUTE" = "아기자기해요";
@@ -391,6 +391,7 @@
 "LARGE" = "넓은 장소";
 "PARK" = "주차장";
 "BATHROOM" = "깨끗한 화장실";
+"NOKEYWORD" = "선택할 키워드가 없어요";
 "warning" = "경고";
 "warningDescription" = "최대 6개까지 선택 가능합니다";
 "check" = "확인";

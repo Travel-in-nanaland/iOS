@@ -17,8 +17,26 @@ struct ShopDetailView: View {
     var id: Int64
     
     var body: some View {
-        NavigationBar(title: LocalizedKey.market.localized(for: localizationManager.language))
-            .frame(height: 56)
+        ZStack {
+            NavigationBar(title: LocalizedKey.market.localized(for: localizationManager.language))
+                .frame(height: 56)
+            HStack(spacing: 0) {
+                Spacer()
+                Button {
+                    Task {
+                        await toggleFavorite(body: FavoriteToggleRequest(id: Int(viewModel.state.getShopDetailResponse.id), category: .market))
+                    }
+                } label: {
+                    viewModel.state.getShopDetailResponse.favorite ? Image("icHeartFillMain") : Image("icFavoriteHeart")
+                }
+                
+                ShareLink(item: DeepLinkManager.shared.makeLink(category: .market, id: Int(viewModel.state.getShopDetailResponse.id)), label: {
+                    Image("icShare2")
+                })
+                .padding(.trailing, 16)
+            }
+        }
+
         ZStack {
             ScrollViewReader { proxyReader in
                 ScrollView {
@@ -34,28 +52,6 @@ struct ShopDetailView: View {
                                     .fill(Color.white) // 빈 뷰를 하얀색으로 채웁니다.
                                     .frame(maxWidth: Constants.screenWidth - 40, maxHeight: .infinity) // 뷰의 크기를 지정합니다.
                                     .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
-                                VStack(spacing: 0) {
-                                    HStack(spacing: 12) {
-                                        Spacer()
-                                        Button {
-                                            Task {
-                                                await toggleFavorite(body: FavoriteToggleRequest(id: Int(viewModel.state.getShopDetailResponse.id), category: .market))
-                                            }
-                                        } label: {
-                                            viewModel.state.getShopDetailResponse.favorite ? Image("icHeartFillMain") : Image("icFavoriteHeart")
-                                        }
-                                        
-                                        ShareLink(item: DeepLinkManager.shared.makeLink(category: .market, id: Int(viewModel.state.getShopDetailResponse.id)), label: {
-                                            Image("icShare2")
-                                        })
-                                        
-                                    }
-                                    .padding(.trailing, 16)
-                                    Spacer()
-                                }
-                                .padding(.top, 8)
-                                
-                                
                                 VStack {
                                     HStack(spacing: 0) {
                                         Text(viewModel.state.getShopDetailResponse.addressTag)
@@ -111,25 +107,6 @@ struct ShopDetailView: View {
                                     .fill(Color.white) // 빈 뷰를 하얀색으로 채웁니다.
                                     .frame(width: Constants.screenWidth - 40) // 뷰의 크기를 지정합니다.
                                     .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
-                                VStack(spacing: 0) {
-                                    HStack(spacing: 12) {
-                                        Spacer()
-                                        Button {
-                                            Task {
-                                                await toggleFavorite(body: FavoriteToggleRequest(id: Int(viewModel.state.getShopDetailResponse.id), category: .market))
-                                            }
-                                        } label: {
-                                            viewModel.state.getShopDetailResponse.favorite ? Image("icHeartFillMain") : Image("icFavorteHeart")
-                                        }
-                                        
-                                        ShareLink(item: DeepLinkManager.shared.makeLink(category: .market, id: Int(viewModel.state.getShopDetailResponse.id)), label: {
-                                            Image("icShare2")
-                                        })
-                                    }
-                                    .padding(.trailing, 16)
-                                    Spacer()
-                                }
-                                .padding(.top, 8)
                                 
                                 VStack {
                                     HStack(spacing: 0) {

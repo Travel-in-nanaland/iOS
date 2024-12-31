@@ -39,11 +39,15 @@ struct ReviewKeywordView: View {
                         
                         Text(.companion)
                             .font(.body_bold)
-                        TagCloudView(tags: Array(viewModel.keywordViewModel.keywords[5..<11]), keywordViewModel: viewModel.keywordViewModel, localizationManager: _localizationManager)
+                        TagCloudView(tags: Array(viewModel.keywordViewModel.keywords[5...11]), keywordViewModel: viewModel.keywordViewModel, localizationManager: _localizationManager)
                         
                         Text(.amenities)
                             .font(.body_bold)
-                        TagCloudView(tags: Array(viewModel.keywordViewModel.keywords[11...]), keywordViewModel: viewModel.keywordViewModel, localizationManager: _localizationManager)
+                        TagCloudView(tags: Array(viewModel.keywordViewModel.keywords[12...15]), keywordViewModel: viewModel.keywordViewModel, localizationManager: _localizationManager)
+                        
+                        Text("기타")
+                            .font(.body_bold)
+                        TagCloudView(tags: Array(viewModel.keywordViewModel.keywords[16...]), keywordViewModel: viewModel.keywordViewModel, localizationManager: _localizationManager)
                     }
                     .padding()
                     
@@ -51,9 +55,9 @@ struct ReviewKeywordView: View {
                     
                     Button(action: {
                         // 만약 3개이하로 선택했다면 토스트 메시지 띄우기
-                        if viewModel.selectedKeyword.count < 3 {
+                        if viewModel.selectedKeyword.count < 1 {
                             showToast = true
-                            toastMessage = "최소 3개이상 선택해야 합니다."
+                            toastMessage = "최소 1개이상 선택해야 합니다."
                         } else {
                             
                             dismiss()

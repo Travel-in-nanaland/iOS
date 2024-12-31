@@ -416,7 +416,6 @@ struct FestivalMainGridView: View {
 												.padding(.bottom, 8)
                                             
                                             VStack(spacing: 0) {
-                                                Spacer()
                                                 
 												HStack(spacing: 0) {
 													Spacer()
@@ -434,7 +433,8 @@ struct FestivalMainGridView: View {
 														
 													}
 												}
-												.padding(.bottom, 20)
+												.padding(.top, 8)
+                                                Spacer()
 											}
 											.padding(.trailing, 8)
 										}

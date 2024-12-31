@@ -97,7 +97,6 @@ struct NatureMainGridView: View {
                                                 .clipShape(RoundedRectangle(cornerRadius: 12))
                                             
                                             VStack(spacing: 0) {
-                                                Spacer()
                                                 
                                                 HStack(spacing: 0) {
                                                     Spacer()
@@ -111,7 +110,8 @@ struct NatureMainGridView: View {
                                                         viewModel.state.getNatureMainResponse.data[index].favorite ? Image("icHeart_Fill") : Image("icHeart_Blank")
                                                     }
                                                 }
-                                                .padding(.bottom, 12)
+                                                .padding(.top, 12)
+                                                Spacer()
                                             }
                                             .padding(.trailing, 8)
                                         }
