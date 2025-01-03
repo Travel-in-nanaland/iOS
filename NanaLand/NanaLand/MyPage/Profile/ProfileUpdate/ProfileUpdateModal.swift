@@ -28,7 +28,7 @@ struct ProfileUpdateModal: View {
                                 self.isShowingImagePicker.toggle()
                                 isBasicProfile = false
                             }, label: {
-                                Text("앨범에서 선택")
+                                Text(.album)
                                     .font(.body01)
                                     .frame(height: Constants.screenWidth * (26 / 360))
                                     .foregroundColor(.black)
@@ -44,7 +44,7 @@ struct ProfileUpdateModal: View {
                                     selectedImage = UIImage(named: randomImageName) // 랜덤 이미지 설정
                                 }
                             }, label: {
-                                Text("프로필 사진 삭제")
+                                Text(.profileDelete)
                                     .font(.body01)
                                     .frame(height: Constants.screenWidth * (26 / 360))
                                     .foregroundColor(.black)
@@ -57,7 +57,7 @@ struct ProfileUpdateModal: View {
                     .foregroundColor(.gray3)
                     .shadow(radius: 1)
                     .overlay {
-                        Text("닫기")
+                        Text(.close)
                             .font(.body01)
                             .foregroundColor(.black)
                     }

@@ -42,7 +42,7 @@ struct UserProfileReportModal: View {
                         .foregroundColor(.gray3)
                         .shadow(radius: 1)
                         .overlay {
-                            Text("닫기")
+                            Text(.close)
                                 .font(.body01)
                                 .foregroundColor(.black)
                         }

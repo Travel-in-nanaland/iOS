@@ -259,6 +259,7 @@ enum LocalizedKey: String {
     case nearJejuAirport
     case jejuSummerHydrangea
     case jejuCharmingHanok
+    case popular
     
     // MARK: - FilterView(아이템 개수, 지역, 계절, 날짜)
     case count
@@ -445,6 +446,9 @@ enum LocalizedKey: String {
     case ACTIVITY
     case RESTAURANT
     case CULTURE_AND_ARTS
+    case album
+    case profileDelete
+    case close
 
     // MARK: - 제주 맛집
     case type

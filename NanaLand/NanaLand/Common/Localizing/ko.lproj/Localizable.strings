@@ -242,6 +242,7 @@
 "nearJejuAirport" = "마지막까지, 제주 공항 근처에서 놀자🛫";
 "jejuSummerHydrangea" = "제주의 여름은 수국 DAY😀";
 "jejuCharmingHanok" = "제주도에 감성 낭낭한 한옥 숙소🏠";
+"popular" = "지금 인기있는 장소🔥";
 
 // MARK: - FilterView
 "count" = "건";
@@ -426,6 +427,9 @@
 "ACTIVITY" = "액티비티";
 "RESTAURANT" = "제주 맛집";
 "CULTURE_AND_ARTS" = "문화예술";
+"album" = "앨범에서 선택";
+"profileDelete" = "프로필 사진 삭제";
+"close" = "닫기";
 
 // MARK: - 제주 맛집
 "type" = "종류";

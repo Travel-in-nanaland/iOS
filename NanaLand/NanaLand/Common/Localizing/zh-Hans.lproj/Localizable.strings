@@ -242,6 +242,7 @@
 "nearJejuAirport" = "最后一站，在济州机场附近玩！🛫";
 "jejuSummerHydrangea" = "济州的夏天是绣球花之日！😀";
 "jejuCharmingHanok" = "住在济州充满情调的韩屋！🏠";
+"popular" = "当前热门地点 🔥";
 
 
 // MARK: - FilterView
@@ -452,6 +453,9 @@
 "ACTIVITY" = "活动";
 "RESTAURANT" = "济州美食餐馆";
 "CULTURE_AND_ARTS" = "文化艺术";
+"album" = "从相册中选择";
+"profileDelete" = "删除个人资料照片";
+"close" = "关闭";
 
 //MARK: - 나나스픽
 "nanapickRecommend1" = "本周";
