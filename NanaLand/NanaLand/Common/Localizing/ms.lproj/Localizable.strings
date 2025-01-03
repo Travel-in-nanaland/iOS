@@ -244,7 +244,7 @@ ditetapkan sebagai lalai.";
 "nearJejuAirport" = "Hentian terakhir, seronok di sekitar Lapangan Terbang Jeju! 🛫";
 "jejuSummerHydrangea" = "Musim panas di Jeju bermaksud Hari Hydrangea! 😀";
 "jejuCharmingHanok" = "Menginap di hanok yang menawan di Jeju! 🏠";
-
+"popular" = "Tempat popular sekarang 🔥";
 
 // MARK: - FilterView
 "count" = "Results";
@@ -456,6 +456,9 @@ mengembalikan sebarang hasil.";
 "ACTIVITY" = "Aktiviti";
 "RESTAURANT" = "Restoran";
 "CULTURE_AND_ARTS" = "Budaya dan Seni";
+"album" = "Pilih dari album";
+"profileDelete" = "Padam gambar profil";
+"close" = "Tutup";
 
 //MARK: - 나나스픽
 "nanapickRecommend1" = "Cadangan ";

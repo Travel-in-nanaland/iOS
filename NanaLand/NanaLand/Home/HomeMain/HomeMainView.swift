@@ -430,7 +430,7 @@ struct HomeMainView: View {
                 // MARK: 지금 인기있는 게시물
                 VStack(spacing: 16) {
                     HStack(spacing: 0) {
-                        Text("지금 인기있는 장소🔥")
+                        Text(.popular)
                             .font(.body_bold)
                         Spacer()
                     }

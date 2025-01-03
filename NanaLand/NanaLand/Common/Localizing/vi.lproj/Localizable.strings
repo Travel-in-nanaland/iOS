@@ -247,6 +247,7 @@
 "nearJejuAirport" = "Last stop, fun near Jeju Airport! 🛫";
 "jejuSummerHydrangea" = "Summer in Jeju means Hydrangea Day! 😀";
 "jejuCharmingHanok" = "Stay in a charming hanok in Jeju! 🏠";
+"popular" = "Địa điểm phổ biến ngay bây giờ 🔥";
 
 
 // MARK: - FilterView
@@ -433,6 +434,9 @@
 "ACTIVITY" = "Hoạt động";
 "RESTAURANT" = "Nhà hàng";
 "CULTURE_AND_ARTS" = "Văn hóa và Nghệ thuật";
+"album" = "Chọn từ album";
+"profileDelete" = "Xóa ảnh đại diện";
+"close" = "Đóng";
 
 // MARK: - 제주 맛집
 "type" = "Loại";

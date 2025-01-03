@@ -250,7 +250,7 @@ the market is the place!";
 "nearJejuAirport" = "Last stop, fun near Jeju Airport! 🛫";
 "jejuSummerHydrangea" = "Summer in Jeju means Hydrangea Day! 😀";
 "jejuCharmingHanok" = "Stay in a charming hanok in Jeju! 🏠";
-
+"popular" = "Popular places right now 🔥";
 
 // MARK: - FilterView
 "count" = "Results";
@@ -436,6 +436,9 @@ the market is the place!";
 "ACTIVITY" = "Activity";
 "RESTAURANT" = "Restaurants";
 "CULTURE_AND_ARTS" = "Culture and Arts";
+"album" = "Select from album";
+"profileDelete" = "Delete profile picture";
+"close" = "Close";
 
 // MARK: - 제주 맛집
 "type" = "Type";
