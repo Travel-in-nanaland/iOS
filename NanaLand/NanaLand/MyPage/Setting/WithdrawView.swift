@@ -173,7 +173,7 @@ struct WithdrawView: View {
                     title: .withdrawAlertTitle,
                     message: .withdrawAlertMessage,
                     leftButtonTitle: .yes,
-                    rightButtonTitle: .cancel,
+                    rightButtonTitle: .no,
                     leftButtonAction: {
                         Task {
                             isLoading = true

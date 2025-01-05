@@ -15,7 +15,7 @@ struct WithdrawRequest: Codable {
 enum AuthEndPoint {
 	case refreshingToken
 	case login(body: LoginRequest)
-	case register(body: RegisterRequest, image: [Foundation.Data?])
+	case register(body: RegisterRequest)
 	case patchUserType(body: PatchUserTypeRequest)
 	case logout
 	case withdraw(body: WithdrawRequest)
@@ -66,8 +66,8 @@ extension AuthEndPoint: EndPoint {
 			return .requestWithoutInterceptor()
 		case let .login(body):
 			return .requestWithoutInterceptor(body: body)
-		case let .register(body, image):
-			return .requestJSONWithImage(multipartFile: image, body: body, withInterceptor: false)
+		case let .register(body):
+			return .requestWithoutInterceptor(body: body)
 		case let .patchUserType(body):
 			return .requestJSONEncodable(body: body)
 		case .logout:
@@ -88,7 +88,7 @@ extension AuthEndPoint: EndPoint {
 		case .login:
 			return ["Content-Type": "application/json"]
 		case .register:
-			return ["Content-Type": "multipart/form-data"]
+			return ["Content-Type": "application/json"]
 		case .patchUserType:
 			return ["Content-Type": "application/json"]
 		case .logout:

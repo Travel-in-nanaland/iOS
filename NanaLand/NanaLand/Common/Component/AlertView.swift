@@ -40,7 +40,7 @@ struct AlertView: View {
             VStack(alignment: .center, spacing: 0) {
 				Text(title)
 					.multilineTextAlignment(.center)
-					.font(.title01_bold)
+                    .font(.body_semibold)
 					.foregroundStyle(.baseBlack)
 					.padding(.top, 28)
 					.padding(.bottom, 16)
@@ -48,14 +48,10 @@ struct AlertView: View {
 				if message != nil {
 					Text(message!)
 						.multilineTextAlignment(.center)
-						.font(.body01)
+						.font(.body02_semibold)
 						.foregroundStyle(.gray1)
+                        .padding(.bottom, 24)
 				}
-				
-				Divider()
-					.foregroundStyle(Color.gray2)
-					.frame(height: 1)
-					.padding(.top, 24)
 				
 				HStack(spacing: 0) {
           
@@ -64,34 +60,36 @@ struct AlertView: View {
 							leftButtonAction()
 						}, label: {
 							Text(leftButtonTitle!)
-								.font(.title02_bold)
-								.foregroundStyle(Color.baseBlack)
-						
-                          
+								.font(.body02)
+								.foregroundStyle(Color.white)
 						})
-                        .frame(width: 150)
- 
-						Divider()
-							.foregroundStyle(Color.gray2)
-							.frame(width: 1)
-               
+                        .frame(width: 110, height: 40)
+                        .background(
+                            RoundedRectangle(cornerRadius: 100)
+                                .foregroundStyle(.gray2)
+                        )
+                        .padding(.leading, 22)
 					}
-					
+					Spacer()
 					Button(action: {
 						rightButtonAction()
 					}, label: {
 						Text(rightButtonTitle)
-							.font(.title02_bold)
-							.foregroundStyle(Color.main)
+							.font(.body02)
+							.foregroundStyle(Color.white)
 						
 					})
-                    .frame(width: 150)
-                  
+                    .frame(width: 110, height: 40)
+                    .background(
+                        RoundedRectangle(cornerRadius: 100)
+                            .foregroundStyle(Color.main)
+                    )
+                    .padding(.trailing, 22)
 				}
-				.frame(height: 55)
-				
+                .frame(height: 55)
+                .padding(.bottom, 12)
 			}
-			.frame(width: 300)
+            .frame(width: 276)
 			.background(Color.white)
 			.cornerRadius(10)
 		}
