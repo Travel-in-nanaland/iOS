@@ -219,7 +219,7 @@ final class AuthManager: NSObject {
 				providerId: request.providerId
 			)
 			
-			let registerResult = await AuthService.registerServer(body: registerRequest, image: [])
+			let registerResult = await AuthService.registerServer(body: registerRequest)
 			
 			if let tokens = registerResult?.data {
                 print("비회원 회원가입 성공: 토큰 획득")
@@ -229,7 +229,8 @@ final class AuthManager: NSObject {
 				self.provider = "GUEST"
 			} else {
 				// TODO: 비회원 에러처리 필요
-				print("비회원 회원가입 - 알 수 없는 에러")
+                print("비회원 회원가입 - 알 수 없는 에러\(registerResult)")
+                
 			}
 		}
 	}
