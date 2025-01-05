@@ -123,7 +123,46 @@ final class RegisterViewModel: ObservableObject {
 			return
 		}
 		
-		let result = await AuthService.registerServer(body: state.registerRequest)
+        var fileKey: String?
+        
+        if let imageData = state.pickedImage {
+            // 1. 파일 업로드 초기화 요청
+            guard let initResponse = await PreSignedUploadService.initializeFileUpload(
+                fileName: "profile_image.jpg",
+                fileSize: imageData.count,
+                fileCategory: "MEMBER_PROFILE",
+                partCount: 1
+            ) else {
+                return
+            }
+
+            guard let preSignedUrlInfo = initResponse.data?.presignedUrlInfos.first else {
+                return
+            }
+
+            // 2. PreSigned URL로 파일 전송 및 ETag 수집
+            guard let eTag = await PreSignedUploadService.uploadFileToPreSignedURL(
+                preSignedUrl: preSignedUrlInfo.preSignedUrl,
+                fileData: imageData
+            ) else {
+                return
+            }
+
+            // 3. 업로드 완료 요청
+            let completeResponse = await PreSignedUploadService.completeFileUpload(
+                uploadId: initResponse.data!.uploadId,
+                fileKey: initResponse.data!.fileKey,
+                parts: [FileUploadPart(partNumber: preSignedUrlInfo.partNumber, eTag: eTag)]
+            )
+
+            if completeResponse == nil {
+                return
+            }
+
+            fileKey = initResponse.data?.fileKey
+        }
+        
+		let result = await AuthService.registerServer(body: state.registerRequest, fileKey: fileKey)
 	
 		if let tokens = result?.data {
 			KeyChainManager.addItem(key: "accessToken", value: tokens.accessToken)
