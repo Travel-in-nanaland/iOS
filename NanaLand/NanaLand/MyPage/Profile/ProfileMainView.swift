@@ -491,6 +491,7 @@ struct guestTabView: View {
                 
                 Spacer()
             }
+            .frame(width: Constants.screenWidth)
         }
     }
 }
