@@ -49,93 +49,96 @@ struct NatureDetailView: View {
                             if !isOn { // 더보기 버튼이 안 눌렸을 때
                                 RoundedRectangle(cornerRadius: 12)
                                     .fill(Color.white)
-                                    .frame(maxWidth: Constants.screenWidth - 40, maxHeight: .infinity)
+                                    .frame(width: Constants.screenWidth * (328/360), height: Constants.screenWidth * (220 / 360))
                                     .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
-                               
-                                
-                                VStack(spacing: 0) {
-                                    HStack(spacing: 0) {
-                                        Text(viewModel.state.getNatureDetailResponse.addressTag)
-                                            .background(
+                                    .overlay {
+                                        VStack(spacing: 0) {
+                                            HStack(spacing: 0) {
                                                 RoundedRectangle(cornerRadius: 30)
                                                     .foregroundStyle(Color.main10P)
-                                                    .frame(width: 64, height: 20)
-                                            )
-                                            .font(.gothicNeo(.regular, size: 12))
-                                            .padding(.leading, 32)
-                                            .foregroundStyle(Color.main)
-                                        Spacer()
-                                    }
-                                    .padding(.bottom, 12)
-                                    HStack(spacing: 0) {
-                                        Text(viewModel.state.getNatureDetailResponse.title)
-                                            .font(.title02_bold)
-                                            .padding(.leading, 16)
-                                        Spacer()
-                                    }
-                                    
-                                    .padding(.bottom, 8)
-                                    
-                                    Text(viewModel.state.getNatureDetailResponse.content)
-                                        .font(.body02)
-                                        .frame(height: roundedHeight * (84 / 224))
-                                        .padding(.leading, 16)
-                                        .lineSpacing(10)
-                                        .padding(.trailing, 16)
-
-                                    Spacer()
-                                    HStack {
-                                        Spacer()
-                                        VStack {
-                                            Button {
-                                                isOn.toggle()
-                                            } label: {
-                                                Text(.unfoldView)
-                                                    .foregroundStyle(Color.gray1)
-                                                    .font(.gothicNeo(.regular, size: 14))
+                                                    .frame(width: Constants.screenWidth * (66 / 360), height: Constants.screenWidth * (24 / 360))
+                                                    .overlay {
+                                                        Text(viewModel.state.getNatureDetailResponse.addressTag)
+                                                            
+                                                            .font(.gothicNeo(.regular, size: 12))
+                                                            .foregroundStyle(Color.main)
+                                                    }
+                                                Spacer()
+                                            }
+                                            .padding(.bottom, Constants.screenWidth * (12 / 360))
+                                            
+                                            HStack(spacing: 0) {
+                                                Text(viewModel.state.getNatureDetailResponse.title)
+                                                    .font(.title02_bold)
+                                                    .frame(height: Constants.screenWidth * (28 / 360))
+                                                Spacer()
                                             }
                                             
+                                            .padding(.bottom, 8)
+                                            
+                                            Text(viewModel.state.getNatureDetailResponse.content)
+                                                .font(.body02)
+                                                .lineLimit(4)
+                                                .lineSpacing(10)
+
+                                            Spacer()
+                                            HStack {
+                                                Spacer()
+                                                VStack {
+                                                    Button {
+                                                        isOn.toggle()
+                                                    } label: {
+                                                        Text(.unfoldView)
+                                                            .foregroundStyle(Color.gray1)
+                                                            .font(.gothicNeo(.regular, size: 12))
+                                                    }
+                                                    
+                                                }
+                                                .padding(.bottom, Constants.screenWidth * (16 / 360))
+                                            }
                                         }
-                                        .padding(.bottom, 16)
+                                        .padding(.leading, Constants.screenWidth * (16 / 360))
+                                        .padding(.trailing, Constants.screenWidth * (16 / 360))
+                                        .padding(.top, Constants.screenWidth * (16 / 360))
                                     }
-                                    .padding(.trailing, 16)
-                                }
-                                .padding(.top, 36)
+                               
+                                
+                                
                             }
                             
                             if isOn { // 더 보기 눌렀을 때
-                                RoundedRectangle(cornerRadius: 30)
-                                    .fill(Color.white) // 빈 뷰를 하얀색으로 채웁니다.
-                                    .frame(maxWidth: Constants.screenWidth - 40) // 뷰의 크기를 지정합니다.
-                                    .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
-                    
                                 VStack(spacing: 0) {
                                     HStack(spacing: 0) {
-                                        Text(viewModel.state.getNatureDetailResponse.addressTag)
-                                            .background(
-                                                RoundedRectangle(cornerRadius: 30)
-                                                    .foregroundStyle(Color.main10P)
-                                                    .frame(width: 64, height: 20)
-                                            )
-                                            .font(.gothicNeo(.regular, size: 12))
-                                            .padding(.leading, 32)
-                                            .foregroundStyle(Color.main)
+                                        RoundedRectangle(cornerRadius: 30)
+                                            .foregroundStyle(Color.main10P)
+                                            .frame(width: Constants.screenWidth * (66 / 360), height: Constants.screenWidth * (24 / 360))
+                                            .overlay {
+                                                Text(viewModel.state.getNatureDetailResponse.addressTag)
+                                                    
+                                                    .font(.gothicNeo(.regular, size: 12))
+                                                    .foregroundStyle(Color.main)
+                                            }
                                         Spacer()
                                     }
-                                    .padding(.bottom, 12)
+                                    .padding(.leading, Constants.screenWidth * (16 / 360))
+                                    .padding(.bottom, Constants.screenWidth * (12 / 360))
+                                    
                                     HStack(spacing: 0) {
                                         Text(viewModel.state.getNatureDetailResponse.title)
                                             .font(.title02_bold)
-                                            .padding(.leading, 16)
+                                            .frame(height: Constants.screenWidth * (28 / 360))
                                         Spacer()
                                     }
+                                    .padding(.leading, Constants.screenWidth * (16 / 360))
+                                    
                                     .padding(.bottom, 8)
+                                    
                                     Text(viewModel.state.getNatureDetailResponse.content)
                                         .fixedSize(horizontal: false, vertical: true)
                                         .font(.body02)
                                         .lineSpacing(10)
-                                        .padding(.leading, 16)
-                                        .padding(.trailing, 16)
+                                        .padding(.leading, Constants.screenWidth * (16 / 360))
+                                        .padding(.trailing, Constants.screenWidth * (16 / 360))
                                     
                                     Spacer()
                                     HStack {
@@ -150,15 +153,21 @@ struct NatureDetailView: View {
                                             }
                                             
                                         }
-                                        .padding(.bottom, 16)
+                                        .padding(.trailing, Constants.screenWidth * (16 / 360))
+                                        .padding(.bottom, Constants.screenWidth * (16 / 360))
                                     }
-                                    .padding(.trailing, 16)
                                 }
-                                .padding(.top, 36)
+                                .padding(.leading, Constants.screenWidth * (16 / 360))
+                                .padding(.trailing, Constants.screenWidth * (16 / 360))
+                                .padding(.top, Constants.screenWidth * (16 / 360))
+                                .background(){
+                                    RoundedRectangle(cornerRadius: 12)
+                                        .fill(Color.white) // 빈 뷰를 하얀색으로 채웁니다.
+                                        .frame(width: Constants.screenWidth * (328 / 360)) // 뷰의 크기를 지정합니다.
+                                        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
+                                }
                             }
                         }
-                        .padding(.leading, 20)
-                        .padding(.trailing, 20)
                         
                         VStack(spacing: 24) {
                             ZStack {

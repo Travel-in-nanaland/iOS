@@ -15,7 +15,8 @@ struct ShopMainView: View {
         VStack(spacing: 0) {
             NanaNavigationBar(title: .market, showBackButton: true)
                 .frame(height: 56)
-                .padding(.bottom, 24)
+                .padding(.bottom, 10)
+            
             ShopMainGridView()
             
             Spacer()
@@ -44,8 +45,8 @@ struct ShopMainGridView: View {
                     self.locationModal = true
 				} label: {
                     HStack(spacing: 0) {
-                        Text(viewModel.state.location.split(separator: ",").count >= 3 ? "\(viewModel.state.location.split(separator: ",").prefix(2).joined(separator: ","))" + ".." : viewModel.state.location.split(separator: ",").prefix(2).joined(separator: ","))
-                            .font(.gothicNeo(.medium, size: 12))
+                        Text(viewModel.state.location.split(separator: ",").count >= 2 ? "\(viewModel.state.location.split(separator: ",").prefix(1).joined(separator: ","))" + LocalizedKey.other.localized(for: localizationMangaer.language) + "\(viewModel.state.location.split(separator: ",").count - 1)" : viewModel.state.location.split(separator: ",").prefix(1).joined(separator: ","))
+                            .font(.gothicNeo(.regular, size: 12))
                             .lineLimit(1)
                             .padding(.leading, 12)
                             .truncationMode(.tail)

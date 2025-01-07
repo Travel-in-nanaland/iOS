@@ -433,6 +433,7 @@ enum LocalizedKey: String {
     case warning
     case warningDescription
     case check
+    case other //~~외 1
     
     // MARK: - 마이페이지
     case notice
