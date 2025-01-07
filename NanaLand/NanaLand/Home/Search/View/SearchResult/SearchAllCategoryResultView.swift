@@ -256,11 +256,11 @@ struct SearchAllCategoryItem: View {
                 .padding(.bottom, 12)
             } else {
                 VStack(spacing: 9.3) {
-                    Image(.orange)
+                    Image(.icGlass)
                         .resizable()
                         .frame(width: 37.5, height: 37.5)
 
-                    Text(.noResult)
+                    Text(.noSearchResult)
                         .font(.gothicNeo(.medium, size: 14))
                         .foregroundStyle(Color.gray1)
                         .multilineTextAlignment(.center)

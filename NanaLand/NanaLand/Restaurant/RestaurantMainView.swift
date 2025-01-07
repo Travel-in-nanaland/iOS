@@ -17,7 +17,7 @@ struct RestaurantMainView: View {
         VStack{
             NanaNavigationBar(title: .restaurant, showBackButton: true)
                 .frame(height: 56)
-                .padding(.bottom, 24)
+                .padding(.bottom, 5)
             
             RestaurantMainGridView()
             
@@ -84,7 +84,7 @@ struct RestaurantMainGridView: View {
                         self.keywordModal = true
                     } label: {
                         HStack(spacing: 0) {
-                            Text(keyword.split(separator: ",").count >= 3 ? "\(keyword.split(separator: ",").prefix(2).joined(separator: ","))" + ".." : keyword.split(separator: ",").prefix(2).joined(separator: ","))
+                            Text(keyword.split(separator: ",").count >= 2 ? "\(keyword.split(separator: ",").prefix(1).joined(separator: ","))" + LocalizedKey.other.localized(for: localizationManager.language) + "\(keyword.split(separator: ",").count - 1)" : keyword.split(separator: ",").prefix(1).joined(separator: ","))
                                 .font(.gothicNeo(.regular, size: 12))
                                 .foregroundColor(Color.gray1)
                                 .lineLimit(1)
@@ -112,9 +112,9 @@ struct RestaurantMainGridView: View {
                         self.locationModal = true
                     } label: {
                         HStack(spacing: 0) {
-                            Text(viewModel.state.location.split(separator: ",").count >= 3 ? "\(viewModel.state.location.split(separator: ",").prefix(2).joined(separator: ","))" + ".." : viewModel.state.location.split(separator: ",").prefix(2).joined(separator: ","))
-                                .font(.gothicNeo(.regular, size: 12))
+                            Text(viewModel.state.location.split(separator: ",").count >= 2 ? "\(viewModel.state.location.split(separator: ",").prefix(1).joined(separator: ","))" + LocalizedKey.other.localized(for: localizationManager.language) + "\(viewModel.state.location.split(separator: ",").count - 1)" : viewModel.state.location.split(separator: ",").prefix(1).joined(separator: ","))
                                 .foregroundColor(Color.gray1)
+                                .font(.gothicNeo(.regular, size: 12))
                                 .lineLimit(1)
                                 .padding(.leading, 12)
                                 .truncationMode(.tail)
