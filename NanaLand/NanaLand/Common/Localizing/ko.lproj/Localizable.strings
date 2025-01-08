@@ -243,6 +243,7 @@
 "nearJejuAirport" = "마지막까지, 제주 공항 근처에서 놀자🛫";
 "jejuSummerHydrangea" = "제주의 여름은 수국 DAY😀";
 "jejuCharmingHanok" = "제주도에 감성 낭낭한 한옥 숙소🏠";
+"popular" = "지금 인기있는 장소🔥";
 
 // MARK: - FilterView
 "count" = "건";
@@ -373,6 +374,26 @@
 "addKeyword" = "키워드 추가";
 "upload" = "올리기";
 "keywordDescription" = "*최소 1개 이상 선택해야하며, 최대 6개까지 선택 가능합니다.";
+"reviewBackAlertTitle" = "정말 나가시겠습니까?";
+"reviewBackAlertMessage" = "지금 나가시면,\n작성 중인 내용이 삭제됩니다.";
+"content200" = "내용은 200자 이내로 작성 가능합니다.";
+"modify" = "수정";
+"reviewSeeMore" = "후기 더보기";
+"reviewDeleteMessage" = "해당 후기를\n삭제하시겠습니까?";
+"searchLocation" = "장소를 검색하세요";
+"noSearchResult" = "해당 검색 결과가 없습니다.";
+"photoMax" = "사진은 5개까지 선택 가능합니다";
+"reviewCompleteExperience" = "당신의 매력적인 글 고마워요 👻";
+"reviewCompleteExperienceSub1" = "당신의 매력만큼이나";
+"reviewCompleteExperienceSub2" = "여행지의 매력도 함께 올라갔어요!";
+"reviewCompleteExperienceSub3" = "점점 기대될 것 같아요🧚‍♀️";
+"reviewCompleteRestaurant" = "너무 마음에 드는걸요 ?";
+"reviewCompleteRestaurantSub1" = "당신의 세심한 글이\n누군가의 여행 선택지를\n풍요롭게 해줬어요 !";
+"reviewCompleteRestaurantSub2" = "다음번도 기대할게요";
+"goContent" = "콘텐츠 다시 보러 가기";
+"addAnotherReview" = "다른 리뷰 추가하기";
+
+// MARK: - 키워드 내용
 "mood" = "분위기";
 "ANNIVERSARY" = "기념일에 가면 좋아요";
 "CUTE" = "아기자기해요";
@@ -396,24 +417,7 @@
 "warning" = "경고";
 "warningDescription" = "최대 6개까지 선택 가능합니다";
 "check" = "확인";
-"reviewBackAlertTitle" = "정말 나가시겠습니까?";
-"reviewBackAlertMessage" = "지금 나가시면,\n작성 중인 내용이 삭제됩니다.";
-"content200" = "내용은 200자 이내로 작성 가능합니다.";
-"modify" = "수정";
-"reviewSeeMore" = "후기 더보기";
-"reviewDeleteMessage" = "해당 후기를\n삭제하시겠습니까?";
-"searchLocation" = "장소를 검색하세요";
-"noSearchResult" = "해당 검색 결과가 없습니다.";
-"photoMax" = "사진은 5개까지 선택 가능합니다";
-"reviewCompleteExperience" = "당신의 매력적인 글 고마워요 👻";
-"reviewCompleteExperienceSub1" = "당신의 매력만큼이나";
-"reviewCompleteExperienceSub2" = "여행지의 매력도 함께 올라갔어요!";
-"reviewCompleteExperienceSub3" = "점점 기대될 것 같아요🧚‍♀️";
-"reviewCompleteRestaurant" = "너무 마음에 드는걸요 ?";
-"reviewCompleteRestaurantSub1" = "당신의 세심한 글이\n누군가의 여행 선택지를\n풍요롭게 해줬어요 !";
-"reviewCompleteRestaurantSub2" = "다음번도 기대할게요";
-"goContent" = "콘텐츠 다시 보러 가기";
-"addAnotherReview" = "다른 리뷰 추가하기";
+"other" = " 외 ";
 
 //MARK: - 마이페이지
 "notice" = "공지사항";
@@ -427,6 +431,9 @@
 "ACTIVITY" = "액티비티";
 "RESTAURANT" = "제주 맛집";
 "CULTURE_AND_ARTS" = "문화예술";
+"album" = "앨범에서 선택";
+"profileDelete" = "프로필 사진 삭제";
+"close" = "닫기";
 
 // MARK: - 제주 맛집
 "type" = "종류";

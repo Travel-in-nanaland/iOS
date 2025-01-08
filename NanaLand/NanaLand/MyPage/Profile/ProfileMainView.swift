@@ -259,88 +259,103 @@ struct ProfileMainView: View {
                 .shadow(radius: 1)
                 .overlay{
                     if provider != "GUEST" {
-                        HStack(spacing: 12){
-                            
-                            if let travelType = appState.userInfo.travelType {
-                                Image(getImageName(for: travelType))
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: Constants.screenWidth * (52 / 360), height: Constants.screenWidth * (52 / 360))
-                                    .clipShape(RoundedRectangle(cornerRadius: 12))
-                                    .clipped()
+                        ZStack{
+                            HStack(spacing: 12){
                                 
-                                VStack(spacing: 8){
-                                    HStack(spacing: 0){
-                                        Button(action: {
-                                            AppState.shared.navigationPath.append(MyPageViewType.test(type: travelType, nickname: AppState.shared.userInfo.nickname))
-                                        }, label: {
-                                            Text("\(travelType)")
-                                                .font(.caption01)
-                                                .foregroundStyle(Color.main)
-                                                .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
-                                                .background(){
-                                                    Rectangle()
-                                                        .cornerRadius(30)
-                                                        .foregroundColor(.white)
-                                                        .overlay(
-                                                            RoundedRectangle(cornerRadius: 30)
-                                                                .stroke(Color.main, lineWidth: 1.0)
-                                                        )
-                                                }
-                                        })
-                                        
-                                        Spacer()
-                                    }
+                                if let travelType = appState.userInfo.travelType {
+                                    Image(getImageName(for: travelType))
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: Constants.screenWidth * (52 / 360), height: Constants.screenWidth * (52 / 360))
+                                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                                        .clipped()
                                     
-                                    if !AppState.shared.userInfo.hashtags.isEmpty {
-                                        HStack(spacing: 8) {
-                                            ForEach(AppState.shared.userInfo.hashtags, id: \.self) { hashtag in
-                                                Text("#\(hashtag)")
+                                    VStack(spacing: 8){
+                                        HStack(spacing: 0){
+                                            Button(action: {
+                                                AppState.shared.navigationPath.append(MyPageViewType.test(type: travelType, nickname: AppState.shared.userInfo.nickname))
+                                            }, label: {
+                                                Text("\(travelType)")
                                                     .font(.caption01)
                                                     .foregroundStyle(Color.main)
-                                            }
-                                            Spacer()
+                                                    .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
+                                                    .background(){
+                                                        Rectangle()
+                                                            .cornerRadius(30)
+                                                            .foregroundColor(.white)
+                                                            .overlay(
+                                                                RoundedRectangle(cornerRadius: 30)
+                                                                    .stroke(Color.main, lineWidth: 1.0)
+                                                            )
+                                                    }
+                                            })
                                             
+                                            Spacer()
+                                        }
+                                        
+                                        if !AppState.shared.userInfo.hashtags.isEmpty {
+                                            HStack(spacing: 8) {
+                                                ForEach(AppState.shared.userInfo.hashtags, id: \.self) { hashtag in
+                                                    Text("#\(hashtag)")
+                                                        .lineLimit(1)
+                                                        .font(.caption01)
+                                                        .foregroundStyle(Color.main)
+                                                }
+                                                
+                                                Spacer()
+                                            }
                                         }
                                     }
-                                }
-                                
-                                VStack(spacing: 0){
-                                    Button(action: {
-                                        appState.showTypeTest = true
-                                    }, label: {
-                                        HStack(spacing: 4) {
-                                            Text(AppState.shared.userInfo.hashtags.isEmpty ? .goTest :.retest)
-                                                .font(.gothicNeo(.semibold, size: 12))
-                                            
-                                            Image(.icRight)
-                                                .resizable()
-                                                .frame(width: 16, height: 16)
-                                        }
-                                        .frame(height: Constants.screenWidth * (20 / 360))
-                                    })
-                                    .tint(.baseBlack)
+                                } else {
+                                    VStack(alignment: .leading, spacing: 10){
+                                        Text(.none)
+                                            .font(.caption01)
+                                            .foregroundStyle(Color.main)
+                                            .padding(EdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12))
+                                            .background(){
+                                                Rectangle()
+                                                    .cornerRadius(30)
+                                                    .foregroundColor(.white)
+                                                    .overlay(
+                                                        RoundedRectangle(cornerRadius: 30)
+                                                            .stroke(Color.main, lineWidth: 2.0)
+                                                    )
+                                            }
+                                    }
                                     
                                     Spacer()
                                 }
-                                .padding(.top)
-                                .padding(.top, 5)
-                            } else {
-                                VStack(alignment: .leading, spacing: 10){
-                                    Text(.none)
-                                        .font(.caption01)
-                                        .foregroundStyle(Color.main)
-                                        .padding(EdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12))
-                                        .background(){
-                                            Rectangle()
-                                                .cornerRadius(30)
-                                                .foregroundColor(.white)
-                                                .overlay(
-                                                    RoundedRectangle(cornerRadius: 30)
-                                                        .stroke(Color.main, lineWidth: 2.0)
-                                                )
-                                        }
+                                
+                            }
+                            .padding(.leading)
+                            .padding(.trailing)
+                            
+                            HStack(spacing: 0){
+                                Spacer()
+                                
+                                if let travelType = appState.userInfo.travelType {
                                     
+                                    VStack(spacing: 0){
+                                        Button(action: {
+                                            appState.showTypeTest = true
+                                        }, label: {
+                                            HStack(spacing: 4) {
+                                                Text(AppState.shared.userInfo.hashtags.isEmpty ? .goTest :.retest)
+                                                    .font(.gothicNeo(.semibold, size: 12))
+                                                
+                                                Image(.icRight)
+                                                    .resizable()
+                                                    .frame(width: 16, height: 16)
+                                            }
+                                            .frame(height: Constants.screenWidth * (20 / 360))
+                                        })
+                                        .tint(.baseBlack)
+                                        
+                                        Spacer()
+                                    }
+                                    .padding(.top)
+                                    .padding(.trailing, 10)
+                                } else {
                                     Button(action: {
                                         appState.showTypeTest = true
                                     }, label: {
@@ -355,19 +370,10 @@ struct ProfileMainView: View {
                                         .frame(height: Constants.screenWidth * (20 / 360))
                                     })
                                     .tint(.baseBlack)
-                                    
                                 }
                                 
-                                Spacer()
                             }
-                            
                         }
-                        .padding(.leading)
-                        .padding(.trailing)
-                        
-                        
-                        
-                        Spacer()
                     }
                 }
             
@@ -485,6 +491,7 @@ struct guestTabView: View {
                 
                 Spacer()
             }
+            .frame(width: Constants.screenWidth)
         }
     }
 }

@@ -58,10 +58,10 @@ struct SearchDetailCategoryResultView: View {
                         
                     } else if searchVM.isSeaechresultIsEmpty() {
                         VStack(spacing: 15) {
-                            Image(.orange)
+                            Image(.icGlass)
                                 .resizable()
                                 .frame(width: 78, height: 78)
-                            Text(.noResult)
+                            Text(.noSearchResult)
                                 .font(.body01)
                                 .foregroundStyle(Color.gray1)
                                 .multilineTextAlignment(.center)

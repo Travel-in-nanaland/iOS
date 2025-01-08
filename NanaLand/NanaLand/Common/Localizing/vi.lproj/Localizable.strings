@@ -248,6 +248,7 @@
 "nearJejuAirport" = "Last stop, fun near Jeju Airport! 🛫";
 "jejuSummerHydrangea" = "Summer in Jeju means Hydrangea Day! 😀";
 "jejuCharmingHanok" = "Stay in a charming hanok in Jeju! 🏠";
+"popular" = "Địa điểm phổ biến ngay bây giờ 🔥";
 
 
 // MARK: - FilterView
@@ -381,6 +382,25 @@
 "addKeyword" = "Thêm từ khóa";
 "upload" = "Nâng cao";
 "keywordDescription" = "*Bạn phải chọn ít nhất 3 mục và có thể chọn tối đa 6 mục.";
+"reviewBackAlertTitle" = "Bạn có chắc chắn muốn rời đi không?";
+"reviewBackAlertMessage" = "Nếu bạn rời đi bây giờ,\nNhững gì bạn đang viết sẽ bị xóa.";
+"content200" = "Nội dung có thể được viết trong vòng 200 ký tự.";
+"reviewSeeMore" = "Xem thêm đánh giá";
+"reviewDeleteMessage" = "Bạn có muốn\n xóa đánh giá này không?";
+"searchLocation" = "Tìm Kiếm Địa Điểm";
+"noSearchResult" = "Không có kết quả tìm kiếm tương ứng.";
+"photoMax" = "Bạn có thể chọn tối đa 5 ảnh";
+"reviewCompleteExperience" = "Cảm ơn bạn vì bài viết \nhấp dẫn của bạn 👻";
+"reviewCompleteExperienceSub1" = "Cũng giống như sự quyến rũ của bạn";
+"reviewCompleteExperienceSub2" = "Sức hấp dẫn của điểm đến du lịch cũng \ntăng lên!";
+"reviewCompleteExperienceSub3" = "Tôi nghĩ tôi ngày càng phấn khích hơn🧚‍♀️";
+"reviewCompleteRestaurant" = "Bạn thích nó nhiều như vậy sao?";
+"reviewCompleteRestaurantSub1" = "Bài viết tỉ mỉ của bạn\nLựa chọn du lịch của ai đó\nNó đã làm phong phú tôi!";
+"reviewCompleteRestaurantSub2" = "Tôi cũng mong chờ lần tới";
+"goContent" = "Xem lại nội dung";
+"addAnotherReview" = "Thêm một đánh giá khác";
+
+// MARK: - 키워드 내용
 "mood" = "Bầu không khí";
 "ANNIVERSARY" = "Phù hợp cho kỷ niệm";
 "CUTE" = "Nó dễ thương";
@@ -404,23 +424,7 @@
 "warning" = "경고";
 "warningDescription" = "Bạn có thể chọn tối đa 6";
 "check" = "Kiểm tra";
-"reviewBackAlertTitle" = "Bạn có chắc chắn muốn rời đi không?";
-"reviewBackAlertMessage" = "Nếu bạn rời đi bây giờ,\nNhững gì bạn đang viết sẽ bị xóa.";
-"content200" = "Nội dung có thể được viết trong vòng 200 ký tự.";
-"reviewSeeMore" = "Xem thêm đánh giá";
-"reviewDeleteMessage" = "Bạn có muốn\n xóa đánh giá này không?";
-"searchLocation" = "Tìm Kiếm Địa Điểm";
-"noSearchResult" = "Không có kết quả tìm kiếm tương ứng.";
-"photoMax" = "Bạn có thể chọn tối đa 5 ảnh";
-"reviewCompleteExperience" = "Cảm ơn bạn vì bài viết \nhấp dẫn của bạn 👻";
-"reviewCompleteExperienceSub1" = "Cũng giống như sự quyến rũ của bạn";
-"reviewCompleteExperienceSub2" = "Sức hấp dẫn của điểm đến du lịch cũng \ntăng lên!";
-"reviewCompleteExperienceSub3" = "Tôi nghĩ tôi ngày càng phấn khích hơn🧚‍♀️";
-"reviewCompleteRestaurant" = "Bạn thích nó nhiều như vậy sao?";
-"reviewCompleteRestaurantSub1" = "Bài viết tỉ mỉ của bạn\nLựa chọn du lịch của ai đó\nNó đã làm phong phú tôi!";
-"reviewCompleteRestaurantSub2" = "Tôi cũng mong chờ lần tới";
-"goContent" = "Xem lại nội dung";
-"addAnotherReview" = "Thêm một đánh giá khác";
+"other" = " và ";
 
 //MARK: - 마이페이지
 "notice" = "Thông báo";
@@ -434,6 +438,9 @@
 "ACTIVITY" = "Hoạt động";
 "RESTAURANT" = "Nhà hàng";
 "CULTURE_AND_ARTS" = "Văn hóa và Nghệ thuật";
+"album" = "Chọn từ album";
+"profileDelete" = "Xóa ảnh đại diện";
+"close" = "Đóng";
 
 // MARK: - 제주 맛집
 "type" = "Loại";
