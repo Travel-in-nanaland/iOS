@@ -28,7 +28,7 @@
 
 //MARK: - Category
 "all" = "ALL";
-"nature" = "7 Natural Wonders";
+"nature" = "Natural Wonders";
 "festival" = "Festivals";
 "market" = "Traditional Markets";
 "experience" = "Unique Experiences";
@@ -239,6 +239,7 @@ the market is the place!";
 "thirdAdvertismentSubTitle" = "Which traditional markets are still around?";
 "fourthAdvertismentTitle" = "Jeju's unique festival in July🎈";
 "fourthAdvertismentSubTitle" = "Let's go see the festival full of the treasures of the world, feeling Jeju Island!";
+"popularLocation" = "Popular places right now 🔥";
 // 홈화면 검색 placeholder
 "jejuCanolaFestival" = "Jeju's Canola Festival is on now! 🏵️";
 "jejuGreenTeaField" = "Let's visit Jeju's green tea fields! 😎";
@@ -421,8 +422,8 @@ the market is the place!";
 "LARGE" = "Wide";
 "PARK" = "Parking lot";
 "BATHROOM" = "Clean toilet";
-"NOKEYWORD" = "선택할 키워드가 없어요";
-"warning" = "경고";
+"NOKEYWORD" = "No keywords to choose";
+"warning" = "warning";
 "warningDescription" = "You can select up to 6";
 "check" = "Check";
 "other" = " and ";

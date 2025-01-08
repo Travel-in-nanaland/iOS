@@ -45,21 +45,23 @@ struct MyAllReviewView: View {
                                                 .id(review.id)
                                         }
                                     }
+                                    if viewModel.state.page < viewModel.state.getMyAllReviewResponse.totalElements / 12 {
+                                        
+                                        ProgressView()
+                                            .onAppear {
+                                                print("\(viewModel.state.page) 페이지")
+                                                Task {
+                                                   // await getAllReviewItem(page: (viewModel.state.page + 1), size: 12)
+                                                }
+                                                
+                                                viewModel.state.page += 1
+                                            }
+                                    }
                                 }
                                 .padding(.bottom, 10)
                                 .id("scrollToTop")
                                 
-                                if viewModel.state.page < viewModel.state.getMyAllReviewResponse.totalElements / 12 {
-                                    ProgressView()
-                                        .onAppear {
-                                            print("\(viewModel.state.page)")
-                                            Task {
-                                                await getAllReviewItem(page: viewModel.state.page + 1, size: 12)
-                                            }
-                                            
-                                            viewModel.state.page += 1
-                                        }
-                                }
+                                
                             }
                             
                         }

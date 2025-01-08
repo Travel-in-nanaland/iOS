@@ -41,7 +41,7 @@ struct SettingView: View {
                     } label: {
                         HStack(spacing: 0) {
                             Text(.join)
-                                .font(.body01)
+                                .font(.body02)
                                 .padding(.leading, 16)
                                 .padding(.top, 20)
                             Spacer()

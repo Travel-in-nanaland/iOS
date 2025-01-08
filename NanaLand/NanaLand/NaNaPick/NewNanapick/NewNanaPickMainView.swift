@@ -219,13 +219,13 @@ struct NanaPickRecommendView: View {
                             
                             HStack(spacing: 0){
                                 VStack(alignment: .leading, spacing: 0){
-                                    Text(heading)
+                                    Text(subHeading)
                                         .lineLimit(2)
                                         .multilineTextAlignment(.leading)
                                         .font(.caption02_semibold)
                                         .foregroundColor(.white)
                                     
-                                    Text(subHeading)
+                                    Text(heading)
                                         .lineLimit(2)
                                         .multilineTextAlignment(.leading)
                                         .font(.body02_bold)

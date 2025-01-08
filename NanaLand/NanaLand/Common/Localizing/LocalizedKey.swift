@@ -248,6 +248,7 @@ enum LocalizedKey: String {
     case thirdAdvertismentSubTitle
     case fourthAdvertismentTitle
     case fourthAdvertismentSubTitle
+    case popularLocation
     // 홈화면 검색 placeholder
     case jejuCanolaFestival
     case jejuGreenTeaField

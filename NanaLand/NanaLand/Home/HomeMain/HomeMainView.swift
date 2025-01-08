@@ -203,12 +203,15 @@ struct HomeMainView: View {
                 .frame(width: UIScreen.main.bounds.width - 32)
                 
                 /// 광고 뷰
-                HStack(spacing: 0) {
-                    AdvertisementView()
-                        .frame(width: Constants.screenWidth, height: (UIScreen.main.bounds.width - 40.0) * (80.0 / 328.0))
-                        .padding(.bottom, 40)
-                }
-                
+//                HStack(spacing: 0) {
+//                    AdvertisementView()
+//                        .frame(width: Constants.screenWidth, height: (UIScreen.main.bounds.width - 40.0) * (80.0 / 328.0))
+//                        .padding(.bottom, 40)
+//                }
+                Rectangle()
+                    .frame(height: 8) // 구분선 두께
+                    .foregroundColor(Color.gray3) // 구분선 색상
+                    .padding(.bottom, 24)
                 HStack {
                     let nickname: String = provider == "GUEST" ? LocalizedKey.ourNana.localized(for: LocalizationManager.shared.language) : AppState.shared.userInfo.nickname
                     Text(.recommendTitle, arguments: [nickname])
@@ -232,6 +235,7 @@ struct HomeMainView: View {
                                                 .frame(height: (Constants.screenWidth - 40) / 2 * (118 / 160))
                                                 .clipShape(RoundedRectangle(cornerRadius: 12))
                                             VStack(spacing: 0) {
+                                                Spacer()
                                                 HStack(spacing: 0) {
                                                     Spacer()
                                                     
@@ -243,8 +247,7 @@ struct HomeMainView: View {
                                                         article.favorite ? Image("icHeart_Fill") : Image("icHeart_Blank")
                                                     }
                                                 }
-                                                .padding(.top, 8)
-                                                Spacer()
+                                                .padding(.bottom, 8)
                                             }
                                             .padding(.trailing, 8)
                                         }
@@ -268,6 +271,8 @@ struct HomeMainView: View {
                                                 .frame(height: (Constants.screenWidth - 40) / 2 * (118 / 160))
                                                 .clipShape(RoundedRectangle(cornerRadius: 12))
                                             VStack(spacing: 0) {
+                                                Spacer()
+                                                
                                                 HStack(spacing: 0) {
                                                     Spacer()
                                                     
@@ -279,8 +284,8 @@ struct HomeMainView: View {
                                                         article.favorite ? Image("icHeart_Fill") : Image("icHeart_Blank")
                                                     }
                                                 }
-                                                .padding(.top, 8)
-                                                Spacer()
+                                                .padding(.bottom, 8)
+                                        
                                             }
                                             .padding(.trailing, 8)
                                         }
@@ -304,6 +309,8 @@ struct HomeMainView: View {
                                                 .frame(height: (Constants.screenWidth - 40) / 2 * (118 / 160))
                                                 .clipShape(RoundedRectangle(cornerRadius: 12))
                                             VStack(spacing: 0) {
+                                                Spacer()
+                                                
                                                 HStack(spacing: 0) {
                                                     Spacer()
                                                     
@@ -315,8 +322,8 @@ struct HomeMainView: View {
                                                         article.favorite ? Image("icHeart_Fill") : Image("icHeart_Blank")
                                                     }
                                                 }
-                                                .padding(.top, 8)
-                                                Spacer()
+                                                .padding(.bottom, 8)
+                                      
                                             }
                                             .padding(.trailing, 8)
                                         }
@@ -340,6 +347,8 @@ struct HomeMainView: View {
                                                 .frame(height: (Constants.screenWidth - 40) / 2 * (118 / 160))
                                                 .clipShape(RoundedRectangle(cornerRadius: 12))
                                             VStack(spacing: 0) {
+                                                Spacer()
+                                                
                                                 HStack(spacing: 0) {
                                                     Spacer()
                                                     
@@ -351,8 +360,8 @@ struct HomeMainView: View {
                                                         article.favorite ? Image("icHeart_Fill") : Image("icHeart_Blank")
                                                     }
                                                 }
-                                                .padding(.top, 8)
-                                                Spacer()
+                                                .padding(.bottom, 8)
+                              
                                             }
                                             .padding(.trailing, 8)
                                         }
@@ -376,6 +385,8 @@ struct HomeMainView: View {
                                                 .frame(height: (Constants.screenWidth - 40) / 2 * (118 / 160))
                                                 .clipShape(RoundedRectangle(cornerRadius: 12))
                                             VStack(spacing: 0) {
+                                                Spacer()
+                                                
                                                 HStack(spacing: 0) {
                                                     Spacer()
                                                     
@@ -387,8 +398,8 @@ struct HomeMainView: View {
                                                         article.favorite ? Image("icHeart_Fill") : Image("icHeart_Blank")
                                                     }
                                                 }
-                                                .padding(.top, 8)
-                                                Spacer()
+                                                .padding(.bottom, 8)
+                                        
                                             }
                                             .padding(.trailing, 8)
                                         }
@@ -424,13 +435,18 @@ struct HomeMainView: View {
                 }
                 .padding(.leading, 16)
                 .padding(.trailing, 16)
+                .padding(.bottom, 32)
                 
-                Spacer()
-                    .frame(height: 50)
+                Rectangle()
+                    .frame(height: 8) // 구분선 두께
+                    .foregroundColor(Color.gray3) // 구분선 색상
+                    .padding(.bottom, 24)
+                
+            
                 // MARK: 지금 인기있는 게시물
                 VStack(spacing: 16) {
                     HStack(spacing: 0) {
-                        Text(.popular)
+                        Text(.popularLocation)
                             .font(.body_bold)
                         Spacer()
                     }
@@ -476,6 +492,8 @@ struct HomeMainView: View {
                                 .padding(.leading, 16)
                                 .padding(.bottom, 12)
                                 VStack(spacing: 0) {
+                                    Spacer()
+                                    
                                     HStack(spacing: 0) {
                                         Spacer()
                                         Button {
@@ -499,12 +517,11 @@ struct HomeMainView: View {
                                            
                                         } label: {
                                             data.favorite ? Image("icHeart_Fill") : Image("icHeart_Blank")
-                                    
                                         }
+                                        
                                     }
                                     .padding(.trailing, 8)
-                                    .padding(.top, 8)
-                                    Spacer()
+                                    .padding(.bottom, 8)
                                 }
                             }
                             .frame(width: Constants.screenWidth - 32, height: 140)
