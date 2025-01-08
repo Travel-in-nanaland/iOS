@@ -15,6 +15,7 @@ struct MyAllReviewView: View {
     @State private var isAPICalled = false
     var layout: [GridItem] = [GridItem(.flexible())]
     @State var selectedReviewId: Int64?
+    
     var body: some View {
         
         ScrollViewReader{ scroll in
@@ -45,23 +46,21 @@ struct MyAllReviewView: View {
                                                 .id(review.id)
                                         }
                                     }
+                                    
                                     if viewModel.state.page < viewModel.state.getMyAllReviewResponse.totalElements / 12 {
-                                        
                                         ProgressView()
                                             .onAppear {
-                                                print("\(viewModel.state.page) 페이지")
+                                                print("\(viewModel.state.page)")
                                                 Task {
-                                                   // await getAllReviewItem(page: (viewModel.state.page + 1), size: 12)
+                                                    await getAllReviewItem(page: Int(viewModel.state.page + 1), size: 12)
+                                                    
+                                                    viewModel.state.page += 1
                                                 }
-                                                
-                                                viewModel.state.page += 1
                                             }
                                     }
                                 }
                                 .padding(.bottom, 10)
                                 .id("scrollToTop")
-                                
-                                
                             }
                             
                         }

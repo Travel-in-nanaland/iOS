@@ -64,11 +64,12 @@ struct ExperienceDetailView: View {
                                         VStack(spacing: 0) {
                                             HStack(spacing: Constants.screenWidth * (12 / 360)) {
                                                 Text(viewModel.state.getExperienceDetailResponse.addressTag ?? "")
+                                                    .padding(EdgeInsets(top: 0, leading: Constants.screenWidth * (12 / 360), bottom: 0, trailing: Constants.screenWidth * (12 / 360)))
                                                     .background(RoundedRectangle(cornerRadius: 30)
                                                         .foregroundStyle(Color.main10P)
-                                                        .frame(width: Constants.screenWidth * (66 / 360), height: Constants.screenWidth * (20 / 360))
+                                                        .frame(height: Constants.screenWidth * (20 / 360))
                                                     )
-                                                    .frame(width: Constants.screenWidth * (66 / 360), height: Constants.screenWidth * (20 / 360))
+                                                    .frame(height: Constants.screenWidth * (20 / 360))
                                                     .font(.gothicNeo(.regular, size: 12))
                                                     .foregroundStyle(Color.main)
                                                 
@@ -119,6 +120,7 @@ struct ExperienceDetailView: View {
                                                     
                                                 }
                                                 .padding(.trailing, Constants.screenWidth * (16 / 360))
+                                                .padding(.top, Constants.screenWidth * (16 / 360))
                                                 .padding(.bottom, Constants.screenWidth * (16 / 360))
                                             }
                                         }
@@ -137,17 +139,18 @@ struct ExperienceDetailView: View {
                                         VStack(spacing: 0) {
                                             HStack(spacing: Constants.screenWidth * (12 / 360)) {
                                                 Text(viewModel.state.getExperienceDetailResponse.addressTag ?? "")
+                                                    .padding(EdgeInsets(top: 0, leading: Constants.screenWidth * (12 / 360), bottom: 0, trailing: Constants.screenWidth * (12 / 360)))
                                                     .background(RoundedRectangle(cornerRadius: 30)
                                                         .foregroundStyle(Color.main10P)
-                                                        .frame(width: Constants.screenWidth * (66 / 360), height: Constants.screenWidth * (20 / 360))
+                                                        .frame(height: Constants.screenWidth * (20 / 360))
                                                     )
-                                                    .frame(width: Constants.screenWidth * (66 / 360), height: Constants.screenWidth * (20 / 360))
+                                                    .frame(height: Constants.screenWidth * (20 / 360))
                                                     .font(.gothicNeo(.regular, size: 12))
                                                     .foregroundStyle(Color.main)
                                                 
                                                 ForEach(0...viewModel.state.getExperienceDetailResponse.keywords!.count - 1, id: \.self) { index in
                                                     Text(viewModel.state.getExperienceDetailResponse.keywords![index])
-                                                        .padding(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12))
+                                                        .padding(EdgeInsets(top: 0, leading: Constants.screenWidth * (12 / 360), bottom: 0, trailing: Constants.screenWidth * (12 / 360)))
                                                         .background(RoundedRectangle(cornerRadius: 30)
                                                             .foregroundStyle(Color.main10P)
                                                             .frame(height: Constants.screenWidth * (20 / 360))
@@ -179,6 +182,7 @@ struct ExperienceDetailView: View {
                                                 .padding(.trailing, Constants.screenWidth * (16 / 360))
                                             
                                             Spacer()
+                                            
                                             HStack {
                                                 Spacer()
                                                 VStack {
@@ -192,6 +196,7 @@ struct ExperienceDetailView: View {
                                                     
                                                 }
                                                 .padding(.trailing, Constants.screenWidth * (16 / 360))
+                                                .padding(.top, Constants.screenWidth * (16 / 360))
                                                 .padding(.bottom, Constants.screenWidth * (16 / 360))
                                             }
                                         }
@@ -205,102 +210,6 @@ struct ExperienceDetailView: View {
                                                 .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
                                         }
                                     }
-//                                    if !isOn {
-//                                        VStack(spacing: 0) {
-//                                            HStack(spacing: Constants.screenWidth * (12 / 360)) {
-//                                                Text(viewModel.state.getExperienceDetailResponse.addressTag ?? "")
-//                                                    .background(RoundedRectangle(cornerRadius: 30)
-//                                                        .foregroundStyle(Color.main10P)
-//                                                        .frame(width: Constants.screenWidth * (66 / 360), height: Constants.screenWidth * (20 / 360))
-//                                                    )
-//                                                    .frame(width: Constants.screenWidth * (66 / 360), height: Constants.screenWidth * (20 / 360))
-//                                                    .font(.gothicNeo(.regular, size: 12))
-//                                                    .foregroundStyle(Color.main)
-//                                                
-//                                                ForEach(0...viewModel.state.getExperienceDetailResponse.keywords!.count - 1, id: \.self) { index in
-//                                                    Text(viewModel.state.getExperienceDetailResponse.keywords![index])
-//                                                        .padding(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12))
-//                                                        .background(RoundedRectangle(cornerRadius: 30)
-//                                                            .foregroundStyle(Color.main10P)
-//                                                            .frame(height: Constants.screenWidth * (20 / 360))
-//                                                        )
-//                                                        .frame(height: Constants.screenWidth * (20 / 360))
-//                                                        .font(.gothicNeo(.regular, size: 12))
-//                                                        .foregroundStyle(Color.main)
-//                                                }
-//                                                Spacer()
-//                                            }
-//                                            .padding(.bottom, Constants.screenWidth * (12 / 360))
-//                                            
-//                                            HStack(spacing: 0) {
-//                                                Text(viewModel.state.getExperienceDetailResponse.title ?? "")
-//                                                    .font(.title02_bold)
-//                                                Spacer()
-//                                            }
-//                                            .padding(.bottom, 8)
-//                                            
-//                                            ExpandableText(viewModel.state.getExperienceDetailResponse.content ?? "", lineLimit: 4)
-//                                                .lineSpacing(10)
-//                                            Spacer()
-//                                            
-//                                        }
-//                                        .padding(.leading, Constants.screenWidth * (16 / 360))
-//                                        .padding(.trailing, Constants.screenWidth * (16 / 360))
-//                                        .padding(.top, Constants.screenWidth * (16 / 360))
-//                                        .background(){
-//                                            RoundedRectangle(cornerRadius: 12)
-//                                                .fill(Color.white)
-//                                                .frame(width: Constants.screenWidth * (328 / 360), height: Constants.screenWidth * (220 / 360))
-//                                                .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
-//                                        }
-//                                        
-//                                    }
-//                                    
-//                                    if isOn {
-//                                        RoundedRectangle(cornerRadius: 30)
-//                                            .fill(Color.white) // 빈 뷰를 하얀색으로 채웁니다.
-//                                            .frame(maxWidth: Constants.screenWidth - 40) // 뷰의 크기를 지정합니다.
-//                                            .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
-//                                        VStack(spacing: 0) {
-//                                            HStack(spacing: 0) {
-//                                                Text(viewModel.state.getExperienceDetailResponse.addressTag ?? "")
-//                                                    .background(
-//                                                        RoundedRectangle(cornerRadius: 30).foregroundStyle(Color.main10P)
-//                                                            .frame(width: 64, height: 20)
-//                                                    )
-//                                                    .frame(width: 64, height: 20)
-//                                                    .font(.caption01)
-//                                                    .padding(.leading, 16)
-//                                                    .foregroundStyle(Color.main)
-//                                                ForEach(0...viewModel.state.getExperienceDetailResponse.keywords!.count - 1, id: \.self) { index in
-//                                                    Text(viewModel.state.getExperienceDetailResponse.keywords![index])
-//                                                        .background(RoundedRectangle(cornerRadius: 30)
-//                                                            .foregroundStyle(Color.main10P)
-//                                                            .frame(width: 64, height: 20)
-//                                                        )
-//                                                        .font(.gothicNeo(.regular, size: 12))
-//                                                        .padding(.leading, 32)
-//                                                        .foregroundStyle(Color.main)
-//                                                }
-//                                                Spacer()
-//                                            }
-//                                            .padding(.bottom, 12)
-//                                            HStack(spacing: 0) {
-//                                                Text(viewModel.state.getExperienceDetailResponse.title ?? "")
-//                                                    .font(.title01_bold)
-//                                                    .padding(.leading, 16)
-//                                                Spacer()
-//                                            }
-//                                            .padding(.bottom, 8)
-//                                            ExpandableText(viewModel.state.getExperienceDetailResponse.content ?? "", lineLimit: 4)
-//                                                .padding(.leading, 16)
-//                                                .padding(.trailing, 16)
-//                                                .lineSpacing(10)
-//                                           
-//                                            Spacer()
-//                                        }
-//                                        .padding(.top, 30)
-//                                    }
                                 }
                                 
                                 VStack(spacing: 24) {

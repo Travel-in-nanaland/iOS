@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct ReviewCompleteView: View {
-    var title: String = ""
+    var title: String = "EXPERIENCE"
     @Environment(\.dismiss) var dismiss
     var body: some View {
         VStack(spacing: 0) {
             MainView(title: title)
-                .padding(.bottom, 70)
-            Spacer()
+                .padding(.top, Constants.screenWidth * (60 / 360))
+                .padding(.bottom, Constants.screenWidth * (95 / 360))
+            
             Button {
                 AppState.shared.navigationPath.removeLast()
                 AppState.shared.navigationPath.removeLast()
@@ -23,44 +24,21 @@ struct ReviewCompleteView: View {
             } label: {
                 Text(.goContent)
             }
-            .frame(width: Constants.screenWidth - 32, height: 48)
+            .frame(width: Constants.screenWidth * (328 / 360), height: Constants.screenWidth * (48 / 360))
             .background(
                 RoundedRectangle(cornerRadius: 50.0)
                     .foregroundStyle(Color.main)
-                    .frame(width: Constants.screenWidth - 32, height: 48)
+                    .frame(width: Constants.screenWidth * (328 / 360), height: Constants.screenWidth * (48 / 360))
             )
             .foregroundStyle(Color.white)
             .font(.body_bold)
-            .padding(.bottom, 10)
+            .padding(.bottom, Constants.screenWidth * (24 / 360))
             
-            Button(action: {
-                AppState.shared.navigationPath.append(ReviewCompleteType.reviewSearch)
-            }, label: {
-                Text(.addAnotherReview)
-                    
-            })
-            .frame(width: Constants.screenWidth - 32, height: 48)
-            .background(
-                RoundedRectangle(cornerRadius: 50.0)
-                     .fill(Color.white) // 배경색 설정
-                     .overlay(
-                         RoundedRectangle(cornerRadius: 50.0)
-                             .stroke(Color.main, lineWidth: 1) // 테두리 설정
-                     )
-            )
-            .foregroundStyle(Color.main)
-            .font(.body_bold)
-            .padding(.bottom, 24)
+            Spacer()
         }
         .toolbar(.hidden)
         .onAppear {
             print("\(AppState.shared.navigationPath)")
-        }
-        .navigationDestination(for: ReviewCompleteType.self) { review in
-            switch review {
-            case let .reviewSearch:
-                SearchReviewView()
-            }
         }
     }
 }
@@ -75,20 +53,19 @@ struct MainView: View {
         if title == "EXPERIENCE" {
             VStack{
                 LottieView(jsonName: experienceJsonName, loopMode: .loop)
-                    .frame(width: 230, height: 250)
-                    .padding(.top, 100)
+                    .frame(width: Constants.screenWidth * (350 / 360), height: Constants.screenWidth * (331 / 360))
                 
                 Text(.reviewCompleteExperience)
                     .font(.title01_bold)
                     .foregroundStyle(Color.main)
                     .multilineTextAlignment(.center)
                     .fixedSize(horizontal: false, vertical: true)
+                    .padding(.bottom, Constants.screenWidth * (22 / 360))
                     
                 Text(.reviewCompleteExperienceSub1)
                     .font(.body01)
                     .multilineTextAlignment(.center)
                     .lineSpacing(10)
-                    .padding(.top, 10)
                 
                 Text(.reviewCompleteExperienceSub2)
                     .font(.body01)
@@ -96,43 +73,37 @@ struct MainView: View {
                     .multilineTextAlignment(.center)
                     .fixedSize(horizontal: false, vertical: true)
                     .lineSpacing(10)
-                    .padding(.top, 10)
+                    .padding(.bottom, Constants.screenWidth * (22 / 360))
                 
                 Text(.reviewCompleteExperienceSub3)
                     .font(.body01)
                     .multilineTextAlignment(.center)
-                    .padding(.top, 20)
             }
         } else if title == "RESTAURANT" {
             VStack{
                 LottieView(jsonName: restaurantJsonName, loopMode: .loop)
-                    .frame(width: 230, height: 250)
-                    .padding(.top, 100)
+                    .frame(width: Constants.screenWidth * (350 / 360), height: Constants.screenWidth * (331 / 360))
+                
                 
                 Text(.reviewCompleteRestaurant)
                     .font(.title01_bold)
                     .foregroundStyle(Color.main)
-                    .frame(height: 36)
+                    .padding(.bottom, Constants.screenWidth * (22 / 360))
                     
                 Text(.reviewCompleteRestaurantSub1)
                     .font(.body01)
                     .multilineTextAlignment(.center)
                     .fixedSize(horizontal: false, vertical: true)
                     .lineSpacing(10)
-                    .padding(.top, 10)
+                    .padding(.bottom, Constants.screenWidth * (22 / 360))
                 
                 Text(.reviewCompleteRestaurantSub2)
                     .font(.body01)
                     .multilineTextAlignment(.center)
-                    .padding(.top, 20)
             }
         }
     }
    
-}
-
-enum ReviewCompleteType {
-    case reviewSearch
 }
 
 #Preview {   

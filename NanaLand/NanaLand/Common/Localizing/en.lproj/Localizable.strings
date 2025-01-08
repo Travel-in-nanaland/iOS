@@ -151,7 +151,7 @@
 "none" = "None";
 "travelType" = "Travel Type";
 "goTest" = "Testing";
-"retest" = "Test again";
+"retest" = "Do it again";
 "introduction" = "introduction";
 
 // editProfile
@@ -277,8 +277,8 @@ the market is the place!";
 "photoDescription" = "*Reference photos.";
 
 // MARK: - NatureDetailView
-"unfoldView" = "more"; // 더보기
-"foldView" = "fold"; // 접기
+"unfoldView" = "See more"; // 더보기
+"foldView" = "close"; // 접기
 "introduce" = "Introduce!";
 "address" = "Address";
 "phoneNumber" = "Contact";

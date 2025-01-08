@@ -151,7 +151,7 @@
 "none" = "없음";
 "travelType" = "여행 유형";
 "goTest" = "테스트 하기";
-"retest" = "테스트 다시하기";
+"retest" = "다시하기";
 "introduction" = "소개";
 //editProfile
 "nickName" = "닉네임";
