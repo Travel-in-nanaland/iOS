@@ -127,13 +127,13 @@ extension ReviewEndPoint: EndPoint {
         case let .getUserAllReviewData(memberId, page, size):
             let param = ["memberId": memberId, "page": page, "size": size] as [String : Any]
             return .requestParameters(parameters: param)
-        case let .deleteMyReview(_):
+        case .deleteMyReview(_):
             return .requestPlain
-        case let .getMyReviewDetail(_):
+        case .getMyReviewDetail(_):
             return .requestPlain
         case let .modifyMyReview(_, body, multipartFile):
             return .requestModifyJSONWithImage(multipartFile: multipartFile, body: body)
-        case let .reviewFavorite(_):
+        case .reviewFavorite(_):
             return .requestPlain
         case let .profileReview(keyword):
             let param = ["keyword": keyword]

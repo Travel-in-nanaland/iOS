@@ -34,7 +34,7 @@ class MyAllReviewViewModel: ObservableObject {
             if let responseData = response!.data {
                 await MainActor.run {
                     state.getMyAllReviewResponse.totalElements = responseData.totalElements
-                    state.getMyAllReviewResponse.data = response?.data?.data ?? [] // 데이터 바뀔 경우 바뀐 데이터로 state 변경
+                    print(state.getMyAllReviewResponse.data)
                     state.getMyAllReviewResponse.data!.append(contentsOf: response!.data?.data ?? [])
                     print(state.getMyAllReviewResponse.totalElements)
                 }

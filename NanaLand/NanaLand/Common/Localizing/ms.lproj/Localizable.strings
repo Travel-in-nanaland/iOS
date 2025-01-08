@@ -151,7 +151,7 @@
 "none" = "Tiada";
 "travelType" = "Jenis Perjalanan";
 "goTest" = "Ujian";
-"retest" = "Uji semula";
+"retest" = "Cuba lagi";
 "introduction" = "Perkenalan";
 // editProfile
 "nickName" = "Jenis Perjalanan";
@@ -270,8 +270,8 @@ ditetapkan sebagai lalai.";
 "photoDescription" = "*Gambar untuk rujukan.";
 
 // MARK: - NatureDetailView
-"unfoldView" = "Lihat Lagi"; // 더보기
-"foldView" = "Kemudahan"; // 접기
+"unfoldView" = "Lihat lebih lanjut"; // 더보기
+"foldView" = "tutup"; // 접기
 "introduce" = "Memperkenalkan!";
 "address" = "Alamat ";
 "phoneNumber" = "Hubungi";

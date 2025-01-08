@@ -67,22 +67,24 @@ struct ProfileMainView: View {
                     Button(action: {
                         AppState.shared.navigationPath.append(MyPageViewType.writeReview) // 후기 작성 페이지로 이도
                     }, label: {
-                        RoundedRectangle(cornerRadius: 50)
-                            .frame(width: Constants.screenWidth * (81 / 360), height: Constants.screenWidth * (35 / 360))
-                            .foregroundColor(.main)
-                            .overlay{
-                                HStack{
-                                    Image("icPencilWhite")
-                                        .frame(width: Constants.screenWidth * (20 / 360), height: Constants.screenWidth * (20 / 360))
-                                        .padding(.leading, 5)
-                                    
-                                    Text(.writeReview)
-                                        .font(.caption01_semibold)
-                                        .frame(height: Constants.screenWidth * (20 / 360))
-                                        .foregroundColor(.white)
-                                        .padding(.trailing, 8)
-                                }
-                            }
+                        HStack{
+                            Image("icPencilMyPage")
+                                .frame(width: Constants.screenWidth * (14 / 360), height: Constants.screenWidth * (14 / 360))
+                                .padding(.leading, Constants.screenWidth * (11 / 360))
+                                .padding(.top, Constants.screenWidth * (3 / 360))
+                                .padding(.trailing, Constants.screenWidth * (-3 / 360))
+                            
+                            Text(.writeReview)
+                                .font(.caption01_semibold)
+                                .frame(height: Constants.screenWidth * (16 / 360))
+                                .foregroundColor(.white)
+                                .padding(.trailing, Constants.screenWidth * (15 / 360))
+                        }
+                        .background(){
+                            RoundedRectangle(cornerRadius: 50)
+                                .frame(height: Constants.screenWidth * (35 / 360))
+                                .foregroundColor(.main)
+                        }
                     })
                     .zIndex(1)
                 }
@@ -146,8 +148,10 @@ struct ProfileMainView: View {
                     AppState.shared.navigationPath.append(MyPageViewType.setting)
                 }, label: {
                     Image("icSetting")
-                        .padding(.bottom, 16)
-                        .padding(.trailing, 12)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: Constants.screenWidth * (21 / 360))
+                        .padding(.trailing, Constants.screenWidth * (16 / 360))
                 })
                 
             }
@@ -277,8 +281,9 @@ struct ProfileMainView: View {
                                             }, label: {
                                                 Text("\(travelType)")
                                                     .font(.caption01)
+                                                    .frame(height: Constants.screenWidth * (20 / 360))
                                                     .foregroundStyle(Color.main)
-                                                    .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
+                                                    .padding(EdgeInsets(top: 0, leading: Constants.screenWidth * (12 / 360), bottom: 0, trailing: Constants.screenWidth * (12 / 360)))
                                                     .background(){
                                                         Rectangle()
                                                             .cornerRadius(30)

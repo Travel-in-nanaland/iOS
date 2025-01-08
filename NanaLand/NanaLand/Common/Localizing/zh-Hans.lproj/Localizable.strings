@@ -151,7 +151,7 @@
 "none" = "无";
 "travelType" = "旅行类型";
 "goTest" = "测试";
-"retest" = "再次测试";
+"retest" = "再试一次";
 "introduction" = "介绍";
 // editProfile
 "nickName" = "昵称";
@@ -269,8 +269,8 @@
 "photoDescription" = "*参考照片。";
 
 // MARK: - NatureDetailView
-"unfoldView" = "更多"; // 더보기
-"foldView" = "收起"; // 접기
+"unfoldView" = "看更多"; // 더보기
+"foldView" = "关闭"; // 접기
 "introduce" = "为您介绍!!";
 "address" = "地址";
 "phoneNumber" = "电话";

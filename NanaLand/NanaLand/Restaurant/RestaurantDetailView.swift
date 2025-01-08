@@ -45,231 +45,164 @@ struct RestaurantDetailView: View {
                                         .frame(width: Constants.screenWidth, height: Constants.screenWidth * (26 / 39))
                                         .padding(.bottom, Constants.screenWidth * (24 / 360))
                                     
-//                                    ZStack{
-//                                        if !isOn { // 더보기 버튼이 안 눌렸을 때
-//                                            VStack(spacing: 0) {
-//                                                HStack(spacing: Constants.screenWidth * (12 / 360)) {
-//                                                    Text(viewModel.state.getRestaurantDetailResponse.addressTag ?? "")
-//                                                        .background(RoundedRectangle(cornerRadius: 30)
-//                                                            .foregroundStyle(Color.main10P)
-//                                                            .frame(width: Constants.screenWidth * (66 / 360), height: Constants.screenWidth * (20 / 360))
-//                                                        )
-//                                                        .frame(width: Constants.screenWidth * (66 / 360), height: Constants.screenWidth * (20 / 360))
-//                                                        .font(.gothicNeo(.regular, size: 12))
-//                                                        .foregroundStyle(Color.main)
-//                                                    
-//                                                    ForEach(0...viewModel.state.getRestaurantDetailResponse.keywords!.count - 1, id: \.self) { index in
-//                                                        Text(viewModel.state.getRestaurantDetailResponse.keywords![index])
-//                                                            .padding(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12))
-//                                                            .background(RoundedRectangle(cornerRadius: 30)
-//                                                                .foregroundStyle(Color.main10P)
-//                                                                .frame(height: Constants.screenWidth * (20 / 360))
-//                                                            )
-//                                                            .frame(height: Constants.screenWidth * (20 / 360))
-//                                                            .font(.gothicNeo(.regular, size: 12))
-//                                                            .foregroundStyle(Color.main)
-//                                                    }
-//                                                    Spacer()
-//                                                }
-//                                                .padding(.leading, Constants.screenWidth * (16 / 360))
-//                                                .padding(.bottom, Constants.screenWidth * (12 / 360))
-//                                                
-//                                                HStack(spacing: 0) {
-//                                                    Text(viewModel.state.getRestaurantDetailResponse.title)
-//                                                        .font(.title02_bold)
-//                                                        .frame(height: Constants.screenWidth * (28 / 360))
-//                                                    Spacer()
-//                                                }
-//                                                .padding(.leading, Constants.screenWidth * (16 / 360))
-//                                                .padding(.bottom, 8)
-//                                                
-//                                                Text(viewModel.state.getRestaurantDetailResponse.content ?? "")
-//                                                    .font(.body02)
-//                                                    .lineLimit(4)
-//                                                    .lineSpacing(10)
-//                                                    .padding(.leading, Constants.screenWidth * (16 / 360))
-//                                                    .padding(.trailing, Constants.screenWidth * (16 / 360))
-//
-//                                                Spacer()
-//                                                
-//                                                HStack {
-//                                                    Spacer()
-//                                                    VStack {
-//                                                        if viewModel.state.getRestaurantDetailResponse.content.count > 90 {
-//                                                            Button {
-//                                                                isOn.toggle()
-//                                                            } label: {
-//                                                                Text(.unfoldView)
-//                                                                    .foregroundStyle(Color.gray1)
-//                                                                    .font(.gothicNeo(.regular, size: 12))
-//                                                            }
-//                                                        }
-//                                                        
-//                                                    }
-//                                                    .padding(.trailing, Constants.screenWidth * (16 / 360))
-//                                                    .padding(.bottom, Constants.screenWidth * (16 / 360))
-//                                                }
-//                                            }
-//                                            .padding(.leading, Constants.screenWidth * (16 / 360))
-//                                            .padding(.trailing, Constants.screenWidth * (16 / 360))
-//                                            .padding(.top, Constants.screenWidth * (16 / 360))
-//                                            .background(){
-//                                                RoundedRectangle(cornerRadius: 12)
-//                                                    .fill(Color.white)
-//                                                    .frame(width: Constants.screenWidth * (328/360), height: Constants.screenWidth * (220 / 360))
-//                                                    .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
-//                                            }
-//                                        }
-//                                        
-//                                        if isOn { // 더 보기 눌렀을 때
-//                                            VStack(spacing: 0) {
-//                                                HStack(spacing: Constants.screenWidth * (12 / 360)) {
-//                                                    Text(viewModel.state.getRestaurantDetailResponse.addressTag ?? "")
-//                                                        .background(RoundedRectangle(cornerRadius: 30)
-//                                                            .foregroundStyle(Color.main10P)
-//                                                            .frame(width: Constants.screenWidth * (66 / 360), height: Constants.screenWidth * (20 / 360))
-//                                                        )
-//                                                        .frame(width: Constants.screenWidth * (66 / 360), height: Constants.screenWidth * (20 / 360))
-//                                                        .font(.gothicNeo(.regular, size: 12))
-//                                                        .foregroundStyle(Color.main)
-//                                                    
-//                                                    ForEach(0...viewModel.state.getRestaurantDetailResponse.keywords!.count - 1, id: \.self) { index in
-//                                                        Text(viewModel.state.getRestaurantDetailResponse.keywords![index])
-//                                                            .padding(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12))
-//                                                            .background(RoundedRectangle(cornerRadius: 30)
-//                                                                .foregroundStyle(Color.main10P)
-//                                                                .frame(height: Constants.screenWidth * (20 / 360))
-//                                                            )
-//                                                            .frame(height: Constants.screenWidth * (20 / 360))
-//                                                            .font(.gothicNeo(.regular, size: 12))
-//                                                            .foregroundStyle(Color.main)
-//                                                    }
-//                                                    Spacer()
-//                                                }
-//                                                .padding(.leading, Constants.screenWidth * (16 / 360))
-//                                                .padding(.bottom, Constants.screenWidth * (12 / 360))
-//                                                
-//                                                HStack(spacing: 0) {
-//                                                    Text(viewModel.state.getRestaurantDetailResponse.title)
-//                                                        .font(.title02_bold)
-//                                                        .frame(height: Constants.screenWidth * (28 / 360))
-//                                                    Spacer()
-//                                                }
-//                                                .padding(.leading, Constants.screenWidth * (16 / 360))
-//                                                
-//                                                .padding(.bottom, 8)
-//                                                
-//                                                Text(viewModel.state.getRestaurantDetailResponse.content ?? "")
-//                                                    .fixedSize(horizontal: false, vertical: true)
-//                                                    .font(.body02)
-//                                                    .lineSpacing(10)
-//                                                    .padding(.leading, Constants.screenWidth * (16 / 360))
-//                                                    .padding(.trailing, Constants.screenWidth * (16 / 360))
-//                                                
-//                                                Spacer()
-//                                                HStack {
-//                                                    Spacer()
-//                                                    VStack {
-//                                                        Button {
-//                                                            isOn.toggle()
-//                                                        } label: {
-//                                                            Text(.foldView)
-//                                                                .foregroundStyle(Color.gray1)
-//                                                                .font(.gothicNeo(.regular, size: 14))
-//                                                        }
-//                                                        
-//                                                    }
-//                                                    .padding(.trailing, Constants.screenWidth * (16 / 360))
-//                                                    .padding(.bottom, Constants.screenWidth * (16 / 360))
-//                                                }
-//                                            }
-//                                            .padding(.leading, Constants.screenWidth * (16 / 360))
-//                                            .padding(.trailing, Constants.screenWidth * (16 / 360))
-//                                            .padding(.top, Constants.screenWidth * (16 / 360))
-//                                            .background(){
-//                                                RoundedRectangle(cornerRadius: 12)
-//                                                    .fill(Color.white) // 빈 뷰를 하얀색으로 채웁니다.
-//                                                    .frame(width: Constants.screenWidth * (328 / 360)) // 뷰의 크기를 지정합니다.
-//                                                    .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
-//                                            }
-//                                        }
-//                                    }
                                     ZStack{
-                                        RoundedRectangle(cornerRadius: 12)
-                                            .fill(Color.white) // 빈 뷰를 하얀색으로 채웁니다.
-                                            .frame(maxWidth: Constants.screenWidth - 40, maxHeight: .infinity) // 뷰의 크기를 지정합니다.
-                                            .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 0)
-                                        
-                                        VStack(spacing: 0){
-                                            HStack(spacing: 0) {
-                                                
-                                                Text(viewModel.state.getRestaurantDetailResponse.addressTag)
-                                                    .padding(EdgeInsets(top: 4, leading: 12, bottom: 4, trailing: 12))
-                                                    .background(
-                                                        RoundedRectangle(cornerRadius: 30)
+                                        if !isOn { // 더보기 버튼이 안 눌렸을 때
+                                            VStack(spacing: 0) {
+                                                HStack(spacing: Constants.screenWidth * (12 / 360)) {
+                                                    Text(viewModel.state.getRestaurantDetailResponse.addressTag ?? "")
+                                                        .padding(EdgeInsets(top: 0, leading: Constants.screenWidth * (12 / 360), bottom: 0, trailing: Constants.screenWidth * (12 / 360)))
+                                                        .background(RoundedRectangle(cornerRadius: 30)
                                                             .foregroundStyle(Color.main10P)
-                                                    )
-                                                    .font(.gothicNeo(.regular, size: 12))
-                                                    .padding(.leading, 40)
-                                                    .padding(.trailing, 10)
-                                                    .foregroundStyle(Color.main)
-                                                
-                                                LazyHGrid(rows: layout) {
-                                                    ForEach(viewModel.state.getRestaurantDetailResponse.keywords!, id: \.self) { keyword in
-                                                        Text(keyword)
-                                                            .padding(EdgeInsets(top: 4, leading: 12, bottom: 4, trailing: 12))
-                                                            .background(
-                                                                RoundedRectangle(cornerRadius: 30)
-                                                                    .foregroundStyle(Color.main10P)
+                                                            .frame(height: Constants.screenWidth * (20 / 360))
+                                                        )
+                                                        .frame(height: Constants.screenWidth * (20 / 360))
+                                                        .font(.gothicNeo(.regular, size: 12))
+                                                        .foregroundStyle(Color.main)
+                                                    
+                                                    ForEach(0...viewModel.state.getRestaurantDetailResponse.keywords!.count - 1, id: \.self) { index in
+                                                        Text(viewModel.state.getRestaurantDetailResponse.keywords![index])
+                                                            .padding(EdgeInsets(top: 0, leading: Constants.screenWidth * (12 / 360), bottom: 0, trailing: Constants.screenWidth * (12 / 360)))
+                                                            .background(RoundedRectangle(cornerRadius: 30)
+                                                                .foregroundStyle(Color.main10P)
+                                                                .frame(height: Constants.screenWidth * (20 / 360))
                                                             )
+                                                            .frame(height: Constants.screenWidth * (20 / 360))
                                                             .font(.gothicNeo(.regular, size: 12))
                                                             .foregroundStyle(Color.main)
                                                     }
-                                                }
-                                                
-                                                Spacer()
-                                            }
-                                            .padding(.bottom, 10)
-                                            HStack(spacing: 0) {
-                                                Text(viewModel.state.getRestaurantDetailResponse.title)
-                                                    .font(.title02_bold)
-                                                    .padding(.leading, 40)
-                                                Spacer()
-                                            }
-                                            .padding(.bottom, 8)
-                                            
-                                            HStack{
-                                                Text(viewModel.state.getRestaurantDetailResponse.content)
-                                                    .font(.body02)
-                                                    .fixedSize(horizontal: false, vertical: true) // 세로 방향으로 확장 허용
-                                                    .lineLimit(isExpanded ? nil : 5)
-                                                    .padding(.leading, 40)
-                                                    .padding(.trailing, 30)
-                                                    .padding(.bottom, 20)
-                                                
-                                                Spacer()
-                                            }
-                                            
-                                            if viewModel.state.getRestaurantDetailResponse.content.count > 90 {
-                                                HStack{
                                                     Spacer()
-                                                    Button(action: {
-                                                        isExpanded.toggle()
-                                                    }, label: {
-                                                        Text(isExpanded ? "접기" : "더 보기")
-                                                            .font(.caption01)
-                                                            .foregroundColor(.gray1)
-                                                    })
                                                 }
-                                                .padding(.trailing, 30)
-                                                .padding(.bottom, 20)
+                                                .padding(.leading, Constants.screenWidth * (16 / 360))
+                                                .padding(.bottom, Constants.screenWidth * (12 / 360))
+                                                
+                                                HStack(spacing: 0) {
+                                                    Text(viewModel.state.getRestaurantDetailResponse.title)
+                                                        .font(.title02_bold)
+                                                        .frame(height: Constants.screenWidth * (28 / 360))
+                                                    Spacer()
+                                                }
+                                                .padding(.leading, Constants.screenWidth * (16 / 360))
+                                                .padding(.bottom, 8)
+                                                
+                                                HStack(spacing: 0){
+                                                    Text(viewModel.state.getRestaurantDetailResponse.content ?? "")
+                                                        .font(.body02)
+                                                        .lineLimit(4)
+                                                        .lineSpacing(10)
+                                                    
+                                                    Spacer()
+                                                }
+                                                .padding(.leading, Constants.screenWidth * (16 / 360))
+                                                .padding(.trailing, Constants.screenWidth * (16 / 360))
+                                                
+                                                Spacer()
+                                                
+                                                HStack {
+                                                    Spacer()
+                                                    VStack {
+                                                        if viewModel.state.getRestaurantDetailResponse.content.count > 90 {
+                                                            Button {
+                                                                isOn.toggle()
+                                                            } label: {
+                                                                Text(.unfoldView)
+                                                                    .foregroundStyle(Color.gray1)
+                                                                    .font(.gothicNeo(.regular, size: 12))
+                                                            }
+                                                        }
+                                                        
+                                                    }
+                                                    .padding(.trailing, Constants.screenWidth * (16 / 360))
+                                                    .padding(.top, Constants.screenWidth * (16 / 360))
+                                                    .padding(.bottom, Constants.screenWidth * (16 / 360))
+                                                }
                                             }
-                                            
-                                            Spacer()
+                                            .padding(.leading, Constants.screenWidth * (16 / 360))
+                                            .padding(.trailing, Constants.screenWidth * (16 / 360))
+                                            .padding(.top, Constants.screenWidth * (16 / 360))
+                                            .background(){
+                                                RoundedRectangle(cornerRadius: 12)
+                                                    .fill(Color.white)
+                                                    .frame(width: Constants.screenWidth * (328/360))
+                                                    .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
+                                            }
                                         }
-                                        .padding(.top, 16)
+                                        
+                                        if isOn { // 더 보기 눌렀을 때
+                                            VStack(spacing: 0) {
+                                                HStack(spacing: Constants.screenWidth * (12 / 360)) {
+                                                    Text(viewModel.state.getRestaurantDetailResponse.addressTag ?? "")
+                                                        .padding(EdgeInsets(top: 0, leading: Constants.screenWidth * (12 / 360), bottom: 0, trailing: Constants.screenWidth * (12 / 360)))
+                                                        .background(RoundedRectangle(cornerRadius: 30)
+                                                            .foregroundStyle(Color.main10P)
+                                                            .frame(height: Constants.screenWidth * (20 / 360))
+                                                        )
+                                                        .frame(height: Constants.screenWidth * (20 / 360))
+                                                        .font(.gothicNeo(.regular, size: 12))
+                                                        .foregroundStyle(Color.main)
+                                                    
+                                                    ForEach(0...viewModel.state.getRestaurantDetailResponse.keywords!.count - 1, id: \.self) { index in
+                                                        Text(viewModel.state.getRestaurantDetailResponse.keywords![index])
+                                                            .padding(EdgeInsets(top: 0, leading: Constants.screenWidth * (12 / 360), bottom: 0, trailing: Constants.screenWidth * (12 / 360)))
+                                                            .background(RoundedRectangle(cornerRadius: 30)
+                                                                .foregroundStyle(Color.main10P)
+                                                                .frame(height: Constants.screenWidth * (20 / 360))
+                                                            )
+                                                            .frame(height: Constants.screenWidth * (20 / 360))
+                                                            .font(.gothicNeo(.regular, size: 12))
+                                                            .foregroundStyle(Color.main)
+                                                    }
+                                                    Spacer()
+                                                }
+                                                .padding(.leading, Constants.screenWidth * (16 / 360))
+                                                .padding(.bottom, Constants.screenWidth * (12 / 360))
+                                                
+                                                HStack(spacing: 0) {
+                                                    Text(viewModel.state.getRestaurantDetailResponse.title)
+                                                        .font(.title02_bold)
+                                                        .frame(height: Constants.screenWidth * (28 / 360))
+                                                    Spacer()
+                                                }
+                                                .padding(.leading, Constants.screenWidth * (16 / 360))
+                                                
+                                                .padding(.bottom, 8)
+                                                
+                                                Text(viewModel.state.getRestaurantDetailResponse.content ?? "")
+                                                    .fixedSize(horizontal: false, vertical: true)
+                                                    .font(.body02)
+                                                    .lineSpacing(10)
+                                                    .padding(.leading, Constants.screenWidth * (16 / 360))
+                                                    .padding(.trailing, Constants.screenWidth * (16 / 360))
+                                                
+                                                Spacer()
+                                                HStack {
+                                                    Spacer()
+                                                    VStack {
+                                                        Button {
+                                                            isOn.toggle()
+                                                        } label: {
+                                                            Text(.foldView)
+                                                                .foregroundStyle(Color.gray1)
+                                                                .font(.gothicNeo(.regular, size: 14))
+                                                        }
+                                                        
+                                                    }
+                                                    .padding(.trailing, Constants.screenWidth * (16 / 360))
+                                                    .padding(.top, Constants.screenWidth * (16 / 360))
+                                                    .padding(.bottom, Constants.screenWidth * (16 / 360))
+                                                }
+                                            }
+                                            .padding(.leading, Constants.screenWidth * (16 / 360))
+                                            .padding(.trailing, Constants.screenWidth * (16 / 360))
+                                            .padding(.top, Constants.screenWidth * (16 / 360))
+                                            .background(){
+                                                RoundedRectangle(cornerRadius: 12)
+                                                    .fill(Color.white) // 빈 뷰를 하얀색으로 채웁니다.
+                                                    .frame(width: Constants.screenWidth * (328 / 360)) // 뷰의 크기를 지정합니다.
+                                                    .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
+                                            }
+                                        }
                                     }
-                                    
+                                   
                                     VStack{
                                         
                                         HStack{
@@ -538,7 +471,7 @@ struct RestaurantDetailView: View {
                                                                                         await getReviewData(id: id, category: "RESTAURANT", page: 0, size: 12)
                                                                                     }
                                                                                 }
-                                                                               
+                                                                                
                                                                             } label: {
                                                                                 Text(.yes)
                                                                                     .font(.title02_bold)
@@ -653,7 +586,7 @@ struct RestaurantDetailView: View {
                                                                             } label: {
                                                                                 Image(viewModel.state.getReviewDataResponse.data[index].reviewHeart == true ? "icReviewHeartMain" : "icReviewHeart")
                                                                             }
-      
+                                                                            
                                                                             Text("\(viewModel.state.getReviewDataResponse.data[index].heartCount)")
                                                                                 .font(.caption01)
                                                                                 .foregroundColor(.black)
@@ -796,9 +729,9 @@ struct RestaurantDetailView: View {
                     Spacer()
                     ZStack {
                         Rectangle()
-                                .fill(Color.red) // 투명한 배경
-                                .frame(height: 56) // HStack과 같은 높이
-                                .shadow(color: Color.black.opacity(0.2), radius: 4, x: 0, y: -2) // 그림자 설정
+                            .fill(Color.red) // 투명한 배경
+                            .frame(height: 56) // HStack과 같은 높이
+                            .shadow(color: Color.black.opacity(0.2), radius: 4, x: 0, y: -2) // 그림자 설정
                         HStack(spacing: 0) {
                             Button {
                                 Task {

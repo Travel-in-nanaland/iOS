@@ -150,8 +150,8 @@
 "loginRequired" = "Tôi cần đăng nhập";
 "none" = "None";
 "travelType" = "Travel Type";
-"goTest" = "Testing";
-"retest" = "Kiểm tra lại";
+"goTest" = "Kiểm tra";
+"retest" = "Thử lại";
 "introduction" = "Giới thiệu";
 
 // editProfile
@@ -274,8 +274,8 @@
 "photoDescription" = "*Reference photos.";
 
 // MARK: - NatureDetailView
-"unfoldView" = "more"; // 더보기
-"foldView" = "fold"; // 접기
+"unfoldView" = "Xem thêm"; // 더보기
+"foldView" = "thu gọn"; // 접기
 "introduce" = "Introduce!";
 "address" = "Địa chỉ";
 "phoneNumber" = "Liên hệ";

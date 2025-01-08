@@ -55,15 +55,15 @@ struct FestivalDetailView: View {
                                     .overlay {
                                         VStack(spacing: 0) {
                                             HStack(spacing: 0) {
-                                                RoundedRectangle(cornerRadius: 30)
-                                                    .foregroundStyle(Color.main10P)
-                                                    .frame(width: Constants.screenWidth * (66 / 360), height: Constants.screenWidth * (24 / 360))
-                                                    .overlay {
-                                                        Text(viewModel.state.getFestivalDetailResponse.addressTag)
-                                                            
-                                                            .font(.gothicNeo(.regular, size: 12))
-                                                            .foregroundStyle(Color.main)
-                                                    }
+                                                Text(viewModel.state.getFestivalDetailResponse.addressTag ?? "")
+                                                    .padding(EdgeInsets(top: 0, leading: Constants.screenWidth * (12 / 360), bottom: 0, trailing: Constants.screenWidth * (12 / 360)))
+                                                    .background(RoundedRectangle(cornerRadius: 30)
+                                                        .foregroundStyle(Color.main10P)
+                                                        .frame(height: Constants.screenWidth * (20 / 360))
+                                                    )
+                                                    .frame(height: Constants.screenWidth * (20 / 360))
+                                                    .font(.gothicNeo(.regular, size: 12))
+                                                    .foregroundStyle(Color.main)
                                                 Spacer()
                                             }
                                             .padding(.bottom, Constants.screenWidth * (12 / 360))
@@ -110,15 +110,15 @@ struct FestivalDetailView: View {
                             if isOn { // 더 보기 눌렀을 때
                                 VStack(spacing: 0) {
                                     HStack(spacing: 0) {
-                                        RoundedRectangle(cornerRadius: 30)
-                                            .foregroundStyle(Color.main10P)
-                                            .frame(width: Constants.screenWidth * (66 / 360), height: Constants.screenWidth * (24 / 360))
-                                            .overlay {
-                                                Text(viewModel.state.getFestivalDetailResponse.addressTag)
-                                                    
-                                                    .font(.gothicNeo(.regular, size: 12))
-                                                    .foregroundStyle(Color.main)
-                                            }
+                                        Text(viewModel.state.getFestivalDetailResponse.addressTag ?? "")
+                                            .padding(EdgeInsets(top: 0, leading: Constants.screenWidth * (12 / 360), bottom: 0, trailing: Constants.screenWidth * (12 / 360)))
+                                            .background(RoundedRectangle(cornerRadius: 30)
+                                                .foregroundStyle(Color.main10P)
+                                                .frame(height: Constants.screenWidth * (20 / 360))
+                                            )
+                                            .frame(height: Constants.screenWidth * (20 / 360))
+                                            .font(.gothicNeo(.regular, size: 12))
+                                            .foregroundStyle(Color.main)
                                         Spacer()
                                     }
                                     .padding(.leading, Constants.screenWidth * (16 / 360))
