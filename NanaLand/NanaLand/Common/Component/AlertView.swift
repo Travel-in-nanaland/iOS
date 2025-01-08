@@ -44,7 +44,7 @@ struct AlertView: View {
 					.foregroundStyle(.baseBlack)
 					.padding(.top, 28)
 					.padding(.bottom, 16)
-				
+				 
 				if message != nil {
 					Text(message!)
 						.multilineTextAlignment(.center)

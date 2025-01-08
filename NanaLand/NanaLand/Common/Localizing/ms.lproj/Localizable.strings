@@ -28,7 +28,7 @@
 
 //MARK: - Category
 "all" = "Seluruh";
-"nature" = "7 Keajaiban Alam";
+"nature" = "Keajaiban Alam";
 "festival" = "Perayaan";
 "market" = "Pasaran Tradisional";
 "experience" = "Aktiviti Menarik";
@@ -233,6 +233,7 @@ ditetapkan sebagai lalai.";
 "thirdAdvertismentSubTitle" = "Pasar tradisional apa yang masih ada?";
 "fourthAdvertismentTitle" = "Festival khas di Jeju pada bulan Julai🎈";
 "fourthAdvertismentSubTitle" = "Mari saksikan festival yang penuh dengan harta karun dunia, rasa Pulau Jeju!";
+"popularLocation" = "Tempat popular sekarang 🔥";
 // 홈화면 검색 placeholder
 "jejuCanolaFestival" = "Festival Bunga Canola di Jeju sedang berlangsung! 🏵️";
 "jejuGreenTeaField" = "Jom lawati ladang teh hijau Jeju! 😎";
@@ -422,7 +423,7 @@ mengembalikan sebarang hasil.";
 "LARGE" = "Luas";
 "PARK" = "Tempat letak kereta";
 "BATHROOM" = "Tandas bersih";
-"NOKEYWORD" = "선택할 키워드가 없어요";
+"NOKEYWORD" = "Tiada kata kunci.";
 "warning" = "경고";
 "warningDescription" = "Anda boleh memilih sehingga 6";
 "check" = "Semak";

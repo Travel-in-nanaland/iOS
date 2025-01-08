@@ -33,6 +33,7 @@ class RestaurantMainViewModel: ObservableObject {
     func action(_ action: Action) async {
         switch action {
         case let .getRestaurantMainItem(keyword, address, page, size):
+           print(keyword)
             // TODO - 제주맛집 API 호출
             if let response = await RestaurantService.getRestaurantMainItem(keyword: keyword, address: address, page: page, size: size),
                let responseData = response.data {

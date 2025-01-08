@@ -45,7 +45,7 @@ struct ReviewKeywordView: View {
                             .font(.body_bold)
                         TagCloudView(tags: Array(viewModel.keywordViewModel.keywords[12...15]), keywordViewModel: viewModel.keywordViewModel, localizationManager: _localizationManager)
                         
-                        Text("기타")
+                        Text(.etc)
                             .font(.body_bold)
                         TagCloudView(tags: Array(viewModel.keywordViewModel.keywords[16...]), keywordViewModel: viewModel.keywordViewModel, localizationManager: _localizationManager)
                     }

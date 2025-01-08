@@ -8,8 +8,8 @@
 import Foundation
 
 struct NotificationModel: Codable {
-    let totalElements: Int64?
-    let data: [NotificationItem]?
+    var totalElements: Int64?
+    var data: [NotificationItem]?
 }
 
 struct NotificationItem: Codable {

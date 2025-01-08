@@ -28,7 +28,7 @@
 
 //MARK: - Category
 "all" = "Toàn bộ";
-"nature" = "7 kỳ quan thiên nhiên";
+"nature" = "kỳ quan thiên nhiên";
 "festival" = "Lễ hội";
 "market" = "Chợ truyền thống";
 "experience" = "Trải nghiệm độc đáo";
@@ -236,6 +236,7 @@
 "thirdAdvertismentSubTitle" = "Những chợ truyền thống nào vẫn còn tồn tại?";
 "fourthAdvertismentTitle" = "Lễ hội tháng 7 chỉ tổ chức tại Đảo Jeju🎈";
 "fourthAdvertismentSubTitle" = "Hãy đi xem lễ hội nơi bạn có thể cảm nhận được kho báu của thế giới, Đảo Jeju.Trang chủ";
+"popularLocation" = "Địa điểm phổ biến ngay bây giờ 🔥";
 // 홈화면 검색 placeholder
 "jejuCanolaFestival" = "Jeju's Canola Festival is on now! 🏵️";
 "jejuGreenTeaField" = "Let's visit Jeju's green tea fields! 😎";
@@ -399,7 +400,7 @@
 "LARGE" = "Rộng rãi";
 "PARK" = "Bãi đậu xe";
 "BATHROOM" = "Nhà vệ sinh sạch sẽ";
-"NOKEYWORD" = "선택할 키워드가 없어요";
+"NOKEYWORD" = "Không có từ khóa.";
 "warning" = "경고";
 "warningDescription" = "Bạn có thể chọn tối đa 6";
 "check" = "Kiểm tra";
