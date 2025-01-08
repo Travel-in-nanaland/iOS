@@ -28,7 +28,7 @@
 
 //MARK: - Category
 "all" = "전체";
-"nature" = "7대 자연";
+"nature" = "자연";
 "festival" = "축제";
 "market" = "전통시장";
 "experience" = "이색 체험";
@@ -231,6 +231,7 @@
 "thirdAdvertismentSubTitle" = "아직도 남은 전통 시장들은 뭐가 있을까?";
 "fourthAdvertismentTitle" = "제주도에서만 여는 7월 축제🎈";
 "fourthAdvertismentSubTitle" = "세계의 보물, 제주도가 가득 느껴지는 축제 보러가자";
+"popularLocation" = "지금 인기있는 장소🔥";
 // 홈화면 검색 placeholder
 "jejuCanolaFestival" = "제주도는 지금 유채꽃 축제🏵️";
 "jejuGreenTeaField" = "제주도 녹차밭 가보자고😎";

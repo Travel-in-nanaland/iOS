@@ -107,7 +107,7 @@ struct RestaurantKeywordView: View {
                 keyword = selectedKeywordName.joined(separator: ",")
                 Task {
                     viewModel.state.getRestaurantMainResponse = RestaurantMainModel(totalElements: 0, data: [])
-                    await getKeywordRestaurantMainItem(keyword: selectedKeyword.joined(separator: ","), address: viewModel.state.apiLocation, page: 0, size: 12)
+                    await getKeywordRestaurantMainItem(keyword: selectedKeyword.joined(separator: ","), address: viewModel.state.apiLocation == LocalizedKey.allLocation.localized(for: LocalizationManager().language) ? "" : viewModel.state.apiLocation, page: 0, size: 12)
                     viewModel.state.page = 0
                     if keyword.isEmpty {
                         keyword = LocalizedKey.type.localized(for: localizationManager.language)
@@ -187,6 +187,7 @@ struct RestaurantKeywordView: View {
     }
     
     func getKeywordRestaurantMainItem(keyword: String, address: String, page: Int, size: Int) async {
+        print("주소:\(address)")
         await viewModel.action(.getRestaurantMainItem(keyword: keyword, address: address, page: 0, size: 12))
         viewModel.state.selectedKeyword = selectedKeyword
     }

@@ -31,7 +31,10 @@ class NotificationViewModel: ObservableObject {
             let response = await NotificationService.getNotification(page: page, size: size)
             if response != nil {
                 await MainActor.run {
-                    state.getNotificationResponse = response!.data ?? NotificationModel(totalElements: 0, data: [])
+                    print(response?.data?.data)
+                    state.getNotificationResponse.totalElements = response?.data?.totalElements ?? 0
+                    state.getNotificationResponse.data?.append(contentsOf: response!.data?.data ?? [])
+                    
                 }
             }
         }

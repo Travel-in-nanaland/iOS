@@ -28,7 +28,7 @@
 
 //MARK: - Category
 "all" = "全部";
-"nature" = "七大自然";
+"nature" = "自然";
 "festival" = "庆典";
 "market" = "传统市场";
 "experience" = "特色体验";
@@ -231,6 +231,7 @@
 "thirdAdvertismentSubTitle" = "那些传统市场依然存在呢？";
 "fourthAdvertismentTitle" = "济州岛七月举办的独特节日🎈";
 "fourthAdvertismentSubTitle" = "来看看充满济州岛风情的世界宝藏节日吧";
+"popularLocation" = "当前热门地点 🔥";
 // 홈화면 검색 placeholder
 "jejuCanolaFestival" = "济州岛的油菜花节正进行中！🏵️";
 "jejuGreenTeaField" = "一起去济州的绿茶田吧！😎";
@@ -438,7 +439,7 @@
 "LARGE" = "宽敞";
 "PARK" = "停车场";
 "BATHROOM" = "洁净的卫生间";
-"NOKEYWORD" = "선택할 키워드가 없어요";
+"NOKEYWORD" = "无关键词可选。";
 "warning" = "경고";
 "warningDescription" = "最多可以选择6个";
 "check" = "确认";
