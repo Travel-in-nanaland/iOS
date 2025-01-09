@@ -10,7 +10,6 @@ import SwiftUICalendar
 
 // 카테고리내 필터를 적용시 결과가 없는 경우
 struct NoResultFilterView: View {
-    
     @Binding var keyword: String
     @Binding var location: String
     @Binding var yearMonthDay: YearMonthDay?
