@@ -33,17 +33,17 @@ struct ShopMainGridView: View {
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
     @State private var isAPICalled = false
     var body: some View {
-		VStack(spacing: 0) {
-			HStack(spacing: 0) {
+        VStack(spacing: 0) {
+            HStack(spacing: 0) {
 //                Text("\(viewModel.state.getShopMainResponse.totalElements)" + .count)
-//					.padding(.leading, 16)
-//					.foregroundStyle(Color.gray1)
-				
-				Spacer()
-				
-				Button {
+//                    .padding(.leading, 16)
+//                    .foregroundStyle(Color.gray1)
+                
+                Spacer()
+                
+                Button {
                     self.locationModal = true
-				} label: {
+                } label: {
                     HStack(spacing: 0) {
                         Text(viewModel.state.location.split(separator: ",").count >= 2 ? "\(viewModel.state.location.split(separator: ",").prefix(1).joined(separator: ","))" + LocalizedKey.other.localized(for: localizationMangaer.language) + "\(viewModel.state.location.split(separator: ",").count - 1)" : viewModel.state.location.split(separator: ",").prefix(1).joined(separator: ","))
                             .font(.gothicNeo(.regular, size: 12))
@@ -54,23 +54,23 @@ struct ShopMainGridView: View {
                             .padding(.trailing, 12)
                     }
                     .frame(height: 40)
-				}
-				.foregroundStyle(Color.gray1)
-				.background(
-					RoundedRectangle(cornerRadius: 30)
-						.strokeBorder(Color.gray2, lineWidth: 1)
-				)
-				.padding(.trailing, 16)
+                }
+                .foregroundStyle(Color.gray1)
+                .background(
+                    RoundedRectangle(cornerRadius: 30)
+                        .strokeBorder(Color.gray2, lineWidth: 1)
+                )
+                .padding(.trailing, 16)
                     .sheet(isPresented: $locationModal) {
                         LocationModalView(viewModel: FestivalMainViewModel(), natureViewModel: NatureMainViewModel(), shopViewModel: viewModel, restaurantModel: RestaurantMainViewModel(), experienceViewModel: ExperienceMainViewModel(), isModalShown: $locationModal, selectedLocation: viewModel.state.selectedLocation, startDate: "", endDate: "", title: LocalizedKey.market.localized(for: localizationMangaer.language))
                         .presentationDetents([.height(Constants.screenWidth * (63 / 36))])
                 }
-			}
-			.padding(.bottom, 16)
-			ScrollView {
+            }
+            .padding(.bottom, 16)
+            ScrollView {
                 if isAPICalled {
                     if viewModel.state.getShopMainResponse.data.count == 0 {
-                        NoResultView()
+                        NoResultFilterView(keyword: .constant(""), location: $viewModel.state.location, yearMonthDay: .constant(nil), season: .constant(""))
                             .frame(height: 70)
                             .padding(.top, (Constants.screenHeight - 208) * (179 / 636))
                         
@@ -148,15 +148,15 @@ struct ShopMainGridView: View {
                         .padding(.horizontal, 16)
                     }
                 }
-			
-			}
-		}
-		.navigationDestination(for: ArticleViewType.self) { viewType in
-			switch viewType {
-			case let .detail(id):
-				ShopDetailView(id: id)
-			}
-		}
+            
+            }
+        }
+        .navigationDestination(for: ArticleViewType.self) { viewType in
+            switch viewType {
+            case let .detail(id):
+                ShopDetailView(id: id)
+            }
+        }
         .onAppear {
             Task {
                 if viewModel.state.location == LocalizedKey.allLocation.localized(for: localizationMangaer.language) {
@@ -170,6 +170,14 @@ struct ShopMainGridView: View {
                         await getShopMainItem(page: 0, size:12, filterName:viewModel.state.apiLocation)
                         isAPICalled = true
                     }
+                }
+            }
+        }
+        .onChange(of: viewModel.state.location) { newValue in
+            if newValue == LocalizedKey.allLocation.localized(for: localizationMangaer.language) {
+                viewModel.state.selectedLocation = []
+                Task {
+                    await getShopMainItem(page: 0, size: 12, filterName: "")
                 }
             }
         }
@@ -187,10 +195,10 @@ struct ShopMainGridView: View {
         return offsetY > contentHeight - height
     }
     func toggleFavorite(body: FavoriteToggleRequest, index: Int) async {
-		if UserDefaults.standard.string(forKey: "provider") == "GUEST" {
-			AppState.shared.showRegisterInduction = true
-			return
-		}
+        if UserDefaults.standard.string(forKey: "provider") == "GUEST" {
+            AppState.shared.showRegisterInduction = true
+            return
+        }
         await viewModel.action(.toggleFavorite(body: body, index: index))
     }
     
@@ -199,3 +207,4 @@ struct ShopMainGridView: View {
 #Preview {
     ShopMainView()
 }
+

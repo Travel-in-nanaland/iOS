@@ -140,7 +140,7 @@ struct RestaurantMainGridView: View {
             ScrollView {
                 if isAPICalled {
                     if viewModel.state.getRestaurantMainResponse.data.count == 0 {
-                        NoResultView()
+                        NoResultFilterView(keyword: $keyword, location: $viewModel.state.location, yearMonthDay: .constant(nil), season: .constant(""))
                             .frame(height: 70)
                             .padding(.top, (Constants.screenHeight - 208) * (179 / 636))
                     } else {
@@ -247,6 +247,32 @@ struct RestaurantMainGridView: View {
                     isAPICalled = true
                 }
             }
+            .onChange(of: keyword) { newValue in
+                if newValue == LocalizedKey.type.localized(for: localizationManager.language) {
+                    viewModel.state.selectedKeyword = []
+                    Task {
+                        await getRestaurantMainItem(
+                            keyword: "",
+                            address: "",
+                            page: 0,
+                            size: 12
+                        )
+                    }
+                }
+            }
+            .onChange(of: viewModel.state.location) { newValue in
+                if newValue == LocalizedKey.allLocation.localized(for: localizationManager.language) {
+                    viewModel.state.selectedLocation = []
+                    Task {
+                        await getRestaurantMainItem(
+                            keyword: "",
+                            address: "",
+                            page: 0,
+                            size: 12
+                        )
+                    }
+                }
+            }
             .navigationDestination(for: RestaurantViewType.self) { viewType in
                 switch viewType {
                 case let .detail(id):
@@ -277,4 +303,5 @@ enum RestaurantViewType: Hashable {
     RestaurantMainView()
         .environmentObject(LocalizationManager())
 }
+
 
