@@ -36,15 +36,25 @@ class ExperienceMainViewModel: ObservableObject {
             // TODO: - 이색체험 API 호출
             
             let response = await ExperienceService.getExperienceMainItem(experienceType: experienceType, keyword: keyword, address: address, page: page, size: size)
-            if let responseData = response!.data {
+            if let responseData = response?.data {
                 await MainActor.run {
-                    print(response)
+                    let existingIDs = Set(self.state.getExperienceMainResponse.data.map { $0.id })
+                    
+                    // 새 데이터 중 기존 데이터에 없는 항목만 필터링
+                    let filteredData = responseData.data.filter { !existingIDs.contains($0.id) }
+                    
+                    // 필터링된 데이터를 추가
+                    state.getExperienceMainResponse.data.append(contentsOf: filteredData)
+                    
+                    // totalElements는 API에서 반환된 값을 그대로 사용
                     state.getExperienceMainResponse.totalElements = responseData.totalElements
-                    state.getExperienceMainResponse.data.append(contentsOf: response!.data?.data ?? [])
                     print(state.getExperienceMainResponse.totalElements)
                 }
             } else {
-                print("Error")
+                // response.data가 nil인 경우 처리
+                await MainActor.run {
+                    print("Error: response data is nil")
+                }
             }
             
         case .toggleFavorite(body: let body, index: let index):

@@ -174,7 +174,7 @@ struct FilterView: View {
     var count: Int // item 갯수
     @State private var locationModal = false
     @State private var dateModal = false
-    @State private var yearMonthDay: YearMonthDay? // 시작날짜 선택 했을 때
+    @Binding var yearMonthDay: YearMonthDay? // 시작날짜 선택 했을 때
     @State private var endYearMonthDay: YearMonthDay? // 종료날짜 선택 했을 때
     var title: String
     static let dateFormatter: DateFormatter = {
@@ -373,14 +373,15 @@ struct FestivalMainGridView: View {
     var title: String = ""
     var locationTitle = ""
     @State var selectedSeason = ""
+    @State var yearMonthDay: YearMonthDay? = nil
     
     @EnvironmentObject var localizationManager: LocalizationManager
     var body: some View {
 		VStack(spacing: 0) {
 			if title == "이번달" {
-                FilterView(viewModel: viewModel, count: Int(viewModel.state.getFestivalMainResponse.totalElements), title: title)
+                FilterView(viewModel: viewModel, count: Int(viewModel.state.getFestivalMainResponse.totalElements), yearMonthDay: $yearMonthDay, title: title)
 			} else if title == "종료된" {
-                FilterView(viewModel: viewModel, count: Int(viewModel.state.getFestivalMainResponse.totalElements), title: title)
+                FilterView(viewModel: viewModel, count: Int(viewModel.state.getFestivalMainResponse.totalElements), yearMonthDay: $yearMonthDay, title: title)
 			}
 			else {
                 SeasonFilterView(viewModel: viewModel, selectedSeason: $selectedSeason, count: Int(viewModel.state.getFestivalMainResponse.totalElements))
@@ -391,7 +392,7 @@ struct FestivalMainGridView: View {
 				if isAPICalled {
 					// 보여줄 데이터가 없을 때
 					if viewModel.state.getFestivalMainResponse.data.count == 0 {
-						NoResultView()
+                        NoResultFilterView(keyword: .constant(""), location: $viewModel.state.location, yearMonthDay: $yearMonthDay, season: $selectedSeason)
 							.frame(height: 70)
 							.padding(.top, (Constants.screenHeight - 208) * (179 / 636))
 						
@@ -647,6 +648,32 @@ struct FestivalMainGridView: View {
                 
             }
             
+        }
+        .onChange(of: yearMonthDay) { newValue in
+            if newValue == nil {
+                viewModel.state.selectedStartDate = .current
+                viewModel.state.selectedEndDate = .current
+                Task {
+                    await getThisMonthFestivalMainItem(page: 0, size: 12, filterName: "", startDate: "", endDate: "")
+                }
+                isAPICalled = true
+            }
+        }
+        .onChange(of: viewModel.state.location) { newValue in
+            if newValue == LocalizedKey.allLocation.localized(for: localizationManager.language) {
+                viewModel.state.selectedLocation = []
+                if title == "이번달"{
+                    Task {
+                        await getThisMonthFestivalMainItem(page: 0, size: 12, filterName: "", startDate: "", endDate: "")
+                    }
+                    isAPICalled = true
+                } else{
+                    Task{
+                        await getPastFestivalMainITem(page: 0, size: 12, filterName: "")
+                        isAPICalled = true
+                    }
+                }
+            }
         }
     }
     

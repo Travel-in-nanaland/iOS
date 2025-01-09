@@ -70,7 +70,7 @@ struct ShopMainGridView: View {
 			ScrollView {
                 if isAPICalled {
                     if viewModel.state.getShopMainResponse.data.count == 0 {
-                        NoResultView()
+                        NoResultFilterView(keyword: .constant(""), location: $viewModel.state.location, yearMonthDay: .constant(nil), season: .constant(""))
                             .frame(height: 70)
                             .padding(.top, (Constants.screenHeight - 208) * (179 / 636))
                         
@@ -170,6 +170,14 @@ struct ShopMainGridView: View {
                         await getShopMainItem(page: 0, size:12, filterName:viewModel.state.apiLocation)
                         isAPICalled = true
                     }
+                }
+            }
+        }
+        .onChange(of: viewModel.state.location) { newValue in
+            if newValue == LocalizedKey.allLocation.localized(for: localizationMangaer.language) {
+                viewModel.state.selectedLocation = []
+                Task {
+                    await getShopMainItem(page: 0, size: 12, filterName: "")
                 }
             }
         }

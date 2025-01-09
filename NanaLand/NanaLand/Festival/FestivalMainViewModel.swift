@@ -54,18 +54,35 @@ class FestivalMainViewModel: ObservableObject {
             let response = await FestivalService.getThisMonthFestivalMainItem(page: page, size: size, filterName: filterName, startDate: startDate, endDate: endDate)
             if response != nil {
                 await MainActor.run {
-                    state.getFestivalMainResponse.totalElements = response!.data.totalElements
-                    state.getFestivalMainResponse.data.append(contentsOf: response!.data.data)
-                    state.title = "이번달"
+                    // 기존 데이터의 ID를 Set으로 추출
+                    let existingIDs = Set(self.state.getFestivalMainResponse.data.map { $0.id })
                     
+                    // 새 데이터 중 기존 데이터에 없는 항목만 필터링
+                    let filteredData = response!.data.data.filter { !existingIDs.contains($0.id) }
+                    
+                    // 필터링된 데이터를 추가
+                    state.getFestivalMainResponse.data.append(contentsOf: filteredData)
+                    
+                    // totalElements는 API에서 반환된 값을 그대로 사용
+                    state.getFestivalMainResponse.totalElements = response!.data.totalElements
+                    state.title = "이번달"
                 }
             }
         case .getSeasonFestivalMainItem(page: let page, size: let size, season: let season):
             let response = await FestivalService.getSeasonFestivalMainItem(page: page, size: size, season: season)
             if response != nil {
                 await MainActor.run {
+                    // 기존 데이터의 ID를 Set으로 추출
+                    let existingIDs = Set(self.state.getFestivalMainResponse.data.map { $0.id })
+                    
+                    // 새 데이터 중 기존 데이터에 없는 항목만 필터링
+                    let filteredData = response!.data.data.filter { !existingIDs.contains($0.id) }
+                    
+                    // 필터링된 데이터를 추가
+                    state.getFestivalMainResponse.data.append(contentsOf: filteredData)
+                    
+                    // totalElements는 API에서 반환된 값을 그대로 사용
                     state.getFestivalMainResponse.totalElements = response!.data.totalElements
-                    state.getFestivalMainResponse.data.append(contentsOf: response!.data.data)
                     state.title = "계절별"
                 }
             }
@@ -73,8 +90,17 @@ class FestivalMainViewModel: ObservableObject {
             let response = await FestivalService.getPastFestivalMainItem(page: page, size: size, filterName: filterName)
             if response != nil {
                 await MainActor.run {
+                    // 기존 데이터의 ID를 Set으로 추출
+                    let existingIDs = Set(self.state.getFestivalMainResponse.data.map { $0.id })
+                    
+                    // 새 데이터 중 기존 데이터에 없는 항목만 필터링
+                    let filteredData = response!.data.data.filter { !existingIDs.contains($0.id) }
+                    
+                    // 필터링된 데이터를 추가
+                    state.getFestivalMainResponse.data.append(contentsOf: filteredData)
+                    
+                    // totalElements는 API에서 반환된 값을 그대로 사용
                     state.getFestivalMainResponse.totalElements = response!.data.totalElements
-                    state.getFestivalMainResponse.data.append(contentsOf: response!.data.data)
                     state.title = "종료된"
                 }
             }
