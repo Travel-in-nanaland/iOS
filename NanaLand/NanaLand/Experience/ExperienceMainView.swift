@@ -12,7 +12,7 @@ struct ExperienceMainView: View {
     @State var tabIndex = 0
     var body: some View {
         VStack {
-			NanaNavigationBar(title: .experience, showBackButton: true)
+            NanaNavigationBar(title: .experience, showBackButton: true)
                 .frame(height: 56)
                 .padding(.bottom, 5)
             
@@ -132,7 +132,7 @@ struct ExperienceMainGridView: View {
             ScrollView {
                 if isAPICalled {
                     if viewModel.state.getExperienceMainResponse.data.count == 0 {
-                        NoResultView()
+                        NoResultFilterView(keyword: $keyword, location: $viewModel.state.location, yearMonthDay: .constant(nil), season: .constant(""))
                             .frame(height: 70)
                             .padding(.top, (Constants.screenHeight - 208) * (179 / 636))
                     } else {
@@ -251,6 +251,35 @@ struct ExperienceMainGridView: View {
             
             }
         }
+        .onChange(of: keyword) { newValue in
+            if newValue == LocalizedKey.type.localized(for: localizationMangaer.language) {
+                viewModel.state.selectedKeyword = []
+                if experienceType == "Activity" {
+                    Task{
+                        await getExperienceMainItem(experienceType: "ACTIVITY", keyword: "", address: "", page: 0, size: 12)
+                    }
+                } else {
+                    Task{
+                        await getExperienceMainItem(experienceType: "CULTURE_AND_ARTS", keyword: "", address: "", page: 0, size: 12)
+                    }
+                }
+            }
+        }
+        .onChange(of: viewModel.state.location) { newValue in
+            if newValue == LocalizedKey.allLocation.localized(for: localizationMangaer.language) {
+                viewModel.state.selectedLocation = []
+                if experienceType == "Activity" {
+                    Task{
+                        await getExperienceMainItem(experienceType: "ACTIVITY", keyword: "", address: "", page: 0, size: 12)
+                    }
+                } else {
+                    Task{
+                        await getExperienceMainItem(experienceType: "CULTURE_AND_ARTS", keyword: "", address: "", page: 0, size: 12)
+                    }
+                }
+                
+            }
+        }
     }
 
     func getExperienceMainItem(experienceType: String, keyword: String, address: String, page: Int, size: Int) async {
@@ -288,3 +317,4 @@ struct ExperienceTabBarView: View {
 #Preview {
     ExperienceMainView()
 }
+

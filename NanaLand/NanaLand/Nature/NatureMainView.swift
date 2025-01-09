@@ -78,7 +78,7 @@ struct NatureMainGridView: View {
         ScrollView {
             if isAPICalled {
                 if viewModel.state.getNatureMainResponse.data.count == 0 {
-                    NoResultView()
+                    NoResultFilterView(keyword: .constant(""), location: $viewModel.state.location, yearMonthDay: .constant(nil), season: .constant(""))
                         .frame(height: 70)
                         .padding(.top, (Constants.screenHeight - 208) * (179 / 636))
                 }
@@ -190,6 +190,14 @@ struct NatureMainGridView: View {
                 }
             }
         }
+        .onChange(of: viewModel.state.location) { newValue in
+            if newValue == LocalizedKey.allLocation.localized(for: localizationManager.language) {
+                viewModel.state.selectedLocation = []
+                Task {
+                    await getNatureMainItem(page: 0, size: 12, filterName: "")
+                }
+            }
+        }
     }
     
     func getNatureMainItem(page: Int64, size: Int64, filterName: String) async {
@@ -205,3 +213,4 @@ struct NatureMainGridView: View {
     NatureMainView()
         .environmentObject(LocalizationManager())
 }
+

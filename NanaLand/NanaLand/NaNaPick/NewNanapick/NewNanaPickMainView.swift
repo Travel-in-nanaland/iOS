@@ -142,10 +142,16 @@ struct NewNanaPickMainView: View {
                     .padding()
                     
                     LazyVGrid(columns: layout) {
-                        ForEach(viewModel.state.getNanaPickGridResponse.data.indices, id: \.self) { list in
+                        ForEach(viewModel.state.getNanaPickGridResponse.data.prefix(3).indices, id: \.self) { list in
                             let gridItem = viewModel.state.getNanaPickGridResponse.data[list]
                             
-                            NewNanaPickArticleItem(id: gridItem.id, imageUrl: gridItem.firstImage.originUrl, subHeading: gridItem.subHeading, version: gridItem.version, newest: gridItem.newest)
+                            NewNanaPickArticleItem(
+                                id: gridItem.id,
+                                imageUrl: gridItem.firstImage.originUrl,
+                                subHeading: gridItem.subHeading,
+                                version: gridItem.version,
+                                newest: gridItem.newest
+                            )
                         }
                     }
                     
@@ -157,18 +163,27 @@ struct NewNanaPickMainView: View {
             switch nanaPick {
             case let .detail(id):
                 NewNanaPickDetailView(id: id)
-            case let .all:
+            case .all:
                 NewNanaPickAllMainView()
             }
         })
-        .onAppear(){
-            Task{
-                await getNanaPickRecommend()
-                await getNanaPickGridList()
-                isAPICalled = true
+        .onAppear {
+            Task {
+                await fetchData()
+            }
+        }
+        .onChange(of: localizationManager.language) { _ in
+            Task {
+                await fetchData()
             }
         }
     }
+    private func fetchData() async {
+        await getNanaPickRecommend()
+        await getNanaPickGridList()
+        isAPICalled = true
+    }
+    
     
     func getNanaPickRecommend() async {
         await viewModel.action(.getNanaPickRecommend)
@@ -384,3 +399,4 @@ struct ScrollPreferenceKey: PreferenceKey {
     NewNanaPickMainView()
         .environmentObject(LocalizationManager())
 }
+

@@ -39,8 +39,18 @@ class RestaurantMainViewModel: ObservableObject {
                let responseData = response.data {
                 await MainActor.run {
                     print(response)
+                    // 기존 데이터의 ID를 Set으로 추출
+                    let existingIDs = Set(self.state.getRestaurantMainResponse.data.map { $0.id })
+                    
+                    // 새 데이터 중 기존 데이터에 없는 항목만 필터링
+                    let filteredData = responseData.data.filter { !existingIDs.contains($0.id) }
+                    
+                    // 필터링된 데이터를 추가
+                    state.getRestaurantMainResponse.data.append(contentsOf: filteredData)
+                    
+                    // totalElements는 API에서 반환된 값을 그대로 사용
                     state.getRestaurantMainResponse.totalElements = responseData.totalElements
-                    state.getRestaurantMainResponse.data.append(contentsOf: response.data?.data ?? [])
+                
                     print(state.getRestaurantMainResponse.totalElements)
                 }
             } else {
@@ -57,4 +67,5 @@ class RestaurantMainViewModel: ObservableObject {
         }
     }
 }
+
 
