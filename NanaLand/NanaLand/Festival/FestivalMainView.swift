@@ -174,7 +174,7 @@ struct FilterView: View {
     var count: Int // item 갯수
     @State private var locationModal = false
     @State private var dateModal = false
-    @State private var yearMonthDay: YearMonthDay? // 시작날짜 선택 했을 때
+    @Binding var yearMonthDay: YearMonthDay? // 시작날짜 선택 했을 때
     @State private var endYearMonthDay: YearMonthDay? // 종료날짜 선택 했을 때
     var title: String
     static let dateFormatter: DateFormatter = {
@@ -373,47 +373,48 @@ struct FestivalMainGridView: View {
     var title: String = ""
     var locationTitle = ""
     @State var selectedSeason = ""
+    @State var yearMonthDay: YearMonthDay? = nil
     
     @EnvironmentObject var localizationManager: LocalizationManager
     var body: some View {
-		VStack(spacing: 0) {
-			if title == "이번달" {
-                FilterView(viewModel: viewModel, count: Int(viewModel.state.getFestivalMainResponse.totalElements), title: title)
-			} else if title == "종료된" {
-                FilterView(viewModel: viewModel, count: Int(viewModel.state.getFestivalMainResponse.totalElements), title: title)
-			}
-			else {
+        VStack(spacing: 0) {
+            if title == "이번달" {
+                FilterView(viewModel: viewModel, count: Int(viewModel.state.getFestivalMainResponse.totalElements), yearMonthDay: $yearMonthDay, title: title)
+            } else if title == "종료된" {
+                FilterView(viewModel: viewModel, count: Int(viewModel.state.getFestivalMainResponse.totalElements), yearMonthDay: $yearMonthDay, title: title)
+            }
+            else {
                 SeasonFilterView(viewModel: viewModel, selectedSeason: $selectedSeason, count: Int(viewModel.state.getFestivalMainResponse.totalElements))
-			}
-			
-			
-			ScrollView {
-				if isAPICalled {
-					// 보여줄 데이터가 없을 때
-					if viewModel.state.getFestivalMainResponse.data.count == 0 {
-						NoResultView()
-							.frame(height: 70)
-							.padding(.top, (Constants.screenHeight - 208) * (179 / 636))
-						
-						
-					}
-					else {
-						LazyVGrid(columns: columns, spacing: 16) {
-							
-							// 보여줄 데이터가 있을 때
+            }
+            
+            
+            ScrollView {
+                if isAPICalled {
+                    // 보여줄 데이터가 없을 때
+                    if viewModel.state.getFestivalMainResponse.data.count == 0 {
+                        NoResultFilterView(keyword: .constant(""), location: $viewModel.state.location, yearMonthDay: $yearMonthDay, season: $selectedSeason)
+                            .frame(height: 70)
+                            .padding(.top, (Constants.screenHeight - 208) * (179 / 636))
+                        
+                        
+                    }
+                    else {
+                        LazyVGrid(columns: columns, spacing: 16) {
                             
-							ForEach((0...viewModel.state.getFestivalMainResponse.data.count - 1), id: \.self) { index in
-								Button(action: {
-									AppState.shared.navigationPath.append(ArticleViewType.detail(id: viewModel.state.getFestivalMainResponse.data[index].id))
-								}, label: {
-									VStack(alignment: .leading, spacing: 0) {
-										ZStack {
+                            // 보여줄 데이터가 있을 때
+                            
+                            ForEach((0...viewModel.state.getFestivalMainResponse.data.count - 1), id: \.self) { index in
+                                Button(action: {
+                                    AppState.shared.navigationPath.append(ArticleViewType.detail(id: viewModel.state.getFestivalMainResponse.data[index].id))
+                                }, label: {
+                                    VStack(alignment: .leading, spacing: 0) {
+                                        ZStack {
                                             KFImage(URL(string: viewModel.state.getFestivalMainResponse.data[index].firstImage.thumbnailUrl))
-											
-												.resizable()
-												.frame(width: (Constants.screenWidth - 40) / 2, height: ((UIScreen.main.bounds.width - 40) / 2) * (12 / 16))
-												.clipShape(RoundedRectangle(cornerRadius: 12))
-												.padding(.bottom, 8)
+                                            
+                                                .resizable()
+                                                .frame(width: (Constants.screenWidth - 40) / 2, height: ((UIScreen.main.bounds.width - 40) / 2) * (12 / 16))
+                                                .clipShape(RoundedRectangle(cornerRadius: 12))
+                                                .padding(.bottom, 8)
                                             
                                             VStack(spacing: 0) {
                                                 Spacer()
@@ -437,16 +438,10 @@ struct FestivalMainGridView: View {
 											}
 											.padding(.trailing, 8)
 										}
-										
                                         
-										Text(viewModel.state.getFestivalMainResponse.data[index].title)
-											.font(.body02_bold)
-											.padding(.bottom, 4)
-											.lineLimit(1)
-										
-										Text(viewModel.state.getFestivalMainResponse.data[index].period)
-											.font(.caption)
-											.padding(.bottom, 8)
+                                        Text(viewModel.state.getFestivalMainResponse.data[index].period)
+                                            .font(.caption)
+                                            .padding(.bottom, 8)
                                             .foregroundStyle(Color.gray1)
 										
 										Text(viewModel.state.getFestivalMainResponse.data[index].addressTag)
@@ -648,6 +643,32 @@ struct FestivalMainGridView: View {
             }
             
         }
+        .onChange(of: yearMonthDay) { newValue in
+            if newValue == nil {
+                viewModel.state.selectedStartDate = .current
+                viewModel.state.selectedEndDate = .current
+                Task {
+                    await getThisMonthFestivalMainItem(page: 0, size: 12, filterName: "", startDate: "", endDate: "")
+                }
+                isAPICalled = true
+            }
+        }
+        .onChange(of: viewModel.state.location) { newValue in
+            if newValue == LocalizedKey.allLocation.localized(for: localizationManager.language) {
+                viewModel.state.selectedLocation = []
+                if title == "이번달"{
+                    Task {
+                        await getThisMonthFestivalMainItem(page: 0, size: 12, filterName: "", startDate: "", endDate: "")
+                    }
+                    isAPICalled = true
+                } else{
+                    Task{
+                        await getPastFestivalMainITem(page: 0, size: 12, filterName: "")
+                        isAPICalled = true
+                    }
+                }
+            }
+        }
     }
     
     func getThisMonthFestivalMainItem(page: Int32, size: Int32, filterName: String, startDate: String, endDate: String) async {
@@ -665,10 +686,10 @@ struct FestivalMainGridView: View {
         buttonsToggled[index].toggle()
     }
     func toggleFavorite(body: FavoriteToggleRequest, index: Int) async {
-		if UserDefaults.standard.string(forKey: "provider") == "GUEST" {
-			AppState.shared.showRegisterInduction = true
-			return
-		}
+        if UserDefaults.standard.string(forKey: "provider") == "GUEST" {
+            AppState.shared.showRegisterInduction = true
+            return
+        }
         await viewModel.action(.toggleFavorite(body: body, index: index))
     }
 }
@@ -676,3 +697,4 @@ struct FestivalMainGridView: View {
 #Preview {
     FestivalMainView()
 }
+

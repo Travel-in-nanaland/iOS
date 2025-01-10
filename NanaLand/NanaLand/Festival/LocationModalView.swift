@@ -36,7 +36,7 @@ struct LocationModalView: View {
         LocalizedKey.aviationLeisure.localized(for: LocalizationManager().language): "AIR_LEISURE",
         LocalizedKey.marineExperience.localized(for: LocalizationManager().language): "MARINE_EXPERIENCE",
         LocalizedKey.ruralExperience.localized(for: LocalizationManager().language): "RURAL_EXPERIENCE",
-        LocalizedKey.healingTherapy.localized(for: LocalizationManager().language): "HEALING_THERAPHY",
+        LocalizedKey.healingTherapy.localized(for: LocalizationManager().language): "HEALING_THERAPY",
         LocalizedKey.history.localized(for: LocalizationManager().language): "HISTORY",
         LocalizedKey.exhibition.localized(for: LocalizationManager().language): "EXHIBITION",
         LocalizedKey.experienceWorkshop.localized(for: LocalizationManager().language): "WORKSHOP",
@@ -392,3 +392,4 @@ struct LocationModalView: View {
     )
     .environmentObject(LocalizationManager()) // Providing an environment object if required
 }
+
