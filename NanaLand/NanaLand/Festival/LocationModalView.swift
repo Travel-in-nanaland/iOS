@@ -245,7 +245,7 @@ struct LocationModalView: View {
                             viewModel.state.location = LocalizedKey.allLocation.localized(for: localizationManager.language)
                         }
                         
-                    } else if title == "7대자연" {
+                    } else if title == LocalizedKey.nature.localized(for: localizationManager.language) {
                         natureViewModel.state.getNatureMainResponse = NatureMainModel(totalElements: 0, data: [])
                         await getLocationNatureMainItem(filterName: selectedLocationStrings.joined(separator: ","), page: 0, size: 12)
                         natureViewModel.state.apiLocation = selectedLocationStrings.joined(separator: ",")
@@ -258,7 +258,7 @@ struct LocationModalView: View {
                             natureViewModel.state.location = LocalizedKey.allLocation.localized(for: localizationManager.language)
                         }
                         
-                    } else if title == "전통시장"{ // 전통시장
+                    } else if title == LocalizedKey.market.localized(for: localizationManager.language){ // 전통시장
                         shopViewModel.state.getShopMainResponse = ShopMainModel(totalElements: 0, data: [])
                         await getLocationShopMainItem(filterName: selectedLocationStrings.joined(separator: ","), page: 0, size: 18)
                         shopViewModel.state.page = 0
@@ -278,7 +278,7 @@ struct LocationModalView: View {
                         for (key, value) in translations {
                             APIKeyword = APIKeyword.replacingOccurrences(of: key, with: value)
                         }
-                        await getLocationExperienceMainItem(filterName: selectedLocationStrings.joined(separator: ","), page: 0, size: 12, type: type, keyword: keyword == "키워드" ? "" : APIKeyword)
+                        await getLocationExperienceMainItem(filterName: selectedLocationStrings.joined(separator: ","), page: 0, size: 12, type: type, keyword: keyword == LocalizedKey.type.localized(for: localizationManager.language) ? "" : APIKeyword)
                         experienceViewModel.state.page = 0
                         experienceViewModel.state.selectedLocation = selectedLocation
                         
@@ -292,6 +292,7 @@ struct LocationModalView: View {
                     } else if title == LocalizedKey.restaurant.localized(for: localizationManager.language) {
                         restaurantModel.state.getRestaurantMainResponse = RestaurantMainModel(totalElements: 0, data: []) // 초기화
                         APIKeyword = keyword
+                        print("apikeyword!~~!!!!!!!!:\(APIKeyword)")
                         for (key, value) in restaurantTranslations {
                             APIKeyword = APIKeyword.replacingOccurrences(of: key, with: value)
                         }
@@ -350,7 +351,7 @@ struct LocationModalView: View {
     
     // 이색 체험에서 지역 선택 시
     func getLocationExperienceMainItem(filterName: String, page: Int, size: Int, type: String, keyword: String) async {
-        await experienceViewModel.action(.getExperienceMainItem(experienceType: type, keyword: keyword, address: filterName, page: page, size: size))
+        await experienceViewModel.action(.getExperienceMainItem(experienceType: type, keyword: keyword == LocalizedKey.keyword.localized(for: LocalizationManager().language) ? "" : keyword, address: filterName, page: page, size: size))
     }
     
     // 제주 맛집에서 지역 선택 시

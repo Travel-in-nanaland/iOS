@@ -70,7 +70,7 @@ struct NatureMainGridView: View {
             )
             .padding(.trailing, 16)
             .sheet(isPresented: $locationModal) {
-                LocationModalView(viewModel: FestivalMainViewModel(), natureViewModel: viewModel, shopViewModel: ShopMainViewModel(), restaurantModel: RestaurantMainViewModel(), experienceViewModel: ExperienceMainViewModel(), isModalShown: $locationModal, selectedLocation: viewModel.state.selectedLocation, startDate: "", endDate: "", title: "7대자연")
+                LocationModalView(viewModel: FestivalMainViewModel(), natureViewModel: viewModel, shopViewModel: ShopMainViewModel(), restaurantModel: RestaurantMainViewModel(), experienceViewModel: ExperienceMainViewModel(), isModalShown: $locationModal, selectedLocation: viewModel.state.selectedLocation, startDate: "", endDate: "", title: LocalizedKey.nature.localized(for: LocalizationManager().language))
                     .presentationDetents([.height(Constants.screenWidth * (63 / 36))])
             }
         }
@@ -97,7 +97,7 @@ struct NatureMainGridView: View {
                                                 .clipShape(RoundedRectangle(cornerRadius: 12))
                                             
                                             VStack(spacing: 0) {
-                                                
+                                                Spacer()
                                                 HStack(spacing: 0) {
                                                     Spacer()
                                                     
@@ -110,8 +110,7 @@ struct NatureMainGridView: View {
                                                         viewModel.state.getNatureMainResponse.data[index].favorite ? Image("icHeart_Fill") : Image("icHeart_Blank")
                                                     }
                                                 }
-                                                .padding(.top, 12)
-                                                Spacer()
+                                                .padding(.bottom, 8)
                                             }
                                             .padding(.trailing, 8)
                                         }
@@ -134,7 +133,7 @@ struct NatureMainGridView: View {
                                             .foregroundStyle(Color.main)
                                     }
                                 })
-                                .frame(width: (UIScreen.main.bounds.width - 40) / 2, height: 196)
+                                .frame(width: (UIScreen.main.bounds.width - 40) / 2, height: ((Constants.screenWidth - 40) / 2) * (164 / 160))
                                 .padding(.leading, 0)
                             }
                         if viewModel.state.page < viewModel.state.getNatureMainResponse.totalElements / 12 {
@@ -153,6 +152,7 @@ struct NatureMainGridView: View {
                         }
                     }
                     .padding(.horizontal, 16)
+                    .padding(.top, 8)
                     .padding(.bottom, UIApplication.shared.windows.first?.safeAreaInsets.bottom ?? 0)
                 }
             }

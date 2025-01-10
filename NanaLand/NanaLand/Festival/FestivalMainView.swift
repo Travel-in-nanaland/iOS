@@ -417,52 +417,45 @@ struct FestivalMainGridView: View {
                                                 .padding(.bottom, 8)
                                             
                                             VStack(spacing: 0) {
-                                                
-                                                HStack(spacing: 0) {
-                                                    Spacer()
-                                                    
-                                                    Button {
-                                                        
-                                                        Task {
-                                                            await toggleFavorite(body: FavoriteToggleRequest(id: Int(viewModel.state.getFestivalMainResponse.data[index].id), category: .festival), index: index)
-                                                            
-                                                        }
-                                                        
-                                                    } label: {
-                                                        
-                                                        viewModel.state.getFestivalMainResponse.data[index].favorite ? Image("icHeart_Fill").animation(nil) : Image("icHeart_Blank").animation(nil)
-                                                        
-                                                    }
-                                                }
-                                                .padding(.top, 8)
                                                 Spacer()
-                                            }
-                                            .padding(.trailing, 8)
-                                        }
-                                        
-                                        
-                                        Text(viewModel.state.getFestivalMainResponse.data[index].title)
-                                            .font(.body02_bold)
-                                            .padding(.bottom, 4)
-                                            .lineLimit(1)
+												HStack(spacing: 0) {
+													Spacer()
+													
+													Button {
+														
+														Task {
+															await toggleFavorite(body: FavoriteToggleRequest(id: Int(viewModel.state.getFestivalMainResponse.data[index].id), category: .festival), index: index)
+															
+														}
+														
+													} label: {
+                                                        
+														viewModel.state.getFestivalMainResponse.data[index].favorite ? Image("icHeart_Fill").animation(nil) : Image("icHeart_Blank").animation(nil)
+														
+													}
+												}
+												.padding(.bottom, 16)
+											}
+											.padding(.trailing, 8)
+										}
                                         
                                         Text(viewModel.state.getFestivalMainResponse.data[index].period)
                                             .font(.caption)
                                             .padding(.bottom, 8)
                                             .foregroundStyle(Color.gray1)
-                                        
-                                        Text(viewModel.state.getFestivalMainResponse.data[index].addressTag)
-                                            .frame(width: 64, height: 20)
-                                            .font(.caption)
-                                            .background(
-                                                RoundedRectangle(cornerRadius: 30)
-                                                    .foregroundStyle(Color.main10P)
-                                            )
-                                            .foregroundStyle(Color.main)
-                                    }
-                                    .frame(width: (Constants.screenWidth - 40) / 2, height: 216)
-                                })
-                            }
+										
+										Text(viewModel.state.getFestivalMainResponse.data[index].addressTag)
+											.frame(width: 64, height: 20)
+											.font(.caption)
+											.background(
+												RoundedRectangle(cornerRadius: 30)
+													.foregroundStyle(Color.main10P)
+											)
+											.foregroundStyle(Color.main)
+									}
+                                    .frame(width: (Constants.screenWidth - 40) / 2, height: ((Constants.screenWidth - 40) / 2) * (164 / 160))
+								})
+							}
                             if title == "종료된" {
                                 if viewModel.state.page < viewModel.state.getFestivalMainResponse.totalElements / 12 {
                                     ProgressView()
@@ -565,18 +558,19 @@ struct FestivalMainGridView: View {
                                 
                             }
                             
-                        }
-                        .padding(.horizontal, 16)
-                    }
-                }
-            }
-        }
-        .navigationDestination(for: ArticleViewType.self) { viewType in
-            switch viewType {
-            case let .detail(id):
-                FestivalDetailView(id: id)
-            }
-        }
+						}
+						.padding(.horizontal, 16)
+                        .padding(.top, 12)
+					}
+				}
+			}
+		}
+		.navigationDestination(for: ArticleViewType.self) { viewType in
+			switch viewType {
+			case let .detail(id):
+				FestivalDetailView(id: id)
+			}
+		}
         .onAppear {
             
             page = 0

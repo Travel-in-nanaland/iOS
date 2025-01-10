@@ -65,9 +65,9 @@ struct ShopMainGridView: View {
                         LocationModalView(viewModel: FestivalMainViewModel(), natureViewModel: NatureMainViewModel(), shopViewModel: viewModel, restaurantModel: RestaurantMainViewModel(), experienceViewModel: ExperienceMainViewModel(), isModalShown: $locationModal, selectedLocation: viewModel.state.selectedLocation, startDate: "", endDate: "", title: LocalizedKey.market.localized(for: localizationMangaer.language))
                         .presentationDetents([.height(Constants.screenWidth * (63 / 36))])
                 }
-            }
-            .padding(.bottom, 16)
-            ScrollView {
+			}
+			.padding(.bottom, 8)
+			ScrollView {
                 if isAPICalled {
                     if viewModel.state.getShopMainResponse.data.count == 0 {
                         NoResultFilterView(keyword: .constant(""), location: $viewModel.state.location, yearMonthDay: .constant(nil), season: .constant(""))
@@ -81,14 +81,14 @@ struct ShopMainGridView: View {
                                 Button(action: {
                                     AppState.shared.navigationPath.append(ArticleViewType.detail(id: viewModel.state.getShopMainResponse.data[index].id))
                                 }, label: {
-                                    VStack(alignment: .leading) {
+                                    VStack(alignment: .leading, spacing: 0) {
                                         ZStack {
                                             KFImage(URL(string: viewModel.state.getShopMainResponse.data[index].firstImage.thumbnailUrl))
                                                 .resizable()
                                                 .frame(width: (UIScreen.main.bounds.width - 40) / 2, height: ((UIScreen.main.bounds.width - 40) / 2) * (12 / 16))
                                                 .clipShape(RoundedRectangle(cornerRadius: 12))
                                             VStack(spacing: 0) {
-                    
+                                                Spacer()
                                                 HStack(spacing: 0) {
                                                     Spacer()
                                                     
@@ -101,8 +101,7 @@ struct ShopMainGridView: View {
                                                         viewModel.state.getShopMainResponse.data[index].favorite ? Image("icHeart_Fill") : Image("icHeart_Blank")
                                                     }
                                                 }
-                                                .padding(.top, 8)
-                                                Spacer()
+                                                .padding(.bottom, 8)
                                             }
                                             .padding(.trailing, 8)
                                         }
@@ -125,9 +124,8 @@ struct ShopMainGridView: View {
                                             .font(.gothicNeo(.regular, size: 12))
                                             .foregroundStyle(Color.main)
                                     }
-                                    
-                                    .frame(width: (UIScreen.main.bounds.width - 40) / 2, height: 196)
                                 })
+                                .frame(width: (UIScreen.main.bounds.width - 40) / 2, height: ((Constants.screenWidth - 40) / 2) * (164 / 160))
                             }
                             if viewModel.state.page < viewModel.state.getShopMainResponse.totalElements / 12 {
                                 ProgressView()
@@ -146,6 +144,7 @@ struct ShopMainGridView: View {
                             
                         }
                         .padding(.horizontal, 16)
+                        .padding(.top, 8)
                     }
                 }
             

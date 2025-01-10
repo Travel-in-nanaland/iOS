@@ -14,10 +14,10 @@ struct ExperienceMainView: View {
         VStack {
             NanaNavigationBar(title: .experience, showBackButton: true)
                 .frame(height: 56)
-                .padding(.bottom, 5)
+                .padding(.bottom, 10)
             
-            ExperienceTabBarView(currentTab: $tabIndex)
-                .padding(.bottom, 12)
+//            ExperienceTabBarView(currentTab: $tabIndex)
+//                .padding(.bottom, 12)
             
             switch tabIndex {
             case 0: // 액티비티 일 경우
