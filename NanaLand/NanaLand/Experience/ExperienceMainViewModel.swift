@@ -36,17 +36,20 @@ class ExperienceMainViewModel: ObservableObject {
             // TODO: - 이색체험 API 호출
             
             let response = await ExperienceService.getExperienceMainItem(experienceType: experienceType, keyword: keyword, address: address, page: page, size: size)
-            if let responseData = response!.data {
-                await MainActor.run {
-                    print(response)
-                    state.getExperienceMainResponse.totalElements = responseData.totalElements
-                    state.getExperienceMainResponse.data.append(contentsOf: response!.data?.data ?? [])
-                    print(state.getExperienceMainResponse.totalElements)
+            if response != nil {
+                if let responseData = response!.data {
+                    await MainActor.run {
+                        print(response)
+                        state.getExperienceMainResponse.totalElements = responseData.totalElements
+                        state.getExperienceMainResponse.data.append(contentsOf: response!.data?.data ?? [])
+                        print(state.getExperienceMainResponse.totalElements)
+                    }
+                } else {
+                    print("Error")
                 }
-            } else {
-                print("Error")
+                
             }
-            
+        
         case .toggleFavorite(body: let body, index: let index):
             let response = await FavoriteService.toggleFavorite(id: body.id, category: .experience)
             if response != nil {

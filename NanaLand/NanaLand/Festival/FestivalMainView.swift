@@ -416,7 +416,7 @@ struct FestivalMainGridView: View {
 												.padding(.bottom, 8)
                                             
                                             VStack(spacing: 0) {
-                                                
+                                                Spacer()
 												HStack(spacing: 0) {
 													Spacer()
 													
@@ -433,8 +433,7 @@ struct FestivalMainGridView: View {
 														
 													}
 												}
-												.padding(.top, 8)
-                                                Spacer()
+												.padding(.bottom, 16)
 											}
 											.padding(.trailing, 8)
 										}
@@ -459,7 +458,7 @@ struct FestivalMainGridView: View {
 											)
 											.foregroundStyle(Color.main)
 									}
-                                    .frame(width: (Constants.screenWidth - 40) / 2, height: 216)
+                                    .frame(width: (Constants.screenWidth - 40) / 2, height: ((Constants.screenWidth - 40) / 2) * (164 / 160))
 								})
 							}
                             if title == "종료된" {
@@ -566,6 +565,7 @@ struct FestivalMainGridView: View {
                             
 						}
 						.padding(.horizontal, 16)
+                        .padding(.top, 12)
 					}
 				}
 			}
