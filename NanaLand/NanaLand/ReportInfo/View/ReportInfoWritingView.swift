@@ -222,28 +222,27 @@ struct ReportInfoWritingView: View {
                         Spacer()
                             .frame(height: 100)
                     }
-                }
-                
-                Button(action: {
-                    Task {
-                        isLoading = true
-                        await reportInfoVM.action(.onTapSendButton(image: selectedImageData, content: content, email: email))
-                        isLoading = false
-                        AppState.shared.navigationPath.append(ReportViewType.finish)
-                    }
-                }, label: {
-                    RoundedRectangle(cornerRadius: 12)
-                        .fill(Color.main)
-                        .opacity((!content.isEmpty && !email.isEmpty) ? 1 : 0.1)
-                        .frame(height: 48)
-                        .overlay {
-                            Text(.send)
-                                .font(.body_bold)
-                                .foregroundStyle(Color.baseWhite)
+                    Button(action: {
+                        Task {
+                            isLoading = true
+                            await reportInfoVM.action(.onTapSendButton(image: selectedImageData, content: content, email: email))
+                            isLoading = false
+                            AppState.shared.navigationPath.append(ReportViewType.finish)
                         }
-                })
-                .padding(.horizontal, 16)
-                .padding(.bottom, 24)
+                    }, label: {
+                        RoundedRectangle(cornerRadius: 12)
+                            .fill(Color.main)
+                            .opacity((!content.isEmpty && !email.isEmpty) ? 1 : 0.1)
+                            .frame(height: 48)
+                            .overlay {
+                                Text(.send)
+                                    .font(.body_bold)
+                                    .foregroundStyle(Color.baseWhite)
+                            }
+                    })
+                    .padding(.horizontal, 16)
+                    .padding(.bottom, 24)
+                }
                 
             }
             .toolbar(.hidden, for: .navigationBar)
