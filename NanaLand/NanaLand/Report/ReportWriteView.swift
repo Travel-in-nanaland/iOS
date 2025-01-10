@@ -13,7 +13,7 @@ struct ReportWriteView: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var localizationManager: LocalizationManager
     @State var text: String = ""
-    @State var emailText: String = UserDefaults.standard.string(forKey: "UserEmail")!
+    @State var emailText: String = UserDefaults.standard.string(forKey: "UserEmail") ?? ""
     @ObservedObject var viewModel = ReportWriteViewModel()
     @State private var reportContent: String = ""
     @State private var showToast: Bool = false

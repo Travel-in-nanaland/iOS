@@ -676,7 +676,7 @@ struct ExperienceDetailView: View {
                                                         }
                                                     }) {
                                                         ReportModalView(reportReasonViewFlag: $reportReasonViewFlag)
-                                                            .presentationDetents([.height(Constants.screenWidth * (103 / Constants.screenWidth))])
+                                                            .presentationDetents([.height(Constants.screenWidth * (153 / Constants.screenWidth))])
                                                     }
                                                     .clipShape(RoundedRectangle(cornerRadius: 12))
                                                     .overlay(

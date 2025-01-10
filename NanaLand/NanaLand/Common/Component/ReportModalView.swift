@@ -14,36 +14,39 @@ struct ReportModalView: View {
     @StateObject var viewModel = ExperienceDetailViewModel()
     @StateObject var appState = AppState.shared
     var body: some View {
-        
-        VStack(spacing: 0){
-            HStack(spacing: 0) {
-                Spacer()
-                Button {
-                    reportReasonViewFlag = false
-                    self.presentationMode.wrappedValue.dismiss()
-                } label: {
-                    Image("icX")
-                        .resizable()
-                        .frame(width: 28, height: 28)
-                        .padding(.top, 16)
-                        .padding(.trailing, 16)
+  
+        VStack(spacing: 10) {
+            RoundedRectangle(cornerRadius: 12)
+                .frame(width: Constants.screenWidth * (328 / 360), height: Constants.screenWidth * (47 / 360))
+                .shadow(radius: 1)
+                .foregroundStyle(.white)
+                .overlay {
+                    VStack(spacing: 21) {
+                        Button(action: {
+                            reportReasonViewFlag = true
+                            self.presentationMode.wrappedValue.dismiss()
+                        }, label: {
+                            Text(.report)
+                                .font(.body01)
+                                .frame(height: Constants.screenWidth * (26 / 360))
+                                .foregroundColor(.black)
+                        })
+                    }
                 }
-            }
-            Spacer()
-            HStack(spacing: 0) {
-                Button {
-                    reportReasonViewFlag = true
-                    self.presentationMode.wrappedValue.dismiss()
-                } label: {
-                    Text(.report)
-                        .padding(.leading, 16)
-
-                }
-                
-                Spacer()
-            }
-            .frame(height: 48)
-            .padding(.bottom, 11)
+            Button(action: {
+                reportReasonViewFlag = false
+                self.presentationMode.wrappedValue.dismiss()
+            }, label: {
+                RoundedRectangle(cornerRadius: 12)
+                    .frame(width: Constants.screenWidth * (328 / 360), height: Constants.screenWidth * (47 / 360))
+                    .foregroundStyle(.gray3)
+                    .shadow(radius: 1)
+                    .overlay {
+                        Text(.close)
+                            .font(.body01)
+                            .foregroundStyle(.black)
+                    }
+            })
         }
     }
 }
