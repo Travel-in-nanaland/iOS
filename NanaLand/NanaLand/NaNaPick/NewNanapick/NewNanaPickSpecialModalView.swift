@@ -11,41 +11,42 @@ struct NewNanaPickSpecialModalView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @Binding var content: String
     var body: some View {
-        ZStack{
-            
-            RoundedRectangle(cornerRadius: 10)
-                .frame(width: 328, height: 426)
-                .foregroundColor(.white)
-                .overlay(){
-                    VStack(spacing: 0){
-                        HStack(spacing: 0){
-                            Text(.locationPoint)
-                                .font(.title02_bold)
-                                .foregroundColor(.black)
-                            
-                            Spacer()
-                            
-                            Button {
-                                self.presentationMode.wrappedValue.dismiss()
-                            } label: {
-                                Image("icSpecialBack")
-                            }
-                        }
-                        
-                        Text(content)
-                            .font(.body02)
-                            .foregroundColor(.black)
-                            .padding(.top, 32)
-                        
-                        Spacer()
-                    }
-                    .padding()
+        VStack(spacing: 0){
+            HStack(spacing: 0){
+                Text(.locationPoint)
+                    .font(.title02_bold)
+                    .foregroundColor(.black)
+                
+                Spacer()
+                
+                Button {
+                    self.presentationMode.wrappedValue.dismiss()
+                } label: {
+                    Image("icSpecialBack")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: Constants.screenWidth * (32 / 360))
                 }
+            }
+            .frame(width: Constants.screenWidth * (296 / 360))
             
-            
+            Text(content)
+                .font(.body02)
+                .frame(width: Constants.screenWidth * (296 / 360))
+                .lineSpacing(10)
+                .multilineTextAlignment(.leading)
+                .foregroundColor(.black)
+                .padding(.top, Constants.screenWidth * (32 / 360))
         }
-        .frame(width: Constants.screenWidth, height: Constants.screenHeight)
-        .ignoresSafeArea()
+        .padding(.leading, Constants.screenWidth * (32 / 360))
+        .padding(.trailing, Constants.screenWidth * (32 / 360))
+        .padding(.top, Constants.screenWidth * (24 / 360))
+        .padding(.bottom, Constants.screenWidth * (16 / 360))
+        .background(){
+            RoundedRectangle(cornerRadius: 10)
+                .frame(width: Constants.screenWidth * (328 / 360))
+                .foregroundColor(.white)
+        }
     }
 }
 

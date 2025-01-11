@@ -15,92 +15,80 @@ struct SettingView: View {
     
     var body: some View {
         
-        VStack(spacing: 0) {
-			NanaNavigationBar(title: .settings, showBackButton: true)
-                .padding(.bottom, 20)
-            HStack(spacing: 0) {
-                Text(.setUsage)
-                    .font(.body02_bold)
-                    .padding(.leading, 17)
-                
+        ZStack{
+            VStack(spacing: 0) {
+                NanaNavigationBar(title: .settings, showBackButton: true)
+                    .padding(.bottom, 20)
+                HStack(spacing: 0) {
+                    Text(.setUsage)
+                        .font(.body02_bold)
+                        .padding(.leading, 17)
+                    
+                    Spacer()
+                }
+                .padding(.bottom, 6)
+                VStack(spacing: 0) {
+                    SettingItemButtonView(title: LocalizedKey.termsAndPolicies.localized(for: localizationManager.language))
+                    SettingItemButtonView(title: LocalizedKey.accessPolicyGuide.localized(for: localizationManager.language))
+                    SettingItemButtonView(title: LocalizedKey.languageSetting.localized(for: localizationManager.language))
+                    SettingItemButtonView(title: LocalizedKey.versionInfomation.localized(for: localizationManager.language))
+
+                    Divider()
+                    
+                    if provider == "GUEST" {
+                        
+                        Button {
+                            AppState.shared.navigationPath.removeLast()
+                            UserDefaults.standard.setValue(false, forKey: "isLogin")
+                        } label: {
+                            HStack(spacing: 0) {
+                                Text(.join)
+                                    .font(.body02)
+                                    .padding(.leading, 16)
+                                    .padding(.top, 20)
+                                Spacer()
+                            }
+                        }
+                        
+                    } else {
+                        // 로그아웃 alert창 띄울 버튼
+                        Button {
+                            showAlert = true
+                        } label: {
+                            HStack(spacing: 0) {
+                                Text(.logout)
+                                    .font(.body02)
+                                    .padding(.leading, 16)
+                                Spacer()
+                            }
+                        }
+                        .frame(width: Constants.screenWidth, height: 48)
+                        .fullScreenCover(isPresented: $showAlert) {
+                            AlertView(
+                                title: .logoutAlertTitle,
+                                leftButtonTitle: .yes,
+                                rightButtonTitle: .no,
+                                leftButtonAction: {
+                                    // 로그아웃
+                                    AuthManager(registerVM: RegisterViewModel()).logout()
+                                    UserDefaults.standard.removeObject(forKey: "UserEmail")
+                                },
+                                rightButtonAction: {
+                                    showAlert = false
+                                }
+                            )
+                        }
+                        .transaction { transaction in
+                            transaction.disablesAnimations = true
+                        }
+                        
+                        SettingItemButtonView(title: LocalizedKey.memberWithdraw.localized(for: localizationManager.language))
+                    }
+                }
                 Spacer()
             }
-            .padding(.bottom, 6)
-            VStack(spacing: 0) {
-                SettingItemButtonView(title: LocalizedKey.termsAndPolicies.localized(for: localizationManager.language))
-                SettingItemButtonView(title: LocalizedKey.accessPolicyGuide.localized(for: localizationManager.language))
-                SettingItemButtonView(title: LocalizedKey.languageSetting.localized(for: localizationManager.language))
-                SettingItemButtonView(title: LocalizedKey.versionInfomation.localized(for: localizationManager.language))
-                Divider()
-                
-                if provider == "GUEST" {
-                    
-                    Button {
-                        AppState.shared.navigationPath.removeLast()
-                        UserDefaults.standard.setValue(false, forKey: "isLogin")
-                    } label: {
-                        HStack(spacing: 0) {
-                            Text(.join)
-                                .font(.body02)
-                                .padding(.leading, 16)
-                                .padding(.top, 20)
-                            Spacer()
-                        }
-                    }
-                    
-                } else {
-                    // 로그아웃 alert창 띄울 버튼
-                    Button {
-                        showAlert = true
-                    } label: {
-                        HStack(spacing: 0) {
-                            Text(.logout)
-                                .font(.body02)
-                                .padding(.leading, 16)
-                            Spacer()
-                        }
-                    }
-                    .frame(width: Constants.screenWidth, height: 48)
-                    .fullScreenCover(isPresented: $showAlert) {
-                        AlertView(
-                            title: .logoutAlertTitle,
-                            leftButtonTitle: .yes,
-                            rightButtonTitle: .no,
-                            leftButtonAction: {
-                                // 로그아웃
-                                AuthManager(registerVM: RegisterViewModel()).logout()
-                                UserDefaults.standard.removeObject(forKey: "UserEmail")
-                            },
-                            rightButtonAction: {
-                                showAlert = false
-                            }
-                        )
-                    }
-                    .transaction { transaction in
-                        transaction.disablesAnimations = true
-                    }
-
-                    SettingItemButtonView(title: LocalizedKey.memberWithdraw.localized(for: localizationManager.language))
-                }
-            }
-            Spacer()
         }
         .toolbar(.hidden)
-        .navigationDestination(for: SettingViewType.self) { viewType in
-            switch viewType {
-            case .policy:
-                PolicyView()
-            case .authorize:
-                // 각 viewType에 맞는 뷰로 추후 수정 예정
-                AuthorizeView()
-            case .language:
-                LanguageView()
-            case .withdraw:
-                WithdrawView()
-            }
-            
-        }
-        
     }
 }
 // 설정창에 있는 버튼들
@@ -108,23 +96,23 @@ struct SettingItemButtonView: View {
     var title = ""
     var path: SettingViewType? = nil
     @EnvironmentObject var localizationManager: LocalizationManager
-	@AppStorage("provider") var provider: String = ""
+    @AppStorage("provider") var provider: String = ""
     var body: some View {
         Button {
-
+            
             switch title {
             case LocalizedKey.termsAndPolicies.localized(for: localizationManager.language):
-				if provider == "GUEST" {
-					AppState.shared.showRegisterInduction = true
-				} else {
-					AppState.shared.navigationPath.append(SettingViewType.policy)
-				}
+                if provider == "GUEST" {
+                    AppState.shared.showRegisterInduction = true
+                } else {
+                    AppState.shared.navigationPath.append(SettingViewType.policy)
+                }
             case LocalizedKey.accessPolicyGuide.localized(for: localizationManager.language):
-				if provider == "GUEST" {
-					AppState.shared.showRegisterInduction = true
-				} else {
-					AppState.shared.navigationPath.append(SettingViewType.authorize)
-				}
+                if provider == "GUEST" {
+                    AppState.shared.showRegisterInduction = true
+                } else {
+                    AppState.shared.navigationPath.append(SettingViewType.authorize)
+                }
             case LocalizedKey.languageSetting.localized(for: localizationManager.language):
                 AppState.shared.navigationPath.append(SettingViewType.language)
             case LocalizedKey.versionInfomation.localized(for: localizationManager.language):
@@ -156,10 +144,24 @@ struct SettingItemButtonView: View {
                 }
                 
             }
-           
+            
         }
         .frame(width: Constants.screenWidth, height: 48)
-
+        .navigationDestination(for: SettingViewType.self) { viewType in
+            switch viewType {
+            case .policy:
+                PolicyView()
+            case .authorize:
+                // 각 viewType에 맞는 뷰로 추후 수정 예정
+                AuthorizeView()
+            case .language:
+                LanguageView()
+            case .withdraw:
+                WithdrawView()
+            default:
+                Text("Unhandled view type")
+            }
+        }
     }
 }
 

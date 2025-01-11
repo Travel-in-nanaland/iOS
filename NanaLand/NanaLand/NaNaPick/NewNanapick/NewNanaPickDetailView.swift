@@ -182,6 +182,7 @@ struct NanaPickHeader: View {
 struct NewNaNaPickDetailMainView: View {
     @StateObject var viewModel: NewNanaPickDetailViewModel
     private let timer = Timer.publish(every: 2, on: .main, in: .common).autoconnect()
+    @EnvironmentObject var localizationManager: LocalizationManager
     @State private var currentPage = 0
     @State private var special: String = ""
     @State private var specialModal = false
@@ -327,33 +328,42 @@ struct NewNaNaPickDetailMainView: View {
                                             .frame(width: (Constants.screenWidth - 32), alignment: .leading)
                                             .font(.body02)
                                             .lineSpacing(10)
-                                            .padding(.bottom, 24)
+                                            .padding(.bottom, Constants.screenWidth * (24 / 360))
                                         
                                         ForEach(detail.additionalInfoList, id: \.infoKey) { data in
                                             HStack(alignment: .top, spacing: 0) {
                                                 
-                                                if data.infoKey != "이 장소만의 매력포인트" {
+                                                if data.infoKey != LocalizedKey.locationPoint.localized(for: localizationManager.language) {
                                                     Image(iconName(for: data.infoEmoji))
                                                         .resizable()
-                                                        .frame(width: 20, height: 20)
-                                                        .padding(.trailing, 4)
+                                                        .scaledToFit()
+                                                        .frame(width: Constants.screenWidth * (24 / 360))
+                                                        .padding(.bottom, Constants.screenWidth * (10 / 360))
+                                                        .padding(.trailing, Constants.screenWidth * (8 / 360))
                                                     
-                                                    Text("\(data.infoKey): ")
-                                                        .font(.body02)
-                                                        .foregroundStyle(.gray1)
-                                                    
-                                                    if data.infoKey == "홈페이지" || data.infoKey == "예약링크" {
-                                                        Link(destination: URL(string: "\(data.infoValue)")!, label: {
+                                                    VStack(alignment: .leading, spacing: 4){
+                                                        Text("\(data.infoKey) ")
+                                                            .font(.body02_bold)
+                                                            .frame(height: Constants.screenWidth * (22 / 360))
+                                                            .foregroundStyle(.black)
+                                                        
+                                                        if data.infoKey == LocalizedKey.website.localized(for: localizationManager.language) || data.infoKey == LocalizedKey.reservation.localized(for: localizationManager.language) || data.infoKey == LocalizedKey.sns.localized(for: localizationManager.language){
+                                                            Link(destination: URL(string: "\(data.infoValue)")!, label: {
+                                                                Text("\(data.infoValue)")
+                                                                    .underline()
+                                                                    .font(.body02)
+                                                                    .foregroundStyle(.black)
+                                                                    .multilineTextAlignment(.leading)
+                                                            })
+                                                        } else {
                                                             Text("\(data.infoValue)")
-                                                                .underline()
                                                                 .font(.body02)
-                                                                .foregroundStyle(.gray1)
-                                                        })
-                                                    } else {
-                                                        Text("\(data.infoValue)")
-                                                            .font(.body02)
-                                                            .foregroundStyle(.gray1)
+                                                                .foregroundStyle(.black)
+                                                                .multilineTextAlignment(.leading)
+                                                        }
+                                                        Spacer()
                                                     }
+                                                    
                                                     Spacer()
                                                 }
                                             }
@@ -364,10 +374,10 @@ struct NewNaNaPickDetailMainView: View {
                                             ForEach(detail.hashtags, id: \.self) { hashtag in
                                                 HStack(spacing: 0) {
                                                     Text("\(hashtag)")
-                                                        .padding(.leading, 16)
-                                                        .padding(.trailing, 16)
-                                                        .font(.caption02)
-                                                        .frame(minWidth: 49, minHeight: 32)
+                                                        .padding(.leading, Constants.screenWidth * (16 / 360))
+                                                        .padding(.trailing, Constants.screenWidth * (16 / 360))
+                                                        .font(.caption01)
+                                                        .frame(height: Constants.screenWidth * (28 / 360))
                                                         .background(
                                                             RoundedRectangle(cornerRadius: 30)
                                                                 .foregroundStyle(Color.main10P)
@@ -383,24 +393,27 @@ struct NewNaNaPickDetailMainView: View {
                                         
                                         ForEach(detail.additionalInfoList, id: \.infoKey) { data in
                                             HStack(spacing: 0) {
-                                                if data.infoKey == "이 장소만의 매력포인트" {
+                                                if data.infoKey == LocalizedKey.locationPoint.localized(for: localizationManager.language) {
                                                     Button {
                                                         special = data.infoValue
                                                         print("special2: \(special)")
                                                         specialModal = true
                                                     } label: {
                                                         RoundedRectangle(cornerRadius: 30)
-                                                            .frame(width: Constants.screenWidth * 0.95, height: 40)
+                                                            .frame(width: Constants.screenWidth * (328 / 360), height: Constants.screenWidth * (40 / 360))
                                                             .foregroundColor(.white)
                                                             .shadow(radius: 1)
                                                             .overlay(){
                                                                 HStack(spacing: 0){
-                                                                    Text(.locationPoint)
+                                                                    Text("\(LocalizedKey.locationPoint.localized(for: localizationManager.language))✨")
                                                                         .font(.body02)
                                                                     
                                                                     Spacer()
                                                                     
                                                                     Image("icSpecialGo")
+                                                                        .resizable()
+                                                                        .scaledToFit()
+                                                                        .frame(width: Constants.screenWidth * (24 / 360))
                                                                 }
                                                                 .padding()
                                                             }
@@ -515,32 +528,42 @@ struct NewNaNaPickDetailMainView: View {
                                             .frame(width: (Constants.screenWidth - 32), alignment: .leading)
                                             .font(.body02)
                                             .lineSpacing(10)
-                                            .padding(.bottom, 24)
+                                            .padding(.bottom, Constants.screenWidth * (24 / 360))
                                         
                                         ForEach(detail.additionalInfoList, id: \.infoKey) { data in
                                             HStack(alignment: .top, spacing: 0) {
                                                 
-                                                if data.infoKey != "이 장소만의 매력포인트" {
+                                                if data.infoKey != LocalizedKey.locationPoint.localized(for: localizationManager.language) {
                                                     Image(iconName(for: data.infoEmoji))
                                                         .resizable()
-                                                        .frame(width: 20, height: 20)
-                                                        .padding(.trailing, 4)
+                                                        .scaledToFit()
+                                                        .frame(width: Constants.screenWidth * (24 / 360))
+                                                        .padding(.bottom, Constants.screenWidth * (10 / 360))
+                                                        .padding(.trailing, Constants.screenWidth * (8 / 360))
                                                     
-                                                    Text("\(data.infoKey): ")
-                                                        .font(.body02)
-                                                        .foregroundStyle(.gray1)
-                                                    
-                                                    if data.infoKey == "홈페이지" || data.infoKey == "예약링크" {
-                                                        Link(destination: URL(string: "\(data.infoValue)")!, label: {
+                                                    VStack(alignment: .leading, spacing: 4){
+                                                        Text("\(data.infoKey) ")
+                                                            .font(.body02_bold)
+                                                            .frame(height: Constants.screenWidth * (22 / 360))
+                                                            .foregroundStyle(.black)
+                                                        
+                                                        if data.infoKey == LocalizedKey.website.localized(for: localizationManager.language) || data.infoKey == LocalizedKey.reservation.localized(for: localizationManager.language) || data.infoKey == LocalizedKey.sns.localized(for: localizationManager.language){
+                                                            Link(destination: URL(string: "\(data.infoValue)")!, label: {
+                                                                Text("\(data.infoValue)")
+                                                                    .underline()
+                                                                    .font(.body02)
+                                                                    .multilineTextAlignment(.leading)
+                                                                    .foregroundStyle(.black)
+                                                            })
+                                                        } else {
                                                             Text("\(data.infoValue)")
                                                                 .font(.body02)
-                                                                .foregroundStyle(.gray1)
-                                                        })
-                                                    } else {
-                                                        Text("\(data.infoValue)")
-                                                            .font(.body02)
-                                                            .foregroundStyle(.gray1)
+                                                                .foregroundStyle(.black)
+                                                                .multilineTextAlignment(.leading)
+                                                        }
+                                                        Spacer()
                                                     }
+                                                    
                                                     Spacer()
                                                 }
                                             }
@@ -551,10 +574,10 @@ struct NewNaNaPickDetailMainView: View {
                                             ForEach(detail.hashtags, id: \.self) { hashtag in
                                                 HStack(spacing: 0) {
                                                     Text("\(hashtag)")
-                                                        .padding(.leading, 16)
-                                                        .padding(.trailing, 16)
-                                                        .font(.caption02)
-                                                        .frame(minWidth: 49, minHeight: 32)
+                                                        .padding(.leading, Constants.screenWidth * (16 / 360))
+                                                        .padding(.trailing, Constants.screenWidth * (16 / 360))
+                                                        .font(.caption01)
+                                                        .frame(height: Constants.screenWidth * (28 / 360))
                                                         .background(
                                                             RoundedRectangle(cornerRadius: 30)
                                                                 .foregroundStyle(Color.main10P)
@@ -569,27 +592,27 @@ struct NewNaNaPickDetailMainView: View {
                                         .padding(.bottom, 16)
                                         
                                         ForEach(detail.additionalInfoList, id: \.infoKey) { data in
-                                            
                                             HStack(spacing: 0) {
-                                                if data.infoKey == "이 장소만의 매력포인트" {
+                                                if data.infoKey == LocalizedKey.locationPoint.localized(for: localizationManager.language) {
                                                     Button {
                                                         special = data.infoValue
-                                                        print("special: \(special)")
+                                                        print("special2: \(special)")
                                                         specialModal = true
-                                                        
                                                     } label: {
                                                         RoundedRectangle(cornerRadius: 30)
-                                                            .frame(width: Constants.screenWidth * 0.95, height: 40)
+                                                            .frame(width: Constants.screenWidth * (328 / 360), height: Constants.screenWidth * (40 / 360))
                                                             .foregroundColor(.white)
                                                             .shadow(radius: 1)
                                                             .overlay(){
                                                                 HStack(spacing: 0){
-                                                                    Text(.locationPoint)
-                                                                        .font(.body02)
+                                                                    Text("\(LocalizedKey.locationPoint.localized(for: localizationManager.language))✨")
                                                                     
                                                                     Spacer()
                                                                     
                                                                     Image("icSpecialGo")
+                                                                        .resizable()
+                                                                        .scaledToFit()
+                                                                        .frame(width: Constants.screenWidth * (24 / 360))
                                                                 }
                                                                 .padding()
                                                             }
@@ -599,6 +622,7 @@ struct NewNaNaPickDetailMainView: View {
                                                             .background(ClearBackgroundView())
                                                     }
                                                 }
+                                                
                                             }
                                         }
                                         
@@ -627,7 +651,8 @@ struct NewNaNaPickDetailMainView: View {
         case "DESCRIPTION": return "icDescription"
         case "CALL" : return "icNanaInquiry"
         case "ETC" : return "icNanaEtc"
-        default: return "icPhone"
+        case "SNS" : return "icNanaSns"
+        default: return "icNanaEtc"
         }
     }
 }
