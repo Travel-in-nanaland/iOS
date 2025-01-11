@@ -13,7 +13,6 @@ enum testType: Hashable{
 
 struct TypeTestProfileView: View {
     @EnvironmentObject var localizationManager: LocalizationManager
-    @StateObject var appState = AppState.shared
     var type: String
     var nickname: String
     let imageSize = Constants.screenWidth / 9 * 5
@@ -179,7 +178,7 @@ struct TypeTestProfileView: View {
             })
             
             Button(action: {
-                appState.showTypeTest = true
+                AppState.shared.showTypeTest = true
             }, label: {
                 RoundedRectangle(cornerRadius: 30)
                     .fill(Color.main)

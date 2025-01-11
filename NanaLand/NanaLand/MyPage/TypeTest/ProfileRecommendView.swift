@@ -11,60 +11,73 @@ import Kingfisher
 struct ProfileRecommendView: View {
     @StateObject var typeTestVM = TypeTestProfileViewModel()
     let nickname: String
-    @State var isAPICalled = false
     
     var body: some View {
         
         VStack(spacing: 32) {
             NanaNavigationBar(title: .recommendedTravelPlace, showBackButton: true)
             
-            if isAPICalled {
-                ScrollView {
-                    VStack {
-                        Text(.recommenedeTravelTitleFirstLine, arguments: [nickname])
-                            .font(LocalizationManager.shared.language == .malaysia ? .largeTitle01 : .title02)
-                            .foregroundStyle(LocalizationManager.shared.language == .malaysia ? .main : .baseBlack)
-                        
-                        Text(.recommenedeTravelTitleSecondLine, arguments: [nickname])
-                            .font(LocalizationManager.shared.language == .malaysia ? .title02 : .largeTitle01)
-                            .foregroundStyle(LocalizationManager.shared.language == .malaysia ? .baseBlack : .main)
-                    }
-                    .padding(.bottom, 40)
+            ScrollView {
+                VStack {
+                    Text(.recommenedeTravelTitleFirstLine, arguments: [nickname])
+                        .font(.title02)
+                        .foregroundStyle(LocalizationManager.shared.language == .malaysia ? .main : .baseBlack)
                     
-                    ForEach(typeTestVM.state.recommendPlace, id: \.self) { place in
-                        ticketView(place: place)
-                    }
-                    
-                    Spacer()
-                        .frame(height: 50)
+                    Text(.recommenedeTravelTitleSecondLine, arguments: [nickname])
+                        .font(.largeTitle01)
+                        .multilineTextAlignment(.center)
+                        .foregroundStyle(LocalizationManager.shared.language == .malaysia ? .baseBlack : .main)
                 }
-                .scrollIndicators(.hidden)
+                .padding(.bottom, 40)
+                
+                ForEach(typeTestVM.state.recommendPlace, id: \.self) { place in
+                    ticketView(place: place)
+                }
+                
+                Spacer()
+                    .frame(height: 50)
             }
+            .scrollIndicators(.hidden)
         }
         .toolbar(.hidden, for: .navigationBar)
-        .overlay(alignment: .bottom) {
-            Button(action: {
-                AppState.shared.navigationPath.removeLast()
-                AppState.shared.navigationPath.removeLast()
-            }, label: {
-                RoundedRectangle(cornerRadius: 30)
-                    .fill(Color.main)
-                    .frame(height: 48)
-                    .overlay {
-                        Text(.gotoMainScreen)
-                            .foregroundStyle(Color.baseWhite)
-                            .font(.body_bold)
-                    }
-            })
-            .padding(.horizontal, 16)
-
-        }
+//        .overlay(alignment: .bottom) {
+//            Button(action: {
+//                AppState.shared.navigationPath.removeLast()
+//                AppState.shared.navigationPath.removeLast()
+//            }, label: {
+//                RoundedRectangle(cornerRadius: 30)
+//                    .fill(Color.main)
+//                    .frame(height: 48)
+//                    .overlay {
+//                        Text(.gotoMainScreen)
+//                            .foregroundStyle(Color.baseWhite)
+//                            .font(.body_bold)
+//                    }
+//            })
+//            .padding(.horizontal, 16)
+//
+//        }
         .onAppear(){
             Task{
                 await getRecommend()
-                isAPICalled = true
             }
         }
+        .navigationDestination(for: recommendDetailType.self, destination: { page in
+            switch page{
+            case let .recommendNature(id):
+                NatureDetailView(id: id)
+            case let .recommendFestival(id):
+                FestivalDetailView(id: id)
+            case let .recommendShop(id):
+                ShopDetailView(id: id)
+            case let .recommendActivity(id):
+                ExperienceDetailView(id: id, experienceType: "Activity")
+            case let .recommendArts(id):
+                ExperienceDetailView(id: id, experienceType: "CultureArts")
+            case let .recommendResaurant(id):
+                RestaurantDetailView(id: id)
+            }
+        })
     }
     
     private func ticketView(place: RecommendModel) -> some View {
@@ -86,10 +99,6 @@ struct ProfileRecommendView: View {
                 endPoint: .bottom
             )
             .frame(width: 300, height: 500)
-            
-            Image(.logoStamp)
-                .padding(.top, 16)
-                .padding(.leading, 12)
             
             HStack {
                 Spacer()
@@ -114,9 +123,41 @@ struct ProfileRecommendView: View {
                     .padding(.bottom, 16)
                 
                 HStack {
-                    Spacer()
                     
                     Image(.logoWatermark)
+                    
+                    Spacer()
+                    
+                    Button(action: {
+                        switch place.category {
+                        case "NATURE":
+                            AppState.shared.navigationPath.append(recommendDetailType.recommendNature(id: place.id))
+                        case "FESTIVAL":
+                            AppState.shared.navigationPath.append(recommendDetailType.recommendFestival(id: place.id))
+                        case "SHOP":
+                            AppState.shared.navigationPath.append(recommendDetailType.recommendShop(id: place.id))
+                        case "EXPERIENCE":
+                            AppState.shared.navigationPath.append(recommendDetailType.recommendActivity(id: place.id))
+                        case "CULTURE_AND_ARTS":
+                            AppState.shared.navigationPath.append(recommendDetailType.recommendArts(id: place.id))
+                        case "RESTAURANT":
+                            AppState.shared.navigationPath.append(recommendDetailType.recommendResaurant(id: place.id))
+                        default:
+                            print("error")
+                        }
+                    }, label: {
+                        HStack(spacing: 0){
+                            Text(.recommendDetail)
+                                .font(.caption01_semibold)
+                                .foregroundColor(.white)
+                            
+                            Image(.icDetailGo)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: Constants.screenWidth * (24 / 360), height: Constants.screenWidth * (5 / 360))
+                        }
+                        .frame(height: Constants.screenWidth * (18 / 360))
+                    })
                 }
             }
             .foregroundStyle(Color.baseWhite)
@@ -131,6 +172,16 @@ struct ProfileRecommendView: View {
         await typeTestVM.action(.getRecommendPlace)
     }
 }
+
+enum recommendDetailType: Hashable{
+    case recommendNature(id: Int64)
+    case recommendFestival(id: Int64)
+    case recommendShop(id: Int64)
+    case recommendActivity(id: Int64)
+    case recommendArts(id: Int64)
+    case recommendResaurant(id: Int64)
+}
+
 
 #Preview {
     ProfileRecommendView(nickname: "재웅")

@@ -1,8 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "icNanaHomepage.svg",
-      "idiom" : "universal"
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "ic (6).png",
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {

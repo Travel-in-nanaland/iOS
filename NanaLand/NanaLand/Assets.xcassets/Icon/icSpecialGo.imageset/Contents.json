@@ -1,8 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "icSpecialGo.svg",
-      "idiom" : "universal"
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "ic (12).png",
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {

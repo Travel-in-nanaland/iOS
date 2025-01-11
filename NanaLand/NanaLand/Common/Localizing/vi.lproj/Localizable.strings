@@ -141,7 +141,8 @@
 // 결과 값 추천 여행지
 "recommendedTravelPlace" = "Điểm đến du lịch được đề xuất";
 "recommenedeTravelTitleFirstLine" = "Dành cho %@";
-"recommenedeTravelTitleSecondLine" = "Điểm đến du lịch được đề xuất";
+"recommenedeTravelTitleSecondLine" = "Điểm đến du\nlịch được đề xuất";
+"recommendDetail" = "Tìm hiểu thêm";
 
 //MARK: - MyPage
 // main
@@ -478,7 +479,10 @@
 "nanapickRecommend2" = "Lựa chọn ";
 "nanapickRecommend3" = "của Nana";
 "nanapickAll" = "Xem tất cả";
-"locationPoint" = "Điểm Quyến Rũ Độc Đáo của Nơi Này✨";
+"locationPoint" = "Điểm Quyến Rũ Độc Đáo của Nơi Này";
+"website" = "Trang chủ";
+"reservation" = "Liên kết đặt chỗ";
+"sns" = "SNS";
 
 // MARK: - 이색 체험
 "activity" = "Hoạt động";

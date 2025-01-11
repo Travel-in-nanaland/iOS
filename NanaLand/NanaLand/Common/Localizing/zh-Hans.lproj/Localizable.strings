@@ -141,6 +141,7 @@
 "recommendedTravelPlace" = "推荐旅游地";
 "recommenedeTravelTitleFirstLine" = "为了%@";
 "recommenedeTravelTitleSecondLine" = "推荐的旅行目的地";
+"recommendDetail" = "了解更多";
 
 
 //MARK: - MyPage
@@ -466,7 +467,10 @@
 "nanapickRecommend2" = "推荐，";
 "nanapickRecommend3" = "Nana精选";
 "nanapickAll" = "查看全部";
-"locationPoint" = "这个地方独有的魅力点✨";
+"locationPoint" = "这个地方的独特魅力";
+"website" = "主页";
+"reservation" = "预订链接";
+"sns" = "SNS";
 
 // MARK: - 이색 체험
 "activity" = "活动";

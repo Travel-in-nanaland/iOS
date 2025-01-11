@@ -145,6 +145,7 @@ enum LocalizedKey: String {
     case recommendedTravelPlace
     case recommenedeTravelTitleFirstLine
     case recommenedeTravelTitleSecondLine
+    case recommendDetail
     
     //MARK: - MyPage
     // main
@@ -529,6 +530,9 @@ enum LocalizedKey: String {
     case nanapickRecommend3
     case nanapickAll
     case locationPoint
+    case website
+    case reservation
+    case sns
     
     //MARK: - 타유저프로필
     case basicDescription

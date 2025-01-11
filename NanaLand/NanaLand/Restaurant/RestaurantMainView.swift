@@ -29,7 +29,7 @@ struct RestaurantMainView: View {
 
 struct RestaurantMainGridView: View {
     @EnvironmentObject var localizationManager: LocalizationManager
-
+    @EnvironmentObject var appState: AppState
     @StateObject var viewModel = RestaurantMainViewModel()
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
     @State private var isAPICalled = false
@@ -37,8 +37,8 @@ struct RestaurantMainGridView: View {
     @State private var keywordModal = false
     @State private var locationModal = false
     @State private var keyword = LocalizedKey.type.localized(for: LocalizationManager().language)
-//    @State private var location = LocalizedKey.allLocation.localized(for: LocalizationManager().language)
-//    @State private var apiLocation = LocalizedKey.allLocation.localized(for: LocalizationManager().language)
+    //    @State private var location = LocalizedKey.allLocation.localized(for: LocalizationManager().language)
+    //    @State private var apiLocation = LocalizedKey.allLocation.localized(for: LocalizationManager().language)
     
     @State private var APIKeyword = ""
     
@@ -73,9 +73,9 @@ struct RestaurantMainGridView: View {
         
         VStack {
             HStack(spacing: 0) {
-//                Text("\(viewModel.state.getRestaurantMainResponse.totalElements) " + .count)
-//                    .padding(.leading, 16)
-//                    .foregroundStyle(Color.gray1)
+                //                Text("\(viewModel.state.getRestaurantMainResponse.totalElements) " + .count)
+                //                    .padding(.leading, 16)
+                //                    .foregroundStyle(Color.gray1)
                 
                 Spacer()
                 
@@ -135,7 +135,7 @@ struct RestaurantMainGridView: View {
                     }
                 }
             }
-                .padding(.bottom, 16)
+            .padding(.bottom, 16)
             
             ScrollView {
                 if isAPICalled {
@@ -155,7 +155,7 @@ struct RestaurantMainGridView: View {
                                                 .resizable()
                                                 .frame(width: (Constants.screenWidth - 40) / 2, height: ((Constants.screenWidth - 40) / 2) * (12 / 16))
                                                 .clipShape(RoundedRectangle(cornerRadius: 12))
-
+                                            
                                             VStack(spacing: 0) {
                                                 Spacer()
                                                 HStack(spacing: 0) {
@@ -227,6 +227,12 @@ struct RestaurantMainGridView: View {
                     }
                 }
             }
+            .navigationDestination(for: RestaurantViewType.self) { viewType in
+                switch viewType {
+                case let .detail(id):
+                    RestaurantDetailView(id: id)
+                }
+            }
             .onAppear {
                 Task {
                     
@@ -271,12 +277,6 @@ struct RestaurantMainGridView: View {
                             size: 12
                         )
                     }
-                }
-            }
-            .navigationDestination(for: RestaurantViewType.self) { viewType in
-                switch viewType {
-                case let .detail(id):
-                    RestaurantDetailView(id: id)
                 }
             }
         }

@@ -140,8 +140,8 @@
 // 결과 값 추천 여행지
 "recommendedTravelPlace" = "Destinasi\nPelancongan Disyorkan";
 "recommenedeTravelTitleFirstLine" = "Untuk %@";
-"recommenedeTravelTitleSecondLine" = "Destinasi pelancongan yang disyorkan";
-
+"recommenedeTravelTitleSecondLine" = "Destinasi pelancongan\nyang disyorkan";
+"recommendDetail" = "Ketahui lebih lanjut";
 
 //MARK: - MyPage
 // main
@@ -469,7 +469,10 @@ mengembalikan sebarang hasil.";
 "nanapickRecommend2" = "minggu ini, ";
 "nanapickRecommend3" = "Pilihan Nana";
 "nanapickAll" = "Lihat semua";
-"locationPoint" = "Daya Tarikan Unik Lokasi Ini✨";
+"locationPoint" = "Tarikan Istimewa Tempat Ini";
+"website" = "Website";
+"reservation" = "Pautan Tempahan";
+"sns" = "SNS";
 
 // MARK: - 이색체험
 "activity" = "Aktiviti";

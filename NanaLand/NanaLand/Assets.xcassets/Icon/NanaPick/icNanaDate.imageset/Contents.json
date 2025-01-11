@@ -1,8 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "icNanaDate.svg",
-      "idiom" : "universal"
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "ic (9).png",
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {

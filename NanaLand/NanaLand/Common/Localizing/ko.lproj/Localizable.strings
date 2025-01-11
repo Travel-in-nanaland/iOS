@@ -141,7 +141,7 @@
 "recommendedTravelPlace" = "추천 여행지";
 "recommenedeTravelTitleFirstLine" = "%@ 님을 위한";
 "recommenedeTravelTitleSecondLine" = "추천 여행지";
-
+"recommendDetail" = "자세히 보기";
 
 //MARK: - MyPage
 // main
@@ -511,7 +511,10 @@
 "nanapickRecommend2" = "추천 ";
 "nanapickRecommend3" = "나나's Pick";
 "nanapickAll" = "모두보기";
-"locationPoint" = "이 장소만의 매력 포인트✨";
+"locationPoint" = "이 장소만의 매력 포인트";
+"website" = "홈페이지";
+"reservation" = "예약링크";
+"sns" = "SNS";
 
 //MARK: - 타유저프로필
 "basicDescription" = "안녕하세요! 반가워요🖐️\n함께 제주 여행을 즐겨봐요 :D";
