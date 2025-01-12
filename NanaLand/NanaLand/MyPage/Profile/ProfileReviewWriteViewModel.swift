@@ -44,7 +44,7 @@ class ProfileReviewWriteViewModel: ObservableObject {
             let response = await ReviewService.profileReview(keyword: keyword)
             if response != nil {
                 await MainActor.run {
-                    state.getProfileReviewResponse = response!.data ?? [ProfileReviewWriteModel(id: 0, category: "", categoryValue: "", title: "", firstImage: ImageList(originUrl: "", thumbnailUrl: ""), address: "")]
+                    state.getProfileReviewResponse = response!.data ?? [ProfileReviewWriteModel(id: 0, category: "", title: "", firstImage: ImageList(originUrl: "", thumbnailUrl: ""), address: "")]
                     print("\(state.getProfileReviewResponse)")
                 }
             }

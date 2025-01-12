@@ -10,7 +10,6 @@ import Foundation
 struct ProfileReviewWriteModel: Codable {
     let id: Int64?
     let category: String?
-    let categoryValue: String?
     let title: String?
     let firstImage: ImageList?
     let address: String?
