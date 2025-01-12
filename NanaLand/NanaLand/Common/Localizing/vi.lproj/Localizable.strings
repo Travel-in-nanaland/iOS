@@ -66,7 +66,7 @@
 "withdrawAlertTitle" = "Are you sure you don't want to receive Jeju travel information and benefits?😢";
 "withdrawAlertMessage" = "*If you rejoin within 90 days, you can log in with your existing account.";
 "changeLanguageAlertTitle" = "Bạn có muốn thay đổi\nsang ngôn ngữ đó không?";
-"invalidEmail" = "The email format is incorrect. Please re-enter!";
+"invalidEmail" = "Định dạng email không đúng. Vui lòng nhập lại!";
 "updateRequired" = "Update is required";
 "openAppstore" = "Move to App Store";
 
@@ -285,7 +285,7 @@
 "fee" = "Phí vào cửa";
 "detailInfo" = "Details";
 "amenity" = "Facilities";
-"proposeUpdateInfo" = "Information Update Suggestions";
+"proposeUpdateInfo" = "Đề xuất sửa đổi thông tin";
 
 // MARK: - FestivalView
 "thisMonthFestival" = "Monthly Festival";
@@ -342,27 +342,27 @@
 "noResult" = "Không có kết quả tìm kiếm tương ứng.";
 
 // MARK: - 정보 수정 제안
-"reportInfo" = "Information Update Suggestions";
-"reportInfoTitle" = "Suggest an Information Update!";
-"reportInfoDescription" = "You may receive rewards if photos attached with your suggestions help verify location information.";
-"numberAndHomepage" = "Phone Number and Website";
-"oprationTime" = "Name and Location";
-"placeNameAndLocation" = "Operating Hours";
-"priceInfo" = "Price Information";
-"deletePlace" = "Delete Location";
-"etcReportInfoTitle" = "Share Other Information!";
-"provideService" = "Offering service";
+"reportInfo" = "Đề xuất sửa đổi thông tin";
+"reportInfoTitle" = "Vui lòng đề xuất thông tin cần được sửa đổi!";
+"reportInfoDescription" = "Ảnh đính kèm khi đề xuất vị trí sẽ được sử dụng để xác nhận thông tin vị trí./nNếu bạn giúp đỡ, bạn có thể nhận được lợi ích.";
+"numberAndHomepage" = "Số điện thoại và trang web";
+"oprationTime" = "Giờ hoạt động";
+"placeNameAndLocation" = "Tên địa điểm và vị trí";
+"priceInfo" = "Thông tin giá cả";
+"deletePlace" = "Xóa địa điểm";
+"etcReportInfoTitle" = "Vui lòng chia sẻ bất kỳ thông tin nào khác!";
+"provideService" = "Các dịch vụ cung cấp";
 "addPhoto" = "Add Photos";
 "addPhotoDescription" = "Attach photos of verified information for more\n accurate details.";
-"reportInfoContentTitle" = "Suggest an Information Update";
-"reportInfoContentPlaceHolder" = "Leave detailed information on the items you want to update or any other comments.";
+"reportInfoContentTitle" = "Vui lòng đề xuất thông tin cần được sửa đổi!";
+"reportInfoContentPlaceHolder" = "Nếu bạn có chi tiết về mục bạn yêu cầu sửa đổi hoặc bất kỳ thông tin nào khác, vui lòng để lại nhận xét.";
 "email" = "Email";
-"reportInfoEmailDescription" = "Enter your email to receive the results of your suggestion.";
-"send" = "Submit";
-"thxForReportInfoTitle" = "Thank you for your information correction suggestion";
-"thxForReportInfoDescription" = "With the information correction suggestion, the attractiveness of the travel destination has also increased!\n\nIt’s getting more and more exciting🧚‍♀️";
-"showContentAgain" = "View Content Again";
-"reportAgain" = "Add Another Item";
+"reportInfoEmailDescription" = "Vui lòng nhập địa chỉ email của bạn để nhận kết quả đề xuất sửa đổi thông tin.";
+"send" = "Gửi";
+"thxForReportInfoTitle" = "Cảm ơn bạn đã đề xuất sửa đổi thông tin.";
+"thxForReportInfoDescription" = "Bằng cách đề xuất sửa đổi thông tin/nSức hấp dẫn của điểm đến du lịch cũng đã tăng lên!";
+"showContentAgain" = "Xem lại nội dung";
+"reportAgain" = "Thêm mục khác";
 
 // MARK: - 후기
 "blank" = "";
