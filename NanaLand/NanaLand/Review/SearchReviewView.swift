@@ -90,17 +90,6 @@ struct SearchReviewView: View {
                                             .padding(.trailing, 16)
                                             .padding(.leading, 16)
                                         VStack(alignment: .leading, spacing: 8) {
-                                            Text("\(viewModel.state.getProfileReviewResponse[idx].categoryValue!)")
-                                                .padding(.leading, 12)
-                                                .padding(.trailing, 12)
-                                                .padding(.top, 1)
-                                                .padding(.bottom, 1)
-                                                .foregroundStyle(.main)
-                                                .font(.caption02)
-                                                .background(
-                                                    RoundedRectangle(cornerRadius: 30)
-                                                        .fill(Color.main10P)
-                                                )
                                             Text("\(viewModel.state.getProfileReviewResponse[idx].title!)")
                                                 .font(.body02_semibold)
                                             Text("\(viewModel.state.getProfileReviewResponse[idx].address!)")
