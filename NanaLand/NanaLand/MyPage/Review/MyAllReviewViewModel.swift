@@ -31,12 +31,10 @@ class MyAllReviewViewModel: ObservableObject {
         case let .getMyAllReviewItem(page, size):
             // TODO - 공지사항 API 호출
             let response = await ReviewService.getMyAllReviewItem(page: page, size: size)
-            if let responseData = response!.data {
+            if let responseData = response?.data {
                 await MainActor.run {
                     state.getMyAllReviewResponse.totalElements = responseData.totalElements
-                    print(state.getMyAllReviewResponse.data)
                     state.getMyAllReviewResponse.data!.append(contentsOf: response!.data?.data ?? [])
-                    print(state.getMyAllReviewResponse.totalElements)
                 }
             } else {
                 print("Error")

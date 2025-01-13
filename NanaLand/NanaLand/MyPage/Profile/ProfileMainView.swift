@@ -110,8 +110,8 @@ struct ProfileMainView: View {
                 SettingView()
             case .update:
                 ProfileUpdateView()
-            case let .test(type, nickname):
-                TypeTestProfileView(type: type, nickname: nickname)
+            case let .test(type):
+                TypeTestProfileView(type: type)
             case .allReview:
                 MyAllReviewView(viewModel: MyAllReviewViewModel())
                     .environmentObject(LocalizationManager())
@@ -277,7 +277,7 @@ struct ProfileMainView: View {
                                     VStack(spacing: 8){
                                         HStack(spacing: 0){
                                             Button(action: {
-                                                AppState.shared.navigationPath.append(MyPageViewType.test(type: travelType, nickname: AppState.shared.userInfo.nickname))
+                                                AppState.shared.navigationPath.append(MyPageViewType.test(type: travelType))
                                             }, label: {
                                                 Text("\(travelType)")
                                                     .font(.caption01)
@@ -730,7 +730,7 @@ extension View {
 enum MyPageViewType: Hashable {
     case setting
     case update
-    case test(type: String, nickname: String)
+    case test(type: String)
     case allReview
     case selectReview(id: Int64)
     case allNotice

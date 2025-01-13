@@ -414,7 +414,7 @@ struct UserProfileMainView: View {
                                 VStack(spacing: 8){
                                     HStack(spacing: 0){
                                         Button(action: {
-                                            AppState.shared.navigationPath.append(MyPageViewType.test(type: travelType, nickname: viewModel.state.getUserProfileInfoResponse.nickname))
+                                            AppState.shared.navigationPath.append(MyPageViewType.test(type: travelType))
                                         }, label: {
                                             Text("\(travelType)")
                                                 .font(.caption01)
