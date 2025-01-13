@@ -11,55 +11,44 @@ import Kingfisher
 struct ProfileRecommendView: View {
     @StateObject var typeTestVM = TypeTestProfileViewModel()
     let nickname: String
+    @State private var isAPICalled = false
     
     var body: some View {
         
         VStack(spacing: 32) {
             NanaNavigationBar(title: .recommendedTravelPlace, showBackButton: true)
             
-            ScrollView {
-                VStack {
-                    Text(.recommenedeTravelTitleFirstLine, arguments: [nickname])
-                        .font(.title02)
-                        .foregroundStyle(LocalizationManager.shared.language == .malaysia ? .main : .baseBlack)
-                    
-                    Text(.recommenedeTravelTitleSecondLine, arguments: [nickname])
-                        .font(.largeTitle01)
-                        .multilineTextAlignment(.center)
-                        .foregroundStyle(LocalizationManager.shared.language == .malaysia ? .baseBlack : .main)
+            if isAPICalled {
+                if !typeTestVM.state.recommendPlace.isEmpty {
+                    ScrollView {
+                        VStack {
+                            Text(.recommenedeTravelTitleFirstLine, arguments: [nickname])
+                                .font(.title02)
+                                .foregroundStyle(LocalizationManager.shared.language == .malaysia ? .main : .baseBlack)
+                            
+                            Text(.recommenedeTravelTitleSecondLine, arguments: [nickname])
+                                .font(.largeTitle01)
+                                .multilineTextAlignment(.center)
+                                .foregroundStyle(LocalizationManager.shared.language == .malaysia ? .baseBlack : .main)
+                        }
+                        .padding(.bottom, 40)
+                        
+                        ForEach(typeTestVM.state.recommendPlace, id: \.self) { place in
+                            ticketView(place: place)
+                        }
+                        
+                        Spacer()
+                            .frame(height: 50)
+                    }
+                    .scrollIndicators(.hidden)
                 }
-                .padding(.bottom, 40)
-                
-                ForEach(typeTestVM.state.recommendPlace, id: \.self) { place in
-                    ticketView(place: place)
-                }
-                
-                Spacer()
-                    .frame(height: 50)
             }
-            .scrollIndicators(.hidden)
         }
         .toolbar(.hidden, for: .navigationBar)
-//        .overlay(alignment: .bottom) {
-//            Button(action: {
-//                AppState.shared.navigationPath.removeLast()
-//                AppState.shared.navigationPath.removeLast()
-//            }, label: {
-//                RoundedRectangle(cornerRadius: 30)
-//                    .fill(Color.main)
-//                    .frame(height: 48)
-//                    .overlay {
-//                        Text(.gotoMainScreen)
-//                            .foregroundStyle(Color.baseWhite)
-//                            .font(.body_bold)
-//                    }
-//            })
-//            .padding(.horizontal, 16)
-//
-//        }
         .onAppear(){
             Task{
                 await getRecommend()
+                isAPICalled = true
             }
         }
         .navigationDestination(for: recommendDetailType.self, destination: { page in
@@ -82,7 +71,15 @@ struct ProfileRecommendView: View {
     
     private func ticketView(place: RecommendModel) -> some View {
         ZStack(alignment: .topLeading) {
-            KFImage(URL(string: place.firstImage.thumbnailUrl))
+            KFImage(URL(string: place.firstImage.thumbnailUrl ?? ""))
+                .placeholder {
+                        Image(systemName: "photo") // 기본 이미지
+                            .resizable()
+                            .scaledToFit()
+                    }
+                    .onFailure { error in
+                        print("Image loading failed: \(error.localizedDescription)") // 디버깅용 로그
+                    }
                 .resizable()
                 .scaledToFill()
                 .frame(width: 300, height: 500)
@@ -184,5 +181,5 @@ enum recommendDetailType: Hashable{
 
 
 #Preview {
-    ProfileRecommendView(nickname: "재웅")
+    ProfileRecommendView(nickname: "wodnd")
 }

@@ -8,13 +8,14 @@
 import SwiftUI
 
 enum testType: Hashable{
-    case recommend(nickname: String)
+    case recommend
 }
 
 struct TypeTestProfileView: View {
     @EnvironmentObject var localizationManager: LocalizationManager
     var type: String
-    var nickname: String
+    let nickname: String = AppState.shared.userInfo.nickname ?? "DefaultNickname"
+    
     let imageSize = Constants.screenWidth / 9 * 5
     
     var localizedKeyMapping: [String: TripType] {
@@ -60,7 +61,7 @@ struct TypeTestProfileView: View {
         .toolbar(.hidden)
         .navigationDestination(for: testType.self, destination: { page in
             switch page{
-            case let .recommend(nickname):
+            case .recommend:
                 ProfileRecommendView(nickname: nickname)
             }
         })
@@ -116,7 +117,7 @@ struct TypeTestProfileView: View {
     private var bottomButtons: some View {
         VStack(spacing: 16) {
             Button(action: {
-                AppState.shared.navigationPath.append(testType.recommend(nickname: nickname))
+                AppState.shared.navigationPath.append(testType.recommend)
             }, label: {
                 RoundedRectangle(cornerRadius: 50)
                     .stroke(Color.main, lineWidth: 1)
@@ -195,6 +196,6 @@ struct TypeTestProfileView: View {
 }
 
 #Preview {
-    TypeTestProfileView(type:"감귤", nickname: "현우")
+    TypeTestProfileView(type:"감귤")
 }
 

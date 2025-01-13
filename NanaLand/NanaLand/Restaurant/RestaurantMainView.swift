@@ -147,7 +147,9 @@ struct RestaurantMainGridView: View {
                         LazyVGrid(columns: columns, spacing: 16) {
                             ForEach((0...viewModel.state.getRestaurantMainResponse.data.count - 1), id: \.self) { index in
                                 Button(action: {
-                                    AppState.shared.navigationPath.append(RestaurantViewType.detail(id: viewModel.state.getRestaurantMainResponse.data[index].id))
+                                    let detailId = viewModel.state.getRestaurantMainResponse.data[index].id
+                                    
+                                    AppState.shared.navigationPath.append(RestaurantViewType.detail(id: detailId))
                                 }, label: {
                                     VStack(alignment: .leading, spacing: 0){
                                         ZStack {
