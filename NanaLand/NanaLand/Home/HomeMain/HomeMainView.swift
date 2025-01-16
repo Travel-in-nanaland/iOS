@@ -90,12 +90,16 @@ struct HomeMainView: View {
                             AppState.shared.navigationPath.append(HomeViewType.nature)
                         }, label: {
                             VStack(spacing: 0) {
-                                Image("icNature")
-                                    .resizable()
-                                    .frame(width: 62, height: 62)
-                                    .background(.gray0)
-                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                                RoundedRectangle(cornerRadius: 10)
+                                    .foregroundColor(.gray0)
+                                    .frame(width: Constants.screenWidth * (62 / 360), height: Constants.screenWidth * (62 / 360))
+                                    .overlay {
+                                        Image("icNature")
+                                            .resizable()
+                                            .frame(width: Constants.screenWidth * (45 / 360), height: Constants.screenWidth * (45 / 360))
+                                    }
                                     .padding(.bottom, 4)
+                           
                                 Text(.nature)
                                     .font(.gothicNeo(size: 12, font: "semibold"))
                                     .tint(.black)
@@ -108,12 +112,16 @@ struct HomeMainView: View {
                             AppState.shared.navigationPath.append(HomeViewType.festival)
                         }, label: {
                             VStack(spacing: 0) {
-                                Image("icFestival")
-                                    .resizable()
-                                    .frame(width: 62, height: 62)
-                                    .background(.gray0)
-                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                                RoundedRectangle(cornerRadius: 10)
+                                    .foregroundColor(.gray0)
+                                    .frame(width: Constants.screenWidth * (62 / 360), height: Constants.screenWidth * (62 / 360))
+                                    .overlay {
+                                        Image("icFestival")
+                                            .resizable()
+                                            .frame(width: Constants.screenWidth * (45 / 360), height: Constants.screenWidth * (45 / 360))
+                                    }
                                     .padding(.bottom, 4)
+        
                                 Text(.festival)
                                     .font(.gothicNeo(size: 12, font: "semibold"))
                                     .tint(.black)
@@ -126,11 +134,14 @@ struct HomeMainView: View {
                             AppState.shared.navigationPath.append(HomeViewType.shop)
                         }, label: {
                             VStack(spacing: 0) {
-                                Image("icShop")
-                                    .resizable()
-                                    .frame(width: 62, height: 62)
-                                    .background(.gray0)
-                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                                RoundedRectangle(cornerRadius: 10)
+                                    .foregroundColor(.gray0)
+                                    .frame(width: Constants.screenWidth * (62 / 360), height: Constants.screenWidth * (62 / 360))
+                                    .overlay {
+                                        Image("icShop")
+                                            .resizable()
+                                            .frame(width: Constants.screenWidth * (45 / 360), height: Constants.screenWidth * (45 / 360))
+                                    }
                                     .padding(.bottom, 4)
                                 
                                 Text(.market)
@@ -146,11 +157,14 @@ struct HomeMainView: View {
                             AppState.shared.navigationPath.append(HomeViewType.activity)
                         }, label: {
                             VStack(spacing: 0) {
-                                Image("icActivity")
-                                    .resizable()
-                                    .frame(width: 62, height: 62)
-                                    .background(.gray0)
-                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                                RoundedRectangle(cornerRadius: 10)
+                                    .foregroundColor(.gray0)
+                                    .frame(width: Constants.screenWidth * (62 / 360), height: Constants.screenWidth * (62 / 360))
+                                    .overlay {
+                                        Image("icActivity")
+                                            .resizable()
+                                            .frame(width: Constants.screenWidth * (45 / 360), height: Constants.screenWidth * (45 / 360))
+                                    }
                                     .padding(.bottom, 4)
                                 
                                 Text(.activity)
@@ -165,11 +179,14 @@ struct HomeMainView: View {
                             AppState.shared.navigationPath.append(HomeViewType.cultureAndArt)
                         }, label: {
                             VStack(spacing: 0) {
-                                Image("icCultureArt")
-                                    .resizable()
-                                    .frame(width: 62, height: 62)
-                                    .background(.gray0)
-                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                                RoundedRectangle(cornerRadius: 10)
+                                    .foregroundColor(.gray0)
+                                    .frame(width: Constants.screenWidth * (62 / 360), height: Constants.screenWidth * (62 / 360))
+                                    .overlay {
+                                        Image("icCultureArt")
+                                            .resizable()
+                                            .frame(width: Constants.screenWidth * (45 / 360), height: Constants.screenWidth * (45 / 360))
+                                    }
                                     .padding(.bottom, 4)
                                 
                                 Text(.cultureAndArts)
@@ -183,11 +200,14 @@ struct HomeMainView: View {
                             AppState.shared.navigationPath.append(HomeViewType.restaurant)
                         }, label: {
                             VStack(spacing: 0) {
-                                Image("icRestaurant")
-                                    .resizable()
-                                    .frame(width: 62, height: 62)
-                                    .background(.gray0)
-                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                                RoundedRectangle(cornerRadius: 10)
+                                    .foregroundColor(.gray0)
+                                    .frame(width: Constants.screenWidth * (62 / 360), height: Constants.screenWidth * (62 / 360))
+                                    .overlay {
+                                        Image("icRestaurant")
+                                            .resizable()
+                                            .frame(width: Constants.screenWidth * (45 / 360), height: Constants.screenWidth * (45 / 360))
+                                    }
                                     .padding(.bottom, 4)
                                 
                                 Text(.restaurant)
@@ -483,7 +503,7 @@ struct HomeMainView: View {
                                             .font(.caption01)
                                             .foregroundStyle(.white)
                                         Text(data.title)
-                                            .font(.title01_bold)
+                                            .font(.body02_bold)
                                             .foregroundStyle(.white)
                                             .multilineTextAlignment(.leading)
                                     }
@@ -492,7 +512,6 @@ struct HomeMainView: View {
                                 .padding(.leading, 16)
                                 .padding(.bottom, 12)
                                 VStack(spacing: 0) {
-                                    Spacer()
                                     
                                     HStack(spacing: 0) {
                                         Spacer()
@@ -521,7 +540,9 @@ struct HomeMainView: View {
                                         
                                     }
                                     .padding(.trailing, 8)
-                                    .padding(.bottom, 8)
+                                    .padding(.top, 8)
+                                    
+                                    Spacer()
                                 }
                             }
                             .frame(width: Constants.screenWidth - 32, height: 140)
@@ -953,7 +974,7 @@ struct TouchBlockingUIView: UIViewRepresentable {
     }
 }
 
-#Preview {
-    HomeMainView()
-}
-
+//#Preview {
+//    HomeMainView()
+//}
+//
