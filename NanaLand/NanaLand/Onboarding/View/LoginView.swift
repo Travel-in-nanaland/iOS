@@ -25,18 +25,20 @@ struct LoginView: View {
 			
 			Spacer()
 			
-            Image(.logo)
+            Image(.logoInCircle)
 				.resizable()
-				.frame(width: 172.8, height: 171.3)
-				.padding(.bottom, 32)
+                .frame(width: Constants.screenWidth * (80 / 360), height: Constants.screenWidth * (80 / 360))
+                .padding(.bottom, Constants.screenWidth * (16 / 360))
 			
 			Text("nanaland")
 				.foregroundStyle(Color.main)
 				.font(.gothicNeo(.bold, size: 48))
+                .frame(height: Constants.screenWidth * (70 / 360))
 			
-			Text("IN JEJU")
+			Text("IN Jeju")
 				.foregroundStyle(Color.main)
 				.font(.gothicNeo(.light, size: 25))
+                .frame(height: Constants.screenWidth * (32 / 360))
 			
 			Spacer()
 			
