@@ -6,11 +6,12 @@
 //
 
 import Foundation
+import SwiftUI
 
 class PolicyViewModel: ObservableObject {
     struct State {
-        var marketingAgree = false
-        var gpsAgree = false
+        @AppStorage("marketingAgree") var marketingAgree = false
+        @AppStorage("gpsAgree") var gpsAgree = false
     }
     
     enum Action {

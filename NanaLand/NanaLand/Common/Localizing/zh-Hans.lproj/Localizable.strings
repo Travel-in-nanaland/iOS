@@ -169,8 +169,10 @@
 // settingPage
 "settings" = "设置";
 "setUsage" = "应用设置";
+"announcement" = "公告";
 "termsAndPolicies" = "条款与政策";
 "accessPolicyGuide" = "权限指南";
+"notificationSettings" = "通知设置";
 "languageSetting" = "语言设置";
 "versionInfomation" = "版本信息";
 "logout" = "登出";
