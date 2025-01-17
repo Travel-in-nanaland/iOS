@@ -138,97 +138,120 @@ struct ExperienceMainGridView: View {
                 }
             }
             .padding(.bottom, 8)
-            ScrollView {
-                if isAPICalled {
-                    if viewModel.state.getExperienceMainResponse.data.count == 0 {
-                        NoResultFilterView(keyword: $keyword, location: $viewModel.state.location, yearMonthDay: .constant(nil), season: .constant(""))
-                            .frame(height: 70)
-                            .padding(.top, (Constants.screenHeight - 208) * (179 / 636))
-                    } else {
-                        LazyVGrid(columns: columns, spacing: 16) {
-                            ForEach((0...viewModel.state.getExperienceMainResponse.data.count - 1), id: \.self) { index in
-                                Button(action: {
-                                    AppState.shared.navigationPath.append(ArticleViewType.detail(id: viewModel.state.getExperienceMainResponse.data[index].id))
-                                }, label: {
-                                    VStack(alignment: .leading, spacing: 0){
-                                        ZStack {
-                                            KFImage(URL(string: viewModel.state.getExperienceMainResponse.data[index].firstImage.thumbnailUrl))
-                                                .resizable()
-                                                .frame(width: (Constants.screenWidth - 40) / 2, height: ((Constants.screenWidth - 40) / 2) * (12 / 16))
-                                                .clipShape(RoundedRectangle(cornerRadius: 12))
+            ScrollViewReader { reader in
+                ScrollView {
+                    if isAPICalled {
+                        if viewModel.state.getExperienceMainResponse.data.count == 0 {
+                            NoResultFilterView(keyword: $keyword, location: $viewModel.state.location, yearMonthDay: .constant(nil), season: .constant(""))
+                                .frame(height: 70)
+                                .padding(.top, (Constants.screenHeight - 208) * (179 / 636))
+                        } else {
+                            LazyVGrid(columns: columns, spacing: 16) {
+                                ForEach((0...viewModel.state.getExperienceMainResponse.data.count - 1), id: \.self) { index in
+                                    Button(action: {
+                                        AppState.shared.navigationPath.append(ArticleViewType.detail(id: viewModel.state.getExperienceMainResponse.data[index].id))
+                                    }, label: {
+                                        VStack(alignment: .leading, spacing: 0){
+                                            ZStack {
+                                                KFImage(URL(string: viewModel.state.getExperienceMainResponse.data[index].firstImage.thumbnailUrl))
+                                                    .resizable()
+                                                    .frame(width: (Constants.screenWidth - 40) / 2, height: ((Constants.screenWidth - 40) / 2) * (12 / 16))
+                                                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                                                
+                                                VStack(spacing: 0) {
+                                                    Spacer()
+                                                    
+                                                    HStack(spacing: 0) {
+                                                        Spacer()
+                                                        Button {
+                                                            Task {
+                                                                await toggleFavorite(body: FavoriteToggleRequest(id: Int(viewModel.state.getExperienceMainResponse.data[index].id), category: .experience), index: index)
+                                                            }
+                                                        } label: {
+                                                            viewModel.state.getExperienceMainResponse.data[index].favorite ? Image("icHeart_Fill").animation(nil) : Image("icHeart_Blank").animation(nil)
+                                                        }
+                                                    }
+                                                    .padding(.bottom, 8)
+                                                }
+                                                .padding(.trailing, 8)
+                                            }
                                             
-                                            VStack(spacing: 0) {
+                                            Spacer()
+                                            
+                                            Text(viewModel.state.getExperienceMainResponse.data[index].title)
+                                                .lineLimit(1)
+                                                .font(.body02_semibold)
+                                                .padding(.bottom, 4)
+                                            HStack(spacing: 0){
+                                                Text(viewModel.state.getExperienceMainResponse.data[index].addressTag)
+                                                    .font(.caption01)
+                                                    .foregroundStyle(Color.gray1)
                                                 Spacer()
                                                 
-                                                HStack(spacing: 0) {
-                                                    Spacer()
-                                                    Button {
-                                                        Task {
-                                                            await toggleFavorite(body: FavoriteToggleRequest(id: Int(viewModel.state.getExperienceMainResponse.data[index].id), category: .experience), index: index)
-                                                        }
-                                                    } label: {
-                                                        viewModel.state.getExperienceMainResponse.data[index].favorite ? Image("icHeart_Fill").animation(nil) : Image("icHeart_Blank").animation(nil)
-                                                    }
-                                                }
-                                                .padding(.bottom, 8)
+                                                Image("icStarFill")
+                                                    .resizable()
+                                                    .aspectRatio(contentMode: .fit)
+                                                    .frame(width: 11)
+                                                
+                                                Text(String(format: "%.1f", viewModel.state.getExperienceMainResponse.data[index].ratingAvg))
+                                                    .font(.caption01_semibold)
+                                                    .foregroundStyle(Color.main)
                                             }
                                             .padding(.trailing, 8)
                                         }
-                                        
-                                        Spacer()
-                                        
-                                        Text(viewModel.state.getExperienceMainResponse.data[index].title)
-                                            .lineLimit(1)
-                                            .font(.body02_semibold)
-                                            .padding(.bottom, 4)
-                                        HStack(spacing: 0){
-                                            Text(viewModel.state.getExperienceMainResponse.data[index].addressTag)
-                                                .font(.caption01)
-                                                .foregroundStyle(Color.gray1)
-                                            Spacer()
-                                            
-                                            Image("icStarFill")
-                                                .resizable()
-                                                .aspectRatio(contentMode: .fit)
-                                                .frame(width: 11)
-                                            
-                                            Text(String(format: "%.1f", viewModel.state.getExperienceMainResponse.data[index].ratingAvg))
-                                                .font(.caption01_semibold)
-                                                .foregroundStyle(Color.main)
-                                        }
-                                        .padding(.trailing, 8)
-                                    }
-                                })
-                                .frame(width: (UIScreen.main.bounds.width - 40) / 2, height:  ((Constants.screenWidth - 40) / 2) * (164 / 160))
-                            }
-                            if viewModel.state.page < viewModel.state.getExperienceMainResponse.totalElements / 12 {
-                                ProgressView()
-                                    .onAppear {
-                                        print("\(viewModel.state.page)")
-                                        Task {
-                                            if viewModel.state.location == LocalizedKey.allLocation.localized(for: LocalizationManager().language) {
-                                                APIKeyword = keyword
-                                                for (key, value) in translations {
-                                                    APIKeyword = APIKeyword.replacingOccurrences(of: key, with: value)
+                                    })
+                                    .frame(width: (UIScreen.main.bounds.width - 40) / 2, height:  ((Constants.screenWidth - 40) / 2) * (164 / 160))
+                                    .padding(.bottom, 16)
+                                }
+                                if viewModel.state.page < viewModel.state.getExperienceMainResponse.totalElements / 12 {
+                                    ProgressView()
+                                        .onAppear {
+                                            print("\(viewModel.state.page)")
+                                            Task {
+                                                if viewModel.state.location == LocalizedKey.allLocation.localized(for: LocalizationManager().language) {
+                                                    APIKeyword = keyword
+                                                    for (key, value) in translations {
+                                                        APIKeyword = APIKeyword.replacingOccurrences(of: key, with: value)
+                                                    }
+                                                    experienceType == "Activity" ? await getExperienceMainItem(experienceType: "ACTIVITY", keyword: keyword == LocalizedKey.keyword.localized(for: LocalizationManager().language) ? "" : APIKeyword, address: "", page: viewModel.state.page + 1, size: 12) : await getExperienceMainItem(experienceType: "CULTURE_AND_ARTS", keyword: keyword == LocalizedKey.keyword.localized(for: LocalizationManager().language) ? "" : APIKeyword, address: "", page: viewModel.state.page + 1, size: 12)
+                                                } else {
+                                                    APIKeyword = keyword
+                                                    for (key, value) in translations {
+                                                        APIKeyword = APIKeyword.replacingOccurrences(of: key, with: value)
+                                                    }
+                                                    experienceType == "Activity" ? await getExperienceMainItem(experienceType: "ACTIVITY", keyword: keyword == LocalizedKey.keyword.localized(for: LocalizationManager().language) ? "" : APIKeyword, address: viewModel.state.apiLocation, page: viewModel.state.page + 1, size: 12) : await getExperienceMainItem(experienceType: "CULTURE_AND_ARTS", keyword: keyword == LocalizedKey.keyword.localized(for: LocalizationManager().language) ? "" : APIKeyword, address: viewModel.state.apiLocation, page: viewModel.state.page + 1, size: 12)
                                                 }
-                                                experienceType == "Activity" ? await getExperienceMainItem(experienceType: "ACTIVITY", keyword: keyword == LocalizedKey.keyword.localized(for: LocalizationManager().language) ? "" : APIKeyword, address: "", page: viewModel.state.page + 1, size: 12) : await getExperienceMainItem(experienceType: "CULTURE_AND_ARTS", keyword: keyword == LocalizedKey.keyword.localized(for: LocalizationManager().language) ? "" : APIKeyword, address: "", page: viewModel.state.page + 1, size: 12)
-                                            } else {
-                                                APIKeyword = keyword
-                                                for (key, value) in translations {
-                                                    APIKeyword = APIKeyword.replacingOccurrences(of: key, with: value)
-                                                }
-                                                experienceType == "Activity" ? await getExperienceMainItem(experienceType: "ACTIVITY", keyword: keyword == LocalizedKey.keyword.localized(for: LocalizationManager().language) ? "" : APIKeyword, address: viewModel.state.apiLocation, page: viewModel.state.page + 1, size: 12) : await getExperienceMainItem(experienceType: "CULTURE_AND_ARTS", keyword: keyword == LocalizedKey.keyword.localized(for: LocalizationManager().language) ? "" : APIKeyword, address: viewModel.state.apiLocation, page: viewModel.state.page + 1, size: 12)
+                                                
+                                                viewModel.state.page += 1
                                             }
-                                            
-                                            viewModel.state.page += 1
                                         }
-                                    }
+                                }
                             }
+                            .padding(.horizontal, 16)
+                            .id("Scroll_To_Top")
                         }
-                        .padding(.horizontal, 16)
                     }
                 }
+                .overlay(
+                    VStack(spacing: 0) {
+                        Spacer()
+                        HStack(spacing: 0) {
+                            Spacer()
+                            Button(action: {
+                                withAnimation(.default) {
+                                    reader.scrollTo("Scroll_To_Top", anchor: .top)
+                                }
+                            }, label: {
+                                Image("icScrollToTop")
+                            })
+                            .frame(width: 80, height: 80)
+                            .padding(.trailing)
+                            .padding(.bottom, getSafeArea().bottom == 0 ? 76 : 60)
+                        }
+                    }
+                )
             }
+          
             .navigationDestination(for: ArticleViewType.self) { viewType in
                 switch viewType {
                 case let .detail(id):
@@ -301,6 +324,9 @@ struct ExperienceMainGridView: View {
             return
         }
         await viewModel.action(.toggleFavorite(body: body, index: index))
+    }
+    func getSafeArea() -> UIEdgeInsets  {
+        return UIApplication.shared.windows.first?.safeAreaInsets ?? UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
 }
 // 문화예술 그리드 뷰

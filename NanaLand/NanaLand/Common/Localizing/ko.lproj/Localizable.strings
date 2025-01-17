@@ -337,7 +337,7 @@
 // MARK: - 정보 수정 제안
 "reportInfo" = "정보 수정 제안";
 "reportInfoTitle" = "수정해야 할 정보를 제안해 주세요!";
-"reportInfoDescription" = "장소 제안 시 첨부한 사진이 장소 정보 확인에\n도움이 되면 혜택을 받을 수 있어요.";
+"reportInfoDescription" = "장소 제안 시 첨부한 사진이 장소 정보 확인에\n도움이 되면 혜택을\n받을 수 있어요.";
 "numberAndHomepage" = "전화번호 및 홈페이지";
 "oprationTime" = "운영 시간";
 "placeNameAndLocation" = "장소명 및 위치";
