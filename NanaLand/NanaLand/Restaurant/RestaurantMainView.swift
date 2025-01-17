@@ -164,7 +164,7 @@ struct RestaurantMainGridView: View {
                                                     Spacer()
                                                     Button {
                                                         Task {
-                                                            await toggleFavorite(body: FavoriteToggleRequest(id: Int(viewModel.state.getRestaurantMainResponse.data[index].id), category: .experience), index: index)
+                                                            await toggleFavorite(body: FavoriteToggleRequest(id: Int(viewModel.state.getRestaurantMainResponse.data[index].id), category: .restaurant), index: index)
                                                         }
                                                     } label: {
                                                         viewModel.state.getRestaurantMainResponse.data[index].favorite ? Image("icHeart_Fill") : Image("icHeart_Blank")

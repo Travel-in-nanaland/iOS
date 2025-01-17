@@ -22,8 +22,10 @@ struct FavoriteListView: View {
                             return favoriteVM.state.festivalFavoriteArticles.data
                         case .market:
                             return favoriteVM.state.marketFavoriteArticles.data
-                        case .experience:
-                            return favoriteVM.state.experienceFavoriteArticles.data
+                        case .activity:
+                            return favoriteVM.state.activityFavoriteArticles.data
+                        case .cultureAndArts:
+                            return favoriteVM.state.cultureAndArtsFavoriteArticles.data
                         case .nanaPick:
                             return favoriteVM.state.nanaFavoriteArticles.data
                         case .restaurant:
@@ -41,6 +43,9 @@ struct FavoriteListView: View {
                                 }
                             })
                         }
+                        .onAppear {
+                                print("Article Appeared: \(article)") // 나타날 때 정보 출력
+                            }
                     }
                 }
                 if !favoriteVM.isLastPage(tab: category) {
@@ -74,8 +79,10 @@ struct FavoriteListView: View {
                 FestivalDetailView(id: Int64(article.id))
             case .market:
                 ShopDetailView(id: Int64(article.id))
-            case .experience:
-                ExperienceDetailView(id: Int64(article.id))
+            case .activity:
+                ExperienceDetailView(id: Int64(article.id), experienceType: "Activity")
+            case .cultureAndArts:
+                ExperienceDetailView(id: Int64(article.id), experienceType: "CultureArts")
             case .nanaPick:
                 NewNanaPickDetailView(id: Int64(article.id))
             case .all:

@@ -13,7 +13,8 @@ enum Category: String, CaseIterable, Codable {
     case nature  // 7대 자연
     case festival  // 축제
     case market  // 전통시장
-    case experience  // 이색 체험
+    case activity  // 액티비티
+    case cultureAndArts //문화예술
     case restaurant //제주맛집
     case nanaPick  // 나나 Pick
     
@@ -27,12 +28,14 @@ enum Category: String, CaseIterable, Codable {
             return .festival
         case .market:
             return .market
-        case .experience:
-            return .experience
+        case .activity:
+            return .activity
         case .restaurant:
             return .restaurant
         case .nanaPick:
             return .nanaPick
+        case .cultureAndArts:
+            return .cultureAndArts
         }
     }
     
@@ -46,12 +49,14 @@ enum Category: String, CaseIterable, Codable {
             return "FESTIVAL"
         case .market:
             return "MARKET"
-        case .experience:
-            return "EXPERIENCE"
+        case .activity:
+            return "ACTIVITY"
         case .nanaPick:
             return "NANA"
         case .restaurant:
             return "RESTAURANT"
+        case .cultureAndArts:
+            return "CULTURE_AND_ARTS"
         }
     }
 }
@@ -66,7 +71,8 @@ struct SearchResultView: View {
     @State var isNatureSearchIsDone: Bool = false
     @State var isMarketSearchIsDone: Bool = false
     @State var isFestivalSearchIsDone: Bool = false
-    @State var isExperienceSearchIsDone: Bool = false
+    @State var isActivitySearchIsDone: Bool = false
+    @State var isCultureAndArtsSearchIsDone: Bool = false
     @State var isRestaurantSearchIsDone: Bool = false
     @State var isNanaSearchIsDone: Bool = false
     
@@ -98,7 +104,8 @@ struct SearchResultView: View {
                     isNatureSearchIsDone = false
                     isMarketSearchIsDone = false
                     isFestivalSearchIsDone = false
-                    isExperienceSearchIsDone = false
+                    isActivitySearchIsDone = false
+                    isCultureAndArtsSearchIsDone = false
                     isRestaurantSearchIsDone = false
                 }
             )
@@ -170,14 +177,24 @@ struct SearchResultView: View {
                     }
                 }
             
-            SearchDetailCategoryResultView(searchVM: searchVM, tab: .experience, searchTerm: searchTerm)
-                .tag(Category.experience)
+            SearchDetailCategoryResultView(searchVM: searchVM, tab: .activity, searchTerm: searchTerm)
+                .tag(Category.activity)
                 .onAppear {
-                    if !isExperienceSearchIsDone {
+                    if !isActivitySearchIsDone {
                         Task {
-                            await searchVM.action(.searchTerm(category: .experience, term: searchTerm))
+                            await searchVM.action(.searchTerm(category: .activity, term: searchTerm))
                         }
-                        isExperienceSearchIsDone = true
+                        isActivitySearchIsDone = true
+                    }
+                }
+            SearchDetailCategoryResultView(searchVM: searchVM, tab: .cultureAndArts, searchTerm: searchTerm)
+                .tag(Category.cultureAndArts)
+                .onAppear {
+                    if !isCultureAndArtsSearchIsDone {
+                        Task {
+                            await searchVM.action(.searchTerm(category: .cultureAndArts, term: searchTerm))
+                        }
+                        isCultureAndArtsSearchIsDone = true
                     }
                 }
             SearchDetailCategoryResultView(searchVM: searchVM, tab: .restaurant, searchTerm: searchTerm)

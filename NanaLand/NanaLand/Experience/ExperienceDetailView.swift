@@ -41,7 +41,7 @@ struct ExperienceDetailView: View {
                 HStack(spacing: 0) {
 
                     Spacer()
-                    ShareLink(item: DeepLinkManager.shared.makeLink(category: .experience, id: Int(viewModel.state.getExperienceDetailResponse.id ?? 0)), label: {
+                    ShareLink(item: DeepLinkManager.shared.makeLink(category: .activity, id: Int(viewModel.state.getExperienceDetailResponse.id ?? 0)), label: {
                         Image("icShare2")
                             .padding(.trailing, 16)
                     })
@@ -331,7 +331,12 @@ struct ExperienceDetailView: View {
                                     Button {
                                         print(viewModel.state.getExperienceDetailResponse.id!)
                                         print(AppState.shared.navigationPath.count)
-                                        AppState.shared.navigationPath.append(ArticleDetailViewType.reportInfo(id: viewModel.state.getExperienceDetailResponse.id!, category: .experience))
+                                        if experienceType == "Activity"{
+                                            AppState.shared.navigationPath.append(ArticleDetailViewType.reportInfo(id: viewModel.state.getExperienceDetailResponse.id!, category: .activity))
+                                        } else {
+                                            AppState.shared.navigationPath.append(ArticleDetailViewType.reportInfo(id: viewModel.state.getExperienceDetailResponse.id!, category: .cultureAndArts))
+                                        }
+                                        
                                     } label: {
                                         Text(.proposeUpdateInfo)
                                             .padding()
@@ -764,7 +769,7 @@ struct ExperienceDetailView: View {
                     HStack(spacing: 0) {
                         Button {
                             Task {
-                                await toggleFavorite(body: FavoriteToggleRequest(id: Int(viewModel.state.getExperienceDetailResponse.id!), category: .experience))
+                                await toggleFavorite(body: FavoriteToggleRequest(id: Int(viewModel.state.getExperienceDetailResponse.id!), category: .activity))
                             }
                         } label: {
                             viewModel.state.getExperienceDetailResponse.favorite! ?

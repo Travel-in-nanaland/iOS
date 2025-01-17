@@ -39,6 +39,9 @@ struct SearchMainView: View {
         .navigationDestination(isPresented: $showResultView) {
             SearchResultView(searchVM: searchVM, searchTerm: searchTerm)
         }
+        .onAppear(){
+            searchTerm = ""
+        }
     }
     
     private var navigationBar: some View {
@@ -46,9 +49,9 @@ struct SearchMainView: View {
             Button(action: {
                 dismiss()
             }, label: {
-                Image(.icLeft)
+                Image(.icLeft01)
                     .resizable()
-                    .frame(width: 32, height: 32)
+                    .frame(width: Constants.screenWidth * (24 / 360), height: Constants.screenWidth * (24 / 360))
             })
             
             NanaSearchBar(
@@ -167,7 +170,7 @@ struct SearchMainView: View {
                             Spacer(minLength: 0)
                         }
                         .font(.body02)
-                        .foregroundStyle(index == 0 || index == 1 ? Color.main : Color.gray1)
+                        .foregroundStyle(index == 0 || index == 1 || index == 2 ? Color.main : Color.gray1)
                         .onTapGesture {
                             search(term: searchVM.state.popularSearchTerms[index])
                         }
@@ -218,7 +221,9 @@ struct SearchMainView: View {
                                 FestivalDetailView(id: Int64(article.id))
                             case .market:
                                 ShopDetailView(id: Int64(article.id))
-                            case .experience:
+                            case .activity:
+                                ExperienceDetailView(id: Int64(article.id))
+                            case .cultureAndArts:
                                 ExperienceDetailView(id: Int64(article.id))
                             case .nanaPick:
                                 NaNaPickDetailView(id: Int64(article.id))

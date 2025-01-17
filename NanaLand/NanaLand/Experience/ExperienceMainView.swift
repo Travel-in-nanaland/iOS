@@ -155,7 +155,7 @@ struct ExperienceMainGridView: View {
                                                     Spacer()
                                                     Button {
                                                         Task {
-                                                            await toggleFavorite(body: FavoriteToggleRequest(id: Int(viewModel.state.getExperienceMainResponse.data[index].id), category: .experience), index: index)
+                                                            await toggleFavorite(body: FavoriteToggleRequest(id: Int(viewModel.state.getExperienceMainResponse.data[index].id), category: .activity), index: index)
                                                         }
                                                     } label: {
                                                         viewModel.state.getExperienceMainResponse.data[index].favorite ? Image("icHeart_Fill").animation(nil) : Image("icHeart_Blank").animation(nil)
@@ -286,6 +286,8 @@ struct ExperienceMainGridView: View {
         await viewModel.action(.getExperienceMainItem(experienceType: experienceType, keyword: keyword, address: address, page: page, size: size))
         
     }
+    
+    //이색체험 좋아요 토글
     func toggleFavorite(body: FavoriteToggleRequest, index: Int) async {
         if UserDefaults.standard.string(forKey: "provider") == "GUEST" {
             AppState.shared.showRegisterInduction = true
