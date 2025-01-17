@@ -112,6 +112,11 @@ struct LocationModalView: View {
                     .font(.body_bold)
                     .padding(.leading, 16)
                     .padding(.top, 24)
+                    .padding(.trailing, 8)
+                Text("(\(buttonsToggled.filter { $0 == true}.count) / \(locationArray.count))")
+                    .font(.caption01)
+                    .foregroundStyle(Color.gray1)
+                    .padding(.top, 24)
                 Spacer()
                 Button(action: {
                     self.presentationMode.wrappedValue.dismiss()

@@ -387,183 +387,207 @@ struct FestivalMainGridView: View {
                 SeasonFilterView(viewModel: viewModel, selectedSeason: $selectedSeason, count: Int(viewModel.state.getFestivalMainResponse.totalElements))
             }
             
-            
-            ScrollView {
-                if isAPICalled {
-                    // 보여줄 데이터가 없을 때
-                    if viewModel.state.getFestivalMainResponse.data.count == 0 {
-                        NoResultFilterView(keyword: .constant(""), location: $viewModel.state.location, yearMonthDay: $yearMonthDay, season: $selectedSeason)
-                            .frame(height: 70)
-                            .padding(.top, (Constants.screenHeight - 208) * (179 / 636))
-                        
-                        
-                    }
-                    else {
-                        LazyVGrid(columns: columns, spacing: 16) {
+            ScrollViewReader { reader in
+                ScrollView {
+                    if isAPICalled {
+                        // 보여줄 데이터가 없을 때
+                        if viewModel.state.getFestivalMainResponse.data.count == 0 {
+                            NoResultFilterView(keyword: .constant(""), location: $viewModel.state.location, yearMonthDay: $yearMonthDay, season: $selectedSeason)
+                                .frame(height: 70)
+                                .padding(.top, (Constants.screenHeight - 208) * (179 / 636))
                             
-                            // 보여줄 데이터가 있을 때
                             
-                            ForEach((0...viewModel.state.getFestivalMainResponse.data.count - 1), id: \.self) { index in
-                                Button(action: {
-                                    AppState.shared.navigationPath.append(ArticleViewType.detail(id: viewModel.state.getFestivalMainResponse.data[index].id))
-                                }, label: {
-                                    VStack(alignment: .leading, spacing: 0) {
-                                        ZStack {
-                                            KFImage(URL(string: viewModel.state.getFestivalMainResponse.data[index].firstImage.thumbnailUrl))
-                                            
-                                                .resizable()
-                                                .frame(width: (Constants.screenWidth - 40) / 2, height: ((UIScreen.main.bounds.width - 40) / 2) * (12 / 16))
-                                                .clipShape(RoundedRectangle(cornerRadius: 12))
-                                                .padding(.bottom, 8)
-                                            
-                                            VStack(spacing: 0) {
-                                                Spacer()
-												HStack(spacing: 0) {
-													Spacer()
-													
-													Button {
-														
-														Task {
-															await toggleFavorite(body: FavoriteToggleRequest(id: Int(viewModel.state.getFestivalMainResponse.data[index].id), category: .festival), index: index)
-															
-														}
-														
-													} label: {
-                                                        
-														viewModel.state.getFestivalMainResponse.data[index].favorite ? Image("icHeart_Fill").animation(nil) : Image("icHeart_Blank").animation(nil)
-														
-													}
-												}
-												.padding(.bottom, 16)
-											}
-											.padding(.trailing, 8)
-										}
-                                        
-                                        Text(viewModel.state.getFestivalMainResponse.data[index].period)
-                                            .font(.caption)
-                                            .padding(.bottom, 8)
-                                            .foregroundStyle(Color.gray1)
-										
-										Text(viewModel.state.getFestivalMainResponse.data[index].addressTag)
-											.frame(width: 64, height: 20)
-											.font(.caption)
-											.background(
-												RoundedRectangle(cornerRadius: 30)
-													.foregroundStyle(Color.main10P)
-											)
-											.foregroundStyle(Color.main)
-									}
-                                    .frame(width: (Constants.screenWidth - 40) / 2, height: ((Constants.screenWidth - 40) / 2) * (164 / 160))
-								})
-							}
-                            if title == "종료된" {
-                                if viewModel.state.page < viewModel.state.getFestivalMainResponse.totalElements / 12 {
-                                    ProgressView()
-                                        .onAppear {
-                                            Task {
-                                                
-                                                await getPastFestivalMainITem(page: Int32(viewModel.state.page
-                                                                                          + 1),size: Int32(size), filterName:viewModel.state.location)
-                                                viewModel.state.page += 1
-                                                
-                                                
-                                            }
-                                        }
-                                }
+                        }
+                        else {
+                            LazyVGrid(columns: columns, spacing: 16) {
                                 
-                            } else if title == "이번달" {
-                                if viewModel.state.page < viewModel.state.getFestivalMainResponse.totalElements / 12 {
-                                    ProgressView()
-                                        .onAppear {
-                                            Task {
-                                                await getThisMonthFestivalMainItem(page: Int32(page + 1),size: Int32(size), filterName:viewModel.state.location, startDate: "", endDate:"")
-                                                viewModel.state.page += 1
+                                // 보여줄 데이터가 있을 때
+                                
+                                ForEach((0...viewModel.state.getFestivalMainResponse.data.count - 1), id: \.self) { index in
+                                    Button(action: {
+                                        AppState.shared.navigationPath.append(ArticleViewType.detail(id: viewModel.state.getFestivalMainResponse.data[index].id))
+                                    }, label: {
+                                        VStack(alignment: .leading, spacing: 0) {
+                                            ZStack {
+                                                KFImage(URL(string: viewModel.state.getFestivalMainResponse.data[index].firstImage.thumbnailUrl))
+                                                
+                                                    .resizable()
+                                                    .frame(width: (Constants.screenWidth - 40) / 2, height: ((UIScreen.main.bounds.width - 40) / 2) * (12 / 16))
+                                                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                                                    .padding(.bottom, 8)
+                                                
+                                                VStack(spacing: 0) {
+                                                    Spacer()
+                                                    HStack(spacing: 0) {
+                                                        Spacer()
+                                                        
+                                                        Button {
+                                                            
+                                                            Task {
+                                                                await toggleFavorite(body: FavoriteToggleRequest(id: Int(viewModel.state.getFestivalMainResponse.data[index].id), category: .festival), index: index)
+                                                                
+                                                            }
+                                                            
+                                                        } label: {
+                                                            
+                                                            viewModel.state.getFestivalMainResponse.data[index].favorite ? Image("icHeart_Fill").animation(nil) : Image("icHeart_Blank").animation(nil)
+                                                            
+                                                        }
+                                                    }
+                                                    .padding(.bottom, 16)
+                                                }
+                                                .padding(.trailing, 8)
                                             }
+                                            Text(viewModel.state.getFestivalMainResponse.data[index].title)
+                                                .font(.body02_bold)
+                                                .padding(.bottom, 4)
+                                            Text(viewModel.state.getFestivalMainResponse.data[index].period)
+                                                .font(.caption)
+                                                .padding(.bottom, 8)
+                                                .foregroundStyle(Color.gray1)
+                                            
+                                            Text(viewModel.state.getFestivalMainResponse.data[index].addressTag)
+                                                .frame(width: 64, height: 20)
+                                                .font(.caption)
+                                                .background(
+                                                    RoundedRectangle(cornerRadius: 30)
+                                                        .foregroundStyle(Color.main10P)
+                                                )
+                                                .foregroundStyle(Color.main)
                                         }
+                                        .frame(width: (Constants.screenWidth - 40) / 2, height: ((Constants.screenWidth - 40) / 2) * (164 / 160))
+                                        .padding(.bottom, 16)
+                                    })
                                 }
-                            }
-                            
-                            else if title == "계절별" {
-                                switch selectedSeason {
-                                case LocalizedKey.spring.localized(for: LocalizationManager().language):
-                                    
+                                if title == "종료된" {
                                     if viewModel.state.page < viewModel.state.getFestivalMainResponse.totalElements / 12 {
                                         ProgressView()
                                             .onAppear {
                                                 Task {
-                                                    // 필터가 바뀌면 페이지 초기화 해주고 어떤 계절 선택했는지에 따라서 season값 달리줘야함
-                                                    await getSeasonFestivalMainItem(page: Int32(viewModel.state.page + 1),size: Int32(size), season: "spring")
+                                                    
+                                                    await getPastFestivalMainITem(page: Int32(viewModel.state.page
+                                                                                              + 1),size: Int32(size), filterName:viewModel.state.location)
                                                     viewModel.state.page += 1
-                                      
-                                                }
-                                            }
-                                    }
-                                case LocalizedKey.summer.localized(for: LocalizationManager().language):
-                                    
-                                    if viewModel.state.page < viewModel.state.getFestivalMainResponse.totalElements / 12  {
-                                        ProgressView()
-                                            .onAppear {
-                                                Task {
-                                                    // 필터가 바뀌면 페이지 초기화 해주고 어떤 계절 선택했는지에 따라서 season값 달리줘야함
-                                                    await getSeasonFestivalMainItem(page: Int32(viewModel.state.page + 1),size: Int32(size), season: "summer")
-                                                  
-                                                    viewModel.state.page += 1
-                                              
-                                                }
-                                            }
-                                    }
-                                case LocalizedKey.autumn.localized(for: LocalizationManager().language):
-                        
-                                    if viewModel.state.page < viewModel.state.getFestivalMainResponse.totalElements / 12  {
-                                        ProgressView()
-                                            .onAppear {
-                                                Task {
-                                                    // 필터가 바뀌면 페이지 초기화 해주고 어떤 계절 선택했는지에 따라서 season값 달리줘야함
-                                                    await getSeasonFestivalMainItem(page: Int32(viewModel.state.page
-                                                                                                + 1),size: Int32(size), season: "autumn")
-                                                    viewModel.state.page += 1
-                                                   
+                                                    
                                                     
                                                 }
                                             }
                                     }
-                                case LocalizedKey.winter.localized(for: LocalizationManager().language):
-                                   
-                                    if viewModel.state.page < viewModel.state.getFestivalMainResponse.totalElements / 12  {
-                                        ProgressView()
-                                            .onAppear {
-                                                Task {
-                                                    // 필터가 바뀌면 페이지 초기화 해주고 어떤 계절 선택했는지에 따라서 season값 달리줘야함
-                                                    await getSeasonFestivalMainItem(page: Int32(viewModel.state.page + 1),size: Int32(size), season: "winter")
-                                                    
-                                                    viewModel.state.page += 1
-                                       
-                                                }
-                                            }
-                                    }
-                                default:
                                     
-                                    if page < viewModel.state.getFestivalMainResponse.totalElements / 12 {
+                                } else if title == "이번달" {
+                                    if viewModel.state.page < viewModel.state.getFestivalMainResponse.totalElements / 12 {
                                         ProgressView()
                                             .onAppear {
                                                 Task {
-                                                    // 필터가 바뀌면 페이지 초기화 해주고 어떤 계절 선택했는지에 따라서 season값 달리줘야함
-                                                    await getSeasonFestivalMainItem(page: Int32(page + 1),size: Int32(size), season: "spring")
-                                                    print("\(viewModel.state.page)기본")
-                                                    page += 1
+                                                    await getThisMonthFestivalMainItem(page: Int32(page + 1),size: Int32(size), filterName:viewModel.state.location, startDate: "", endDate:"")
+                                                    viewModel.state.page += 1
                                                 }
                                             }
                                     }
                                 }
                                 
-                            }
+                                else if title == "계절별" {
+                                    switch selectedSeason {
+                                    case LocalizedKey.spring.localized(for: LocalizationManager().language):
+                                        
+                                        if viewModel.state.page < viewModel.state.getFestivalMainResponse.totalElements / 12 {
+                                            ProgressView()
+                                                .onAppear {
+                                                    Task {
+                                                        // 필터가 바뀌면 페이지 초기화 해주고 어떤 계절 선택했는지에 따라서 season값 달리줘야함
+                                                        await getSeasonFestivalMainItem(page: Int32(viewModel.state.page + 1),size: Int32(size), season: "spring")
+                                                        viewModel.state.page += 1
+                                          
+                                                    }
+                                                }
+                                        }
+                                    case LocalizedKey.summer.localized(for: LocalizationManager().language):
+                                        
+                                        if viewModel.state.page < viewModel.state.getFestivalMainResponse.totalElements / 12  {
+                                            ProgressView()
+                                                .onAppear {
+                                                    Task {
+                                                        // 필터가 바뀌면 페이지 초기화 해주고 어떤 계절 선택했는지에 따라서 season값 달리줘야함
+                                                        await getSeasonFestivalMainItem(page: Int32(viewModel.state.page + 1),size: Int32(size), season: "summer")
+                                                      
+                                                        viewModel.state.page += 1
+                                                  
+                                                    }
+                                                }
+                                        }
+                                    case LocalizedKey.autumn.localized(for: LocalizationManager().language):
                             
-						}
-						.padding(.horizontal, 16)
-                        .padding(.top, 12)
-					}
-				}
-			}
+                                        if viewModel.state.page < viewModel.state.getFestivalMainResponse.totalElements / 12  {
+                                            ProgressView()
+                                                .onAppear {
+                                                    Task {
+                                                        // 필터가 바뀌면 페이지 초기화 해주고 어떤 계절 선택했는지에 따라서 season값 달리줘야함
+                                                        await getSeasonFestivalMainItem(page: Int32(viewModel.state.page
+                                                                                                    + 1),size: Int32(size), season: "autumn")
+                                                        viewModel.state.page += 1
+                                                       
+                                                        
+                                                    }
+                                                }
+                                        }
+                                    case LocalizedKey.winter.localized(for: LocalizationManager().language):
+                                       
+                                        if viewModel.state.page < viewModel.state.getFestivalMainResponse.totalElements / 12  {
+                                            ProgressView()
+                                                .onAppear {
+                                                    Task {
+                                                        // 필터가 바뀌면 페이지 초기화 해주고 어떤 계절 선택했는지에 따라서 season값 달리줘야함
+                                                        await getSeasonFestivalMainItem(page: Int32(viewModel.state.page + 1),size: Int32(size), season: "winter")
+                                                        
+                                                        viewModel.state.page += 1
+                                           
+                                                    }
+                                                }
+                                        }
+                                    default:
+                                        
+                                        if page < viewModel.state.getFestivalMainResponse.totalElements / 12 {
+                                            ProgressView()
+                                                .onAppear {
+                                                    Task {
+                                                        // 필터가 바뀌면 페이지 초기화 해주고 어떤 계절 선택했는지에 따라서 season값 달리줘야함
+                                                        await getSeasonFestivalMainItem(page: Int32(page + 1),size: Int32(size), season: "spring")
+                                                        print("\(viewModel.state.page)기본")
+                                                        page += 1
+                                                    }
+                                                }
+                                        }
+                                    }
+                                    
+                                }
+                                
+                            }
+                            .padding(.horizontal, 16)
+                            .padding(.top, 12)
+                            .id("Scroll_To_Top")
+                        }
+                    }
+                }
+                .overlay(
+                    VStack(spacing: 0) {
+                        Spacer()
+                        HStack(spacing: 0) {
+                            Spacer()
+                            Button(action: {
+                                withAnimation(.default) {
+                                    reader.scrollTo("Scroll_To_Top", anchor: .top)
+                                }
+                            }, label: {
+                                Image("icScrollToTop")
+                            })
+                            .frame(width: 80, height: 80)
+                            .padding(.trailing)
+                            .padding(.bottom, getSafeArea().bottom == 0 ? 76 : 60)
+                        }
+                    }
+                )
+            }
+      
 		}
 		.navigationDestination(for: ArticleViewType.self) { viewType in
 			switch viewType {
@@ -691,6 +715,9 @@ struct FestivalMainGridView: View {
             return
         }
         await viewModel.action(.toggleFavorite(body: body, index: index))
+    }
+    func getSafeArea() ->UIEdgeInsets  {
+        return UIApplication.shared.windows.first?.safeAreaInsets ?? UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
 }
 
