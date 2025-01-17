@@ -416,14 +416,14 @@ struct ExperienceDetailView: View {
                                                             }
                                                             Spacer()
                                                             
-                                                            HStack(spacing: 0){
+                                                            HStack(spacing: 8){
                                                                 Button(action: {
                                                                     AppState.shared.navigationPath.append(ExperienceViewType.detailReivew(id: viewModel.state.getReviewDataResponse.data[index].id, category: "EXPERIENCE"))
                                                                 }, label: {
                                                                     Text(.modify)
                                                                         .font(.caption01)
                                                                         .foregroundColor(.gray1)
-                                                                        .padding(EdgeInsets(top: 4, leading: 12, bottom: 4, trailing: 12))
+                                                                        .padding(EdgeInsets(top: 2, leading: 8, bottom: 2, trailing: 8))
                                                                         .background {
                                                                             RoundedRectangle(cornerRadius: 30)
                                                                                 .foregroundColor(.gray3)
@@ -437,7 +437,7 @@ struct ExperienceDetailView: View {
                                                                     Text(.delete)
                                                                         .font(.caption01)
                                                                         .foregroundColor(.gray1)
-                                                                        .padding(EdgeInsets(top: 4, leading: 12, bottom: 4, trailing: 12))
+                                                                        .padding(EdgeInsets(top: 2, leading: 8, bottom: 2, trailing: 8))
                                                                         .background {
                                                                             RoundedRectangle(cornerRadius: 30)
                                                                                 .foregroundColor(.gray3)
@@ -658,25 +658,25 @@ struct ExperienceDetailView: View {
                                                         .padding(.leading, 16)
                                                         .padding(.trailing, 16)
                                                         .multilineTextAlignment(.leading)
-                                                        .padding(.bottom, 4)
+                                                        .padding(.bottom, 12)
                                                         HStack(spacing: 0) {
-                                                            Spacer()
-                                                            Text("\(viewModel.state.getReviewDataResponse.data[index].createdAt ?? "")")
-                                                                .font(.caption01)
-                                                                .foregroundStyle(Color.gray1)
-                                                           
                                                             Button {
                                                                 reportModal = true
                                                                 idx = viewModel.state.getReviewDataResponse.data[index].id
                                                      
                                                             } label: {
-                                                                Image("icPointBtn")
-                                                                    .resizable()
-                                                                    .renderingMode(.template)
-                                                                    .frame(width: 20, height: 20)
-                                                                    .foregroundStyle(Color.gray1)
+                                                                Text(.doReport)
+                                                                    .font(.caption02)
+                                                                    .foregroundColor(Color.gray1)
                                                             }
+                                                            
+                                                            Spacer()
+                                                            
+                                                            Text("\(viewModel.state.getReviewDataResponse.data[index].createdAt ?? "")")
+                                                                .font(.caption01)
+                                                                .foregroundStyle(Color.gray1)
                                                         }
+                                                        .padding(.leading, 16)
                                                         .padding(.trailing, 16)
                                                         .padding(.bottom, 16)
                                                     }

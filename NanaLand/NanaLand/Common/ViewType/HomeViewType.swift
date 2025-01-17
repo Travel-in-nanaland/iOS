@@ -12,7 +12,6 @@ enum HomeViewType: Hashable {
 	case nature
 	case festival
 	case shop
-	case experience // 액티비티와 문화예술로 나뉘어짐
     case activity
     case cultureAndArts
 	case nanapick
@@ -21,6 +20,7 @@ enum HomeViewType: Hashable {
 	case festivalDetail(id: Int)
 	case notification
     case restaurant
-    case experienceDetail(id: Int)
+    case activityDetail(id: Int)
+    case cultureAndArtsDetail(id: Int)
     case restaurantDetail(id: Int)
 }

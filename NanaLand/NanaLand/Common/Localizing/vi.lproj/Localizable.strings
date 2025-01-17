@@ -476,6 +476,7 @@
 
 //MARK: - 신고하기
 "report" = "report";
+"doReport" = "Báo cáo";
 
 //MARK: - 나나스픽
 "nanapickRecommend1" = "Gợi ý tuần này, ";

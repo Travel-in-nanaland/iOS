@@ -192,27 +192,6 @@ class FavoriteViewModel: ObservableObject {
 		}
 	}
     
-//    private func getCultureAndArtsFavoriteList() async {
-//        if state.cultureAndArtsFavoriteArticlePage == 0 {
-//            state.cultureAndArtsFavoriteArticles.data.removeAll()
-//        }
-//        
-//        state.isLoading = true
-//        
-//        if let data = await FavoriteService.getCultureAndArtsFavoriteList(page: state.cultureAndArtsFavoriteArticlePage) {
-//            if state.cultureAndArtsFavoriteArticlePage == 0 {
-//                state.cultureAndArtsFavoriteArticles = data.data
-//            } else {
-//                state.cultureAndArtsFavoriteArticles.data.append(contentsOf: data.data.data)
-//            }
-//            
-//            state.cultureAndArtsFavoriteArticlePage += 1
-//            state.isLoading = false
-//        } else {
-//            print("getCultureAndArtsFavoriteList Error")
-//            state.isLoading = false
-//        }
-//    }
     private func getCultureAndArtsFavoriteList() async {
         if state.cultureAndArtsFavoriteArticlePage == 0 {
             state.cultureAndArtsFavoriteArticles.data.removeAll()
@@ -222,27 +201,9 @@ class FavoriteViewModel: ObservableObject {
         
         if let data = await FavoriteService.getCultureAndArtsFavoriteList(page: state.cultureAndArtsFavoriteArticlePage) {
             if state.cultureAndArtsFavoriteArticlePage == 0 {
-                // 데이터를 변환하여 저장
-                state.cultureAndArtsFavoriteArticles = ArticleResponse(
-                    totalElements: data.data.totalElements,
-                    data: data.data.data.map { article in
-                        var modifiedArticle = article
-                        if article.category == .activity {
-                            modifiedArticle.category = .cultureAndArts // category를 변경
-                        }
-                        return modifiedArticle
-                    }
-                )
+                state.cultureAndArtsFavoriteArticles = data.data
             } else {
-                // 추가 데이터를 변환하여 저장
-                let newArticles = data.data.data.map { article in
-                    var modifiedArticle = article
-                    if article.category == .activity {
-                        modifiedArticle.category = .cultureAndArts // category를 변경
-                    }
-                    return modifiedArticle
-                }
-                state.cultureAndArtsFavoriteArticles.data.append(contentsOf: newArticles)
+                state.cultureAndArtsFavoriteArticles.data.append(contentsOf: data.data.data)
             }
             
             state.cultureAndArtsFavoriteArticlePage += 1

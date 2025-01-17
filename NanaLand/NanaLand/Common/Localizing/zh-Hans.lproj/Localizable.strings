@@ -496,6 +496,7 @@
 
 // MARK: - 신고하기
 "report" = "举报";
+"doReport" = "举报";
 "reportResult" = "举报内容符合运营政策。将在最多24小时内处理。";
 "reportReasonValidation" = "请写下至少20个字符的举报理由！"; // 신고 사유
 "reportCharacterPermission" = "内容可以写在 500 个字符以内。";// 내용 500자 이하

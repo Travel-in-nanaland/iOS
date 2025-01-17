@@ -505,6 +505,7 @@ enum LocalizedKey: String {
     
     //MARK: - 신고하기
     case report
+    case doReport
     case reportResult
     case reportReasonValidation // 신고 사유 20자 이상
     case reportCharacterPermission // 내용 500자 이하
