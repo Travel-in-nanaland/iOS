@@ -438,7 +438,9 @@ struct FestivalMainGridView: View {
 											}
 											.padding(.trailing, 8)
 										}
-                                        
+                                        Text(viewModel.state.getFestivalMainResponse.data[index].title)
+                                            .font(.body02_bold)
+                                            .padding(.bottom, 4)
                                         Text(viewModel.state.getFestivalMainResponse.data[index].period)
                                             .font(.caption)
                                             .padding(.bottom, 8)

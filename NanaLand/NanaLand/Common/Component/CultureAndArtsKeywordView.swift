@@ -133,7 +133,7 @@ struct CultureAndArtsKeywordView: View {
                 .font(.body_bold)
                 .padding(.trailing, 8)
             // 선택된 버튼의 개수 적용
-            Text("\(buttonsToggled.filter { $0 == true}.count) / \(CultureAndArtsKeywordArray.count)")
+            Text("(\(buttonsToggled.filter { $0 == true}.count) / \(CultureAndArtsKeywordArray.count))")
                 .font(.caption01)
                 .foregroundStyle(Color.gray1)
             Spacer()

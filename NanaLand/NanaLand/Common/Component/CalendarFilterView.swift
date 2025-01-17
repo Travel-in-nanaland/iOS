@@ -73,7 +73,7 @@ struct CalendarFilterView: View {
 			Spacer()
 			
 			VStack(spacing: 4) {
-				Text("\(calendarController.yearMonth.year.description)\(String(localized: "year"))")
+                Text("\(calendarController.yearMonth.year.description)\(LocalizedKey.year.localized(for: localizationManager.language))")
 					.font(.caption01_semibold)
 					.foregroundStyle(Color.main)
 				

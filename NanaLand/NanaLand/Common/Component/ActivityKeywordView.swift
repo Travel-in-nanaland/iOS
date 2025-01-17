@@ -130,7 +130,7 @@ struct ActivityKeywordView: View {
             Text(.keyword)
                 .font(.body_bold)
                 .padding(.trailing, 8)
-            Text("\(buttonsToggled.filter { $0 == true}.count) / \(ActivityKeywordArray.count)")
+            Text("(\(buttonsToggled.filter { $0 == true}.count) / \(ActivityKeywordArray.count))")
                 .font(.caption01)
                 .foregroundStyle(Color.gray1)
             Spacer()

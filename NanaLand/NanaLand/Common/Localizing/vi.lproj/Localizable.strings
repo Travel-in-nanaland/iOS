@@ -337,6 +337,7 @@
 "oct" = "OCT";
 "nov" = "NOV";
 "dec" = "DEC";
+"year" = "năm";
 
 // MARK: - 검색 결과 없을 시 뷰
 "noResult" = "Không có kết quả tìm kiếm tương ứng.";

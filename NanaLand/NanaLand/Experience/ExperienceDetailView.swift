@@ -250,7 +250,7 @@ struct ExperienceDetailView: View {
                                     if viewModel.state.getExperienceDetailResponse.address != "" {
                                         HStack(spacing: 10) {
                                             VStack(spacing: 0) {
-                                                Image("icPin")
+                                                Image("icDetailPin")
                                                     .renderingMode(.template)
                                                     .foregroundStyle(Color.main)
                                             }
@@ -269,7 +269,7 @@ struct ExperienceDetailView: View {
                                         let sanitizedNumber = viewModel.state.getExperienceDetailResponse.contact!.replacingOccurrences(of: "-", with: "")
                                         HStack(spacing: 10) {
                                             VStack(spacing: 0) {
-                                                Image("icPhone")
+                                                Image("icDetailPhone")
                                                     .renderingMode(.template)
                                                     .foregroundStyle(Color.main)
                                             }
@@ -277,9 +277,14 @@ struct ExperienceDetailView: View {
                                                 Text(.phoneNumber)
                                                     .font(.body02_bold)
                                                 Link(destination: URL(string: "tel://\(sanitizedNumber)")!, label: {
-                                                    Text(viewModel.state.getExperienceDetailResponse.contact ?? "")
-                                                        .underline()
-                                                        .font(.gothicNeo(.regular, size: 12))
+                                                    HStack(spacing: 0) {
+                                                        Text(viewModel.state.getExperienceDetailResponse.contact ?? "")
+                                                            .font(.gothicNeo(.regular, size: 12))
+                                                            .padding(.trailing, 2)
+                                                        Text(">")
+                                                            .font(.gothicNeo(.regular, size: 12))
+                                                    }
+                                              
                                                 })
                                             }
                                             Spacer()
@@ -290,7 +295,7 @@ struct ExperienceDetailView: View {
                                     if viewModel.state.getExperienceDetailResponse.time != "" {
                                         HStack(spacing: 10) {
                                             VStack(spacing: 0) {
-                                                Image("icClock")
+                                                Image("icDetailClock")
                                                     .renderingMode(.template)
                                                     .foregroundStyle(Color.main)
                                             }
@@ -309,7 +314,7 @@ struct ExperienceDetailView: View {
                                     if viewModel.state.getExperienceDetailResponse.homepage != "" {
                                         HStack(spacing: 10) {
                                             VStack(spacing: 0) {
-                                                Image("icHomepage")
+                                                Image("icDetailHomepage")
                                                     .renderingMode(.template)
                                                     .foregroundStyle(Color.main)
                                             }

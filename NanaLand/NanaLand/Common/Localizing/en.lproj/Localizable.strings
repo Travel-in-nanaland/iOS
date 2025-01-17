@@ -339,6 +339,7 @@ the market is the place!";
 "oct" = "OCT";
 "nov" = "NOV";
 "dec" = "DEC";
+"year" = "year";
 
 // MARK: - 검색 결과 없을 시 뷰
 "noResult" = "There are no results for that search.";

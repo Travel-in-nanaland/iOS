@@ -200,9 +200,14 @@ struct FestivalDetailView: View {
                                         Text(.phoneNumber)
                                             .font(.gothicNeo(.bold, size: 14))
                                         Link(destination: URL(string: "tel://\(sanitizedNumber)")!, label: {
-                                            Text(viewModel.state.getFestivalDetailResponse.contact)
-                                                .underline()
-                                                .font(.gothicNeo(.regular, size: 12))
+                                            HStack(spacing: 0) {
+                                                Text(viewModel.state.getFestivalDetailResponse.contact)
+                                                    .font(.gothicNeo(.regular, size: 12))
+                                                    .padding(.trailing, 2)
+                                                Text(">")
+                                                    .font(.gothicNeo(.regular, size: 12))
+                                            }
+                                   
                                         })
                                     }
                                     Spacer()
