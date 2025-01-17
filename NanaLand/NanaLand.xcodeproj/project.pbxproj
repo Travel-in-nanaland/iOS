@@ -876,6 +876,8 @@
 		2C3C75C32BCA54AB00312F26 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				BFABD3522BE7F9E100C3F3A6 /* SeasonModalView.swift */,
+				BFF5DA902BE809D100FD8764 /* LocationModalView.swift */,
 				BF30C7342C05B32F0084702F /* GifImageView.swift */,
 				BF2D937C2BFF3CEF0057381A /* AlertView.swift */,
 				2C1F31D42BCD2A870066819F /* NanaSearchBar.swift */,
@@ -1455,8 +1457,6 @@
 				BFABD3502BE7634100C3F3A6 /* FestivalModel.swift */,
 				BF607F142BF5A15E00770CE7 /* FestivalDetailModel.swift */,
 				BF9F029A2BD8F567003E72E6 /* NoResultView.swift */,
-				BFABD3522BE7F9E100C3F3A6 /* SeasonModalView.swift */,
-				BFF5DA902BE809D100FD8764 /* LocationModalView.swift */,
 			);
 			path = Festival;
 			sourceTree = "<group>";
