@@ -16,6 +16,7 @@ struct RestaurantDetailView: View {
     @State private var roundedHeight: CGFloat = (Constants.screenWidth - 40) * (224.0 / 358.0)
     var id: Int64
     @State private var isOn = false // 더보기 버튼 클릭 여부
+    @State private var isContentExpandable = false // content가 4줄 이상인지 여부
     @State private var contentIsOn = [false, false, false] // 댓글 더보기 버튼 클릭 여부(더 보기 클릭한 댓글만 라인 제한 풀기)
     @State private var isExpanded = false
     @State private var isAPICalled = false
@@ -89,6 +90,18 @@ struct RestaurantDetailView: View {
                                                         .font(.body02)
                                                         .lineLimit(4)
                                                         .lineSpacing(10)
+                                                        .background(GeometryReader { geometry in
+                                                            Color.clear.onAppear {
+                                                                let textHeight = estimateTextHeight(
+                                                                    text: viewModel.state.getRestaurantDetailResponse.content ?? "",
+                                                                    font: UIFont.systemFont(ofSize: UIFont.preferredFont(forTextStyle: .body).pointSize),
+                                                                    width: geometry.size.width
+                                                                )
+                                                                DispatchQueue.main.async {
+                                                                    isContentExpandable = textHeight > (4 * UIFont.preferredFont(forTextStyle: .body).lineHeight)
+                                                                }
+                                                            }
+                                                        })
                                                     
                                                     Spacer()
                                                 }
@@ -100,7 +113,7 @@ struct RestaurantDetailView: View {
                                                 HStack {
                                                     Spacer()
                                                     VStack {
-                                                        if viewModel.state.getRestaurantDetailResponse.content.count > 90 {
+                                                        if isContentExpandable {
                                                             Button {
                                                                 isOn.toggle()
                                                             } label: {
@@ -820,6 +833,18 @@ struct RestaurantDetailView: View {
     
     func getSafeArea() ->UIEdgeInsets  {
         return UIApplication.shared.windows.first?.safeAreaInsets ?? UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    
+    /// 텍스트 높이를 계산하는 메서드
+    func estimateTextHeight(text: String, font: UIFont, width: CGFloat) -> CGFloat {
+        let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
+        let boundingBox = text.boundingRect(
+            with: constraintRect,
+            options: .usesLineFragmentOrigin,
+            attributes: [.font: font],
+            context: nil
+        )
+        return boundingBox.height
     }
 }
 

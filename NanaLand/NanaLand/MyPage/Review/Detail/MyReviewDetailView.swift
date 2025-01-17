@@ -157,52 +157,243 @@ struct MyDetailReviewMainGridView: View {
                     .padding(.bottom, 5)
                 Text(reviewItemAddress)
                     .font(.body02)
-                    .padding(.bottom, 24)
+                    .padding(.bottom, Constants.screenWidth * (24 / 360))
                 
                 Rectangle()
                     .fill(Color.gray2)
-                    .frame(width: 64, height: 1)
-                    .padding(.bottom, 26)
+                    .frame(width: Constants.screenWidth * (64 / 360), height: 1)
+                    .padding(.bottom, Constants.screenWidth * (24 / 360))
                 
-                let selectRating1 = Text(.selectRating1).font(.body_bold).foregroundColor(.main)
-                let selectRating2 = Text(.selectRating2).font(.body_bold).foregroundColor(.black)
-                let selectRating3 = Text(.selectRating3).font(.body_bold).foregroundColor(.main)
-                let selectRating4 = Text(.selectRating4).font(.body_bold).foregroundColor(.black)
-                let selectRating = selectRating1 + selectRating2 + selectRating3 + selectRating4
-                
-                selectRating
+                if localizationManager.language == .korean {
+                    let selectRating = Text(.selectRating1).font(.body_bold).foregroundColor(.main) + Text(.selectRating2).font(.body_bold).foregroundColor(.black) + Text(.selectRating3).font(.body_bold).foregroundColor(.main) + Text(.selectRating4).font(.body_bold).foregroundColor(.black) + Text("!").font(.body_bold).foregroundColor(.black)
+                    
+                    HStack {
+                        selectRating
+                        
+                        Text("*")
+                            .font(.body_bold)
+                            .foregroundColor(.main)
+                            .padding(.bottom, 8)
+                            .padding(.leading, -4)
+                    }
+                    
+                } else {
+                    let selectRating = Text(.selectRating1).font(.body_bold).foregroundColor(.black) + Text(.selectRating2).font(.body_bold).foregroundColor(.main) + Text(.selectRating3).font(.body_bold).foregroundColor(.black) + Text(.selectRating4).font(.body_bold).foregroundColor(.main) +
+                        Text("!").font(.body_bold).foregroundColor(.black)
+                    
+                    HStack {
+                        selectRating
+                        
+                        Text("*")
+                            .font(.body_bold)
+                            .foregroundColor(.main)
+                            .padding(.bottom, 8)
+                            .padding(.leading, -4)
+                    }
+                    
+                            
+                        
+                }
                 
                 HStack {
                     ForEach(1...5, id: \.self) { number in
                         Image(number <= detailViewModel.state.editReviewDto.rating ? "icStarFill" : "icStar")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: 36)
+                            .frame(width: Constants.screenWidth * (25 / 360))
                             .onTapGesture {
                                 detailViewModel.state.editReviewDto.rating = number
                             }
                     }
                 }
-                .padding(.bottom, 24)
+                .padding(.bottom, Constants.screenWidth * (24 / 360))
                 
                 Rectangle()
                     .fill(Color.gray2)
-                    .frame(width: 64, height: 1)
-                    .padding(.bottom, 26)
+                    .frame(width: Constants.screenWidth * (64 / 360), height: 1)
+                    .padding(.bottom, Constants.screenWidth * (24 / 360))
                 
-                let visitReview1 = Text(.visitReview1).font(.body_bold).foregroundColor(.main)
-                let visitReview2 = Text(.visitReview2).font(.body_bold).foregroundColor(.black)
-                let visitReview3 = Text(.visitReview3).font(.body_bold).foregroundColor(.main)
-                let visitReview4 = Text(.visitReview4).font(.body_bold).foregroundColor(.black)
-                let visitReview = visitReview1 + visitReview2 + visitReview3 + visitReview4
+                if localizationManager.language == .korean {
+                    let addKeyword = Text(.addKeyword1).font(.body_bold).foregroundColor(.main) + Text(.addKeyword2).font(.body_bold).foregroundColor(.black) + Text(.addKeyword3).font(.body_bold).foregroundColor(.main) + Text(.addKeyword4).font(.body_bold).foregroundColor(.black) + Text("!").font(.body_bold).foregroundColor(.black)
+                    
+                    HStack {
+                        addKeyword
+                        
+                        Text("*")
+                            .font(.body_bold)
+                            .foregroundColor(.main)
+                            .padding(.bottom, 8)
+                            .padding(.leading, -4)
+                    }
+                    
+                } else {
+                    let addKeyword = Text(.addKeyword1).font(.body_bold).foregroundColor(.black) + Text(.addKeyword2).font(.body_bold).foregroundColor(.main) + Text(.addKeyword3).font(.body_bold).foregroundColor(.black) + Text(.addKeyword4).font(.body_bold).foregroundColor(.main) + Text("!").font(.body_bold).foregroundColor(.black)
+                    
+                    HStack {
+                        addKeyword
+                        
+                        Text("*")
+                            .font(.body_bold)
+                            .foregroundColor(.main)
+                            .padding(.bottom, 8)
+                            .padding(.leading, -4)
+                    }
+                }
                 
-                visitReview
+                VStack(alignment: .leading, spacing: 4) {
+                    HStack {
+                        
+                        if detailViewModel.selectedKeyword.count == 0 {
+                            Spacer()
+                        }
+                        
+                        NavigationLink {
+                            MyReviewDetailKeywordView(viewModel: detailViewModel)
+                        } label: {
+                            HStack {
+                                Text(.addKeyword)
+                                    .font(.body02)
+                                Image(systemName: "plus")
+                            }
+                            .padding(EdgeInsets(top: 6, leading: 12, bottom: 6, trailing: 12))
+                            .background(
+                                RoundedRectangle(cornerRadius: 50)
+                                    .stroke(Color.main, lineWidth: 1)
+                            )
+                            .foregroundColor(.main)
+                        }
+                        
+                        if detailViewModel.selectedKeyword.count != 0 {
+                            ReviewDetailTagView(tags: Array(detailViewModel.selectedKeyword.prefix(1)), keywordViewModel: detailViewModel, localizationManager: _localizationManager)
+                        }
+                        
+                        Spacer()
+                    }
+                    ReviewDetailTagView(tags: Array(detailViewModel.selectedKeyword.dropFirst()), keywordViewModel: detailViewModel, localizationManager: _localizationManager)
+                        .padding(.leading, -5)
+                }
+                .padding(.leading, Constants.screenWidth * (16 / 360))
+                .padding(.trailing, Constants.screenWidth * (16 / 360))
+                .padding(.bottom, Constants.screenWidth * (24 / 360))
+                
+                Rectangle()
+                    .fill(Color.gray2)
+                    .frame(width: Constants.screenWidth * (64 / 360), height: 1)
+                    .padding(.bottom, Constants.screenWidth * (24 / 360))
+                
+                
+                if localizationManager.language == .korean {
+                    let visitReview = Text(.visitReview1).font(.body_bold).foregroundColor(.main) + Text(.visitReview2).font(.body_bold).foregroundColor(.black) + Text(.visitReview3).font(.body_bold).foregroundColor(.main) + Text(.visitReview4).font(.body_bold).foregroundColor(.black) + Text("!").font(.body_bold).foregroundColor(.black)
+                    
+                    HStack {
+                        visitReview
+                        
+                        Text("*")
+                            .font(.body_bold)
+                            .foregroundColor(.main)
+                            .padding(.bottom, 8)
+                            .padding(.leading, -4)
+                    }
+                    
+                } else {
+                    let visitReview = Text(.visitReview1).font(.body_bold).foregroundColor(.black) + Text(.visitReview2).font(.body_bold).foregroundColor(.main) + Text(.visitReview3).font(.body_bold).foregroundColor(.black) + Text(.visitReview4).font(.body_bold).foregroundColor(.main) + Text("!").font(.body_bold).foregroundColor(.black)
+                    
+                    HStack {
+                        visitReview
+                        
+                        Text("*")
+                            .font(.body_bold)
+                            .foregroundColor(.main)
+                            .padding(.bottom, 8)
+                            .padding(.leading, -4)
+                    }
+                    
+                }
+                
+                ZStack(alignment: .topLeading) {
+                    
+                    TextEditor(text: $reviewContent)
+                        .font(.body02)
+                        .foregroundColor(.black)
+                        .padding(4)
+                        .background(Color.white)
+                        .cornerRadius(8)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(Color.gray2, lineWidth: 1)
+                        )
+                        .frame(height: 190)
+                        .onChange(of: reviewContent) { newValue in
+                            detailViewModel.state.editReviewDto.content = newValue
+                            print("\(newValue)")
+                            if newValue.count > 200 {
+                                reviewContent = String(newValue.prefix(200))
+                                toastMessage = "내용은 200자 이내로 작성 가능합니다"
+                                showToast = true
+                                print("200자 초과")
+                            }
+                        }
+                        .padding(.horizontal)
+                        .focused($isTextEditorFocused)
+                    
+                    if reviewContent == "" {
+                        Text(.writeContent)
+                            .font(.body02)
+                            .foregroundColor(.gray1)
+                            .padding(4)
+                            .padding(EdgeInsets(top: 8, leading: 20, bottom: 0, trailing: 0))
+                            .onTapGesture {
+                                isTextEditorFocused = true
+                            }
+                    }
+                }.padding(.bottom, Constants.screenWidth * (24 / 360))
+                
+                HStack {
+                    Spacer()
+                    Text("(\(reviewContent.count) / 200)")
+                        .font(.body02)
+                        .foregroundColor(.gray1)
+                        .padding(.top, Constants.screenWidth * (-60 / 360))
+                        .padding(.trailing, 30)
+                }
+                
+                Rectangle()
+                    .fill(Color.gray2)
+                    .frame(width: Constants.screenWidth * (64 / 360), height: 1)
+                    .padding(.bottom, Constants.screenWidth * (24 / 360))
+                
+                if localizationManager.language == .korean {
+                    let addPhoto = Text(.addPhoto1).font(.body_bold).foregroundColor(.main) + Text(.addPhoto2).font(.body_bold).foregroundColor(.black) + Text(.addPhoto3).font(.body_bold).foregroundColor(.main) + Text(.addPhoto4).font(.body_bold).foregroundColor(.black) + Text("!").font(.body_bold).foregroundColor(.black)
+                    
+                    HStack {
+                        addPhoto
+                        
+                        Text("*")
+                            .font(.body_bold)
+                            .foregroundColor(.main)
+                            .padding(.bottom, 8)
+                            .padding(.leading, -4)
+                    }
+                    
+                } else {
+                    let addPhoto = Text(.addPhoto1).font(.body_bold).foregroundColor(.black) + Text(.addPhoto2).font(.body_bold).foregroundColor(.main) + Text(.addPhoto3).font(.body_bold).foregroundColor(.black) + Text(.addPhoto4).font(.body_bold).foregroundColor(.main) + Text("!").font(.body_bold).foregroundColor(.black)
+                    
+                    HStack {
+                        addPhoto
+                        
+                        Text("*")
+                            .font(.body_bold)
+                            .foregroundColor(.main)
+                            .padding(.bottom, 8)
+                            .padding(.leading, -4)
+                    }
+                }
                 
                 HStack {
                     ZStack {
                         Rectangle()
                             .fill(Color.gray2)
-                            .frame(width: 80, height: 80)
+                            .frame(width: Constants.screenWidth * (80 / 360), height: Constants.screenWidth * (80 / 360))
                             .cornerRadius(8)
                         
                         PhotosPicker(
@@ -287,80 +478,7 @@ struct MyDetailReviewMainGridView: View {
                         }
                     }
                 }
-                .padding(EdgeInsets(top: 0, leading: 20, bottom: 5, trailing: 20))
-                
-                ZStack(alignment: .topLeading) {
-                    
-                    TextEditor(text: $reviewContent)
-                        .font(.body02)
-                        .foregroundColor(.black)
-                        .padding(4)
-                        .background(Color.white)
-                        .cornerRadius(8)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 8)
-                                .stroke(Color.gray, lineWidth: 1)
-                        )
-                        .frame(height: 190)
-                        .onChange(of: reviewContent) { newValue in
-                            detailViewModel.state.editReviewDto.content = newValue
-                            print("\(newValue)")
-                            if newValue.count > 200 {
-                                reviewContent = String(newValue.prefix(200))
-                                toastMessage = "내용은 200자 이내로 작성 가능합니다"
-                                showToast = true
-                                print("200자 초과")
-                            }
-                        }
-                        .padding(.horizontal)
-                        .focused($isTextEditorFocused)
-                    
-                    if reviewContent == "" {
-                        Text(.writeContent)
-                            .font(.body02)
-                            .foregroundColor(.gray1)
-                            .padding(4)
-                            .padding(EdgeInsets(top: 8, leading: 20, bottom: 0, trailing: 0))
-                            .onTapGesture {
-                                isTextEditorFocused = true
-                            }
-                    }
-                }
-                
-                HStack {
-                    Spacer()
-                    Text("(\(reviewContent.count) / 200)")
-                        .font(.body02)
-                        .foregroundColor(.gray)
-                        .padding(.trailing, 16)
-                }
-                
-                VStack(alignment: .leading, spacing: 4) {
-                    HStack {
-                        NavigationLink {
-                            MyReviewDetailKeywordView(viewModel: detailViewModel)
-                        } label: {
-                            HStack {
-                                Text(.addKeyword)
-                                    .font(.body02)
-                                Image(systemName: "plus")
-                            }
-                            .padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
-                            .background(
-                                RoundedRectangle(cornerRadius: 50)
-                                    .stroke(Color.main, lineWidth: 1)
-                            )
-                            .foregroundColor(.main)
-                        }
-                        
-                        ReviewDetailTagView(tags: Array(detailViewModel.selectedKeyword.prefix(1)), keywordViewModel: detailViewModel, localizationManager: _localizationManager)
-                        
-                        Spacer()
-                    }
-                    ReviewDetailTagView(tags: Array(detailViewModel.selectedKeyword.dropFirst()), keywordViewModel: detailViewModel, localizationManager: _localizationManager)
-                        .padding(.leading, -5)
-                }
-                .padding()
+                .padding(EdgeInsets(top: 0, leading: Constants.screenWidth * (16 / 360), bottom: Constants.screenWidth * (24 / 360), trailing: Constants.screenWidth * (16 / 360)))
                 
                 ZStack {
                     RoundedRectangle(cornerRadius: 50)

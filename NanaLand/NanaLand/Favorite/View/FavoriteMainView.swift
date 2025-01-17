@@ -42,7 +42,7 @@ struct FavoriteMainView: View {
                 ForEach(tabs, id: \.self) { tab in
                     VStack(spacing: 0) {
                         Text(tab.localizedName)
-                            .font(.gothicNeo(tab == currentTab ? .semibold : .medium, size: 12))
+                            .font(tab == currentTab ? .body02_semibold : .body02)
                             .foregroundStyle(Color.baseBlack)
                             .padding(.horizontal, 16)
                             .padding(.vertical, 8)

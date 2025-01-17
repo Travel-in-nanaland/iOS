@@ -14,6 +14,7 @@ struct ExperienceDetailView: View {
     @StateObject var viewModel = ExperienceDetailViewModel()
     @StateObject var userProfileViewModel = UserProfileMainViewModel()
     @State private var isOn = false // 더보기 버튼 클릭 여부
+    @State private var isContentExpandable = false // content가 4줄 이상인지 여부
     @State private var contentIsOn = [false, false, false] // 댓글 더보기 버튼 클릭 여부(더 보기 클릭한 댓글만 라인 제한 풀기)
     @State private var isAPICall = false
     @State private var roundedHeight: CGFloat = (Constants.screenWidth - 40) * (224.0 / 358.0)
@@ -37,9 +38,9 @@ struct ExperienceDetailView: View {
                     NanaNavigationBar(title: .activity, showBackButton: true)
                         .frame(height: 56)
                 }
-               
+                
                 HStack(spacing: 0) {
-
+                    
                     Spacer()
                     ShareLink(item: DeepLinkManager.shared.makeLink(category: .activity, id: Int(viewModel.state.getExperienceDetailResponse.id ?? 0)), label: {
                         Image("icShare2")
@@ -47,7 +48,7 @@ struct ExperienceDetailView: View {
                     })
                 }
             }
-           
+            
             ZStack {
                 ScrollViewReader { proxyReader in
                     
@@ -58,7 +59,7 @@ struct ExperienceDetailView: View {
                                     .resizable()
                                     .frame(width: Constants.screenWidth, height: Constants.screenWidth * (26 / 39))
                                     .padding(.bottom, Constants.screenWidth * (24 / 360))
-
+                                
                                 ZStack(alignment: .center) {
                                     if !isOn { // 더보기 버튼이 안 눌렸을 때
                                         VStack(spacing: 0) {
@@ -104,20 +105,33 @@ struct ExperienceDetailView: View {
                                                 .lineSpacing(10)
                                                 .padding(.leading, Constants.screenWidth * (16 / 360))
                                                 .padding(.trailing, Constants.screenWidth * (16 / 360))
-
+                                                .background(GeometryReader { geometry in
+                                                    Color.clear.onAppear {
+                                                        let textHeight = estimateTextHeight(
+                                                            text: viewModel.state.getExperienceDetailResponse.content ?? "",
+                                                            font: UIFont.systemFont(ofSize: UIFont.preferredFont(forTextStyle: .body).pointSize),
+                                                            width: geometry.size.width
+                                                        )
+                                                        DispatchQueue.main.async {
+                                                            isContentExpandable = textHeight > (4 * UIFont.preferredFont(forTextStyle: .body).lineHeight)
+                                                        }
+                                                    }
+                                                })
+                                            
                                             Spacer()
                                             
                                             HStack {
                                                 Spacer()
                                                 VStack {
-                                                    Button {
-                                                        isOn.toggle()
-                                                    } label: {
-                                                        Text(.unfoldView)
-                                                            .foregroundStyle(Color.gray1)
-                                                            .font(.gothicNeo(.regular, size: 12))
+                                                    if isContentExpandable {
+                                                        Button {
+                                                            isOn.toggle()
+                                                        } label: {
+                                                            Text(.unfoldView)
+                                                                .foregroundStyle(Color.gray1)
+                                                                .font(.gothicNeo(.regular, size: 12))
+                                                        }
                                                     }
-                                                    
                                                 }
                                                 .padding(.trailing, Constants.screenWidth * (16 / 360))
                                                 .padding(.top, Constants.screenWidth * (16 / 360))
@@ -130,7 +144,7 @@ struct ExperienceDetailView: View {
                                         .background(){
                                             RoundedRectangle(cornerRadius: 12)
                                                 .fill(Color.white)
-                                                .frame(width: Constants.screenWidth * (328/360), height: Constants.screenWidth * (220 / 360))
+                                                .frame(width: Constants.screenWidth * (328/360))
                                                 .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
                                         }
                                     }
@@ -223,7 +237,7 @@ struct ExperienceDetailView: View {
                                                 Text(.BriefExplanation)
                                                     .foregroundStyle(Color.main)
                                                     .font(.body02_bold)
-                                               
+                                                
                                                 Spacer()
                                             }
                                             .padding(.leading, 20)
@@ -237,14 +251,14 @@ struct ExperienceDetailView: View {
                                             }
                                             .padding(.leading, 20)
                                             .padding(.bottom, 16)
-                                         
+                                            
                                             
                                         }
                                         .frame(width: Constants.screenWidth - 40)
                                         .background(
                                             RoundedRectangle(cornerRadius: 12) // 코너 반경을 설정하세요
                                                 .fill(Color.main10P) // 배경 색상을 설정하세요
-                                               
+                                            
                                         )
                                     }
                                     if viewModel.state.getExperienceDetailResponse.address != "" {
@@ -264,7 +278,7 @@ struct ExperienceDetailView: View {
                                         }
                                         .frame(width: Constants.screenWidth - 40, height: (Constants.screenWidth - 40) * (42 / 358))
                                     }
-                                  
+                                    
                                     if viewModel.state.getExperienceDetailResponse.contact != "" {
                                         let sanitizedNumber = viewModel.state.getExperienceDetailResponse.contact!.replacingOccurrences(of: "-", with: "")
                                         HStack(spacing: 10) {
@@ -284,7 +298,7 @@ struct ExperienceDetailView: View {
                                                         Text(">")
                                                             .font(.gothicNeo(.regular, size: 12))
                                                     }
-                                              
+                                                    
                                                 })
                                             }
                                             Spacer()
@@ -310,7 +324,7 @@ struct ExperienceDetailView: View {
                                         }
                                         .frame(width: Constants.screenWidth - 40)
                                     }
-                              
+                                    
                                     if viewModel.state.getExperienceDetailResponse.homepage != "" {
                                         HStack(spacing: 10) {
                                             VStack(spacing: 0) {
@@ -332,7 +346,7 @@ struct ExperienceDetailView: View {
                                         .frame(width: Constants.screenWidth - 40)
                                         .padding(.bottom, 32)
                                     }
-
+                                    
                                     Button {
                                         print(viewModel.state.getExperienceDetailResponse.id!)
                                         print(AppState.shared.navigationPath.count)
@@ -532,7 +546,7 @@ struct ExperienceDetailView: View {
                                                             Text("\(viewModel.state.getReviewDataResponse.data[index].createdAt ?? "")")
                                                                 .font(.caption01)
                                                                 .foregroundStyle(Color.gray1)
-
+                                                            
                                                         }
                                                         .padding(.trailing, 16)
                                                         .padding(.bottom, 16)
@@ -597,7 +611,7 @@ struct ExperienceDetailView: View {
                                                                         } label: {
                                                                             Image(viewModel.state.getReviewDataResponse.data[index].reviewHeart == true ? "icReviewHeartMain" : "icReviewHeart")
                                                                         }
-
+                                                                        
                                                                         
                                                                         Text("\(viewModel.state.getReviewDataResponse.data[index].heartCount)")
                                                                             .font(.caption01)
@@ -663,7 +677,7 @@ struct ExperienceDetailView: View {
                                                             Button {
                                                                 reportModal = true
                                                                 idx = viewModel.state.getReviewDataResponse.data[index].id
-                                                     
+                                                                
                                                             } label: {
                                                                 Text(.doReport)
                                                                     .font(.caption02)
@@ -766,7 +780,7 @@ struct ExperienceDetailView: View {
                     switch viewType {
                     case let .reportInfo(id, category):
                         ReportInfoMainView(id: id, category: category)
-                    
+                        
                     }
                 }
                 VStack(spacing: 0) {
@@ -796,12 +810,12 @@ struct ExperienceDetailView: View {
                             AppState.shared.navigationPath.append(ExperienceViewType.writeReview)
                         } label: {
                             Text(.writeReview)
-//                                .padding(.leading, (Constants.screenWidth) * (96 / 360))
-//                                .padding(.trailing, (Constants.screenWidth) * (96 / 360))
+                            //                                .padding(.leading, (Constants.screenWidth) * (96 / 360))
+                            //                                .padding(.trailing, (Constants.screenWidth) * (96 / 360))
                                 .font(.body_bold)
                                 .foregroundStyle(Color.white)
                                 .background(RoundedRectangle(cornerRadius: 50).foregroundStyle(Color.main).frame(width: Constants.screenWidth * (28 / 36), height: 40))
-                                
+                            
                         }
                         .frame(width: Constants.screenWidth * (28 / 36), height: 40)
                         .padding(.trailing, 16)
@@ -884,6 +898,18 @@ struct ExperienceDetailView: View {
     
     func getSafeArea() ->UIEdgeInsets  {
         return UIApplication.shared.windows.first?.safeAreaInsets ?? UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    
+    /// 텍스트 높이를 계산하는 메서드
+    func estimateTextHeight(text: String, font: UIFont, width: CGFloat) -> CGFloat {
+        let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
+        let boundingBox = text.boundingRect(
+            with: constraintRect,
+            options: .usesLineFragmentOrigin,
+            attributes: [.font: font],
+            context: nil
+        )
+        return boundingBox.height
     }
 }
 
