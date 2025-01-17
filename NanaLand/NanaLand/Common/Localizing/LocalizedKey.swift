@@ -385,10 +385,18 @@ enum LocalizedKey: String {
     case selectRating2
     case selectRating3
     case selectRating4
+    case addKeyword1
+    case addKeyword2
+    case addKeyword3
+    case addKeyword4
     case visitReview1
     case visitReview2
     case visitReview3
     case visitReview4
+    case addPhoto1
+    case addPhoto2
+    case addPhoto3
+    case addPhoto4
     case writeContent
     case addKeyword
     case upload
