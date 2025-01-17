@@ -259,9 +259,14 @@ struct RestaurantDetailView: View {
                                                     Text(.phoneNumber)
                                                         .font(.body02_bold)
                                                     Link(destination: URL(string: "tel://\(sanitizedNumber)")!, label: {
-                                                        Text(viewModel.state.getRestaurantDetailResponse.contact!)
-                                                            .underline()
-                                                            .font(.gothicNeo(.regular, size: 12))
+                                                        HStack(spacing: 0) {
+                                                            Text(viewModel.state.getRestaurantDetailResponse.contact!)
+                                                                .font(.gothicNeo(.regular, size: 12))
+                                                                .padding(.trailing, 2)
+                                                            Text(">")
+                                                                .font(.gothicNeo(.regular, size: 12))
+                                                        }
+                                           
                                                     })
                                                     Spacer()
                                                 }

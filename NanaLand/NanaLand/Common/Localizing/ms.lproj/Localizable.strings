@@ -328,6 +328,7 @@ Telah Berakhir";
 "oct" = "OKT";
 "nov" = "NOV";
 "dec" = "DIS";
+"year" = "tahun";
 
 // MARK: - 검색 결과 없을 시 뷰
 "noResult" = "Carian anda tidak

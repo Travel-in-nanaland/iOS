@@ -198,9 +198,10 @@ struct NatureDetailView: View {
                             if viewModel.state.getNatureDetailResponse.address != "" {
                                 HStack(spacing: 10) {
                                     VStack(spacing: 0) {
-                                        Image("icPin")
+                                        Image("icDetailPin")
                                             .renderingMode(.template)
                                             .foregroundStyle(Color.main)
+                                            .frame(width: 24, height: 24)
                                     }
                                     
                                     VStack(alignment: .leading, spacing: 0) {
@@ -218,18 +219,24 @@ struct NatureDetailView: View {
                                 let sanitizedNumber = viewModel.state.getNatureDetailResponse.contact.replacingOccurrences(of: "-", with: "")
                                 HStack(spacing: 10) {
                                     VStack(spacing: 0) {
-                                        Image("icPhone")
+                                        Image("icDetailPhone")
                                             .renderingMode(.template)
                                             .foregroundStyle(Color.main)
+                                   
                                     }
                                     
                                     VStack(alignment: .leading, spacing: 0) {
                                         Text(.phoneNumber)
                                             .font(.gothicNeo(.bold, size: 14))
                                         Link(destination: URL(string: "tel://\(sanitizedNumber)")!, label: {
-                                            Text(viewModel.state.getNatureDetailResponse.contact)
-                                                .underline()
-                                                .font(.gothicNeo(.regular, size: 12))
+                                            HStack(spacing: 0) {
+                                                Text(viewModel.state.getNatureDetailResponse.contact)
+                                                    .font(.gothicNeo(.regular, size: 12))
+                                                    .padding(.trailing, 2)
+                                                Text(">")
+                                                    .font(.gothicNeo(.regular, size: 12))
+                                            }
+                             
                                         })
                                     }
                                     Spacer()
@@ -240,9 +247,10 @@ struct NatureDetailView: View {
                             if viewModel.state.getNatureDetailResponse.time != "" {
                                 HStack(spacing: 10) {
                                     VStack(spacing: 0) {
-                                        Image("icClock")
+                                        Image("icDetailClock")
                                             .renderingMode(.template)
                                             .foregroundStyle(Color.main)
+                                 
                                         Spacer()
                                     }
                                     
@@ -299,9 +307,10 @@ struct NatureDetailView: View {
                             if viewModel.state.getNatureDetailResponse.amenity != "" {
                                 HStack(spacing: 10) {
                                     VStack(spacing: 0) {
-                                        Image("icFacility")
+                                        Image("icDetailFacility")
                                             .renderingMode(.template)
                                             .foregroundStyle(Color.main)
+                                    
                                         Spacer()
                                     }
                                     

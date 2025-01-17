@@ -172,7 +172,7 @@ struct ShopDetailView: View {
                         VStack(spacing: 24) {
                             HStack(spacing: 10) {
                                 VStack(spacing: 0) {
-                                    Image("icPin")
+                                    Image("icDetailPin")
                                         .renderingMode(.template)
                                         .foregroundStyle(Color.main)
                                     Spacer()
@@ -193,7 +193,7 @@ struct ShopDetailView: View {
                                 let sanitizedNumber = viewModel.state.getShopDetailResponse.contact.replacingOccurrences(of: "-", with: "")
                                 HStack(spacing: 10) {
                                     VStack(spacing: 0) {
-                                        Image("icPhone")
+                                        Image("icDetailPhone")
                                             .renderingMode(.template)
                                             .foregroundStyle(Color.main)
                                         Spacer()
@@ -203,9 +203,14 @@ struct ShopDetailView: View {
                                         Text(.phoneNumber)
                                             .font(.gothicNeo(.bold, size: 14))
                                         Link(destination: URL(string: "tel://\(sanitizedNumber)")!, label: {
-                                            Text(viewModel.state.getShopDetailResponse.contact)
-                                                .underline()
-                                                .font(.gothicNeo(.regular, size: 12))
+                                            HStack(spacing: 0) {
+                                                Text(viewModel.state.getShopDetailResponse.contact)
+                                                    .font(.gothicNeo(.regular, size: 12))
+                                                    .padding(.trailing, 2)
+                                                Text(">")
+                                                    .font(.gothicNeo(.regular, size: 12))
+                                            }
+                                 
                                         })
                                         
                                     }
@@ -217,7 +222,7 @@ struct ShopDetailView: View {
                             
                             HStack(spacing: 10) {
                                 VStack(spacing: 0) {
-                                    Image("icClock")
+                                    Image("icDetailClock")
                                         .renderingMode(.template)
                                         .foregroundStyle(Color.main)
                                     Spacer()
@@ -236,7 +241,7 @@ struct ShopDetailView: View {
                             
                             HStack(spacing: 10) {
                                 VStack(spacing: 0) {
-                                    Image("icFacility")
+                                    Image("icDetailFacility")
                                         .renderingMode(.template)
                                         .foregroundStyle(Color.main)
                                     Spacer()
@@ -254,7 +259,7 @@ struct ShopDetailView: View {
                             
                             HStack(spacing: 10) {
                                 VStack(spacing: 0) {
-                                    Image("icHomepage")
+                                    Image("icDetailHomepage")
                                         .renderingMode(.template)
                                         .foregroundStyle(Color.main)
                                     Spacer()

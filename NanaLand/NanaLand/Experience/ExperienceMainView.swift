@@ -12,19 +12,28 @@ struct ExperienceMainView: View {
     @State var tabIndex = 0
     var body: some View {
         VStack {
-            NanaNavigationBar(title: .experience, showBackButton: true)
-                .frame(height: 56)
-                .padding(.bottom, 10)
-            
+//            NanaNavigationBar(title: .experience, showBackButton: true)
+//                .frame(height: 56)
+//                .padding(.bottom, 10)
+//            
 //            ExperienceTabBarView(currentTab: $tabIndex)
 //                .padding(.bottom, 12)
             
             switch tabIndex {
             case 0: // 액티비티 일 경우
+                NanaNavigationBar(title: .activity, showBackButton: true)
+                    .frame(height: 56)
+                    .padding(.bottom, 10)
                 ExperienceMainGridView(experienceType: "Activity")
             case 1: // 문화예술 일 경우
+                NanaNavigationBar(title: .cultureAndArts, showBackButton: true)
+                    .frame(height: 56)
+                    .padding(.bottom, 10)
                 ExperienceMainGridView(experienceType: "CultureArts")
             default:
+                NanaNavigationBar(title: .activity, showBackButton: true)
+                    .frame(height: 56)
+                    .padding(.bottom, 10)
                 ExperienceMainGridView()
             }
   
