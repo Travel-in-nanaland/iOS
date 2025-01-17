@@ -498,6 +498,7 @@ mengembalikan sebarang hasil.";
 
 // MARK: - 신고
 "report" = "Laporan";
+"doReport" = "Lapor";
 "reportResult" = "Kandungan yang dilaporkan akan diproses dalam /ntempoh maksimum 24 jam mengikut dasar operasi.";
 "reportReasonValidation" = "Sila tulis sebab laporan anda dalam sekurang-kurangnya 20 aksara!"; // 신고 사유
 "reportCharacterPermission" = "Kandungan boleh ditulis dalam 500 aksara atau kurang.";// 내용 500자 이하

@@ -59,9 +59,9 @@ struct FavoriteArticle: Codable {
             switch categoryString {
             case "NATURE":
                 return .nature
-            case "EXPERIENCE":
+            case "ACTIVITY":
                 return .activity
-            case "EXPERIENCE":
+            case "CULTURE_AND_ARTS":
                 return .cultureAndArts
             case "FESTIVAL":
                 return .festival

@@ -497,6 +497,7 @@ the market is the place!";
 
 //MARK: - 신고하기
 "report" = "report";
+"doReport" = "Report";
 "reportResult" = "The reported contents are in accordance with the operating policy.It will be processed within a maximum of 24 hours.";
 "reportReasonValidation" = "Please write the reason for your report in at least 20 characters!"; // 신고 사유
 "reportCharacterPermission" = "Content can be written in 500 characters or less.";// 내용 500자 이하

@@ -356,9 +356,47 @@ struct HomeMainView: View {
                                     .frame(width: 160)
                                 }
                                 
-                            case "EXPERIENCE":
+                            case "ACTIVITY":
                                 Button {
-                                    AppState.shared.navigationPath.append(HomeViewType.experienceDetail(id: Int(article.id)))
+                                    AppState.shared.navigationPath.append(HomeViewType.activityDetail(id: Int(article.id)))
+                                } label: {
+                                    VStack(alignment: .leading, spacing: 8) {
+                                        ZStack {
+                                            KFImage(URL(string: article.firstImage.thumbnailUrl)!)
+                                                .resizable()
+                                                .frame(height: (Constants.screenWidth - 40) / 2 * (118 / 160))
+                                                .clipShape(RoundedRectangle(cornerRadius: 12))
+                                            VStack(spacing: 0) {
+                                                Spacer()
+                                                
+                                                HStack(spacing: 0) {
+                                                    Spacer()
+                                                    
+                                                    Button {
+                                                        Task {
+                                                            await toggleFavorite(body: FavoriteToggleRequest(id: Int(article.id), category: .activity), index: index)
+                                                        }
+                                                    } label: {
+                                                        article.favorite ? Image("icHeart_Fill") : Image("icHeart_Blank")
+                                                    }
+                                                }
+                                                .padding(.bottom, 8)
+                              
+                                            }
+                                            .padding(.trailing, 8)
+                                        }
+                                        
+                                        Text(article.title)
+                                            .font(.gothicNeo(size: 14, font: "bold"))
+                                            .multilineTextAlignment(.leading)
+                                            .lineLimit(1)
+                                    }
+                                    .frame(width: 160)
+                                }
+                                
+                            case "CULTURE_AND_ARTS":
+                                Button {
+                                    AppState.shared.navigationPath.append(HomeViewType.cultureAndArtsDetail(id: Int(article.id)))
                                 } label: {
                                     VStack(alignment: .leading, spacing: 8) {
                                         ZStack {
@@ -481,8 +519,10 @@ struct HomeMainView: View {
                                 AppState.shared.navigationPath.append(HomeViewType.festivalDetail(id: Int(data.id)))
                             case "MARKET":
                                 AppState.shared.navigationPath.append(HomeViewType.shopDetail(id: Int(data.id)))
-                            case "EXPERIENCE":
-                                AppState.shared.navigationPath.append(HomeViewType.experienceDetail(id: Int(data.id)))
+                            case "ACTIVITY":
+                                AppState.shared.navigationPath.append(HomeViewType.activityDetail(id: Int(data.id)))
+                            case "CULTURE_AND_ARTS":
+                                AppState.shared.navigationPath.append(HomeViewType.cultureAndArtsDetail(id: Int(data.id)))
                             case "RESTAURANT":
                                 AppState.shared.navigationPath.append(HomeViewType.restaurantDetail(id: Int(data.id)))
                             default:
@@ -591,8 +631,6 @@ struct HomeMainView: View {
                 FestivalMainView()
             case .shop:
                 ShopMainView()
-            case .experience:
-                ExperienceMainView()
             case .activity:
                 ExperienceMainView(tabIndex: 0)
             case .cultureAndArts:
@@ -607,8 +645,10 @@ struct HomeMainView: View {
                 FestivalDetailView(id: Int64(id))
             case let .natureDetail(id):
                 NatureDetailView(id: Int64(id))
-            case let .experienceDetail(id):
-                ExperienceDetailView(id: Int64(id))
+            case let .activityDetail(id):
+                ExperienceDetailView(id: Int64(id), experienceType: "Activity")
+            case let .cultureAndArtsDetail(id):
+                ExperienceDetailView(id: Int64(id), experienceType: "CultureArts")
             case let .restaurantDetail(id):
                 RestaurantDetailView(id: Int64(id))
             case .notification:
