@@ -33,11 +33,17 @@ struct SearchService {
 		return mapSearchDetailArticleToArticle(response, category: .festival)
 	}
 	
-	static func searchExperienceCategory(term: String, page: Int) async -> OldBaseResponse<ArticleResponse>? {
-		let response: OldBaseResponse<SearchDetailCategoryResponse>? = await NetworkManager.shared.request(SearchEndPoint.getSearchExperienceCategory(term: term, page: page))
+	static func searchActivityCategory(term: String, page: Int) async -> OldBaseResponse<ArticleResponse>? {
+		let response: OldBaseResponse<SearchDetailCategoryResponse>? = await NetworkManager.shared.request(SearchEndPoint.getSearchActivityCategory(term: term, page: page))
 		
-		return mapSearchDetailArticleToArticle(response, category: .experience)
+		return mapSearchDetailArticleToArticle(response, category: .activity)
 	}
+    
+    static func searchCultureAndArtsCategory(term: String, page: Int) async -> OldBaseResponse<ArticleResponse>? {
+        let response: OldBaseResponse<SearchDetailCategoryResponse>? = await NetworkManager.shared.request(SearchEndPoint.getSearchCultureAndArtsCategory(term: term, page: page))
+        
+        return mapSearchDetailArticleToArticle(response, category: .cultureAndArts)
+    }
 	
 	static func searchNanaCategory(term: String, page: Int) async -> OldBaseResponse<ArticleResponse>? {
 		let response: OldBaseResponse<SearchDetailCategoryResponse>? = await NetworkManager.shared.request(SearchEndPoint.getSearchNanaCategory(term: term, page: page))
@@ -74,9 +80,13 @@ struct SearchService {
 			return Article(from: $0, category: .nature)
 		})
 		
-		let experienceArticles = response.data.experience.data.map({
-			return Article(from: $0, category: .experience)
+		let activityArticles = response.data.activity.data.map({
+			return Article(from: $0, category: .activity)
 		})
+        
+        let cultureAndArtsArticles = response.data.cultureAndArts.data.map({
+            return Article(from: $0, category: .cultureAndArts)
+        })
 		
 		let marketArticles = response.data.market.data.map({
 			return Article(from: $0, category: .market)
@@ -99,10 +109,14 @@ struct SearchService {
 				totalElements: response.data.nature.totalElements,
 				data: natureArticles
 			),
-			experience: ArticleResponse(
-				totalElements: response.data.experience.totalElements,
-				data: experienceArticles
+			activity: ArticleResponse(
+				totalElements: response.data.activity.totalElements,
+				data: activityArticles
 			),
+            cultureAndArts: ArticleResponse(
+                totalElements: response.data.cultureAndArts.totalElements,
+                data: cultureAndArtsArticles
+            ),
 			market: ArticleResponse(
 				totalElements: response.data.market.totalElements,
 				data: marketArticles

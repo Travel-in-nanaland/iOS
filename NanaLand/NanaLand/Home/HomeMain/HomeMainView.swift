@@ -176,7 +176,7 @@ struct HomeMainView: View {
                         
                         // 문화예술 link
                         Button(action: {
-                            AppState.shared.navigationPath.append(HomeViewType.cultureAndArt)
+                            AppState.shared.navigationPath.append(HomeViewType.cultureAndArts)
                         }, label: {
                             VStack(spacing: 0) {
                                 RoundedRectangle(cornerRadius: 10)
@@ -374,7 +374,7 @@ struct HomeMainView: View {
                                                     
                                                     Button {
                                                         Task {
-                                                            await toggleFavorite(body: FavoriteToggleRequest(id: Int(article.id), category: .experience), index: index)
+                                                            await toggleFavorite(body: FavoriteToggleRequest(id: Int(article.id), category: .activity), index: index)
                                                         }
                                                     } label: {
                                                         article.favorite ? Image("icHeart_Fill") : Image("icHeart_Blank")
@@ -525,8 +525,10 @@ struct HomeMainView: View {
                                                     await hotToggleFavorite(body: FavoriteToggleRequest(id: Int(data.id), category: .festival), index: index)
                                                 case "MARKET":
                                                     await hotToggleFavorite(body: FavoriteToggleRequest(id: Int(data.id), category: .market), index: index)
-                                                case "EXPERIENCE":
-                                                    await hotToggleFavorite(body: FavoriteToggleRequest(id: Int(data.id), category: .experience), index: index)
+                                                case "ACTIVITY":
+                                                    await hotToggleFavorite(body: FavoriteToggleRequest(id: Int(data.id), category: .activity), index: index)
+                                                case "CULTURE_AND_ARTS":
+                                                    await hotToggleFavorite(body: FavoriteToggleRequest(id: Int(data.id), category: .cultureAndArts), index: index)
                                                 case "RESTAURANT":
                                                     await hotToggleFavorite(body: FavoriteToggleRequest(id: Int(data.id), category: .restaurant), index: index)
                                                 default:
@@ -593,7 +595,7 @@ struct HomeMainView: View {
                 ExperienceMainView()
             case .activity:
                 ExperienceMainView(tabIndex: 0)
-            case .cultureAndArt:
+            case .cultureAndArts:
                 ExperienceMainView(tabIndex: 1)
             case .nanapick:
                 NanapickMainView()

@@ -14,7 +14,7 @@ enum HomeViewType: Hashable {
 	case shop
 	case experience // 액티비티와 문화예술로 나뉘어짐
     case activity
-    case cultureAndArt
+    case cultureAndArts
 	case nanapick
 	case natureDetail(id: Int)
 	case shopDetail(id: Int)

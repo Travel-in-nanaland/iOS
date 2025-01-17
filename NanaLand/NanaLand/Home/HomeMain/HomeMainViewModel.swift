@@ -75,8 +75,15 @@ class HomeMainViewModel: ObservableObject {
                         state.getRecommendResponse[index].favorite = response!.data.favorite
                     }
                 }
-            case "EXPERIENCE":
-                let response = await FavoriteService.toggleFavorite(id: body.id, category: .experience)
+            case "ACTIVITY":
+                let response = await FavoriteService.toggleFavorite(id: body.id, category: .activity)
+                if response != nil {
+                    await MainActor.run {
+                        state.getRecommendResponse[index].favorite = response!.data.favorite
+                    }
+                }
+            case "CULTURE_AND_ARTS":
+                let response = await FavoriteService.toggleFavorite(id: body.id, category: .activity)
                 if response != nil {
                     await MainActor.run {
                         state.getRecommendResponse[index].favorite = response!.data.favorite
@@ -124,8 +131,14 @@ class HomeMainViewModel: ObservableObject {
                         state.getHotResponse[index].favorite = response.data.favorite
                     }
                 }
-            case "EXPERIENCE":
-                if let response = await FavoriteService.toggleFavorite(id: body.id, category: .experience) {
+            case "ACTIVITY":
+                if let response = await FavoriteService.toggleFavorite(id: body.id, category: .activity) {
+                    await MainActor.run {
+                        state.getHotResponse[index].favorite = response.data.favorite
+                    }
+                }
+            case "CULTURE_AND_ARTS":
+                if let response = await FavoriteService.toggleFavorite(id: body.id, category: .cultureAndArts) {
                     await MainActor.run {
                         state.getHotResponse[index].favorite = response.data.favorite
                     }

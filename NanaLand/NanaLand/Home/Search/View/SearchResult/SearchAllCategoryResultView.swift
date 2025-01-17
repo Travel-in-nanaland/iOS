@@ -40,12 +40,21 @@ struct SearchAllCategoryResultView: View {
                 )
             }
             
-            if searchVM.state.allCategorySearchResult.experience.totalElements > 0 {
+            if searchVM.state.allCategorySearchResult.activity.totalElements > 0 {
                 SearchAllCategoryItem(
                     searchVM: searchVM,
-                    category: .experience,
-                    count: searchVM.state.allCategorySearchResult.experience.totalElements,
-                    articles: searchVM.state.allCategorySearchResult.experience.data
+                    category: .activity,
+                    count: searchVM.state.allCategorySearchResult.activity.totalElements,
+                    articles: searchVM.state.allCategorySearchResult.activity.data
+                )
+            }
+            
+            if searchVM.state.allCategorySearchResult.cultureAndArts.totalElements > 0 {
+                SearchAllCategoryItem(
+                    searchVM: searchVM,
+                    category: .cultureAndArts,
+                    count: searchVM.state.allCategorySearchResult.cultureAndArts.totalElements,
+                    articles: searchVM.state.allCategorySearchResult.cultureAndArts.data
                 )
             }
             
@@ -94,14 +103,24 @@ struct SearchAllCategoryResultView: View {
                 )
             }
             
-            if searchVM.state.allCategorySearchResult.experience.totalElements == 0 {
+            if searchVM.state.allCategorySearchResult.activity.totalElements == 0 {
                 SearchAllCategoryItem(
                     searchVM: searchVM,
-                    category: .experience,
-                    count: searchVM.state.allCategorySearchResult.experience.totalElements,
-                    articles: searchVM.state.allCategorySearchResult.experience.data
+                    category: .activity,
+                    count: searchVM.state.allCategorySearchResult.activity.totalElements,
+                    articles: searchVM.state.allCategorySearchResult.activity.data
                 )
             }
+            
+            if searchVM.state.allCategorySearchResult.cultureAndArts.totalElements == 0 {
+                SearchAllCategoryItem(
+                    searchVM: searchVM,
+                    category: .cultureAndArts,
+                    count: searchVM.state.allCategorySearchResult.cultureAndArts.totalElements,
+                    articles: searchVM.state.allCategorySearchResult.cultureAndArts.data
+                )
+            }
+            
             
             if searchVM.state.allCategorySearchResult.restaurant.totalElements == 0 {
                 SearchAllCategoryItem(
@@ -282,7 +301,7 @@ struct SearchAllCategoryItem: View {
             FestivalDetailView(id: Int64(article.id))
         case .market:
             ShopDetailView(id: Int64(article.id))
-        case .experience:
+        case .activity:
             Text("Experience Detail View")
             ExperienceDetailView(id: Int64(article.id))
         case .nanaPick:
@@ -291,6 +310,8 @@ struct SearchAllCategoryItem: View {
             Text("test")
         case .restaurant:
             RestaurantDetailView(id: Int64(article.id))
+        case .cultureAndArts:
+            ExperienceDetailView(id: Int64(article.id))
         }
     }
 }

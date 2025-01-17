@@ -14,7 +14,8 @@ enum FavoriteEndPoint {
 	case getNatureFavoriteList(page: Int)
 	case getMarketFavoriteList(page: Int)
 	case getFestivalFavoriteList(page: Int)
-	case getExperienceFavoriteList(page: Int)
+	case getActivityFavoriteList(page: Int)
+    case getCultureAndArtsFavoriteList(page: Int)
 	case getNanaFavoriteList(page: Int)
     case getRestaurantFavoriteList(page: Int)
 }
@@ -36,8 +37,10 @@ extension FavoriteEndPoint: EndPoint {
 			return "/market/list"
 		case .getFestivalFavoriteList:
 			return "/festival/list"
-		case .getExperienceFavoriteList:
+		case .getActivityFavoriteList:
 			return "/experience/list"
+        case .getCultureAndArtsFavoriteList:
+            return "/experience/list"
 		case .getNanaFavoriteList:
 			return "/nana/list"
         case .getRestaurantFavoriteList:
@@ -49,7 +52,7 @@ extension FavoriteEndPoint: EndPoint {
 		switch self {
 		case .toggleFavorite:
 			return .post
-        case .getAllFavoriteList, .getNatureFavoriteList, .getMarketFavoriteList, .getFestivalFavoriteList, .getExperienceFavoriteList, .getNanaFavoriteList, .getRestaurantFavoriteList:
+        case .getAllFavoriteList, .getNatureFavoriteList, .getMarketFavoriteList, .getFestivalFavoriteList, .getActivityFavoriteList, .getCultureAndArtsFavoriteList, .getNanaFavoriteList, .getRestaurantFavoriteList:
 			return .get
 		}
 	}
@@ -79,11 +82,18 @@ extension FavoriteEndPoint: EndPoint {
 				"page": page
 			]
 			return .requestParameters(parameters: param)
-		case let .getExperienceFavoriteList(page: page):
+		case let .getActivityFavoriteList(page: page):
 			let param: [String: Any] = [
+                "experienceType": "ACTIVITY",
 				"page": page
 			]
 			return .requestParameters(parameters: param)
+        case let .getCultureAndArtsFavoriteList(page: page):
+            let param: [String: Any] = [
+                "experienceType": "CULTURE_AND_ARTS",
+                "page": page
+            ]
+            return .requestParameters(parameters: param)
 		case let .getNanaFavoriteList(page: page):
 			let param: [String: Any] = [
 				"page": page
