@@ -67,88 +67,111 @@ struct ShopMainGridView: View {
                 }
 			}
 			.padding(.bottom, 8)
-			ScrollView {
-                if isAPICalled {
-                    if viewModel.state.getShopMainResponse.data.count == 0 {
-                        NoResultFilterView(keyword: .constant(""), location: $viewModel.state.location, yearMonthDay: .constant(nil), season: .constant(""))
-                            .frame(height: 70)
-                            .padding(.top, (Constants.screenHeight - 208) * (179 / 636))
-                        
-                    } else {
-                        LazyVGrid(columns: columns, spacing: 16) {
+            ScrollViewReader { reader in
+                ScrollView {
+                    if isAPICalled {
+                        if viewModel.state.getShopMainResponse.data.count == 0 {
+                            NoResultFilterView(keyword: .constant(""), location: $viewModel.state.location, yearMonthDay: .constant(nil), season: .constant(""))
+                                .frame(height: 70)
+                                .padding(.top, (Constants.screenHeight - 208) * (179 / 636))
                             
-                            ForEach((0...viewModel.state.getShopMainResponse.data.count-1), id: \.self) { index in
-                                Button(action: {
-                                    AppState.shared.navigationPath.append(ArticleViewType.detail(id: viewModel.state.getShopMainResponse.data[index].id))
-                                }, label: {
-                                    VStack(alignment: .leading, spacing: 0) {
-                                        ZStack {
-                                            KFImage(URL(string: viewModel.state.getShopMainResponse.data[index].firstImage.thumbnailUrl))
-                                                .resizable()
-                                                .frame(width: (UIScreen.main.bounds.width - 40) / 2, height: ((UIScreen.main.bounds.width - 40) / 2) * (12 / 16))
-                                                .clipShape(RoundedRectangle(cornerRadius: 12))
-                                            VStack(spacing: 0) {
-                                                Spacer()
-                                                HStack(spacing: 0) {
+                        } else {
+                            LazyVGrid(columns: columns, spacing: 16) {
+                                
+                                ForEach((0...viewModel.state.getShopMainResponse.data.count-1), id: \.self) { index in
+                                    Button(action: {
+                                        AppState.shared.navigationPath.append(ArticleViewType.detail(id: viewModel.state.getShopMainResponse.data[index].id))
+                                    }, label: {
+                                        VStack(alignment: .leading, spacing: 0) {
+                                            ZStack {
+                                                KFImage(URL(string: viewModel.state.getShopMainResponse.data[index].firstImage.thumbnailUrl))
+                                                    .resizable()
+                                                    .frame(width: (UIScreen.main.bounds.width - 40) / 2, height: ((UIScreen.main.bounds.width - 40) / 2) * (12 / 16))
+                                                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                                                VStack(spacing: 0) {
                                                     Spacer()
-                                                    
-                                                    Button {
-                                                        Task {
-                                                            await toggleFavorite(body: FavoriteToggleRequest(id: Int(viewModel.state.getShopMainResponse.data[index].id), category: .market), index: index)
-                                                        }
+                                                    HStack(spacing: 0) {
+                                                        Spacer()
                                                         
-                                                    } label: {
-                                                        viewModel.state.getShopMainResponse.data[index].favorite ? Image("icHeart_Fill") : Image("icHeart_Blank")
+                                                        Button {
+                                                            Task {
+                                                                await toggleFavorite(body: FavoriteToggleRequest(id: Int(viewModel.state.getShopMainResponse.data[index].id), category: .market), index: index)
+                                                            }
+                                                            
+                                                        } label: {
+                                                            viewModel.state.getShopMainResponse.data[index].favorite ? Image("icHeart_Fill") : Image("icHeart_Blank")
+                                                        }
                                                     }
+                                                    .padding(.bottom, 8)
                                                 }
-                                                .padding(.bottom, 8)
+                                                .padding(.trailing, 8)
                                             }
-                                            .padding(.trailing, 8)
+                                            
+                                            
+                                            Spacer()
+                                            
+                                            Text("\(viewModel.state.getShopMainResponse.data[index].title)")
+                                                .font(.gothicNeo(.bold, size: 14))
+                                                .foregroundStyle(.black)
+                                                .lineLimit(1)
+                                            
+                                            Spacer()
+                                            Text("\(viewModel.state.getShopMainResponse.data[index].addressTag)")
+                                                .frame(width:64, height: 20)
+                                                .background(
+                                                    RoundedRectangle(cornerRadius: 30)
+                                                        .foregroundStyle(Color.main10P)
+                                                )
+                                                .font(.gothicNeo(.regular, size: 12))
+                                                .foregroundStyle(Color.main)
                                         }
-                                        
-                                        
-                                        Spacer()
-                                        
-                                        Text("\(viewModel.state.getShopMainResponse.data[index].title)")
-                                            .font(.gothicNeo(.bold, size: 14))
-                                            .foregroundStyle(.black)
-                                            .lineLimit(1)
-                                        
-                                        Spacer()
-                                        Text("\(viewModel.state.getShopMainResponse.data[index].addressTag)")
-                                            .frame(width:64, height: 20)
-                                            .background(
-                                                RoundedRectangle(cornerRadius: 30)
-                                                    .foregroundStyle(Color.main10P)
-                                            )
-                                            .font(.gothicNeo(.regular, size: 12))
-                                            .foregroundStyle(Color.main)
-                                    }
-                                })
-                                .frame(width: (UIScreen.main.bounds.width - 40) / 2, height: ((Constants.screenWidth - 40) / 2) * (164 / 160))
-                            }
-                            if viewModel.state.page < viewModel.state.getShopMainResponse.totalElements / 12 {
-                                ProgressView()
-                                    .onAppear {
-                                        print("\(viewModel.state.page)")
-                                        Task {
-                                            if viewModel.state.location == LocalizedKey.allLocation.localized(for: localizationMangaer.language) {
-                                                await getShopMainItem(page: Int64(viewModel.state.page + 1), size: 12, filterName: "")
-                                            } else {
-                                                await getShopMainItem(page: Int64(viewModel.state.page + 1), size: 12, filterName: viewModel.state.apiLocation)
+                                    })
+                                    .frame(width: (UIScreen.main.bounds.width - 40) / 2, height: ((Constants.screenWidth - 40) / 2) * (164 / 160))
+                                    .padding(.bottom, 16)
+                                }
+                                if viewModel.state.page < viewModel.state.getShopMainResponse.totalElements / 12 {
+                                    ProgressView()
+                                        .onAppear {
+                                            print("\(viewModel.state.page)")
+                                            Task {
+                                                if viewModel.state.location == LocalizedKey.allLocation.localized(for: localizationMangaer.language) {
+                                                    await getShopMainItem(page: Int64(viewModel.state.page + 1), size: 12, filterName: "")
+                                                } else {
+                                                    await getShopMainItem(page: Int64(viewModel.state.page + 1), size: 12, filterName: viewModel.state.apiLocation)
+                                                }
+                                                viewModel.state.page += 1
                                             }
-                                            viewModel.state.page += 1
                                         }
-                                    }
+                                }
+                                
                             }
-                            
+                            .padding(.horizontal, 16)
+                            .padding(.top, 8)
+                            .id("Scroll_To_Top")
                         }
-                        .padding(.horizontal, 16)
-                        .padding(.top, 8)
                     }
+                
                 }
-            
+                .overlay(
+                    VStack(spacing: 0) {
+                        Spacer()
+                        HStack(spacing: 0) {
+                            Spacer()
+                            Button(action: {
+                                withAnimation(.default) {
+                                    reader.scrollTo("Scroll_To_Top", anchor: .top)
+                                }
+                            }, label: {
+                                Image("icScrollToTop")
+                            })
+                            .frame(width: 80, height: 80)
+                            .padding(.trailing)
+                            .padding(.bottom, getSafeArea().bottom == 0 ? 76 : 80)
+                        }
+                    }
+                )
             }
+		
         }
         .navigationDestination(for: ArticleViewType.self) { viewType in
             switch viewType {
@@ -200,7 +223,9 @@ struct ShopMainGridView: View {
         }
         await viewModel.action(.toggleFavorite(body: body, index: index))
     }
-    
+    func getSafeArea() -> UIEdgeInsets  {
+        return UIApplication.shared.windows.first?.safeAreaInsets ?? UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
 }
 
 #Preview {
