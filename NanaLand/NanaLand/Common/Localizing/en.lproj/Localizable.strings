@@ -172,8 +172,10 @@
 // settingPage
 "settings" = "Settings";
 "setUsage"= "Set usage";
+"announcement" = "Announcement";
 "termsAndPolicies" = "Terms and policies";
 "accessPolicyGuide" = "Access permission guide";
+"notificationSettings" = "Notification settings";
 "languageSetting" = "Language settings";
 "versionInfomation" = "Version Information";
 "logout" = "Log out";

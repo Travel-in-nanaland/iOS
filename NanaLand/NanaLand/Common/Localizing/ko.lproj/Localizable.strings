@@ -168,8 +168,10 @@
 // settingPage
 "settings" = "설정";
 "setUsage" = "사용 설정";
+"announcement" = "공지사항";
 "termsAndPolicies" = "약관 및 정책";
 "accessPolicyGuide" = "접근권한 안내";
+"notificationSettings" = "알림 설정";
 "languageSetting" = "언어 설정";
 "versionInfomation" = "버전 정보";
 "logout" = "로그아웃";

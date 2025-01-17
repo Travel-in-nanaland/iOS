@@ -38,20 +38,38 @@ struct PolicyItemButtonView: View {
     var title = ""
     @Binding var isSelected: Bool
     var body: some View {
-        Button {
-            withAnimation(nil) {
-                isSelected.toggle()
-            }
-        } label: {
-            HStack(spacing: 0) {
-                Text("\(title)")
-                    .font(.body02)
-                    .padding(.leading, 16)
-                    .multilineTextAlignment(.leading)
-                Spacer()
-                Image(isSelected ? "icCheckmarkFilled" : "icCheckmark")
-                    .padding(.trailing, 16)
-            }
+//        Button {
+//            withAnimation(nil) {
+//                isSelected.toggle()
+//            }
+//        } label: {
+//            HStack(spacing: 0) {
+//                Text("\(title)")
+//                    .font(.body02)
+//                    .padding(.leading, 16)
+//                    .multilineTextAlignment(.leading)
+//                Spacer()
+//                Toggle(isOn: $isSelected, label: {
+//                    
+//                })
+//                .toggleStyle(SwitchToggleStyle(tint: Color.main))
+//                .padding(.trailing, 16)
+////                
+////                Image(isSelected ? "icCheckmarkFilled" : "icCheckmark")
+////                    .padding(.trailing, 16)
+//            }
+        HStack(spacing: 0) {
+            Text("\(title)")
+                .font(.body02)
+                .padding(.leading, 16)
+                .multilineTextAlignment(.leading)
+            Spacer()
+            
+            Toggle(isOn: $isSelected, label: {
+                
+            })
+            .toggleStyle(SwitchToggleStyle(tint: Color.main))
+            .padding(.trailing, 16)
         }
         .frame(width: Constants.screenWidth, height: 48)
 

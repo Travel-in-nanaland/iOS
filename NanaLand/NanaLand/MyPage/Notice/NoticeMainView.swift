@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NoticeMainView: View {
     @EnvironmentObject var localizationManager: LocalizationManager
-    @StateObject var viewModel: NoticeMainViewModel
+    @StateObject var viewModel: NoticeMainViewModel = NoticeMainViewModel()
     
     var layout: [GridItem] = [GridItem(.flexible())]
     @State private var isAPICalled = false
@@ -108,7 +108,7 @@ enum noticeType: Hashable{
     case detail(id: Int64)
 }
 
-#Preview {
-    NoticeMainView(viewModel: NoticeMainViewModel())
-        .environmentObject(LocalizationManager())
-}
+//#Preview {
+//    NoticeMainView(viewModel: NoticeMainViewModel())
+//        .environmentObject(LocalizationManager())
+//}

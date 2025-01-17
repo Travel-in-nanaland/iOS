@@ -168,8 +168,10 @@
 // settingPage
 "settings" = "Tetapan";
 "setUsage" = "Tetapkan penggunaan";
+"announcement" = "Pengumuman";
 "termsAndPolicies" = "Terma dan dasar";
 "accessPolicyGuide" = "Panduan akses kebenaran";
+"notificationSettings" = "Tetapan pemberitahuan";
 "languageSetting" = "Tetapan bahasa";
 "versionInfomation" = "Maklumat versi";
 "logout" = "Log keluar";

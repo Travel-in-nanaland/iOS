@@ -175,8 +175,10 @@ enum LocalizedKey: String {
     // settingPage
     case settings
     case setUsage
+    case announcement
     case termsAndPolicies
     case accessPolicyGuide
+    case notificationSettings
     case languageSetting
     case versionInfomation
     case logout

@@ -172,8 +172,10 @@
 // settingPage
 "settings" = "Cài đặt";
 "setUsage"= "Đã bật";
+"announcement" = "Thông báo";
 "termsAndPolicies" = "Điều khoản và Chính sách";
 "accessPolicyGuide" = "Thông tin quyền truy cập";
+"notificationSettings" = "Cài đặt thông báo";
 "languageSetting" = "Cài đặt ngôn ngữ";
 "versionInfomation" = "Thông tin phiên bản";
 "logout" = "Đăng xuất";
