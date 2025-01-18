@@ -357,7 +357,7 @@ the market is the place!";
 "deletePlace" = "Delete Location";
 "etcReportInfoTitle" = "Share Other Information!";
 "provideService" = "Offering service";
-"addPhoto" = "Add Photos";
+"addPhoto" = "Photos / Videos";
 "addPhotoDescription" = "Attach photos of verified information for more\n accurate details.";
 "reportInfoContentTitle" = "Suggest an Information Update";
 "reportInfoContentPlaceHolder" = "Leave detailed information on the items you want to update or any other comments.";
@@ -365,7 +365,8 @@ the market is the place!";
 "reportInfoEmailDescription" = "Enter your email to receive the results of your suggestion.";
 "send" = "Submit";
 "thxForReportInfoTitle" = "Thank you for your information correction suggestion";
-"thxForReportInfoDescription" = "With the information correction suggestion, the attractiveness of the travel destination has also increased!\n\nIt’s getting more and more exciting🧚‍♀️";
+"thxForReportInfoDescription1" = "With the information correction suggestion, the attractiveness of the travel destination has also increased!";
+"thxForReportInfoDescription2" = "It’s getting more and more exciting🧚‍♀️";
 "showContentAgain" = "View Content Again";
 "reportAgain" = "Add Another Item";
 
@@ -540,3 +541,8 @@ the market is the place!";
 
 //MARK: - 타유저프로필
 "basicDescription" = "Hello! Nice to meet you🖐️\nLet’s enjoy traveling to Jeju together";
+
+//MARK: - 로티파일 메시지
+"lottieReview" = "Please wait a moment!\nYour experience is being delivered\n to nanaland💜";
+"lottieInfo" = "Please wait a moment!\nYour feedback is a great support\n to us🍀";
+"lottieReport" = "Please hold on!\nWe’re carefully reviewing your feedback\nto ensure your thoughts are well considered💌";

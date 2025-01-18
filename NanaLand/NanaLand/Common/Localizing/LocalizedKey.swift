@@ -372,7 +372,8 @@ enum LocalizedKey: String {
     case reportInfoEmailDescription
     case send
     case thxForReportInfoTitle
-    case thxForReportInfoDescription
+    case thxForReportInfoDescription1
+    case thxForReportInfoDescription2
     case showContentAgain
     case reportAgain
     
@@ -547,6 +548,11 @@ enum LocalizedKey: String {
     
     //MARK: - 타유저프로필
     case basicDescription
+    
+    //MARK: - 로티파일 메시지
+    case lottieReview
+    case lottieInfo
+    case lottieReport
     
     //MARK: - localized()
     func localized(for language: Language) -> String {

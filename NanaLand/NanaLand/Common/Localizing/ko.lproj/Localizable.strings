@@ -347,7 +347,7 @@
 "deletePlace" = "장소 삭제";
 "etcReportInfoTitle" = "기타 정보를 공유해 주세요!";
 "provideService" = "제공 서비스";
-"addPhoto" = "사진 추가하기";
+"addPhoto" = "사진 / 동영상";
 "addPhotoDescription" = "실제 확인한 정보를 사진과 함께 첨부해주시면,\n좀 더 정확한 정보가 완성되어요";
 "reportInfoContentTitle" = "정보 수정 제안";
 "reportInfoContentPlaceHolder" = "수정 요청하신 항목의 상세 내용이나 그 외 기타 사항이 있으시면 의견을 남겨주세요.";
@@ -355,7 +355,8 @@
 "reportInfoEmailDescription" = "정보 수정 제안 결과를 받을 이메일을 입력해주세요";
 "send" = "보내기";
 "thxForReportInfoTitle" = "정보 수정 제안 감사드립니다";
-"thxForReportInfoDescription" = "정보 수정 제안으로\n여행지의 매력도 함께 올라갔어요!\n\n점점 기대될 것 같아요🧚‍♀️";
+"thxForReportInfoDescription1" = "정보 수정 제안으로\n여행지의 매력도 함께 올라갔어요!";
+"thxForReportInfoDescription2" = "점점 기대될 것 같아요🧚‍♀️";
 "showContentAgain" = "콘텐츠 다시 보러 가기";
 "reportAgain" = "다른 항목 추가하기";
 
@@ -473,7 +474,7 @@
 
 // MARK: - 이색 체험
 "activity" = "액티비티";
-"cultureAndArts" = "문화예술";
+"cultureAndArts" = "문화 예술";
 "groundLeisure" = "지상레저";
 "waterLeisure" = "수상레저";
 "aviationLeisure" = "항공레저";
@@ -530,3 +531,8 @@
 
 //MARK: - 타유저프로필
 "basicDescription" = "안녕하세요! 반가워요🖐️\n함께 제주 여행을 즐겨봐요 :D";
+
+//MARK: - 로티파일 메시지
+"lottieReview" = "잠시만 기다려 주세요!\n여러분의 경험이\nnanaland로 전달 중입니다💜";
+"lottieInfo" = "잠시만 기다려 주세요!\n여러분의 피드백은\n저희에게 큰 힘이 됩니다🍀";
+"lottieReport" = "잠시만 기다려 주세요!\n여러분의 생각이 잘 전달되도록\n신중히 처리 중입니다💌";

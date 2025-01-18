@@ -190,6 +190,7 @@
 		6DD11F422C51545C00363B08 /* TypeTestProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD11F412C51545C00363B08 /* TypeTestProfileView.swift */; };
 		6DD11F442C5161E500363B08 /* ReviewArticleItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD11F432C5161E500363B08 /* ReviewArticleItemView.swift */; };
 		6DF18F082C6E25130021ED5B /* TestLoading.json in Resources */ = {isa = PBXBuildFile; fileRef = 6DF18F072C6E25120021ED5B /* TestLoading.json */; };
+		6DFF08EE2D3BFBB80052A4E3 /* LottieWithTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFF08ED2D3BFBB80052A4E3 /* LottieWithTextView.swift */; };
 		9C6A9C3E2BCC1BAE000413AD /* Fonts+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6A9C3D2BCC1BAE000413AD /* Fonts+.swift */; };
 		9C6A9C632BCC22CE000413AD /* AppleSDGothicNeoL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C6A9C5A2BCC22CE000413AD /* AppleSDGothicNeoL.ttf */; };
 		9C6A9C642BCC22CE000413AD /* AppleSDGothicNeoL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C6A9C5A2BCC22CE000413AD /* AppleSDGothicNeoL.ttf */; };
@@ -526,6 +527,7 @@
 		6DD11F412C51545C00363B08 /* TypeTestProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeTestProfileView.swift; sourceTree = "<group>"; };
 		6DD11F432C5161E500363B08 /* ReviewArticleItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewArticleItemView.swift; sourceTree = "<group>"; };
 		6DF18F072C6E25120021ED5B /* TestLoading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TestLoading.json; sourceTree = "<group>"; };
+		6DFF08ED2D3BFBB80052A4E3 /* LottieWithTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieWithTextView.swift; sourceTree = "<group>"; };
 		9C6A9C3D2BCC1BAE000413AD /* Fonts+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fonts+.swift"; sourceTree = "<group>"; };
 		9C6A9C5A2BCC22CE000413AD /* AppleSDGothicNeoL.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoL.ttf; sourceTree = "<group>"; };
 		9C6A9C5B2BCC22CE000413AD /* AppleSDGothicNeoR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoR.ttf; sourceTree = "<group>"; };
@@ -726,6 +728,7 @@
 				2C2749862C0992AA00ECBA71 /* report_info_star.json */,
 				2C2749882C09950900ECBA71 /* loading_drink.json */,
 				2C2749892C09950900ECBA71 /* loading_tangerine.json */,
+				6DFF08ED2D3BFBB80052A4E3 /* LottieWithTextView.swift */,
 			);
 			path = Lottie;
 			sourceTree = "<group>";
@@ -1883,6 +1886,7 @@
 				2C5424FE2BF7131600B16439 /* TypeTestResultView.swift in Sources */,
 				BFF6466A2C00DDEA00BCC41F /* HomeEndPoint.swift in Sources */,
 				6D9EDAE42C5B59B8003A8DE5 /* NoticeDetailViewModel.swift in Sources */,
+				6DFF08EE2D3BFBB80052A4E3 /* LottieWithTextView.swift in Sources */,
 				BF607F172BF5A29E00770CE7 /* FestivalDetailService.swift in Sources */,
 				BFBC51412C5BC7E00076FE57 /* ReportModalView.swift in Sources */,
 				2C9CF4E62C00701E00A346E8 /* TypeTestNavigationView.swift in Sources */,

@@ -13,7 +13,7 @@ import CustomAlert
 
 struct ReportInfoWritingView: View {
 	@ObservedObject var reportInfoVM: ReportInfoViewModel
-	
+    @EnvironmentObject private var localizationManager: LocalizationManager
 	@State var content: String = ""
 	@State var email: String = ""
 	
@@ -38,9 +38,16 @@ struct ReportInfoWritingView: View {
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(alignment: .leading, spacing: 0) {
                         VStack(alignment: .leading, spacing: 0) {
-                            Text(.reportInfoContentTitle)
-                                .font(.body_bold)
-                                .padding(.bottom, 8)
+                            HStack(spacing: 0){
+                                Text(.reportInfoContentTitle)
+                                    .font(.body_bold)
+                                
+                                Text(.reasonEssential)
+                                    .font(.caption01)
+                                    .padding(.leading, 8)
+                                    .foregroundColor(.main)
+                                    
+                            }.padding(.bottom, 8)
                             
                             ZStack {
                                 RoundedRectangle(cornerRadius: 12)
@@ -65,11 +72,18 @@ struct ReportInfoWritingView: View {
                             .frame(height: 120)
                             .padding(.bottom, 48)
                             
-                            Text(.email)
-                                .font(.body_bold)
-                                .padding(.bottom, 4)
+                            HStack(spacing: 0){
+                                Text(.email)
+                                    .font(.body_bold)
+                                
+                                Text(.reasonEssential)
+                                    .font(.caption01)
+                                    .padding(.leading, 8)
+                                    .foregroundColor(.main)
+                            }
+                            .padding(.bottom, 4)
                             
-                            Text(.reportInfoEmailDescription)
+                            Text(.reportResultEmail)
                                 .font(.caption01)
                                 .foregroundStyle(Color(hex: 0x717171))
                                 .padding(.bottom, 8)
@@ -222,6 +236,9 @@ struct ReportInfoWritingView: View {
                         Spacer()
                             .frame(height: 100)
                     }
+                    
+                    Spacer()
+                    
                     Button(action: {
                         Task {
                             isLoading = true
@@ -230,7 +247,7 @@ struct ReportInfoWritingView: View {
                             AppState.shared.navigationPath.append(ReportViewType.finish)
                         }
                     }, label: {
-                        RoundedRectangle(cornerRadius: 12)
+                        RoundedRectangle(cornerRadius: 50)
                             .fill(Color.main)
                             .opacity((!content.isEmpty && !email.isEmpty) ? 1 : 0.1)
                             .frame(height: 48)
@@ -250,9 +267,9 @@ struct ReportInfoWritingView: View {
                 focusedField = nil
             }
             if isLoading {
-                LottieView(jsonName: "loading", loopMode: .loop)
+                LottieViewWithText(jsonName: "loading", message: LocalizedKey.lottieInfo.localized(for: localizationManager.language), loopMode: .loop)
                     .frame(width: Constants.screenWidth, height: Constants.screenHeight)
-                    .background(Color.black.opacity(0.3))
+                    .background(Color.black.opacity(0.7))
                     .edgesIgnoringSafeArea(.all)
             }
         }

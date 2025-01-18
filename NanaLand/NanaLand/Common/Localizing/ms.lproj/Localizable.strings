@@ -348,7 +348,7 @@ mengembalikan sebarang hasil.";
 "deletePlace" = "Padam Lokasi";
 "etcReportInfoTitle" = "Sila kongsi maklumat tambahan!";
 "provideService" = "Perkhidmatan yang Disediakan";
-"addPhoto" = "Tambah Gambar";
+"addPhoto" = "Foto / Video";
 "addPhotoDescription" = "Jika anda melampirkan maklumat yang disahkan\nbersama foto, maklumat yang lebih tepat akan\n dilengkapkan.";
 "reportInfoContentTitle" = "Cadangan Pembetulan Maklumat";
 "reportInfoContentPlaceHolder" = "Sila lampirkan gambar bersama dengan maklumat yang telah disahkan untuk melengkapkan maklumat yang lebih tepat";
@@ -356,7 +356,8 @@ mengembalikan sebarang hasil.";
 "reportInfoEmailDescription" = "Sila tinggalkan komen jika ada butiran mengenai item yang anda minta untuk diubah atau apa-apa isu lain";
 "send" = "Hantar";
 "thxForReportInfoTitle" = "Terima kasih atas cadangan pembetulan maklumat anda";
-"thxForReportInfoDescription" = "Dengan cadangan pembetulan maklumat, daya tarikan destinasi pelancongan turut meningkat!\n\nSemakin dinanti-nantikan🧚‍♀️";
+"thxForReportInfoDescription1" = "Dengan cadangan pembetulan maklumat, daya tarikan destinasi pelancongan turut meningkat!";
+"thxForReportInfoDescription2" = "Semakin dinanti-nantikan🧚‍♀️";
 "showContentAgain" = "Tengok Kandungan Semula";
 "reportAgain" = "Tambah Item Lain";
 
@@ -530,3 +531,8 @@ mengembalikan sebarang hasil.";
 
 //MARK: - 타유저프로필
 "basicDescription" = "Hello! Gembira bertemu dengan anda🖐️\nMari kita menikmati perjalanan ke Jeju bersama-sama";
+
+//MARK: - 로티파일 메시지
+"lottieReview" = "Sila tunggu sebentar!\nPengalaman anda sedang dihantar\nke nanaland💜";
+"lottieInfo" = "Sila tunggu sebentar!\nMaklum balas anda adalah sokongan\nbesar kepada kami🍀";
+"lottieReport" = "Sila tunggu sebentar!\nKami sedang memproses pemikiran anda dengan teliti untuk\nmemastikan ia disampaikan dengan baik💌";
