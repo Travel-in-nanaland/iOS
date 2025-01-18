@@ -61,35 +61,37 @@ struct ProfileMainView: View {
                     }
                 }
                 
-                HStack(spacing: 0){
-                    Spacer()
-                    
-                    Button(action: {
-                        AppState.shared.navigationPath.append(MyPageViewType.writeReview) // 후기 작성 페이지로 이도
-                    }, label: {
-                        HStack{
-                            Image("icPencilMyPage")
-                                .frame(width: Constants.screenWidth * (14 / 360), height: Constants.screenWidth * (14 / 360))
-                                .padding(.leading, Constants.screenWidth * (11 / 360))
-                                .padding(.top, Constants.screenWidth * (3 / 360))
-                                .padding(.trailing, Constants.screenWidth * (-3 / 360))
-                            
-                            Text(.writeReview)
-                                .font(.caption01_semibold)
-                                .frame(height: Constants.screenWidth * (16 / 360))
-                                .foregroundColor(.white)
-                                .padding(.trailing, Constants.screenWidth * (15 / 360))
-                        }
-                        .background(){
-                            RoundedRectangle(cornerRadius: 50)
-                                .frame(height: Constants.screenWidth * (35 / 360))
-                                .foregroundColor(.main)
-                        }
-                    })
-                    .zIndex(1)
+                if provider != "GUEST"{
+                    HStack(spacing: 0){
+                        Spacer()
+                        
+                        Button(action: {
+                            AppState.shared.navigationPath.append(MyPageViewType.writeReview) // 후기 작성 페이지로 이도
+                        }, label: {
+                            HStack{
+                                Image("icPencilMyPage")
+                                    .frame(width: Constants.screenWidth * (14 / 360), height: Constants.screenWidth * (14 / 360))
+                                    .padding(.leading, Constants.screenWidth * (11 / 360))
+                                    .padding(.top, Constants.screenWidth * (3 / 360))
+                                    .padding(.trailing, Constants.screenWidth * (-3 / 360))
+                                
+                                Text(.writeReview)
+                                    .font(.caption01_semibold)
+                                    .frame(height: Constants.screenWidth * (16 / 360))
+                                    .foregroundColor(.white)
+                                    .padding(.trailing, Constants.screenWidth * (15 / 360))
+                            }
+                            .background(){
+                                RoundedRectangle(cornerRadius: 50)
+                                    .frame(height: Constants.screenWidth * (35 / 360))
+                                    .foregroundColor(.main)
+                            }
+                        })
+                        .zIndex(1)
+                    }
+                    .padding()
+                    .padding(.top, Constants.screenWidth * (450 / 360))
                 }
-                .padding()
-                .padding(.top, Constants.screenWidth * (450 / 360))
             }
         }
         .onAppear {
@@ -185,7 +187,7 @@ struct ProfileMainView: View {
                     } else {
                         HStack{
                             if AppState.shared.userInfo.nickname == "" {
-                                Text("닉네임 없음")
+                                Text(.noNickname)
                                     .font(.title02_bold)
                             } else {
                                 Text("\(AppState.shared.userInfo.nickname)")
@@ -207,8 +209,8 @@ struct ProfileMainView: View {
                         if AppState.shared.userInfo.description.isEmpty {
                             HStack(spacing: 0){
                                 Text(.noDescription)
-                                    .font(.body02)
-                                    .foregroundColor(.gray2)
+                                    .font(.caption02)
+                                    .foregroundColor(.gray1)
                                 
                                 Spacer()
                             }
@@ -232,9 +234,8 @@ struct ProfileMainView: View {
                 if provider == "GUEST" {
                     Image(.guestProfile)
                         .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 80, height: 80)
-                        .background(.blue)
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: Constants.screenWidth * (64 / 360), height: Constants.screenWidth * (64 / 360))
                         .clipShape(Circle())
                         .padding(.bottom, 16)
                         .padding(.leading, 15)
@@ -246,8 +247,8 @@ struct ProfileMainView: View {
                                 .aspectRatio(contentMode: .fit)
                         }
                         .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 80, height: 80)
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: Constants.screenWidth * (64 / 360), height: Constants.screenWidth * (64 / 360))
                         .background(.blue)
                         .clipShape(Circle())
                         .padding(.bottom, 16)
@@ -257,12 +258,12 @@ struct ProfileMainView: View {
             .padding(.leading)
             .padding(.trailing)
             
-            RoundedRectangle(cornerRadius: 12)
-                .frame(width: Constants.screenWidth * (328 / 360), height: Constants.screenWidth * (76 / 360))
-                .foregroundColor(.white)
-                .shadow(radius: 1)
-                .overlay{
-                    if provider != "GUEST" {
+            if provider != "GUEST"{
+                RoundedRectangle(cornerRadius: 12)
+                    .frame(width: Constants.screenWidth * (328 / 360), height: Constants.screenWidth * (76 / 360))
+                    .foregroundColor(.white)
+                    .shadow(radius: 1)
+                    .overlay{
                         ZStack{
                             HStack(spacing: 12){
                                 
@@ -312,7 +313,7 @@ struct ProfileMainView: View {
                                         }
                                     }
                                 } else {
-                                    VStack(alignment: .leading, spacing: 10){
+                                    VStack(alignment: .leading, spacing: 0){
                                         Text(.none)
                                             .font(.caption01)
                                             .foregroundStyle(Color.main)
@@ -326,6 +327,24 @@ struct ProfileMainView: View {
                                                             .stroke(Color.main, lineWidth: 2.0)
                                                     )
                                             }
+                                            .padding(.bottom, 8)
+                                        
+                                        Button(action: {
+                                            appState.showTypeTest = true
+                                        }, label: {
+                                            HStack(spacing: 4) {
+                                                Text(.goTest)
+                                                    .foregroundColor(.gray1)
+                                                    .font(.caption02)
+                                                
+                                                Image(.icRight)
+                                                    .resizable()
+                                                    .scaledToFit()
+                                                    .frame(width: 10, height: 10)
+                                            }
+                                            .frame(height: Constants.screenWidth * (20 / 360))
+                                        })
+                                        .tint(.baseBlack)
                                     }
                                     
                                     Spacer()
@@ -345,12 +364,14 @@ struct ProfileMainView: View {
                                             appState.showTypeTest = true
                                         }, label: {
                                             HStack(spacing: 4) {
-                                                Text(AppState.shared.userInfo.hashtags.isEmpty ? .goTest :.retest)
-                                                    .font(.gothicNeo(.semibold, size: 12))
+                                                Text(.retest)
+                                                    .foregroundColor(.gray1)
+                                                    .font(.caption02)
                                                 
-                                                Image(.icRight)
+                                                Image(.icProfileGoTest)
                                                     .resizable()
-                                                    .frame(width: 16, height: 16)
+                                                    .scaledToFit()
+                                                    .frame(width: 10, height: 10)
                                             }
                                             .frame(height: Constants.screenWidth * (20 / 360))
                                         })
@@ -360,29 +381,11 @@ struct ProfileMainView: View {
                                     }
                                     .padding(.top)
                                     .padding(.trailing, 10)
-                                } else {
-                                    Button(action: {
-                                        appState.showTypeTest = true
-                                    }, label: {
-                                        HStack(spacing: 4) {
-                                            Text(AppState.shared.userInfo.hashtags.isEmpty ? .goTest :.retest)
-                                                .font(.gothicNeo(.semibold, size: 12))
-                                            
-                                            Image(.icRight)
-                                                .resizable()
-                                                .frame(width: 16, height: 16)
-                                        }
-                                        .frame(height: Constants.screenWidth * (20 / 360))
-                                    })
-                                    .tint(.baseBlack)
                                 }
-                                
                             }
                         }
                     }
-                }
-            
-            
+            }
         }
         .frame(width: Constants.screenWidth)
         .padding(.top, 40)
@@ -488,6 +491,15 @@ struct guestTabView: View {
     var body: some View {
         ZStack{
             VStack{
+                HStack{
+                    
+                    Text(.review)
+                        .font(.body_bold)
+                        .foregroundColor(.black)
+                    
+                    Spacer()
+                    
+                }.padding()
                 
                 Text(.loginReview)
                     .font(.body01)
@@ -518,7 +530,7 @@ struct reviewTabView: View {
                         HStack{
                             
                             Text(.review)
-                                .font(.body02)
+                                .font(.body_bold)
                                 .foregroundColor(.black)
                             
                             Spacer()

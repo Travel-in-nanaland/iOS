@@ -39,22 +39,25 @@ struct TypeTestRecommendPlaceView: View {
 			.scrollIndicators(.hidden)
 		}
 		.toolbar(.hidden, for: .navigationBar)
-		.overlay(alignment: .bottom) {
-			Button(action: {
-				typeTestVM.action(.onTapGotoMainViewButton)
-			}, label: {
-				RoundedRectangle(cornerRadius: 30)
-					.fill(Color.main)
-					.frame(height: 48)
-					.overlay {
-						Text(.gotoMainScreen)
-							.foregroundStyle(Color.baseWhite)
-							.font(.body_bold)
-					}
-			})
-			.padding(.horizontal, 16)
-
-		}
+        .navigationDestination(for: recommendTestDetailType.self, destination: { page in
+            switch page{
+            case let .recommendNature(id):
+                NatureDetailView(id: id)
+            case let .recommendFestival(id):
+                FestivalDetailView(id: id)
+            case let .recommendShop(id):
+                ShopDetailView(id: id)
+            case let .recommendActivity(id):
+                ExperienceDetailView(id: id, experienceType: "Activity")
+            case let .recommendArts(id):
+                ExperienceDetailView(id: id, experienceType: "CultureArts")
+            case let .recommendResaurant(id):
+                RestaurantDetailView(id: id)
+            case let .recommendNana(id):
+                NaNaPickDetailView(id: id)
+            }
+        })
+        
     }
 	
 	private func ticketView(place: RecommendModel) -> some View {
@@ -77,9 +80,6 @@ struct TypeTestRecommendPlaceView: View {
 			)
 			.frame(width: 300, height: 500)
 			
-			Image(.logoStamp)
-				.padding(.top, 16)
-				.padding(.leading, 12)
 			
 			HStack {
 				Spacer()
@@ -104,9 +104,46 @@ struct TypeTestRecommendPlaceView: View {
 					.padding(.bottom, 16)
 				
 				HStack {
+                    
 					Spacer()
 					
-					Image(.logoWatermark)
+                    Button(action: {
+                        AppState.shared.showTypeTest = false
+                        print("Category: \(place.category), ID: \(place.id)") // 디버깅용 로그 추가
+                        let category = place.category
+                        let id = place.id
+                        
+                        switch category {
+                        case "NATURE":
+                            AppState.shared.navigationPath.append(recommendTestDetailType.recommendNature(id: id))
+                        case "FESTIVAL":
+                            AppState.shared.navigationPath.append(recommendTestDetailType.recommendFestival(id: id))
+                        case "SHOP":
+                            AppState.shared.navigationPath.append(recommendTestDetailType.recommendShop(id: id))
+                        case "CULTURE_AND_ARTS":
+                            AppState.shared.navigationPath.append(recommendTestDetailType.recommendArts(id: id))
+                        case "ACTIVITY":
+                            AppState.shared.navigationPath.append(recommendTestDetailType.recommendActivity(id: id))
+                        case "RESTAURANT":
+                            AppState.shared.navigationPath.append(recommendTestDetailType.recommendResaurant(id: id))
+                        case "NANA":
+                            AppState.shared.navigationPath.append(recommendTestDetailType.recommendNana(id: id))
+                        default:
+                            print("error")
+                        }
+                    }, label: {
+                        HStack(spacing: 0){
+                            Text(.recommendDetail)
+                                .font(.caption01_semibold)
+                                .foregroundColor(.white)
+                            
+                            Image(.icDetailGo)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: Constants.screenWidth * (24 / 360), height: Constants.screenWidth * (5 / 360))
+                        }
+                        .frame(height: Constants.screenWidth * (18 / 360))
+                    })
 				}
 			}
 			.foregroundStyle(Color.baseWhite)
@@ -117,6 +154,17 @@ struct TypeTestRecommendPlaceView: View {
 		.padding(.bottom, 32)
 	}
 }
+
+enum recommendTestDetailType: Hashable{
+    case recommendNature(id: Int64)
+    case recommendFestival(id: Int64)
+    case recommendShop(id: Int64)
+    case recommendActivity(id: Int64)
+    case recommendArts(id: Int64)
+    case recommendResaurant(id: Int64)
+    case recommendNana(id: Int64)
+}
+
 //
 //#Preview {
 //	let data = [NanaLand.RecommendModel(id: 7, category: "EXPERIENCE", thumbnailUrl: "https://api.cdn.visitjeju.net/photomng/thumbnailpath/202111/16/d933eea8-03ee-4d30-a3f6-7cd465422207.jpg", title: "더마파크", introduction: "세계최초의 말전문 테마공원인 라온더마파크는 회원제를 기본으로 운영되는 승마장이지만, 기마공연, 승마체험, 카드라이더 등 관광객들도 체험할 수 있는 컨텐츠를 두루 제공하고 있다."), NanaLand.RecommendModel(id: 2, category: "NATURE", thumbnailUrl: "https://api.cdn.visitjeju.net/photomng/thumbnailpath/201811/29/2e824a67-25e5-461f-9f49-3c0298ac590b.jpg", title: "고사리숲", introduction: "섬안에 섬 우도에서, 바이크를 타며 자유를 느껴보세요. 바이크를 타고, 자유롭게 우도의 아름다운 해변과 우도땅콩으로 만든 커피와 아이스크림을 먹으면서, 1~2시간이면 한바퀴를 돌 수 있다. ")]

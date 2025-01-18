@@ -18,31 +18,27 @@ struct ProfileRecommendView: View {
         VStack(spacing: 32) {
             NanaNavigationBar(title: .recommendedTravelPlace, showBackButton: true)
             
-            if isAPICalled {
-                if !typeTestVM.state.recommendPlace.isEmpty {
-                    ScrollView {
-                        VStack {
-                            Text(.recommenedeTravelTitleFirstLine, arguments: [nickname])
-                                .font(.title02)
-                                .foregroundStyle(LocalizationManager.shared.language == .malaysia ? .main : .baseBlack)
-                            
-                            Text(.recommenedeTravelTitleSecondLine, arguments: [nickname])
-                                .font(.largeTitle01)
-                                .multilineTextAlignment(.center)
-                                .foregroundStyle(LocalizationManager.shared.language == .malaysia ? .baseBlack : .main)
-                        }
-                        .padding(.bottom, 40)
-                        
-                        ForEach(typeTestVM.state.recommendPlace, id: \.self) { place in
-                            ticketView(place: place)
-                        }
-                        
-                        Spacer()
-                            .frame(height: 50)
-                    }
-                    .scrollIndicators(.hidden)
+            ScrollView {
+                VStack {
+                    Text(.recommenedeTravelTitleFirstLine, arguments: [nickname])
+                        .font(.title02)
+                        .foregroundStyle(LocalizationManager.shared.language == .malaysia ? .main : .baseBlack)
+                    
+                    Text(.recommenedeTravelTitleSecondLine, arguments: [nickname])
+                        .font(.largeTitle01)
+                        .multilineTextAlignment(.center)
+                        .foregroundStyle(LocalizationManager.shared.language == .malaysia ? .baseBlack : .main)
                 }
+                .padding(.bottom, 40)
+                
+                ForEach(typeTestVM.state.recommendPlace, id: \.self) { place in
+                    ticketView(place: place)
+                }
+                
+                Spacer()
+                    .frame(height: 50)
             }
+            .scrollIndicators(.hidden)
         }
         .toolbar(.hidden, for: .navigationBar)
         .onAppear(){
@@ -65,6 +61,8 @@ struct ProfileRecommendView: View {
                 ExperienceDetailView(id: id, experienceType: "CultureArts")
             case let .recommendResaurant(id):
                 RestaurantDetailView(id: id)
+            case let .recommendNana(id):
+                NaNaPickDetailView(id: id)
             }
         })
     }
@@ -126,6 +124,7 @@ struct ProfileRecommendView: View {
                     Spacer()
                     
                     Button(action: {
+
                         switch place.category {
                         case "NATURE":
                             AppState.shared.navigationPath.append(recommendDetailType.recommendNature(id: place.id))
@@ -133,12 +132,14 @@ struct ProfileRecommendView: View {
                             AppState.shared.navigationPath.append(recommendDetailType.recommendFestival(id: place.id))
                         case "SHOP":
                             AppState.shared.navigationPath.append(recommendDetailType.recommendShop(id: place.id))
-                        case "EXPERIENCE":
+                        case "ACTIVITY":
                             AppState.shared.navigationPath.append(recommendDetailType.recommendActivity(id: place.id))
                         case "CULTURE_AND_ARTS":
                             AppState.shared.navigationPath.append(recommendDetailType.recommendArts(id: place.id))
                         case "RESTAURANT":
                             AppState.shared.navigationPath.append(recommendDetailType.recommendResaurant(id: place.id))
+                        case "NANA":
+                            AppState.shared.navigationPath.append(recommendTestDetailType.recommendNana(id: place.id))
                         default:
                             print("error")
                         }
@@ -177,6 +178,7 @@ enum recommendDetailType: Hashable{
     case recommendActivity(id: Int64)
     case recommendArts(id: Int64)
     case recommendResaurant(id: Int64)
+    case recommendNana(id: Int64)
 }
 
 

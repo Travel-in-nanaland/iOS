@@ -34,7 +34,7 @@ struct RestaurantMenuView: View {
             
             Spacer()
             
-            if imageUrl != "" {
+            if imageUrl != "noImage" {
                 Button {
                     menuModal = true
                 } label: {

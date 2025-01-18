@@ -41,7 +41,8 @@ struct RestaurantDetailView: View {
                         VStack{
                             if isAPICalled {
                                 VStack{
-                                    KFImage(URL(string: viewModel.state.getRestaurantDetailResponse.images?.first!.originUrl ?? ""))
+                                    KFImage(URL(string:
+                                                    viewModel.state.getRestaurantDetailResponse.images![0].originUrl!))
                                         .resizable()
                                         .frame(width: Constants.screenWidth, height: Constants.screenWidth * (26 / 39))
                                         .padding(.bottom, Constants.screenWidth * (24 / 360))
@@ -227,7 +228,7 @@ struct RestaurantDetailView: View {
                                         .padding(EdgeInsets(top: 20, leading: 25, bottom: 0, trailing: 0))
                                         
                                         ForEach(viewModel.state.getRestaurantDetailResponse.menus, id: \.menuName) { menuItem in
-                                            RestaurantMenuView(title: menuItem.menuName, price: menuItem.price, imageUrl: menuItem.firstImage.originUrl ?? "")
+                                            RestaurantMenuView(title: menuItem.menuName, price: menuItem.price, imageUrl: menuItem.firstImage.originUrl ?? "noImage")
                                                 .environmentObject(LocalizationManager())
                                             Rectangle()
                                                 .frame(width: Constants.screenWidth, height: 1)
