@@ -172,8 +172,10 @@
 // settingPage
 "settings" = "Settings";
 "setUsage"= "Set usage";
+"announcement" = "Announcement";
 "termsAndPolicies" = "Terms and policies";
 "accessPolicyGuide" = "Access permission guide";
+"notificationSettings" = "Notification settings";
 "languageSetting" = "Language settings";
 "versionInfomation" = "Version Information";
 "logout" = "Log out";
@@ -378,10 +380,18 @@ the market is the place!";
 "selectRating2" = "select ";
 "selectRating3" = "a ";
 "selectRating4" = "star rating";
+"addKeyword1" = "Please ";
+"addKeyword2" = "select ";
+"addKeyword3" = "a ";
+"addKeyword4" = "keyword";
 "visitReview1" = "Please ";
 "visitReview2" = "write ";
 "visitReview3" = "a ";
 "visitReview4" = "visit review";
+"addPhoto1" = "Please ";
+"addPhoto2" = "select ";
+"addPhoto3" = "a ";
+"addPhoto4" = "photo";
 "writeContent" = "Please fill in the details";
 "addKeyword" = "Add keyword";
 "upload" = "Raise";
@@ -495,6 +505,7 @@ the market is the place!";
 
 //MARK: - 신고하기
 "report" = "report";
+"doReport" = "Report";
 "reportResult" = "The reported contents are in accordance with the operating policy.It will be processed within a maximum of 24 hours.";
 "reportReasonValidation" = "Please write the reason for your report in at least 20 characters!"; // 신고 사유
 "reportCharacterPermission" = "Content can be written in 500 characters or less.";// 내용 500자 이하

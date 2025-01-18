@@ -13,7 +13,7 @@ struct Article: Codable {
 	let firstImage: ArticleImageList
 	let title: String
 	var favorite: Bool?
-	let category: Category
+	var category: Category
     let onGoing: Bool?
 	
 	init(
@@ -63,8 +63,10 @@ struct Article: Codable {
 			switch categoryString {
 			case "NATURE":
 				return .nature
-			case "EXPERIENCE":
-				return .experience
+			case "ACTIVITY":
+				return .activity
+            case "CULTURE_AND_ARTS":
+                return .cultureAndArts
 			case "FESTIVAL":
 				return .festival
 			case "MARKET":
@@ -92,7 +94,8 @@ struct ArticleResponse: Codable {
 struct SearchAllArticleResponse: Codable {
 	var festival: ArticleResponse
 	var nature: ArticleResponse
-	var experience: ArticleResponse
+	var activity: ArticleResponse
+    var cultureAndArts: ArticleResponse
 	var market: ArticleResponse
 	var nana: ArticleResponse
     var restaurant: ArticleResponse
@@ -100,14 +103,16 @@ struct SearchAllArticleResponse: Codable {
 	init(
 		festival: ArticleResponse = ArticleResponse(),
 		nature: ArticleResponse = ArticleResponse(),
-		experience: ArticleResponse = ArticleResponse(),
+        activity: ArticleResponse = ArticleResponse(),
+        cultureAndArts: ArticleResponse = ArticleResponse(),
 		market: ArticleResponse = ArticleResponse(),
 		nana: ArticleResponse = ArticleResponse(),
         restaurant: ArticleResponse = ArticleResponse()
 	) {
 		self.festival = festival
 		self.nature = nature
-		self.experience = experience
+		self.activity = activity
+        self.cultureAndArts = cultureAndArts
 		self.market = market
 		self.nana = nana
         self.restaurant = restaurant

@@ -13,7 +13,7 @@ struct FavoriteService {
 	static func toggleFavorite(id: Int, category: Category) async -> OldBaseResponse<ToggleFavoriteResponse>? {
 		return await NetworkManager.shared.request(FavoriteEndPoint.toggleFavorite(body: FavoriteToggleRequest(id: id, category: category)))
 	}
-	
+    
 	static func getAllFavoriteList(page: Int) async -> OldBaseResponse<ArticleResponse>? {
 		let response: OldBaseResponse<FavoriteListResponse>? = await NetworkManager.shared.request(FavoriteEndPoint.getAllFavoriteList(page: page))
 		
@@ -38,11 +38,17 @@ struct FavoriteService {
 		return mapFavoriteArticleToArticle(response)
 	}
 	
-	static func getExperienceFavoriteList(page: Int) async -> OldBaseResponse<ArticleResponse>? {
-		let response: OldBaseResponse<FavoriteListResponse>? = await NetworkManager.shared.request(FavoriteEndPoint.getExperienceFavoriteList(page: page))
+	static func getActivityFavoriteList(page: Int) async -> OldBaseResponse<ArticleResponse>? {
+		let response: OldBaseResponse<FavoriteListResponse>? = await NetworkManager.shared.request(FavoriteEndPoint.getActivityFavoriteList(page: page))
 		
 		return mapFavoriteArticleToArticle(response)
 	}
+    
+    static func getCultureAndArtsFavoriteList(page: Int) async -> OldBaseResponse<ArticleResponse>? {
+        let response: OldBaseResponse<FavoriteListResponse>? = await NetworkManager.shared.request(FavoriteEndPoint.getCultureAndArtsFavoriteList(page: page))
+        
+        return mapFavoriteArticleToArticle(response)
+    }
 	
 	static func getNanaFavoriteList(page: Int) async -> OldBaseResponse<ArticleResponse>? {
 		let response: OldBaseResponse<FavoriteListResponse>? = await NetworkManager.shared.request(FavoriteEndPoint.getNanaFavoriteList(page: page))

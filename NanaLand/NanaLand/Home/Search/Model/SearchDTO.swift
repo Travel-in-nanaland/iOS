@@ -29,7 +29,8 @@ struct SearchArticle: Codable {
 struct SearchAllCategoryResponse: Codable {
 	var festival: SearchDetailCategoryResponse
 	var nature: SearchDetailCategoryResponse
-	var experience: SearchDetailCategoryResponse
+	var activity: SearchDetailCategoryResponse
+    var cultureAndArts: SearchDetailCategoryResponse
 	var market: SearchDetailCategoryResponse
     var restaurant: SearchDetailCategoryResponse
     var nana: SearchDetailCategoryResponse
@@ -37,14 +38,16 @@ struct SearchAllCategoryResponse: Codable {
 	init(
 		festival: SearchDetailCategoryResponse = SearchDetailCategoryResponse(),
 		nature: SearchDetailCategoryResponse = SearchDetailCategoryResponse(),
-		experience: SearchDetailCategoryResponse = SearchDetailCategoryResponse(),
+        activity: SearchDetailCategoryResponse = SearchDetailCategoryResponse(),
+        cultureAndArts: SearchDetailCategoryResponse = SearchDetailCategoryResponse(),
 		market: SearchDetailCategoryResponse = SearchDetailCategoryResponse(),
         restaurant: SearchDetailCategoryResponse = SearchDetailCategoryResponse(),
         nana: SearchDetailCategoryResponse = SearchDetailCategoryResponse()
 	) {
 		self.festival = festival
 		self.nature = nature
-		self.experience = experience
+		self.activity = activity
+        self.cultureAndArts = cultureAndArts
 		self.market = market
         self.restaurant = restaurant
         self.nana = nana

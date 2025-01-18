@@ -26,7 +26,7 @@ struct ReportModalView: View {
                             reportReasonViewFlag = true
                             self.presentationMode.wrappedValue.dismiss()
                         }, label: {
-                            Text(.report)
+                            Text(.doReport)
                                 .font(.body01)
                                 .frame(height: Constants.screenWidth * (26 / 360))
                                 .foregroundColor(.black)

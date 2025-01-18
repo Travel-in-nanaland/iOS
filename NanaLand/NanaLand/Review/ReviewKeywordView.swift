@@ -15,9 +15,9 @@ struct ReviewKeywordView: View {
     @State private var toastMessage = ""
     @State private var toastMaxMessage = "최대 6개까지 선택 가능합니다"
     var body: some View {
-        NavigationBar(title: LocalizedKey.keyword.localized(for: localizationManager.language))
+        
+        NanaNavigationBar(title: .keyword, showBackButton: true)
             .frame(height: 56)
-            .background(Color.white)
             .padding(.bottom, 10)
         
         ZStack{

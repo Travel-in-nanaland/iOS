@@ -16,6 +16,7 @@ struct RestaurantDetailView: View {
     @State private var roundedHeight: CGFloat = (Constants.screenWidth - 40) * (224.0 / 358.0)
     var id: Int64
     @State private var isOn = false // 더보기 버튼 클릭 여부
+    @State private var isContentExpandable = false // content가 4줄 이상인지 여부
     @State private var contentIsOn = [false, false, false] // 댓글 더보기 버튼 클릭 여부(더 보기 클릭한 댓글만 라인 제한 풀기)
     @State private var isExpanded = false
     @State private var isAPICalled = false
@@ -89,6 +90,18 @@ struct RestaurantDetailView: View {
                                                         .font(.body02)
                                                         .lineLimit(4)
                                                         .lineSpacing(10)
+                                                        .background(GeometryReader { geometry in
+                                                            Color.clear.onAppear {
+                                                                let textHeight = estimateTextHeight(
+                                                                    text: viewModel.state.getRestaurantDetailResponse.content ?? "",
+                                                                    font: UIFont.systemFont(ofSize: UIFont.preferredFont(forTextStyle: .body).pointSize),
+                                                                    width: geometry.size.width
+                                                                )
+                                                                DispatchQueue.main.async {
+                                                                    isContentExpandable = textHeight > (4 * UIFont.preferredFont(forTextStyle: .body).lineHeight)
+                                                                }
+                                                            }
+                                                        })
                                                     
                                                     Spacer()
                                                 }
@@ -100,7 +113,7 @@ struct RestaurantDetailView: View {
                                                 HStack {
                                                     Spacer()
                                                     VStack {
-                                                        if viewModel.state.getRestaurantDetailResponse.content.count > 90 {
+                                                        if isContentExpandable {
                                                             Button {
                                                                 isOn.toggle()
                                                             } label: {
@@ -437,14 +450,14 @@ struct RestaurantDetailView: View {
                                                                 }
                                                                 Spacer()
                                                                 
-                                                                HStack(spacing: 0){
+                                                                HStack(spacing: 8){
                                                                     Button(action: {
                                                                         AppState.shared.navigationPath.append(ReviewType.detailReivew(id: viewModel.state.getReviewDataResponse.data[index].id, category: "RESTAURANT"))
                                                                     }, label: {
                                                                         Text(.modify)
                                                                             .font(.caption01)
                                                                             .foregroundColor(.gray1)
-                                                                            .padding(EdgeInsets(top: 4, leading: 12, bottom: 4, trailing: 12))
+                                                                            .padding(EdgeInsets(top: 2, leading: 8, bottom: 2, trailing: 8))
                                                                             .background {
                                                                                 RoundedRectangle(cornerRadius: 30)
                                                                                     .foregroundColor(.gray3)
@@ -458,7 +471,7 @@ struct RestaurantDetailView: View {
                                                                         Text(.delete)
                                                                             .font(.caption01)
                                                                             .foregroundColor(.gray1)
-                                                                            .padding(EdgeInsets(top: 4, leading: 12, bottom: 4, trailing: 12))
+                                                                            .padding(EdgeInsets(top: 2, leading: 8, bottom: 2, trailing: 8))
                                                                             .background {
                                                                                 RoundedRectangle(cornerRadius: 30)
                                                                                     .foregroundColor(.gray3)
@@ -630,24 +643,24 @@ struct RestaurantDetailView: View {
                                                             .padding(.leading, 16)
                                                             .padding(.trailing, 16)
                                                             .multilineTextAlignment(.leading)
-                                                            .padding(.bottom, 4)
+                                                            .padding(.bottom, 12)
                                                             HStack(spacing: 0) {
-                                                                Spacer()
-                                                                Text("\(viewModel.state.getReviewDataResponse.data[index].createdAt ?? "")")
-                                                                    .font(.caption01)
-                                                                    .foregroundStyle(Color.gray1)
-                                                                
                                                                 Button {
                                                                     reportModal = true
                                                                     idx = viewModel.state.getReviewDataResponse.data[index].id
                                                                 } label: {
-                                                                    Image("icPointBtn")
-                                                                        .resizable()
-                                                                        .renderingMode(.template)
-                                                                        .frame(width: 20, height: 20)
-                                                                        .foregroundStyle(Color.gray1)
+                                                                    Text(.doReport)
+                                                                        .font(.caption02)
+                                                                        .foregroundColor(Color.gray1)
                                                                 }
+                                                                
+                                                                Spacer()
+                                                                
+                                                                Text("\(viewModel.state.getReviewDataResponse.data[index].createdAt ?? "")")
+                                                                    .font(.caption01)
+                                                                    .foregroundStyle(Color.gray1)
                                                             }
+                                                            .padding(.leading, 16)
                                                             .padding(.trailing, 16)
                                                             .padding(.bottom, 16)
                                                         }
@@ -820,6 +833,18 @@ struct RestaurantDetailView: View {
     
     func getSafeArea() ->UIEdgeInsets  {
         return UIApplication.shared.windows.first?.safeAreaInsets ?? UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    
+    /// 텍스트 높이를 계산하는 메서드
+    func estimateTextHeight(text: String, font: UIFont, width: CGFloat) -> CGFloat {
+        let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
+        let boundingBox = text.boundingRect(
+            with: constraintRect,
+            options: .usesLineFragmentOrigin,
+            attributes: [.font: font],
+            context: nil
+        )
+        return boundingBox.height
     }
 }
 

@@ -29,8 +29,10 @@ struct SearchDetailCategoryResultView: View {
                             return "\(searchVM.state.festivalCategorySearchResult.totalElements)"
                         case .market:
                             return "\(searchVM.state.marketCategorySearchResult.totalElements)"
-                        case .experience:
-                            return "\(searchVM.state.experienceCategorySearchResult.totalElements)"
+                        case .activity:
+                            return "\(searchVM.state.activityCategorySearchResult.totalElements)"
+                        case .cultureAndArts:
+                            return "\(searchVM.state.cultureAndArtsCategorySearchResult.totalElements)"
                         case .nanaPick:
                             return "\(searchVM.state.nanaCategorySearchResult.totalElements)"
                         case .restaurant:
@@ -42,7 +44,8 @@ struct SearchDetailCategoryResultView: View {
                 .font(.gothicNeo(.medium, size: 14))
                 .foregroundStyle(Color.gray1)
                 
-                if searchVM.state.currentSearchTab == .experience || searchVM.state.currentSearchTab == .nanaPick || searchVM.state.currentSearchTab == .market || searchVM.state.currentSearchTab == .nature || searchVM.state.currentSearchTab == .festival || searchVM.state.currentSearchTab == .restaurant {
+                if searchVM.state.currentSearchTab == .activity || searchVM.state.currentSearchTab == .nanaPick || searchVM.state.currentSearchTab == .market || searchVM.state.currentSearchTab == .nature || searchVM.state.currentSearchTab == .festival || searchVM.state.currentSearchTab == .restaurant ||
+                    searchVM.state.currentSearchTab == .cultureAndArts {
                     if false {
                         VStack(spacing: 4) {
                             Image(.airplane)
@@ -82,8 +85,10 @@ struct SearchDetailCategoryResultView: View {
                                     return searchVM.state.festivalCategorySearchResult.data
                                 case .market:
                                     return searchVM.state.marketCategorySearchResult.data
-                                case .experience:
-                                    return searchVM.state.experienceCategorySearchResult.data
+                                case .activity:
+                                    return searchVM.state.activityCategorySearchResult.data
+                                case .cultureAndArts:
+                                    return searchVM.state.cultureAndArtsCategorySearchResult.data
                                 case .nanaPick:
                                     return searchVM.state.nanaCategorySearchResult.data
                                 case .restaurant:
@@ -138,8 +143,10 @@ struct SearchDetailCategoryResultView: View {
                 FestivalDetailView(id: Int64(article.id))
             case .market:
                 ShopDetailView(id: Int64(article.id))
-            case .experience:
-                ExperienceDetailView(id: Int64(article.id))
+            case .activity:
+                ExperienceDetailView(id: Int64(article.id), experienceType: "Activity")
+            case .cultureAndArts:
+                ExperienceDetailView(id: Int64(article.id), experienceType: "CultureArts")
             case .nanaPick:
                 NaNaPickDetailView(id: Int64(article.id))
             case .all:
@@ -155,5 +162,5 @@ enum SearchDetailViewType: Hashable {
 }
 
 #Preview {
-    SearchDetailCategoryResultView(searchVM: SearchViewModel(), tab: .experience, searchTerm: "제주시")
+    SearchDetailCategoryResultView(searchVM: SearchViewModel(), tab: .activity, searchTerm: "제주시")
 }

@@ -16,7 +16,8 @@ enum SearchEndPoint {
 	case getSearchNatureCategory(term: String, page: Int)
 	case getSearchMarketCategory(term: String, page: Int)
 	case getSearchFestivalCategory(term: String, page: Int)
-	case getSearchExperienceCategory(term: String, page: Int)
+	case getSearchActivityCategory(term: String, page: Int)
+    case getSearchCultureAndArtsCategory(term: String, page: Int)
 	case getSearchNanaCategory(term: String, page: Int)
     case getSearchRestaurantCategory(term: String, page: Int)
 	
@@ -42,8 +43,10 @@ extension SearchEndPoint: EndPoint {
 			return "/market"
 		case .getSearchFestivalCategory:
 			return "/festival"
-		case .getSearchExperienceCategory:
+		case .getSearchActivityCategory:
 			return "/experience"
+        case .getSearchCultureAndArtsCategory:
+            return "/experience"
 		case .getSearchNanaCategory:
 			return "/nana"
         case .getSearchRestaurantCategory:
@@ -65,8 +68,10 @@ extension SearchEndPoint: EndPoint {
 			return .get
 		case .getSearchFestivalCategory:
 			return .get
-		case .getSearchExperienceCategory:
+		case .getSearchActivityCategory:
 			return .get
+        case .getSearchCultureAndArtsCategory:
+            return .get
 		case .getSearchNanaCategory:
 			return .get
         case .getSearchRestaurantCategory:
@@ -81,7 +86,9 @@ extension SearchEndPoint: EndPoint {
 	var task: APITask {
 		switch self {
 		case let .getSearchAllCategory(term):
-			let param = ["keyword": term]
+            let param: [String: Any] = [
+                "keyword": term
+            ]
 			return .requestParameters(parameters: param)
 		case let .getSearchNatureCategory(term: term, page: page):
 			let param: [String: Any] = [
@@ -101,12 +108,20 @@ extension SearchEndPoint: EndPoint {
 				"page": page
 			]
 			return .requestParameters(parameters: param)
-		case let .getSearchExperienceCategory(term: term, page: page):
+		case let .getSearchActivityCategory(term: term, page: page):
 			let param: [String: Any] = [
+                "experienceType": "ACTIVITY",
 				"keyword": term,
 				"page": page
 			]
 			return .requestParameters(parameters: param)
+        case let .getSearchCultureAndArtsCategory(term: term, page: page):
+            let param: [String: Any] = [
+                "experienceType": "CULTURE_AND_ARTS",
+                "keyword": term,
+                "page": page
+            ]
+            return .requestParameters(parameters: param)
 		case let .getSearchNanaCategory(term, page):
 			let param: [String: Any] = [
 				"keyword": term,

@@ -41,35 +41,23 @@ struct ReviewWriteMain: View {
                                 .renderingMode(.template)
                                 .foregroundStyle(Color.black)
                         })
-                        .customAlert(LocalizedKey.reviewBackAlertTitle.localized(for: localizationManager.language), isPresented: $showAlert) {
-                            Text(.reviewBackAlertMessage)
-                                .font(.body01)
-                                .foregroundStyle(Color.gray1)
-                                .padding(.top, 5)
-                        } actions: {
-                            MultiButton {
-                                Button {
-                                    withAnimation(nil) {
-                                        dismiss()
-                                        showAlert = false
-                                    }
-                                    
-                                } label: {
-                                    Text(.yes)
-                                        .font(.title02_bold)
-                                        .foregroundStyle(Color.black)
+                        .fullScreenCover(isPresented: $showAlert) {
+                            AlertView(
+                                title: .reviewBackAlertTitle,
+                                message: .reviewBackAlertMessage,
+                                leftButtonTitle: .yes,
+                                rightButtonTitle: .no,
+                                leftButtonAction: {
+                                    dismiss()
+                                    showAlert = false
+                                },
+                                rightButtonAction: {
+                                    showAlert = false
                                 }
-                                
-                                Button {
-                                    withAnimation(nil) {
-                                        showAlert = false
-                                    }
-                                } label: {
-                                    Text(.no)
-                                        .font(.title02_bold)
-                                        .foregroundStyle(Color.main)
-                                }
-                            }
+                            )
+                        }
+                        .transaction { transaction in
+                            transaction.disablesAnimations = true
                         }
                         .padding(.leading, 16)
                         Spacer()
@@ -120,36 +108,42 @@ struct ReviewMainGridView: View {
                         .padding(.bottom, 5)
                     Text(reviewItemAddress)
                         .font(.body02)
-                        .padding(.bottom, 24)
+                        .padding(.bottom, Constants.screenWidth * (24 / 360))
                     
                     Rectangle()
                         .fill(Color.gray2)
-                        .frame(width: 64, height: 1)
-                        .padding(.bottom, 26)
+                        .frame(width: Constants.screenWidth * (64 / 360), height: 1)
+                        .padding(.bottom, Constants.screenWidth * (22 / 360))
                     
                     
                     if localizationManager.language == .korean {
                         let selectRating = Text(.selectRating1).font(.body_bold).foregroundColor(.main) + Text(.selectRating2).font(.body_bold).foregroundColor(.black) + Text(.selectRating3).font(.body_bold).foregroundColor(.main) + Text(.selectRating4).font(.body_bold).foregroundColor(.black) + Text("!").font(.body_bold).foregroundColor(.black)
                         
-                        selectRating
-                    } else if localizationManager.language == .english {
-                        let selectRating = Text(.selectRating1).font(.body_bold).foregroundColor(.black) + Text(.selectRating2).font(.body_bold).foregroundColor(.main) + Text(.selectRating3).font(.body_bold).foregroundColor(.black) + Text(.selectRating4).font(.body_bold).foregroundColor(.main) +
-                            Text("!").font(.body_bold).foregroundColor(.black)
+                        HStack {
+                            selectRating
+                            
+                            Text("*")
+                                .font(.body_bold)
+                                .foregroundColor(.main)
+                                .padding(.bottom, 8)
+                                .padding(.leading, -4)
+                        }
                         
-                        selectRating
-                    } else if localizationManager.language == .chinese {
-                        let selectRating = Text(.selectRating1).font(.body_bold).foregroundColor(.black) + Text(.selectRating2).font(.body_bold).foregroundColor(.main) + Text(.selectRating3).font(.body_bold).foregroundColor(.black) + Text(.selectRating4).font(.body_bold).foregroundColor(.main) + Text("!").font(.body_bold).foregroundColor(.black)
-                        
-                        selectRating
-                    } else if localizationManager.language == .malaysia {
-                        let selectRating = Text(.selectRating1).font(.body_bold).foregroundColor(.black) + Text(.selectRating2).font(.body_bold).foregroundColor(.main) + Text(.selectRating3).font(.body_bold).foregroundColor(.black) + Text(.selectRating4).font(.body_bold).foregroundColor(.main) + Text("!").font(.body_bold).foregroundColor(.black)
-                        
-                        selectRating
                     } else {
-                        let selectRating = Text(.selectRating1).font(.body_bold).foregroundColor(.black) + Text(.selectRating2).font(.body_bold).foregroundColor(.main) + Text(.selectRating3).font(.body_bold).foregroundColor(.black) + Text(.selectRating4).font(.body_bold).foregroundColor(.main) + Text("!").font(.body_bold).foregroundColor(.black)
+                        let selectRating = Text(.selectRating1).font(.body_bold).foregroundColor(.black) + Text(.selectRating2).font(.body_bold).foregroundColor(.main) + Text(.selectRating3).font(.body_bold).foregroundColor(.black) + Text(.selectRating4).font(.body_bold).foregroundColor(.main) +
+                        Text("!").font(.body_bold).foregroundColor(.black)
                         
-                        selectRating
+                        HStack {
+                            selectRating
+                            
+                            Text("*")
+                                .font(.body_bold)
+                                .foregroundColor(.main)
+                                .padding(.bottom, 8)
+                                .padding(.leading, -4)
+                        }
                     }
+                    
                     
                     
                     HStack {
@@ -157,47 +151,204 @@ struct ReviewMainGridView: View {
                             Image(number <= viewModel.state.getReviewWriteResponse.rating ? "icStarFill" : "icStar")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .frame(width: 36)
+                                .frame(width: Constants.screenWidth * (25 / 360))
                                 .onTapGesture {
                                     viewModel.updateRating(number)
                                     viewModel.state.reviewDTO.rating = number
                                 }
                         }
                     }
-                    .padding(.bottom, 24)
+                    .padding(.bottom, Constants.screenWidth * (24 / 360))
                     
                     Rectangle()
                         .fill(Color.gray2)
-                        .frame(width: 64, height: 1)
-                        .padding(.bottom, 26)
+                        .frame(width: Constants.screenWidth * (64 / 360), height: 1)
+                        .padding(.bottom, Constants.screenWidth * (24 / 360))
+                    
+                    if localizationManager.language == .korean {
+                        let addKeyword = Text(.addKeyword1).font(.body_bold).foregroundColor(.main) + Text(.addKeyword2).font(.body_bold).foregroundColor(.black) + Text(.addKeyword3).font(.body_bold).foregroundColor(.main) + Text(.addKeyword4).font(.body_bold).foregroundColor(.black) + Text("!").font(.body_bold).foregroundColor(.black)
+                        
+                        HStack {
+                            addKeyword
+                            
+                            Text("*")
+                                .font(.body_bold)
+                                .foregroundColor(.main)
+                                .padding(.bottom, 8)
+                                .padding(.leading, -4)
+                        }
+                        
+                    } else {
+                        let addKeyword = Text(.addKeyword1).font(.body_bold).foregroundColor(.black) + Text(.addKeyword2).font(.body_bold).foregroundColor(.main) + Text(.addKeyword3).font(.body_bold).foregroundColor(.black) + Text(.addKeyword4).font(.body_bold).foregroundColor(.main) + Text("!").font(.body_bold).foregroundColor(.black)
+                        
+                        HStack {
+                            addKeyword
+                            
+                            Text("*")
+                                .font(.body_bold)
+                                .foregroundColor(.main)
+                                .padding(.bottom, 8)
+                                .padding(.leading, -4)
+                        }
+                    }
+                    
+                    VStack(spacing: 4) {
+                        HStack {
+                            
+                            if viewModel.selectedKeyword.count == 0 {
+                                Spacer()
+                            }
+                            
+                            NavigationLink {
+                                ReviewKeywordView(viewModel: viewModel)
+                            } label: {
+                                HStack {
+                                    Text(.addKeyword)
+                                        .font(.body02)
+                                    Image(systemName: "plus")
+                                }
+                                .padding(EdgeInsets(top: 6, leading: 12, bottom: 6, trailing: 12))
+                                .background(
+                                    RoundedRectangle(cornerRadius: 50)
+                                        .stroke(Color.main, lineWidth: 1)
+                                )
+                                .foregroundColor(.main)
+                            }
+                            
+                            if viewModel.selectedKeyword.count != 0 {
+                                MainTagView(tags: Array(viewModel.selectedKeyword.prefix(1)), keywordViewModel: viewModel, localizationManager: _localizationManager)
+                            }
+                            
+                            Spacer()
+                        }
+                        MainTagView(tags: Array(viewModel.selectedKeyword.dropFirst()), keywordViewModel: viewModel, localizationManager: _localizationManager)
+                            .padding(.leading, -5)
+                    }
+                    .padding(.leading, Constants.screenWidth * (16 / 360))
+                    .padding(.trailing, Constants.screenWidth * (16 / 360))
+                    .padding(.bottom, Constants.screenWidth * (24 / 360))
+                    
+                    Rectangle()
+                        .fill(Color.gray2)
+                        .frame(width: Constants.screenWidth * (64 / 360), height: 1)
+                        .padding(.bottom, Constants.screenWidth * (24 / 360))
                     
                     if localizationManager.language == .korean {
                         let visitReview = Text(.visitReview1).font(.body_bold).foregroundColor(.main) + Text(.visitReview2).font(.body_bold).foregroundColor(.black) + Text(.visitReview3).font(.body_bold).foregroundColor(.main) + Text(.visitReview4).font(.body_bold).foregroundColor(.black) + Text("!").font(.body_bold).foregroundColor(.black)
                         
-                        visitReview
-                    } else if localizationManager.language == .english {
-                        let visitReview = Text(.visitReview1).font(.body_bold).foregroundColor(.black) + Text(.visitReview2).font(.body_bold).foregroundColor(.main) + Text(.visitReview3).font(.body_bold).foregroundColor(.black) + Text(.visitReview4).font(.body_bold).foregroundColor(.main) + Text("!").font(.body_bold).foregroundColor(.black)
+                        HStack {
+                            visitReview
+                            
+                            Text("*")
+                                .font(.body_bold)
+                                .foregroundColor(.main)
+                                .padding(.bottom, 8)
+                                .padding(.leading, -4)
+                        }
                         
-                        visitReview
-                    } else if localizationManager.language == .chinese {
-                        let visitReview = Text(.visitReview1).font(.body_bold).foregroundColor(.black) + Text(.visitReview2).font(.body_bold).foregroundColor(.main) + Text(.visitReview3).font(.body_bold).foregroundColor(.black) + Text(.visitReview4).font(.body_bold).foregroundColor(.main) + Text("!").font(.body_bold).foregroundColor(.black)
-                        
-                        visitReview
-                    } else if localizationManager.language == .malaysia {
-                        let visitReview = Text(.visitReview1).font(.body_bold).foregroundColor(.black) + Text(.visitReview2).font(.body_bold).foregroundColor(.main) + Text(.visitReview3).font(.body_bold).foregroundColor(.black) + Text(.visitReview4).font(.body_bold).foregroundColor(.main) + Text("!").font(.body_bold).foregroundColor(.black)
-                        
-                        visitReview
                     } else {
                         let visitReview = Text(.visitReview1).font(.body_bold).foregroundColor(.black) + Text(.visitReview2).font(.body_bold).foregroundColor(.main) + Text(.visitReview3).font(.body_bold).foregroundColor(.black) + Text(.visitReview4).font(.body_bold).foregroundColor(.main) + Text("!").font(.body_bold).foregroundColor(.black)
                         
-                        visitReview
+                        HStack {
+                            visitReview
+                            
+                            Text("*")
+                                .font(.body_bold)
+                                .foregroundColor(.main)
+                                .padding(.bottom, 8)
+                                .padding(.leading, -4)
+                        }
+                    }
+                    
+                    
+                    ZStack(alignment: .topLeading) {
+                        
+                        TextEditor(text: $reviewContent)
+                            .font(.body02)
+                            .foregroundColor(.black)
+                            .padding(4)
+                            .background(Color.white)
+                            .cornerRadius(8)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .stroke(Color.gray2, lineWidth: 1)
+                            )
+                            .frame(height: 190)
+                            .onChange(of: reviewContent) { newValue in
+                                viewModel.state.reviewDTO.content = newValue
+                                print("\(newValue)")
+                                for i in 0..<viewModel.selectedKeyword.count {
+                                    print(viewModel.selectedKeyword[i].tag)
+                                }
+                                if newValue.count > 200 {
+                                    
+                                    reviewContent = String(newValue.prefix(200))
+                                    toastMessage = LocalizedKey.content200.localized(for: localizationManager.language)
+                                    showToast = true
+                                    print("200자 초과")
+                                }
+                            }
+                            .padding(.horizontal)
+                            .focused($isTextEditorFocused)
+                        
+                        if reviewContent == "" {
+                            Text(.writeContent)
+                                .font(.body02)
+                                .foregroundColor(.gray1)
+                                .padding(4)
+                                .padding(EdgeInsets(top: 8, leading: 20, bottom: 0, trailing: 0))
+                                .onTapGesture {
+                                    isTextEditorFocused = true
+                                }
+                        }
+                    }.padding(.bottom, Constants.screenWidth * (24 / 360))
+                    
+                    HStack {
+                        Spacer()
+                        Text("(\(reviewContent.count) / 200)")
+                            .font(.body02)
+                            .foregroundColor(.gray1)
+                            .padding(.top, Constants.screenWidth * (-60 / 360))
+                            .padding(.trailing, 30)
+                    }
+                    
+                    Rectangle()
+                        .fill(Color.gray2)
+                        .frame(width: Constants.screenWidth * (64 / 360), height: 1)
+                        .padding(.bottom, Constants.screenWidth * (24 / 360))
+                    
+                    if localizationManager.language == .korean {
+                        let addPhoto = Text(.addPhoto1).font(.body_bold).foregroundColor(.main) + Text(.addPhoto2).font(.body_bold).foregroundColor(.black) + Text(.addPhoto3).font(.body_bold).foregroundColor(.main) + Text(.addPhoto4).font(.body_bold).foregroundColor(.black) + Text("!").font(.body_bold).foregroundColor(.black)
+                        
+                        HStack {
+                            addPhoto
+                            
+                            Text("*")
+                                .font(.body_bold)
+                                .foregroundColor(.main)
+                                .padding(.bottom, 8)
+                                .padding(.leading, -4)
+                        }
+                        
+                    } else {
+                        let addPhoto = Text(.addPhoto1).font(.body_bold).foregroundColor(.black) + Text(.addPhoto2).font(.body_bold).foregroundColor(.main) + Text(.addPhoto3).font(.body_bold).foregroundColor(.black) + Text(.addPhoto4).font(.body_bold).foregroundColor(.main) + Text("!").font(.body_bold).foregroundColor(.black)
+                        
+                        HStack {
+                            addPhoto
+                            
+                            Text("*")
+                                .font(.body_bold)
+                                .foregroundColor(.main)
+                                .padding(.bottom, 8)
+                                .padding(.leading, -4)
+                        }
                     }
                     
                     HStack {
                         ZStack {
                             Rectangle()
                                 .fill(Color.gray2)
-                                .frame(width: 80, height: 80)
+                                .frame(width: Constants.screenWidth * (80 / 360), height: Constants.screenWidth * (80 / 360))
                                 .cornerRadius(8)
                                 .padding(.leading, -5)
                             
@@ -263,85 +414,7 @@ struct ReviewMainGridView: View {
                             }
                         }
                     }
-                    .padding(EdgeInsets(top: 0, leading: 20, bottom: 5, trailing: 20))
-                    
-                    ZStack(alignment: .topLeading) {
-                        
-                        TextEditor(text: $reviewContent)
-                            .font(.body02)
-                            .foregroundColor(.black)
-                            .padding(4)
-                            .background(Color.white)
-                            .cornerRadius(8)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 8)
-                                    .stroke(Color.gray2, lineWidth: 1)
-                            )
-                            .frame(height: 190)
-                            .onChange(of: reviewContent) { newValue in
-                                viewModel.state.reviewDTO.content = newValue
-                                print("\(newValue)")
-                                for i in 0..<viewModel.selectedKeyword.count {
-                                    print(viewModel.selectedKeyword[i].tag)
-                                }
-                                if newValue.count > 200 {
-                                    
-                                    reviewContent = String(newValue.prefix(200))
-                                    toastMessage = LocalizedKey.content200.localized(for: localizationManager.language)
-                                    showToast = true
-                                    print("200자 초과")
-                                }
-                            }
-                            .padding(.horizontal)
-                            .focused($isTextEditorFocused)
-                        
-                        if reviewContent == "" {
-                            Text(.writeContent)
-                                .font(.body02)
-                                .foregroundColor(.gray1)
-                                .padding(4)
-                                .padding(EdgeInsets(top: 8, leading: 20, bottom: 0, trailing: 0))
-                                .onTapGesture {
-                                    isTextEditorFocused = true
-                                }
-                        }
-                    }
-                    
-                    HStack {
-                        Spacer()
-                        Text("(\(reviewContent.count) / 200)")
-                            .font(.body02)
-                            .foregroundColor(.gray)
-                            .padding(.top, -40)
-                            .padding(.trailing, 30)
-                    }
-                    
-                    VStack(alignment: .leading, spacing: 4) {
-                        HStack {
-                            NavigationLink {
-                                ReviewKeywordView(viewModel: viewModel)
-                            } label: {
-                                HStack {
-                                    Text(.addKeyword)
-                                        .font(.body02)
-                                    Image(systemName: "plus")
-                                }
-                                .padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
-                                .background(
-                                    RoundedRectangle(cornerRadius: 50)
-                                        .stroke(Color.main, lineWidth: 1)
-                                )
-                                .foregroundColor(.main)
-                            }
-                            
-                            MainTagView(tags: Array(viewModel.selectedKeyword.prefix(1)), keywordViewModel: viewModel, localizationManager: _localizationManager)
-                            
-                            Spacer()
-                        }
-                        MainTagView(tags: Array(viewModel.selectedKeyword.dropFirst()), keywordViewModel: viewModel, localizationManager: _localizationManager)
-                            .padding(.leading, -5)
-                    }
-                    .padding()
+                    .padding(EdgeInsets(top: 0, leading: Constants.screenWidth * (16 / 360), bottom: Constants.screenWidth * (24 / 360), trailing: Constants.screenWidth * (16 / 360)))
                     
                     ZStack {
                         RoundedRectangle(cornerRadius: 50)

@@ -42,7 +42,7 @@ struct FavoriteMainView: View {
                 ForEach(tabs, id: \.self) { tab in
                     VStack(spacing: 0) {
                         Text(tab.localizedName)
-                            .font(.gothicNeo(tab == currentTab ? .semibold : .medium, size: 12))
+                            .font(tab == currentTab ? .body02_semibold : .body02)
                             .foregroundStyle(Color.baseBlack)
                             .padding(.horizontal, 16)
                             .padding(.vertical, 8)
@@ -75,8 +75,11 @@ struct FavoriteMainView: View {
             FavoriteListView(category: .market)
                 .tag(Category.market)
             
-            FavoriteListView(category: .experience)
-                .tag(Category.experience)
+            FavoriteListView(category: .activity)
+                .tag(Category.activity)
+            
+            FavoriteListView(category: .cultureAndArts)
+                .tag(Category.cultureAndArts)
             
             FavoriteListView(category: .restaurant)
                 .tag(Category.restaurant)
@@ -86,7 +89,7 @@ struct FavoriteMainView: View {
         }
         .environmentObject(favoriteVM)
         .tabViewStyle(.page(indexDisplayMode: .never))
-        .introspect(.scrollView, on: .iOS(.v16, .v17)) { scrollView in
+        .introspect(.scrollView, on: .iOS(.v16, .v17, .v18)) { scrollView in
             scrollView.isScrollEnabled = false
         }
     }

@@ -55,12 +55,13 @@ class ExperienceDetailViewModel: ObservableObject {
                 }
             }
         case .toggleFavorite(body: let body):
-            let response = await FavoriteService.toggleFavorite(id: body.id, category: .experience)
+            let response = await FavoriteService.toggleFavorite(id: body.id, category: .activity)
             if response != nil {
                 await MainActor.run {
                     state.getExperienceDetailResponse.favorite = response!.data.favorite
                 }
             }
+
         case let .reviewFavorite(id):
             let response = await ReviewService.reviewFavorite(id: id)
             if let responseData = response?.data {

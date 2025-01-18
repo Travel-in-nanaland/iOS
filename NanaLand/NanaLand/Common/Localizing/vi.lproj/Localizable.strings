@@ -172,8 +172,10 @@
 // settingPage
 "settings" = "Cài đặt";
 "setUsage"= "Đã bật";
+"announcement" = "Thông báo";
 "termsAndPolicies" = "Điều khoản và Chính sách";
 "accessPolicyGuide" = "Thông tin quyền truy cập";
+"notificationSettings" = "Cài đặt thông báo";
 "languageSetting" = "Cài đặt ngôn ngữ";
 "versionInfomation" = "Thông tin phiên bản";
 "logout" = "Đăng xuất";
@@ -376,10 +378,18 @@
 "selectRating2" = "chọn ";
 "selectRating3" = "một ";
 "selectRating4" = "xếp hạng sao";
+"addKeyword1" = "Vui lòng ";
+"addKeyword2" = "chọn ";
+"addKeyword3" = "một ";
+"addKeyword4" = "từ khóa";
 "visitReview1" = "Vui lòng ";
 "visitReview2" = "viết ";
 "visitReview3" = "một ";
 "visitReview4" = "đánh giá sau chuyến thăm";
+"addPhoto1" = "Vui lòng ";
+"addPhoto2" = "chọn ";
+"addPhoto3" = "một ";
+"addPhoto4" = "ảnh";
 "writeContent" = "Vui lòng điền vào chi tiết";
 "addKeyword" = "Thêm từ khóa";
 "upload" = "Nâng cao";
@@ -474,6 +484,7 @@
 
 //MARK: - 신고하기
 "report" = "report";
+"doReport" = "Báo cáo";
 
 //MARK: - 나나스픽
 "nanapickRecommend1" = "Gợi ý tuần này, ";

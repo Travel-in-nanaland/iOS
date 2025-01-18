@@ -175,8 +175,10 @@ enum LocalizedKey: String {
     // settingPage
     case settings
     case setUsage
+    case announcement
     case termsAndPolicies
     case accessPolicyGuide
+    case notificationSettings
     case languageSetting
     case versionInfomation
     case logout
@@ -383,10 +385,18 @@ enum LocalizedKey: String {
     case selectRating2
     case selectRating3
     case selectRating4
+    case addKeyword1
+    case addKeyword2
+    case addKeyword3
+    case addKeyword4
     case visitReview1
     case visitReview2
     case visitReview3
     case visitReview4
+    case addPhoto1
+    case addPhoto2
+    case addPhoto3
+    case addPhoto4
     case writeContent
     case addKeyword
     case upload
@@ -503,6 +513,7 @@ enum LocalizedKey: String {
     
     //MARK: - 신고하기
     case report
+    case doReport
     case reportResult
     case reportReasonValidation // 신고 사유 20자 이상
     case reportCharacterPermission // 내용 500자 이하

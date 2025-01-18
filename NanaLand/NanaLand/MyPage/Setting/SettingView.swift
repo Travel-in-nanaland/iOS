@@ -6,13 +6,22 @@
 //
 
 import SwiftUI
+import UserNotifications
+
+enum SettingViewType {
+    case announcement
+    case policy
+    case authorize
+    case language
+    case withdraw
+}
 
 struct SettingView: View {
     @State private var showAlert = false
     @State var alertResult = false
     @EnvironmentObject var localizationManager: LocalizationManager
     @AppStorage("provider") var provider: String = ""
-    
+    @State var toggleIsOn: Bool = false
     var body: some View {
         
         ZStack{
@@ -28,11 +37,29 @@ struct SettingView: View {
                 }
                 .padding(.bottom, 6)
                 VStack(spacing: 0) {
-                    SettingItemButtonView(title: LocalizedKey.termsAndPolicies.localized(for: localizationManager.language))
-                    SettingItemButtonView(title: LocalizedKey.accessPolicyGuide.localized(for: localizationManager.language))
-                    SettingItemButtonView(title: LocalizedKey.languageSetting.localized(for: localizationManager.language))
-                    SettingItemButtonView(title: LocalizedKey.versionInfomation.localized(for: localizationManager.language))
-
+                    SettingItemButtonView(title: LocalizedKey.announcement.localized(for: localizationManager.language), toggleIsOn: .constant(false))
+                    SettingItemButtonView(title: LocalizedKey.termsAndPolicies.localized(for: localizationManager.language), toggleIsOn: .constant(false))
+                    SettingItemButtonView(title: LocalizedKey.accessPolicyGuide.localized(for: localizationManager.language), toggleIsOn: .constant(false))
+                    SettingItemButtonView(title: LocalizedKey.notificationSettings.localized(for: localizationManager.language), toggleIsOn: $toggleIsOn)
+                        .onChange(of: toggleIsOn) { newValue in
+                            if newValue {
+                                UNUserNotificationCenter.current().getNotificationSettings { settings in
+                                    if settings.authorizationStatus == .notDetermined {
+                                        // 권한 요청
+                                        NotificationManager.nm.request_authorization()
+                                    } else if settings.authorizationStatus == .denied {
+                                        // 권한 거부된 상태: 설정 화면으로 안내
+                                        DispatchQueue.main.async {
+                                            toggleIsOn = false
+                                             NotificationManager.nm.openAppSettings()
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    SettingItemButtonView(title: LocalizedKey.languageSetting.localized(for: localizationManager.language), toggleIsOn: .constant(false))
+                    SettingItemButtonView(title: LocalizedKey.versionInfomation.localized(for: localizationManager.language), toggleIsOn: .constant(false))
+                    
                     Divider()
                     
                     if provider == "GUEST" {
@@ -82,13 +109,35 @@ struct SettingView: View {
                             transaction.disablesAnimations = true
                         }
                         
-                        SettingItemButtonView(title: LocalizedKey.memberWithdraw.localized(for: localizationManager.language))
+                        SettingItemButtonView(title: LocalizedKey.memberWithdraw.localized(for: localizationManager.language), toggleIsOn: .constant(false))
                     }
                 }
                 Spacer()
             }
         }
         .toolbar(.hidden)
+        .navigationDestination(for: SettingViewType.self) { viewType in
+            switch viewType {
+            case .announcement:
+                NoticeMainView()
+            case .policy:
+                PolicyView()
+            case .authorize:
+                AuthorizeView()
+            case .language:
+                LanguageView()
+            case .withdraw:
+                WithdrawView()
+            }
+        }
+        .onAppear {
+            // 알림 권한 상태를 확인해 초기 토글 상태를 설정
+            UNUserNotificationCenter.current().getNotificationSettings { settings in
+                DispatchQueue.main.async {
+                    toggleIsOn = settings.authorizationStatus == .authorized
+                }
+            }
+        }
     }
 }
 // 설정창에 있는 버튼들
@@ -97,10 +146,17 @@ struct SettingItemButtonView: View {
     var path: SettingViewType? = nil
     @EnvironmentObject var localizationManager: LocalizationManager
     @AppStorage("provider") var provider: String = ""
+    @Binding var toggleIsOn: Bool
     var body: some View {
         Button {
             
             switch title {
+            case LocalizedKey.announcement.localized(for: localizationManager.language):
+                if provider == "GUEST" {
+                    AppState.shared.showRegisterInduction = true
+                } else {
+                    AppState.shared.navigationPath.append(SettingViewType.announcement)
+                }
             case LocalizedKey.termsAndPolicies.localized(for: localizationManager.language):
                 if provider == "GUEST" {
                     AppState.shared.showRegisterInduction = true
@@ -136,6 +192,21 @@ struct SettingItemButtonView: View {
                             .padding(.trailing, 16)
                             .font(.body02)
                     }
+                } else if title == LocalizedKey.notificationSettings.localized(for: localizationManager.language) {
+                    
+                    Text("\(title)")
+                        .font(.body02)
+                        .padding(.leading, 16)
+                    
+                    Spacer()
+                    
+                    Toggle(isOn: $toggleIsOn, label: {
+                        
+                    })
+                    .toggleStyle(SwitchToggleStyle(tint: Color.main))
+                    .padding(.trailing, 16)
+                    
+                    
                 } else {
                     Text("\(title)")
                         .font(.body02)
@@ -147,29 +218,35 @@ struct SettingItemButtonView: View {
             
         }
         .frame(width: Constants.screenWidth, height: 48)
-        .navigationDestination(for: SettingViewType.self) { viewType in
-            switch viewType {
-            case .policy:
-                PolicyView()
-            case .authorize:
-                // 각 viewType에 맞는 뷰로 추후 수정 예정
-                AuthorizeView()
-            case .language:
-                LanguageView()
-            case .withdraw:
-                WithdrawView()
-            default:
-                Text("Unhandled view type")
-            }
-        }
     }
 }
 
-enum SettingViewType {
-    case policy
-    case authorize
-    case language
-    case withdraw
+class NotificationManager: NSObject, ObservableObject, UNUserNotificationCenterDelegate {
+    static let nm = NotificationManager()
+    
+    override init() {
+        super.init()
+        UNUserNotificationCenter.current().delegate = self
+    }
+    
+    func request_authorization() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
+            if let error = error {
+                print("Request Authorization Error: \(error.localizedDescription)")
+            } else if granted {
+                print("Permission granted")
+            } else {
+                print("Permission denied")
+            }
+        }
+    }
+    
+    func openAppSettings() {
+        guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else { return }
+        if UIApplication.shared.canOpenURL(settingsURL) {
+            UIApplication.shared.open(settingsURL)
+        }
+    }
 }
 
 #Preview {

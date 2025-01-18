@@ -19,14 +19,16 @@ final class SearchViewModel: ObservableObject {
 		var natureCategorySearchResult = ArticleResponse()
 		var marketCategorySearchResult = ArticleResponse()
 		var festivalCategorySearchResult = ArticleResponse()
-		var experienceCategorySearchResult = ArticleResponse()
+		var activityCategorySearchResult = ArticleResponse()
+        var cultureAndArtsCategorySearchResult = ArticleResponse()
 		var nanaCategorySearchResult = ArticleResponse()
         var restaurantCategorySearchResult = ArticleResponse()
 		
 		var naturePage: Int = 0
 		var marketPage: Int = 0
 		var festivalPage: Int = 0
-		var experiencePage: Int = 0
+		var activityPage: Int = 0
+        var cultureAndArtsPage: Int = 0
 		var nanaPage: Int = 0
         var restaurantPage: Int = 0
 		
@@ -75,13 +77,15 @@ final class SearchViewModel: ObservableObject {
 		state.natureCategorySearchResult = .init()
 		state.festivalCategorySearchResult = .init()
 		state.marketCategorySearchResult = .init()
-		state.experienceCategorySearchResult = .init()
+		state.activityCategorySearchResult = .init()
+        state.cultureAndArtsCategorySearchResult = .init()
 		state.nanaCategorySearchResult = .init()
         state.restaurantCategorySearchResult = .init()
 		state.naturePage = 0
 		state.marketPage = 0
 		state.festivalPage = 0
-		state.experiencePage = 0
+		state.activityPage = 0
+        state.cultureAndArtsPage = 0
 		state.nanaPage = 0
         state.restaurantPage = 0
 	}
@@ -189,27 +193,47 @@ final class SearchViewModel: ObservableObject {
 				state.isLoading = false
 			}
 			
-		case .experience:
-			if state.experiencePage == 0 {
-				state.experienceCategorySearchResult = .init()
+		case .activity:
+			if state.activityPage == 0 {
+				state.activityCategorySearchResult = .init()
 			}
 			
 			state.isLoading = true
 			
-			if let data = await SearchService.searchExperienceCategory(term: term, page: state.experiencePage) {
-				if state.experiencePage == 0 {
-					state.experienceCategorySearchResult = data.data
+			if let data = await SearchService.searchActivityCategory(term: term, page: state.activityPage) {
+				if state.activityPage == 0 {
+					state.activityCategorySearchResult = data.data
 				} else {
-					state.experienceCategorySearchResult.data.append(contentsOf: data.data.data)
+					state.activityCategorySearchResult.data.append(contentsOf: data.data.data)
 				}
 				
-				state.experiencePage += 1
+				state.activityPage += 1
 				state.isLoading = false
 			} else {
 				print("searchExperienceCategory Error")
 				state.isLoading = false
 			}
 
+        case .cultureAndArts:
+            if state.cultureAndArtsPage == 0 {
+                state.cultureAndArtsCategorySearchResult = .init()
+            }
+            
+            state.isLoading = true
+            
+            if let data = await SearchService.searchCultureAndArtsCategory(term: term, page: state.cultureAndArtsPage) {
+                if state.cultureAndArtsPage == 0 {
+                    state.cultureAndArtsCategorySearchResult = data.data
+                } else {
+                    state.cultureAndArtsCategorySearchResult.data.append(contentsOf: data.data.data)
+                }
+                
+                state.cultureAndArtsPage += 1
+                state.isLoading = false
+            } else {
+                print("searchCultureCategory Error")
+                state.isLoading = false
+            }
 			
 		case .nanaPick:
 			if state.nanaPage == 0 {
@@ -251,7 +275,6 @@ final class SearchViewModel: ObservableObject {
                 print("searchRestaurantCategory Error")
                 state.isLoading = false
             }
-
 		}
 
 	}
@@ -274,8 +297,10 @@ final class SearchViewModel: ObservableObject {
 			return state.festivalCategorySearchResult.totalElements == state.festivalCategorySearchResult.data.count
 		case .market:
 			return state.marketCategorySearchResult.totalElements == state.marketCategorySearchResult.data.count
-		case .experience:
-			return state.experienceCategorySearchResult.totalElements == state.experienceCategorySearchResult.data.count
+		case .activity:
+			return state.activityCategorySearchResult.totalElements == state.activityCategorySearchResult.data.count
+        case .cultureAndArts:
+            return state.cultureAndArtsCategorySearchResult.totalElements == state.cultureAndArtsCategorySearchResult.data.count
 		case .nanaPick:
 			return state.nanaCategorySearchResult.totalElements == state.nanaCategorySearchResult.data.count
         case .restaurant:
@@ -308,11 +333,16 @@ final class SearchViewModel: ObservableObject {
 				state.allCategorySearchResult.market.data[index].favorite = result.data.favorite
 			}
 			
-		case .experience:
-			if let index = state.allCategorySearchResult.experience.data.firstIndex(where: {$0.id == article.id}) {
-				state.allCategorySearchResult.experience.data[index].favorite = result.data.favorite
+		case .activity:
+			if let index = state.allCategorySearchResult.activity.data.firstIndex(where: {$0.id == article.id}) {
+				state.allCategorySearchResult.activity.data[index].favorite = result.data.favorite
 			}
 			
+        case .cultureAndArts:
+            if let index = state.allCategorySearchResult.cultureAndArts.data.firstIndex(where: {$0.id == article.id}) {
+                state.allCategorySearchResult.cultureAndArts.data[index].favorite = result.data.favorite
+            }
+            
 		case .nanaPick:
 			if let index = state.allCategorySearchResult.nana.data.firstIndex(where: {$0.id == article.id}) {
 				state.allCategorySearchResult.nana.data[index].favorite = result.data.favorite
@@ -322,6 +352,7 @@ final class SearchViewModel: ObservableObject {
                 state.allCategorySearchResult.restaurant.data[index].favorite = result.data.favorite
             }
 		}
+        
 	}
 	
 	private func didTapHeartInSearchDetail(category: Category, article: Article) async {
@@ -347,11 +378,16 @@ final class SearchViewModel: ObservableObject {
 				state.marketCategorySearchResult.data[index].favorite = result.data.favorite
 			}
 			
-		case .experience:
-			if let index = state.experienceCategorySearchResult.data.firstIndex(where: {$0.id == article.id}) {
-				state.experienceCategorySearchResult.data[index].favorite = result.data.favorite
+		case .activity:
+			if let index = state.activityCategorySearchResult.data.firstIndex(where: {$0.id == article.id}) {
+				state.activityCategorySearchResult.data[index].favorite = result.data.favorite
 			}
-			
+            
+        case .cultureAndArts:
+            if let index = state.cultureAndArtsCategorySearchResult.data.firstIndex(where: {$0.id == article.id}) {
+                state.cultureAndArtsCategorySearchResult.data[index].favorite = result.data.favorite
+            }
+            
 		case .nanaPick:
 			if let index = state.nanaCategorySearchResult.data.firstIndex(where: {$0.id == article.id}) {
 				state.nanaCategorySearchResult.data[index].favorite = result.data.favorite
@@ -381,8 +417,10 @@ final class SearchViewModel: ObservableObject {
 			return state.festivalCategorySearchResult.data.isEmpty
 		case .market:
 			return state.marketCategorySearchResult.data.isEmpty
-		case .experience:
-			return state.experienceCategorySearchResult.data.isEmpty
+		case .activity:
+			return state.activityCategorySearchResult.data.isEmpty
+        case .cultureAndArts:
+            return state.cultureAndArtsCategorySearchResult.data.isEmpty
 		case .nanaPick:
 			return state.nanaCategorySearchResult.data.isEmpty
         case .restaurant:

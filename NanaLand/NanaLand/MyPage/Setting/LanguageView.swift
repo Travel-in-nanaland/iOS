@@ -59,7 +59,7 @@ struct LanguageView: View {
             HStack {
                 Text(language.name)
                     .padding(.leading, 16)
-                    .font(.body01)
+                    .font(language == viewModel.state.selectedLanguage ? .body_bold: .body01)
                     .foregroundStyle(language == viewModel.state.selectedLanguage ? .main : .black)
                 
                 Spacer()
