@@ -189,6 +189,11 @@ struct ReportWriteView: View {
                                 .padding(.bottom, 4)
                             HStack(spacing: 0) {
                                 if (emailTextWarning) {
+                                    Image("icWarningCircle")
+                                        .renderingMode(.template)
+                                        .resizable()
+                                        .frame(width: 20, height: 20)
+                                        .foregroundStyle(.red)
                                     Text(.emailValidation)
                                         .foregroundStyle(.red)
                                         .font(.caption01)
