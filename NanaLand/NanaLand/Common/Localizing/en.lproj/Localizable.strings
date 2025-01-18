@@ -498,7 +498,7 @@ the market is the place!";
 "reportResult" = "The reported contents are in accordance with the operating policy.It will be processed within a maximum of 24 hours.";
 "reportReasonValidation" = "Please write the reason for your report in at least 20 characters!"; // 신고 사유
 "reportCharacterPermission" = "Content can be written in 500 characters or less.";// 내용 500자 이하
-"reportResultEmail" = "Please enter your email address to receive the report results."; // 신고 결과 이메일
+"reportResultEmail" = "Please enter your email address accurately. If you enter something incorrectly, you may not receive results."; // 신고 결과 이메일
 "emailValidation" = "The email format is incorrect. Please enter again!";// 이메일 벨리 체크
 "reportReason" = "Please tell us why you are reporting it!"; // 신고사유
 "reportWarning" = "Information reported without valid grounds must be confirmed by the administrator./nIt may not be reflected."; // 허위신고 주의문구

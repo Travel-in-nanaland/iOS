@@ -25,6 +25,11 @@ struct ProfileReviewWriteView: View {
             ZStack {
                
                 TextField(LocalizedKey.searchLocation.localized(for: localizationManager.language), text: $viewModel.searchText)
+                    .overlay(
+                        Text(.searchLocation)
+                            .foregroundStyle(.gray1) // Placeholder 색상 변경
+                            .opacity(viewModel.searchText.isEmpty ? 1 : 0), alignment: .leading
+                    )
                     .padding()
                     .padding(.leading, 25)
                     .background(.white)
