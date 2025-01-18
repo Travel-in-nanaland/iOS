@@ -95,7 +95,7 @@ struct TypeTestResultView: View {
 			})
 			
 			Button(action: {
-				typeTestVM.action(.onTapGotoMainViewButton)
+                AppState.shared.showTypeTest = false
 			}, label: {
 				RoundedRectangle(cornerRadius: 30)
 					.fill(Color.main)
