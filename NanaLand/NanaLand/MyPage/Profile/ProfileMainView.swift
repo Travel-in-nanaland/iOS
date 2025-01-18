@@ -15,6 +15,9 @@ struct ProfileMainView: View {
     @StateObject var noticeViewModel = NoticeMainViewModel()
     @StateObject var appState = AppState.shared
     @AppStorage("provider") var provider: String = ""
+    @Binding var showAlert: Bool
+    @Binding var deleteId: Int64
+    @ObservedObject var viewReviewModel: MyReviewViewModel
     
     struct TypeItem {
         let korean: String
@@ -55,7 +58,7 @@ struct ProfileMainView: View {
                             profileAndNickname
                                 .padding(.bottom, 24)
                             
-                            ProfileList()
+                            ProfileList(showAlert: $showAlert, deleteId: $deleteId, viewModel: viewReviewModel)
                                 .frame(minHeight: geo.size.height)
                         }
                     }
@@ -409,7 +412,10 @@ struct ProfileMainView: View {
 
 struct ProfileList: View {
     @State var tabIndex = 0
+    @Binding var showAlert: Bool
     @AppStorage("provider") var provider: String = ""
+    @Binding var deleteId: Int64
+    @ObservedObject var viewModel: MyReviewViewModel
     
     var body: some View {
         VStack {
@@ -419,9 +425,9 @@ struct ProfileList: View {
             } else {
                 switch tabIndex {
                 case 0:
-                    reviewTabView()
+                    reviewTabView(viewModel: viewModel, showAlert: $showAlert, deleteId: $deleteId)
                 default:
-                    reviewTabView()
+                    reviewTabView(viewModel: viewModel, showAlert: $showAlert, deleteId: $deleteId)
                 }
             }
             
@@ -514,12 +520,12 @@ struct guestTabView: View {
 }
 
 struct reviewTabView: View {
-    @StateObject var viewModel = MyReviewViewModel()
+    @ObservedObject var viewModel: MyReviewViewModel
     @State private var isAPICalled = false
     @State var isShowingModify = false
-    @State var showAlert = false
+    @Binding var showAlert: Bool
     @EnvironmentObject var localizationManager: LocalizationManager
-    @State var deleteId: Int64 = 0
+    @Binding var deleteId: Int64
     
     var layout: [GridItem] = [GridItem(.flexible()), GridItem(.flexible())]
     var body: some View {
@@ -542,9 +548,7 @@ struct reviewTabView: View {
                                 Text("\(viewModel.state.getMyReviewResponse.totalElements)")
                                     .font(.body02_semibold)
                                     .foregroundColor(.main)
-                                
                                 +
-                                
                                 Text(" \(LocalizedKey.seeAll.localized(for: LocalizationManager().language))")
                                     .font(.body02_semibold)
                                     .foregroundColor(.black)
@@ -568,33 +572,6 @@ struct reviewTabView: View {
                                             ReviewModifyModal(id: review.id, category: review.category, isShowingModify: $isShowingModify, showAlert: $showAlert)
                                                 .environmentObject(LocalizationManager())
                                                 .presentationDetents([.height(Constants.screenWidth * (184 / 360))]) // 팝업 뷰 height 조절
-                                        }
-                                        .customAlert(LocalizedKey.reviewDeleteMessage.localized(for: localizationManager.language), isPresented: $showAlert) {
-                                            
-                                        } actions: {
-                                            MultiButton{
-                                                Button {
-                                                    showAlert = false
-                                                    print("삭제 요청: \(deleteId)")
-                                                    Task {
-                                                        await deleteMyReview(id: deleteId)
-                                                        await getMyReviewItem()
-                                                    }
-                                                } label: {
-                                                    Text(.yes)
-                                                        .font(.title02_bold)
-                                                        .foregroundStyle(Color.black)
-                                                }
-                                                
-                                                Button {
-                                                    showAlert = false
-                                                } label: {
-                                                    Text(.no)
-                                                        .font(.title02_bold)
-                                                        .foregroundStyle(Color.main)
-                                                }
-                                                
-                                            }
                                         }
                                         .padding(.top, 17)
                                     }
@@ -674,6 +651,6 @@ enum MyPageViewType: Hashable {
 }
 
 #Preview {
-    ProfileMainView()
+    ProfileMainView(showAlert: .constant(false), deleteId: .constant(0), viewReviewModel: MyReviewViewModel())
 }
 
