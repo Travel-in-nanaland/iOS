@@ -35,8 +35,8 @@ struct ReviewModifyModal: View {
                             })
                             
                             Button(action: {
-                                showAlert = true
                                 isShowingModify = false
+                                showAlert = true
                             }, label: {
                                 Text(.delete)
                                     .font(.body01)
