@@ -214,32 +214,6 @@ struct MyReviewArticleItemView: View {
                     .transaction { transaction in
                         transaction.disablesAnimations = true
                     }
-//                    .customAlert(LocalizedKey.reviewDeleteMessage.localized(for: localizationManager.language), isPresented: $showAlert) {
-//                        
-//                    } actions: {
-//                        MultiButton{
-//                            Button {
-//                                showAlert = false
-//                                Task {
-//                                    await deleteMyReview(id: id)
-//                                    await getAllReviewItem(page: 0, size: 12)
-//                                }
-//                            } label: {
-//                                Text(.yes)
-//                                    .font(.title02_bold)
-//                                    .foregroundStyle(Color.black)
-//                            }
-//                            
-//                            Button {
-//                                showAlert = false
-//                            } label: {
-//                                Text(.no)
-//                                    .font(.title02_bold)
-//                                    .foregroundStyle(Color.main)
-//                            }
-//                            
-//                        }
-//                    }
                 }
                 .padding()
                 
