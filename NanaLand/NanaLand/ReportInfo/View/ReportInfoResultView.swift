@@ -13,7 +13,6 @@ struct ReportInfoResultView: View {
 	
 	var body: some View {
 		VStack(spacing: 0) {
-			Spacer()
 			
 			LottieView(jsonName: "report_complete_comment")
 				.frame(width: itemSize, height: itemSize)
@@ -22,15 +21,22 @@ struct ReportInfoResultView: View {
 			
 			Text(.thxForReportInfoTitle)
 				.multilineTextAlignment(.center)
-				.padding(.bottom, 8)
-				.font(.largeTitle02)
+                .padding(.bottom, Constants.screenWidth * (22 / 360))
+				.font(.title01_bold)
 				.foregroundStyle(Color.main)
 			
-			Text(.thxForReportInfoDescription)
+			Text(.thxForReportInfoDescription1)
 				.multilineTextAlignment(.center)
-				.font(.gothicNeo(.medium, size: 18))
+				.font(.body01)
 				.foregroundStyle(Color.baseBlack)
-				.padding(.bottom, 94)
+				.padding(.bottom, Constants.screenWidth * (24 / 360))
+            
+            Text(.thxForReportInfoDescription2)
+                .multilineTextAlignment(.center)
+                .font(.title2)
+                .foregroundStyle(Color.baseBlack)
+            
+            Spacer()
 			
 			Button(action: {
 				Task {
@@ -38,31 +44,15 @@ struct ReportInfoResultView: View {
 				}
 			}, label: {
 				RoundedRectangle(cornerRadius: 50)
-					.stroke(Color.main, lineWidth: 1)
+                    .foregroundColor(.main)
 					.frame(height: 48)
 					.overlay {
 						Text(.showContentAgain)
 							.font(.body_bold)
-							.foregroundStyle(Color.main)
+							.foregroundStyle(Color.white)
 					}
 			})
 			.padding(.bottom, 16)
-			
-			Button(action: {
-				Task {
-					await reportInfoVM.action(.onTapReportAgainButton)
-				}
-			}, label: {
-				RoundedRectangle(cornerRadius: 50)
-					.fill(Color.main)
-					.frame(height: 48)
-					.overlay {
-						Text(.reportAgain)
-							.font(.body_bold)
-							.foregroundStyle(Color.baseWhite)
-					}
-			})
-			.padding(.bottom, 24)
 		}
 		.padding(.horizontal, 16)
 		.toolbar(.hidden, for: .navigationBar)

@@ -512,9 +512,9 @@ struct ReviewMainGridView: View {
                 }
             }
             if isLoading {
-                LottieView(jsonName: "loading", loopMode: .loop)
+                LottieViewWithText(jsonName: "loading", message: LocalizedKey.lottieReview.localized(for: localizationManager.language), loopMode: .loop)
                     .frame(width: Constants.screenWidth, height: Constants.screenHeight)
-                    .background(Color.black.opacity(0.3))
+                    .background(Color.black.opacity(0.7))
                     .edgesIgnoringSafeArea(.all)
             }
         }

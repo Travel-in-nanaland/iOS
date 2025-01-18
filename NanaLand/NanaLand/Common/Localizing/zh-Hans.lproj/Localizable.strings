@@ -346,7 +346,7 @@
 "deletePlace" = "删除地点";
 "etcReportInfoTitle" = "请分享其他信息！";
 "provideService" = "提供服务";
-"addPhoto" = "添加照片";
+"addPhoto" = "照片 / 视频";
 "addPhotoDescription" = "如果您附上实际核实过的信息及照片，\n将能提供更准确的信息";
 "reportInfoContentTitle" = "建议修改信息";
 "reportInfoContentPlaceHolder" = "如有修改请求的详细内容或其他事项，请留下您的意见";
@@ -354,7 +354,8 @@
 "reportInfoEmailDescription" = "请输入接收信息修改建议结果的电子邮件";
 "send" = "发送";
 "thxForReportInfoTitle" = "感谢您的信息修改建议";
-"thxForReportInfoDescription" = "通过信息修改建议，\n旅行地的吸引力也提高了！\n\n越来越期待了🧚‍♀️";
+"thxForReportInfoDescription1" = "通过信息修改建议，\n旅行地的吸引力也提高了！";
+"thxForReportInfoDescription2" = "越来越期待了🧚‍♀️";
 "showContentAgain" = "重新查看内容";
 "reportAgain" = "添加其他项目";
 
@@ -528,3 +529,8 @@
 
 //MARK: - 타유저프로필
 "basicDescription" = "你好！很高兴见到你🖐️\n一起享受济州的旅行吧";
+
+//MARK: - 로티파일 메시지
+"lottieReview" = "请稍等\n您的体验正在传送到\nnanaland💜";
+"lottieInfo" = "请稍等！\n您的反馈对我们来说是莫大的\n支持🍀";
+"lottieReport" = "请稍等\n我们正在仔细处理您的想法，确保\n它们能够顺利传达💌";
