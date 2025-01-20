@@ -481,6 +481,7 @@ the market is the place!";
 "currency" = "won";
 "folding" = "close";
 "opening" = "See more";
+"reduce" = "Shirinking";
 
 // MARK: - 이색 체험
 "activity" = "Activity";

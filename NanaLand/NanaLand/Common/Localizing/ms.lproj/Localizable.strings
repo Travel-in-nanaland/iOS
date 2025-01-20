@@ -388,6 +388,7 @@ mengembalikan sebarang hasil.";
 "currency" = "won";
 "folding" = "tutup";
 "opening" = "Lihat lebih lanjut";
+"reduce" = "Zum keluar";
 
 // MARK: - 후기
 "blank" = "";

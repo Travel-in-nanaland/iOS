@@ -488,6 +488,7 @@ enum LocalizedKey: String {
     case currency
     case folding
     case opening
+    case reduce
     
     // MARK: - 이색 체험
     case activity

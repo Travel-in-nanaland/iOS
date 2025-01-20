@@ -386,6 +386,7 @@
 "currency" = "韩元";
 "folding" = "关闭";
 "opening" = "看更多";
+"reduce" = "缩小";
 
 // MARK: - 후기
 "blank" = "";

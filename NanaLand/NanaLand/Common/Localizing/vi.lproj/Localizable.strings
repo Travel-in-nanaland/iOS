@@ -479,6 +479,7 @@
 "currency" = "won";
 "folding" = "thu gọn";
 "opening" = "Xem thêm";
+"reduce" = "Thu nhỏ lại";
 
 //MARK: - 언어 설정
 "greeting" = "Hello!\nNice to meet you 👋";

@@ -471,6 +471,7 @@
 "currency" = "원";
 "folding" = "접기";
 "opening" = "더 보기";
+"reduce" = "축소하기";
 
 // MARK: - 이색 체험
 "activity" = "액티비티";

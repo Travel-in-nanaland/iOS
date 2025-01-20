@@ -22,7 +22,7 @@ struct MenuModalView: View {
                 Button {
                     self.presentationMode.wrappedValue.dismiss()
                 } label: {
-                    Text("축소하기")
+                    Text(.reduce)
                         .font(.title02_bold)
                         .foregroundColor(.white)
                 }
