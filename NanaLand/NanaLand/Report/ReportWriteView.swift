@@ -318,6 +318,7 @@ struct ReportWriteView: View {
                 } label: {
                     Text(.reportSend)
                         .foregroundStyle(Color.white)
+                        .font(.body_bold)
                 }
                 .frame(width: Constants.screenWidth - 32, height: 48)
                 .background(
