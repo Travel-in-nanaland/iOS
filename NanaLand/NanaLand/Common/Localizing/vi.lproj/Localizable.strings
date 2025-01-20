@@ -442,7 +442,7 @@
 //MARK: - 마이페이지
 "notice" = "Thông báo";
 "testAgain" = "Kiểm tra lại";
-"noNickname" = "No Nickname";
+"noNickname" = "Không có biệt danh";
 "noReview" = "Để lại đánh giá và ghi lại trải nghiệm của bạn!";
 "noDescription" = "Thể hiện bản thân bạn trong một dòng!";
 "noNotice" = "Không Có Thông Báo";
