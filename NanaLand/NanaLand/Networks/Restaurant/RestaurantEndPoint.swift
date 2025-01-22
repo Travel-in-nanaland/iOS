@@ -16,7 +16,7 @@ enum RestaurantEndPoint {
 extension RestaurantEndPoint: EndPoint {
     var baseURL: String {
         // MVP2 테스트용 포트번호 8083
-        return "http://13.125.110.80:8083/restaurant"
+        return "\(Secrets.baseUrl)/restaurant"
     }
     
     var path: String {

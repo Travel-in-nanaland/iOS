@@ -13,9 +13,16 @@ struct NewNanaPickSpecialModalView: View {
     var body: some View {
         VStack(spacing: 0){
             HStack(spacing: 0){
-                Text(.locationPoint)
-                    .font(.title02_bold)
-                    .foregroundColor(.black)
+                ZStack {
+                    HStack(spacing: 0) {
+                        Text(.locationPoint)
+                            .font(.title02_bold)
+                            .foregroundColor(.black)
+                        Text("✨")
+                            .font(.title02_bold)
+                      
+                    }
+                }
                 
                 Spacer()
                 

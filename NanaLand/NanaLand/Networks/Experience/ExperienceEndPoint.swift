@@ -17,7 +17,7 @@ enum ExperienceEndPoint {
 extension ExperienceEndPoint: EndPoint {
     var baseURL: String {
         // MVP2 테스트용 포트번호 8083
-        return "http://13.125.110.80:8083/experience"
+        return "\(Secrets.baseUrl)/experience"
     }
     
     var path: String {
