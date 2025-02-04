@@ -83,7 +83,7 @@ class HomeMainViewModel: ObservableObject {
                     }
                 }
             case "CULTURE_AND_ARTS":
-                let response = await FavoriteService.toggleFavorite(id: body.id, category: .activity)
+                let response = await FavoriteService.toggleFavorite(id: body.id, category: .cultureAndArts)
                 if response != nil {
                     await MainActor.run {
                         state.getRecommendResponse[index].favorite = response!.data.favorite
@@ -97,7 +97,7 @@ class HomeMainViewModel: ObservableObject {
                     }
                 }
             default:
-                let response = await FavoriteService.toggleFavorite(id: body.id, category: .nature)
+                let response = await FavoriteService.toggleFavorite(id: body.id, category: .activity)
                 if response != nil {
                     await MainActor.run {
                         state.getRecommendResponse[index].favorite = response!.data.favorite
@@ -150,7 +150,11 @@ class HomeMainViewModel: ObservableObject {
                     }
                 }
             default:
-                break
+                if let response = await FavoriteService.toggleFavorite(id: body.id, category: .activity) {
+                    await MainActor.run {
+                        state.getHotResponse[index].favorite = response.data.favorite
+                    }
+                }
             }
             
         }
