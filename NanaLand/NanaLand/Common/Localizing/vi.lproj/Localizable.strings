@@ -547,3 +547,8 @@
 "lottieReview" = "Vui lòng chờ một chút!\nTrải nghiệm của bạn đang được gửi\nđến nanaland💜";
 "lottieInfo" = "Vui lòng chờ một chút!\nPhản hồi của bạn là nguồn động lực lớn\ncho chúng tôi🍀";
 "lottieReport" = "Vui lòng chờ một chút!\nChúng tôi đang xử lý cẩn thận để đảm bảo\ný kiến của bạn được truyền đạt chính xác💌";
+
+//MARK: - 필터초기화
+"noContent" = "Không có nội dung tương ứng";
+"filterAdjustment" = "Điều chỉnh hoặc đặt lại bộ lọc của bạn!";
+"filterReset" = "Đặt lại bộ lọc";

@@ -547,3 +547,8 @@ the market is the place!";
 "lottieReview" = "Please wait a moment!\nYour experience is being delivered\n to nanaland💜";
 "lottieInfo" = "Please wait a moment!\nYour feedback is a great support\n to us🍀";
 "lottieReport" = "Please hold on!\nWe’re carefully reviewing your feedback\nto ensure your thoughts are well considered💌";
+
+//MARK: - 필터초기화
+"noContent" = "No such content";
+"filterAdjustment" = "Adjust or reset filters!";
+"filterReset" = "Reset filter";

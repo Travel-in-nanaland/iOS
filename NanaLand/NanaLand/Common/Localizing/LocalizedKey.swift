@@ -555,6 +555,11 @@ enum LocalizedKey: String {
     case lottieInfo
     case lottieReport
     
+    //MARK: - 필터초기화
+    case noContent
+    case filterAdjustment
+    case filterReset
+    
     //MARK: - localized()
     func localized(for language: Language) -> String {
         guard let path = Bundle.main.path(forResource: language.localizedName, ofType: "lproj"),

@@ -248,7 +248,7 @@ struct ExperienceMainGridView: View {
                             .padding(.trailing)
                             .padding(.bottom, getSafeArea().bottom == 0 ? 76 : 60)
                         }
-                    }
+                    }.opacity(viewModel.state.getExperienceMainResponse.data.count != 0 ? 1 : 0) // 조건부 표시
                 )
             }
           
