@@ -535,3 +535,8 @@
 "lottieReview" = "请稍等\n您的体验正在传送到\nnanaland💜";
 "lottieInfo" = "请稍等！\n您的反馈对我们来说是莫大的\n支持🍀";
 "lottieReport" = "请稍等\n我们正在仔细处理您的想法，确保\n它们能够顺利传达💌";
+
+//MARK: - 필터초기화
+"noContent" = "没有这样的内容";
+"filterAdjustment" = "调整或重置过滤器！";
+"filterReset" = "重置过滤器";

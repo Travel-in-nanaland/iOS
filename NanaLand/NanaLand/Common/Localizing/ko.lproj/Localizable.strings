@@ -537,3 +537,8 @@
 "lottieReview" = "잠시만 기다려 주세요!\n여러분의 경험이\nnanaland로 전달 중입니다💜";
 "lottieInfo" = "잠시만 기다려 주세요!\n여러분의 피드백은\n저희에게 큰 힘이 됩니다🍀";
 "lottieReport" = "잠시만 기다려 주세요!\n여러분의 생각이 잘 전달되도록\n신중히 처리 중입니다💌";
+
+//MARK: - 필터초기화
+"noContent" = "해당 컨텐츠가 없습니다";
+"filterAdjustment" = "필터를 조정하거나 초기화해 보세요!";
+"filterReset" = "필터 초기화";

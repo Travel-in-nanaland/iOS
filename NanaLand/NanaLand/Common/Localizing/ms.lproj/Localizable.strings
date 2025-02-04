@@ -537,3 +537,8 @@ mengembalikan sebarang hasil.";
 "lottieReview" = "Sila tunggu sebentar!\nPengalaman anda sedang dihantar\nke nanaland💜";
 "lottieInfo" = "Sila tunggu sebentar!\nMaklum balas anda adalah sokongan\nbesar kepada kami🍀";
 "lottieReport" = "Sila tunggu sebentar!\nKami sedang memproses pemikiran anda dengan teliti untuk\nmemastikan ia disampaikan dengan baik💌";
+
+//MARK: - 필터초기화
+"noContent" = "Tiada kandungan yang sesuai";
+"filterAdjustment" = "Laraskan atau tetapkan semula penapis anda!";
+"filterReset" = "Tetapkan semula penapis";

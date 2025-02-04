@@ -175,7 +175,7 @@ struct NatureMainGridView: View {
                         .padding(.trailing)
                         .padding(.bottom, getSafeArea().bottom == 0 ? 76 : 60)
                     }
-                }
+                }.opacity(viewModel.state.getNatureMainResponse.data.count != 0 ? 1 : 0) // 조건부 표시
             )
         }
         .navigationDestination(for: ArticleViewType.self) { viewType in

@@ -30,13 +30,13 @@ struct NoResultFilterView: View {
     var body: some View {
         VStack(alignment: .center, spacing: 4) {
     
-            Text("해당 컨텐츠가 없습니다.")
+            Text(.noContent)
                 .font(.body01)
                 .foregroundColor(.gray1)
                 .frame(height: Constants.screenWidth * (26 / 360))
                 .multilineTextAlignment(.center)
             
-            Text("필터를 조정하거나 초기화해 보세요!")
+            Text(.filterAdjustment)
                 .font(.body02)
                 .foregroundColor(.gray2)
                 .frame(height: Constants.screenWidth * (22 / 360))
@@ -70,7 +70,7 @@ struct NoResultFilterView: View {
                 }
                 
             }, label: {
-                Text("필터 초기화")
+                Text(.filterReset)
                     .font(.body02_semibold)
                     .foregroundColor(.gray1)
                     .frame(height: Constants.screenWidth * (22 / 360))

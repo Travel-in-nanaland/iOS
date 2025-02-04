@@ -37,8 +37,6 @@ struct FavoriteToggleRequest: Codable {
                 return category.uppercase
             }
         }()
-        
-        print("🔍 FavoriteToggleRequest 생성됨: id = \(id), category = \(self.category)")
     }
 }
 
