@@ -22,6 +22,8 @@ struct HomeMainView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 0) {
+                
+                ///상단 배너
                 BannerView(searchBarClick: $searchBarClick)
                     .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width * (300 / 360))
                     .edgesIgnoringSafeArea(.top)
@@ -240,6 +242,8 @@ struct HomeMainView: View {
                 }
                 .padding(.leading, 16)
                 .padding(.bottom, 8)
+                
+                ///추천 여행지
                 ScrollView(.horizontal) {
                     HStack(alignment: .top, spacing: 8) {
                         ForEach(Array(zip(viewModel.state.getRecommendResponse.indices, viewModel.state.getRecommendResponse)), id: \.1.id) { (index, article) in
@@ -411,8 +415,9 @@ struct HomeMainView: View {
                                                     Spacer()
                                                     
                                                     Button {
+
                                                         Task {
-                                                            await toggleFavorite(body: FavoriteToggleRequest(id: Int(article.id), category: .activity), index: index)
+                                                            await toggleFavorite(body: FavoriteToggleRequest(id: Int(article.id), category: .cultureAndArts), index: index)
                                                         }
                                                     } label: {
                                                         article.favorite ? Image("icHeart_Fill") : Image("icHeart_Blank")
@@ -501,7 +506,7 @@ struct HomeMainView: View {
                     .padding(.bottom, 24)
                 
             
-                // MARK: 지금 인기있는 게시물
+                ///지금 인기있는 게시물
                 VStack(spacing: 16) {
                     HStack(spacing: 0) {
                         Text(.popularLocation)
