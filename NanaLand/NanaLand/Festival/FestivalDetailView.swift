@@ -11,6 +11,7 @@ import Kingfisher
 struct FestivalDetailView: View {
     @EnvironmentObject var localizationManager: LocalizationManager
     @StateObject var viewModel = FestivalDetailViewModel()
+    @State private var showScrollToTopButton = false
     @State private var isOn = false // 더보기 버튼 클릭 여부
     @State private var roundedHeight: CGFloat = (Constants.screenWidth - 40) * (224.0 / 358.0)
     var id: Int64
@@ -304,6 +305,24 @@ struct FestivalDetailView: View {
                         .padding(.top, 32)
                     }
                     .id("Scroll_To_Top")
+                    .background(
+                        GeometryReader { geo in
+                            Color.clear
+                                .onChange(of: geo.frame(in: .global).minY) { value in
+                                    // 스크롤 위치 추적
+                                    print("geometry scroll: \(value)")
+                                    if value < 100 { // 스크롤이 일정 위치 이상 내려가면
+                                        withAnimation {
+                                            showScrollToTopButton = true
+                                        }
+                                    } else {
+                                        withAnimation {
+                                            showScrollToTopButton = false
+                                        }
+                                    }
+                                }
+                        }
+                    )
                 }
                 .navigationDestination(for: ArticleDetailViewType.self) { viewType in
                     switch viewType {
@@ -316,18 +335,21 @@ struct FestivalDetailView: View {
                         Spacer()
                         HStack {
                             Spacer()
-                            Button(action: {
-                                // 10. withAnimation 과함께 함수 작성
-                                withAnimation(.default) {
-                                    // ScrollViewReader의 proxyReader을 넣어줌
-                                    proxyReader.scrollTo("Scroll_To_Top", anchor: .top)
-                                }
-                            }, label: {
-                                Image("icScrollToTop")
-                            })
-                            .frame(width: 80, height: 80)
-                            .padding(.trailing)
-                            .padding(.bottom, getSafeArea().bottom == 0 ? 15 : 0)
+                            if showScrollToTopButton {
+                                Button(action: {
+                                    // 10. withAnimation 과함께 함수 작성
+                                    withAnimation(.default) {
+                                        // ScrollViewReader의 proxyReader을 넣어줌
+                                        proxyReader.scrollTo("Scroll_To_Top", anchor: .top)
+                                    }
+                                }, label: {
+                                    Image("icScrollToTop")
+                                })
+                                .frame(width: 80, height: 80)
+                                .padding(.trailing)
+                                .padding(.bottom, getSafeArea().bottom == 0 ? 15 : 0)
+                            }
+                
                         }
                     }
                 )

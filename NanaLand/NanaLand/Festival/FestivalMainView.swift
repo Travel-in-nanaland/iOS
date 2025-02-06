@@ -363,6 +363,7 @@ struct TabBarItem: View {
 
 struct FestivalMainGridView: View {
     @StateObject var viewModel = FestivalMainViewModel()
+    @State private var showScrollToTopButton = false
     @State private var isHidden = true
     @State private var isAPICalled = false
     @State var buttonsToggled = Array(repeating: false, count: 0)
@@ -565,6 +566,24 @@ struct FestivalMainGridView: View {
                             .padding(.horizontal, 16)
                             .padding(.top, 12)
                             .id("Scroll_To_Top")
+                            .background(
+                                GeometryReader { geo in
+                                    Color.clear
+                                        .onChange(of: geo.frame(in: .global).minY) { value in
+                                            // 스크롤 위치 추적
+                                            print("geometry scroll: \(value)")
+                                            if value < 100 { // 스크롤이 일정 위치 이상 내려가면
+                                                withAnimation {
+                                                    showScrollToTopButton = true
+                                                }
+                                            } else {
+                                                withAnimation {
+                                                    showScrollToTopButton = false
+                                                }
+                                            }
+                                        }
+                                }
+                            )
                         }
                     }
                 }
@@ -573,16 +592,19 @@ struct FestivalMainGridView: View {
                         Spacer()
                         HStack(spacing: 0) {
                             Spacer()
-                            Button(action: {
-                                withAnimation(.default) {
-                                    reader.scrollTo("Scroll_To_Top", anchor: .top)
-                                }
-                            }, label: {
-                                Image("icScrollToTop")
-                            })
-                            .frame(width: 80, height: 80)
-                            .padding(.trailing)
-                            .padding(.bottom, getSafeArea().bottom == 0 ? 76 : 60)
+                            if showScrollToTopButton {
+                                Button(action: {
+                                    withAnimation(.default) {
+                                        reader.scrollTo("Scroll_To_Top", anchor: .top)
+                                    }
+                                }, label: {
+                                    Image("icScrollToTop")
+                                })
+                                .frame(width: 80, height: 80)
+                                .padding(.trailing)
+                                .padding(.bottom, getSafeArea().bottom == 0 ? 76 : 60)
+                            }
+                      
                         }
                     }.opacity(viewModel.state.getFestivalMainResponse.data.count != 0 ? 1 : 0) // 조건부 표시
                 )

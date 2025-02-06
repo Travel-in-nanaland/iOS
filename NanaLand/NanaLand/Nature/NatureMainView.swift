@@ -30,6 +30,7 @@ struct NatureMainView: View {
 
 struct NatureMainGridView: View {
     @State var isAdvertisement = false
+    @State private var showScrollToTopButton = false // 상단으로 이동 버튼
     @EnvironmentObject var localizationManager: LocalizationManager
     @StateObject var viewModel = NatureMainViewModel()
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
@@ -156,6 +157,24 @@ struct NatureMainGridView: View {
                         .padding(.horizontal, 16)
                         .padding(.top, 8)
                         .id("Scroll_To_Top")
+                        .background(
+                            GeometryReader { geo in
+                                Color.clear
+                                    .onChange(of: geo.frame(in: .global).minY) { value in
+                                        // 스크롤 위치 추적
+                                        print("geometry scroll: \(value)")
+                                        if value < 100 { // 스크롤이 일정 위치 이상 내려가면
+                                            withAnimation {
+                                                showScrollToTopButton = true
+                                            }
+                                        } else {
+                                            withAnimation {
+                                                showScrollToTopButton = false
+                                            }
+                                        }
+                                    }
+                            }
+                        )
                     }
                 }
             }
@@ -164,16 +183,19 @@ struct NatureMainGridView: View {
                     Spacer()
                     HStack(spacing: 0) {
                         Spacer()
-                        Button(action: {
-                            withAnimation(.default) {
-                                reader.scrollTo("Scroll_To_Top", anchor: .top)
-                            }
-                        }, label: {
-                            Image("icScrollToTop")
-                        })
-                        .frame(width: 80, height: 80)
-                        .padding(.trailing)
-                        .padding(.bottom, getSafeArea().bottom == 0 ? 76 : 60)
+                        if showScrollToTopButton {
+                            Button(action: {
+                                withAnimation(.default) {
+                                    reader.scrollTo("Scroll_To_Top", anchor: .top)
+                                }
+                            }, label: {
+                                Image("icScrollToTop")
+                            })
+                            .frame(width: 80, height: 80)
+                            .padding(.trailing)
+                            .padding(.bottom, getSafeArea().bottom == 0 ? 76 : 60)
+                        }
+   
                     }
                 }.opacity(viewModel.state.getNatureMainResponse.data.count != 0 ? 1 : 0) // 조건부 표시
             )
@@ -231,6 +253,15 @@ struct NatureMainGridView: View {
     
     func getSafeArea() -> UIEdgeInsets  {
         return UIApplication.shared.windows.first?.safeAreaInsets ?? UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+}
+
+// 스크롤 위치를 추적하는 PreferenceKey
+struct ScrollOffsetKey: PreferenceKey {
+    static var defaultValue: CGFloat = 0
+    
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+        value = nextValue()
     }
 }
 

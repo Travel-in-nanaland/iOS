@@ -31,6 +31,7 @@ struct ShopMainGridView: View {
     @StateObject var viewModel = ShopMainViewModel()
     @State private var locationModal = false
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
+    @State private var showScrollToTopButton = false
     @State private var isAPICalled = false
     var body: some View {
         VStack(spacing: 0) {
@@ -148,6 +149,24 @@ struct ShopMainGridView: View {
                             .padding(.horizontal, 16)
                             .padding(.top, 8)
                             .id("Scroll_To_Top")
+                            .background(
+                                GeometryReader { geo in
+                                    Color.clear
+                                        .onChange(of: geo.frame(in: .global).minY) { value in
+                                            // 스크롤 위치 추적
+                                            print("geometry scroll: \(value)")
+                                            if value < 100 { // 스크롤이 일정 위치 이상 내려가면
+                                                withAnimation {
+                                                    showScrollToTopButton = true
+                                                }
+                                            } else {
+                                                withAnimation {
+                                                    showScrollToTopButton = false
+                                                }
+                                            }
+                                        }
+                                }
+                            )
                         }
                     }
                 
@@ -157,16 +176,19 @@ struct ShopMainGridView: View {
                         Spacer()
                         HStack(spacing: 0) {
                             Spacer()
-                            Button(action: {
-                                withAnimation(.default) {
-                                    reader.scrollTo("Scroll_To_Top", anchor: .top)
-                                }
-                            }, label: {
-                                Image("icScrollToTop")
-                            })
-                            .frame(width: 80, height: 80)
-                            .padding(.trailing)
-                            .padding(.bottom, getSafeArea().bottom == 0 ? 76 : 60)
+                            if showScrollToTopButton {
+                                Button(action: {
+                                    withAnimation(.default) {
+                                        reader.scrollTo("Scroll_To_Top", anchor: .top)
+                                    }
+                                }, label: {
+                                    Image("icScrollToTop")
+                                })
+                                .frame(width: 80, height: 80)
+                                .padding(.trailing)
+                                .padding(.bottom, getSafeArea().bottom == 0 ? 76 : 60)
+                            }
+                   
                         }
                     }.opacity(viewModel.state.getShopMainResponse.data.count != 0 ? 1 : 0) // 조건부 표시
                 )
