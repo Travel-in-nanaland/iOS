@@ -26,6 +26,7 @@ struct RestaurantDetailView: View {
     @State private var idx: Int64 = 0
     @State private var isReport = false
     @State private var selectedIndex: Int? = nil // 리뷰 삭제 시 index 참조하기 위해서
+    @State private var showScrollToTopButton = false
     var layout: [GridItem] = [GridItem(.flexible())]
     
     var body: some View {
@@ -714,26 +715,47 @@ struct RestaurantDetailView: View {
                                 isAPICalled = true
                             }
                         }
+                        .background(
+                            GeometryReader { geo in
+                                Color.clear
+                                    .onChange(of: geo.frame(in: .global).minY) { value in
+                                        // 스크롤 위치 추적
+                                        print("geometry scroll: \(value)")
+                                        if value < 100 { // 스크롤이 일정 위치 이상 내려가면
+                                            withAnimation {
+                                                showScrollToTopButton = true
+                                            }
+                                        } else {
+                                            withAnimation {
+                                                showScrollToTopButton = false
+                                            }
+                                        }
+                                    }
+                            }
+                        )
                     }
                     .overlay(
                         VStack {
                             Spacer()
                             HStack {
                                 Spacer()
-                                Button(action: {
-                                    // 10. withAnimation 과함께 함수 작성
-                                    withAnimation(.default) {
-                                        // ScrollViewReader의 proxyReader을 넣어줌
-                                        reader.scrollTo("Scroll_To_Top", anchor: .top)
-                                    }
-                                    
-                                }, label: {
-                                    Image("icScrollToTop")
-                                    
-                                })
-                                .frame(width: 80, height: 80)
-                                .padding(.trailing)
-                                .padding(.bottom, getSafeArea().bottom == 0 ? 76 : 60)
+                                if showScrollToTopButton {
+                                    Button(action: {
+                                        // 10. withAnimation 과함께 함수 작성
+                                        withAnimation(.default) {
+                                            // ScrollViewReader의 proxyReader을 넣어줌
+                                            reader.scrollTo("Scroll_To_Top", anchor: .top)
+                                        }
+                                        
+                                    }, label: {
+                                        Image("icScrollToTop")
+                                        
+                                    })
+                                    .frame(width: 80, height: 80)
+                                    .padding(.trailing)
+                                    .padding(.bottom, getSafeArea().bottom == 0 ? 76 : 60)
+
+                                }
                             }
                         }
                     )

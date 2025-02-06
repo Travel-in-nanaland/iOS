@@ -50,6 +50,7 @@ struct NewNanaPickDetailView: View {
 
 struct NanaPickDetailMainView: View {
     @StateObject var viewModel: NewNanaPickDetailViewModel
+    @State private var showScrollToTopButton = false
     var isAPICalled: Bool = false
     var id: Int64
     var size: CGSize
@@ -74,23 +75,44 @@ struct NanaPickDetailMainView: View {
                         }
                     }
                     .id("Scroll_To_Top")
+                    .background(
+                        GeometryReader { geo in
+                            Color.clear
+                                .onChange(of: geo.frame(in: .global).minY) { value in
+                                    // 스크롤 위치 추적
+                                    print("geometry scroll: \(value)")
+                                    if value < -10 { // 스크롤이 일정 위치 이상 내려가면
+                                        withAnimation {
+                                            showScrollToTopButton = true
+                                        }
+                                    } else {
+                                        withAnimation {
+                                            showScrollToTopButton = false
+                                        }
+                                    }
+                                }
+                        }
+                    )
                 }
                 .overlay(){
                     VStack {
                         Spacer()
                         HStack {
                             Spacer()
-                            Button(action: {
-                                // withAnimation과 함께 함수 작성
-                                withAnimation(.default) {
-                                    // ScrollViewReader의 proxyReader을 사용하여 스크롤 위치로 이동
-                                    scroll.scrollTo("Scroll_To_Top", anchor: .top) // scroll id 추가
-                                }
-                            }, label: {
-                                Image("icScrollToTop")
-                            })
-                            .frame(width: 80, height: 80)
-                            .padding(.trailing)
+                            if showScrollToTopButton {
+                                Button(action: {
+                                    // withAnimation과 함께 함수 작성
+                                    withAnimation(.default) {
+                                        // ScrollViewReader의 proxyReader을 사용하여 스크롤 위치로 이동
+                                        scroll.scrollTo("Scroll_To_Top", anchor: .top) // scroll id 추가
+                                    }
+                                }, label: {
+                                    Image("icScrollToTop")
+                                })
+                                .frame(width: 80, height: 80)
+                                .padding(.trailing)
+                            }
+                
                         }
                     }
                 }
