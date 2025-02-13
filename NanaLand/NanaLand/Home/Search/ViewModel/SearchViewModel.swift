@@ -107,6 +107,7 @@ final class SearchViewModel: ObservableObject {
 	private func getVolumeUp() async {
 		if let result = await SearchService.getVolumeUp()?.data {
 			state.searchVolumeResult = result
+            print(state.searchVolumeResult)
 		}
 	}
 	

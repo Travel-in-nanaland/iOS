@@ -64,7 +64,7 @@ struct ShopMainGridView: View {
                 .padding(.trailing, 16)
                     .sheet(isPresented: $locationModal) {
                         LocationModalView(viewModel: FestivalMainViewModel(), natureViewModel: NatureMainViewModel(), shopViewModel: viewModel, restaurantModel: RestaurantMainViewModel(), experienceViewModel: ExperienceMainViewModel(), isModalShown: $locationModal, selectedLocation: viewModel.state.selectedLocation, startDate: "", endDate: "", title: LocalizedKey.market.localized(for: localizationMangaer.language))
-                        .presentationDetents([.height(Constants.screenWidth * (63 / 36))])
+                        .presentationDetents([.height(Constants.screenWidth * (58 / 36))])
                 }
 			}
 			.padding(.bottom, 8)

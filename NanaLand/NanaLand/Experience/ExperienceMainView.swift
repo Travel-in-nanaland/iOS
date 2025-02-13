@@ -135,7 +135,7 @@ struct ExperienceMainGridView: View {
                 .padding(.trailing, 16)
                 .sheet(isPresented: $locationModal) { // 지역 필터링 뷰
                     LocationModalView(viewModel: FestivalMainViewModel(), natureViewModel: NatureMainViewModel(), shopViewModel: ShopMainViewModel(), restaurantModel: RestaurantMainViewModel(), experienceViewModel: viewModel, isModalShown: $locationModal, selectedLocation: viewModel.state.selectedLocation, startDate: "", endDate: "", title: LocalizedKey.experience.localized(for: localizationMangaer.language), type: experienceType == "Activity" ? "ACTIVITY" : "CULTURE_AND_ARTS", keyword: keyword)
-                        .presentationDetents([.height(Constants.screenWidth * (63 / 36))])
+                        .presentationDetents([.height(Constants.screenWidth * (58 / 36))])
                 }
             }
             .padding(.bottom, 8)
