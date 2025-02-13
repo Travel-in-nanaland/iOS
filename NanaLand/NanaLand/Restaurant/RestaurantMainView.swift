@@ -132,7 +132,7 @@ struct RestaurantMainGridView: View {
                     .padding(.trailing, 16)
                     .sheet(isPresented: $locationModal) { // 지역 필터링 뷰
                         LocationModalView(viewModel: FestivalMainViewModel(), natureViewModel: NatureMainViewModel(), shopViewModel: ShopMainViewModel(), restaurantModel: viewModel, experienceViewModel: ExperienceMainViewModel(), isModalShown: $locationModal, selectedLocation: viewModel.state.selectedLocation, startDate: "", endDate: "", title: LocalizedKey.restaurant.localized(for: localizationManager.language), keyword: keyword)
-                            .presentationDetents([.height(Constants.screenWidth * (63 / 36))])
+                            .presentationDetents([.height(Constants.screenWidth * (58 / 36))])
                     }
                 }
             }

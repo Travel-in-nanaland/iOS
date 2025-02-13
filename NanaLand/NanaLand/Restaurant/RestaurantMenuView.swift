@@ -40,6 +40,7 @@ struct RestaurantMenuView: View {
                 } label: {
                     KFImage(URL(string: imageUrl))
                         .resizable()
+                        .scaledToFill()
                         .frame(width: 56, height: 56)
                         .cornerRadius(8)
                 }
