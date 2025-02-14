@@ -105,11 +105,11 @@ struct ExperienceMainGridView: View {
                     if experienceType == "Activity" {
                         // 액티비티 키워드 모달 창
                         ActivityKeywordView(keyword: $keyword, address: viewModel.state.apiLocation, viewModel: viewModel, selectedKeyword: viewModel.state.selectedKeyword)
-                            .presentationDetents([.height(Constants.screenWidth * (328 / 360))]) // 팝업 뷰 height 조절
+                            .presentationDetents([.height(Constants.screenWidth * (290 / 360))]) // 팝업 뷰 height 조절
                     } else {
                         // 문화예술 키워드 모달 창
                         CultureAndArtsKeywordView(keyword: $keyword, address: viewModel.state.apiLocation, viewModel: viewModel, selectedKeyword: viewModel.state.selectedKeyword)
-                            .presentationDetents([.height(Constants.screenWidth * (376 / 360))]) // 팝업 뷰 height 조절
+                            .presentationDetents([.height(Constants.screenWidth * (337 / 360))]) // 팝업 뷰 height 조절
                     }
                 }
                 

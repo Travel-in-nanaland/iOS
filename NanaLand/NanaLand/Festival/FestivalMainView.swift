@@ -440,6 +440,7 @@ struct FestivalMainGridView: View {
                                                 .padding(.trailing, 8)
                                             }
                                             Text(viewModel.state.getFestivalMainResponse.data[index].title)
+                                                .lineLimit(1)
                                                 .font(.body02_bold)
                                                 .padding(.bottom, 4)
                                             Text(viewModel.state.getFestivalMainResponse.data[index].period)

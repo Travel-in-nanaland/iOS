@@ -219,8 +219,10 @@ struct ShopDetailView: View {
                                                 Text(viewModel.state.getShopDetailResponse.contact)
                                                     .font(.gothicNeo(.regular, size: 12))
                                                     .padding(.trailing, 2)
-                                                Text(">")
-                                                    .font(.gothicNeo(.regular, size: 12))
+                                                Image("icPhoneArrow")
+                                                    .resizable()
+                                                    .scaledToFit()
+                                                    .frame(width: Constants.screenWidth * (8 / 360))
                                             }
                                  
                                         })

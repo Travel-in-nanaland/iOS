@@ -276,7 +276,7 @@ struct MyReviewArticleItemView: View {
                     
                     Spacer()
                     
-                    Text(createdAt)
+                    Text(convertReviewDateFormatter(date: createdAt))
                         .font(.caption01)
                         .foregroundColor(.gray1)
                 }
@@ -290,6 +290,12 @@ struct MyReviewArticleItemView: View {
                     .shadow(radius: 1)
             }
         }
+    }
+    
+    
+    ///리뷰 생성 날짜 형식 변경
+    func convertReviewDateFormatter(date: String) -> String {
+        return date.replacingOccurrences(of: "-", with: ".")
     }
     
     func deleteMyReview(id: Int64) async {

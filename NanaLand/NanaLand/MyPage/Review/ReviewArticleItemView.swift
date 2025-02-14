@@ -92,7 +92,8 @@ struct ReviewArticleItemView: View {
                                     Spacer()
                                     
                                     HStack(spacing: 0){
-                                        Text(createdAt)
+                                        
+                                        Text(convertReviewDateFormatter(date: createdAt))
                                             .font(.caption01)
                                             .foregroundColor(.gray1)
                                         
@@ -162,7 +163,7 @@ struct ReviewArticleItemView: View {
                                 Spacer()
                                 
                                 HStack(spacing: 0){
-                                    Text(createdAt)
+                                    Text(convertReviewDateFormatter(date: createdAt))
                                         .frame(height: 16)
                                         .font(.caption01)
                                         .foregroundColor(.gray1)
@@ -194,6 +195,12 @@ struct ReviewArticleItemView: View {
             return category // 매핑되지 않는 경우 기본값 반환
         }
     }
+    
+    ///리뷰 생성 날짜 형식 변경
+    func convertReviewDateFormatter(date: String) -> String {
+        return date.replacingOccurrences(of: "-", with: ".")
+    }
+    
 }
 
 #Preview {

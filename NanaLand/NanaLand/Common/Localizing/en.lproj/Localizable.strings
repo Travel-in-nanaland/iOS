@@ -140,7 +140,7 @@
 "nanalandMadeYouJuice" = "nanaland in Jeju has created a custom travel juice for you!";
 // 결과 값 추천 여행지
 "recommendedTravelPlace" = "Recommended Travel Destinations";
-"recommenedeTravelTitleFirstLine" = "Fro %@";
+"recommenedeTravelTitleFirstLine" = "For %@";
 "recommenedeTravelTitleSecondLine" = "Recommended travel\ndestinations";
 "recommendDetail" = "Learn more";
 

@@ -161,16 +161,17 @@ struct SearchMainView: View {
 //                .padding(.bottom, 16)
             
             HStack(spacing: 24) {
-                // 1~4위
+                // 1~3위
                 VStack(spacing: 16) {
                     ForEach(0..<min(searchVM.state.popularSearchTerms.count, 4), id: \.self) { index in
                         HStack(spacing: 8) {
                             Text("\(index+1).")
                             Text("\(searchVM.state.popularSearchTerms[index])")
+                                .lineLimit(1)
                             Spacer(minLength: 0)
                         }
                         .font(.body02)
-                        .foregroundStyle(index == 0 || index == 1 || index == 2 ? Color.main : Color.gray1)
+                        .foregroundStyle(index == 0 || index == 1 || index == 2 ? Color.main : Color.black)
                         .onTapGesture {
                             search(term: searchVM.state.popularSearchTerms[index])
                         }
@@ -178,17 +179,18 @@ struct SearchMainView: View {
                 }
                 .frame(width: (Constants.screenWidth-32-24)/2)
                 
-                // 5~8위
+                // 4~8위
                 if searchVM.state.popularSearchTerms.count > 4 {
                     VStack(spacing: 16) {
                         ForEach(4..<min(searchVM.state.popularSearchTerms.count, 8), id: \.self) { index in
                             HStack(spacing: 8) {
                                 Text("\(index+1).")
                                 Text("\(searchVM.state.popularSearchTerms[index])")
+                                    .lineLimit(1)
                                 Spacer(minLength: 0)
                             }
                             .font(.body02)
-                            .foregroundStyle(Color.gray1)
+                            .foregroundStyle(Color.black)
                             .onTapGesture {
                                 search(term: searchVM.state.popularSearchTerms[index])
                             }
@@ -237,9 +239,11 @@ struct SearchMainView: View {
                                 ZStack {
                                     KFImage(URL(string: article.firstImage.originUrl))
                                         .resizable()
-                                        .frame(width: (UIScreen.main.bounds.width - 40) / 2, height: ((UIScreen.main.bounds.width - 40) / 2) * (12 / 16))
+                                        .frame(width: (Constants.screenWidth - 40) / 2, height: ((Constants.screenWidth - 40) / 2) * (12 / 16))
                                         .clipShape(RoundedRectangle(cornerRadius: 12))
+                                    
                                     VStack(spacing: 0) {
+                                        Spacer()
                                         HStack(spacing: 0) {
                                             Spacer()
                                             
@@ -253,11 +257,10 @@ struct SearchMainView: View {
                                                 }
                                               
                                             } label: {
-                                                article.favorite ?? false ? Image("icHeartFillMain") : Image("icHeartDefault")
+                                                article.favorite ?? false ? Image("icHeart_Fill") : Image("icHeart_Blank")
                                             }
                                         }
-                                        .padding(.top, 8)
-                                        Spacer()
+                                        .padding(.bottom, 8)
                                     }
                                     .padding(.trailing, 8)
                                 }

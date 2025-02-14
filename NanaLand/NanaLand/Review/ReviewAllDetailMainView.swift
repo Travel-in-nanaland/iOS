@@ -165,29 +165,17 @@ struct ReviewAllDetailMainView: View {
                                             }
                                             
                                         }
+                                        .padding(.bottom, 12)
                                         
                                         HStack(alignment: .bottom, spacing: 0) {
-                                            //                                                        Text("\(viewModel.state.getReviewDataResponse.data[index].content ?? "")")
-                                            //                                                            .lineLimit(contentIsOn[index] ? nil : 2)
-                                            //                                                            .padding(.leading, 16)
-                                            //                                                            .padding(.trailing, 2)
-                                            //
-                                            //                                                        Button {
-                                            //                                                            contentIsOn[index].toggle()
-                                            //                                                        } label: {
-                                            //                                                            Text(contentIsOn[index] ? "접기" : "더 보기")
-                                            //                                                                .foregroundStyle(Color.gray1)
-                                            //                                                                .font(.caption01)
-                                            //                                                        }
-                                            //                                                        .padding(.trailing, 16)
                                             ExpandableText("\(viewModel.state.getReviewDataResponse.data[index].content ?? "")", lineLimit: 2)
                                                 .font(.body02)
                                                 .padding(.leading, 16)
                                                 .padding(.trailing, 16)
                                         }
+                                        .padding(.bottom, 12)
                                         
                                         
-                                        Spacer()
                                         HStack(spacing: 0) {
                                             Text("\(((viewModel.state.getReviewDataResponse.data[index].reviewTypeKeywords ?? [""]).map {"#\($0) "}).joined(separator: " "))")
                                                 .font(.caption01)
@@ -198,14 +186,16 @@ struct ReviewAllDetailMainView: View {
                                         .padding(.trailing, 16)
                                         .multilineTextAlignment(.leading)
                                         .padding(.bottom, 4)
+                                        
                                         HStack(spacing: 0) {
                                             Spacer()
-                                            Text("\(viewModel.state.getReviewDataResponse.data[index].createdAt ?? "")")
+                                            
+                                            Text("\(convertReviewDateFormatter(date: viewModel.state.getReviewDataResponse.data[index].createdAt ?? ""))")
                                                 .font(.caption01)
                                                 .foregroundStyle(Color.gray1)
                                         }
                                         .padding(.trailing, 16)
-                                        .padding(.bottom, 16)
+                                        .padding(.bottom, 12)
                                     }
                                     .clipShape(RoundedRectangle(cornerRadius: 12))
                                     .overlay(
@@ -297,29 +287,16 @@ struct ReviewAllDetailMainView: View {
                                             }
                                             
                                         }
+                                        .padding(.bottom, 12)
                                         
                                         HStack(alignment: .bottom, spacing: 0) {
-                                            //                                                        Text("\(viewModel.state.getReviewDataResponse.data[index].content ?? "")")
-                                            //                                                            .lineLimit(contentIsOn[index] ? nil : 2)
-                                            //                                                            .padding(.leading, 16)
-                                            //                                                            .padding(.trailing, 2)
-                                            //
-                                            //                                                        Button {
-                                            //                                                            contentIsOn[index].toggle()
-                                            //                                                        } label: {
-                                            //                                                            Text(contentIsOn[index] ? "접기" : "더 보기")
-                                            //                                                                .foregroundStyle(Color.gray1)
-                                            //                                                                .font(.caption01)
-                                            //                                                        }
-                                            //                                                        .padding(.trailing, 16)
                                             ExpandableText("\(viewModel.state.getReviewDataResponse.data[index].content ?? "")", lineLimit: 2)
                                                 .font(.body02)
                                                 .padding(.leading, 16)
                                                 .padding(.trailing, 16)
                                         }
+                                        .padding(.bottom, 12)
                                         
-                                        
-                                        Spacer()
                                         HStack(spacing: 0) {
                                             Text("\(((viewModel.state.getReviewDataResponse.data[index].reviewTypeKeywords ?? [""]).map {"#\($0) "}).joined(separator: " "))")
                                                 .font(.caption01)
@@ -330,24 +307,27 @@ struct ReviewAllDetailMainView: View {
                                         .padding(.trailing, 16)
                                         .multilineTextAlignment(.leading)
                                         .padding(.bottom, 4)
+                                        
+                                        
                                         HStack(spacing: 0) {
-                                            Spacer()
-                                            Text("\(viewModel.state.getReviewDataResponse.data[index].createdAt ?? "")")
-                                                .font(.caption01)
-                                                .foregroundStyle(Color.gray1)
-                                           
+                                                                                       
                                             Button {
                                                 reportModal = true
                                                 idx = viewModel.state.getReviewDataResponse.data[index].id
                                      
                                             } label: {
-                                                Image("icPointBtn")
-                                                    .resizable()
-                                                    .renderingMode(.template)
-                                                    .frame(width: 20, height: 20)
-                                                    .foregroundStyle(Color.gray1)
+                                                Text(.doReport)
+                                                    .font(.caption02)
+                                                    .foregroundColor(Color.gray1)
                                             }
+                                            
+                                            Spacer()
+                                            
+                                            Text("\(convertReviewDateFormatter(date: viewModel.state.getReviewDataResponse.data[index].createdAt ?? ""))")
+                                                .font(.caption01)
+                                                .foregroundStyle(Color.gray1)
                                         }
+                                        .padding(.leading, 16)
                                         .padding(.trailing, 16)
                                         .padding(.bottom, 16)
                                     }
@@ -412,6 +392,11 @@ struct ReviewAllDetailMainView: View {
     
     func deleteMyReview(id: Int64) async {
         await viewModel.action(.deleteMyReview(id: id))
+    }
+    
+    ///리뷰 생성 날짜 형식 변경
+    func convertReviewDateFormatter(date: String) -> String {
+        return date.replacingOccurrences(of: "-", with: ".")
     }
 }
 
