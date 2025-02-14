@@ -542,3 +542,6 @@
 "noContent" = "해당 컨텐츠가 없습니다";
 "filterAdjustment" = "필터를 조정하거나 초기화해 보세요!";
 "filterReset" = "필터 초기화";
+
+//MARK: - 찜 콘텐츠
+"noFavorite" = "아직 찜한 컨텐츠가 없습니다\n마음에 드는 컨텐츠에 하트를 눌러보세요!";

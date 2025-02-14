@@ -15,6 +15,8 @@ struct ShopDetailView: View {
     @State private var isOn = false
     @State private var roundedHeight: CGFloat = (Constants.screenWidth - 40) * (224.0 / 358.0)
     @State private var shouldScrollToTop = false
+    @State private var thumbnailModal = false
+    @State var selectedImageURL: String = ""// 선택된 이미지 URL
     var id: Int64
     
     var body: some View {
@@ -42,10 +44,19 @@ struct ShopDetailView: View {
             ScrollViewReader { proxyReader in
                 ScrollView {
                     VStack(spacing: 0) {
-                        KFImage(URL(string: viewModel.state.getShopDetailResponse.images[0].originUrl! ?? ""))
-                            .resizable()
-                            .frame(width: Constants.screenWidth, height: Constants.screenWidth * (26 / 39))
-                            .padding(.bottom, 24)
+                        Button(action: {
+                            selectedImageURL = viewModel.state.getShopDetailResponse.images[0].originUrl!
+                            thumbnailModal.toggle()
+                        }, label: {
+                            KFImage(URL(string: viewModel.state.getShopDetailResponse.images[0].originUrl! ?? ""))
+                                .resizable()
+                                .frame(width: Constants.screenWidth, height: Constants.screenWidth * (26 / 39))
+                                .padding(.bottom, 24)
+                        })
+                        .fullScreenCover(isPresented: $thumbnailModal) {
+                            PhotoModalView(imageUrl: $selectedImageURL)
+                                .background(ClearBackgroundView())
+                        }
                         
                         ZStack(alignment: .center) {
                             if !isOn { // 더보기 버튼이 안 눌렸을 때

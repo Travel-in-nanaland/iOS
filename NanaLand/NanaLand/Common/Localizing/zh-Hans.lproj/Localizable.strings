@@ -540,3 +540,6 @@
 "noContent" = "没有这样的内容";
 "filterAdjustment" = "调整或重置过滤器！";
 "filterReset" = "重置过滤器";
+
+//MARK: - 찜 콘텐츠
+"noFavorite" = "您还没有收藏的内容\n请点击心形图标收藏您喜欢的内容！";

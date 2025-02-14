@@ -552,3 +552,6 @@ the market is the place!";
 "noContent" = "No such content";
 "filterAdjustment" = "Adjust or reset filters!";
 "filterReset" = "Reset filter";
+
+//MARK: - 찜 콘텐츠
+"noFavorite" = "You haven't favorited any content yet\nTap the heart on content you like!";
