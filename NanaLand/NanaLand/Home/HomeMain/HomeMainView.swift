@@ -281,7 +281,7 @@ struct HomeMainView: View {
                                             .multilineTextAlignment(.leading)
                                             .lineLimit(1)
                                     }
-                                    .frame(width: 160)
+                                    .frame(width: (Constants.screenWidth - 40) / 2)
                                 }
                                 
                             case "FESTIVAL":
@@ -319,7 +319,7 @@ struct HomeMainView: View {
                                             .multilineTextAlignment(.leading)
                                             .lineLimit(1)
                                     }
-                                    .frame(width: 160)
+                                    .frame(width: (Constants.screenWidth - 40) / 2)
                                 }
                                 
                             case "MARKET":
@@ -357,7 +357,7 @@ struct HomeMainView: View {
                                             .multilineTextAlignment(.leading)
                                             .lineLimit(1)
                                     }
-                                    .frame(width: 160)
+                                    .frame(width: (Constants.screenWidth - 40) / 2)
                                 }
                                 
                             case "ACTIVITY":
@@ -395,7 +395,7 @@ struct HomeMainView: View {
                                             .multilineTextAlignment(.leading)
                                             .lineLimit(1)
                                     }
-                                    .frame(width: 160)
+                                    .frame(width: (Constants.screenWidth - 40) / 2)
                                 }
                                 
                             case "CULTURE_AND_ARTS":
@@ -434,7 +434,7 @@ struct HomeMainView: View {
                                             .multilineTextAlignment(.leading)
                                             .lineLimit(1)
                                     }
-                                    .frame(width: 160)
+                                    .frame(width: (Constants.screenWidth - 40) / 2)
                                 }
                                 
                             case "RESTAURANT":
@@ -472,7 +472,7 @@ struct HomeMainView: View {
                                             .multilineTextAlignment(.leading)
                                             .lineLimit(1)
                                     }
-                                    .frame(width: 160)
+                                    .frame(width: (Constants.screenWidth - 40) / 2)
                                 }
                                 
                             default:
@@ -490,7 +490,7 @@ struct HomeMainView: View {
                                             .multilineTextAlignment(.leading)
                                             .lineLimit(1)
                                     }
-                                    .frame(width: 160)
+                                    .frame(width: (Constants.screenWidth - 40) / 2)
                                 }
                             }
                         }

@@ -26,14 +26,16 @@ struct SeasonModalView: View {
                 } label: {
                     Image("icX")
                         .resizable()
-                        .frame(width: 28, height: 28)
+                        .frame(width: 20, height: 20)
               
                 }
 
             }
-            .frame(width: Constants.screenWidth - 32)
+            .padding(.trailing, 16)
+            .padding(.leading, 16)
             .padding(.top, 24)
             Spacer()
+            
             HStack(spacing: 0) {
                 VStack(spacing: 0) {
                     Button {

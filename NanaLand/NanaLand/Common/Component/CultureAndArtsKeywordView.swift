@@ -27,14 +27,6 @@ struct CultureAndArtsKeywordView: View {
                 .padding(.leading, 16)
                 .padding(.bottom, 12)
             
-            HStack(spacing: 0) {
-                Text(.cultureAndArts)
-                    .font(.body_bold)
-                Spacer()
-            }
-            .padding(.leading, 16)
-            .padding(.bottom, 12)
-            
             keywordVGridView
                 .padding(.bottom, 16)
             

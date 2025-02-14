@@ -308,8 +308,10 @@ struct ExperienceDetailView: View {
                                                         Text(viewModel.state.getExperienceDetailResponse.contact ?? "")
                                                             .font(.gothicNeo(.regular, size: 12))
                                                             .padding(.trailing, 2)
-                                                        Text(">")
-                                                            .font(.gothicNeo(.regular, size: 12))
+                                                        Image("icPhoneArrow")
+                                                            .resizable()
+                                                            .scaledToFit()
+                                                            .frame(width: Constants.screenWidth * (8 / 360))
                                                     }
                                                     
                                                 })
@@ -530,6 +532,7 @@ struct ExperienceDetailView: View {
                                                             }
                                                             
                                                         }
+                                                        .padding(.bottom, 12)
                                                         
                                                         HStack(alignment: .bottom, spacing: 0) {
                                                             //                                                        Text("\(viewModel.state.getReviewDataResponse.data[index].content ?? "")")
@@ -549,10 +552,8 @@ struct ExperienceDetailView: View {
                                                                 .font(.body02)
                                                                 .padding(.leading, 16)
                                                                 .padding(.trailing, 16)
-                                                        }
+                                                        }.padding(.bottom, 12)
                                                         
-                                                        
-                                                        Spacer()
                                                         HStack(spacing: 0) {
                                                             Text("\(((viewModel.state.getReviewDataResponse.data[index].reviewTypeKeywords ?? [""]).map {"#\($0) "}).joined(separator: " "))")
                                                                 .font(.caption01)
@@ -565,7 +566,8 @@ struct ExperienceDetailView: View {
                                                         .padding(.bottom, 4)
                                                         HStack(spacing: 0) {
                                                             Spacer()
-                                                            Text("\(viewModel.state.getReviewDataResponse.data[index].createdAt ?? "")")
+                                                            
+                                                            Text("\(convertReviewDateFormatter(date: viewModel.state.getReviewDataResponse.data[index].createdAt ?? ""))")
                                                                 .font(.caption01)
                                                                 .foregroundStyle(Color.gray1)
                                                             
@@ -671,6 +673,7 @@ struct ExperienceDetailView: View {
                                                                 .padding(.trailing, 16)
                                                             }
                                                         }
+                                                        .padding(.bottom, 12)
                                                         
                                                         HStack(alignment: .bottom, spacing: 0) {
                                                             //                                                        Text("\(viewModel.state.getReviewDataResponse.data[index].content ?? "")")
@@ -691,9 +694,8 @@ struct ExperienceDetailView: View {
                                                                 .padding(.leading, 16)
                                                                 .padding(.trailing, 16)
                                                         }
+                                                        .padding(.bottom, 12)
                                                         
-                                                        
-                                                        Spacer()
                                                         HStack(spacing: 0) {
                                                             Text("\(((viewModel.state.getReviewDataResponse.data[index].reviewTypeKeywords ?? [""]).map {"#\($0) "}).joined(separator: " "))")
                                                                 .font(.caption01)
@@ -717,7 +719,7 @@ struct ExperienceDetailView: View {
                                                             
                                                             Spacer()
                                                             
-                                                            Text("\(viewModel.state.getReviewDataResponse.data[index].createdAt ?? "")")
+                                                            Text("\(convertReviewDateFormatter(date: viewModel.state.getReviewDataResponse.data[index].createdAt ?? ""))")
                                                                 .font(.caption01)
                                                                 .foregroundStyle(Color.gray1)
                                                         }
@@ -961,6 +963,11 @@ struct ExperienceDetailView: View {
             context: nil
         )
         return boundingBox.height
+    }
+    
+    ///리뷰 생성 날짜 형식 변경
+    func convertReviewDateFormatter(date: String) -> String {
+        return date.replacingOccurrences(of: "-", with: ".")
     }
 }
 

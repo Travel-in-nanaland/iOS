@@ -292,8 +292,10 @@ struct RestaurantDetailView: View {
                                                             Text(viewModel.state.getRestaurantDetailResponse.contact!)
                                                                 .font(.gothicNeo(.regular, size: 12))
                                                                 .padding(.trailing, 2)
-                                                            Text(">")
-                                                                .font(.gothicNeo(.regular, size: 12))
+                                                            Image("icPhoneArrow")
+                                                                .resizable()
+                                                                .scaledToFit()
+                                                                .frame(width: Constants.screenWidth * (8 / 360))
                                                         }
                                            
                                                     })
@@ -538,7 +540,7 @@ struct RestaurantDetailView: View {
                                                                                 .resizable()
                                                                                 .frame(width: 70, height: 70)
                                                                                 .cornerRadius(8)
-                                                                                .padding(.leading, 10)
+                                                                                .padding(.leading, 16)
                                                                                 .padding(.bottom, 5)
                                                                         })
                                                                         .fullScreenCover(isPresented: $reviewThumbnailModal) {
@@ -548,13 +550,16 @@ struct RestaurantDetailView: View {
                                                                     }
                                                                 }
                                                             }
+                                                            .padding(.bottom, 12)
+                                                            
                                                             HStack(alignment: .bottom, spacing: 0) {
                                                                 ExpandableText("\(viewModel.state.getReviewDataResponse.data[index].content ?? "")", lineLimit: 2)
                                                                     .font(.body02)
-                                                                    .padding(.leading, 16)
-                                                                    .padding(.trailing, 16)
                                                             }
-                                                            Spacer()
+                                                            .padding(.leading, 16)
+                                                            .padding(.trailing, 16)
+                                                            .multilineTextAlignment(.leading)
+                                                            
                                                             HStack(spacing: 0) {
                                                                 Text("\(((viewModel.state.getReviewDataResponse.data[index].reviewTypeKeywords ?? [""]).map {"#\($0) "}).joined(separator: ", "))")
                                                                     .font(.caption01)
@@ -567,7 +572,8 @@ struct RestaurantDetailView: View {
                                                             .padding(.bottom, 4)
                                                             HStack(spacing: 0) {
                                                                 Spacer()
-                                                                Text("\(viewModel.state.getReviewDataResponse.data[index].createdAt ?? "")")
+                                                                
+                                                                Text("\(convertReviewDateFormatter(date: viewModel.state.getReviewDataResponse.data[index].createdAt ?? ""))")
                                                                     .font(.caption01)
                                                                     .foregroundStyle(Color.gray1)
                                                             }
@@ -640,6 +646,7 @@ struct RestaurantDetailView: View {
                                                             }
                                                             .padding(.top, 10)
                                                             .padding(.bottom, 12)
+                                                            
                                                             HStack(spacing: 0) {
                                                                 if viewModel.state.getReviewDataResponse.data[index].images!.count != 0 {
                                                                     ForEach(0..<viewModel.state.getReviewDataResponse.data[index].images!.count) { idx in
@@ -651,8 +658,6 @@ struct RestaurantDetailView: View {
                                                                                 .resizable()
                                                                                 .frame(width: 70, height: 70)
                                                                                 .cornerRadius(8)
-                                                                                .padding(.leading, 10)
-                                                                                .padding(.bottom, 5)
                                                                         })
                                                                         .fullScreenCover(isPresented: $reviewThumbnailModal) {
                                                                             PhotoModalView(imageUrl: $selectedImageURL)
@@ -661,13 +666,18 @@ struct RestaurantDetailView: View {
                                                                     }
                                                                 }
                                                             }
+                                                            .padding(.leading, 16)
+                                                            .padding(.trailing, 16)
+                                                            .padding(.bottom, 12)
+                                                            
                                                             HStack(alignment: .bottom, spacing: 0) {
                                                                 ExpandableText("\(viewModel.state.getReviewDataResponse.data[index].content ?? "")", lineLimit: 2)
                                                                     .font(.body02)
-                                                                    .padding(.leading, 16)
-                                                                    .padding(.trailing, 16)
                                                             }
-                                                            Spacer()
+                                                            .padding(.leading, 16)
+                                                            .padding(.trailing, 16)
+                                                            .multilineTextAlignment(.leading)
+                                                            
                                                             HStack(spacing: 0) {
                                                                 Text("\(((viewModel.state.getReviewDataResponse.data[index].reviewTypeKeywords ?? [""]).map {"#\($0) "}).joined(separator: ", "))")
                                                                     .font(.caption01)
@@ -678,6 +688,7 @@ struct RestaurantDetailView: View {
                                                             .padding(.trailing, 16)
                                                             .multilineTextAlignment(.leading)
                                                             .padding(.bottom, 12)
+                                                            
                                                             HStack(spacing: 0) {
                                                                 Button {
                                                                     reportModal = true
@@ -690,7 +701,7 @@ struct RestaurantDetailView: View {
                                                                 
                                                                 Spacer()
                                                                 
-                                                                Text("\(viewModel.state.getReviewDataResponse.data[index].createdAt ?? "")")
+                                                                Text("\(convertReviewDateFormatter(date: viewModel.state.getReviewDataResponse.data[index].createdAt ?? ""))")
                                                                     .font(.caption01)
                                                                     .foregroundStyle(Color.gray1)
                                                             }
@@ -900,6 +911,11 @@ struct RestaurantDetailView: View {
             context: nil
         )
         return boundingBox.height
+    }
+    
+    ///리뷰 생성 날짜 형식 변경
+    func convertReviewDateFormatter(date: String) -> String {
+        return date.replacingOccurrences(of: "-", with: ".")
     }
 }
 

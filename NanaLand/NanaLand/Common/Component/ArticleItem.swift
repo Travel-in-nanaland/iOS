@@ -34,6 +34,8 @@ struct ArticleItem: View {
                         )
                 }
                 VStack(spacing: 0) {
+                    Spacer()
+                    
                     HStack(spacing: 0) {
                         Spacer()
                         
@@ -44,8 +46,7 @@ struct ArticleItem: View {
                             article.favorite ?? false ?  Image("icHeart_Fill").animation(nil) : Image("icHeart_Blank").animation(nil)
                         }
                     }
-                    .padding(.top, 8)
-                    Spacer()
+                    .padding(.bottom, 8)
                 }
                 .padding(.trailing, 8)
             }
