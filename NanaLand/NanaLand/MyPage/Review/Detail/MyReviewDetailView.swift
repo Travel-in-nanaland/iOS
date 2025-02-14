@@ -481,9 +481,6 @@ struct MyDetailReviewMainGridView: View {
                 .padding(EdgeInsets(top: 0, leading: Constants.screenWidth * (16 / 360), bottom: Constants.screenWidth * (24 / 360), trailing: Constants.screenWidth * (16 / 360)))
                 
                 ZStack {
-                    RoundedRectangle(cornerRadius: 50)
-                        .foregroundColor((detailViewModel.selectedKeyword.count < 3 || detailViewModel.state.editReviewDto.content.count == 0 || detailViewModel.state.editReviewDto.rating == 0) ? .main10P : .main)
-                        .frame(width: 360, height: 50)
                     Button {
                         Task {
                             detailViewModel.state.editReviewDto.editImageInfoList = prepareEditImageInfo()
@@ -499,10 +496,15 @@ struct MyDetailReviewMainGridView: View {
                         
                         
                     } label: {
-                        Text(.upload)
-                            .font(.body_bold)
-                            .foregroundStyle(.white)
-                            .frame(width: Constants.screenWidth - 40, height: 50)
+                        RoundedRectangle(cornerRadius: 50)
+                            .foregroundColor((detailViewModel.selectedKeyword.count < 3 || detailViewModel.state.editReviewDto.content.count == 0 || detailViewModel.state.editReviewDto.rating == 0) ? .main10P : .main)
+                            .frame(width: 360, height: 50)
+                            .overlay {
+                                Text(.upload)
+                                    .font(.body_bold)
+                                    .foregroundStyle(.white)
+                                    .frame(width: Constants.screenWidth - 40, height: 50)
+                            }
                     }
                    
                     .disabled((detailViewModel.selectedKeyword.count < 3 || detailViewModel.state.editReviewDto.content.count == 0 || detailViewModel.state.editReviewDto.rating == 0) ? true : false)

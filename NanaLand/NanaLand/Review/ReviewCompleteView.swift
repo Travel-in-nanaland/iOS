@@ -22,14 +22,14 @@ struct ReviewCompleteView: View {
                 // 네비게이션 path 맨 위 2개 제거 해서 detail view로 돌아가기
                 
             } label: {
-                Text(.goContent)
-            }
-            .frame(width: Constants.screenWidth * (328 / 360), height: Constants.screenWidth * (48 / 360))
-            .background(
                 RoundedRectangle(cornerRadius: 50.0)
                     .foregroundStyle(Color.main)
                     .frame(width: Constants.screenWidth * (328 / 360), height: Constants.screenWidth * (48 / 360))
-            )
+                    .overlay {
+                        Text(.goContent)
+                    }
+            }
+            .frame(width: Constants.screenWidth * (328 / 360), height: Constants.screenWidth * (48 / 360))
             .foregroundStyle(Color.white)
             .font(.body_bold)
             .padding(.bottom, Constants.screenWidth * (24 / 360))

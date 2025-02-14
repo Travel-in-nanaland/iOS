@@ -417,9 +417,7 @@ struct ReviewMainGridView: View {
                     .padding(EdgeInsets(top: 0, leading: Constants.screenWidth * (16 / 360), bottom: Constants.screenWidth * (24 / 360), trailing: Constants.screenWidth * (16 / 360)))
                     
                     ZStack {
-                        RoundedRectangle(cornerRadius: 50)
-                            .foregroundColor((viewModel.selectedKeyword.count < 1 || reviewContent.count == 0 || viewModel.state.getReviewWriteResponse.rating == 0) ? .main10P : .main)
-                            .frame(height: 50)
+                        
                         Button {
                             Task {
                                 isLoading = true // 로딩창 on
@@ -475,9 +473,14 @@ struct ReviewMainGridView: View {
                                
                             }
                         } label: {
-                            Text(.upload)
-                                .font(.body_bold)
-                                .foregroundStyle(.white)
+                            RoundedRectangle(cornerRadius: 50)
+                                .foregroundColor((viewModel.selectedKeyword.count < 1 || reviewContent.count == 0 || viewModel.state.getReviewWriteResponse.rating == 0) ? .main10P : .main)
+                                .frame(height: 50)
+                                .overlay {
+                                    Text(.upload)
+                                        .font(.body_bold)
+                                        .foregroundStyle(.white)
+                                }
                         }
                         .disabled((viewModel.selectedKeyword.count < 1 || reviewContent.count == 0 || viewModel.state.getReviewWriteResponse.rating == 0) ? true : false)
                     }
