@@ -150,10 +150,10 @@ struct NanaPickDetailMainView: View {
                                     VStack(alignment: .leading) {
                                         Spacer()
                                         
-                                        Text(viewModel.state.getNanaPickDetailResponse.heading)
+                                        Text(viewModel.state.getNanaPickDetailResponse.subHeading)
                                             .font(.body_bold)
                                             .foregroundColor(.white)
-                                        Text(viewModel.state.getNanaPickDetailResponse.subHeading)
+                                        Text(viewModel.state.getNanaPickDetailResponse.heading)
                                             .font(.largeTitle02)
                                             .foregroundColor(.white)
                                     }

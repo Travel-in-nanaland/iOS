@@ -54,7 +54,7 @@ struct NanaHome: View {
 							}
 						}
 						
-						DispatchQueue.main.asyncAfter(deadline: .now() + Constants.splashTime, execute: {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
 							isSplashCompleted = true
 							AppState.shared.isSplashCompleted = true
 						})
