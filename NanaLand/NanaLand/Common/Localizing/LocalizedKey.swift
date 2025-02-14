@@ -560,6 +560,9 @@ enum LocalizedKey: String {
     case filterAdjustment
     case filterReset
     
+    //MARK: - 찜 콘텐츠
+    case noFavorite
+    
     //MARK: - localized()
     func localized(for language: Language) -> String {
         guard let path = Bundle.main.path(forResource: language.localizedName, ofType: "lproj"),

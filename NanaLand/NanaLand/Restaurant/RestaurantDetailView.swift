@@ -27,6 +27,10 @@ struct RestaurantDetailView: View {
     @State private var isReport = false
     @State private var selectedIndex: Int? = nil // 리뷰 삭제 시 index 참조하기 위해서
     @State private var showScrollToTopButton = false
+    @State private var thumbnailModal = false
+    @State private var reviewThumbnailModal = false
+    @State var selectedImageURL: String = ""// 선택된 이미지 URL
+    
     var layout: [GridItem] = [GridItem(.flexible())]
     
     var body: some View {
@@ -42,11 +46,21 @@ struct RestaurantDetailView: View {
                         VStack{
                             if isAPICalled {
                                 VStack{
-                                    KFImage(URL(string:
-                                                    viewModel.state.getRestaurantDetailResponse.images![0].originUrl!))
-                                        .resizable()
-                                        .frame(width: Constants.screenWidth, height: Constants.screenWidth * (26 / 39))
-                                        .padding(.bottom, Constants.screenWidth * (24 / 360))
+                                    Button {
+                                        selectedImageURL = viewModel.state.getRestaurantDetailResponse.images![0].originUrl!
+                                        thumbnailModal.toggle()
+                                    } label: {
+                                        KFImage(URL(string:
+                                                        viewModel.state.getRestaurantDetailResponse.images![0].originUrl!))
+                                            .resizable()
+                                            .frame(width: Constants.screenWidth, height: Constants.screenWidth * (26 / 39))
+                                            .padding(.bottom, Constants.screenWidth * (24 / 360))
+                                    }
+                                    .fullScreenCover(isPresented: $thumbnailModal) {
+                                        PhotoModalView(imageUrl: $selectedImageURL)
+                                            .background(ClearBackgroundView())
+                                    }
+
                                     
                                     ZStack{
                                         if !isOn { // 더보기 버튼이 안 눌렸을 때
@@ -516,12 +530,21 @@ struct RestaurantDetailView: View {
                                                             HStack(spacing: 0) {
                                                                 if viewModel.state.getReviewDataResponse.data[index].images!.count != 0 {
                                                                     ForEach(0..<viewModel.state.getReviewDataResponse.data[index].images!.count) { idx in
-                                                                        KFImage(URL(string: viewModel.state.getReviewDataResponse.data[index].images![idx].originUrl))
-                                                                            .resizable()
-                                                                            .frame(width: 70, height: 70)
-                                                                            .cornerRadius(8)
-                                                                            .padding(.leading, 10)
-                                                                            .padding(.bottom, 5)
+                                                                        Button(action: {
+                                                                            selectedImageURL = viewModel.state.getReviewDataResponse.data[index].images![idx].originUrl
+                                                                            reviewThumbnailModal.toggle()
+                                                                        }, label: {
+                                                                            KFImage(URL(string: viewModel.state.getReviewDataResponse.data[index].images![idx].originUrl))
+                                                                                .resizable()
+                                                                                .frame(width: 70, height: 70)
+                                                                                .cornerRadius(8)
+                                                                                .padding(.leading, 10)
+                                                                                .padding(.bottom, 5)
+                                                                        })
+                                                                        .fullScreenCover(isPresented: $reviewThumbnailModal) {
+                                                                            PhotoModalView(imageUrl: $selectedImageURL)
+                                                                                .background(ClearBackgroundView())
+                                                                        }
                                                                     }
                                                                 }
                                                             }
@@ -620,12 +643,21 @@ struct RestaurantDetailView: View {
                                                             HStack(spacing: 0) {
                                                                 if viewModel.state.getReviewDataResponse.data[index].images!.count != 0 {
                                                                     ForEach(0..<viewModel.state.getReviewDataResponse.data[index].images!.count) { idx in
-                                                                        KFImage(URL(string: viewModel.state.getReviewDataResponse.data[index].images![idx].originUrl))
-                                                                            .resizable()
-                                                                            .frame(width: 70, height: 70)
-                                                                            .cornerRadius(8)
-                                                                            .padding(.leading, 10)
-                                                                            .padding(.bottom, 5)
+                                                                        Button(action: {
+                                                                            selectedImageURL = viewModel.state.getReviewDataResponse.data[index].images![idx].originUrl
+                                                                            reviewThumbnailModal.toggle()
+                                                                        }, label: {
+                                                                            KFImage(URL(string: viewModel.state.getReviewDataResponse.data[index].images![idx].originUrl))
+                                                                                .resizable()
+                                                                                .frame(width: 70, height: 70)
+                                                                                .cornerRadius(8)
+                                                                                .padding(.leading, 10)
+                                                                                .padding(.bottom, 5)
+                                                                        })
+                                                                        .fullScreenCover(isPresented: $reviewThumbnailModal) {
+                                                                            PhotoModalView(imageUrl: $selectedImageURL)
+                                                                                .background(ClearBackgroundView())
+                                                                        }
                                                                     }
                                                                 }
                                                             }

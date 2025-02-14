@@ -91,7 +91,7 @@ struct RegisterNicknameAndProfileView: View {
 			HStack {
 				Spacer()
 				
-				Text("\(registerVM.state.nickname.count) / 8 " + .charCount)
+				Text("\(registerVM.state.nickname.count) / 12 " + .charCount)
 					.font(.caption01_semibold)
 					.foregroundStyle(registerVM.state.showNicknameError ? Color.warning : Color.gray1)
 			}
@@ -108,6 +108,14 @@ struct RegisterNicknameAndProfileView: View {
 					.stroke(registerVM.state.showNicknameError ? Color.warning : Color.gray2, lineWidth: 1)
 					.frame(width: Constants.screenWidth-32, height: 48)
 			)
+            .onChange(of: registerVM.state.nickname) { newValue in
+                // 공백 및 특수문자 제거
+                let filteredValue = newValue.filter { $0.isLetter || $0.isNumber }
+                
+                if filteredValue != newValue {
+                    registerVM.state.nickname = filteredValue
+                }
+            }
 			
 			if registerVM.state.showNicknameError {
 				HStack(spacing: 4) {

@@ -12,7 +12,7 @@ struct NewNanaPickDetailView: View {
     
     @StateObject var viewModel = NewNanaPickDetailViewModel()
     var id: Int64
-    @State var isAPICalled = false
+    @State var isAPICalled = false  
     
     var body: some View {
         GeometryReader {
@@ -171,34 +171,33 @@ struct NanaPickDetailMainView: View {
     }
 }
 
-struct NanaPickHeader: View {
-    var imageUrl: String
-    var heading: String
-    var subHeading: String
-    
-    var body: some View {
-        ZStack {
-            KFImage(URL(string: imageUrl))
-                .resizable()
-                .scaledToFill() // 화면을 꽉 채우도록 조정
-                .frame(width: UIScreen.main.bounds.width, height: 400)
-                .clipped()
-                .background(.blue)
-            
-            VStack(alignment: .leading) {
-                Spacer()
-                Text(heading)
-                    .font(.title02_bold)
-                    .foregroundColor(.white)
-                Text(subHeading)
-                    .font(.largeTitle01)
-                    .foregroundColor(.white)
-            }
-            .padding()
-            .frame(maxWidth: .infinity, alignment: .leading)
-        }
-    }
-}
+//struct NanaPickHeader: View {
+//    var imageUrl: String
+//    var heading: String
+//    var subHeading: String
+//    
+//    var body: some View {
+//        ZStack {
+//            KFImage(URL(string: imageUrl))
+//                .resizable()
+//                .scaledToFill() // 화면을 꽉 채우도록 조정
+//                .frame(width: UIScreen.main.bounds.width, height: 400)
+//                .clipped()
+//            
+//            VStack(alignment: .leading) {
+//                Spacer()
+//                Text(heading)
+//                    .font(.title02_bold)
+//                    .foregroundColor(.white)
+//                Text(subHeading)
+//                    .font(.largeTitle01)
+//                    .foregroundColor(.white)
+//            }
+//            .padding()
+//            .frame(maxWidth: .infinity, alignment: .leading)
+//        }
+//    }
+//}
 
 
 struct NewNaNaPickDetailMainView: View {
@@ -294,11 +293,13 @@ struct NewNaNaPickDetailMainView: View {
                                             if detail.images.count == 1{
                                                 KFImage(URL(string: detail.images.first?.originUrl ?? ""))
                                                     .resizable()
+                                                    .scaledToFill()
                                                     .frame(height: (Constants.screenWidth - 32) * (176 / 328))
                                                     .clipShape(RoundedRectangle(cornerRadius: 12))
                                                     .padding(.leading, 16)
                                                     .padding(.trailing, 16)
                                                     .padding(.bottom, 16)
+                                                
                                             } else {
                                                 TabView(selection: $selectedNums[idx]) {
                                                     ForEach(detail.images.indices, id: \.self) { imageIndex in
@@ -306,6 +307,7 @@ struct NewNaNaPickDetailMainView: View {
                                                             HStack{
                                                                 KFImage(URL(string: detail.images[imageIndex].originUrl))
                                                                     .resizable()
+                                                                    .scaledToFill()
                                                                     .frame(height: (Constants.screenWidth - 32) * (176 / 328))
                                                                     .clipShape(RoundedRectangle(cornerRadius: 12))
                                                                     .padding(.leading, 16)
@@ -493,11 +495,13 @@ struct NewNaNaPickDetailMainView: View {
                                             if detail.images.count == 1{
                                                 KFImage(URL(string: detail.images.first?.originUrl ?? ""))
                                                     .resizable()
+                                                    .scaledToFill()
                                                     .frame(height: (Constants.screenWidth - 32) * (176 / 328))
                                                     .clipShape(RoundedRectangle(cornerRadius: 12))
                                                     .padding(.leading, 16)
                                                     .padding(.trailing, 16)
                                                     .padding(.bottom, 16)
+                                            
                                             } else {
                                                 TabView(selection: $selectedNums[idx]) {
                                                     ForEach(detail.images.indices, id: \.self) { imageIndex in

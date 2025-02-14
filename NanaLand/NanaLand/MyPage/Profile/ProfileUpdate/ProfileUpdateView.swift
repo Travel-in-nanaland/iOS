@@ -110,7 +110,7 @@ struct ProfileUpdateView: View {
                                     Text(.nickName)
                                         .font(.body_bold)
                                     Spacer()
-                                    Text("\(nickName.count) / 8 " + .charCount)
+                                    Text("\(nickName.count) / 12 " + .charCount)
                                         .font(.caption01)
                                         .foregroundStyle(nickName.count > 8 ? Color.red : Color.gray1)
                                     
@@ -125,15 +125,22 @@ struct ProfileUpdateView: View {
                                         .frame(width: Constants.screenWidth - 32, height: 49)
                                         .background(
                                             RoundedRectangle(cornerRadius: 12)
-                                                .stroke(nickName.count > 8 || containsSpecialCharacter(nickName) ? Color.red : Color.gray2, lineWidth: 1)
+                                                .stroke(nickName.count > 12 || containsSpecialCharacter(nickName) ? Color.red : Color.gray2, lineWidth: 1)
                                         )
-                                        .onChange(of: nickName) { nickName in
-                                            // 텍스트가 변경될 때마다 실행되는 코드
+                                        .onChange(of: nickName) { newValue in
+                                            // 공백 및 특수문자 제거
+                                            let filteredValue = newValue.filter { $0.isLetter || $0.isNumber }
+                                            
+                                            if filteredValue != newValue {
+                                                nickName = filteredValue
+                                            }
+                                            
+                                            // 닉네임 중복 확인 초기화
                                             viewModel.state.isDuplicate = false
                                         }
                                     
                                     HStack(spacing: 0) {
-                                        if (nickName.count > 8 || viewModel.state.isDuplicate || containsSpecialCharacter(nickName)) {
+                                        if (nickName.count > 12 || viewModel.state.isDuplicate || containsSpecialCharacter(nickName)) {
                                             Image("icWarningCircle")
                                                 .renderingMode(.template)
                                                 .resizable()
@@ -143,7 +150,7 @@ struct ProfileUpdateView: View {
                                                 .padding(.top, 8)
                                         }
                                         
-                                        if nickName.count > 8 {
+                                        if nickName.count > 12 {
                                             Text(
                                                 (LocalizedKey.invalidNickname.localized(for: localizationManager.language)))
                                             .font(.caption01)
@@ -291,9 +298,9 @@ struct ProfileUpdateView: View {
         return string.rangeOfCharacter(from: specialCharacters) != nil
     }
     
-//    func updateUserInfo(body: ProfileDTO, multipartFile: [Foundation.Data?]) async {
-//        await viewModel.action(.getUpdatedUserInfo(body: ProfileDTO(nickname: body.nickname, description: body.description), multipartFile: multipartFile))
-//    }
+    //    func updateUserInfo(body: ProfileDTO, multipartFile: [Foundation.Data?]) async {
+    //        await viewModel.action(.getUpdatedUserInfo(body: ProfileDTO(nickname: body.nickname, description: body.description), multipartFile: multipartFile))
+    //    }
 }
 
 #Preview {

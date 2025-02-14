@@ -542,3 +542,6 @@ mengembalikan sebarang hasil.";
 "noContent" = "Tiada kandungan yang sesuai";
 "filterAdjustment" = "Laraskan atau tetapkan semula penapis anda!";
 "filterReset" = "Tetapkan semula penapis";
+
+//MARK: - 찜 콘텐츠
+"noFavorite" = "Anda belum menandakan kandungan sebagai kegemaran\nTekan hati pada kandungan yang anda suka!";

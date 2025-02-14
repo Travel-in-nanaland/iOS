@@ -26,6 +26,9 @@ struct ExperienceDetailView: View {
     @State var isReport: Bool = false // 뭐지..
     @State private var selectedIndex: Int? = nil // 리뷰 삭제 시 index 참조 위해서
     @State private var showScrollToTopButton = false
+    @State private var thumbnailModal = false
+    @State private var reviewThumbnailModal = false
+    @State var selectedImageURL: String = ""// 선택된 이미지 URL
     
     var id: Int64
     var experienceType = "k"
@@ -56,10 +59,19 @@ struct ExperienceDetailView: View {
                     ScrollView {
                         VStack(spacing: 0) {
                             if isAPICall {
-                                KFImage(URL(string: viewModel.state.getExperienceDetailResponse.images![0].originUrl!))
-                                    .resizable()
-                                    .frame(width: Constants.screenWidth, height: Constants.screenWidth * (26 / 39))
-                                    .padding(.bottom, Constants.screenWidth * (24 / 360))
+                                Button(action: {
+                                    selectedImageURL = viewModel.state.getExperienceDetailResponse.images![0].originUrl!
+                                    thumbnailModal.toggle()
+                                }, label: {
+                                    KFImage(URL(string: viewModel.state.getExperienceDetailResponse.images![0].originUrl!))
+                                        .resizable()
+                                        .frame(width: Constants.screenWidth, height: Constants.screenWidth * (26 / 39))
+                                        .padding(.bottom, Constants.screenWidth * (24 / 360))
+                                })
+                                .fullScreenCover(isPresented: $thumbnailModal) {
+                                    PhotoModalView(imageUrl: $selectedImageURL)
+                                        .background(ClearBackgroundView())
+                                }
                                 
                                 ZStack(alignment: .center) {
                                     if !isOn { // 더보기 버튼이 안 눌렸을 때
@@ -497,10 +509,19 @@ struct ExperienceDetailView: View {
                                                                 ScrollView(.horizontal, showsIndicators: false) {
                                                                     HStack(spacing: 16) {
                                                                         ForEach(0..<viewModel.state.getReviewDataResponse.data[index].images!.count, id: \.self) { idx in
-                                                                            KFImage(URL(string: viewModel.state.getReviewDataResponse.data[index].images![idx].originUrl))
-                                                                                .resizable()
-                                                                                .frame(width: 70, height: 70)
-                                                                                .clipShape(RoundedRectangle(cornerRadius: 8))
+                                                                            Button(action: {
+                                                                                selectedImageURL = viewModel.state.getReviewDataResponse.data[index].images![idx].originUrl
+                                                                                reviewThumbnailModal.toggle()
+                                                                            }, label: {
+                                                                                KFImage(URL(string: viewModel.state.getReviewDataResponse.data[index].images![idx].originUrl))
+                                                                                    .resizable()
+                                                                                    .frame(width: 70, height: 70)
+                                                                                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                                                                            })
+                                                                            .fullScreenCover(isPresented: $reviewThumbnailModal) {
+                                                                                PhotoModalView(imageUrl: $selectedImageURL)
+                                                                                    .background(ClearBackgroundView())
+                                                                            }
                                                                         }
                                                                     }
                                                                 }
@@ -630,10 +651,19 @@ struct ExperienceDetailView: View {
                                                                 ScrollView(.horizontal, showsIndicators: false) {
                                                                     HStack(spacing: 16) {
                                                                         ForEach(0..<viewModel.state.getReviewDataResponse.data[index].images!.count, id: \.self) { idx in
-                                                                            KFImage(URL(string: viewModel.state.getReviewDataResponse.data[index].images![idx].originUrl))
-                                                                                .resizable()
-                                                                                .frame(width: 70, height: 70)
-                                                                                .clipShape(RoundedRectangle(cornerRadius: 8))
+                                                                            Button(action: {
+                                                                                selectedImageURL = viewModel.state.getReviewDataResponse.data[index].images![idx].originUrl
+                                                                                reviewThumbnailModal.toggle()
+                                                                            }, label: {
+                                                                                KFImage(URL(string: viewModel.state.getReviewDataResponse.data[index].images![idx].originUrl))
+                                                                                    .resizable()
+                                                                                    .frame(width: 70, height: 70)
+                                                                                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                                                                            })
+                                                                            .fullScreenCover(isPresented: $reviewThumbnailModal) {
+                                                                                PhotoModalView(imageUrl: $selectedImageURL)
+                                                                                    .background(ClearBackgroundView())
+                                                                            }
                                                                         }
                                                                     }
                                                                 }
