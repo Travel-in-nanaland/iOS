@@ -128,7 +128,7 @@ struct FavoriteListView: View {
                         }
                     }
                 }
-                if !favoriteVM.isLastPage(tab: category) {
+                if !favoriteVM.isLastPage(tab: category) && favoriteVM.state.isLoading{
                     ProgressView()
                         .task {
                             await favoriteVM.action(.getFavoriteList(category: category))

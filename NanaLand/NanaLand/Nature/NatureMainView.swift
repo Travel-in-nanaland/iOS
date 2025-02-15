@@ -126,7 +126,9 @@ struct NatureMainGridView: View {
                                             
                                             Spacer()
                                             Text("\(viewModel.state.getNatureMainResponse.data[index].addressTag)")
-                                                .frame(width:64, height: 20)
+                                                .padding(.trailing, 12)
+                                                .padding(.leading, 12)
+                                                .frame(height: 20)
                                                 .background(
                                                     RoundedRectangle(cornerRadius: 30)
                                                         .foregroundStyle(Color.main10P)
