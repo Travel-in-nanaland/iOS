@@ -449,12 +449,14 @@ struct FestivalMainGridView: View {
                                                 .foregroundStyle(Color.gray1)
                                             
                                             Text(viewModel.state.getFestivalMainResponse.data[index].addressTag)
-                                                .frame(width: 64, height: 20)
-                                                .font(.caption)
+                                                .padding(.trailing, 12)
+                                                .padding(.leading, 12)
+                                                .frame(height: 20)
                                                 .background(
                                                     RoundedRectangle(cornerRadius: 30)
                                                         .foregroundStyle(Color.main10P)
                                                 )
+                                                .font(.gothicNeo(.regular, size: 12))
                                                 .foregroundStyle(Color.main)
                                         }
                                         .frame(width: (Constants.screenWidth - 40) / 2, height: ((Constants.screenWidth - 40) / 2) * (164 / 160))

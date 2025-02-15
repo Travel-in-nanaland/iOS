@@ -349,9 +349,8 @@ enum RestaurantViewType: Hashable {
     case detail(id: Int64)
 }
 
-#Preview {
-    RestaurantMainView()
-        .environmentObject(LocalizationManager())
-}
-
+//#Preview {
+//    RestaurantMainView()
+//        .environmentObject(LocalizationManager())
+//}
 

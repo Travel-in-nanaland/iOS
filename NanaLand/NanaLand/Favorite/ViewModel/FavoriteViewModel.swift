@@ -330,21 +330,21 @@ class FavoriteViewModel: ObservableObject {
 	func isLastPage(tab: Category) -> Bool {
 		switch tab {
 		case .all:
-			return state.allFavoriteArticles.totalElements == state.allFavoriteArticles.data.count
+			return state.allFavoriteArticles.totalElements <= state.allFavoriteArticles.data.count
 		case .nature:
-			return state.natureFavoriteArticles.totalElements == state.natureFavoriteArticles.data.count
+			return state.natureFavoriteArticles.totalElements <= state.natureFavoriteArticles.data.count
 		case .festival:
-			return state.festivalFavoriteArticles.totalElements == state.festivalFavoriteArticles.data.count
+			return state.festivalFavoriteArticles.totalElements <= state.festivalFavoriteArticles.data.count
 		case .market:
-			return state.marketFavoriteArticles.totalElements == state.marketFavoriteArticles.data.count
+			return state.marketFavoriteArticles.totalElements <= state.marketFavoriteArticles.data.count
 		case .activity:
-            return state.activityFavoriteArticles.totalElements == state.activityFavoriteArticles.data.count
+            return state.activityFavoriteArticles.totalElements <= state.activityFavoriteArticles.data.count
         case .cultureAndArts:
-            return state.cultureAndArtsFavoriteArticles.totalElements == state.cultureAndArtsFavoriteArticles.data.count
+            return state.cultureAndArtsFavoriteArticles.totalElements <= state.cultureAndArtsFavoriteArticles.data.count
 		case .nanaPick:
 			return true
         case .restaurant:
-            return state.restaurantFavoriteArticles.totalElements == state.restaurantFavoriteArticles.data.count
+            return state.restaurantFavoriteArticles.totalElements <= state.restaurantFavoriteArticles.data.count
 		}
 	}
 }
