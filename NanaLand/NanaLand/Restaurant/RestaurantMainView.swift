@@ -156,6 +156,7 @@ struct RestaurantMainGridView: View {
                                             ZStack {
                                                 KFImage(URL(string: viewModel.state.getRestaurantMainResponse.data[index].firstImage.thumbnailUrl))
                                                     .resizable()
+                                                    .scaledToFill()
                                                     .frame(width: (Constants.screenWidth - 40) / 2, height: ((Constants.screenWidth - 40) / 2) * (12 / 16))
                                                     .clipShape(RoundedRectangle(cornerRadius: 12))
                                                 
