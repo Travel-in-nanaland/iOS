@@ -53,7 +53,9 @@ struct RestaurantDetailView: View {
                                         KFImage(URL(string:
                                                         viewModel.state.getRestaurantDetailResponse.images![0].originUrl!))
                                             .resizable()
+                                            .scaledToFill()
                                             .frame(width: Constants.screenWidth, height: Constants.screenWidth * (26 / 39))
+                                            .clipped()
                                             .padding(.bottom, Constants.screenWidth * (24 / 360))
                                     }
                                     .fullScreenCover(isPresented: $thumbnailModal) {

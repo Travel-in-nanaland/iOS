@@ -84,6 +84,7 @@ class FestivalMainViewModel: ObservableObject {
                     // totalElements는 API에서 반환된 값을 그대로 사용
                     state.getFestivalMainResponse.totalElements = response!.data.totalElements
                     state.title = "계절별"
+                    print(response?.data.data)
                 }
             }
         case .getPastFestivalMainItem(page: let page, size: let size, filterName: let filterName):

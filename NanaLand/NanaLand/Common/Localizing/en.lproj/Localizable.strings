@@ -259,7 +259,7 @@ the market is the place!";
 // MARK: - FilterView
 "count" = "Results";
 "location" = "Location";
-"allLocation" = "All";
+"allLocation" = "All regions";
 "jejuCity" = "Jeju-si";
 "Aewol" = "Aewol";
 "Jocheon" = "Jocheon";

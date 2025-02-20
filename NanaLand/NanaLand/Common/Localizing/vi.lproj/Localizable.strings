@@ -9,7 +9,7 @@
 "resultCount" = " trường hợp";
 "charCount" = "ký tự";
 "confirm" = "Confirm";
-"next" = "Next";
+"next" = "Tiếp theo";
 "requiredWithBracket" = "(bắt buộc)";
 "optionalWithBracket" = "(tùy chọn)";
 "destination" = "Điểm đến";
@@ -184,8 +184,8 @@
 
 // termsAndPoliciesPage
 "notificate" = "Tốt để biết!";
-"marketingConsent" = "Marketing usage consent";
-"locationConsent" = "Location-based service terms consent";
+"marketingConsent" = "Đồng ý sử dụng cho mục đích tiếp thị";
+"locationConsent" = "Đồng ý với các điều khoản dịch vụ dựa trên vị trí";
 "noConsentError" = "* Xin lưu ý rằng nếu bạn không đồng ý, bạn có thể không nhận được các dịch vụ hoặc lợi ích.";
 
 // accessPolicyGuidePage
@@ -256,8 +256,8 @@
 
 // MARK: - FilterView
 "count" = "trường hợp";
-"location" = "Location";
-"allLocation" = "All";
+"location" = "Khu vực";
+"allLocation" = "Tất cả các khu vực";
 "jejuCity" = "Jeju-si";
 "Aewol" = "Aewol";
 "Jocheon" = "Jocheon";
@@ -272,10 +272,10 @@
 "Namwon" = "Namwon";
 "Pyoseon" = "Pyoseon";
 "Seongsan" = "Seongsan";
-"allSelect" = "Select all";
-"reset" = "Reset";
-"apply" = "Apply";
-"photoDescription" = "*Reference photos.";
+"allSelect" = "Chọn tất cả";
+"reset" = "đặt lại";
+"apply" = "Áp dụng";
+"photoDescription" = "*Bức ảnh này chỉ để tham khảo.";
 
 // MARK: - NatureDetailView
 "unfoldView" = "Xem thêm"; // 더보기
@@ -290,21 +290,21 @@
 "proposeUpdateInfo" = "Đề xuất sửa đổi thông tin";
 
 // MARK: - FestivalView
-"thisMonthFestival" = "Monthly Festival";
-"pastFestival" = "Ended Festival";
-"seasonFestival" = "Seasonal Festival";
+"thisMonthFestival" = "lễ hội hàng tháng";
+"pastFestival" = "Lễ hội đã kết thúc";
+"seasonFestival" = "lễ hội theo mùa";
 
 // MARK: - SeasonModalView
-"selectSeason" = "Select Season";
-"spring" = "Spring";
-"summer" = "Summer";
-"autumn" = "Autumn";
-"winter" = "Winter";
+"selectSeason" = "Chọn mùa";
+"spring" = "mùa xuân";
+"summer" = "mùa hè";
+"autumn" = "mùa thu";
+"winter" = "mùa đông";
 "month" = "월";
-"springMonth" = "March, April";
-"summerMonth" = "May, June, July, August";
-"autumnMonth" = "September, October";
-"winterMonth" = "November, December, January, February";
+"springMonth" = "Tháng Ba, Tháng Tư";
+"summerMonth" = "Tháng Năm, Tháng Sáu, Tháng Bảy, Tháng Tám";
+"autumnMonth" = "Tháng Chín, Tháng Mười";
+"winterMonth" = "Tháng Mười Một, Tháng Mười Hai, Tháng Một, Tháng Hai";
 
 // MARK: - MarketDetailView
 "homepage" = "trang chủ";
@@ -317,7 +317,7 @@
 "CultureArts" = "CultureArts";
 
 // MARK: - CalendarView
-"chooseDate" = "ChooseDate";
+"chooseDate" = "Chọn ngày";
 "calendarMonth" = "";
 "monday" = "MON";
 "tuesday" = "TUE";
