@@ -33,7 +33,7 @@ struct ReportInfoResultView: View {
             
             Text(.thxForReportInfoDescription2)
                 .multilineTextAlignment(.center)
-                .font(.title2)
+                .font(.body01)
                 .foregroundStyle(Color.baseBlack)
             
             Spacer()

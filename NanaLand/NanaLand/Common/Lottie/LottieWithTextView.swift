@@ -24,12 +24,12 @@ struct LottieViewWithText: View {
         VStack(spacing: 0) { // 애니메이션과 텍스트 사이 간격 설정
             // Lottie 애니메이션
             LottieAnimationViewRepresentable(name: name, loopMode: loopMode)
-                .frame(width: Constants.screenWidth * (200 / 360), height: Constants.screenWidth * (200 / 360)) // 애니메이션 크기 조정
+                .frame(width: Constants.screenWidth * (168 / 360), height: Constants.screenWidth * (140 / 360)) // 애니메이션 크기 조정
             
             // 텍스트 추가
             Text(message)
                 .font(.body01) // 굵은 글씨체
-                .foregroundColor(.white) // 텍스트 색상
+                .foregroundColor(.black) // 텍스트 색상
                 .multilineTextAlignment(.center) // 텍스트 가운데 정렬
         }
     }
@@ -67,7 +67,7 @@ struct LottieAnimationViewRepresentable: UIViewRepresentable {
 #Preview {
     LottieViewWithText(
         jsonName: "loading", // Lottie 파일 이름
-        message: "잠시만 기다려 주세요!\n여러분의 경험이\nNanaLand로 전달 중입니다 💜", // 메시지
+        message: "잠시만 기다려 주세요!\nNanaLand로 전달 중입니다 💜", // 메시지
         loopMode: .loop // 반복 설정
     )
 }

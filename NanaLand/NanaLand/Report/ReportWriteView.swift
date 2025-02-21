@@ -93,7 +93,7 @@ struct ReportWriteView: View {
                                 VStack(spacing: 0) {
                                     HStack(spacing: 0) {
                                         Text(.reportReason)
-                                            .foregroundStyle(text.isEmpty ? .gray : .clear)
+                                            .foregroundStyle(text.isEmpty ? .gray2 : .clear)
                                             .font(.body02)
                                             .padding(.top, 8)
                                             .padding(.leading, 8)
@@ -134,8 +134,12 @@ struct ReportWriteView: View {
                             .padding(.bottom, 8)
                         if (text.count > 0 && text.count < 20) {
                             
-                            HStack(spacing: 0) {
-                                Image("icWarning")
+                            HStack(alignment: .center, spacing: 0) {
+                                Image("icWarningCircle")
+                                    .renderingMode(.template)
+                                    .resizable()
+                                    .frame(width: 20, height: 20)
+                                    .foregroundStyle(.red)
                                 Text(.reportReasonValidation)
                                     .font(.caption01)
                                     .foregroundStyle(.red)
@@ -187,7 +191,7 @@ struct ReportWriteView: View {
                                     }
                                 }
                                 .padding(.bottom, 4)
-                            HStack(spacing: 0) {
+                            HStack(alignment: .center, spacing: 0) {
                                 if (emailTextWarning) {
                                     Image("icWarningCircle")
                                         .renderingMode(.template)
