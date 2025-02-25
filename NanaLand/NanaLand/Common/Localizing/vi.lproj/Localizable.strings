@@ -18,7 +18,7 @@
 "yes" = "Có";
 "emptyString" = "This service is being prepared.\nSee you next time!";
 "beingPrepared" = "This service is being prepared.\nSee you next time!";
-"notification" = "Notification";
+"notification" = "Báo động";
 
 //MARK: - Tab
 "home" = "Trang chủ";
@@ -555,3 +555,10 @@
 
 //MARK: - 찜 콘텐츠
 "noFavorite" = "Bạn chưa yêu thích nội dung nào\nHãy nhấn vào biểu tượng trái tim trên nội dung bạn thích!";
+
+//MARK: - 지도 보기
+"detailView" = "Tìm hiểu thêm";
+"empty" = "";
+"copySuccess" = "Đã sao chép vào bảng nháp!";
+"emptyCopyString" = "Lỗi sao chép bảng tạm";
+"failAccess" = "Lỗi sao chép bảng tạm\nVui lòng kiểm tra quyền trong cài đặt";

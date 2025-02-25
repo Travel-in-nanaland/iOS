@@ -30,8 +30,11 @@ struct ExperienceDetailView: View {
     @State private var reviewThumbnailModal = false
     @State var selectedImageURL: String = ""// 선택된 이미지 URL
     
+    @State var koreanAddress: String = ""
+    
     var id: Int64
     var experienceType = "k"
+    
     var body: some View {
         VStack {
             ZStack {
@@ -286,10 +289,41 @@ struct ExperienceDetailView: View {
                                                     .font(.body02_bold)
                                                 Text(viewModel.state.getExperienceDetailResponse.address ?? "")
                                                     .font(.body02)
+                                                    .padding(.bottom, Constants.screenWidth * (12 / 360))
+                                                
+                                                Button {
+                                                    if localizationManager.language == .korean {
+                                                        AppState.shared.navigationPath.append(experienceDetailType.detailMap(title: viewModel.state.getExperienceDetailResponse.title ?? "" ,address: "", korean: viewModel.state.getExperienceDetailResponse.address ?? ""))
+                                                    } else {
+                                                        AppState.shared.navigationPath.append(experienceDetailType.detailMap(title: viewModel.state.getExperienceDetailResponse.title ?? "" ,address: viewModel.state.getExperienceDetailResponse.address ?? "", korean: koreanAddress))
+                                                    }
+                                                    
+                                                } label: {
+                                                    HStack(spacing: 0){
+                                                        Text(.detailView)
+                                                            .font(.caption01)
+                                                            .foregroundColor(.gray1)
+                                                        
+                                                        Image("icAdressArrow")
+                                                            .resizable()
+                                                            .scaledToFit()
+                                                            .frame(width: Constants.screenWidth * (12 / 360))
+                                                    }
+                                                    .padding(.leading, Constants.screenWidth * (8 / 360))
+                                                    .padding(.trailing, Constants.screenWidth * (8 / 360))
+                                                    .background(){
+                                                        RoundedRectangle(cornerRadius: 100)
+                                                            .frame(height: Constants.screenWidth * (28 / 360))
+                                                            .foregroundColor(.gray3)
+                                                    }
+                                                }
+                                                
+                                                Spacer()
+                                                
                                             }
                                             Spacer()
                                         }
-                                        .frame(width: Constants.screenWidth - 40, height: (Constants.screenWidth - 40) * (42 / 358))
+                                        .frame(width: Constants.screenWidth - 40)
                                     }
                                     
                                     if viewModel.state.getExperienceDetailResponse.contact != "" {
@@ -789,6 +823,10 @@ struct ExperienceDetailView: View {
                         .onAppear {
                             Task {
                                 await getExperienceDetail(id: id, isSearch: false)
+                                if localizationManager.language != .korean {
+                                    await getKoreanAddress(id: id, category: "EXPERIENCE")
+                                    koreanAddress = viewModel.state.getKoreanAddress
+                                }
                                 await getReviewData(id: id, category: "EXPERIENCE", page: 0, size: 12)
                                 isAPICall = true // 이미지 불러오는 데 시간이 걸림
                             }
@@ -916,6 +954,14 @@ struct ExperienceDetailView: View {
                     
                 }
             }
+            .navigationDestination(for: experienceDetailType.self) { detailView in
+                switch detailView {
+                case let .detailMap(title, address, koreanAddress):
+                    KakaoMapView(title: title, address: address, koreanAddress: koreanAddress)
+                    
+                }
+                
+            }
         }
         .toolbar(.hidden)
         .overlay(
@@ -929,6 +975,10 @@ struct ExperienceDetailView: View {
         
     }
     
+    func getKoreanAddress(id: Int64, category: String) async {
+        await viewModel.action(.getKoreanAddress(id: id, category: category))
+    }
+    
     func getReviewData(id: Int64, category: String, page: Int, size: Int) async {
         await viewModel.action(.getReviewData(id: id, category: category, page: page, size: size))
     }
@@ -940,6 +990,7 @@ struct ExperienceDetailView: View {
         }
         await viewModel.action(.toggleFavorite(body: body))
     }
+    
     
     func reviewFavorite(id: Int64) async {
         await viewModel.action(.reviewFavorite(id: id))
@@ -978,6 +1029,11 @@ enum ExperienceViewType: Hashable {
     case report(id: Int64, isReport: Bool) // 신고하기
     case detailReivew(id: Int64, category: String)
 }
+
+enum experienceDetailType: Hashable{
+    case detailMap(title: String, address: String, korean: String)
+}
+
 
 //#Preview {
 //    ExperienceDetailView(id: 1)

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import KakaoMapsSDK
 import KakaoSDKCommon
 import KakaoSDKAuth
 import GoogleSignIn
@@ -57,6 +58,11 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
     let gcmMessageIDKey = "gcm.message_id"
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        
+        // kakao sdk 최기화
+        SDKInitializer.InitSDK(appKey: Secrets.kakaoLoginNativeAppKey)
+                
+        
         // 파이어 베이스 설정
         FirebaseApp.configure()
         // 앱 실행시 유저에게 알림 허용 권한을 받음

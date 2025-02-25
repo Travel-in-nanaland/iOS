@@ -12,6 +12,7 @@ class RestaurantDetailViewModel: ObservableObject {
         var getRestaurantDetailResponse = RestaurantDetailModel(id: 1, title: "", content: "", address: "", addressTag: "", contact: "", homepage: "", instagram: "", time: "", service: "", menus: [Menu(menuName: "", price: "", firstImage: RestaurantDetailImagesList(originUrl: "", thumbnailUrl: ""))], keywords: [""], images: [RestaurantDetailImagesList(originUrl: "", thumbnailUrl: "")], favorite: false)
         var getReviewDataResponse = ReviewModel(totalElements: 0, totalAvgRating: 0.0, data: [ReviewData(id: 0, memberId: 0, nickname: "", profileImage: ImageList(originUrl: "", thumbnailUrl: ""), memberReviewCount: 0, rating: 0, content: "", createdAt: "", heartCount: 0, images: [], reviewTypeKeywords: [], reviewHeart: false, myReview: false)])
         var deleteMyReviewResponse = EmptyResponseModel()
+        var getKoreanAddress = ""
     }
     
     enum Action {
@@ -20,6 +21,7 @@ class RestaurantDetailViewModel: ObservableObject {
         case toggleFavorite(body: FavoriteToggleRequest)
         case reviewFavorite(id: Int64)
         case deleteMyReview(id: Int64)
+        case getKoreanAddress(id: Int64, category: String)
     }
     
     @Published var state: State
@@ -90,6 +92,14 @@ class RestaurantDetailViewModel: ObservableObject {
                             state.getReviewDataResponse.totalElements -= 1
                         }
                     }
+                } else {
+                    print("Error")
+                }
+            case let .getKoreanAddress(id, category):
+                let response = await AddressService.getKoreanAddress(id: id, category: category, number: nil)
+                if response != nil {
+                    print("주소: \(response)")
+                    state.getKoreanAddress = response?.data ?? ""
                 } else {
                     print("Error")
                 }
