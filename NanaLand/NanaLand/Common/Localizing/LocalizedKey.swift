@@ -563,6 +563,13 @@ enum LocalizedKey: String {
     //MARK: - 찜 콘텐츠
     case noFavorite
     
+    //MARK: - 지도 보기
+    case detailView
+    case empty
+    case copySuccess
+    case emptyCopyString
+    case failAccess
+    
     //MARK: - localized()
     func localized(for language: Language) -> String {
         guard let path = Bundle.main.path(forResource: language.localizedName, ofType: "lproj"),

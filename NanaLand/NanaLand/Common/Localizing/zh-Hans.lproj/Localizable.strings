@@ -543,3 +543,10 @@
 
 //MARK: - 찜 콘텐츠
 "noFavorite" = "您还没有收藏的内容\n请点击心形图标收藏您喜欢的内容！";
+
+//MARK: - 지도 보기
+"detailView" = "了解更多";
+"empty" = "";
+"copySuccess" = "复制到剪贴板！";
+"emptyCopyString" = "剪贴板复制失败";
+"failAccess" = "剪贴板复制失败\n请检查设置中的权限";

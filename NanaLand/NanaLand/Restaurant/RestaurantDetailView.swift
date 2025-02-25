@@ -31,6 +31,8 @@ struct RestaurantDetailView: View {
     @State private var reviewThumbnailModal = false
     @State var selectedImageURL: String = ""// 선택된 이미지 URL
     
+    @State var koreanAddress: String = ""
+    
     var layout: [GridItem] = [GridItem(.flexible())]
     
     var body: some View {
@@ -267,9 +269,38 @@ struct RestaurantDetailView: View {
                                                 VStack(alignment: .leading, spacing: 0) {
                                                     Text(.address)
                                                         .font(.body02_bold)
+                                                    
                                                     Text(viewModel.state.getRestaurantDetailResponse.address)
                                                         .font(.body02)
+                                                        .padding(.bottom, Constants.screenWidth * (12 / 360))
                                                     
+                                                    Button {
+                                                        if localizationManager.language == .korean {
+                                                            AppState.shared.navigationPath.append(restaurantDetailType.detailMap(title: viewModel.state.getRestaurantDetailResponse.title ,address: "", korean: viewModel.state.getRestaurantDetailResponse.address))
+                                                        } else {
+                                                            AppState.shared.navigationPath.append(restaurantDetailType.detailMap(title: viewModel.state.getRestaurantDetailResponse.title ,address: viewModel.state.getRestaurantDetailResponse.address, korean: koreanAddress))
+                                                        }
+                                                        
+                                                    } label: {
+                                                        HStack(spacing: 0){
+                                                            Text(.detailView)
+                                                                .font(.caption01)
+                                                                .foregroundColor(.gray1)
+                                                            
+                                                            Image("icAdressArrow")
+                                                                .resizable()
+                                                                .scaledToFit()
+                                                                .frame(width: Constants.screenWidth * (12 / 360))
+                                                        }
+                                                        .padding(.leading, Constants.screenWidth * (8 / 360))
+                                                        .padding(.trailing, Constants.screenWidth * (8 / 360))
+                                                        .background(){
+                                                            RoundedRectangle(cornerRadius: 100)
+                                                                .frame(height: Constants.screenWidth * (28 / 360))
+                                                                .foregroundColor(.gray3)
+                                                        }
+                                                    }
+
                                                     Spacer()
                                                 }
                                                 Spacer()
@@ -289,6 +320,8 @@ struct RestaurantDetailView: View {
                                                 VStack(alignment: .leading, spacing: 0) {
                                                     Text(.phoneNumber)
                                                         .font(.body02_bold)
+                                                        .foregroundColor(.black)
+                                                    
                                                     Link(destination: URL(string: "tel://\(sanitizedNumber)")!, label: {
                                                         HStack(spacing: 0) {
                                                             Text(viewModel.state.getRestaurantDetailResponse.contact!)
@@ -756,6 +789,10 @@ struct RestaurantDetailView: View {
                         .onAppear {
                             Task {
                                 await getRestaurantDetail(id: id, isSearch: false)
+                                if localizationManager.language != .korean {
+                                    await getKoreanAddress(id: id, category: "RESTAURANT")
+                                    koreanAddress = viewModel.state.getKoreanAddress
+                                }
                                 await getReviewData(id: id, category: "RESTAURANT", page: 0, size: 12)
                                 isAPICalled = true
                             }
@@ -858,7 +895,7 @@ struct RestaurantDetailView: View {
             .navigationDestination(for: ReviewType.self) { viewType in
                 switch viewType {
                 case .review:
-                    ReviewWriteMain(reviewAddress: viewModel.state.getRestaurantDetailResponse.address ?? "", reviewImageUrl: viewModel.state.getRestaurantDetailResponse.images?[0].originUrl ?? "", reviewTitle: viewModel.state.getRestaurantDetailResponse.title ?? "", reviewId: viewModel.state.getRestaurantDetailResponse.id ?? 0, reviewCategory: "RESTAURANT")
+                    ReviewWriteMain(reviewAddress: viewModel.state.getRestaurantDetailResponse.address, reviewImageUrl: viewModel.state.getRestaurantDetailResponse.images?[0].originUrl ?? "", reviewTitle: viewModel.state.getRestaurantDetailResponse.title, reviewId: viewModel.state.getRestaurantDetailResponse.id, reviewCategory: "RESTAURANT")
                 case let .userProfile(id):
                     UserProfileMainView(memberId: id)
                 case let .reviewAll(id):
@@ -869,6 +906,14 @@ struct RestaurantDetailView: View {
                     MyReviewDetailView(reviewId: id, reviewCategory: category)
                         .environmentObject(LocalizationManager())
                 }
+            }
+            .navigationDestination(for: restaurantDetailType.self) { detailView in
+                switch detailView {
+                case let .detailMap(title, address, koreanAddress):
+                    KakaoMapView(title: title, address: address, koreanAddress: koreanAddress)
+                    
+                }
+                
             }
             .toolbar(.hidden)
         }
@@ -899,6 +944,10 @@ struct RestaurantDetailView: View {
         await viewModel.action(.deleteMyReview(id: id))
     }
     
+    func getKoreanAddress(id: Int64, category: String) async {
+        await viewModel.action(.getKoreanAddress(id: id, category: category))
+    }
+    
     func getSafeArea() ->UIEdgeInsets  {
         return UIApplication.shared.windows.first?.safeAreaInsets ?? UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
@@ -927,6 +976,10 @@ enum ReviewType: Hashable {
     case reviewAll(id: Int64)
     case report(id: Int64, isReport: Bool) // 신고하기
     case detailReivew(id: Int64, category: String)
+}
+
+enum restaurantDetailType: Hashable{
+    case detailMap(title: String, address: String, korean: String)
 }
 
 #Preview {

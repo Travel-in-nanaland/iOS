@@ -545,3 +545,10 @@ mengembalikan sebarang hasil.";
 
 //MARK: - 찜 콘텐츠
 "noFavorite" = "Anda belum menandakan kandungan sebagai kegemaran\nTekan hati pada kandungan yang anda suka!";
+
+//MARK: - 지도 보기
+"detailView" = "Ketahui lebih lanjut";
+"empty" = "";
+"copySuccess" = "Disalin ke papan keratan!";
+"emptyCopyString" = "Salinan papan klip gagal";
+"failAccess" = "Salinan papan klip gagal\nSila semak kebenaran dalam tetapan";

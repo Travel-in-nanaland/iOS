@@ -17,6 +17,9 @@ struct ShopDetailView: View {
     @State private var shouldScrollToTop = false
     @State private var thumbnailModal = false
     @State var selectedImageURL: String = ""// 선택된 이미지 URL
+    
+    @State var koreanAddress: String = ""
+    
     var id: Int64
     
     var body: some View {
@@ -195,12 +198,14 @@ struct ShopDetailView: View {
                                         .font(.gothicNeo(.bold, size: 14))
                                     Text(viewModel.state.getShopDetailResponse.address)
                                         .font(.body02)
+                                
                                     
                                 }
                                 Spacer()
                                 
                             }
                             .frame(width: Constants.screenWidth - 40)
+                            
                             if viewModel.state.getShopDetailResponse.content != "" {
                                 let sanitizedNumber = viewModel.state.getShopDetailResponse.contact.replacingOccurrences(of: "-", with: "")
                                 HStack(spacing: 10) {
@@ -389,6 +394,7 @@ struct ShopDetailView: View {
         await viewModel.action(.toggleFavorite(body: body))
     }
     
+    
 }
 
 struct ScrollToTopButton: View {
@@ -404,6 +410,8 @@ struct ScrollToTopButton: View {
         }
     }
 }
+
+
 //#Preview {
 //    ShopDetailView()
 //}
