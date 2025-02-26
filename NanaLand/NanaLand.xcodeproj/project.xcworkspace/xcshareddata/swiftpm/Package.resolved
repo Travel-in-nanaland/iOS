@@ -1,5 +1,5 @@
 {
-  "originHash" : "e94927db15150af0f88b444f033b8e35bdb98f0458761ee054ba429120737938",
+  "originHash" : "f9727779704e10eeba20e05c01a41833d3a5ddf3d6c66bda9bcde90d3e0f5569",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -249,8 +249,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SDWebImage/SDWebImage.git",
       "state" : {
-        "revision" : "10d06f6a33bafae8c164fbfd1f03391f6d4692b3",
-        "version" : "5.20.0"
+        "revision" : "cac9a55a3ae92478a2c95042dcc8d9695d2129ca",
+        "version" : "5.21.0"
       }
     },
     {
@@ -285,8 +285,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-protobuf.git",
       "state" : {
-        "revision" : "ebc7251dd5b37f627c93698e4374084d98409633",
-        "version" : "1.28.2"
+        "revision" : "d72aed98f8253ec1aa9ea1141e28150f408cf17f",
+        "version" : "1.29.0"
       }
     },
     {
@@ -312,8 +312,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/divadretlaw/WindowKit",
       "state" : {
-        "revision" : "faa2a9522cc3113823c2a98e669da8e251bb1072",
-        "version" : "2.6.0"
+        "revision" : "2e689d5ebf019ed3e7abffa4e6ddb06287f231e9",
+        "version" : "2.6.1"
       }
     },
     {
