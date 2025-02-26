@@ -9,53 +9,65 @@ import SwiftUI
 import KakaoMapsSDK
 
 struct KakaoMapView: View {
-    @State private var draw: Bool = false //지도 Appear 토글
-    @State var convertedCoordinate: (Double, Double) = (0.0, 0.0) //DetailView에서 받은 좌표
+    @State private var draw: Bool = false // 지도 Appear 토글
+    @State private var convertedCoordinate: (Double, Double)? = nil // 초기에는 nil
     let title: String
     let address: String
     let koreanAddress: String
     
     var body: some View {
-        ZStack{
-            
-            KakaoMapController(draw: $draw, coordinate: $convertedCoordinate)
-                .onAppear {
-                    print("🟢 KakaoMap appeared")
-                    self.draw = true
+        ZStack {
+            if let coordinate = convertedCoordinate {
+                // ✅ 위도/경도를 받은 후에만 지도를 띄움
+                KakaoMapController(draw: $draw, coordinate: .constant(coordinate))
+                    .onAppear {
+                        print("🟢 KakaoMap appeared")
+                        self.draw = true
+                    }
+                    .onDisappear {
+                        print("🔴 KakaoMap disappeared")
+                        self.draw = false
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+            } else {
+                // ✅ 위도/경도를 받을 때까지 로딩 화면 표시
+                VStack {
+                    ProgressView("Loading map...")
+                        .progressViewStyle(CircularProgressViewStyle())
+                        .foregroundColor(.gray)
+                    Spacer()
                 }
-                .onDisappear {
-                    print("🔴 KakaoMap disappeared")
-                    self.draw = false
-                }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            }
             
-            VStack{
+            VStack {
                 NanaNavigationBar(title: .empty, showBackButton: true)
                     .frame(height: 56)
                 
                 Spacer()
             }
             
-            VStack{
+            VStack {
                 Spacer()
-                
                 KakaoMapBottomView(title: title, address: address, koreanAddress: koreanAddress)
             }
         }
         .toolbar(.hidden)
-        .onAppear(){
-            convertAddressWithKakaoAPI(address: koreanAddress)
+        .onAppear {
+            Task {
+                // ✅ Kakao Geocoder API를 호출하고 변환된 좌표를 저장
+                await fetchCoordinates()
+            }
         }
     }
     
     /// 📌 **카카오 API를 사용하여 도로명 주소를 위도/경도로 변환**
-    func convertAddressWithKakaoAPI(address: String) {
-        print("📍 입력한 주소: \(address)")
+    func fetchCoordinates() async {
+        print("📍 입력한 주소: \(koreanAddress)")
         
-        KakaoGeocoder.convertAddressToCoordinates(address: address) { latitude, longitude in
+        KakaoGeocoder.convertAddressToCoordinates(address: koreanAddress) { latitude, longitude in
             DispatchQueue.main.async {
                 if let lat = latitude, let lon = longitude {
-                    self.convertedCoordinate = (lon, lat) // 🔄 위도, 경도 저장
+                    self.convertedCoordinate = (lon, lat) // ✅ 좌표 설정
                     print("✅ 변환된 좌표: \(lon), \(lat)")
                 } else {
                     print("❌ 변환된 좌표 없음")

@@ -11,8 +11,10 @@ import Kingfisher
 struct NewNanaPickDetailView: View {
     
     @StateObject var viewModel = NewNanaPickDetailViewModel()
+    @EnvironmentObject var localizationManager: LocalizationManager
     var id: Int64
-    @State var isAPICalled = false  
+    
+    @State var isAPICalled = false
     
     var body: some View {
         GeometryReader {
@@ -39,6 +41,12 @@ struct NewNanaPickDetailView: View {
             Task {
                 await getNaNaDetail(id: id)
                 isAPICalled = true
+            }
+        }
+        .navigationDestination(for: nanaDetailType.self) { detailView in
+            switch detailView {
+            case let .detailMap(title, address, koreanAddress):
+                KakaoMapView(title: title, address: address, koreanAddress: koreanAddress)
             }
         }
     }
@@ -209,6 +217,7 @@ struct NewNaNaPickDetailMainView: View {
     @State private var specialModal = false
     // 선택된 탭을 유지하기 위한 배열
     @State private var selectedNums: [Int]
+    @State var koreanAddress: String = ""
     
     init(viewModel: NewNanaPickDetailViewModel) {
             _viewModel = StateObject(wrappedValue: viewModel)
@@ -379,6 +388,52 @@ struct NewNaNaPickDetailMainView: View {
                                                                     .foregroundStyle(.black)
                                                                     .multilineTextAlignment(.leading)
                                                             })
+                                                        } else if data.infoKey == LocalizedKey.address.localized(for: localizationManager.language) {
+                                                            
+                                                            VStack(alignment: .leading, spacing: 0){
+                                                                Text("\(data.infoValue)")
+                                                                    .font(.body02)
+                                                                    .foregroundStyle(.black)
+                                                                    .multilineTextAlignment(.leading)
+                                                                    .padding(.bottom, Constants.screenWidth * (12 / 360))
+                                                                
+                                                                Button {
+                                                                    Task{
+                                                                        if localizationManager.language != .korean {
+                                                                            await getKoreanAddress(id: viewModel.state.getNanaPickDetailResponse.id, category: "NANA", number: Int64(detail.number))
+                                                                            koreanAddress = viewModel.state.getKoreanAddress
+                                                                        }
+                                                                        DispatchQueue.main.async {
+                                                                            if localizationManager.language == .korean {
+                                                                                AppState.shared.navigationPath.append(nanaDetailType.detailMap(title: detail.title ,address: "", korean: data.infoValue))
+                                                                            } else {
+                                                                                AppState.shared.navigationPath.append(nanaDetailType.detailMap(title: detail.title ,address: data.infoValue, korean: koreanAddress))
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                    
+                                                                } label: {
+                                                                    HStack(spacing: 0){
+                                                                        Text(.detailView)
+                                                                            .font(.caption01)
+                                                                            .foregroundColor(.gray1)
+                                                                        
+                                                                        Image("icAdressArrow")
+                                                                            .resizable()
+                                                                            .scaledToFit()
+                                                                            .frame(width: Constants.screenWidth * (12 / 360))
+                                                                    }
+                                                                    .padding(.leading, Constants.screenWidth * (8 / 360))
+                                                                    .padding(.trailing, Constants.screenWidth * (8 / 360))
+                                                                    .background(){
+                                                                        RoundedRectangle(cornerRadius: 100)
+                                                                            .frame(height: Constants.screenWidth * (28 / 360))
+                                                                            .foregroundColor(.gray3)
+                                                                    }
+                                                                }
+                                                                
+                                                                Spacer()
+                                                            }
                                                         } else {
                                                             Text("\(data.infoValue)")
                                                                 .font(.body02)
@@ -663,6 +718,10 @@ struct NewNaNaPickDetailMainView: View {
         }
     }
     
+    func getKoreanAddress(id: Int64, category: String, number: Int64) async {
+        await viewModel.action(.getKoreanAddress(id: id, category: category, number: number))
+    }
+    
     private func iconName(for emoji: String) -> String {
         switch emoji {
         case "ADDRESS": return "icNanaAddress"
@@ -681,6 +740,12 @@ struct NewNaNaPickDetailMainView: View {
         default: return "icNanaEtc"
         }
     }
+    
+    
+}
+
+enum nanaDetailType: Hashable{
+    case detailMap(title: String, address: String, korean: String)
 }
 
 

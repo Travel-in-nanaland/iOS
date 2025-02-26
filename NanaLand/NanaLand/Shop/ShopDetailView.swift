@@ -198,7 +198,36 @@ struct ShopDetailView: View {
                                         .font(.gothicNeo(.bold, size: 14))
                                     Text(viewModel.state.getShopDetailResponse.address)
                                         .font(.body02)
-                                
+                                        .padding(.bottom, Constants.screenWidth * (12 / 360))
+                                    
+                                    Button {
+                                        if localizationManager.language == .korean {
+                                            AppState.shared.navigationPath.append(shopDetailType.detailMap(title: viewModel.state.getShopDetailResponse.title ,address: "", korean: viewModel.state.getShopDetailResponse.address))
+                                        } else {
+                                            AppState.shared.navigationPath.append(shopDetailType.detailMap(title: viewModel.state.getShopDetailResponse.title ,address: viewModel.state.getShopDetailResponse.address, korean: koreanAddress))
+                                        }
+                                        
+                                    } label: {
+                                        HStack(spacing: 0){
+                                            Text(.detailView)
+                                                .font(.caption01)
+                                                .foregroundColor(.gray1)
+                                            
+                                            Image("icAdressArrow")
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(width: Constants.screenWidth * (12 / 360))
+                                        }
+                                        .padding(.leading, Constants.screenWidth * (8 / 360))
+                                        .padding(.trailing, Constants.screenWidth * (8 / 360))
+                                        .background(){
+                                            RoundedRectangle(cornerRadius: 100)
+                                                .frame(height: Constants.screenWidth * (28 / 360))
+                                                .foregroundColor(.gray3)
+                                        }
+                                    }
+                                    
+                                    Spacer()
                                     
                                 }
                                 Spacer()
@@ -340,6 +369,10 @@ struct ShopDetailView: View {
                     .onAppear {
                         Task {
                             await getShopDetail(id: id)
+                            if localizationManager.language != .korean {
+                                await getKoreanAddress(id: id, category: "MARKET")
+                                koreanAddress = viewModel.state.getKoreanAddress
+                            }
                         }
                     }
                     .toolbar(.hidden)
@@ -349,6 +382,12 @@ struct ShopDetailView: View {
                     switch viewType {
                     case let .reportInfo(id, category):
                         ReportInfoMainView(id: id, category: category)
+                    }
+                }
+                .navigationDestination(for: shopDetailType.self) { detailView in
+                    switch detailView {
+                    case let .detailMap(title, address, koreanAddress):
+                        KakaoMapView(title: title, address: address, koreanAddress: koreanAddress)
                     }
                 }
                 .overlay(
@@ -394,6 +433,10 @@ struct ShopDetailView: View {
         await viewModel.action(.toggleFavorite(body: body))
     }
     
+    func getKoreanAddress(id: Int64, category: String) async {
+        await viewModel.action(.getKoreanAddress(id: id, category: category))
+    }
+    
     
 }
 
@@ -409,6 +452,10 @@ struct ScrollToTopButton: View {
                 .foregroundColor(.blue)
         }
     }
+}
+
+enum shopDetailType: Hashable{
+    case detailMap(title: String, address: String, korean: String)
 }
 
 

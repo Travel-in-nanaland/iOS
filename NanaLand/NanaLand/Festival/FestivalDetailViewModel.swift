@@ -10,12 +10,14 @@ import Foundation
 class FestivalDetailViewModel: ObservableObject {
     struct State {
         var getFestivalDetailResponse = FestivalDetailModel(id: 0, images: [DetailImagesList(originUrl: "", thumbnailUrl: "")], addressTag: "", title: "", content: "", address: "", contact: "", time: "", fee: "", homepage: "", period: "", favorite: false)
+        var getKoreanAddress = ""
     }
     
     enum Action {
         case getFestivalDetailItem(id: Int64, isSearch: Bool)
         
         case toggleFavorite(body: FavoriteToggleRequest)
+        case getKoreanAddress(id: Int64, category: String)
     }
     
     @Published var state: State
@@ -43,6 +45,14 @@ class FestivalDetailViewModel: ObservableObject {
                 await MainActor.run {
                     state.getFestivalDetailResponse.favorite = response!.data.favorite
                 }
+            }
+        case let .getKoreanAddress(id, category):
+            let response = await AddressService.getKoreanAddress(id: id, category: category, number: nil)
+            if response != nil {
+                print("주소: \(response)")
+                state.getKoreanAddress = response?.data ?? ""
+            } else {
+                print("Error")
             }
         }
     }
