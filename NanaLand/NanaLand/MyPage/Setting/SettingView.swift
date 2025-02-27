@@ -9,11 +9,11 @@ import SwiftUI
 import UserNotifications
 
 enum SettingViewType {
-    case announcement
-    case policy
-    case authorize
-    case language
-    case withdraw
+    case announcementView
+    case policyView
+    case authorizeView
+    case languageView
+    case withdrawView
 }
 
 struct SettingView: View {
@@ -118,15 +118,15 @@ struct SettingView: View {
         .toolbar(.hidden)
         .navigationDestination(for: SettingViewType.self) { viewType in
             switch viewType {
-            case .announcement:
+            case .announcementView:
                 NoticeMainView()
-            case .policy:
+            case .policyView:
                 PolicyView()
-            case .authorize:
+            case .authorizeView:
                 AuthorizeView()
-            case .language:
+            case .languageView:
                 LanguageView()
-            case .withdraw:
+            case .withdrawView:
                 WithdrawView()
             }
         }
@@ -155,26 +155,26 @@ struct SettingItemButtonView: View {
                 if provider == "GUEST" {
                     AppState.shared.showRegisterInduction = true
                 } else {
-                    AppState.shared.navigationPath.append(SettingViewType.announcement)
+                    AppState.shared.navigationPath.append(SettingViewType.announcementView)
                 }
             case LocalizedKey.termsAndPolicies.localized(for: localizationManager.language):
                 if provider == "GUEST" {
                     AppState.shared.showRegisterInduction = true
                 } else {
-                    AppState.shared.navigationPath.append(SettingViewType.policy)
+                    AppState.shared.navigationPath.append(SettingViewType.policyView)
                 }
             case LocalizedKey.accessPolicyGuide.localized(for: localizationManager.language):
                 if provider == "GUEST" {
                     AppState.shared.showRegisterInduction = true
                 } else {
-                    AppState.shared.navigationPath.append(SettingViewType.authorize)
+                    AppState.shared.navigationPath.append(SettingViewType.authorizeView)
                 }
             case LocalizedKey.languageSetting.localized(for: localizationManager.language):
-                AppState.shared.navigationPath.append(SettingViewType.language)
+                AppState.shared.navigationPath.append(SettingViewType.languageView)
             case LocalizedKey.versionInfomation.localized(for: localizationManager.language):
                 break
             case LocalizedKey.memberWithdraw.localized(for: localizationManager.language):
-                AppState.shared.navigationPath.append(SettingViewType.withdraw)
+                AppState.shared.navigationPath.append(SettingViewType.withdrawView)
             default:
                 break
             }

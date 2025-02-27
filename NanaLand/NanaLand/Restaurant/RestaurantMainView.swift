@@ -150,7 +150,7 @@ struct RestaurantMainGridView: View {
                                     Button(action: {
                                         let detailId = viewModel.state.getRestaurantMainResponse.data[index].id
                                         
-                                        AppState.shared.navigationPath.append(RestaurantViewType.detail(id: detailId))
+                                        AppState.shared.navigationPath.append(RestaurantViewType.restaurantDetailView(id: detailId))
                                     }, label: {
                                         VStack(alignment: .leading, spacing: 0){
                                             ZStack {
@@ -277,7 +277,7 @@ struct RestaurantMainGridView: View {
 
             .navigationDestination(for: RestaurantViewType.self) { viewType in
                 switch viewType {
-                case let .detail(id):
+                case let .restaurantDetailView(id):
                     RestaurantDetailView(id: id)
                 }
             }
@@ -347,7 +347,7 @@ struct RestaurantMainGridView: View {
 }
 
 enum RestaurantViewType: Hashable {
-    case detail(id: Int64)
+    case restaurantDetailView(id: Int64)
 }
 
 //#Preview {

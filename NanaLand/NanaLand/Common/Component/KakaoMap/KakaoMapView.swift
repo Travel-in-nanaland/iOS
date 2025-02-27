@@ -11,6 +11,8 @@ import KakaoMapsSDK
 struct KakaoMapView: View {
     @State private var draw: Bool = false // 지도 Appear 토글
     @State private var convertedCoordinate: (Double, Double)? = nil // 초기에는 nil
+    @State var isShowingModal: Bool = false
+    
     let title: String
     let address: String
     let koreanAddress: String
@@ -48,6 +50,46 @@ struct KakaoMapView: View {
             
             VStack {
                 Spacer()
+                
+                HStack(spacing: 0){
+                    
+                    Spacer()
+                    
+                    Button {
+                        isShowingModal.toggle()
+                    } label: {
+                        HStack(spacing: 0){
+                            Text("다른 지도 보기")
+                                .font(.caption01_semibold)
+                                .foregroundColor(.main)
+                                .frame(height: Constants.screenWidth * (20 / 360))
+                            
+                            Image("icMainArrow")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: Constants.screenWidth * (12 / 360))
+                        }
+                        .padding(.top, Constants.screenWidth * (8 / 360))
+                        .padding(.bottom, Constants.screenWidth * (8 / 360))
+                        .padding(.leading, Constants.screenWidth * (13.5 / 360))
+                        .padding(.trailing, Constants.screenWidth * (13.5 / 360))
+                        .background(){
+                            RoundedRectangle(cornerRadius: 100)
+                                .foregroundColor(.white)
+                        }
+                    }
+                    .padding(.trailing, Constants.screenWidth * (16 / 360))
+                    .padding(.bottom, Constants.screenWidth * (12 / 360))
+                }
+                .sheet(isPresented: $isShowingModal) {
+                    if let coordinate = convertedCoordinate {
+                        DifferentMapModal(isShowingModal: $isShowingModal, convertedCoordinate: .constant(coordinate))
+                            .environmentObject(LocalizationManager())
+                            .presentationDetents([.height(Constants.screenWidth * (140 / 360))]) // 팝업 뷰 height 조절
+                    }
+                }
+
+                
                 KakaoMapBottomView(title: title, address: address, koreanAddress: koreanAddress)
             }
         }
@@ -77,27 +119,30 @@ struct KakaoMapView: View {
     }
 }
 
-
 struct KakaoMapBottomView: View {
     let title: String
     let address: String
     let koreanAddress: String
     @EnvironmentObject var localizationManager: LocalizationManager
     
-    @State var showCopyAlert: Bool = false
-    @State var alertMessage: String = ""
+    @State private var isShowingToast: Bool = false
+    @State private var toastMessage: String = ""
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0){
             Text(title)
                 .font(.body_bold)
                 .foregroundColor(.black)
-                .frame(height: Constants.screenWidth * (26 / 360))
+                .multilineTextAlignment(.leading)
+                .lineLimit(nil)
+                .fixedSize(horizontal: false, vertical: true)
             
-            if address != "" {
+            if !address.isEmpty {
                 Text(address)
                     .font(.caption01)
                     .multilineTextAlignment(.leading)
+                    .lineLimit(nil)
+                    .fixedSize(horizontal: false, vertical: true)
                     .foregroundColor(.gray1)
             }
             
@@ -108,7 +153,6 @@ struct KakaoMapBottomView: View {
                     Text(koreanAddress)
                         .font(.body02)
                         .foregroundColor(.black)
-                        .frame(height: Constants.screenWidth * (22 / 360))
                     
                     Image("icCopy")
                         .resizable()
@@ -119,42 +163,45 @@ struct KakaoMapBottomView: View {
                 }
                 .padding(.top, Constants.screenWidth * (12 / 360))
             })
-            .alert(isPresented: $showCopyAlert) {
-                Alert(title: Text(.notification), message: Text(alertMessage), dismissButton: .default(Text(.check)))
-            }
         }
         .padding(.leading, Constants.screenWidth * (16 / 360))
         .padding(.trailing, Constants.screenWidth * (16 / 360))
         .padding(.top, Constants.screenWidth * (16 / 360))
         .padding(.bottom, Constants.screenWidth * (16 / 360))
-        .background(){
+        .background {
             Rectangle()
                 .foregroundColor(.white)
                 .cornerRadius(16, corners: .topLeft)
                 .cornerRadius(16, corners: .topRight)
                 .frame(width: Constants.screenWidth)
         }
+        .overlay(
+            Toast(message: toastMessage, isShowing: $isShowingToast)
+        )
     }
     
     func copyToClipboard(_ text: String){
-        
-        // 문자열이 비어있는 경우 예외처리
         guard !text.isEmpty else {
-            alertMessage = ClipboardCopyStatus.emptyString.message(using: localizationManager)
-            showCopyAlert = true
+            toastMessage = ClipboardCopyStatus.emptyString.message(using: localizationManager)
+            showToast()
             return
         }
         
         if UIPasteboard.general.hasStrings {
-            //복사 성공
             UIPasteboard.general.string = text
-            alertMessage = ClipboardCopyStatus.success.message(using: localizationManager)
+            toastMessage = ClipboardCopyStatus.success.message(using: localizationManager)
         } else {
-            // 접근 권한 없어 복사 실패
-            alertMessage = ClipboardCopyStatus.success.message(using: localizationManager)
+            toastMessage = ClipboardCopyStatus.failAccess.message(using: localizationManager)
         }
         
-        showCopyAlert = true
+        showToast()
+    }
+    
+    func showToast() {
+        isShowingToast = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            isShowingToast = false
+        }
     }
 }
 
