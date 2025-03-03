@@ -177,6 +177,8 @@
 "logout" = "Log keluar";
 "memberWithdraw" = "Daftar keluar";
 "join" = "Daftar";
+"emptyNotification" = "Tiada notifikasi baru\n Kekal kemas kini dengan acara dan berita terkini!";
+"emptyAnnouncement" = "Tiada pengumuman tersedia";
 
 // termsAndPoliciesPage
 "notificate" = "Makluman";
@@ -549,6 +551,8 @@ mengembalikan sebarang hasil.";
 //MARK: - 지도 보기
 "detailView" = "Ketahui lebih lanjut";
 "empty" = "";
-"copySuccess" = "Disalin ke papan keratan!";
+"copySuccess" = "Disalin ke papan klip!";
 "emptyCopyString" = "Salinan papan klip gagal";
 "failAccess" = "Salinan papan klip gagal\nSila semak kebenaran dalam tetapan";
+"googleMap" = "Peta Google";
+"differentMap" = "Lihat di peta lain";

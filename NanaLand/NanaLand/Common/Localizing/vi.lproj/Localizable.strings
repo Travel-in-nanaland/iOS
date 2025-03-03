@@ -181,6 +181,8 @@
 "logout" = "Đăng xuất";
 "memberWithdraw" = "Rút khỏi thành viên";
 "join" = "Đăng ký";
+"emptyNotification" = "Không có thông báo mới\n Cập nhật những sự kiện và tin tức mới nhất!";
+"emptyAnnouncement" = "Không có thông báo nào";
 
 // termsAndPoliciesPage
 "notificate" = "Tốt để biết!";
@@ -559,6 +561,8 @@
 //MARK: - 지도 보기
 "detailView" = "Tìm hiểu thêm";
 "empty" = "";
-"copySuccess" = "Đã sao chép vào bảng nháp!";
+"copySuccess" = "Đã sao chép vào bảng tạm!";
 "emptyCopyString" = "Lỗi sao chép bảng tạm";
 "failAccess" = "Lỗi sao chép bảng tạm\nVui lòng kiểm tra quyền trong cài đặt";
+"googleMap" = "Google Maps";
+"differentMap" = "Xem trên bản đồ khác";

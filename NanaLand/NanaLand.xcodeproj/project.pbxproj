@@ -136,6 +136,8 @@
 		6D2995282C557C25006AA447 /* MyReviewArticleItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2995272C557C25006AA447 /* MyReviewArticleItemView.swift */; };
 		6D29952A2C5596DF006AA447 /* NoticeMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2995292C5596DF006AA447 /* NoticeMainView.swift */; };
 		6D29952C2C5599C5006AA447 /* NoticeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D29952B2C5599C5006AA447 /* NoticeDetailView.swift */; };
+		6D2AF6712D71855900CA11A9 /* EmptyNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2AF6702D71855900CA11A9 /* EmptyNotificationView.swift */; };
+		6D2AF6732D7186C600CA11A9 /* EmptyNoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2AF6722D7186C600CA11A9 /* EmptyNoticeView.swift */; };
 		6D48AA0A2C75C2A000E16429 /* NewNanaPickMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D48AA092C75C2A000E16429 /* NewNanaPickMainView.swift */; };
 		6D48AA0C2C75C65E00E16429 /* NewNanaPickMainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D48AA0B2C75C65E00E16429 /* NewNanaPickMainModel.swift */; };
 		6D48AA0E2C75C66800E16429 /* NewNanaPickMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D48AA0D2C75C66800E16429 /* NewNanaPickMainViewModel.swift */; };
@@ -480,6 +482,8 @@
 		6D2995272C557C25006AA447 /* MyReviewArticleItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReviewArticleItemView.swift; sourceTree = "<group>"; };
 		6D2995292C5596DF006AA447 /* NoticeMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeMainView.swift; sourceTree = "<group>"; };
 		6D29952B2C5599C5006AA447 /* NoticeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeDetailView.swift; sourceTree = "<group>"; };
+		6D2AF6702D71855900CA11A9 /* EmptyNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyNotificationView.swift; sourceTree = "<group>"; };
+		6D2AF6722D7186C600CA11A9 /* EmptyNoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyNoticeView.swift; sourceTree = "<group>"; };
 		6D48AA092C75C2A000E16429 /* NewNanaPickMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNanaPickMainView.swift; sourceTree = "<group>"; };
 		6D48AA0B2C75C65E00E16429 /* NewNanaPickMainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNanaPickMainModel.swift; sourceTree = "<group>"; };
 		6D48AA0D2C75C66800E16429 /* NewNanaPickMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNanaPickMainViewModel.swift; sourceTree = "<group>"; };
@@ -1215,6 +1219,7 @@
 				6D9EDADA2C5B5285003A8DE5 /* NoticeMainViewModel.swift */,
 				6D9EDAE12C5B59AE003A8DE5 /* NoticeDetailModel.swift */,
 				6D9EDAE32C5B59B8003A8DE5 /* NoticeDetailViewModel.swift */,
+				6D2AF6722D7186C600CA11A9 /* EmptyNoticeView.swift */,
 			);
 			path = Notice;
 			sourceTree = "<group>";
@@ -1613,6 +1618,7 @@
 				2C2749A52C0EEF6C00ECBA71 /* NotificationView.swift */,
 				BFC7AF262C7EDBA600432ECC /* NotificationViewModel.swift */,
 				BFC7AF2D2C7EDD6500432ECC /* NotificationModel.swift */,
+				6D2AF6702D71855900CA11A9 /* EmptyNotificationView.swift */,
 			);
 			path = Notification;
 			sourceTree = "<group>";
@@ -1931,6 +1937,7 @@
 				6D9EDAE42C5B59B8003A8DE5 /* NoticeDetailViewModel.swift in Sources */,
 				6DFF08EE2D3BFBB80052A4E3 /* LottieWithTextView.swift in Sources */,
 				BF607F172BF5A29E00770CE7 /* FestivalDetailService.swift in Sources */,
+				6D2AF6732D7186C600CA11A9 /* EmptyNoticeView.swift in Sources */,
 				BFBC51412C5BC7E00076FE57 /* ReportModalView.swift in Sources */,
 				2C9CF4E62C00701E00A346E8 /* TypeTestNavigationView.swift in Sources */,
 				2C9CF4D32BFDC4EB00A346E8 /* ReportInfoWritingView.swift in Sources */,
@@ -1974,6 +1981,7 @@
 				6DCFB19E2D191F7B00A622EB /* UserInfoModel.swift in Sources */,
 				BF2D93792BFF12D30057381A /* PolicyViewModel.swift in Sources */,
 				6D9EDAE02C5B52E3003A8DE5 /* NoticeEndPoint.swift in Sources */,
+				6D2AF6712D71855900CA11A9 /* EmptyNotificationView.swift in Sources */,
 				2C40DB832BE62259007A3768 /* LanguageSelectView.swift in Sources */,
 				6D9EDAD32C5B47B4003A8DE5 /* RestaurantKeywordView.swift in Sources */,
 				6D91F2F02D1EE63A009AEE5B /* ReviewModifyModal.swift in Sources */,

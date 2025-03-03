@@ -181,6 +181,8 @@
 "logout" = "Log out";
 "memberWithdraw" = "Withdraw membership";
 "join" = "Sign Up";
+"emptyNotification" = "No new notifications\n Stay updated with the latest events and news!";
+"emptyAnnouncement" = "No announcements available";
 
 // termsAndPoliciesPage
 "notificate" = "Notice";
@@ -562,3 +564,5 @@ the market is the place!";
 "copySuccess" = "Copied to clipboard!";
 "emptyCopyString" = "Clipboard copy failed";
 "failAccess" = "Clipboard copy failed\nPlease check the permission in the settings";
+"googleMap" = "Google Maps";
+"differentMap" = "View on another map";

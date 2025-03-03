@@ -184,6 +184,9 @@ enum LocalizedKey: String {
     case logout
     case memberWithdraw
     case join
+    case emptyNotification
+    case emptyAnnouncement
+    
     
     // termsAndPoliciesPage(약관 및 정책 페이지)
     case marketingConsent
@@ -569,6 +572,9 @@ enum LocalizedKey: String {
     case copySuccess
     case emptyCopyString
     case failAccess
+    case googleMap
+    case differentMap
+    
     
     //MARK: - localized()
     func localized(for language: Language) -> String {

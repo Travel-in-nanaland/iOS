@@ -20,7 +20,7 @@ struct NotificationView: View {
                     ScrollView {
                         if isAPICalled {
                             if viewModel.state.getNotificationResponse.totalElements == 0 {
-                                NoResultView()
+                                EmptyNotificationView()
                                     .frame(height: 70)
                                     .padding(.top, (Constants.screenHeight - 208) * (179 / 636))
                             } else {
