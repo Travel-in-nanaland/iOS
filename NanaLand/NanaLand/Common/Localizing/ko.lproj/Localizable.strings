@@ -177,6 +177,9 @@
 "logout" = "로그아웃";
 "memberWithdraw" = "회원탈퇴";
 "join" = "회원가입";
+"emptyNotification" = "새로운 알림이 없습니다\n다양한 이벤트와 소식들을 전해줄게요!";
+"emptyAnnouncement" = "공지사항이 없습니다";
+
 // termsAndPoliciesPage
 "notificate" = "알아두면 좋아요!";
 "marketingConsent" = "마케팅 활용 동의";
@@ -552,3 +555,5 @@
 "copySuccess" = "클립보드에 복사되었습니다!";
 "emptyCopyString" = "클립보드 복사에 실패했습니다";
 "failAccess" = "클립보드 복사에 실패했습니다\n설정에서 권한을 확인해주세요";
+"googleMap" = "구글 지도";
+"differentMap" = "다른 지도 보기";

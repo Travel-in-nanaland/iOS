@@ -59,7 +59,7 @@ struct KakaoMapView: View {
                         isShowingModal.toggle()
                     } label: {
                         HStack(spacing: 0){
-                            Text("다른 지도 보기")
+                            Text(.differentMap)
                                 .font(.caption01_semibold)
                                 .foregroundColor(.main)
                                 .frame(height: Constants.screenWidth * (20 / 360))

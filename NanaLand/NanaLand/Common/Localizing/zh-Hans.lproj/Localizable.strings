@@ -178,6 +178,8 @@
 "logout" = "登出";
 "memberWithdraw" = "注销会员";
 "join" = "注册";
+"emptyNotification" = "没有新通知\n 我们会为你带来最新活动和资讯！";
+"emptyAnnouncement" = "暂无公告";
 
 // termsAndPoliciesPage
 "notificate" = "提醒您";
@@ -547,6 +549,8 @@
 //MARK: - 지도 보기
 "detailView" = "了解更多";
 "empty" = "";
-"copySuccess" = "复制到剪贴板！";
+"copySuccess" = "已复制到剪贴板！";
 "emptyCopyString" = "剪贴板复制失败";
 "failAccess" = "剪贴板复制失败\n请检查设置中的权限";
+"googleMap" = "谷歌地图";
+"differentMap" = "在其他地图上查看";

@@ -27,7 +27,7 @@ struct NoticeMainView: View {
                         
                         ScrollView {
                             if viewModel.state.getNoticeMainResponse.totalElements == 0 {
-                                NoResultView()
+                                EmptyNoticeView()
                                     .frame(height: 70)
                                     .padding(.top, (Constants.screenHeight - 208) * (179 / 636))
                             } else {

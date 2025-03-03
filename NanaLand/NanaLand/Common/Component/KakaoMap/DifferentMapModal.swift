@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct DifferentMapModal: View {
+    @EnvironmentObject var localizationManager: LocalizationManager
     @Binding var isShowingModal: Bool
     @Binding var convertedCoordinate: (Double, Double)
     
@@ -23,7 +24,7 @@ struct DifferentMapModal: View {
                         .foregroundColor(.white)
                         .shadow(radius: 1)
                         .overlay {
-                            Text("구글 지도")
+                            Text(.googleMap)
                                 .font(.body01)
                                 .foregroundColor(.black)
                         }
