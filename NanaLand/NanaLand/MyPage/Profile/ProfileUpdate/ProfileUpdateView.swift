@@ -112,7 +112,7 @@ struct ProfileUpdateView: View {
                                     Spacer()
                                     Text("\(nickName.count) / 12 " + .charCount)
                                         .font(.caption01)
-                                        .foregroundStyle(nickName.count > 8 ? Color.red : Color.gray1)
+                                        .foregroundStyle(nickName.count > 12 ? Color.red : Color.gray1)
                                     
                                 }
                                 .padding(.leading, 16)
