@@ -574,6 +574,7 @@ enum LocalizedKey: String {
     case failAccess
     case googleMap
     case differentMap
+    case subExplanation
     
     
     //MARK: - localized()
