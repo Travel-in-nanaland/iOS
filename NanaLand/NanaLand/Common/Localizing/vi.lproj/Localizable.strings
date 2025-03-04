@@ -566,3 +566,4 @@
 "failAccess" = "Lỗi sao chép bảng tạm\nVui lòng kiểm tra quyền trong cài đặt";
 "googleMap" = "Google Maps";
 "differentMap" = "Xem trên bản đồ khác";
+"subExplanation" = "*Để tìm đúng địa chỉ, vui lòng nhấp vào chế độ xem bản đồ \nvà sao chép địa chỉ bằng tiếng Hàn!";

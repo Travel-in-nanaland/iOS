@@ -432,6 +432,14 @@ struct NewNaNaPickDetailMainView: View {
                                                                     }
                                                                 }
                                                                 
+                                                                if localizationManager.language != .korean {
+                                                                    Text(.subExplanation)
+                                                                        .font(.caption01)
+                                                                        .foregroundColor(.gray1)
+                                                                        .multilineTextAlignment(.leading)
+                                                                        .padding(.top, Constants.screenWidth * (10 / 360))
+                                                                }
+                                                                
                                                                 Spacer()
                                                             }
                                                         } else {

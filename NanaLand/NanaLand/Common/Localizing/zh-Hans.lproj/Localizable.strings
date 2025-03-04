@@ -554,3 +554,4 @@
 "failAccess" = "剪贴板复制失败\n请检查设置中的权限";
 "googleMap" = "谷歌地图";
 "differentMap" = "在其他地图上查看";
+"subExplanation" = "*要查找正确的地址,\n请点击地图视图并复制韩文地址！";

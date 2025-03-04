@@ -566,3 +566,4 @@ the market is the place!";
 "failAccess" = "Clipboard copy failed\nPlease check the permission in the settings";
 "googleMap" = "Google Maps";
 "differentMap" = "View on another map";
+"subExplanation" = "*To find the correct address, please click on the map view\n and copy the address in Korean!";
