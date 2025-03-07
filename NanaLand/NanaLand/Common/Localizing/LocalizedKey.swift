@@ -302,6 +302,7 @@ enum LocalizedKey: String {
     case detailInfo
     case amenity
     case proposeUpdateInfo
+    case quickOverview
     
     // MARK: - FestivalView
     case thisMonthFestival

@@ -250,7 +250,7 @@ struct ExperienceDetailView: View {
                                                 Image("icNoticeMain")
                                                     .renderingMode(.template)
                                                     .foregroundStyle(Color.main)
-                                                Text(.BriefExplanation)
+                                                Text(.quickOverview)
                                                     .foregroundStyle(Color.main)
                                                     .font(.body02_bold)
                                                 

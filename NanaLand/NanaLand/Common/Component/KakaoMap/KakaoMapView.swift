@@ -152,6 +152,7 @@ struct KakaoMapBottomView: View {
                 HStack(spacing: 4){
                     Text(koreanAddress)
                         .font(.body02)
+                        .multilineTextAlignment(.leading)
                         .foregroundColor(.black)
                     
                     Image("icCopy")
