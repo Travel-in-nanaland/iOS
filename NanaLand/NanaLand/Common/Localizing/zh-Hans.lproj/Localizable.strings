@@ -285,6 +285,7 @@
 "detailInfo" = "详细信息";
 "amenity" = "便利设施";
 "proposeUpdateInfo" = "建议修改信息";
+"quickOverview" = "简要说明";
 
 // MARK: - FestivalView
 "thisMonthFestival" = "本月庆典";

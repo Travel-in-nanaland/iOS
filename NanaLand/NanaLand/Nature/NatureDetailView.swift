@@ -193,7 +193,7 @@ struct NatureDetailView: View {
                                 VStack(alignment: .leading, spacing: 0) {
                                     HStack(spacing: 0) {
                                         Image("icNoticeMain")
-                                        Text(.introduce)
+                                        Text(.quickOverview)
                                             .font(.gothicNeo(.bold, size: 14))
                                             .foregroundStyle(Color.main)
                                         Spacer()

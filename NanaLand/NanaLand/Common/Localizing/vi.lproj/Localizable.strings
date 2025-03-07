@@ -282,7 +282,7 @@
 // MARK: - NatureDetailView
 "unfoldView" = "Xem thêm"; // 더보기
 "foldView" = "thu gọn"; // 접기
-"introduce" = "Introduce!";
+"introduce" = "Giới thiệu!";
 "address" = "Địa chỉ";
 "phoneNumber" = "Liên hệ";
 "time" = "Giờ sử dụng";
@@ -290,6 +290,7 @@
 "detailInfo" = "Details";
 "amenity" = "Facilities";
 "proposeUpdateInfo" = "Đề xuất sửa đổi thông tin";
+"quickOverview" = "Giải thích ngắn gọn";
 
 // MARK: - FestivalView
 "thisMonthFestival" = "lễ hội hàng tháng";

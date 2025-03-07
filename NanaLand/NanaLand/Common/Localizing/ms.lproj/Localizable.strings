@@ -285,6 +285,7 @@ ditetapkan sebagai lalai.";
 "detailInfo" = "Maklumat Terperinci";
 "amenity" = "Kemudahan";
 "proposeUpdateInfo" = "Cadangan Pembetulan Maklumat";
+"quickOverview" = "Penjelasan ringkas";
 
 // MARK: - FestivalView
 "thisMonthFestival" = "Festival Bulanan ";

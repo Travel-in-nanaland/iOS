@@ -292,6 +292,7 @@ the market is the place!";
 "detailInfo" = "Details";
 "amenity" = "Facilities";
 "proposeUpdateInfo" = "Information Update Suggestions";
+"quickOverview" = "Quick Overview";
 
 // MARK: - FestivalView
 "thisMonthFestival" = "Monthly Festival";

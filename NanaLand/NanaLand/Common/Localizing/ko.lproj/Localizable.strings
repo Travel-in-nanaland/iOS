@@ -284,6 +284,7 @@
 "detailInfo" = "상세 정보";
 "amenity" = "편의시설";
 "proposeUpdateInfo" = "정보 수정 제안";
+"quickOverview" = "간단 설명";
 
 // MARK: - FestivalView
 "thisMonthFestival" = "월별 축제";
