@@ -103,6 +103,7 @@ class FestivalMainViewModel: ObservableObject {
                     // totalElements는 API에서 반환된 값을 그대로 사용
                     state.getFestivalMainResponse.totalElements = response!.data.totalElements
                     state.title = "종료된"
+                    print(response)
                 }
             }
         }

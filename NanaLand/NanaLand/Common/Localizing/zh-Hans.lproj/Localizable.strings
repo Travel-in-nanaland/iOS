@@ -543,6 +543,11 @@
 "noContent" = "没有这样的内容";
 "filterAdjustment" = "调整或重置过滤器！";
 "filterReset" = "重置过滤器";
+"emptyFestivalThisMonth" = "目前没有正在进行的节日.";
+"emptyFestivalThisMonthSub" = "调整筛选条件，查看其他日期！";
+"emptyFestivalThisMonthButton" = "查看其他日期";
+"emptyFestivalSeasonSub" = "调整筛选条件，查看其他季节！";
+"emptyFestivalSeasonButton" = "查看其他季节";
 
 //MARK: - 찜 콘텐츠
 "noFavorite" = "您还没有收藏的内容\n请点击心形图标收藏您喜欢的内容！";

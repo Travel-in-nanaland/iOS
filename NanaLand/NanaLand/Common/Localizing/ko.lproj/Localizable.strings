@@ -546,6 +546,11 @@
 "noContent" = "해당 컨텐츠가 없습니다";
 "filterAdjustment" = "필터를 조정하거나 초기화해 보세요!";
 "filterReset" = "필터 초기화";
+"emptyFestivalThisMonth" = "현재 진행 중인 축제가 없습니다.";
+"emptyFestivalThisMonthSub" = "필터를 조정하여 다른 날짜로 확인해 보세요!";
+"emptyFestivalThisMonthButton" = "다른 날짜 확인";
+"emptyFestivalSeasonSub" = "필터를 조정하여 다른 계절로 확인해보세요!";
+"emptyFestivalSeasonButton" = "다른 계절 확인";
 
 //MARK: - 찜 콘텐츠
 "noFavorite" = "아직 찜한 컨텐츠가 없습니다\n마음에 드는 컨텐츠에 하트를 눌러보세요!";

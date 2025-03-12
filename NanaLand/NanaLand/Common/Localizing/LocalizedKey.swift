@@ -563,6 +563,11 @@ enum LocalizedKey: String {
     case noContent
     case filterAdjustment
     case filterReset
+    case emptyFestivalThisMonth
+    case emptyFestivalThisMonthSub
+    case emptyFestivalThisMonthButton
+    case emptyFestivalSeasonSub
+    case emptyFestivalSeasonButton
     
     //MARK: - 찜 콘텐츠
     case noFavorite
