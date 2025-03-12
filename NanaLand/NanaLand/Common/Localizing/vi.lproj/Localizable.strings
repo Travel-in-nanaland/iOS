@@ -555,6 +555,11 @@
 "noContent" = "Không có nội dung tương ứng";
 "filterAdjustment" = "Điều chỉnh hoặc đặt lại bộ lọc của bạn!";
 "filterReset" = "Đặt lại bộ lọc";
+"emptyFestivalThisMonth" = "Hiện tại không có lễ hội nào đang diễn ra.";
+"emptyFestivalThisMonthSub" = "Điều chỉnh bộ lọc để kiểm tra các ngày khác!";
+"emptyFestivalThisMonthButton" = "Kiểm tra ngày khác";
+"emptyFestivalSeasonSub" = "Điều chỉnh bộ lọc để kiểm tra mùa khác!";
+"emptyFestivalSeasonButton" = "Kiểm tra mùa khác";
 
 //MARK: - 찜 콘텐츠
 "noFavorite" = "Bạn chưa yêu thích nội dung nào\nHãy nhấn vào biểu tượng trái tim trên nội dung bạn thích!";

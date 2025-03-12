@@ -141,7 +141,7 @@ struct RestaurantMainGridView: View {
                 ScrollView {
                     if isAPICalled {
                         if viewModel.state.getRestaurantMainResponse.data.count == 0 {
-                            NoResultFilterView(keyword: $keyword, location: $viewModel.state.location, yearMonthDay: .constant(nil), season: .constant(""))
+                            NoResultFilterView(keyword: $keyword, location: $viewModel.state.location)
                                 .frame(height: 70)
                                 .padding(.top, (Constants.screenHeight - 208) * (179 / 636))
                         } else {
