@@ -104,11 +104,11 @@ struct ExperienceMainGridView: View {
                 .sheet(isPresented: $keywordModal) {
                     if experienceType == "Activity" {
                         // 액티비티 키워드 모달 창
-                        ActivityKeywordView(keyword: $keyword, address: viewModel.state.apiLocation, viewModel: viewModel, selectedKeyword: viewModel.state.selectedKeyword)
+                        ActivityKeywordView(keyword: $keyword, address: viewModel.state.apiLocation, viewModel: viewModel, searchViewModel: SearchViewModel(), selectedKeyword: viewModel.state.selectedKeyword)
                             .presentationDetents([.height(Constants.screenWidth * (290 / 360))]) // 팝업 뷰 height 조절
                     } else {
                         // 문화예술 키워드 모달 창
-                        CultureAndArtsKeywordView(keyword: $keyword, address: viewModel.state.apiLocation, viewModel: viewModel, selectedKeyword: viewModel.state.selectedKeyword)
+                        CultureAndArtsKeywordView(keyword: $keyword, address: viewModel.state.apiLocation, viewModel: viewModel, searchViewModel: SearchViewModel(), selectedKeyword: viewModel.state.selectedKeyword)
                             .presentationDetents([.height(Constants.screenWidth * (337 / 360))]) // 팝업 뷰 height 조절
                     }
                 }
@@ -134,7 +134,7 @@ struct ExperienceMainGridView: View {
                 )
                 .padding(.trailing, 16)
                 .sheet(isPresented: $locationModal) { // 지역 필터링 뷰
-                    LocationModalView(viewModel: FestivalMainViewModel(), natureViewModel: NatureMainViewModel(), shopViewModel: ShopMainViewModel(), restaurantModel: RestaurantMainViewModel(), experienceViewModel: viewModel, isModalShown: $locationModal, selectedLocation: viewModel.state.selectedLocation, startDate: "", endDate: "", title: LocalizedKey.experience.localized(for: localizationMangaer.language), type: experienceType == "Activity" ? "ACTIVITY" : "CULTURE_AND_ARTS", keyword: keyword)
+                    LocationModalView(viewModel: FestivalMainViewModel(), natureViewModel: NatureMainViewModel(), shopViewModel: ShopMainViewModel(), restaurantModel: RestaurantMainViewModel(), experienceViewModel: viewModel, searchViewModel: SearchViewModel(), isModalShown: $locationModal, selectedLocation: viewModel.state.selectedLocation, startDate: "", endDate: "", title: LocalizedKey.experience.localized(for: localizationMangaer.language), type: experienceType == "Activity" ? "ACTIVITY" : "CULTURE_AND_ARTS", keyword: keyword)
                         .presentationDetents([.height(Constants.screenWidth * (58 / 36))])
                 }
             }

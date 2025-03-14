@@ -71,7 +71,7 @@ struct NatureMainGridView: View {
             )
             .padding(.trailing, 16)
             .sheet(isPresented: $locationModal) {
-                LocationModalView(viewModel: FestivalMainViewModel(), natureViewModel: viewModel, shopViewModel: ShopMainViewModel(), restaurantModel: RestaurantMainViewModel(), experienceViewModel: ExperienceMainViewModel(), isModalShown: $locationModal, selectedLocation: viewModel.state.selectedLocation, startDate: "", endDate: "", title: LocalizedKey.nature.localized(for: LocalizationManager().language))
+                LocationModalView(viewModel: FestivalMainViewModel(), natureViewModel: viewModel, shopViewModel: ShopMainViewModel(), restaurantModel: RestaurantMainViewModel(), experienceViewModel: ExperienceMainViewModel(), searchViewModel: SearchViewModel(), isModalShown: $locationModal, selectedLocation: viewModel.state.selectedLocation, startDate: "", endDate: "", title: LocalizedKey.nature.localized(for: LocalizationManager().language))
                     .presentationDetents([.height(Constants.screenWidth * (58 / 36))])
             }
         }

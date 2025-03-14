@@ -15,9 +15,12 @@ class NetworkManager {
         let request = makeDataRequest(endPoint)
         let result = await request.serializingData().result
         var data = Foundation.Data()
+        print("\(request)---")
         do {
             data = try result.get()
+            print("request: " + "\(request)")
         } catch let error{
+            print("error:(\(error))")
             return nil
         }
         

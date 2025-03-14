@@ -12,13 +12,15 @@ struct CalendarFilterView: View {
     @EnvironmentObject var localizationManager: LocalizationManager
 	@Environment(\.dismiss) var dismiss
     @ObservedObject var viewModel: FestivalMainViewModel
+    @ObservedObject var searchViewModel: SearchViewModel
 	@StateObject var calendarController = CalendarController()
 	@Binding var startDate: YearMonthDay?
 	@Binding var endDate: YearMonthDay?
 	// 적용하기 누르면 바인딩
 	@State var currentStartDate: YearMonthDay?
 	@State var currentEndDate: YearMonthDay?
-	
+    var title = "" // 검색시에 필터 적용인지, 카테고리 필터 적용인지
+	var searchTerm = ""
     var body: some View {
 		
             Color.baseBlack.opacity(0.1)
@@ -37,8 +39,14 @@ struct CalendarFilterView: View {
 		.onAppear {
 //			currentStartDate = startDate
 //			currentEndDate = endDate
-            currentStartDate = viewModel.state.selectedStartDate ?? startDate
-            currentEndDate = viewModel.state.selectedEndDate ?? endDate
+            if title == "search" { // 검색에서 날짜 필터 적용 할 경우
+                currentStartDate = searchViewModel.state.selectedStartDate ?? startDate
+                currentEndDate = searchViewModel.state.selectedEndDate ?? endDate
+            } else { // 축제 카테고리에서 날짜 필터 적용 할 경우
+                currentStartDate = viewModel.state.selectedStartDate ?? startDate
+                currentEndDate = viewModel.state.selectedEndDate ?? endDate
+            }
+          
 			if currentStartDate != nil {
 				calendarController.setYearMonth(year: currentStartDate!.year, month: currentStartDate!.month)
 			}
@@ -47,6 +55,10 @@ struct CalendarFilterView: View {
 	
     func getDateFestivalMainItem(page: Int32, size: Int32, filterName: String, start: String, end: String) async {
         await viewModel.action(.getThisMonthFestivalMainItem(page: page, size: size, filterName: filterName, startDate: start, endDate: end))
+    }
+    
+    func getDateFilterFestivalMainItem(term: String, page: Int, startDate: String, endDate: String) async {
+        await searchViewModel.action(.searchFilterFestivalMainItem(term: term, page: page, startDate: startDate, endDate: endDate))
     }
     
 	private var titleAndCloseButton: some View {
@@ -265,21 +277,36 @@ struct CalendarFilterView: View {
                 let strEndDate = String(endDate?.year ?? strCurrentYear!) + formattedNumber(endDate?.month ?? Int(strCurrentMonth)!) + formattedNumber(endDate?.day ?? strCurrentDay!)
                 
                 Task {
-                    if viewModel.state.location == LocalizedKey.allLocation.localized(for: localizationManager.language) {
-                        // 시작날짜~종료날짜 필터링
-                        viewModel.state.getFestivalMainResponse = FestivalModel(totalElements: 0, data: [])
-                        await getDateFestivalMainItem(page: 0, size: 12, filterName: "", start: strStartDate, end: strEndDate)
-                        viewModel.state.selectedStartDate = currentStartDate
-                        viewModel.state.selectedEndDate = currentEndDate
+                    if title == "search" {
+                        if searchViewModel.state.location == LocalizedKey.allLocation.localized(for: localizationManager.language) {
+                            // 시작날짜~종료날짜 필터링
+                            searchViewModel.state.festivalCategorySearchResult = ArticleResponse(totalElements: 0, data: []) // 초기화
+                            await getDateFilterFestivalMainItem(term: searchTerm, page: 0, startDate: strStartDate, endDate: strEndDate)
+                            searchViewModel.state.selectedStartDate = currentStartDate
+                            searchViewModel.state.selectedEndDate = currentEndDate
+                        } else {
+                            // 시작날짜~종료날짜 필터링
+                            searchViewModel.state.festivalCategorySearchResult = ArticleResponse(totalElements: 0, data: []) // 초기화
+                            await getDateFilterFestivalMainItem(term: searchTerm, page: 0, startDate: strStartDate, endDate: strEndDate)
+                            searchViewModel.state.selectedStartDate = currentStartDate
+                            searchViewModel.state.selectedEndDate = currentEndDate
+                        }
+
                     } else {
-                        // 시작날짜~종료날짜 필터링
-                        viewModel.state.getFestivalMainResponse = FestivalModel(totalElements: 0, data: [])
-                        await getDateFestivalMainItem(page: 0, size: 12, filterName: viewModel.state.apiLocation, start: strStartDate, end: strEndDate)
-                        viewModel.state.selectedStartDate = currentStartDate
-                        viewModel.state.selectedEndDate = currentEndDate
+                        if viewModel.state.location == LocalizedKey.allLocation.localized(for: localizationManager.language) {
+                            // 시작날짜~종료날짜 필터링
+                            viewModel.state.getFestivalMainResponse = FestivalModel(totalElements: 0, data: [])
+                            await getDateFestivalMainItem(page: 0, size: 12, filterName: "", start: strStartDate, end: strEndDate)
+                            viewModel.state.selectedStartDate = currentStartDate
+                            viewModel.state.selectedEndDate = currentEndDate
+                        } else {
+                            // 시작날짜~종료날짜 필터링
+                            viewModel.state.getFestivalMainResponse = FestivalModel(totalElements: 0, data: [])
+                            await getDateFestivalMainItem(page: 0, size: 12, filterName: viewModel.state.apiLocation, start: strStartDate, end: strEndDate)
+                            viewModel.state.selectedStartDate = currentStartDate
+                            viewModel.state.selectedEndDate = currentEndDate
+                        }
                     }
-                    
-                   
                 }
 				dismiss()
 			}, label: {

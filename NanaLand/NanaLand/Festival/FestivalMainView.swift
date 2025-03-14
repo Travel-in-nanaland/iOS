@@ -247,7 +247,7 @@ struct FilterView: View {
                 )
                 .padding(.trailing, 16)
                 .sheet(isPresented: $dateModal) {
-                    CalendarFilterView(viewModel: viewModel, startDate: $yearMonthDay, endDate: $endYearMonthDay, currentStartDate: viewModel.state.selectedStartDate, currentEndDate: viewModel.state.selectedEndDate)
+                    CalendarFilterView(viewModel: viewModel, searchViewModel: SearchViewModel(), startDate: $yearMonthDay, endDate: $endYearMonthDay, currentStartDate: viewModel.state.selectedStartDate, currentEndDate: viewModel.state.selectedEndDate)
                         .presentationDetents([.height(500)])
                 }
             }
@@ -282,16 +282,16 @@ struct FilterView: View {
                 .sheet(isPresented: $locationModal) {
                     if yearMonthDay == nil {
                         // 첫 화면 일 때
-                        LocationModalView(viewModel: viewModel, natureViewModel: NatureMainViewModel(), shopViewModel: ShopMainViewModel(), restaurantModel: RestaurantMainViewModel(), experienceViewModel: ExperienceMainViewModel(), isModalShown: $locationModal, selectedLocation: viewModel.state.selectedLocation, startDate: "", endDate: "", title: title)
+                        LocationModalView(viewModel: viewModel, natureViewModel: NatureMainViewModel(), shopViewModel: ShopMainViewModel(), restaurantModel: RestaurantMainViewModel(), experienceViewModel: ExperienceMainViewModel(), searchViewModel: SearchViewModel(), isModalShown: $locationModal, selectedLocation: viewModel.state.selectedLocation, startDate: "", endDate: "", title: title)
                             .presentationDetents([.height(Constants.screenWidth * (58 / 36))])
                     } // 종료 날짜를 선택 안했을 때나, 시작 날짜와 종료날짜를 동일하게 선택 => 당일 조회
                     else if endYearMonthDay == yearMonthDay  || endYearMonthDay == nil {
                         
-                        LocationModalView(viewModel: viewModel, natureViewModel: NatureMainViewModel(), shopViewModel: ShopMainViewModel(), restaurantModel: RestaurantMainViewModel(), experienceViewModel: ExperienceMainViewModel(), isModalShown: $locationModal, selectedLocation: viewModel.state.selectedLocation, startDate: "\(yearMonthDay!.year)" + "\(formattedNumber(yearMonthDay!.month))" + "\(formattedNumber(yearMonthDay!.day))", endDate: "\(yearMonthDay!.year)" + "\(formattedNumber(yearMonthDay!.month))" + "\(formattedNumber(yearMonthDay!.day))", title: title)
+                        LocationModalView(viewModel: viewModel, natureViewModel: NatureMainViewModel(), shopViewModel: ShopMainViewModel(), restaurantModel: RestaurantMainViewModel(), experienceViewModel: ExperienceMainViewModel(), searchViewModel: SearchViewModel(), isModalShown: $locationModal, selectedLocation: viewModel.state.selectedLocation, startDate: "\(yearMonthDay!.year)" + "\(formattedNumber(yearMonthDay!.month))" + "\(formattedNumber(yearMonthDay!.day))", endDate: "\(yearMonthDay!.year)" + "\(formattedNumber(yearMonthDay!.month))" + "\(formattedNumber(yearMonthDay!.day))", title: title)
                             .presentationDetents([.height(Constants.screenWidth * (58 / 36))])
                     } else {
                         // 시작 날짜 종료날짜 다를 때
-                        LocationModalView(viewModel: viewModel, natureViewModel: NatureMainViewModel(), shopViewModel: ShopMainViewModel(), restaurantModel: RestaurantMainViewModel(), experienceViewModel: ExperienceMainViewModel(), isModalShown: $locationModal, selectedLocation: viewModel.state.selectedLocation, startDate:  "\(yearMonthDay!.year)" + "\(formattedNumber(yearMonthDay!.month))" + "\(formattedNumber(yearMonthDay!.day))", endDate:  "\(endYearMonthDay!.year)" + "\(formattedNumber(endYearMonthDay!.month))" + "\(formattedNumber(endYearMonthDay!.day))", title: title)
+                        LocationModalView(viewModel: viewModel, natureViewModel: NatureMainViewModel(), shopViewModel: ShopMainViewModel(), restaurantModel: RestaurantMainViewModel(), experienceViewModel: ExperienceMainViewModel(), searchViewModel: SearchViewModel(), isModalShown: $locationModal, selectedLocation: viewModel.state.selectedLocation, startDate:  "\(yearMonthDay!.year)" + "\(formattedNumber(yearMonthDay!.month))" + "\(formattedNumber(yearMonthDay!.day))", endDate:  "\(endYearMonthDay!.year)" + "\(formattedNumber(endYearMonthDay!.month))" + "\(formattedNumber(endYearMonthDay!.day))", title: title)
                             .presentationDetents([.height(Constants.screenWidth * (58 / 36))])
                     }
                                               
@@ -612,23 +612,23 @@ struct FestivalMainGridView: View {
                     }.opacity(viewModel.state.getFestivalMainResponse.data.count != 0 ? 1 : 0) // 조건부 표시
                 )
             }
-      
-		}
-		.navigationDestination(for: ArticleViewType.self) { viewType in
-			switch viewType {
-			case let .detail(id):
-				FestivalDetailView(id: id)
-			}
-		}
+            
+        }
+        .navigationDestination(for: ArticleViewType.self) { viewType in
+            switch viewType {
+            case let .detail(id):
+                FestivalDetailView(id: id)
+            }
+        }
         .onAppear {
             
             page = 0
-            
+           
             Task {
                 if viewModel.state.location == LocalizedKey.allLocation.localized(for: localizationManager.language){
                     if viewModel.state.getFestivalMainResponse.totalElements == 0{
                         if title == "이번달" {
-                            await getThisMonthFestivalMainItem(page: 0, size: 12, filterName: "", startDate: "", endDate: "")
+                            await getThisMonthFestivalMainItem(page: 0, size: 12, filterName: "", startDate: "\(todayToString())01", endDate: "\(getLastDayOfMonth(for: Date()))") //해당 월의 첫째날 부터 말일 까지
                             isAPICalled = true
                         } else if title == "계절별" {
                             let formatterMonth = DateFormatter()
@@ -686,7 +686,7 @@ struct FestivalMainGridView: View {
                         }
                     }
                 }
-             
+                
                 buttonsToggled = Array(repeating: false, count: viewModel.state.getFestivalMainResponse.data.count)
                 
             }
@@ -743,6 +743,33 @@ struct FestivalMainGridView: View {
     }
     func getSafeArea() ->UIEdgeInsets  {
         return UIApplication.shared.windows.first?.safeAreaInsets ?? UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    
+    func todayToString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyyMM"
+        let todayDateString = dateFormatter.string(from: Date())
+        return todayDateString
+    }
+    
+    func getLastDayOfMonth(for date: Date) -> String {
+        let calendar = Calendar.current
+        // 해당 달의 마지막 날짜를 구하기 위해 월의 범위에서 마지막 일수를 가져옵니다.
+        let range = calendar.range(of: .day, in: .month, for: date)
+        
+        // 마지막 날 계산
+        if let lastDay = range?.last {
+            let components = calendar.dateComponents([.year, .month], from: date)
+            guard let lastDateOfMonth = calendar.date(bySetting: .day, value: lastDay, of: calendar.date(from: components)!) else {
+                return ""
+            }
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"  // 원하는 형식으로 설정
+            
+            return dateFormatter.string(from: lastDateOfMonth)
+        }
+        return ""
     }
 }
 

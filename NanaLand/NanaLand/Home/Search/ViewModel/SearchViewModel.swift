@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUICalendar
 
 @MainActor
 final class SearchViewModel: ObservableObject {
@@ -35,10 +36,25 @@ final class SearchViewModel: ObservableObject {
 		var searchVolumeResult: [Article] = []
 		
 		var isLoading: Bool = false
+        
+        var location = LocalizedKey.allLocation.localized(for: LocalizationManager().language) // 필터 내 어떤 지역이 선택 되었는지 알려주는 변수
+        var selectedLocation: [LocalizedKey] = []
+        var apiLocation = LocalizedKey.allLocation.localized(for: LocalizationManager().language)
+        
+        var selectedStartDate: YearMonthDay? = .current // 선택 시작날짜 오늘 날짜로 초기화
+        var selectedEndDate: YearMonthDay? = .current // 선택 종료날짜 오늘 날짜로 초기화
+        
+        var selectedKeyword: [String] = []
 	}
 	
 	enum Action {
 		case searchTerm(category: Category, term: String)
+        case searchFilterNatureMainItem(term: String, page: Int, filterName: String) // 자연 검색시 지역선택
+        case searchFilterMarketMainItem(term: String, page: Int, filterName: String) // 전통시장 검색시 지역선택
+        case searchFilterFestivalMainItem(term: String, page: Int, startDate: String, endDate: String) // 축제 검색 시 날짜 선택, 추후 장소 선택도 추가하기
+        case searchFilterActivityMainItem(term: String, page: Int, type: String, keyword: String, filterName: String) // 액티비티 검색 시 지역 선택
+        case searchFilterCultureAndArtsMainItem(term: String, page: Int, type: String, keyword: String, filterName: String) // 문화예술 검색 시 지역 선택
+        case searchFilterRestaurantMainItem(term: String, page: Int, keyword: String, filterName: String) // 제주맛집 검색 시 지역 선택
 		case didTapHeartInSearchAll(tab: Category, article: Article)
 		case didTapHeartInSearchDetail(category: Category, article: Article)
 		case didTapHeartInVolumeUp(article: Article)
@@ -58,6 +74,72 @@ final class SearchViewModel: ObservableObject {
 		switch action {
 		case let .searchTerm(category: category, term: term):
 			await search(category: category, term: term)
+        case let .searchFilterNatureMainItem(term: term, page: page, filterName: filterName):
+            let response = await SearchService.searchFilterNatureCategory(term: term, page: page, filterName: filterName)
+            print(response!.data)
+            if response != nil {
+                await MainActor.run {
+                    print(response!.data.totalElements)
+                    state.natureCategorySearchResult.totalElements = response!.data.totalElements
+                    state.natureCategorySearchResult.data.append(contentsOf: response!.data.data)
+                }
+            } else {
+                print("Error")
+            }
+        case let .searchFilterMarketMainItem(term: term, page: page, filterName: filterName):
+            let response = await SearchService.searchFilterMarketCategory(term: term, page: page, filterName: filterName)
+            print(response!.data)
+            if response != nil {
+                await MainActor.run {
+                    print(response!.data.totalElements)
+                    state.marketCategorySearchResult.totalElements = response!.data.totalElements
+                    state.marketCategorySearchResult.data.append(contentsOf: response!.data.data)
+                }
+            } else {
+                print("Error")
+            }
+        case let .searchFilterFestivalMainItem(term: term, page: page, startDate: startDate, endDate: endDate):
+            let response = await SearchService.searchFilterFestivalCategory(term: term, page: page, startDate: startDate, endDate: endDate)
+            if response != nil {
+                await MainActor.run {
+                    state.festivalCategorySearchResult.totalElements = response!.data.totalElements
+                    state.festivalCategorySearchResult.data.append(contentsOf: response!.data.data)
+                }
+            } else {
+                print("Error - searchFilterFestivalMainItem")
+            }
+        case let .searchFilterActivityMainItem(term: term, page: page, type: type, keyword: keyword, filterName: filterName):
+            let response = await SearchService.searchFilterActivityCategory(term: term, page: page, type: type, keyword: keyword, filterName: filterName)
+            if response != nil {
+                await MainActor.run {
+                    state.activityCategorySearchResult.totalElements = response!.data.totalElements
+                    state.activityCategorySearchResult.data.append(contentsOf: response!.data.data)
+                }
+            } else {
+                print("Error - searchFilterAcitivityMainItemError")
+            }
+        case let .searchFilterCultureAndArtsMainItem(term: term, page: page, type: type, keyword: keyword, filterName: filterName):
+            let response = await SearchService.searchFilterCultureAndArtsCategory(term: term, page: page, type: type, keyword: keyword, filterName: filterName)
+            if response != nil {
+                await MainActor.run {
+                    print(response!.data)
+                    state.cultureAndArtsCategorySearchResult.totalElements = response!.data.totalElements
+                    state.cultureAndArtsCategorySearchResult.data.append(contentsOf: response!.data.data)
+                }
+            } else {
+                print("Error - searchFilterCultureAndArtsMainItemError")
+            }
+        case let .searchFilterRestaurantMainItem(term: term, page: page, keyword: keyword, filterName: filterName):
+            let response = await SearchService.searchFilterRestaurantCategory(term: term, page: page, keyword: keyword, filterName: filterName)
+            print(response)
+            if response != nil {
+                await MainActor.run {
+                    state.restaurantCategorySearchResult.totalElements = response!.data.totalElements
+                    state.restaurantCategorySearchResult.data.append(contentsOf: response!.data.data)
+                }
+            } else {
+                print("Error - searchFilterRestaurantMainItemError")
+            }
 		case let .didTapHeartInSearchAll(tab, article):
 			await didTapHeartInSearchAll(tab: tab, article: article)
 		case let .didTapHeartInSearchDetail(category, article):

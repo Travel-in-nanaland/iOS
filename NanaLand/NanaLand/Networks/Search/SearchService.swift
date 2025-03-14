@@ -20,18 +20,30 @@ struct SearchService {
 		
 		return mapSearchDetailArticleToArticle(response, category: .nature)
 	}
+    
+    static func searchFilterNatureCategory(term: String, page: Int, filterName: String) async -> OldBaseResponse<ArticleResponse>? {
+        return await NetworkManager.shared.request(SearchEndPoint.getFilterSearchNatureCategory(term: term, page: page, filterName: filterName))
+    }
 	
 	static func searchMarketCategory(term: String, page: Int) async -> OldBaseResponse<ArticleResponse>? {
 		let response: OldBaseResponse<SearchDetailCategoryResponse>? = await NetworkManager.shared.request(SearchEndPoint.getSearchMarketCategory(term: term, page: page))
 		
 		return mapSearchDetailArticleToArticle(response, category: .market)
 	}
+    
+    static func searchFilterMarketCategory(term: String, page: Int, filterName: String) async -> OldBaseResponse<ArticleResponse>? {
+        return await NetworkManager.shared.request(SearchEndPoint.getFilterSearchMarketCategory(term: term, page: page, filterName: filterName))
+    }
 	
 	static func searchFestivalCategory(term: String, page: Int) async -> OldBaseResponse<ArticleResponse>? {
 		let response: OldBaseResponse<SearchDetailCategoryResponse>? = await NetworkManager.shared.request(SearchEndPoint.getSearchFestivalCategory(term: term, page: page))
 		
 		return mapSearchDetailArticleToArticle(response, category: .festival)
 	}
+    
+    static func searchFilterFestivalCategory(term: String, page: Int, startDate: String, endDate: String) async -> OldBaseResponse<ArticleResponse>? {
+        return await NetworkManager.shared.request(SearchEndPoint.getFilterSearchFestivalCategory(term: term, page: page, startDate: startDate, endDate: endDate))
+    }
 	
 	static func searchActivityCategory(term: String, page: Int) async -> OldBaseResponse<ArticleResponse>? {
 		let response: OldBaseResponse<SearchDetailCategoryResponse>? = await NetworkManager.shared.request(SearchEndPoint.getSearchActivityCategory(term: term, page: page))
@@ -39,10 +51,18 @@ struct SearchService {
 		return mapSearchDetailArticleToArticle(response, category: .activity)
 	}
     
+    static func searchFilterActivityCategory(term: String, page: Int, type: String, keyword: String, filterName: String) async -> OldBaseResponse<ArticleResponse>? {
+        return await NetworkManager.shared.request(SearchEndPoint.getFilterSearchActivityCategory(term: term, page: page, type: type, keyword: keyword, filterName: filterName))
+    }
+    
     static func searchCultureAndArtsCategory(term: String, page: Int) async -> OldBaseResponse<ArticleResponse>? {
         let response: OldBaseResponse<SearchDetailCategoryResponse>? = await NetworkManager.shared.request(SearchEndPoint.getSearchCultureAndArtsCategory(term: term, page: page))
         
         return mapSearchDetailArticleToArticle(response, category: .cultureAndArts)
+    }
+    
+    static func searchFilterCultureAndArtsCategory(term: String, page: Int, type: String, keyword: String, filterName: String) async -> OldBaseResponse<ArticleResponse>? {
+        return await NetworkManager.shared.request(SearchEndPoint.getFilterSearchCultureAndArtsCategory(term: term, page: page, type: type, keyword: keyword, filterName: filterName))
     }
 	
 	static func searchNanaCategory(term: String, page: Int) async -> OldBaseResponse<ArticleResponse>? {
@@ -55,6 +75,10 @@ struct SearchService {
         let response: OldBaseResponse<SearchDetailCategoryResponse>? = await NetworkManager.shared.request(SearchEndPoint.getSearchRestaurantCategory(term: term, page: page))
         
         return mapSearchDetailArticleToArticle(response, category: .restaurant)
+    }
+    
+    static func searchFilterRestaurantCategory(term: String, page: Int, keyword: String, filterName: String) async -> OldBaseResponse<ArticleResponse>? {
+        return await NetworkManager.shared.request(SearchEndPoint.getFilterSearchRestaurantCategory(term: term, page: page, keyword: keyword, filterName: filterName))
     }
     
 	static func getPopularKeyword() async -> OldBaseResponse<[String]>? {

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftUICalendar
 import SwiftUIIntrospect
 
 enum Category: String, CaseIterable, Codable {
@@ -75,6 +76,7 @@ struct SearchResultView: View {
     @State var isCultureAndArtsSearchIsDone: Bool = false
     @State var isRestaurantSearchIsDone: Bool = false
     @State var isNanaSearchIsDone: Bool = false
+    @State var yearMonthDay: YearMonthDay? = nil
     
     let tabs: [Category] = Category.allCases
     
@@ -107,6 +109,8 @@ struct SearchResultView: View {
                     isActivitySearchIsDone = false
                     isCultureAndArtsSearchIsDone = false
                     isRestaurantSearchIsDone = false
+                    searchVM.state.location = LocalizedKey.allLocation.localized(for: LocalizationManager().language) // 검색시 장소 필터 초기화
+                    searchVM.state.selectedLocation = [] // 필터뷰에서 선택된 지역 초기화
                 }
             )
         }
@@ -132,6 +136,8 @@ struct SearchResultView: View {
                     .onTapGesture {
                         withAnimation {
                             searchVM.state.currentSearchTab = tab
+                            searchVM.state.location = LocalizedKey.allLocation.localized(for: LocalizationManager().language) // 검색시 장소 필터 초기화
+                            searchVM.state.selectedLocation = [] // 필터뷰에서 선택된 지역 초기화
                         }
                     }
                 }
@@ -144,7 +150,7 @@ struct SearchResultView: View {
             SearchAllCategoryResultView(searchVM: searchVM)
                 .tag(Category.all)
             
-            SearchDetailCategoryResultView(searchVM: searchVM, tab: .nature, searchTerm: searchTerm)
+            SearchDetailCategoryResultView(searchVM: searchVM, yearMonthDay: $yearMonthDay, tab: .nature, searchTerm: searchTerm)
                 .tag(Category.nature)
                 .onAppear {
                     if !isNatureSearchIsDone {
@@ -155,18 +161,18 @@ struct SearchResultView: View {
                     }
                 }
             
-            SearchDetailCategoryResultView(searchVM: searchVM, tab: .festival, searchTerm: searchTerm)
+            SearchDetailCategoryResultView(searchVM: searchVM, yearMonthDay: $yearMonthDay, tab: .festival, searchTerm: searchTerm)
                 .tag(Category.festival)
                 .onAppear {
                     if !isFestivalSearchIsDone {
                         Task {
-                            await searchVM.action(.searchTerm(category: .festival, term: searchTerm))
+                            await searchVM.action(.searchFilterFestivalMainItem(term: searchTerm, page: 0, startDate: dateToString(), endDate: dateToString()))
                         }
                         isFestivalSearchIsDone = true
                     }
                 }
             
-            SearchDetailCategoryResultView(searchVM: searchVM, tab: .market, searchTerm: searchTerm)
+            SearchDetailCategoryResultView(searchVM: searchVM, yearMonthDay: $yearMonthDay, tab: .market, searchTerm: searchTerm)
                 .tag(Category.market)
                 .onAppear {
                     if !isMarketSearchIsDone {
@@ -177,7 +183,7 @@ struct SearchResultView: View {
                     }
                 }
             
-            SearchDetailCategoryResultView(searchVM: searchVM, tab: .activity, searchTerm: searchTerm)
+            SearchDetailCategoryResultView(searchVM: searchVM, yearMonthDay: $yearMonthDay, tab: .activity, searchTerm: searchTerm, experienceType: "Activity")
                 .tag(Category.activity)
                 .onAppear {
                     if !isActivitySearchIsDone {
@@ -187,7 +193,7 @@ struct SearchResultView: View {
                         isActivitySearchIsDone = true
                     }
                 }
-            SearchDetailCategoryResultView(searchVM: searchVM, tab: .cultureAndArts, searchTerm: searchTerm)
+            SearchDetailCategoryResultView(searchVM: searchVM, yearMonthDay: $yearMonthDay, tab: .cultureAndArts, searchTerm: searchTerm, experienceType: "Culture")
                 .tag(Category.cultureAndArts)
                 .onAppear {
                     if !isCultureAndArtsSearchIsDone {
@@ -197,7 +203,7 @@ struct SearchResultView: View {
                         isCultureAndArtsSearchIsDone = true
                     }
                 }
-            SearchDetailCategoryResultView(searchVM: searchVM, tab: .restaurant, searchTerm: searchTerm)
+            SearchDetailCategoryResultView(searchVM: searchVM, yearMonthDay: $yearMonthDay, tab: .restaurant, searchTerm: searchTerm)
                 .tag(Category.restaurant)
                 .onAppear {
                     if !isRestaurantSearchIsDone {
@@ -209,7 +215,7 @@ struct SearchResultView: View {
                 }
             
             
-            SearchDetailCategoryResultView(searchVM: searchVM, tab: .nanaPick, searchTerm: searchTerm)
+            SearchDetailCategoryResultView(searchVM: searchVM, yearMonthDay: $yearMonthDay, tab: .nanaPick, searchTerm: searchTerm)
                 .tag(Category.nanaPick)
                 .onAppear {
                     if !isNanaSearchIsDone {
@@ -224,6 +230,15 @@ struct SearchResultView: View {
         .introspect(.scrollView, on: .iOS(.v16, .v17, .v18)) { scrollView in
             scrollView.isScrollEnabled = false
         }
+    }
+    
+    private func dateToString() -> String {
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        let dateString = dateFormatter.string(from: date)
+        return dateString
     }
 }
 

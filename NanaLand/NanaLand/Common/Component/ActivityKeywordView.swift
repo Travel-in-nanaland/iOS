@@ -13,15 +13,17 @@ struct ActivityKeywordView: View {
     @Binding var keyword: String
     var address: String
     @ObservedObject var viewModel: ExperienceMainViewModel
+    @ObservedObject var searchViewModel: SearchViewModel
     @State private var selectedKeywordItem = 0
     @State var selectedKeyword: [String] // 선택된 키워드 이름 담을 배열
     @State var selectedAPIKeyword: [String] = []
+    var title = "" // 검색인지 카테고리인지
     // 눌려진 키워드 버튼 담을 배열(눌렸는지 안 눌렸는지)
     @State var buttonsToggled = Array(repeating: false, count: 6)
     var ActivityKeywordArray = ["LAND_LEISURE", "WATER_LEISURE", "AIR_LEISURE", "MARINE_EXPERIENCE", "RURAL_EXPERIENCE", "HEALING_THERAPY"]
     var ActivityKeywordButtonNameArray = [LocalizedKey.groundLeisure.localized(for: LocalizationManager().language), LocalizedKey.waterLeisure.localized(for: LocalizationManager().language), LocalizedKey.aviationLeisure.localized(for: LocalizationManager().language), LocalizedKey.marineExperience.localized(for: LocalizationManager().language), LocalizedKey.ruralExperience.localized(for: LocalizationManager().language), LocalizedKey.healingTherapy.localized(for: LocalizationManager().language)]
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
-    
+    var searchTerm = ""
     var body: some View {
         VStack(spacing: 0) {
             titleAndCloseButtonView
@@ -90,9 +92,15 @@ struct ActivityKeywordView: View {
                 }
                 keyword = selectedAPIKeyword.joined(separator: ",")
                 Task {
-                    viewModel.state.getExperienceMainResponse = ExperienceMainModel(totalElements: 0, data: [])
-                    await getKeywordExperienceMainItem(keyword: selectedKeyword.joined(separator: ","), address: address == LocalizedKey.allLocation.localized(for: LocalizationManager().language) ? "" : address, page: 0, size: 12)
-                    viewModel.state.page = 0
+                    if title == "" { // 카테고리에서 들어왔을 때
+                        viewModel.state.getExperienceMainResponse = ExperienceMainModel(totalElements: 0, data: [])
+                        await getKeywordExperienceMainItem(keyword: selectedKeyword.joined(separator: ","), address: address == LocalizedKey.allLocation.localized(for: LocalizationManager().language) ? "" : address, page: 0, size: 12)
+                        viewModel.state.page = 0
+                    } else { // 검색 시
+                        searchViewModel.state.activityCategorySearchResult = ArticleResponse(totalElements: 0, data: [])
+                        await getFilterKeywordExperienceMainItem(keyword: selectedKeyword.joined(separator: ","), filterName: address == LocalizedKey.allLocation.localized(for: LocalizationManager().language) ? "" : address, page: 0, term: searchTerm)
+                    }
+                    
                     if keyword.isEmpty {
                         keyword = LocalizedKey.keyword.localized(for: LocalizationManager().language)
                     }
@@ -166,6 +174,11 @@ struct ActivityKeywordView: View {
     func getKeywordExperienceMainItem(keyword: String, address: String, page: Int, size: Int) async {
         await viewModel.action(.getExperienceMainItem(experienceType: "ACTIVITY", keyword: keyword, address: address, page: 0, size: 12))
         viewModel.state.selectedKeyword = selectedKeyword
+    }
+    
+    func getFilterKeywordExperienceMainItem(keyword: String, filterName: String, page: Int, term: String) async {
+        await searchViewModel.action(.searchFilterActivityMainItem(term: term, page: page, type: "ACTIVITY", keyword: keyword, filterName: filterName))
+        searchViewModel.state.selectedKeyword = selectedKeyword
     }
     
     func updateButtonsToggled() {

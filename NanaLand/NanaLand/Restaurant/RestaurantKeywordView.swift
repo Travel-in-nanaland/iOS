@@ -11,10 +11,14 @@ import SwiftUI
 struct RestaurantKeywordView: View {
     @Environment(\.dismiss) var dismiss
     @Binding var keyword: String
+    var address: String = ""
     @ObservedObject var viewModel: RestaurantMainViewModel
+    @ObservedObject var searchViewModel = SearchViewModel()
     @EnvironmentObject var localizationManager: LocalizationManager
     @State var selectedKeyword: [String] // 선택된 키워드 이름 담을 배열
     @State var selectedKeywordName: [String] = []
+    var title = "" // 검색으로 들어왔는지 카테고리로 들어왔는지 구분하기 위한 변수
+    var searchTerm = ""
     // 눌려진 키워드 버튼 담을 배열(눌렸는지 안 눌렸는지)
     @State var buttonsToggled = Array(repeating: false, count: 14)
     var RestaurantKeyword = ["KOREAN", "CHINESE", "JAPANESE", "WESTERN", "SNACK", "SOUTH_AMERICAN", "SOUTHEAST_ASIAN", "VEGAN", "HALAL", "MEAT_BLACK_PORK", "SEAFOOD", "CHICKEN_BURGER", "CAFE_DESSERT", "PUB_FOOD_PUB"]
@@ -106,9 +110,19 @@ struct RestaurantKeywordView: View {
                 }
                 keyword = selectedKeywordName.joined(separator: ",")
                 Task {
-                    viewModel.state.getRestaurantMainResponse = RestaurantMainModel(totalElements: 0, data: [])
-                    await getKeywordRestaurantMainItem(keyword: selectedKeyword.joined(separator: ","), address: viewModel.state.apiLocation == LocalizedKey.allLocation.localized(for: LocalizationManager().language) ? "" : viewModel.state.apiLocation, page: 0, size: 12)
-                    viewModel.state.page = 0
+                    
+                    if title == "" { // 카테고리에서 들어 왔을 때
+                        print("카테고리")
+                        viewModel.state.getRestaurantMainResponse = RestaurantMainModel(totalElements: 0, data: [])
+                        await getKeywordRestaurantMainItem(keyword: selectedKeyword.joined(separator: ","), address: viewModel.state.apiLocation == LocalizedKey.allLocation.localized(for: LocalizationManager().language) ? "" : viewModel.state.apiLocation, page: 0, size: 12)
+                        viewModel.state.page = 0
+                        
+                    } else { // 검색 시
+                        print("검색 시")
+                        searchViewModel.state.restaurantCategorySearchResult = ArticleResponse(totalElements: 0, data: [])
+                        await getFilterKeywordRestaurantMainItem(keyword: selectedKeyword.joined(separator: ","), filterName: address == LocalizedKey.allLocation.localized(for: LocalizationManager().language) ? "" : address, page: 0, term: searchTerm)
+                    }
+                
                     if keyword.isEmpty {
                         keyword = LocalizedKey.type.localized(for: localizationManager.language)
                     }
@@ -190,6 +204,12 @@ struct RestaurantKeywordView: View {
         print("주소:\(address)")
         await viewModel.action(.getRestaurantMainItem(keyword: keyword, address: address, page: 0, size: 12))
         viewModel.state.selectedKeyword = selectedKeyword
+    }
+    
+    func getFilterKeywordRestaurantMainItem(keyword: String, filterName: String, page: Int, term: String) async {
+        print("apifunc")
+        await searchViewModel.action(.searchFilterRestaurantMainItem(term: term, page: page, keyword: keyword, filterName: filterName))
+        searchViewModel.state.selectedKeyword = selectedKeyword
     }
 }
 

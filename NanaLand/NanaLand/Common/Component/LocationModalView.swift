@@ -14,6 +14,7 @@ struct LocationModalView: View {
     @ObservedObject var shopViewModel: ShopMainViewModel
     @ObservedObject var restaurantModel: RestaurantMainViewModel
     @ObservedObject var experienceViewModel: ExperienceMainViewModel
+    @ObservedObject var searchViewModel: SearchViewModel
     @EnvironmentObject var localizationManager: LocalizationManager
     
 //    @Binding var location: String
@@ -29,6 +30,7 @@ struct LocationModalView: View {
     var title: String // 이번달 축제인지, 종료된 축제인지
     var type = "" // 이색체험 액티비티인지 문화예술인지
     var keyword = "" // 키워드 필터링
+    var searchTerm = ""
     @State var APIKeyword = ""
     let translations = [
         LocalizedKey.groundLeisure.localized(for: LocalizationManager().language): "LAND_LEISURE",
@@ -285,8 +287,8 @@ struct LocationModalView: View {
                         }
                         await getLocationExperienceMainItem(filterName: selectedLocationStrings.joined(separator: ","), page: 0, size: 12, type: type, keyword: keyword == LocalizedKey.type.localized(for: localizationManager.language) ? "" : APIKeyword)
                         experienceViewModel.state.page = 0
-                        experienceViewModel.state.selectedLocation = selectedLocation
                         
+                        experienceViewModel.state.selectedLocation = selectedLocation
                         experienceViewModel.state.apiLocation = selectedLocationStrings.joined(separator: ",")
                         experienceViewModel.state.location = selectedLocation.map { $0.localized(for: localizationManager.language) }.joined(separator: ",")
                         
@@ -311,6 +313,60 @@ struct LocationModalView: View {
                         // 장소 선택 안 할시 전 지역
                         if restaurantModel.state.location.isEmpty {
                             restaurantModel.state.location = LocalizedKey.allLocation.localized(for: localizationManager.language)
+                        }
+                    } else if (title == "searchNature" || title == "searchMarket" || title == "searchActivity" || title == "searchCulture" || title == "searchRestaurant") {
+                        if title == "searchNature" {
+                            searchViewModel.state.natureCategorySearchResult = ArticleResponse(totalElements: 0, data: [])
+                            searchViewModel.state.naturePage = 0
+                            await getLocationSearchNatureMainItem(term: searchTerm, page: 0, filterName: selectedLocationStrings.joined(separator: ","))
+                        } else if title == "searchMarket" {
+                            searchViewModel.state.marketCategorySearchResult = ArticleResponse(totalElements: 0, data: [])
+                            searchViewModel.state.marketPage = 0
+                            await getLocationSearchMarketMainItem(term: searchTerm, page: 0, filterName: selectedLocationStrings.joined(separator: ","))
+                        } else if title == "searchActivity" {
+                            print("searchActibvity")
+                            searchViewModel.state.activityCategorySearchResult = ArticleResponse(totalElements: 0, data: [])
+                            searchViewModel.state.activityPage = 0
+                            APIKeyword = keyword
+                            
+                            for (key, value) in translations {
+                                APIKeyword = APIKeyword.replacingOccurrences(of: key, with: value)
+                            }
+                            print(keyword)
+                            await getLocationActivityMainItem(filterName: selectedLocationStrings.joined(separator: ","), page: 0, type: "ACTIVITY", keyword: keyword == LocalizedKey.keyword.localized(for: localizationManager.language) ? "" : APIKeyword, term: searchTerm)
+                            
+                        } else if title == "searchCulture" {
+                            print("searchCulture")
+                            searchViewModel.state.cultureAndArtsCategorySearchResult = ArticleResponse(totalElements: 0, data: [])
+                            searchViewModel.state.cultureAndArtsPage = 0
+                            APIKeyword = keyword
+                            
+                            for (key, value) in translations {
+                                APIKeyword = APIKeyword.replacingOccurrences(of: key, with: value)
+                            }
+                            print(keyword)
+                            await getLocationCultureAndArtsMainItem(filterName: selectedLocationStrings.joined(separator: ","), page: 0, type: "CULTURE_AND_ARTS", keyword: keyword == LocalizedKey.keyword.localized(for: localizationManager.language) ? "" : APIKeyword, term: searchTerm)
+                            
+                        } else if title == "searchRestaurant" {
+                            print("searchRestaurant")
+                            searchViewModel.state.restaurantCategorySearchResult = ArticleResponse(totalElements: 0, data: [])
+                            searchViewModel.state.restaurantPage = 0
+                            APIKeyword = keyword
+                            
+                            for (key, value) in restaurantTranslations {
+                                APIKeyword = APIKeyword.replacingOccurrences(of: key, with: value)
+                            }
+                            print("term:\(searchTerm)")
+                            await getLocationRestaurantMainItem(filterName: selectedLocationStrings.joined(separator: ","), page: 0, keyword: keyword == LocalizedKey.keyword.localized(for: localizationManager.language) ? "" : APIKeyword, term: searchTerm)
+                            
+                        }
+                        searchViewModel.state.location = selectedLocation.map { $0.localized(for: localizationManager.language)}.joined(separator: ",")
+                        searchViewModel.state.selectedLocation = selectedLocation
+                        
+                        searchViewModel.state.apiLocation = selectedLocationStrings.joined(separator: ",")
+                        // 장소 선택 안 할시 전 지역
+                        if searchViewModel.state.location.isEmpty {
+                            searchViewModel.state.location = LocalizedKey.allLocation.localized(for: localizationManager.language)
                         }
                     }
                 }
@@ -364,6 +420,31 @@ struct LocationModalView: View {
         await restaurantModel.action(.getRestaurantMainItem(keyword: keyword == LocalizedKey.type.localized(for: LocalizationManager().language) ? "" : keyword, address: filterName, page: page, size: size))
     }
     
+    // 자연 검색에서 지역 선택 시
+    func getLocationSearchNatureMainItem(term:String, page: Int, filterName: String) async {
+        await searchViewModel.action(.searchFilterNatureMainItem(term: term, page: page, filterName: filterName))
+    }
+    
+    // 전통시장 검색에서 지역 선택 시
+    func getLocationSearchMarketMainItem(term: String, page: Int, filterName: String) async {
+        await searchViewModel.action(.searchFilterMarketMainItem(term: term, page: page, filterName: filterName))
+    }
+    
+    // 액티비티에서 지역 선택 시
+    func getLocationActivityMainItem(filterName: String, page: Int, type: String, keyword: String, term: String) async { // 지역필터, 액티비티, 키워드, 검색어
+        await searchViewModel.action(.searchFilterActivityMainItem(term: term, page: page, type: type, keyword: keyword, filterName: filterName))
+    }
+    
+    // 문화예술에서 지역 선택 시
+    func getLocationCultureAndArtsMainItem(filterName: String, page: Int, type: String, keyword: String, term: String) async {
+        await searchViewModel.action(.searchFilterCultureAndArtsMainItem(term: term, page: page, type: type, keyword: keyword, filterName: filterName))
+    }
+    
+    // 제주맛집에서 지역 선택 시
+    func getLocationRestaurantMainItem(filterName: String, page: Int, keyword: String, term: String) async {
+        await searchViewModel.action(.searchFilterRestaurantMainItem(term: term, page: page, keyword: keyword, filterName: filterName))
+    }
+    
     func toggleButton(_ index: Int) {
         buttonsToggled[index].toggle()
         if buttonsToggled[index] {
@@ -390,6 +471,7 @@ struct LocationModalView: View {
         shopViewModel: ShopMainViewModel(),// Assuming ShopMainViewModel() has an init method
         restaurantModel: RestaurantMainViewModel(),
         experienceViewModel: ExperienceMainViewModel(),
+        searchViewModel: SearchViewModel(),
         isModalShown: .constant(true),
         selectedLocation: [], startDate: "2024-05-01",
         endDate: "2024-05-31",
