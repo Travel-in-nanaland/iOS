@@ -136,6 +136,9 @@
 		6D2995282C557C25006AA447 /* MyReviewArticleItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2995272C557C25006AA447 /* MyReviewArticleItemView.swift */; };
 		6D29952A2C5596DF006AA447 /* NoticeMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2995292C5596DF006AA447 /* NoticeMainView.swift */; };
 		6D29952C2C5599C5006AA447 /* NoticeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D29952B2C5599C5006AA447 /* NoticeDetailView.swift */; };
+		6D2AF6712D71855900CA11A9 /* EmptyNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2AF6702D71855900CA11A9 /* EmptyNotificationView.swift */; };
+		6D2AF6732D7186C600CA11A9 /* EmptyNoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2AF6722D7186C600CA11A9 /* EmptyNoticeView.swift */; };
+		6D38DCA32D7E756000332934 /* EmptyFestivalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D38DCA22D7E756000332934 /* EmptyFestivalView.swift */; };
 		6D48AA0A2C75C2A000E16429 /* NewNanaPickMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D48AA092C75C2A000E16429 /* NewNanaPickMainView.swift */; };
 		6D48AA0C2C75C65E00E16429 /* NewNanaPickMainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D48AA0B2C75C65E00E16429 /* NewNanaPickMainModel.swift */; };
 		6D48AA0E2C75C66800E16429 /* NewNanaPickMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D48AA0D2C75C66800E16429 /* NewNanaPickMainViewModel.swift */; };
@@ -160,6 +163,11 @@
 		6D6D308F2C61FAAF00002F77 /* review_restaurant.json in Resources */ = {isa = PBXBuildFile; fileRef = 6D6D308C2C61FAAF00002F77 /* review_restaurant.json */; };
 		6D6D30902C61FAAF00002F77 /* report_complete.json in Resources */ = {isa = PBXBuildFile; fileRef = 6D6D308D2C61FAAF00002F77 /* report_complete.json */; };
 		6D6D30912C61FAAF00002F77 /* review_experience.json in Resources */ = {isa = PBXBuildFile; fileRef = 6D6D308E2C61FAAF00002F77 /* review_experience.json */; };
+		6D711E312D6C83DF001B3DE4 /* KakaoMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D711E302D6C83DF001B3DE4 /* KakaoMapView.swift */; };
+		6D711E342D6C8E98001B3DE4 /* KakaoMapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D711E332D6C8E98001B3DE4 /* KakaoMapController.swift */; };
+		6D711E372D6C8EC7001B3DE4 /* KakaoMapsSDK-SPM in Frameworks */ = {isa = PBXBuildFile; productRef = 6D711E362D6C8EC7001B3DE4 /* KakaoMapsSDK-SPM */; };
+		6D711E3A2D6C9C0F001B3DE4 /* AddressEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D711E392D6C9C0F001B3DE4 /* AddressEndPoint.swift */; };
+		6D711E3C2D6C9C1B001B3DE4 /* AddressService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D711E3B2D6C9C1B001B3DE4 /* AddressService.swift */; };
 		6D722C062D2F6E8C006ACD8D /* NoResultFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D722C052D2F6E8C006ACD8D /* NoResultFilterView.swift */; };
 		6D76022F2CEA587B00C49EDC /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 6D76022E2CEA587B00C49EDC /* loading.json */; };
 		6D7756752C8F4E190085D747 /* SearchReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7756742C8F4E190085D747 /* SearchReviewView.swift */; };
@@ -190,7 +198,9 @@
 		6DCFB19E2D191F7B00A622EB /* UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCFB19D2D191F7B00A622EB /* UserInfoModel.swift */; };
 		6DD11F422C51545C00363B08 /* TypeTestProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD11F412C51545C00363B08 /* TypeTestProfileView.swift */; };
 		6DD11F442C5161E500363B08 /* ReviewArticleItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD11F432C5161E500363B08 /* ReviewArticleItemView.swift */; };
+		6DF06DAF2D6D987F00465584 /* KakaoGecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF06DAE2D6D987F00465584 /* KakaoGecoder.swift */; };
 		6DF18F082C6E25130021ED5B /* TestLoading.json in Resources */ = {isa = PBXBuildFile; fileRef = 6DF18F072C6E25120021ED5B /* TestLoading.json */; };
+		6DF2251F2D6FEF3900849580 /* DifferentMapModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF2251E2D6FEF3900849580 /* DifferentMapModal.swift */; };
 		6DFF08EE2D3BFBB80052A4E3 /* LottieWithTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFF08ED2D3BFBB80052A4E3 /* LottieWithTextView.swift */; };
 		9C6A9C3E2BCC1BAE000413AD /* Fonts+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6A9C3D2BCC1BAE000413AD /* Fonts+.swift */; };
 		9C6A9C632BCC22CE000413AD /* AppleSDGothicNeoL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C6A9C5A2BCC22CE000413AD /* AppleSDGothicNeoL.ttf */; };
@@ -473,6 +483,9 @@
 		6D2995272C557C25006AA447 /* MyReviewArticleItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReviewArticleItemView.swift; sourceTree = "<group>"; };
 		6D2995292C5596DF006AA447 /* NoticeMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeMainView.swift; sourceTree = "<group>"; };
 		6D29952B2C5599C5006AA447 /* NoticeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeDetailView.swift; sourceTree = "<group>"; };
+		6D2AF6702D71855900CA11A9 /* EmptyNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyNotificationView.swift; sourceTree = "<group>"; };
+		6D2AF6722D7186C600CA11A9 /* EmptyNoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyNoticeView.swift; sourceTree = "<group>"; };
+		6D38DCA22D7E756000332934 /* EmptyFestivalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyFestivalView.swift; sourceTree = "<group>"; };
 		6D48AA092C75C2A000E16429 /* NewNanaPickMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNanaPickMainView.swift; sourceTree = "<group>"; };
 		6D48AA0B2C75C65E00E16429 /* NewNanaPickMainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNanaPickMainModel.swift; sourceTree = "<group>"; };
 		6D48AA0D2C75C66800E16429 /* NewNanaPickMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNanaPickMainViewModel.swift; sourceTree = "<group>"; };
@@ -497,6 +510,10 @@
 		6D6D308C2C61FAAF00002F77 /* review_restaurant.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = review_restaurant.json; sourceTree = "<group>"; };
 		6D6D308D2C61FAAF00002F77 /* report_complete.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = report_complete.json; sourceTree = "<group>"; };
 		6D6D308E2C61FAAF00002F77 /* review_experience.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = review_experience.json; sourceTree = "<group>"; };
+		6D711E302D6C83DF001B3DE4 /* KakaoMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoMapView.swift; sourceTree = "<group>"; };
+		6D711E332D6C8E98001B3DE4 /* KakaoMapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoMapController.swift; sourceTree = "<group>"; };
+		6D711E392D6C9C0F001B3DE4 /* AddressEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressEndPoint.swift; sourceTree = "<group>"; };
+		6D711E3B2D6C9C1B001B3DE4 /* AddressService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressService.swift; sourceTree = "<group>"; };
 		6D722C052D2F6E8C006ACD8D /* NoResultFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoResultFilterView.swift; sourceTree = "<group>"; };
 		6D76022E2CEA587B00C49EDC /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		6D7756742C8F4E190085D747 /* SearchReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchReviewView.swift; sourceTree = "<group>"; };
@@ -528,7 +545,9 @@
 		6DCFB19D2D191F7B00A622EB /* UserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoModel.swift; sourceTree = "<group>"; };
 		6DD11F412C51545C00363B08 /* TypeTestProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeTestProfileView.swift; sourceTree = "<group>"; };
 		6DD11F432C5161E500363B08 /* ReviewArticleItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewArticleItemView.swift; sourceTree = "<group>"; };
+		6DF06DAE2D6D987F00465584 /* KakaoGecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoGecoder.swift; sourceTree = "<group>"; };
 		6DF18F072C6E25120021ED5B /* TestLoading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TestLoading.json; sourceTree = "<group>"; };
+		6DF2251E2D6FEF3900849580 /* DifferentMapModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifferentMapModal.swift; sourceTree = "<group>"; };
 		6DFF08ED2D3BFBB80052A4E3 /* LottieWithTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieWithTextView.swift; sourceTree = "<group>"; };
 		9C6A9C3D2BCC1BAE000413AD /* Fonts+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fonts+.swift"; sourceTree = "<group>"; };
 		9C6A9C5A2BCC22CE000413AD /* AppleSDGothicNeoL.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoL.ttf; sourceTree = "<group>"; };
@@ -664,6 +683,7 @@
 				BF85F6602CD3617A0020BDBF /* FirebaseAuth in Frameworks */,
 				2C80ECEA2BDAA551002F38A7 /* SwiftUICalendar in Frameworks */,
 				2C219B532C16FE53001F4C28 /* FirebaseRemoteConfig in Frameworks */,
+				6D711E372D6C8EC7001B3DE4 /* KakaoMapsSDK-SPM in Frameworks */,
 				BFB73BB72C05BA6A00A9A10E /* SDWebImageSwiftUI in Frameworks */,
 				BF85F65E2CD3614F0020BDBF /* FirebaseFirestore in Frameworks */,
 				2C3C75AF2BCA3C5000312F26 /* Alamofire in Frameworks */,
@@ -828,6 +848,7 @@
 		2C3C75C02BCA540200312F26 /* Networks */ = {
 			isa = PBXGroup;
 			children = (
+				6D711E382D6C9BFD001B3DE4 /* Address */,
 				BF8EF0672D07D77600A722BB /* File */,
 				6D799D452D1D3737003954C1 /* PreSignedUpload */,
 				BFC7AF282C7EDBB800432ECC /* Notification */,
@@ -901,6 +922,7 @@
 				BF0D58962C60DAE20042D6BC /* ExpandableText.swift */,
 				6D722C052D2F6E8C006ACD8D /* NoResultFilterView.swift */,
 				6D224A822D5F016F001EB871 /* PhotoModalView.swift */,
+				6D711E322D6C8E8C001B3DE4 /* KakaoMap */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -1199,6 +1221,7 @@
 				6D9EDADA2C5B5285003A8DE5 /* NoticeMainViewModel.swift */,
 				6D9EDAE12C5B59AE003A8DE5 /* NoticeDetailModel.swift */,
 				6D9EDAE32C5B59B8003A8DE5 /* NoticeDetailViewModel.swift */,
+				6D2AF6722D7186C600CA11A9 /* EmptyNoticeView.swift */,
 			);
 			path = Notice;
 			sourceTree = "<group>";
@@ -1266,6 +1289,26 @@
 				6D61BF0C2C83CCF6006EE92B /* ProfileRecommendView.swift */,
 			);
 			path = TypeTest;
+			sourceTree = "<group>";
+		};
+		6D711E322D6C8E8C001B3DE4 /* KakaoMap */ = {
+			isa = PBXGroup;
+			children = (
+				6D711E302D6C83DF001B3DE4 /* KakaoMapView.swift */,
+				6D711E332D6C8E98001B3DE4 /* KakaoMapController.swift */,
+				6DF06DAE2D6D987F00465584 /* KakaoGecoder.swift */,
+				6DF2251E2D6FEF3900849580 /* DifferentMapModal.swift */,
+			);
+			path = KakaoMap;
+			sourceTree = "<group>";
+		};
+		6D711E382D6C9BFD001B3DE4 /* Address */ = {
+			isa = PBXGroup;
+			children = (
+				6D711E392D6C9C0F001B3DE4 /* AddressEndPoint.swift */,
+				6D711E3B2D6C9C1B001B3DE4 /* AddressService.swift */,
+			);
+			path = Address;
 			sourceTree = "<group>";
 		};
 		6D799D452D1D3737003954C1 /* PreSignedUpload */ = {
@@ -1463,6 +1506,7 @@
 				BFABD3502BE7634100C3F3A6 /* FestivalModel.swift */,
 				BF607F142BF5A15E00770CE7 /* FestivalDetailModel.swift */,
 				BF9F029A2BD8F567003E72E6 /* NoResultView.swift */,
+				6D38DCA22D7E756000332934 /* EmptyFestivalView.swift */,
 			);
 			path = Festival;
 			sourceTree = "<group>";
@@ -1577,6 +1621,7 @@
 				2C2749A52C0EEF6C00ECBA71 /* NotificationView.swift */,
 				BFC7AF262C7EDBA600432ECC /* NotificationViewModel.swift */,
 				BFC7AF2D2C7EDD6500432ECC /* NotificationModel.swift */,
+				6D2AF6702D71855900CA11A9 /* EmptyNotificationView.swift */,
 			);
 			path = Notification;
 			sourceTree = "<group>";
@@ -1671,6 +1716,7 @@
 				BF8F85BF2C7B7BC60066432C /* FirebaseMessaging */,
 				BF85F65D2CD3614F0020BDBF /* FirebaseFirestore */,
 				BF85F65F2CD3617A0020BDBF /* FirebaseAuth */,
+				6D711E362D6C8EC7001B3DE4 /* KakaoMapsSDK-SPM */,
 			);
 			productName = NanaLand;
 			productReference = 2C3C75802BCA3ADA00312F26 /* NanaLand.app */;
@@ -1761,6 +1807,7 @@
 				2C219B4F2C16FE53001F4C28 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				6D0E90D62C54659900F8D686 /* XCRemoteSwiftPackageReference "MasonryStack" */,
 				BF0D58982C61D81F0042D6BC /* XCRemoteSwiftPackageReference "CustomAlert" */,
+				6D711E352D6C8EC7001B3DE4 /* XCRemoteSwiftPackageReference "KakaoMapsSDK-SPM" */,
 			);
 			productRefGroup = 2C3C75812BCA3ADA00312F26 /* Products */;
 			projectDirPath = "";
@@ -1848,6 +1895,7 @@
 				2C9CF4DC2BFE0EA800A346E8 /* ReportInfoResultView.swift in Sources */,
 				BF3021EE2BDF8E9300CB3966 /* ShopDetailService.swift in Sources */,
 				BF06B36E2C4AADAE000E43ED /* ExperienceDetailModel.swift in Sources */,
+				6DF06DAF2D6D987F00465584 /* KakaoGecoder.swift in Sources */,
 				BF1510D82C4502F700BC2DE6 /* ExperienceMainModel.swift in Sources */,
 				2C2D3D552C038A54002A38AA /* LocalizedKey.swift in Sources */,
 				BF22B8032C460F7D0059B380 /* ExperienceService.swift in Sources */,
@@ -1868,6 +1916,7 @@
 				BF17B5FE2C5B261B0045B6E3 /* UserProfileMainView.swift in Sources */,
 				BF06B36A2C4AAD91000E43ED /* ExperienceDetailView.swift in Sources */,
 				BF7F7F622BE613400000F08A /* NatureService.swift in Sources */,
+				6D711E3A2D6C9C0F001B3DE4 /* AddressEndPoint.swift in Sources */,
 				2C80ECBA2BCFCCB7002F38A7 /* NetworkManager.swift in Sources */,
 				2C80ECD12BD4AEDE002F38A7 /* NanaNavigationBar.swift in Sources */,
 				BF80FDA32BFB2BEF00C5DA2D /* ProfileUpdateModel.swift in Sources */,
@@ -1887,10 +1936,12 @@
 				BF22B8052C460F880059B380 /* ExperienceEndPoint.swift in Sources */,
 				2C80ECDA2BD63BAA002F38A7 /* FavoriteEndPoint.swift in Sources */,
 				2C5424FE2BF7131600B16439 /* TypeTestResultView.swift in Sources */,
+				6D38DCA32D7E756000332934 /* EmptyFestivalView.swift in Sources */,
 				BFF6466A2C00DDEA00BCC41F /* HomeEndPoint.swift in Sources */,
 				6D9EDAE42C5B59B8003A8DE5 /* NoticeDetailViewModel.swift in Sources */,
 				6DFF08EE2D3BFBB80052A4E3 /* LottieWithTextView.swift in Sources */,
 				BF607F172BF5A29E00770CE7 /* FestivalDetailService.swift in Sources */,
+				6D2AF6732D7186C600CA11A9 /* EmptyNoticeView.swift in Sources */,
 				BFBC51412C5BC7E00076FE57 /* ReportModalView.swift in Sources */,
 				2C9CF4E62C00701E00A346E8 /* TypeTestNavigationView.swift in Sources */,
 				2C9CF4D32BFDC4EB00A346E8 /* ReportInfoWritingView.swift in Sources */,
@@ -1934,6 +1985,7 @@
 				6DCFB19E2D191F7B00A622EB /* UserInfoModel.swift in Sources */,
 				BF2D93792BFF12D30057381A /* PolicyViewModel.swift in Sources */,
 				6D9EDAE02C5B52E3003A8DE5 /* NoticeEndPoint.swift in Sources */,
+				6D2AF6712D71855900CA11A9 /* EmptyNotificationView.swift in Sources */,
 				2C40DB832BE62259007A3768 /* LanguageSelectView.swift in Sources */,
 				6D9EDAD32C5B47B4003A8DE5 /* RestaurantKeywordView.swift in Sources */,
 				6D91F2F02D1EE63A009AEE5B /* ReviewModifyModal.swift in Sources */,
@@ -1966,6 +2018,7 @@
 				BF80FDA92BFB539400C5DA2D /* ProfileUpdateViewModel.swift in Sources */,
 				BF7F7F5F2BE613400000F08A /* NatureEndPoint.swift in Sources */,
 				BF7F7F612BE613400000F08A /* NatureDetailService.swift in Sources */,
+				6DF2251F2D6FEF3900849580 /* DifferentMapModal.swift in Sources */,
 				6D799D492D1D375E003954C1 /* PreSignedUploadEndPoint.swift in Sources */,
 				2C2749912C09E0F700ECBA71 /* UIApplication+.swift in Sources */,
 				2C80ECBF2BCFCCFE002F38A7 /* APITask.swift in Sources */,
@@ -1976,6 +2029,7 @@
 				BFF8E9E92C045B830081C0A6 /* LanguageView.swift in Sources */,
 				BF138BCA2CEEFCD10013F1C0 /* HotModel.swift in Sources */,
 				2C2749832C09833500ECBA71 /* String+.swift in Sources */,
+				6D711E312D6C83DF001B3DE4 /* KakaoMapView.swift in Sources */,
 				6D9EDADE2C5B52DA003A8DE5 /* NoticeService.swift in Sources */,
 				6D130D002C788D61005FCD99 /* NewNanaPickDetailService.swift in Sources */,
 				2C40DB9A2BE64973007A3768 /* NanaHome.swift in Sources */,
@@ -1991,10 +2045,12 @@
 				BFABD3512BE7634100C3F3A6 /* FestivalModel.swift in Sources */,
 				BF9834182BCE700B00A5C289 /* FestivalMainView.swift in Sources */,
 				2C5425002BF72C3500B16439 /* TripType.swift in Sources */,
+				6D711E3C2D6C9C1B001B3DE4 /* AddressService.swift in Sources */,
 				2C3C75D12BCAAFF300312F26 /* FavoriteMainView.swift in Sources */,
 				BF4F6C6C2BD5560A009F070F /* NaNaPickDetailViewModel.swift in Sources */,
 				2C80ECAD2BCF6201002F38A7 /* SearchService.swift in Sources */,
 				2C9CF4E42BFEE59200A346E8 /* ArticleDetailViewType.swift in Sources */,
+				6D711E342D6C8E98001B3DE4 /* KakaoMapController.swift in Sources */,
 				6D48AA0C2C75C65E00E16429 /* NewNanaPickMainModel.swift in Sources */,
 				2C80ECF02BDBE44C002F38A7 /* RoundedCorners.swift in Sources */,
 				BFABD34F2BE75F4600C3F3A6 /* FestivalEndPoint.swift in Sources */,
@@ -2548,6 +2604,14 @@
 				minimumVersion = 0.1.0;
 			};
 		};
+		6D711E352D6C8EC7001B3DE4 /* XCRemoteSwiftPackageReference "KakaoMapsSDK-SPM" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kakao-mapsSDK/KakaoMapsSDK-SPM.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.12.5;
+			};
+		};
 		BF0D58982C61D81F0042D6BC /* XCRemoteSwiftPackageReference "CustomAlert" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/divadretlaw/CustomAlert.git";
@@ -2626,6 +2690,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6D0E90D62C54659900F8D686 /* XCRemoteSwiftPackageReference "MasonryStack" */;
 			productName = MasonryStack;
+		};
+		6D711E362D6C8EC7001B3DE4 /* KakaoMapsSDK-SPM */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6D711E352D6C8EC7001B3DE4 /* XCRemoteSwiftPackageReference "KakaoMapsSDK-SPM" */;
+			productName = "KakaoMapsSDK-SPM";
 		};
 		BF0D58992C61D81F0042D6BC /* CustomAlert */ = {
 			isa = XCSwiftPackageProductDependency;

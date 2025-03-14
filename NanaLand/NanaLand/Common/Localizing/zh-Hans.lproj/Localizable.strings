@@ -178,6 +178,8 @@
 "logout" = "登出";
 "memberWithdraw" = "注销会员";
 "join" = "注册";
+"emptyNotification" = "没有新通知\n 我们会为你带来最新活动和资讯！";
+"emptyAnnouncement" = "暂无公告";
 
 // termsAndPoliciesPage
 "notificate" = "提醒您";
@@ -283,6 +285,7 @@
 "detailInfo" = "详细信息";
 "amenity" = "便利设施";
 "proposeUpdateInfo" = "建议修改信息";
+"quickOverview" = "简要说明";
 
 // MARK: - FestivalView
 "thisMonthFestival" = "本月庆典";
@@ -540,6 +543,21 @@
 "noContent" = "没有这样的内容";
 "filterAdjustment" = "调整或重置过滤器！";
 "filterReset" = "重置过滤器";
+"emptyFestivalThisMonth" = "目前没有正在进行的节日.";
+"emptyFestivalThisMonthSub" = "调整筛选条件，查看其他日期！";
+"emptyFestivalThisMonthButton" = "查看其他日期";
+"emptyFestivalSeasonSub" = "调整筛选条件，查看其他季节！";
+"emptyFestivalSeasonButton" = "查看其他季节";
 
 //MARK: - 찜 콘텐츠
 "noFavorite" = "您还没有收藏的内容\n请点击心形图标收藏您喜欢的内容！";
+
+//MARK: - 지도 보기
+"detailView" = "了解更多";
+"empty" = "";
+"copySuccess" = "已复制到剪贴板！";
+"emptyCopyString" = "剪贴板复制失败";
+"failAccess" = "剪贴板复制失败\n请检查设置中的权限";
+"googleMap" = "谷歌地图";
+"differentMap" = "在其他地图上查看";
+"subExplanation" = "*要查找正确的地址,\n请点击地图视图并复制韩文地址！";

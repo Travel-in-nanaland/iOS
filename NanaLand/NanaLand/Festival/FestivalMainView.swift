@@ -87,7 +87,7 @@ struct SeasonFilterButtonView: View {
 
 struct SeasonFilterView: View {
     @StateObject var viewModel: FestivalMainViewModel
-    @State var seasonModal = false // 장소 선택 뷰 모달 여부
+    @Binding var seasonModal: Bool // 장소 선택 뷰 모달 여부
     @State var season = LocalizedKey.spring.localized(for: LocalizationManager().language)
     @Binding var selectedSeason : String
     var count: Int // item 갯수
@@ -173,7 +173,7 @@ struct FilterView: View {
     @StateObject var viewModel: FestivalMainViewModel
     var count: Int // item 갯수
     @State private var locationModal = false
-    @State private var dateModal = false
+    @Binding var dateModal: Bool
     @Binding var yearMonthDay: YearMonthDay? // 시작날짜 선택 했을 때
     @State private var endYearMonthDay: YearMonthDay? // 종료날짜 선택 했을 때
     var title: String
@@ -376,16 +376,19 @@ struct FestivalMainGridView: View {
     @State var selectedSeason = ""
     @State var yearMonthDay: YearMonthDay? = nil
     
+    @State var dateModal: Bool = false
+    @State var seasonModal: Bool = false
+    
     @EnvironmentObject var localizationManager: LocalizationManager
     var body: some View {
         VStack(spacing: 0) {
             if title == "이번달" {
-                FilterView(viewModel: viewModel, count: Int(viewModel.state.getFestivalMainResponse.totalElements), yearMonthDay: $yearMonthDay, title: title)
+                FilterView(viewModel: viewModel, count: Int(viewModel.state.getFestivalMainResponse.totalElements), dateModal: $dateModal, yearMonthDay: $yearMonthDay, title: title)
             } else if title == "종료된" {
-                FilterView(viewModel: viewModel, count: Int(viewModel.state.getFestivalMainResponse.totalElements), yearMonthDay: $yearMonthDay, title: title)
+                FilterView(viewModel: viewModel, count: Int(viewModel.state.getFestivalMainResponse.totalElements), dateModal: $dateModal, yearMonthDay: $yearMonthDay, title: title)
             }
             else {
-                SeasonFilterView(viewModel: viewModel, selectedSeason: $selectedSeason, count: Int(viewModel.state.getFestivalMainResponse.totalElements))
+                SeasonFilterView(viewModel: viewModel, seasonModal: $seasonModal ,selectedSeason: $selectedSeason, count: Int(viewModel.state.getFestivalMainResponse.totalElements))
             }
             
             ScrollViewReader { reader in
@@ -393,9 +396,19 @@ struct FestivalMainGridView: View {
                     if isAPICalled {
                         // 보여줄 데이터가 없을 때
                         if viewModel.state.getFestivalMainResponse.data.count == 0 {
-                            NoResultFilterView(keyword: .constant(""), location: $viewModel.state.location, yearMonthDay: $yearMonthDay, season: $selectedSeason)
-                                .frame(height: 70)
-                                .padding(.top, (Constants.screenHeight - 208) * (179 / 636))
+                            if title == "계절별" {
+                                EmptyFestivalView(content: "계절별",location: .constant(""), yearMonthDay: $yearMonthDay, season: $selectedSeason, calendarModal: .constant(false), seasonModal: $seasonModal)
+                                    .frame(height: 70)
+                                    .padding(.top, (Constants.screenHeight - 208) * (179 / 636))
+                            } else if title == "이번달"{
+                                EmptyFestivalView(content: "이번달", location: $viewModel.state.location, yearMonthDay: $yearMonthDay, season: .constant(""), calendarModal: $dateModal, seasonModal: .constant(false))
+                                    .frame(height: 70)
+                                    .padding(.top, (Constants.screenHeight - 208) * (179 / 636))
+                            } else {
+                                EmptyFestivalView(content: "종료된", location: $viewModel.state.location, yearMonthDay: $yearMonthDay, season: .constant(""), calendarModal: .constant(false), seasonModal: .constant(false))
+                                    .frame(height: 70)
+                                    .padding(.top, (Constants.screenHeight - 208) * (179 / 636))
+                            }
                             
                             
                         }

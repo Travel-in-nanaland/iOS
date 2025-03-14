@@ -181,6 +181,8 @@
 "logout" = "Log out";
 "memberWithdraw" = "Withdraw membership";
 "join" = "Sign Up";
+"emptyNotification" = "No new notifications\n Stay updated with the latest events and news!";
+"emptyAnnouncement" = "No announcements available";
 
 // termsAndPoliciesPage
 "notificate" = "Notice";
@@ -290,6 +292,7 @@ the market is the place!";
 "detailInfo" = "Details";
 "amenity" = "Facilities";
 "proposeUpdateInfo" = "Information Update Suggestions";
+"quickOverview" = "Quick Overview";
 
 // MARK: - FestivalView
 "thisMonthFestival" = "Monthly Festival";
@@ -552,6 +555,21 @@ the market is the place!";
 "noContent" = "No such content";
 "filterAdjustment" = "Adjust or reset filters!";
 "filterReset" = "Reset filter";
+"emptyFestivalThisMonth" = "There are currently no ongoing festivals.";
+"emptyFestivalThisMonthSub" = "Adjust the filters to check for other dates!";
+"emptyFestivalThisMonthButton" = "Check other dates";
+"emptyFestivalSeasonSub" = "Adjust the filters to check for another season!";
+"emptyFestivalSeasonButton" = "Check another season";
 
 //MARK: - 찜 콘텐츠
 "noFavorite" = "You haven't favorited any content yet\nTap the heart on content you like!";
+
+//MARK: - 지도 보기
+"detailView" = "Learn more";
+"empty" = "";
+"copySuccess" = "Copied to clipboard!";
+"emptyCopyString" = "Clipboard copy failed";
+"failAccess" = "Clipboard copy failed\nPlease check the permission in the settings";
+"googleMap" = "Google Maps";
+"differentMap" = "View on another map";
+"subExplanation" = "*To find the correct address, please click on the map view\n and copy the address in Korean!";

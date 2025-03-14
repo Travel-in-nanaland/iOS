@@ -72,7 +72,7 @@ struct ShopMainGridView: View {
                 ScrollView {
                     if isAPICalled {
                         if viewModel.state.getShopMainResponse.data.count == 0 {
-                            NoResultFilterView(keyword: .constant(""), location: $viewModel.state.location, yearMonthDay: .constant(nil), season: .constant(""))
+                            NoResultFilterView(keyword: .constant(""), location: $viewModel.state.location)
                                 .frame(height: 70)
                                 .padding(.top, (Constants.screenHeight - 208) * (179 / 636))
                             

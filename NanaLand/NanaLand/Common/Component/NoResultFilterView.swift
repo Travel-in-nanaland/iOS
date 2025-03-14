@@ -12,20 +12,7 @@ import SwiftUICalendar
 struct NoResultFilterView: View {
     @Binding var keyword: String
     @Binding var location: String
-    @Binding var yearMonthDay: YearMonthDay?
-    @Binding var season: String
     
-    static let dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy.MM.dd"
-        
-        return formatter
-    }()
-    
-    // 현재 날짜를 문자열로 변환하여 반환
-    var todayDateString: String {
-        return FilterView.dateFormatter.string(from: Date())
-    }
     
     var body: some View {
         VStack(alignment: .center, spacing: 4) {
@@ -47,27 +34,6 @@ struct NoResultFilterView: View {
                 keyword =  LocalizedKey.type.localized(for: LocalizationManager().language)
                 location =  LocalizedKey.allLocation.localized(for: LocalizationManager().language)
                 
-                yearMonthDay = nil
-                let formatterMonth = DateFormatter()
-                formatterMonth.dateFormat = "MM"
-                let currentMonth = formatterMonth.string(from: Date())
-                
-                switch Int(currentMonth) {
-                case 3, 4:
-                    season = LocalizedKey.spring.localized(for: LocalizationManager().language)
-                    
-                case 5, 6, 7, 8:
-                    season = LocalizedKey.summer.localized(for: LocalizationManager().language)
-                    
-                case 9, 10:
-                    season = LocalizedKey.autumn.localized(for: LocalizationManager().language)
-                    
-                case 11, 12, 1, 2:
-                    season = LocalizedKey.winter.localized(for: LocalizationManager().language)
-                default:
-                    // 예상치 못한 경우 기본값 설정
-                    season = LocalizedKey.spring.localized(for: LocalizationManager().language)
-                }
                 
             }, label: {
                 Text(.filterReset)
@@ -85,7 +51,6 @@ struct NoResultFilterView: View {
 }
 
 #Preview {
-    NoResultFilterView(keyword: .constant(""), location: .constant(""), yearMonthDay:
-        .constant(nil), season: .constant(""))
+    NoResultFilterView(keyword: .constant(""), location: .constant(""))
 }
 

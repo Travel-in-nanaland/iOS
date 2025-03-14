@@ -177,6 +177,8 @@
 "logout" = "Log keluar";
 "memberWithdraw" = "Daftar keluar";
 "join" = "Daftar";
+"emptyNotification" = "Tiada notifikasi baru\n Kekal kemas kini dengan acara dan berita terkini!";
+"emptyAnnouncement" = "Tiada pengumuman tersedia";
 
 // termsAndPoliciesPage
 "notificate" = "Makluman";
@@ -283,6 +285,7 @@ ditetapkan sebagai lalai.";
 "detailInfo" = "Maklumat Terperinci";
 "amenity" = "Kemudahan";
 "proposeUpdateInfo" = "Cadangan Pembetulan Maklumat";
+"quickOverview" = "Penjelasan ringkas";
 
 // MARK: - FestivalView
 "thisMonthFestival" = "Festival Bulanan ";
@@ -542,6 +545,21 @@ mengembalikan sebarang hasil.";
 "noContent" = "Tiada kandungan yang sesuai";
 "filterAdjustment" = "Laraskan atau tetapkan semula penapis anda!";
 "filterReset" = "Tetapkan semula penapis";
+"emptyFestivalThisMonth" = "Tiada festival yang sedang berlangsung.";
+"emptyFestivalThisMonthSub" = "Laraskan penapis untuk menyemak tarikh lain!";
+"emptyFestivalThisMonthButton" = "Semak tarikh lain";
+"emptyFestivalSeasonSub" = "Laraskan penapis untuk menyemak musim lain!";
+"emptyFestivalSeasonButton" = "Semak musim lain";
 
 //MARK: - 찜 콘텐츠
 "noFavorite" = "Anda belum menandakan kandungan sebagai kegemaran\nTekan hati pada kandungan yang anda suka!";
+
+//MARK: - 지도 보기
+"detailView" = "Ketahui lebih lanjut";
+"empty" = "";
+"copySuccess" = "Disalin ke papan klip!";
+"emptyCopyString" = "Salinan papan klip gagal";
+"failAccess" = "Salinan papan klip gagal\nSila semak kebenaran dalam tetapan";
+"googleMap" = "Peta Google";
+"differentMap" = "Lihat di peta lain";
+"subExplanation" = "*Untuk mencari alamat yang betul, \nsila klik pada paparan peta dan salin alamat dalam bahasa Korea!";

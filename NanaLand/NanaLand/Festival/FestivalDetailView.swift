@@ -16,6 +16,8 @@ struct FestivalDetailView: View {
     @State private var roundedHeight: CGFloat = (Constants.screenWidth - 40) * (224.0 / 358.0)
     @State private var thumbnailModal = false
     @State var selectedImageURL: String = ""// 선택된 이미지 URL
+    
+    @State var koreanAddress: String = ""
     var id: Int64
     
     var body: some View {
@@ -188,6 +190,9 @@ struct FestivalDetailView: View {
                                 HStack(spacing: 10) {
                                     VStack(spacing: 0) {
                                         Image("icDetailPin")
+                                            .padding(.bottom, 5)
+                                        
+                                        Spacer()
                                     }
                                     
                                     VStack(alignment: .leading, spacing: 0) {
@@ -195,6 +200,44 @@ struct FestivalDetailView: View {
                                             .font(.gothicNeo(.bold, size: 14))
                                         Text(viewModel.state.getFestivalDetailResponse.address)
                                             .font(.gothicNeo(.regular, size: 12))
+                                            .padding(.bottom, Constants.screenWidth * (12 / 360))
+                                        
+                                        Button {
+                                            if localizationManager.language == .korean {
+                                                AppState.shared.navigationPath.append(festivalDetailType.detailMap(title: viewModel.state.getFestivalDetailResponse.title ,address: "", korean: viewModel.state.getFestivalDetailResponse.address))
+                                            } else {
+                                                AppState.shared.navigationPath.append(festivalDetailType.detailMap(title: viewModel.state.getFestivalDetailResponse.title ,address: viewModel.state.getFestivalDetailResponse.address, korean: koreanAddress))
+                                            }
+                                            
+                                        } label: {
+                                            HStack(spacing: 0){
+                                                Text(.detailView)
+                                                    .font(.caption01)
+                                                    .foregroundColor(.gray1)
+                                                
+                                                Image("icAdressArrow")
+                                                    .resizable()
+                                                    .scaledToFit()
+                                                    .frame(width: Constants.screenWidth * (12 / 360))
+                                            }
+                                            .padding(.leading, Constants.screenWidth * (8 / 360))
+                                            .padding(.trailing, Constants.screenWidth * (8 / 360))
+                                            .background(){
+                                                RoundedRectangle(cornerRadius: 100)
+                                                    .frame(height: Constants.screenWidth * (28 / 360))
+                                                    .foregroundColor(.gray3)
+                                            }
+                                        }
+                                        
+                                        if localizationManager.language != .korean {
+                                            Text(.subExplanation)
+                                                .font(.caption01)
+                                                .foregroundColor(.gray1)
+                                                .multilineTextAlignment(.leading)
+                                                .padding(.top, Constants.screenWidth * (10 / 360))
+                                        }
+                                        
+                                        Spacer()
                                     }
                                     Spacer()
                                 }
@@ -206,6 +249,9 @@ struct FestivalDetailView: View {
                                 HStack(spacing: 10) {
                                     VStack(spacing: 0) {
                                         Image("icDetailPhone")
+                                            .padding(.bottom, 5)
+                                        
+                                        Spacer()
                                     }
                                     
                                     VStack(alignment: .leading, spacing: 0) {
@@ -226,13 +272,15 @@ struct FestivalDetailView: View {
                                     }
                                     Spacer()
                                 }
-                                .frame(width: Constants.screenWidth - 40, height: (Constants.screenWidth - 40) * (42 / 358))
+                                .frame(width: Constants.screenWidth - 40)
                             }
                             
                             if viewModel.state.getFestivalDetailResponse.period != "" {
                                 HStack(spacing: 10) {
                                     VStack(spacing: 0) {
                                         Image("icDetailDate")
+                                        
+                                        Spacer()
                                     }
                                     
                                     VStack(alignment: .leading, spacing: 0) {
@@ -250,6 +298,8 @@ struct FestivalDetailView: View {
                                 HStack(spacing: 10) {
                                     VStack(spacing: 0) {
                                         Image("icDetailClock")
+                                        
+                                        Spacer()
                                     }
                                     
                                     VStack(alignment: .leading, spacing: 0) {
@@ -267,6 +317,8 @@ struct FestivalDetailView: View {
                                 HStack(alignment: .top, spacing: 10) {
                                     VStack(spacing: 0) {
                                         Image("icDetailCharge")
+                                        
+                                        Spacer()
                                     }
                                     
                                     VStack(alignment: .leading, spacing: 0) {
@@ -283,6 +335,8 @@ struct FestivalDetailView: View {
                                 HStack(spacing: 10) {
                                     VStack(spacing: 0) {
                                         Image("icDetailHomepage")
+                                        
+                                        Spacer()
                                     }
                                     
                                     VStack(alignment: .leading, spacing: 0) {
@@ -343,6 +397,12 @@ struct FestivalDetailView: View {
                         ReportInfoMainView(id: id, category: category)
                     }
                 }
+                .navigationDestination(for: festivalDetailType.self) { detailView in
+                    switch detailView {
+                    case let .detailMap(title, address, koreanAddress):
+                        KakaoMapView(title: title, address: address, koreanAddress: koreanAddress)
+                    }
+                }
                 .overlay(
                     VStack {
                         Spacer()
@@ -370,6 +430,10 @@ struct FestivalDetailView: View {
             .onAppear {
                 Task {
                     await getFestivalDetail(id: id, isSearch: false)
+                    if localizationManager.language != .korean {
+                        await getKoreanAddress(id: id, category: "FESTIVAL")
+                        koreanAddress = viewModel.state.getKoreanAddress
+                    }
                 }
             }
             .toolbar(.hidden)
@@ -391,6 +455,14 @@ struct FestivalDetailView: View {
         }
         await viewModel.action(.toggleFavorite(body: body))
     }
+    
+    func getKoreanAddress(id: Int64, category: String) async {
+        await viewModel.action(.getKoreanAddress(id: id, category: category))
+    }
+}
+
+enum festivalDetailType: Hashable{
+    case detailMap(title: String, address: String, korean: String)
 }
 
 //#Preview {

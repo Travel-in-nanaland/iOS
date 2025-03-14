@@ -18,7 +18,7 @@
 "yes" = "Có";
 "emptyString" = "This service is being prepared.\nSee you next time!";
 "beingPrepared" = "This service is being prepared.\nSee you next time!";
-"notification" = "Notification";
+"notification" = "Báo động";
 
 //MARK: - Tab
 "home" = "Trang chủ";
@@ -181,6 +181,8 @@
 "logout" = "Đăng xuất";
 "memberWithdraw" = "Rút khỏi thành viên";
 "join" = "Đăng ký";
+"emptyNotification" = "Không có thông báo mới\n Cập nhật những sự kiện và tin tức mới nhất!";
+"emptyAnnouncement" = "Không có thông báo nào";
 
 // termsAndPoliciesPage
 "notificate" = "Tốt để biết!";
@@ -280,7 +282,7 @@
 // MARK: - NatureDetailView
 "unfoldView" = "Xem thêm"; // 더보기
 "foldView" = "thu gọn"; // 접기
-"introduce" = "Introduce!";
+"introduce" = "Giới thiệu!";
 "address" = "Địa chỉ";
 "phoneNumber" = "Liên hệ";
 "time" = "Giờ sử dụng";
@@ -288,6 +290,7 @@
 "detailInfo" = "Details";
 "amenity" = "Facilities";
 "proposeUpdateInfo" = "Đề xuất sửa đổi thông tin";
+"quickOverview" = "Giải thích ngắn gọn";
 
 // MARK: - FestivalView
 "thisMonthFestival" = "lễ hội hàng tháng";
@@ -552,6 +555,21 @@
 "noContent" = "Không có nội dung tương ứng";
 "filterAdjustment" = "Điều chỉnh hoặc đặt lại bộ lọc của bạn!";
 "filterReset" = "Đặt lại bộ lọc";
+"emptyFestivalThisMonth" = "Hiện tại không có lễ hội nào đang diễn ra.";
+"emptyFestivalThisMonthSub" = "Điều chỉnh bộ lọc để kiểm tra các ngày khác!";
+"emptyFestivalThisMonthButton" = "Kiểm tra ngày khác";
+"emptyFestivalSeasonSub" = "Điều chỉnh bộ lọc để kiểm tra mùa khác!";
+"emptyFestivalSeasonButton" = "Kiểm tra mùa khác";
 
 //MARK: - 찜 콘텐츠
 "noFavorite" = "Bạn chưa yêu thích nội dung nào\nHãy nhấn vào biểu tượng trái tim trên nội dung bạn thích!";
+
+//MARK: - 지도 보기
+"detailView" = "Tìm hiểu thêm";
+"empty" = "";
+"copySuccess" = "Đã sao chép vào bảng tạm!";
+"emptyCopyString" = "Lỗi sao chép bảng tạm";
+"failAccess" = "Lỗi sao chép bảng tạm\nVui lòng kiểm tra quyền trong cài đặt";
+"googleMap" = "Google Maps";
+"differentMap" = "Xem trên bản đồ khác";
+"subExplanation" = "*Để tìm đúng địa chỉ, vui lòng nhấp vào chế độ xem bản đồ \nvà sao chép địa chỉ bằng tiếng Hàn!";
