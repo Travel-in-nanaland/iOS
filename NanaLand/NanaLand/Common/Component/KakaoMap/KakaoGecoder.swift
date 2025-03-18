@@ -9,7 +9,8 @@ import Foundation
 import SwiftUI
 
 struct KakaoGeocoder {
-    static let apiKey = Secrets.kakaoMapsRestAPIKey // 🔴 여기에 본인의 Kakao REST API 키 입력
+    static let apiKey = 
+    Secrets.kakaoMapsRestAPIKey // 🔴 여기에 본인의 Kakao REST API 키 입력
 
     static func convertAddressToCoordinates(address: String, completion: @escaping (Double?, Double?) -> Void) {
         let encodedAddress = address.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""

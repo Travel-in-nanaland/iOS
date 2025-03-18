@@ -609,7 +609,7 @@ struct reviewTabView: View {
 
 struct profileUpdateButton: View {
     var body: some View {
-        NavigationLink(destination: ProfileUpdateView()) {
+       // NavigationLink(destination: ProfileUpdateView()) {
             Text(.editProfile)
                 .font(.body_bold)
                 .frame(width: Constants.screenWidth - 32, height: 48)
@@ -619,7 +619,7 @@ struct profileUpdateButton: View {
                         .stroke(.main, lineWidth: 1) // 테두리 색상과 두께 설정
                         .frame(width: Constants.screenWidth - 32, height: 48) // 테두리의 크기 설정
                 )
-        }
+        //}
     }
 }
 
