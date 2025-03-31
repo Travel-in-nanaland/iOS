@@ -276,16 +276,11 @@ struct ReviewMainGridView: View {
                             .frame(height: 190)
                             .onChange(of: reviewContent) { newValue in
                                 viewModel.state.reviewDTO.content = newValue
-                                print("\(newValue)")
-                                for i in 0..<viewModel.selectedKeyword.count {
-                                    print(viewModel.selectedKeyword[i].tag)
-                                }
                                 if newValue.count > 200 {
                                     
                                     reviewContent = String(newValue.prefix(200))
                                     toastMessage = LocalizedKey.content200.localized(for: localizationManager.language)
                                     showToast = true
-                                    print("200자 초과")
                                 }
                             }
                             .padding(.horizontal)
@@ -444,7 +439,7 @@ struct ReviewMainGridView: View {
                                             viewModel.state.reviewS3UploadDTO.partCount = chunks.count
                                             
                                             await uploadImage(body: viewModel.state.reviewS3UploadDTO)
-                                           // await uploadImageToS32(presignedURL: URL(string: viewModel.state.getReviewS3Response.presignedUrlInfos[0].preSignedUrl)!, imageData: selectedImageData[i], mimeType: "image/\(String(substring))") (리팩토링 필요~~)
+                                            
                                             await uploadImageToS3(presignedURL: URL(string: viewModel.state.getReviewS3Response.presignedUrlInfos[0].preSignedUrl)!, imageData: selectedImageData[i], mimeType: "image/\(String(substring))", uploadId: viewModel.state.getReviewS3Response.uploadId, fileKey: viewModel.state.getReviewS3Response.fileKey) { success, eTag, uploadId, fileKey, error in
                                                 if success {
                                                     Task { // await 함수 task에 안넣으면 compiler type check 오류가 발생.

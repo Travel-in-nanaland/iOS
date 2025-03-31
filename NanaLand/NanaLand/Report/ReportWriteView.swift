@@ -113,7 +113,6 @@ struct ReportWriteView: View {
                             }
                             .onChange(of: text) { newValue in
                                 viewModel.state.reportDTO.content = newValue
-                                print("\(newValue)")
                                 if newValue.count > 500 {
                                     text = String(newValue.prefix(500))
                                     toastMessage = LocalizedKey.reportCharacterPermission.localized(for: LocalizationManager.shared.language)
@@ -337,7 +336,6 @@ struct ReportWriteView: View {
             )
             .toolbar(.hidden)
             .onAppear {
-                print("\(isUserReport)")
                 if isUserReport {
                     viewModel.state.reportDTO.reportType = "MEMBER"
                 } else {

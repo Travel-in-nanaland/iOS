@@ -87,20 +87,12 @@ class ReviewWriteViewModel: ObservableObject {
             if response != nil {
                 await MainActor.run {
                     state.getReviewS3Response = response!.data!
-                    print("----------------------결과")
-                    print(state.getReviewS3Response)
                 }
             }
         case let .uploadComplete(body):
             let response = await FileService.completeFileUpload(body: body)
-            if response != nil {
-                print(response!.message)
-            }
         case let .uploadImageToS3(presignedURL, imageData, mimeType): // 요청후 Header에 있는 ETag 응답 받기
             let response = await FileService.uploadImageToS3(presignedURL: presignedURL, imageData: imageData, mimeType: mimeType)
-            if response != nil {
-                print("uploadImageToS32----------\(response?.status)------------")
-            }
         }
     }
 }

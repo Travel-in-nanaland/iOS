@@ -98,18 +98,14 @@ class ReportWriteViewModel: ObservableObject {
                         return
                     }
                 }
-                
-                print("모든 파일 업로드 완료!")
             }
             
             let response = await ReportService.postReport(body: body)
             if response != nil {
                 await MainActor.run {
                     state.getReportResponse.status = response!.status
-                    print(response!.message)
                 }
             }
-            
         }
     }
 }

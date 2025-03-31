@@ -45,9 +45,6 @@ struct ReportReasonView: View {
                 
             }
         }
-        .onAppear {
-            print("유저:\(isUserReport)")
-        }
         .toolbar(.hidden)
         .padding(.leading, 16)
         .padding(.trailing, 16)
